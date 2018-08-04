@@ -15,7 +15,7 @@ namespace LibskycoinNetTest
 		public void SumTest(){
 			var sky = new Skycoin();
 			var r = sky.Sum(2, 3);
-			Assert.AreEqual(r, 5);
+			Assert.AreEqual(r, 8);
 		}
     }
 
