@@ -42,4 +42,10 @@ build-swig:
 			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
 		fi \
 	}
-	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir ./LibskycoinNet/skycoin -o ./LibskycoinNet/skycoin/skycoin.cs $(LIBSWIG_DIR)/skycoin.i
+	mkdir -p ./LibskycoinNet/skycoin
+	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/skycoin.i
+	
+build-libskycoin-net:
+	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o skycoin.so
+	mono-csc -out:skycoin_net.exe LibskycoinNet/skycoin/*.cs
