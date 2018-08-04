@@ -1,3 +1,0 @@
-[submodule "gopath/src/github/skycoin/skycoin"]
-	path = gopath/src/github.com/skycoin/skycoin/skycoin
-	url = https://github.com/simelo/skycoin.git
