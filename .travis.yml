@@ -6,6 +6,7 @@ install:
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   
 script:
+  - make build-libc 
   - make build-swig
   - msbuild /p:Configuration=Release LibskycoinNet.sln
   - make build-libskycoin-net
