@@ -35,7 +35,7 @@ build-swig:
 	rm -f $(LIBSWIG_DIR)/structs.i
 	cp $(INCLUDE_DIR)/skytypes.gen.h $(LIBSWIG_DIR)/structs.i
 	#sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i
-	{ \
+t 	{ \
 		if [[ "$$(uname -s)" == "Darwin" ]]; then \
 			sed -i '.kbk' 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
 		else \
@@ -43,9 +43,10 @@ build-swig:
 		fi \
 	}
 	mkdir -p ./LibskycoinNet/skycoin
-	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/skycoin.i
+	swig -csharp -namespace skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/skycoin.i
 	
 build-libskycoin-net:
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
-	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o skycoin.so
-	mono-csc -out:skycoin_net.exe LibskycoinNet/skycoin/*.cs
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
+	mv libskycoin.so LibskycoinNetTest/bin/Release
+	#mono-csc -out:skycoin_net.exe LibskycoinNet/skycoin/*.cs

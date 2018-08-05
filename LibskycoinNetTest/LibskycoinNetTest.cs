@@ -1,6 +1,7 @@
 ﻿using System;
-using LibskycoinNet;
+using skycoin;
 using NUnit.Framework;
+using System.IO;
 
 namespace LibskycoinNetTest
 {
@@ -13,9 +14,10 @@ namespace LibskycoinNetTest
 
         [Test]
 		public void SumTest(){
-			var sky = new Skycoin();
-			var r = sky.Sum(2, 3);
-			Assert.AreEqual(r, 5);
+			var xyz = new skycoin.secp256k1go__XYZ();
+			var xy = new skycoin.secp256k1go__XY();
+			uint error = skycoin.skycoin.SKY_secp256k1go_XYZ_SetXY(xyz, xy);
+			Assert.AreEqual(error, 0);
 		}
     }
 
