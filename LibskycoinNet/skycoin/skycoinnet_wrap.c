@@ -1779,1603 +1779,479 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlice(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_String2Hex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg1, unsigned long long jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
   unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
+  Block__Handle arg1 ;
+  GoUint64 arg2 ;
+  cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
+  Transactions__Handle arg4 ;
+  FeeCalculator *arg5 = (FeeCalculator *) 0 ;
+  Block__Handle *arg6 = (Block__Handle *) 0 ;
+  Block__Handle *argp1 ;
+  Transactions__Handle *argp4 ;
   GoUint32 result;
   
-  argp1 = (GoString *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_String2Hex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToInt(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (cipher__SHA256 *)jarg3; 
+  argp4 = (Transactions__Handle *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
     return 0;
   }
-  arg1 = *argp1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_ToInt(arg1,arg2);
+  arg4 = *argp4; 
+  arg5 = (FeeCalculator *)jarg5; 
+  arg6 = (Block__Handle *)jarg6; 
+  result = (GoUint32)SKY_coin_NewBlock(arg1,arg2,(GoUint8_ (*)[32])arg3,arg4,arg5,arg6);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToHex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SignedBlock_VerifySignature(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_ToHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_Base582Int(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_Base582Int(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base582Hex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base582Hex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_BitHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_BitHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Int2Base58(long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoInt arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Int2Base58(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58Str(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58Str(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntry(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Entry *)jarg1; 
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableEntry(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableEntry(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_LoadReadableEntry(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntryFromPubkey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableEntryFromPubkey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableEntry_Save(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  ReadableEntry__Handle arg1 ;
-  GoString arg2 ;
-  ReadableEntry__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (ReadableEntry__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableEntry__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_ReadableEntry_Save(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableWallet(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  ReadableWallet__Handle *arg2 = (ReadableWallet__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (ReadableWallet__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_LoadReadableWallet(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Save(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  ReadableWallet__Handle arg1 ;
-  GoString arg2 ;
-  ReadableWallet__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (ReadableWallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_ReadableWallet_Save(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Load(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  ReadableWallet__Handle arg1 ;
-  GoString arg2 ;
-  ReadableWallet__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (ReadableWallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_ReadableWallet_Load(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Erase(void * jarg1) {
-  unsigned int jresult ;
-  ReadableWallet__Handle arg1 ;
-  ReadableWallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (ReadableWallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoUint32)SKY_wallet_ReadableWallet_Erase(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputsFromFile(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (OutputsResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_cli_GetWalletOutputsFromFile(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputs(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  Wallet__Handle *arg2 = (Wallet__Handle *) 0 ;
-  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Wallet__Handle *)jarg2; 
-  arg3 = (OutputsResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_cli_GetWalletOutputs(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Print(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoString arg2 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Field_Print(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetB32(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Field_SetB32(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetBytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Field_SetBytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoString arg2 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Field_SetHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_IsOdd(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_IsOdd(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_IsZero(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_IsZero(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetInt(void * jarg1, unsigned int jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoUint32 arg2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (GoUint32)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_SetInt(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Normalize(void * jarg1) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  result = (GoUint32)SKY_secp256k1go_Field_Normalize(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_GetB32(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Field_GetB32(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Equals(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_Field_Equals(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetAdd(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_SetAdd(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_MulInt(void * jarg1, unsigned int jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  GoUint32 arg2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (GoUint32)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_MulInt(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Negate(void * jarg1, void * jarg2, unsigned int jarg3) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 arg3 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  arg3 = (GoUint32)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_Field_Negate(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Inv(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_Inv(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Sqrt(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_Sqrt(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_InvVar(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_InvVar(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Mul(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg3 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  arg3 = (secp256k1go__Field *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_Field_Mul(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Sqr(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__Field *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Field_Sqr(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewWalletResponse(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  WalletResponse__Handle *arg2 = (WalletResponse__Handle *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletResponse__Handle *)jarg2; 
-  result = (GoUint32)SKY_api_NewWalletResponse(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Len(void * jarg1) {
-  long long jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  result = (GoInt)SKY_cipher_PubKeySlice_Len(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Less(void * jarg1, long long jarg2, long long jarg3) {
-  unsigned char jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt arg2 ;
-  GoInt arg3 ;
-  GoUint8 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (GoInt)jarg3; 
-  result = (GoUint8)SKY_cipher_PubKeySlice_Less(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Swap(void * jarg1, long long jarg2, long long jarg3) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt arg2 ;
-  GoInt arg3 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (GoInt)jarg3; 
-  result = (GoUint32)SKY_cipher_PubKeySlice_Swap(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_RandByte(long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoInt arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_cipher_RandByte(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewPubKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_NewPubKey(arg1,(GoUint8_ (*)[33])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustPubKeyFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustPubKeyFromHex(arg1,(GoUint8_ (*)[33])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_PubKeyFromHex(arg1,(GoUint8_ (*)[33])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSecKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  coin__SignedBlock *arg1 = (coin__SignedBlock *) 0 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
   GoUint32 result;
   
-  arg1 = (cipher__SecKey *)jarg1; 
+  arg1 = (coin__SignedBlock *)jarg1; 
   arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_PubKeyFromSecKey((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[33])arg2);
+  result = (GoUint32)SKY_coin_SignedBlock_VerifySignature(arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSig(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Sig *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  arg3 = (cipher__PubKey *)jarg3; 
-  result = (GoUint32)SKY_cipher_PubKeyFromSig((GoUint8_ (*)[65])arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[33])arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Verify(void * jarg1) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  result = (GoUint32)SKY_cipher_PubKey_Verify((GoUint8_ (*)[33])arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Hex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_PubKey_Hex((GoUint8_ (*)[33])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_ToAddressHash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__Ripemd160 *arg2 = (cipher__Ripemd160 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__Ripemd160 *)jarg2; 
-  result = (GoUint32)SKY_cipher_PubKey_ToAddressHash((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[20])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSecKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_NewSecKey(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSecKeyFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustSecKeyFromHex(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_SecKeyFromHex(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Verify(void * jarg1) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SecKey *)jarg1; 
-  result = (GoUint32)SKY_cipher_SecKey_Verify((GoUint8_ (*)[32])arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Hex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SecKey *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_SecKey_Hex((GoUint8_ (*)[32])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ECDH(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_cipher_ECDH((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSig(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Sig *)jarg2; 
-  result = (GoUint32)SKY_cipher_NewSig(arg1,(GoUint8_ (*)[65])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSigFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Sig *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustSigFromHex(arg1,(GoUint8_ (*)[65])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SigFromHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Sig *)jarg2; 
-  result = (GoUint32)SKY_cipher_SigFromHex(arg1,(GoUint8_ (*)[65])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Sig_Hex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Sig *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_Sig_Hex((GoUint8_ (*)[65])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SignHash(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  cipher__Sig *arg3 = (cipher__Sig *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SHA256 *)jarg1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  arg3 = (cipher__Sig *)jarg3; 
-  result = (GoUint32)SKY_cipher_SignHash((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[65])arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ChkSig(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewGenesisBlock(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
   unsigned int jresult ;
   cipher__Address *arg1 = (cipher__Address *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  cipher__Sig *arg3 = (cipher__Sig *) 0 ;
+  GoUint64 arg2 ;
+  GoUint64 arg3 ;
+  Block__Handle *arg4 = (Block__Handle *) 0 ;
   GoUint32 result;
   
   arg1 = (cipher__Address *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  arg3 = (cipher__Sig *)jarg3; 
-  result = (GoUint32)SKY_cipher_ChkSig(arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[65])arg3);
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (Block__Handle *)jarg4; 
+  result = (GoUint32)SKY_coin_NewGenesisBlock(arg1,arg2,arg3,arg4);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignedHash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
+  Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  arg1 = (cipher__Sig *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
   arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_cipher_VerifySignedHash((GoUint8_ (*)[65])arg1,(GoUint8_ (*)[32])arg2);
+  result = (GoUint32)SKY_coin_Block_HashHeader(arg1,(GoUint8_ (*)[32])arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignature(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
-  cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__Sig *)jarg2; 
-  arg3 = (cipher__SHA256 *)jarg3; 
-  result = (GoUint32)SKY_cipher_VerifySignature((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[65])arg2,(GoUint8_ (*)[32])arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateKeyPair(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_GenerateKeyPair((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPair(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg3 = (cipher__SecKey *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  arg3 = (cipher__SecKey *)jarg3; 
-  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPair(arg1,(GoUint8_ (*)[33])arg2,(GoUint8_ (*)[32])arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DeterministicKeyPairIterator(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg4 = (cipher__SecKey *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  arg3 = (cipher__PubKey *)jarg3; 
-  arg4 = (cipher__SecKey *)jarg4; 
-  result = (GoUint32)SKY_cipher_DeterministicKeyPairIterator(arg1,arg2,(GoUint8_ (*)[33])arg3,(GoUint8_ (*)[32])arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPairs(void * jarg1, long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoInt arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPairs(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPairsSeed(void * jarg1, long long jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoInt arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPairsSeed(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKey(void * jarg1) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SecKey *)jarg1; 
-  result = (GoUint32)SKY_cipher_TestSecKey((GoUint8_ (*)[32])arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKeyHash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  arg1 = (cipher__SecKey *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
   arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_cipher_TestSecKeyHash((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[32])arg2);
+  result = (GoUint32)SKY_coin_Block_PreHashHeader(arg1,(GoUint8_ (*)[32])arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_DecompressPoint(void * jarg1, unsigned char jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Time(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoSlice arg1 ;
-  GoUint8 arg2 ;
-  GoSlice arg3 ;
-  GoSlice *argp1 ;
-  GoSlice *argp3 ;
+  Block__Handle arg1 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoSlice *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  arg2 = (GoUint8)jarg2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  result = (GoUint32)SKY_secp256k1go_DecompressPoint(arg1,arg2,arg3);
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_coin_Block_Time(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_RecoverPublicKey(void * jarg1, void * jarg2, long long jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Seq(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  GoInt arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoInt *arg5 = (GoInt *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
+  Block__Handle arg1 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoSlice *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoInt)jarg3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  arg5 = (GoInt *)jarg5; 
-  result = (GoUint32)SKY_secp256k1go_RecoverPublicKey(arg1,arg2,arg3,arg4,arg5);
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_coin_Block_Seq(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Multiply(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
+  Block__Handle arg1 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoSlice *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_Multiply(arg1,arg2,arg3);
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_Block_HashBody(arg1,(GoUint8_ (*)[32])arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_BaseMultiply(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Size(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoSlice arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_BaseMultiply(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_BaseMultiplyAdd(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_BaseMultiplyAdd(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_GeneratePublicKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_GeneratePublicKey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_SeckeyIsValid(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
+  Block__Handle arg1 ;
   GoInt *arg2 = (GoInt *) 0 ;
-  GoSlice *argp1 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoSlice *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
   arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_SeckeyIsValid(arg1,arg2);
+  result = (GoUint32)SKY_coin_Block_Size(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_PubkeyIsValid(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_String(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoSlice arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_PubkeyIsValid(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_InitDataDir(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
+  Block__Handle arg1 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
-  GoString *argp1 ;
+  Block__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoString *)jarg1; 
+  argp1 = (Block__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
   arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_file_InitDataDir(arg1,arg2);
+  result = (GoUint32)SKY_coin_Block_String(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_UserHome(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_GetTransaction(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  Transaction__Handle *arg3 = (Transaction__Handle *) 0 ;
+  GoUint8 *arg4 = (GoUint8 *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  arg3 = (Transaction__Handle *)jarg3; 
+  arg4 = (GoUint8 *)jarg4; 
+  result = (GoUint32)SKY_coin_Block_GetTransaction(arg1,(GoUint8_ (*)[32])arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void * jarg1, void * jarg2, unsigned long long jarg3, unsigned long long jarg4, void * jarg5, void * jarg6) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint64 arg3 ;
+  GoUint64 arg4 ;
+  BlockBody__Handle arg5 ;
+  coin__BlockHeader *arg6 = (coin__BlockHeader *) 0 ;
+  BlockBody__Handle *argp5 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (GoUint64)jarg4; 
+  argp5 = (BlockBody__Handle *)jarg5; 
+  if (!argp5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
+    return 0;
+  }
+  arg5 = *argp5; 
+  arg6 = (coin__BlockHeader *)jarg6; 
+  result = (GoUint32)SKY_coin_NewBlockHeader(arg1,(GoUint8_ (*)[32])arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockHeader_Hash(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Bytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockHeader_Bytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_String(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockHeader_String(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  BlockBody__Handle arg1 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  BlockBody__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (BlockBody__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockBody_Hash(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Size(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  BlockBody__Handle *arg1 = (BlockBody__Handle *) 0 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (BlockBody__Handle *)jarg1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockBody_Size(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Bytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  BlockBody__Handle arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  BlockBody__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (BlockBody__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_coin_BlockBody_Bytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_CreateUnspents(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  Transaction__Handle arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  Transaction__Handle *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  argp2 = (Transaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_coin_CreateUnspents(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_CreateUnspent(void * jarg1, void * jarg2, long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  Transaction__Handle arg2 ;
+  GoInt arg3 ;
+  coin__UxOut *arg4 = (coin__UxOut *) 0 ;
+  Transaction__Handle *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  argp2 = (Transaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoInt)jarg3; 
+  arg4 = (coin__UxOut *)jarg4; 
+  result = (GoUint32)SKY_coin_CreateUnspent(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  coin__Block **arg2 = (coin__Block **) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__Block **)jarg2; 
+  result = (GoUint32)SKY_coin_GetBlockObject(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockBody(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  BlockBody__Handle *arg2 = (BlockBody__Handle *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (BlockBody__Handle *)jarg2; 
+  result = (GoUint32)SKY_coin_GetBlockBody(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewEmptyBlock(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Transactions__Handle arg1 ;
+  Block__Handle *arg2 = (Block__Handle *) 0 ;
+  Transactions__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Transactions__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Block__Handle *)jarg2; 
+  result = (GoUint32)SKY_coin_NewEmptyBlock(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewDefaultMnemomic(void * jarg1) {
   unsigned int jresult ;
   GoString_ *arg1 = (GoString_ *) 0 ;
   GoUint32 result;
   
   arg1 = (GoString_ *)jarg1; 
-  result = (GoUint32)SKY_file_UserHome(arg1);
+  result = (GoUint32)SKY_bip39_NewDefaultMnemomic(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_ResolveResourceDirectory(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_file_ResolveResourceDirectory(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_DetermineResourcePath(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString arg2 ;
-  GoString arg3 ;
-  GoString_ *arg4 = (GoString_ *) 0 ;
-  GoString *argp1 ;
-  GoString *argp2 ;
-  GoString *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (GoString_ *)jarg4; 
-  result = (GoUint32)SKY_file_DetermineResourcePath(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_SumSHA256(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1_SumSHA256(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_RandByte(long long jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewEntropy(long long jarg1, void * jarg2) {
   unsigned int jresult ;
   GoInt arg1 ;
   coin__UxArray *arg2 = (coin__UxArray *) 0 ;
@@ -3383,200 +2259,16 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_RandByte(long l
   
   arg1 = (GoInt)jarg1; 
   arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1_RandByte(arg1,arg2);
+  result = (GoUint32)SKY_bip39_NewEntropy(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreateTransactionResponse(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Transaction__Handle arg1 ;
-  GoSlice arg2 ;
-  CreateTransactionResponse__Handle *arg3 = (CreateTransactionResponse__Handle *) 0 ;
-  Transaction__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Transaction__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (CreateTransactionResponse__Handle *)jarg3; 
-  result = (GoUint32)SKY_api_NewCreateTransactionResponse(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransaction(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Transaction__Handle arg1 ;
-  GoSlice arg2 ;
-  CreatedTransaction__Handle *arg3 = (CreatedTransaction__Handle *) 0 ;
-  Transaction__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Transaction__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (CreatedTransaction__Handle *)jarg3; 
-  result = (GoUint32)SKY_api_NewCreatedTransaction(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_CreatedTransaction_ToTransaction(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  CreatedTransaction__Handle arg1 ;
-  Transaction__Handle *arg2 = (Transaction__Handle *) 0 ;
-  CreatedTransaction__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (CreatedTransaction__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransaction__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Transaction__Handle *)jarg2; 
-  result = (GoUint32)SKY_api_CreatedTransaction_ToTransaction(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionOutput(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__TransactionOutput *arg1 = (coin__TransactionOutput *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  CreatedTransactionOutput__Handle *arg3 = (CreatedTransactionOutput__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__TransactionOutput *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  arg3 = (CreatedTransactionOutput__Handle *)jarg3; 
-  result = (GoUint32)SKY_api_NewCreatedTransactionOutput(arg1,(GoUint8_ (*)[32])arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionInput(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  wallet__UxBalance *arg1 = (wallet__UxBalance *) 0 ;
-  CreatedTransactionInput__Handle *arg2 = (CreatedTransactionInput__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__UxBalance *)jarg1; 
-  arg2 = (CreatedTransactionInput__Handle *)jarg2; 
-  result = (GoUint32)SKY_api_NewCreatedTransactionInput(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_browser_Open(void * jarg1) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoUint32)SKY_browser_Open(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DecodeBase58Address(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_DecodeBase58Address(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustDecodeBase58Address(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustDecodeBase58Address(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinMustDecodeBase58Address(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_BitcoinMustDecodeBase58Address(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromBytes(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewMnemonic(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
   GoSlice *argp1 ;
   GoUint32 result;
   
@@ -3586,748 +2278,48 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromBytes(v
     return 0;
   }
   arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_AddressFromBytes(arg1,arg2);
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_bip39_NewMnemonic(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromPubKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_AddressFromPubKey((GoUint8_ (*)[33])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromSecKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SecKey *)jarg1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_AddressFromSecKey((GoUint8_ (*)[32])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinDecodeBase58Address(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_MnemonicToByteArray(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_BitcoinDecodeBase58Address(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustAddressFromBytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustAddressFromBytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Bytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
   coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
   GoUint32 result;
   
-  arg1 = (cipher__Address *)jarg1; 
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
   arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_Bytes(arg1,arg2);
+  result = (GoUint32)SKY_bip39_MnemonicToByteArray(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Null(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_IsMnemonicValid(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  GoString arg1 ;
   GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoString *argp1 ;
   GoUint32 result;
   
-  arg1 = (cipher__Address *)jarg1; 
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
   arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_Null(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinBytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_BitcoinBytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Verify(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_Verify(arg1,(GoUint8_ (*)[33])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinString(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_BitcoinString(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Checksum(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  cipher__Checksum *arg2 = (cipher__Checksum *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (cipher__Checksum *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_Checksum(arg1,(GoUint8_ (*)[4])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinChecksum(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  cipher__Checksum *arg2 = (cipher__Checksum *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (cipher__Checksum *)jarg2; 
-  result = (GoUint32)SKY_cipher_Address_BitcoinChecksum(arg1,(GoUint8_ (*)[4])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromPubkey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_BitcoinAddressFromPubkey((GoUint8_ (*)[33])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinWalletImportFormatFromSeckey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__SecKey *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cipher_BitcoinWalletImportFormatFromSeckey((GoUint8_ (*)[32])arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromBytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  result = (GoUint32)SKY_cipher_BitcoinAddressFromBytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromWalletImportFormat(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_SecKeyFromWalletImportFormat(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSecKeyFromWalletImportFormat(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  result = (GoUint32)SKY_cipher_MustSecKeyFromWalletImportFormat(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_testutil_MakeAddress(void * jarg1) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  result = (GoUint32)SKY_testutil_MakeAddress(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTxFromWallet(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  GoString arg3 ;
-  GoSlice arg4 ;
-  PasswordReader__Handle arg5 ;
-  Transaction__Handle *arg6 = (Transaction__Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoString *argp3 ;
-  GoSlice *argp4 ;
-  PasswordReader__Handle *argp5 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  argp4 = (GoSlice *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  argp5 = (PasswordReader__Handle *)jarg5; 
-  if (!argp5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
-    return 0;
-  }
-  arg5 = *argp5; 
-  arg6 = (Transaction__Handle *)jarg6; 
-  result = (GoUint32)SKY_cli_CreateRawTxFromWallet(arg1,arg2,arg3,arg4,arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTxFromAddress(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6, void * jarg7) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  GoString arg3 ;
-  GoString arg4 ;
-  GoSlice arg5 ;
-  PasswordReader__Handle arg6 ;
-  Transaction__Handle *arg7 = (Transaction__Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoString *argp3 ;
-  GoString *argp4 ;
-  GoSlice *argp5 ;
-  PasswordReader__Handle *argp6 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  argp4 = (GoString *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  argp5 = (GoSlice *)jarg5; 
-  if (!argp5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg5 = *argp5; 
-  argp6 = (PasswordReader__Handle *)jarg6; 
-  if (!argp6) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
-    return 0;
-  }
-  arg6 = *argp6; 
-  arg7 = (Transaction__Handle *)jarg7; 
-  result = (GoUint32)SKY_cli_CreateRawTxFromAddress(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTx(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6, void * jarg7) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  Wallet__Handle arg2 ;
-  GoSlice arg3 ;
-  GoString arg4 ;
-  GoSlice arg5 ;
-  GoSlice arg6 ;
-  Transaction__Handle *arg7 = (Transaction__Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  Wallet__Handle *argp2 ;
-  GoSlice *argp3 ;
-  GoString *argp4 ;
-  GoSlice *argp5 ;
-  GoSlice *argp6 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (Wallet__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  argp4 = (GoString *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  argp5 = (GoSlice *)jarg5; 
-  if (!argp5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg5 = *argp5; 
-  argp6 = (GoSlice *)jarg6; 
-  if (!argp6) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg6 = *argp6; 
-  arg7 = (Transaction__Handle *)jarg7; 
-  result = (GoUint32)SKY_cli_CreateRawTx(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewTransaction(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  GoSlice arg3 ;
-  Transaction__Handle *arg4 = (Transaction__Handle *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoSlice *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (Transaction__Handle *)jarg4; 
-  result = (GoUint32)SKY_cli_NewTransaction(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_CatchInterruptPanic() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_apputil_CatchInterruptPanic();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_CatchDebug() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_apputil_CatchDebug();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_PrintProgramStatus() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_apputil_PrintProgramStatus();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_utc_UnixNow(void * jarg1) {
-  unsigned int jresult ;
-  GoInt64 *arg1 = (GoInt64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt64 *)jarg1; 
-  result = (GoUint32)SKY_utc_UnixNow(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Address_UnmarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Address *arg1 = (httphelper__Address *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Address *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_httphelper_Address_UnmarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Address_MarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Address *arg1 = (httphelper__Address *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Address *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_httphelper_Address_MarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_UnmarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Coins *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_httphelper_Coins_UnmarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_MarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Coins *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_httphelper_Coins_MarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_Value(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Coins *)jarg1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_httphelper_Coins_Value(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_UnmarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Hours *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_httphelper_Hours_UnmarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_MarshalJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Hours *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_httphelper_Hours_MarshalJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_Value(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (httphelper__Hours *)jarg1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_httphelper_Hours_Value(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CheckWalletBalance(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  BalanceResult_Handle *arg3 = (BalanceResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (BalanceResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_cli_CheckWalletBalance(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetBalanceOfAddresses(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoSlice arg2 ;
-  BalanceResult_Handle *arg3 = (BalanceResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (BalanceResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_cli_GetBalanceOfAddresses(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_poly1305_Verify(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoUint8 *arg4 = (GoUint8 *) 0 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  arg4 = (GoUint8 *)jarg4; 
-  result = (GoUint32)SKY_poly1305_Verify(arg1,arg2,arg3,arg4);
+  result = (GoUint32)SKY_bip39_IsMnemonicValid(arg1,arg2);
   jresult = result; 
   return jresult;
 }
@@ -5619,6 +3611,4318 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Client_DecryptWallet(
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Print(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  GoString arg2 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_XY_Print(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_ParsePubkey(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  GoSlice arg2 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XY_ParsePubkey(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Bytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_Bytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_BytesUncompressed(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_BytesUncompressed(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXY(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg3 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  arg3 = (secp256k1go__Field *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XY_SetXY(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_IsValid(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_IsValid(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXYZ(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_SetXYZ(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Neg(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (secp256k1go__XY *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_Neg(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXO(void * jarg1, void * jarg2, unsigned char jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint8 arg3 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  arg3 = (GoUint8)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XY_SetXO(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_AddXY(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (secp256k1go__XY *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_AddXY(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_GetPublicKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XY *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XY_GetPublicKey(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewWalletResponse(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  WalletResponse__Handle *arg2 = (WalletResponse__Handle *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletResponse__Handle *)jarg2; 
+  result = (GoUint32)SKY_api_NewWalletResponse(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreateTransactionResponse(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Transaction__Handle arg1 ;
+  GoSlice arg2 ;
+  CreateTransactionResponse__Handle *arg3 = (CreateTransactionResponse__Handle *) 0 ;
+  Transaction__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (CreateTransactionResponse__Handle *)jarg3; 
+  result = (GoUint32)SKY_api_NewCreateTransactionResponse(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransaction(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Transaction__Handle arg1 ;
+  GoSlice arg2 ;
+  CreatedTransaction__Handle *arg3 = (CreatedTransaction__Handle *) 0 ;
+  Transaction__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (CreatedTransaction__Handle *)jarg3; 
+  result = (GoUint32)SKY_api_NewCreatedTransaction(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_CreatedTransaction_ToTransaction(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  CreatedTransaction__Handle arg1 ;
+  Transaction__Handle *arg2 = (Transaction__Handle *) 0 ;
+  CreatedTransaction__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (CreatedTransaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Transaction__Handle *)jarg2; 
+  result = (GoUint32)SKY_api_CreatedTransaction_ToTransaction(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionOutput(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__TransactionOutput *arg1 = (coin__TransactionOutput *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  CreatedTransactionOutput__Handle *arg3 = (CreatedTransactionOutput__Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__TransactionOutput *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  arg3 = (CreatedTransactionOutput__Handle *)jarg3; 
+  result = (GoUint32)SKY_api_NewCreatedTransactionOutput(arg1,(GoUint8_ (*)[32])arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionInput(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  wallet__UxBalance *arg1 = (wallet__UxBalance *) 0 ;
+  CreatedTransactionInput__Handle *arg2 = (CreatedTransactionInput__Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__UxBalance *)jarg1; 
+  arg2 = (CreatedTransactionInput__Handle *)jarg2; 
+  result = (GoUint32)SKY_api_NewCreatedTransactionInput(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewError(void * jarg1) {
+  unsigned int jresult ;
+  GoInterface arg1 ;
+  GoInterface *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoInterface *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoInterface", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoUint32)SKY_wallet_NewError(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewWallet(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  Options__Handle arg2 ;
+  Wallet__Handle *arg3 = (Wallet__Handle *) 0 ;
+  GoString *argp1 ;
+  Options__Handle *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (Options__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Options__Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (Wallet__Handle *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewWallet(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Lock(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoSlice arg2 ;
+  GoString arg3 ;
+  Wallet__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoString *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  result = (GoUint32)SKY_wallet_Wallet_Lock(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Unlock(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoSlice arg2 ;
+  Wallet__Handle *arg3 = (Wallet__Handle *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (Wallet__Handle *)jarg3; 
+  result = (GoUint32)SKY_wallet_Wallet_Unlock(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Load(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  Wallet__Handle *arg2 = (Wallet__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Wallet__Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_Load(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Save(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString arg2 ;
+  Wallet__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_Wallet_Save(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Validate(void * jarg1) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoUint32)SKY_wallet_Wallet_Validate(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Type(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_Type(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Version(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_Version(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Filename(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_Filename(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Label(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_Label(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_IsEncrypted(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_IsEncrypted(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GenerateAddresses(void * jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoUint64 arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_wallet_Wallet_GenerateAddresses(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GetAddresses(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_GetAddresses(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GetEntry(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  wallet__Entry *arg3 = (wallet__Entry *) 0 ;
+  GoUint8 *arg4 = (GoUint8 *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  arg3 = (wallet__Entry *)jarg3; 
+  arg4 = (GoUint8 *)jarg4; 
+  result = (GoUint32)SKY_wallet_Wallet_GetEntry(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_AddEntry(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  wallet__Entry *arg2 = (wallet__Entry *) 0 ;
+  Wallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (wallet__Entry *)jarg2; 
+  result = (GoUint32)SKY_wallet_Wallet_AddEntry(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_DistributeSpendHours(unsigned long long jarg1, unsigned long long jarg2, unsigned char jarg3, void * jarg4, void * jarg5, void * jarg6) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  GoUint64 arg2 ;
+  GoUint8 arg3 ;
+  GoUint64 *arg4 = (GoUint64 *) 0 ;
+  coin__UxArray *arg5 = (coin__UxArray *) 0 ;
+  GoUint64 *arg6 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint8)jarg3; 
+  arg4 = (GoUint64 *)jarg4; 
+  arg5 = (coin__UxArray *)jarg5; 
+  arg6 = (GoUint64 *)jarg6; 
+  result = (GoUint32)SKY_wallet_DistributeSpendHours(arg1,arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_DistributeCoinHoursProportional(void * jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoUint64 arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_wallet_DistributeCoinHoursProportional(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewUxBalances(unsigned long long jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewUxBalances(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewUxBalance(unsigned long long jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  coin__UxOut *arg2 = (coin__UxOut *) 0 ;
+  wallet__UxBalance *arg3 = (wallet__UxBalance *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (coin__UxOut *)jarg2; 
+  arg3 = (wallet__UxBalance *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewUxBalance(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ChooseSpendsMinimizeUxOuts(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoUint64 arg2 ;
+  GoUint64 arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_wallet_ChooseSpendsMinimizeUxOuts(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ChooseSpendsMaximizeUxOuts(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoUint64 arg2 ;
+  GoUint64 arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_wallet_ChooseSpendsMaximizeUxOuts(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CheckWalletBalance(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  BalanceResult_Handle *arg3 = (BalanceResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (BalanceResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_cli_CheckWalletBalance(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetBalanceOfAddresses(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoSlice arg2 ;
+  BalanceResult_Handle *arg3 = (BalanceResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (BalanceResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_cli_GetBalanceOfAddresses(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewNotesFilename(void * jarg1) {
+  unsigned int jresult ;
+  GoString_ *arg1 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoString_ *)jarg1; 
+  result = (GoUint32)SKY_wallet_NewNotesFilename(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadNotes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  WalletNotes_Handle *arg2 = (WalletNotes_Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletNotes_Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_LoadNotes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableNotes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletReadableNotes_Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_LoadReadableNotes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_Load(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WalletReadableNotes_Handle arg1 ;
+  GoString arg2 ;
+  WalletReadableNotes_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WalletReadableNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_ReadableNotes_Load(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_ToNotes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WalletReadableNotes_Handle arg1 ;
+  WalletNotes_Handle *arg2 = (WalletNotes_Handle *) 0 ;
+  WalletReadableNotes_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WalletReadableNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletNotes_Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_ReadableNotes_ToNotes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_Save(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WalletReadableNotes_Handle arg1 ;
+  GoString arg2 ;
+  WalletReadableNotes_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WalletReadableNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_ReadableNotes_Save(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableNote(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  wallet__Note *arg1 = (wallet__Note *) 0 ;
+  wallet__ReadableNote *arg2 = (wallet__ReadableNote *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Note *)jarg1; 
+  arg2 = (wallet__ReadableNote *)jarg2; 
+  result = (GoUint32)SKY_wallet_NewReadableNote(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableNotesFromNotes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WalletNotes_Handle arg1 ;
+  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
+  WalletNotes_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WalletNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletReadableNotes_Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_NewReadableNotesFromNotes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_Save(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WalletNotes_Handle arg1 ;
+  GoString arg2 ;
+  GoString arg3 ;
+  WalletNotes_Handle *argp1 ;
+  GoString *argp2 ;
+  GoString *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (WalletNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  result = (GoUint32)SKY_wallet_Notes_Save(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_SaveNote(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WalletNotes_Handle arg1 ;
+  GoString arg2 ;
+  wallet__Note *arg3 = (wallet__Note *) 0 ;
+  WalletNotes_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WalletNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (wallet__Note *)jarg3; 
+  result = (GoUint32)SKY_wallet_Notes_SaveNote(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_ToReadable(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WalletNotes_Handle arg1 ;
+  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
+  WalletNotes_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WalletNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WalletReadableNotes_Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_Notes_ToReadable(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NotesFileExist(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_wallet_NotesFileExist(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateNoteFileIfNotExist(void * jarg1) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoUint32)SKY_wallet_CreateNoteFileIfNotExist(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntry(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
+  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Entry *)jarg1; 
+  arg2 = (ReadableEntry__Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_NewReadableEntry(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableEntry(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (ReadableEntry__Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_LoadReadableEntry(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntryFromPubkey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (ReadableEntry__Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_NewReadableEntryFromPubkey(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableEntry_Save(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ReadableEntry__Handle arg1 ;
+  GoString arg2 ;
+  ReadableEntry__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (ReadableEntry__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableEntry__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_ReadableEntry_Save(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableWallet(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  ReadableWallet__Handle *arg2 = (ReadableWallet__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (ReadableWallet__Handle *)jarg2; 
+  result = (GoUint32)SKY_wallet_LoadReadableWallet(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Save(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ReadableWallet__Handle arg1 ;
+  GoString arg2 ;
+  ReadableWallet__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (ReadableWallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_ReadableWallet_Save(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Load(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ReadableWallet__Handle arg1 ;
+  GoString arg2 ;
+  ReadableWallet__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (ReadableWallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_wallet_ReadableWallet_Load(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableWallet_Erase(void * jarg1) {
+  unsigned int jresult ;
+  ReadableWallet__Handle arg1 ;
+  ReadableWallet__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (ReadableWallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoUint32)SKY_wallet_ReadableWallet_Erase(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_DecompressPoint(void * jarg1, unsigned char jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoUint8 arg2 ;
+  GoSlice arg3 ;
+  GoSlice *argp1 ;
+  GoSlice *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint8)jarg2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  result = (GoUint32)SKY_secp256k1go_DecompressPoint(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_RecoverPublicKey(void * jarg1, void * jarg2, long long jarg3, void * jarg4, void * jarg5) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  GoInt arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoInt *arg5 = (GoInt *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoInt)jarg3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  arg5 = (GoInt *)jarg5; 
+  result = (GoUint32)SKY_secp256k1go_RecoverPublicKey(arg1,arg2,arg3,arg4,arg5);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Multiply(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_Multiply(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_BaseMultiply(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_BaseMultiply(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_BaseMultiplyAdd(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_BaseMultiplyAdd(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_GeneratePublicKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_GeneratePublicKey(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_SeckeyIsValid(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_SeckeyIsValid(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_PubkeyIsValid(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_PubkeyIsValid(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_String2Hex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_base58_String2Hex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToInt(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_base58_Base58_ToInt(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_base58_Base58_ToHex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_Base582Int(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_base58_Base58_Base582Int(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base582Hex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_base58_Base582Hex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_BitHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_base58_Base58_BitHex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Int2Base58(long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoInt arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_base58_Int2Base58(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_base58_Hex2Base58(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58String(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_base58_Hex2Base58String(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58Str(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_base58_Hex2Base58Str(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GenerateWallet(void * jarg1, void * jarg2, unsigned long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  Options__Handle *arg2 = (Options__Handle *) 0 ;
+  GoUint64 arg3 ;
+  Wallet__Handle *arg4 = (Wallet__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Options__Handle *)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (Wallet__Handle *)jarg4; 
+  result = (GoUint32)SKY_cli_GenerateWallet(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_MakeAlphanumericSeed(void * jarg1) {
+  unsigned int jresult ;
+  GoString_ *arg1 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoString_ *)jarg1; 
+  result = (GoUint32)SKY_cli_MakeAlphanumericSeed(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_NewClient(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WebRpcClient__Handle *)jarg2; 
+  result = (GoUint32)SKY_webrpc_NewClient(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_CSRF(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_webrpc_Client_CSRF(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetUnspentOutputs(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoSlice arg2 ;
+  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (OutputsResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_GetUnspentOutputs(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_InjectTransactionString(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  GoString_ *arg3 = (GoString_ *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoString_ *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_InjectTransactionString(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_InjectTransaction(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  Transaction__Handle arg2 ;
+  GoString_ *arg3 = (GoString_ *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  Transaction__Handle *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (Transaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoString_ *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_InjectTransaction(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetStatus(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  StatusResult_Handle *arg2 = (StatusResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (StatusResult_Handle *)jarg2; 
+  result = (GoUint32)SKY_webrpc_Client_GetStatus(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetTransactionByID(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  TransactionResult_Handle *arg3 = (TransactionResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (TransactionResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_GetTransactionByID(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetAddressUxOuts(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_GetAddressUxOuts(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetBlocks(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoUint64 arg2 ;
+  GoUint64 arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64)jarg3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_webrpc_Client_GetBlocks(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetBlocksBySeq(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_GetBlocksBySeq(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetLastBlocks(void * jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoUint64 arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_webrpc_Client_GetLastBlocks(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_browser_Open(void * jarg1) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoUint32)SKY_browser_Open(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_LocalhostIP(void * jarg1) {
+  unsigned int jresult ;
+  GoString_ *arg1 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoString_ *)jarg1; 
+  result = (GoUint32)SKY_iputil_LocalhostIP(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_IsLocalhost(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_iputil_IsLocalhost(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_SplitAddr(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint16 *arg3 = (GoUint16 *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  arg3 = (GoUint16 *)jarg3; 
+  result = (GoUint32)SKY_iputil_SplitAddr(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_StructField_String(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  encoder__StructField *arg1 = (encoder__StructField *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (encoder__StructField *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_encoder_StructField_String(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_ParseFields(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  GoStringMap_ *arg3 = (GoStringMap_ *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoStringMap_ *)jarg3; 
+  result = (GoUint32)SKY_encoder_ParseFields(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_SumSHA256(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1_SumSHA256(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_RandByte(long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoInt arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1_RandByte(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GenerateAddressesInFile(void * jarg1, unsigned long long jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoUint64 arg2 ;
+  PasswordReader__Handle arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoString *argp1 ;
+  PasswordReader__Handle *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64)jarg2; 
+  argp3 = (PasswordReader__Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_cli_GenerateAddressesInFile(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_FormatAddressesAsJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_FormatAddressesAsJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_FormatAddressesAsJoinedArray(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_FormatAddressesAsJoinedArray(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddressesToStrings(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_cli_AddressesToStrings(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddUint64(unsigned long long jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  GoUint64 arg2 ;
+  GoUint64 *arg3 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64 *)jarg3; 
+  result = (GoUint32)SKY_coin_AddUint64(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Uint64ToInt64(unsigned long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  GoInt64 *arg2 = (GoInt64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (GoInt64 *)jarg2; 
+  result = (GoUint32)SKY_coin_Uint64ToInt64(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Int64ToUint64(long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoInt64 arg1 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt64)jarg1; 
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_coin_Int64ToUint64(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Len(void * jarg1) {
+  long long jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  result = (GoInt)SKY_cipher_PubKeySlice_Len(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Less(void * jarg1, long long jarg2, long long jarg3) {
+  unsigned char jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt arg2 ;
+  GoInt arg3 ;
+  GoUint8 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (GoInt)jarg3; 
+  result = (GoUint8)SKY_cipher_PubKeySlice_Less(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeySlice_Swap(void * jarg1, long long jarg2, long long jarg3) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt arg2 ;
+  GoInt arg3 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (GoInt)jarg3; 
+  result = (GoUint32)SKY_cipher_PubKeySlice_Swap(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_RandByte(long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoInt arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_cipher_RandByte(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewPubKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_NewPubKey(arg1,(GoUint8_ (*)[33])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustPubKeyFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustPubKeyFromHex(arg1,(GoUint8_ (*)[33])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_PubKeyFromHex(arg1,(GoUint8_ (*)[33])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSecKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_PubKeyFromSecKey((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[33])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSig(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Sig *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  arg3 = (cipher__PubKey *)jarg3; 
+  result = (GoUint32)SKY_cipher_PubKeyFromSig((GoUint8_ (*)[65])arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[33])arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Verify(void * jarg1) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  result = (GoUint32)SKY_cipher_PubKey_Verify((GoUint8_ (*)[33])arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Hex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_PubKey_Hex((GoUint8_ (*)[33])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_ToAddressHash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__Ripemd160 *arg2 = (cipher__Ripemd160 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__Ripemd160 *)jarg2; 
+  result = (GoUint32)SKY_cipher_PubKey_ToAddressHash((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[20])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSecKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_NewSecKey(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSecKeyFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustSecKeyFromHex(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_SecKeyFromHex(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Verify(void * jarg1) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  result = (GoUint32)SKY_cipher_SecKey_Verify((GoUint8_ (*)[32])arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Hex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_SecKey_Hex((GoUint8_ (*)[32])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ECDH(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_cipher_ECDH((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSig(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Sig *)jarg2; 
+  result = (GoUint32)SKY_cipher_NewSig(arg1,(GoUint8_ (*)[65])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSigFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Sig *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustSigFromHex(arg1,(GoUint8_ (*)[65])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SigFromHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Sig *)jarg2; 
+  result = (GoUint32)SKY_cipher_SigFromHex(arg1,(GoUint8_ (*)[65])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Sig_Hex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Sig *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_Sig_Hex((GoUint8_ (*)[65])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SignHash(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  cipher__Sig *arg3 = (cipher__Sig *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SHA256 *)jarg1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  arg3 = (cipher__Sig *)jarg3; 
+  result = (GoUint32)SKY_cipher_SignHash((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[65])arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ChkSig(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  cipher__Sig *arg3 = (cipher__Sig *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  arg3 = (cipher__Sig *)jarg3; 
+  result = (GoUint32)SKY_cipher_ChkSig(arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[65])arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignedHash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Sig *arg1 = (cipher__Sig *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Sig *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_cipher_VerifySignedHash((GoUint8_ (*)[65])arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignature(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__Sig *arg2 = (cipher__Sig *) 0 ;
+  cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__Sig *)jarg2; 
+  arg3 = (cipher__SHA256 *)jarg3; 
+  result = (GoUint32)SKY_cipher_VerifySignature((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[65])arg2,(GoUint8_ (*)[32])arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateKeyPair(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_GenerateKeyPair((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPair(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg3 = (cipher__SecKey *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  arg3 = (cipher__SecKey *)jarg3; 
+  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPair(arg1,(GoUint8_ (*)[33])arg2,(GoUint8_ (*)[32])arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DeterministicKeyPairIterator(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg4 = (cipher__SecKey *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  arg3 = (cipher__PubKey *)jarg3; 
+  arg4 = (cipher__SecKey *)jarg4; 
+  result = (GoUint32)SKY_cipher_DeterministicKeyPairIterator(arg1,arg2,(GoUint8_ (*)[33])arg3,(GoUint8_ (*)[32])arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPairs(void * jarg1, long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoInt arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPairs(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPairsSeed(void * jarg1, long long jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoInt arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPairsSeed(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKey(void * jarg1) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  result = (GoUint32)SKY_cipher_TestSecKey((GoUint8_ (*)[32])arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKeyHash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_cipher_TestSecKeyHash((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Create(void * jarg1) {
+  unsigned int jresult ;
+  Signature_Handle *arg1 = (Signature_Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (Signature_Handle *)jarg1; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Create(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_GetR(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  Number_Handle *arg2 = (Number_Handle *) 0 ;
+  Signature_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Number_Handle *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Signature_GetR(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_GetS(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  Number_Handle *arg2 = (Number_Handle *) 0 ;
+  Signature_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Number_Handle *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Signature_GetS(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Print(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  GoString arg2 ;
+  Signature_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Print(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Verify(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
+  Number_Handle arg3 ;
+  GoUint8 *arg4 = (GoUint8 *) 0 ;
+  Signature_Handle *argp1 ;
+  Number_Handle *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (secp256k1go__XY *)jarg2; 
+  argp3 = (Number_Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (GoUint8 *)jarg4; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Verify(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Recover(void * jarg1, void * jarg2, void * jarg3, long long jarg4, void * jarg5) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
+  Number_Handle arg3 ;
+  GoInt arg4 ;
+  GoUint8 *arg5 = (GoUint8 *) 0 ;
+  Signature_Handle *argp1 ;
+  Number_Handle *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (secp256k1go__XY *)jarg2; 
+  argp3 = (Number_Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (GoInt)jarg4; 
+  arg5 = (GoUint8 *)jarg5; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Recover(arg1,arg2,arg3,arg4,arg5);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Sign(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  Number_Handle arg2 ;
+  Number_Handle arg3 ;
+  Number_Handle arg4 ;
+  GoInt *arg5 = (GoInt *) 0 ;
+  GoInt *arg6 = (GoInt *) 0 ;
+  Signature_Handle *argp1 ;
+  Number_Handle *argp2 ;
+  Number_Handle *argp3 ;
+  Number_Handle *argp4 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (Number_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (Number_Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (Number_Handle *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  arg5 = (GoInt *)jarg5; 
+  arg6 = (GoInt *)jarg6; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Sign(arg1,arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_ParseBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  GoSlice arg2 ;
+  Signature_Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Signature_ParseBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Bytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Signature_Handle arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  Signature_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Signature_Bytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_App_Run(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  App__Handle arg1 ;
+  GoString arg2 ;
+  App__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (App__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_cli_App_Run(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_GetCoin(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Config__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Config__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Config__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_Config_GetCoin(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_GetRPCAddress(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Config__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Config__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Config__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_Config_GetRPCAddress(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromApp(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  App__Handle arg1 ;
+  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
+  App__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (App__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WebRpcClient__Handle *)jarg2; 
+  result = (GoUint32)SKY_cli_RPCClientFromApp(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Getenv(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_Getenv(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Setenv(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString arg2 ;
+  GoString *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_cli_Setenv(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_poly1305_Verify(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoUint8 *arg4 = (GoUint8 *) 0 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  arg4 = (GoUint8 *)jarg4; 
+  result = (GoUint32)SKY_poly1305_Verify(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewBalance(unsigned long long jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  GoUint64 arg2 ;
+  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (wallet__Balance *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewBalance(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewBalanceFromUxOut(unsigned long long jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  coin__UxOut *arg2 = (coin__UxOut *) 0 ;
+  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (coin__UxOut *)jarg2; 
+  arg3 = (wallet__Balance *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewBalanceFromUxOut(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Add(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
+  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
+  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Balance *)jarg1; 
+  arg2 = (wallet__Balance *)jarg2; 
+  arg3 = (wallet__Balance *)jarg3; 
+  result = (GoUint32)SKY_wallet_Balance_Add(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Sub(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
+  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
+  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Balance *)jarg1; 
+  arg2 = (wallet__Balance *)jarg2; 
+  arg3 = (wallet__Balance *)jarg3; 
+  result = (GoUint32)SKY_wallet_Balance_Sub(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Equals(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
+  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Balance *)jarg1; 
+  arg2 = (wallet__Balance *)jarg2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_wallet_Balance_Equals(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_IsZero(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Balance *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_wallet_Balance_IsZero(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_utc_UnixNow(void * jarg1) {
+  unsigned int jresult ;
+  GoInt64 *arg1 = (GoInt64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt64 *)jarg1; 
+  result = (GoUint32)SKY_utc_UnixNow(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Address_UnmarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Address *arg1 = (httphelper__Address *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Address *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_httphelper_Address_UnmarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Address_MarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Address *arg1 = (httphelper__Address *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Address *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_httphelper_Address_MarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_UnmarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Coins *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_httphelper_Coins_UnmarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_MarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Coins *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_httphelper_Coins_MarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Coins_Value(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Coins *arg1 = (httphelper__Coins *) 0 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Coins *)jarg1; 
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_httphelper_Coins_Value(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_UnmarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Hours *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_httphelper_Hours_UnmarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_MarshalJSON(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Hours *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_httphelper_Hours_MarshalJSON(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Hours_Value(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  httphelper__Hours *arg1 = (httphelper__Hours *) 0 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (httphelper__Hours *)jarg1; 
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_httphelper_Hours_Value(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Entry_Verify(void * jarg1) {
+  unsigned int jresult ;
+  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Entry *)jarg1; 
+  result = (GoUint32)SKY_wallet_Entry_Verify(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Entry_VerifyPublic(void * jarg1) {
+  unsigned int jresult ;
+  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (wallet__Entry *)jarg1; 
+  result = (GoUint32)SKY_wallet_Entry_VerifyPublic(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateAddresses(void * jarg1, void * jarg2, long long jarg3, unsigned char jarg4, void * jarg5) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString arg2 ;
+  GoInt arg3 ;
+  GoUint8 arg4 ;
+  ReadableWallet__Handle *arg5 = (ReadableWallet__Handle *) 0 ;
+  GoString *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoInt)jarg3; 
+  arg4 = (GoUint8)jarg4; 
+  arg5 = (ReadableWallet__Handle *)jarg5; 
+  result = (GoUint32)SKY_wallet_CreateAddresses(arg1,arg2,arg3,arg4,arg5);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetSkycoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  arg3 = (ReadableEntry__Handle *)jarg3; 
+  result = (GoUint32)SKY_wallet_GetSkycoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetBitcoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  arg3 = (ReadableEntry__Handle *)jarg3; 
+  result = (GoUint32)SKY_wallet_GetBitcoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Print(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  GoString arg2 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Print(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_SetXY(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XY *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_SetXY(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_IsInfinity(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_IsInfinity(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_IsValid(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_IsValid(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Normalize(void * jarg1) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Normalize(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Equals(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Equals(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_ECmult(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  Number_Handle arg3 ;
+  Number_Handle arg4 ;
+  Number_Handle *argp3 ;
+  Number_Handle *argp4 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  argp3 = (Number_Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (Number_Handle *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_ECmult(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Neg(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Neg(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Double(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Double(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_AddXY(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XY *arg3 = (secp256k1go__XY *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  arg3 = (secp256k1go__XY *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_AddXY(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Add(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
+  secp256k1go__XYZ *arg3 = (secp256k1go__XYZ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  arg2 = (secp256k1go__XYZ *)jarg2; 
+  arg3 = (secp256k1go__XYZ *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_XYZ_Add(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_ECmultGen(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
+  Number_Handle arg2 ;
+  Number_Handle *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__XYZ *)jarg1; 
+  argp2 = (Number_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_ECmultGen(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_Sha256Xor_Encrypt(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_encrypt_Sha256Xor_Encrypt(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_Sha256Xor_Decrypt(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_encrypt_Sha256Xor_Decrypt(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_droplet_FromString(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_droplet_FromString(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_droplet_ToString(unsigned long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoUint64 arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoUint64)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_droplet_ToString(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CryptoTypeFromString(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_wallet_CryptoTypeFromString(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SKY_handle_close(void * jarg1) {
+  Handle arg1 ;
+  Handle *argp1 ;
+  
+  argp1 = (Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Handle", 0);
+    return ;
+  }
+  arg1 = *argp1; 
+  SKY_handle_close(arg1);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_handle_copy(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Handle arg1 ;
+  Handle *arg2 = (Handle *) 0 ;
+  Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Handle *)jarg2; 
+  result = (GoUint32)SKY_handle_copy(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_EnableColors() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_logging_EnableColors();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_DisableColors() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_logging_DisableColors();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_Disable() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_logging_Disable();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_map_Get(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
+  GoString arg2 ;
+  GoString_ *arg3 = (GoString_ *) 0 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (GoStringMap_ *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoString_ *)jarg3; 
+  result = (GoUint32)SKY_map_Get(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_SKY_map_HasKey(void * jarg1, void * jarg2) {
+  unsigned char jresult ;
+  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
+  GoString arg2 ;
+  GoString *argp2 ;
+  GoUint8 result;
+  
+  arg1 = (GoStringMap_ *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint8)SKY_map_HasKey(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_map_Close(void * jarg1) {
+  unsigned int jresult ;
+  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoStringMap_ *)jarg1; 
+  result = (GoUint32)SKY_map_Close(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DecodeBase58Address(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_DecodeBase58Address(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustDecodeBase58Address(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustDecodeBase58Address(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinMustDecodeBase58Address(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_BitcoinMustDecodeBase58Address(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_AddressFromBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromPubKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_AddressFromPubKey((GoUint8_ (*)[33])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromSecKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_AddressFromSecKey((GoUint8_ (*)[32])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinDecodeBase58Address(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_BitcoinDecodeBase58Address(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustAddressFromBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustAddressFromBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Bytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_Bytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Null(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_Null(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_BitcoinBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Verify(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (cipher__PubKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_Verify(arg1,(GoUint8_ (*)[33])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_String(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_String(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinString(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_BitcoinString(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Checksum(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  cipher__Checksum *arg2 = (cipher__Checksum *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (cipher__Checksum *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_Checksum(arg1,(GoUint8_ (*)[4])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinChecksum(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  cipher__Checksum *arg2 = (cipher__Checksum *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  arg2 = (cipher__Checksum *)jarg2; 
+  result = (GoUint32)SKY_cipher_Address_BitcoinChecksum(arg1,(GoUint8_ (*)[4])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromPubkey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__PubKey *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_BitcoinAddressFromPubkey((GoUint8_ (*)[33])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinWalletImportFormatFromSeckey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SecKey *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cipher_BitcoinWalletImportFormatFromSeckey((GoUint8_ (*)[32])arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoSlice *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  result = (GoUint32)SKY_cipher_BitcoinAddressFromBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromWalletImportFormat(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_SecKeyFromWalletImportFormat(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_MustSecKeyFromWalletImportFormat(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__SecKey *)jarg2; 
+  result = (GoUint32)SKY_cipher_MustSecKeyFromWalletImportFormat(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_JsonEncode_Handle(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   Handle arg1 ;
@@ -6203,6 +8507,784 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Handle_GetBuildInfoDa
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_New(void * jarg1) {
+  unsigned int jresult ;
+  Hash_Handle *arg1 = (Hash_Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (Hash_Handle *)jarg1; 
+  result = (GoUint32)SKY_ripemd160_New(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_Write(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Hash_Handle arg1 ;
+  GoSlice arg2 ;
+  GoInt *arg3 = (GoInt *) 0 ;
+  Hash_Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Hash_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoInt *)jarg3; 
+  result = (GoUint32)SKY_ripemd160_Write(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_Sum(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Hash_Handle arg1 ;
+  GoSlice arg2 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  Hash_Handle *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Hash_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_ripemd160_Sum(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_Create(void * jarg1) {
+  unsigned int jresult ;
+  Number_Handle *arg1 = (Number_Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (Number_Handle *)jarg1; 
+  result = (GoUint32)SKY_secp256k1go_Number_Create(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_Print(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Number_Handle arg1 ;
+  GoString arg2 ;
+  Number_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Number_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Number_Print(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_SetHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Number_Handle arg1 ;
+  GoString arg2 ;
+  Number_Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Number_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Number_SetHex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_IsOdd(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Number_Handle arg1 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  Number_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Number_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Number_IsOdd(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_IsEqual(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Number_Handle arg1 ;
+  Number_Handle arg2 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  Number_Handle *argp1 ;
+  Number_Handle *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Number_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (Number_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_Number_IsEqual(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_Hash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_UxOut_Hash(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_SnapshotHash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_UxOut_SnapshotHash(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxBody_Hash(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxBody *arg1 = (coin__UxBody *) 0 ;
+  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxBody *)jarg1; 
+  arg2 = (cipher__SHA256 *)jarg2; 
+  result = (GoUint32)SKY_coin_UxBody_Hash(arg1,(GoUint8_ (*)[32])arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_CoinHours(void * jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  GoUint64 arg2 ;
+  GoUint64 *arg3 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64 *)jarg3; 
+  result = (GoUint32)SKY_coin_UxOut_CoinHours(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Hashes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_coin_UxArray_Hashes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_HasDupes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_coin_UxArray_HasDupes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Sort(void * jarg1) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  result = (GoUint32)SKY_coin_UxArray_Sort(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Len(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_coin_UxArray_Len(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Less(void * jarg1, long long jarg2, long long jarg3, void * jarg4) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt arg2 ;
+  GoInt arg3 ;
+  GoUint8 *arg4 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (GoInt)jarg3; 
+  arg4 = (GoUint8 *)jarg4; 
+  result = (GoUint32)SKY_coin_UxArray_Less(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Swap(void * jarg1, long long jarg2, long long jarg3) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoInt arg2 ;
+  GoInt arg3 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoInt)jarg2; 
+  arg3 = (GoInt)jarg3; 
+  result = (GoUint32)SKY_coin_UxArray_Swap(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Coins(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoUint64 *arg2 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoUint64 *)jarg2; 
+  result = (GoUint32)SKY_coin_UxArray_Coins(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_CoinHours(void * jarg1, unsigned long long jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoUint64 arg2 ;
+  GoUint64 *arg3 = (GoUint64 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  arg3 = (GoUint64 *)jarg3; 
+  result = (GoUint32)SKY_coin_UxArray_CoinHours(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Sub(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_coin_UxArray_Sub(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Add(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_coin_UxArray_Add(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewAddressUxOuts(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  AddressUxOuts_Handle *arg2 = (AddressUxOuts_Handle *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (AddressUxOuts_Handle *)jarg2; 
+  result = (GoUint32)SKY_coin_NewAddressUxOuts(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Keys(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Keys(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Flatten(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Flatten(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Sub(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  AddressUxOuts_Handle arg2 ;
+  AddressUxOuts_Handle *arg3 = (AddressUxOuts_Handle *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  AddressUxOuts_Handle *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (AddressUxOuts_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (AddressUxOuts_Handle *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Sub(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Add(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  AddressUxOuts_Handle arg2 ;
+  AddressUxOuts_Handle *arg3 = (AddressUxOuts_Handle *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  AddressUxOuts_Handle *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (AddressUxOuts_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (AddressUxOuts_Handle *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Add(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Get(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Get(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_HasKey(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_HasKey(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_GetOutputLength(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  GoInt *arg3 = (GoInt *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  arg3 = (GoInt *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_GetOutputLength(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Length(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  GoInt *arg2 = (GoInt *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt *)jarg2; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Length(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Set(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  AddressUxOuts_Handle arg1 ;
+  cipher__Address *arg2 = (cipher__Address *) 0 ;
+  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
+  AddressUxOuts_Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher__Address *)jarg2; 
+  arg3 = (coin__UxArray *)jarg3; 
+  result = (GoUint32)SKY_coin_AddressUxOuts_Set(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_ScryptChacha20poly1305_Encrypt(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
+  GoSlice arg2 ;
+  GoSlice arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp2 ;
+  GoSlice *argp3 ;
+  GoUint32 result;
+  
+  arg1 = (encrypt__ScryptChacha20poly1305 *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_encrypt_ScryptChacha20poly1305_Encrypt(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_ScryptChacha20poly1305_Decrypt(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
+  GoSlice arg2 ;
+  GoSlice arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp2 ;
+  GoSlice *argp3 ;
+  GoUint32 result;
+  
+  arg1 = (encrypt__ScryptChacha20poly1305 *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  result = (GoUint32)SKY_encrypt_ScryptChacha20poly1305_Decrypt(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateOptionsHandle(void * jarg1, void * jarg2, void * jarg3, unsigned char jarg4, void * jarg5, void * jarg6, unsigned long long jarg7, void * jarg8) {
+  GoString arg1 ;
+  GoString arg2 ;
+  GoString arg3 ;
+  GoUint8 arg4 ;
+  GoString arg5 ;
+  GoString arg6 ;
+  GoUint64 arg7 ;
+  Options__Handle *arg8 = (Options__Handle *) 0 ;
+  GoString *argp1 ;
+  GoString *argp2 ;
+  GoString *argp3 ;
+  GoString *argp5 ;
+  GoString *argp6 ;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return ;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return ;
+  }
+  arg3 = *argp3; 
+  arg4 = (GoUint8)jarg4; 
+  argp5 = (GoString *)jarg5; 
+  if (!argp5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return ;
+  }
+  arg5 = *argp5; 
+  argp6 = (GoString *)jarg6; 
+  if (!argp6) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return ;
+  }
+  arg6 = *argp6; 
+  arg7 = (GoUint64)jarg7; 
+  arg8 = (Options__Handle *)jarg8; 
+  SKY_wallet_CreateOptionsHandle(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddPrivateKey(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Wallet__Handle arg1 ;
+  GoString arg2 ;
+  Wallet__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_cli_AddPrivateKey(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddPrivateKeyToFile(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString arg2 ;
+  PasswordReader__Handle arg3 ;
+  GoString *argp1 ;
+  GoString *argp2 ;
+  PasswordReader__Handle *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (PasswordReader__Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  result = (GoUint32)SKY_cli_AddPrivateKeyToFile(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_GenerateKeyPair(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   coin__UxArray *arg1 = (coin__UxArray *) 0 ;
@@ -6595,6 +9677,36 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1_ECDH(void * jar
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_CatchInterruptPanic() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_apputil_CatchInterruptPanic();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_CatchDebug() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_apputil_CatchDebug();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_PrintProgramStatus() {
+  unsigned int jresult ;
+  GoUint32 result;
+  
+  result = (GoUint32)SKY_apputil_PrintProgramStatus();
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cert_CreateCertIfNotExists(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
   unsigned int jresult ;
   GoString arg1 ;
@@ -6723,43 +9835,356 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_fee_TransactionFee(void *
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_LocalhostIP(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_LoadConfig(void * jarg1) {
   unsigned int jresult ;
-  GoString_ *arg1 = (GoString_ *) 0 ;
+  Config__Handle *arg1 = (Config__Handle *) 0 ;
   GoUint32 result;
   
-  arg1 = (GoString_ *)jarg1; 
-  result = (GoUint32)SKY_iputil_LocalhostIP(arg1);
+  arg1 = (Config__Handle *)jarg1; 
+  result = (GoUint32)SKY_cli_LoadConfig(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_IsLocalhost(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_FullWalletPath(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  GoString arg1 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoString *argp1 ;
+  Config__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Config__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (GoString *)jarg1; 
+  argp1 = (Config__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_iputil_IsLocalhost(arg1,arg2);
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_Config_FullWalletPath(arg1,arg2);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_SplitAddr(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_FullDBPath(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Config__Handle arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  Config__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Config__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_cli_Config_FullDBPath(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewApp(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Config__Handle arg1 ;
+  App__Handle *arg2 = (App__Handle *) 0 ;
+  Config__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Config__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (App__Handle *)jarg2; 
+  result = (GoUint32)SKY_cli_NewApp(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromContext(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Context__Handle arg1 ;
+  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
+  Context__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Context__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (WebRpcClient__Handle *)jarg2; 
+  result = (GoUint32)SKY_cli_RPCClientFromContext(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_ConfigFromContext(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Context__Handle arg1 ;
+  Config__Handle *arg2 = (Config__Handle *) 0 ;
+  Context__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Context__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Config__Handle *)jarg2; 
+  result = (GoUint32)SKY_cli_ConfigFromContext(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_PasswordFromBytes_Password(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  arg2 = (coin__UxArray *)jarg2; 
+  result = (GoUint32)SKY_cli_PasswordFromBytes_Password(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_PasswordFromTerm_Password(void * jarg1) {
+  unsigned int jresult ;
+  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__UxArray *)jarg1; 
+  result = (GoUint32)SKY_cli_PasswordFromTerm_Password(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTxFromWallet(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  GoString arg3 ;
+  GoSlice arg4 ;
+  PasswordReader__Handle arg5 ;
+  Transaction__Handle *arg6 = (Transaction__Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoString *argp3 ;
+  GoSlice *argp4 ;
+  PasswordReader__Handle *argp5 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (GoSlice *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  argp5 = (PasswordReader__Handle *)jarg5; 
+  if (!argp5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
+    return 0;
+  }
+  arg5 = *argp5; 
+  arg6 = (Transaction__Handle *)jarg6; 
+  result = (GoUint32)SKY_cli_CreateRawTxFromWallet(arg1,arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTxFromAddress(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6, void * jarg7) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  GoString arg3 ;
+  GoString arg4 ;
+  GoSlice arg5 ;
+  PasswordReader__Handle arg6 ;
+  Transaction__Handle *arg7 = (Transaction__Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoString *argp3 ;
+  GoString *argp4 ;
+  GoSlice *argp5 ;
+  PasswordReader__Handle *argp6 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (GoString *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  argp5 = (GoSlice *)jarg5; 
+  if (!argp5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg5 = *argp5; 
+  argp6 = (PasswordReader__Handle *)jarg6; 
+  if (!argp6) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
+    return 0;
+  }
+  arg6 = *argp6; 
+  arg7 = (Transaction__Handle *)jarg7; 
+  result = (GoUint32)SKY_cli_CreateRawTxFromAddress(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CreateRawTx(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6, void * jarg7) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  Wallet__Handle arg2 ;
+  GoSlice arg3 ;
+  GoString arg4 ;
+  GoSlice arg5 ;
+  GoSlice arg6 ;
+  Transaction__Handle *arg7 = (Transaction__Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  Wallet__Handle *argp2 ;
+  GoSlice *argp3 ;
+  GoString *argp4 ;
+  GoSlice *argp5 ;
+  GoSlice *argp6 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (Wallet__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (GoString *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  argp5 = (GoSlice *)jarg5; 
+  if (!argp5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg5 = *argp5; 
+  argp6 = (GoSlice *)jarg6; 
+  if (!argp6) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg6 = *argp6; 
+  arg7 = (Transaction__Handle *)jarg7; 
+  result = (GoUint32)SKY_cli_CreateRawTx(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewTransaction(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  GoSlice arg3 ;
+  Transaction__Handle *arg4 = (Transaction__Handle *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoSlice *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (Transaction__Handle *)jarg4; 
+  result = (GoUint32)SKY_cli_NewTransaction(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_InitDataDir(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint16 *arg3 = (GoUint16 *) 0 ;
   GoString *argp1 ;
   GoUint32 result;
   
@@ -6770,8 +10195,473 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_SplitAddr(void * j
   }
   arg1 = *argp1; 
   arg2 = (GoString_ *)jarg2; 
-  arg3 = (GoUint16 *)jarg3; 
-  result = (GoUint32)SKY_iputil_SplitAddr(arg1,arg2,arg3);
+  result = (GoUint32)SKY_file_InitDataDir(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_UserHome(void * jarg1) {
+  unsigned int jresult ;
+  GoString_ *arg1 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoString_ *)jarg1; 
+  result = (GoUint32)SKY_file_UserHome(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_ResolveResourceDirectory(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoString *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_file_ResolveResourceDirectory(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_file_DetermineResourcePath(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString arg2 ;
+  GoString arg3 ;
+  GoString_ *arg4 = (GoString_ *) 0 ;
+  GoString *argp1 ;
+  GoString *argp2 ;
+  GoString *argp3 ;
+  GoUint32 result;
+  
+  argp1 = (GoString *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = (GoString *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (GoString_ *)jarg4; 
+  result = (GoUint32)SKY_file_DetermineResourcePath(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputsFromFile(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  GoString arg2 ;
+  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (OutputsResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_cli_GetWalletOutputsFromFile(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputs(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  WebRpcClient__Handle arg1 ;
+  Wallet__Handle *arg2 = (Wallet__Handle *) 0 ;
+  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
+  WebRpcClient__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Wallet__Handle *)jarg2; 
+  arg3 = (OutputsResult_Handle *)jarg3; 
+  result = (GoUint32)SKY_cli_GetWalletOutputs(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_testutil_MakeAddress(void * jarg1) {
+  unsigned int jresult ;
+  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__Address *)jarg1; 
+  result = (GoUint32)SKY_testutil_MakeAddress(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_String(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_String(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Print(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoString arg2 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Field_Print(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetB32(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Field_SetB32(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetBytes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Field_SetBytes(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetHex(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoString arg2 ;
+  GoString *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  argp2 = (GoString *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Field_SetHex(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_IsOdd(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_IsOdd(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_IsZero(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoUint8 *arg2 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (GoUint8 *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_IsZero(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetInt(void * jarg1, unsigned int jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoUint32 arg2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (GoUint32)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_SetInt(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Normalize(void * jarg1) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  result = (GoUint32)SKY_secp256k1go_Field_Normalize(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_GetB32(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (GoUint32)SKY_secp256k1go_Field_GetB32(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Equals(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint8 *arg3 = (GoUint8 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  arg3 = (GoUint8 *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_Field_Equals(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_SetAdd(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_SetAdd(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_MulInt(void * jarg1, unsigned int jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  GoUint32 arg2 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (GoUint32)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_MulInt(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Negate(void * jarg1, void * jarg2, unsigned int jarg3) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 arg3 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  arg3 = (GoUint32)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_Field_Negate(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Inv(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_Inv(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Sqrt(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_Sqrt(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_InvVar(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_InvVar(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Mul(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg3 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  arg3 = (secp256k1go__Field *)jarg3; 
+  result = (GoUint32)SKY_secp256k1go_Field_Mul(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Field_Sqr(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  secp256k1go__Field *arg1 = (secp256k1go__Field *) 0 ;
+  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (secp256k1go__Field *)jarg1; 
+  arg2 = (secp256k1go__Field *)jarg2; 
+  result = (GoUint32)SKY_secp256k1go_Field_Sqr(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_scrypt_Key(void * jarg1, void * jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, void * jarg7) {
+  unsigned int jresult ;
+  GoSlice arg1 ;
+  GoSlice arg2 ;
+  GoInt arg3 ;
+  GoInt arg4 ;
+  GoInt arg5 ;
+  GoInt arg6 ;
+  coin__UxArray *arg7 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp2 ;
+  GoUint32 result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  arg3 = (GoInt)jarg3; 
+  arg4 = (GoInt)jarg4; 
+  arg5 = (GoInt)jarg5; 
+  arg6 = (GoInt)jarg6; 
+  arg7 = (coin__UxArray *)jarg7; 
+  result = (GoUint32)SKY_scrypt_Key(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
   jresult = result; 
   return jresult;
 }
@@ -8000,3896 +11890,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_VerifyTransactionHou
   arg2 = (coin__UxArray *)jarg2; 
   arg3 = (coin__UxArray *)jarg3; 
   result = (GoUint32)SKY_coin_VerifyTransactionHoursSpending(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_Sha256Xor_Encrypt(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_encrypt_Sha256Xor_Encrypt(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_Sha256Xor_Decrypt(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_encrypt_Sha256Xor_Decrypt(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GenerateAddressesInFile(void * jarg1, unsigned long long jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoUint64 arg2 ;
-  PasswordReader__Handle arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
-  PasswordReader__Handle *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  argp3 = (PasswordReader__Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_cli_GenerateAddressesInFile(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_FormatAddressesAsJSON(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_FormatAddressesAsJSON(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_FormatAddressesAsJoinedArray(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_FormatAddressesAsJoinedArray(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddressesToStrings(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_cli_AddressesToStrings(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_LoadConfig(void * jarg1) {
-  unsigned int jresult ;
-  Config__Handle *arg1 = (Config__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (Config__Handle *)jarg1; 
-  result = (GoUint32)SKY_cli_LoadConfig(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_FullWalletPath(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Config__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Config__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Config__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_Config_FullWalletPath(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_FullDBPath(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Config__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Config__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Config__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_Config_FullDBPath(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewApp(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Config__Handle arg1 ;
-  App__Handle *arg2 = (App__Handle *) 0 ;
-  Config__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Config__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (App__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_NewApp(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromContext(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Context__Handle arg1 ;
-  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
-  Context__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Context__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WebRpcClient__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_RPCClientFromContext(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_ConfigFromContext(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Context__Handle arg1 ;
-  Config__Handle *arg2 = (Config__Handle *) 0 ;
-  Context__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Context__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Config__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_ConfigFromContext(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_PasswordFromBytes_Password(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_cli_PasswordFromBytes_Password(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_PasswordFromTerm_Password(void * jarg1) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  result = (GoUint32)SKY_cli_PasswordFromTerm_Password(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SKY_handle_close(void * jarg1) {
-  Handle arg1 ;
-  Handle *argp1 ;
-  
-  argp1 = (Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Handle", 0);
-    return ;
-  }
-  arg1 = *argp1; 
-  SKY_handle_close(arg1);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_handle_copy(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Handle arg1 ;
-  Handle *arg2 = (Handle *) 0 ;
-  Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Handle *)jarg2; 
-  result = (GoUint32)SKY_handle_copy(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_StructField_String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  encoder__StructField *arg1 = (encoder__StructField *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (encoder__StructField *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_encoder_StructField_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_ParseFields(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  GoStringMap_ *arg3 = (GoStringMap_ *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoStringMap_ *)jarg3; 
-  result = (GoUint32)SKY_encoder_ParseFields(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_Hash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxOut *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_UxOut_Hash(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_SnapshotHash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxOut *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_UxOut_SnapshotHash(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxBody_Hash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxBody *arg1 = (coin__UxBody *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxBody *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_UxBody_Hash(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_CoinHours(void * jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
-  GoUint64 arg2 ;
-  GoUint64 *arg3 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxOut *)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64 *)jarg3; 
-  result = (GoUint32)SKY_coin_UxOut_CoinHours(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Hashes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_coin_UxArray_Hashes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_HasDupes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_coin_UxArray_HasDupes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Sort(void * jarg1) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  result = (GoUint32)SKY_coin_UxArray_Sort(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Len(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_coin_UxArray_Len(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Less(void * jarg1, long long jarg2, long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt arg2 ;
-  GoInt arg3 ;
-  GoUint8 *arg4 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (GoInt)jarg3; 
-  arg4 = (GoUint8 *)jarg4; 
-  result = (GoUint32)SKY_coin_UxArray_Less(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Swap(void * jarg1, long long jarg2, long long jarg3) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoInt arg2 ;
-  GoInt arg3 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoInt)jarg2; 
-  arg3 = (GoInt)jarg3; 
-  result = (GoUint32)SKY_coin_UxArray_Swap(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Coins(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_coin_UxArray_Coins(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_CoinHours(void * jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  GoUint64 arg2 ;
-  GoUint64 *arg3 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64 *)jarg3; 
-  result = (GoUint32)SKY_coin_UxArray_CoinHours(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Sub(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_coin_UxArray_Sub(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxArray_Add(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_coin_UxArray_Add(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewAddressUxOuts(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__UxArray *arg1 = (coin__UxArray *) 0 ;
-  AddressUxOuts_Handle *arg2 = (AddressUxOuts_Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__UxArray *)jarg1; 
-  arg2 = (AddressUxOuts_Handle *)jarg2; 
-  result = (GoUint32)SKY_coin_NewAddressUxOuts(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Keys(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Keys(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Flatten(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Flatten(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Sub(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  AddressUxOuts_Handle arg2 ;
-  AddressUxOuts_Handle *arg3 = (AddressUxOuts_Handle *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  AddressUxOuts_Handle *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (AddressUxOuts_Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (AddressUxOuts_Handle *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Sub(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Add(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  AddressUxOuts_Handle arg2 ;
-  AddressUxOuts_Handle *arg3 = (AddressUxOuts_Handle *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  AddressUxOuts_Handle *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (AddressUxOuts_Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (AddressUxOuts_Handle *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Add(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Get(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Get(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_HasKey(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_HasKey(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_GetOutputLength(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  GoInt *arg3 = (GoInt *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  arg3 = (GoInt *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_GetOutputLength(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Length(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Length(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddressUxOuts_Set(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  AddressUxOuts_Handle arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  AddressUxOuts_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (AddressUxOuts_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_coin_AddressUxOuts_Set(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_scrypt_Key(void * jarg1, void * jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, void * jarg7) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  GoInt arg3 ;
-  GoInt arg4 ;
-  GoInt arg5 ;
-  GoInt arg6 ;
-  coin__UxArray *arg7 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoInt)jarg3; 
-  arg4 = (GoInt)jarg4; 
-  arg5 = (GoInt)jarg5; 
-  arg6 = (GoInt)jarg6; 
-  arg7 = (coin__UxArray *)jarg7; 
-  result = (GoUint32)SKY_scrypt_Key(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewError(void * jarg1) {
-  unsigned int jresult ;
-  GoInterface arg1 ;
-  GoInterface *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoInterface *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoInterface", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoUint32)SKY_wallet_NewError(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewWallet(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  Options__Handle arg2 ;
-  Wallet__Handle *arg3 = (Wallet__Handle *) 0 ;
-  GoString *argp1 ;
-  Options__Handle *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (Options__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Options__Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (Wallet__Handle *)jarg3; 
-  result = (GoUint32)SKY_wallet_NewWallet(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Lock(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoSlice arg2 ;
-  GoString arg3 ;
-  Wallet__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoString *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  result = (GoUint32)SKY_wallet_Wallet_Lock(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Unlock(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoSlice arg2 ;
-  Wallet__Handle *arg3 = (Wallet__Handle *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (Wallet__Handle *)jarg3; 
-  result = (GoUint32)SKY_wallet_Wallet_Unlock(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Load(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  Wallet__Handle *arg2 = (Wallet__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Wallet__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_Load(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Save(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString arg2 ;
-  Wallet__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_Wallet_Save(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Validate(void * jarg1) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoUint32)SKY_wallet_Wallet_Validate(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Type(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_Type(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Version(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_Version(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Filename(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_Filename(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_Label(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_Label(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_IsEncrypted(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_IsEncrypted(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GenerateAddresses(void * jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoUint64 arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_wallet_Wallet_GenerateAddresses(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GetAddresses(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_GetAddresses(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_GetEntry(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  cipher__Address *arg2 = (cipher__Address *) 0 ;
-  wallet__Entry *arg3 = (wallet__Entry *) 0 ;
-  GoUint8 *arg4 = (GoUint8 *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__Address *)jarg2; 
-  arg3 = (wallet__Entry *)jarg3; 
-  arg4 = (GoUint8 *)jarg4; 
-  result = (GoUint32)SKY_wallet_Wallet_GetEntry(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Wallet_AddEntry(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  wallet__Entry *arg2 = (wallet__Entry *) 0 ;
-  Wallet__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (wallet__Entry *)jarg2; 
-  result = (GoUint32)SKY_wallet_Wallet_AddEntry(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_DistributeSpendHours(unsigned long long jarg1, unsigned long long jarg2, unsigned char jarg3, void * jarg4, void * jarg5, void * jarg6) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  GoUint64 arg2 ;
-  GoUint8 arg3 ;
-  GoUint64 *arg4 = (GoUint64 *) 0 ;
-  coin__UxArray *arg5 = (coin__UxArray *) 0 ;
-  GoUint64 *arg6 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint8)jarg3; 
-  arg4 = (GoUint64 *)jarg4; 
-  arg5 = (coin__UxArray *)jarg5; 
-  arg6 = (GoUint64 *)jarg6; 
-  result = (GoUint32)SKY_wallet_DistributeSpendHours(arg1,arg2,arg3,arg4,arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_DistributeCoinHoursProportional(void * jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoUint64 arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_wallet_DistributeCoinHoursProportional(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewUxBalances(unsigned long long jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_wallet_NewUxBalances(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewUxBalance(unsigned long long jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  coin__UxOut *arg2 = (coin__UxOut *) 0 ;
-  wallet__UxBalance *arg3 = (wallet__UxBalance *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (coin__UxOut *)jarg2; 
-  arg3 = (wallet__UxBalance *)jarg3; 
-  result = (GoUint32)SKY_wallet_NewUxBalance(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ChooseSpendsMinimizeUxOuts(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoUint64 arg2 ;
-  GoUint64 arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_wallet_ChooseSpendsMinimizeUxOuts(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ChooseSpendsMaximizeUxOuts(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoUint64 arg2 ;
-  GoUint64 arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_wallet_ChooseSpendsMaximizeUxOuts(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddPrivateKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Wallet__Handle arg1 ;
-  GoString arg2 ;
-  Wallet__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Wallet__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_cli_AddPrivateKey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_AddPrivateKeyToFile(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString arg2 ;
-  PasswordReader__Handle arg3 ;
-  GoString *argp1 ;
-  GoString *argp2 ;
-  PasswordReader__Handle *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (PasswordReader__Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null PasswordReader__Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  result = (GoUint32)SKY_cli_AddPrivateKeyToFile(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_App_Run(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  App__Handle arg1 ;
-  GoString arg2 ;
-  App__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (App__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_cli_App_Run(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_GetCoin(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Config__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Config__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Config__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_Config_GetCoin(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_GetRPCAddress(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Config__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Config__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Config__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_Config_GetRPCAddress(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromApp(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  App__Handle arg1 ;
-  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
-  App__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (App__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WebRpcClient__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_RPCClientFromApp(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Getenv(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_cli_Getenv(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Setenv(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString arg2 ;
-  GoString *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_cli_Setenv(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_NewClient(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WebRpcClient__Handle *)jarg2; 
-  result = (GoUint32)SKY_webrpc_NewClient(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_CSRF(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_webrpc_Client_CSRF(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetUnspentOutputs(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoSlice arg2 ;
-  OutputsResult_Handle *arg3 = (OutputsResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (OutputsResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_GetUnspentOutputs(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_InjectTransactionString(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  GoString_ *arg3 = (GoString_ *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoString_ *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_InjectTransactionString(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_InjectTransaction(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  Transaction__Handle arg2 ;
-  GoString_ *arg3 = (GoString_ *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  Transaction__Handle *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoString_ *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_InjectTransaction(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetStatus(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  StatusResult_Handle *arg2 = (StatusResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (StatusResult_Handle *)jarg2; 
-  result = (GoUint32)SKY_webrpc_Client_GetStatus(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetTransactionByID(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoString arg2 ;
-  TransactionResult_Handle *arg3 = (TransactionResult_Handle *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (TransactionResult_Handle *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_GetTransactionByID(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetAddressUxOuts(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_GetAddressUxOuts(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetBlocks(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoUint64 arg2 ;
-  GoUint64 arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_webrpc_Client_GetBlocks(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetBlocksBySeq(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_GetBlocksBySeq(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetLastBlocks(void * jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WebRpcClient__Handle arg1 ;
-  GoUint64 arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  WebRpcClient__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WebRpcClient__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_webrpc_Client_GetLastBlocks(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_droplet_FromString(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_droplet_FromString(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_droplet_ToString(unsigned long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_droplet_ToString(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewDefaultMnemomic(void * jarg1) {
-  unsigned int jresult ;
-  GoString_ *arg1 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoString_ *)jarg1; 
-  result = (GoUint32)SKY_bip39_NewDefaultMnemomic(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewEntropy(long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoInt arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_bip39_NewEntropy(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_NewMnemonic(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_bip39_NewMnemonic(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_MnemonicToByteArray(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_bip39_MnemonicToByteArray(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_bip39_IsMnemonicValid(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_bip39_IsMnemonicValid(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Print(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  GoString arg2 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Print(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_SetXY(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XY *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_SetXY(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_IsInfinity(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_IsInfinity(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_IsValid(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_IsValid(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Normalize(void * jarg1) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Normalize(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Equals(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Equals(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_ECmult(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  Number_Handle arg3 ;
-  Number_Handle arg4 ;
-  Number_Handle *argp3 ;
-  Number_Handle *argp4 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  argp3 = (Number_Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  argp4 = (Number_Handle *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_ECmult(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Neg(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Neg(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Double(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Double(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_AddXY(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XY *arg3 = (secp256k1go__XY *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  arg3 = (secp256k1go__XY *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_AddXY(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XYZ_Add(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  secp256k1go__XYZ *arg3 = (secp256k1go__XYZ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  arg3 = (secp256k1go__XYZ *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XYZ_Add(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_ECmultGen(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
-  Number_Handle arg2 ;
-  Number_Handle *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XYZ *)jarg1; 
-  argp2 = (Number_Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_ECmultGen(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewNotesFilename(void * jarg1) {
-  unsigned int jresult ;
-  GoString_ *arg1 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoString_ *)jarg1; 
-  result = (GoUint32)SKY_wallet_NewNotesFilename(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadNotes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  WalletNotes_Handle *arg2 = (WalletNotes_Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletNotes_Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_LoadNotes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableNotes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletReadableNotes_Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_LoadReadableNotes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_Load(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WalletReadableNotes_Handle arg1 ;
-  GoString arg2 ;
-  WalletReadableNotes_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WalletReadableNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_ReadableNotes_Load(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_ToNotes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WalletReadableNotes_Handle arg1 ;
-  WalletNotes_Handle *arg2 = (WalletNotes_Handle *) 0 ;
-  WalletReadableNotes_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WalletReadableNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletNotes_Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_ReadableNotes_ToNotes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableNotes_Save(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WalletReadableNotes_Handle arg1 ;
-  GoString arg2 ;
-  WalletReadableNotes_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WalletReadableNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_wallet_ReadableNotes_Save(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableNote(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  wallet__Note *arg1 = (wallet__Note *) 0 ;
-  wallet__ReadableNote *arg2 = (wallet__ReadableNote *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Note *)jarg1; 
-  arg2 = (wallet__ReadableNote *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableNote(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableNotesFromNotes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WalletNotes_Handle arg1 ;
-  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
-  WalletNotes_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WalletNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletReadableNotes_Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableNotesFromNotes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_Save(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WalletNotes_Handle arg1 ;
-  GoString arg2 ;
-  GoString arg3 ;
-  WalletNotes_Handle *argp1 ;
-  GoString *argp2 ;
-  GoString *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (WalletNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  result = (GoUint32)SKY_wallet_Notes_Save(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_SaveNote(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  WalletNotes_Handle arg1 ;
-  GoString arg2 ;
-  wallet__Note *arg3 = (wallet__Note *) 0 ;
-  WalletNotes_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (WalletNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (wallet__Note *)jarg3; 
-  result = (GoUint32)SKY_wallet_Notes_SaveNote(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Notes_ToReadable(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  WalletNotes_Handle arg1 ;
-  WalletReadableNotes_Handle *arg2 = (WalletReadableNotes_Handle *) 0 ;
-  WalletNotes_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (WalletNotes_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletNotes_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WalletReadableNotes_Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_Notes_ToReadable(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NotesFileExist(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_wallet_NotesFileExist(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateNoteFileIfNotExist(void * jarg1) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoUint32)SKY_wallet_CreateNoteFileIfNotExist(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_ScryptChacha20poly1305_Encrypt(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
-  GoSlice arg2 ;
-  GoSlice arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp2 ;
-  GoSlice *argp3 ;
-  GoUint32 result;
-  
-  arg1 = (encrypt__ScryptChacha20poly1305 *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_encrypt_ScryptChacha20poly1305_Encrypt(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encrypt_ScryptChacha20poly1305_Decrypt(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
-  GoSlice arg2 ;
-  GoSlice arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp2 ;
-  GoSlice *argp3 ;
-  GoUint32 result;
-  
-  arg1 = (encrypt__ScryptChacha20poly1305 *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  result = (GoUint32)SKY_encrypt_ScryptChacha20poly1305_Decrypt(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_AddUint64(unsigned long long jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  GoUint64 arg2 ;
-  GoUint64 *arg3 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64 *)jarg3; 
-  result = (GoUint32)SKY_coin_AddUint64(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Uint64ToInt64(unsigned long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  GoInt64 *arg2 = (GoInt64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (GoInt64 *)jarg2; 
-  result = (GoUint32)SKY_coin_Uint64ToInt64(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Int64ToUint64(long long jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoInt64 arg1 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt64)jarg1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_coin_Int64ToUint64(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewBalance(unsigned long long jarg1, unsigned long long jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  GoUint64 arg2 ;
-  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (wallet__Balance *)jarg3; 
-  result = (GoUint32)SKY_wallet_NewBalance(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewBalanceFromUxOut(unsigned long long jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoUint64 arg1 ;
-  coin__UxOut *arg2 = (coin__UxOut *) 0 ;
-  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoUint64)jarg1; 
-  arg2 = (coin__UxOut *)jarg2; 
-  arg3 = (wallet__Balance *)jarg3; 
-  result = (GoUint32)SKY_wallet_NewBalanceFromUxOut(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Add(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
-  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
-  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Balance *)jarg1; 
-  arg2 = (wallet__Balance *)jarg2; 
-  arg3 = (wallet__Balance *)jarg3; 
-  result = (GoUint32)SKY_wallet_Balance_Add(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Sub(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
-  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
-  wallet__Balance *arg3 = (wallet__Balance *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Balance *)jarg1; 
-  arg2 = (wallet__Balance *)jarg2; 
-  arg3 = (wallet__Balance *)jarg3; 
-  result = (GoUint32)SKY_wallet_Balance_Sub(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_Equals(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
-  wallet__Balance *arg2 = (wallet__Balance *) 0 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Balance *)jarg1; 
-  arg2 = (wallet__Balance *)jarg2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_wallet_Balance_Equals(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_IsZero(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  wallet__Balance *arg1 = (wallet__Balance *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Balance *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_wallet_Balance_IsZero(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_New(void * jarg1) {
-  unsigned int jresult ;
-  Hash_Handle *arg1 = (Hash_Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (Hash_Handle *)jarg1; 
-  result = (GoUint32)SKY_ripemd160_New(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_Write(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Hash_Handle arg1 ;
-  GoSlice arg2 ;
-  GoInt *arg3 = (GoInt *) 0 ;
-  Hash_Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Hash_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoInt *)jarg3; 
-  result = (GoUint32)SKY_ripemd160_Write(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_ripemd160_Sum(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Hash_Handle arg1 ;
-  GoSlice arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  Hash_Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Hash_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_ripemd160_Sum(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg1, unsigned long long jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  GoUint64 arg2 ;
-  cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
-  Transactions__Handle arg4 ;
-  FeeCalculator *arg5 = (FeeCalculator *) 0 ;
-  Block__Handle *arg6 = (Block__Handle *) 0 ;
-  Block__Handle *argp1 ;
-  Transactions__Handle *argp4 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (cipher__SHA256 *)jarg3; 
-  argp4 = (Transactions__Handle *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  arg5 = (FeeCalculator *)jarg5; 
-  arg6 = (Block__Handle *)jarg6; 
-  result = (GoUint32)SKY_coin_NewBlock(arg1,arg2,(GoUint8_ (*)[32])arg3,arg4,arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SignedBlock_VerifySignature(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__SignedBlock *arg1 = (coin__SignedBlock *) 0 ;
-  cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__SignedBlock *)jarg1; 
-  arg2 = (cipher__PubKey *)jarg2; 
-  result = (GoUint32)SKY_coin_SignedBlock_VerifySignature(arg1,(GoUint8_ (*)[33])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewGenesisBlock(void * jarg1, unsigned long long jarg2, unsigned long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
-  GoUint64 arg2 ;
-  GoUint64 arg3 ;
-  Block__Handle *arg4 = (Block__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__Address *)jarg1; 
-  arg2 = (GoUint64)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (Block__Handle *)jarg4; 
-  result = (GoUint32)SKY_coin_NewGenesisBlock(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_HashHeader(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_PreHashHeader(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Time(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_Time(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Seq(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  GoUint64 *arg2 = (GoUint64 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint64 *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_Seq(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_HashBody(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Size(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_Size(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_coin_Block_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_GetTransaction(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  Transaction__Handle *arg3 = (Transaction__Handle *) 0 ;
-  GoUint8 *arg4 = (GoUint8 *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  arg3 = (Transaction__Handle *)jarg3; 
-  arg4 = (GoUint8 *)jarg4; 
-  result = (GoUint32)SKY_coin_Block_GetTransaction(arg1,(GoUint8_ (*)[32])arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void * jarg1, void * jarg2, unsigned long long jarg3, unsigned long long jarg4, void * jarg5, void * jarg6) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  GoUint64 arg3 ;
-  GoUint64 arg4 ;
-  BlockBody__Handle arg5 ;
-  coin__BlockHeader *arg6 = (coin__BlockHeader *) 0 ;
-  BlockBody__Handle *argp5 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (GoUint64)jarg4; 
-  argp5 = (BlockBody__Handle *)jarg5; 
-  if (!argp5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
-    return 0;
-  }
-  arg5 = *argp5; 
-  arg6 = (coin__BlockHeader *)jarg6; 
-  result = (GoUint32)SKY_coin_NewBlockHeader(arg1,(GoUint8_ (*)[32])arg2,arg3,arg4,arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockHeader_Hash(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Bytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockHeader_Bytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_String(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockHeader_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  BlockBody__Handle arg1 ;
-  cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
-  BlockBody__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (BlockBody__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (cipher__SHA256 *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockBody_Hash(arg1,(GoUint8_ (*)[32])arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Size(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  BlockBody__Handle *arg1 = (BlockBody__Handle *) 0 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (BlockBody__Handle *)jarg1; 
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockBody_Size(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Bytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  BlockBody__Handle arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  BlockBody__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (BlockBody__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_coin_BlockBody_Bytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_CreateUnspents(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  Transaction__Handle arg2 ;
-  coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  Transaction__Handle *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (coin__UxArray *)jarg3; 
-  result = (GoUint32)SKY_coin_CreateUnspents(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_CreateUnspent(void * jarg1, void * jarg2, long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
-  Transaction__Handle arg2 ;
-  GoInt arg3 ;
-  coin__UxOut *arg4 = (coin__UxOut *) 0 ;
-  Transaction__Handle *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (coin__BlockHeader *)jarg1; 
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoInt)jarg3; 
-  arg4 = (coin__UxOut *)jarg4; 
-  result = (GoUint32)SKY_coin_CreateUnspent(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  coin__Block **arg2 = (coin__Block **) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__Block **)jarg2; 
-  result = (GoUint32)SKY_coin_GetBlockObject(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockBody(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Block__Handle arg1 ;
-  BlockBody__Handle *arg2 = (BlockBody__Handle *) 0 ;
-  Block__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Block__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (BlockBody__Handle *)jarg2; 
-  result = (GoUint32)SKY_coin_GetBlockBody(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewEmptyBlock(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Transactions__Handle arg1 ;
-  Block__Handle *arg2 = (Block__Handle *) 0 ;
-  Transactions__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Transactions__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Block__Handle *)jarg2; 
-  result = (GoUint32)SKY_coin_NewEmptyBlock(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateAddresses(void * jarg1, void * jarg2, long long jarg3, unsigned char jarg4, void * jarg5) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString arg2 ;
-  GoInt arg3 ;
-  GoUint8 arg4 ;
-  ReadableWallet__Handle *arg5 = (ReadableWallet__Handle *) 0 ;
-  GoString *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoInt)jarg3; 
-  arg4 = (GoUint8)jarg4; 
-  arg5 = (ReadableWallet__Handle *)jarg5; 
-  result = (GoUint32)SKY_wallet_CreateAddresses(arg1,arg2,arg3,arg4,arg5);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetSkycoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  arg3 = (ReadableEntry__Handle *)jarg3; 
-  result = (GoUint32)SKY_wallet_GetSkycoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetBitcoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (cipher__PubKey *)jarg1; 
-  arg2 = (cipher__SecKey *)jarg2; 
-  arg3 = (ReadableEntry__Handle *)jarg3; 
-  result = (GoUint32)SKY_wallet_GetBitcoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_map_Get(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
-  GoString arg2 ;
-  GoString_ *arg3 = (GoString_ *) 0 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (GoStringMap_ *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoString_ *)jarg3; 
-  result = (GoUint32)SKY_map_Get(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_SKY_map_HasKey(void * jarg1, void * jarg2) {
-  unsigned char jresult ;
-  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
-  GoString arg2 ;
-  GoString *argp2 ;
-  GoUint8 result;
-  
-  arg1 = (GoStringMap_ *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint8)SKY_map_HasKey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_map_Close(void * jarg1) {
-  unsigned int jresult ;
-  GoStringMap_ *arg1 = (GoStringMap_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoStringMap_ *)jarg1; 
-  result = (GoUint32)SKY_map_Close(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_EnableColors() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_logging_EnableColors();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_DisableColors() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_logging_DisableColors();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_logging_Disable() {
-  unsigned int jresult ;
-  GoUint32 result;
-  
-  result = (GoUint32)SKY_logging_Disable();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GenerateWallet(void * jarg1, void * jarg2, unsigned long long jarg3, void * jarg4) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  Options__Handle *arg2 = (Options__Handle *) 0 ;
-  GoUint64 arg3 ;
-  Wallet__Handle *arg4 = (Wallet__Handle *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Options__Handle *)jarg2; 
-  arg3 = (GoUint64)jarg3; 
-  arg4 = (Wallet__Handle *)jarg4; 
-  result = (GoUint32)SKY_cli_GenerateWallet(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_MakeAlphanumericSeed(void * jarg1) {
-  unsigned int jresult ;
-  GoString_ *arg1 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoString_ *)jarg1; 
-  result = (GoUint32)SKY_cli_MakeAlphanumericSeed(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Create(void * jarg1) {
-  unsigned int jresult ;
-  Signature_Handle *arg1 = (Signature_Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (Signature_Handle *)jarg1; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Create(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_GetR(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  Number_Handle *arg2 = (Number_Handle *) 0 ;
-  Signature_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Number_Handle *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Signature_GetR(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_GetS(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  Number_Handle *arg2 = (Number_Handle *) 0 ;
-  Signature_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Number_Handle *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Signature_GetS(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Print(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  GoString arg2 ;
-  Signature_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Print(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Verify(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
-  Number_Handle arg3 ;
-  GoUint8 *arg4 = (GoUint8 *) 0 ;
-  Signature_Handle *argp1 ;
-  Number_Handle *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (secp256k1go__XY *)jarg2; 
-  argp3 = (Number_Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (GoUint8 *)jarg4; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Verify(arg1,arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Recover(void * jarg1, void * jarg2, void * jarg3, long long jarg4, void * jarg5) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
-  Number_Handle arg3 ;
-  GoInt arg4 ;
-  GoUint8 *arg5 = (GoUint8 *) 0 ;
-  Signature_Handle *argp1 ;
-  Number_Handle *argp3 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (secp256k1go__XY *)jarg2; 
-  argp3 = (Number_Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  arg4 = (GoInt)jarg4; 
-  arg5 = (GoUint8 *)jarg5; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Recover(arg1,arg2,arg3,arg4,arg5);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Sign(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  Number_Handle arg2 ;
-  Number_Handle arg3 ;
-  Number_Handle arg4 ;
-  GoInt *arg5 = (GoInt *) 0 ;
-  GoInt *arg6 = (GoInt *) 0 ;
-  Signature_Handle *argp1 ;
-  Number_Handle *argp2 ;
-  Number_Handle *argp3 ;
-  Number_Handle *argp4 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (Number_Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  argp3 = (Number_Handle *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
-  argp4 = (Number_Handle *)jarg4; 
-  if (!argp4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg4 = *argp4; 
-  arg5 = (GoInt *)jarg5; 
-  arg6 = (GoInt *)jarg6; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Sign(arg1,arg2,arg3,arg4,arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_ParseBytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  GoSlice arg2 ;
-  Signature_Handle *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Signature_ParseBytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Signature_Bytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Signature_Handle arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  Signature_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Signature_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Signature_Bytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_Create(void * jarg1) {
-  unsigned int jresult ;
-  Number_Handle *arg1 = (Number_Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (Number_Handle *)jarg1; 
-  result = (GoUint32)SKY_secp256k1go_Number_Create(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_Print(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Number_Handle arg1 ;
-  GoString arg2 ;
-  Number_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Number_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Number_Print(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_SetHex(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Number_Handle arg1 ;
-  GoString arg2 ;
-  Number_Handle *argp1 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Number_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_Number_SetHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_IsOdd(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Number_Handle arg1 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  Number_Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Number_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_Number_IsOdd(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_IsEqual(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Number_Handle arg1 ;
-  Number_Handle arg2 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  Number_Handle *argp1 ;
-  Number_Handle *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (Number_Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (Number_Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_Number_IsEqual(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateOptionsHandle(void * jarg1, void * jarg2, void * jarg3, unsigned char jarg4, void * jarg5, void * jarg6, unsigned long long jarg7, void * jarg8) {
-  GoString arg1 ;
-  GoString arg2 ;
-  GoString arg3 ;
-  GoUint8 arg4 ;
-  GoString arg5 ;
-  GoString arg6 ;
-  GoUint64 arg7 ;
-  Options__Handle *arg8 = (Options__Handle *) 0 ;
-  GoString *argp1 ;
-  GoString *argp2 ;
-  GoString *argp3 ;
-  GoString *argp5 ;
-  GoString *argp6 ;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return ;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  argp3 = (GoString *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return ;
-  }
-  arg3 = *argp3; 
-  arg4 = (GoUint8)jarg4; 
-  argp5 = (GoString *)jarg5; 
-  if (!argp5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return ;
-  }
-  arg5 = *argp5; 
-  argp6 = (GoString *)jarg6; 
-  if (!argp6) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return ;
-  }
-  arg6 = *argp6; 
-  arg7 = (GoUint64)jarg7; 
-  arg8 = (Options__Handle *)jarg8; 
-  SKY_wallet_CreateOptionsHandle(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Print(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  GoString arg2 ;
-  GoString *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  argp2 = (GoString *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (GoUint32)SKY_secp256k1go_XY_Print(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_ParsePubkey(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  GoSlice arg2 ;
-  GoUint8 *arg3 = (GoUint8 *) 0 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoUint8 *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XY_ParsePubkey(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Bytes(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_Bytes(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_BytesUncompressed(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_BytesUncompressed(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXY(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  secp256k1go__Field *arg3 = (secp256k1go__Field *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  arg3 = (secp256k1go__Field *)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XY_SetXY(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_IsValid(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  GoUint8 *arg2 = (GoUint8 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (GoUint8 *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_IsValid(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXYZ(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  secp256k1go__XYZ *arg2 = (secp256k1go__XYZ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (secp256k1go__XYZ *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_SetXYZ(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_Neg(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (secp256k1go__XY *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_Neg(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_SetXO(void * jarg1, void * jarg2, unsigned char jarg3) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  secp256k1go__Field *arg2 = (secp256k1go__Field *) 0 ;
-  GoUint8 arg3 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (secp256k1go__Field *)jarg2; 
-  arg3 = (GoUint8)jarg3; 
-  result = (GoUint32)SKY_secp256k1go_XY_SetXO(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_AddXY(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  secp256k1go__XY *arg2 = (secp256k1go__XY *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (secp256k1go__XY *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_AddXY(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_XY_GetPublicKey(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (secp256k1go__XY *)jarg1; 
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_secp256k1go_XY_GetPublicKey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Entry_Verify(void * jarg1) {
-  unsigned int jresult ;
-  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Entry *)jarg1; 
-  result = (GoUint32)SKY_wallet_Entry_Verify(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Entry_VerifyPublic(void * jarg1) {
-  unsigned int jresult ;
-  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Entry *)jarg1; 
-  result = (GoUint32)SKY_wallet_Entry_VerifyPublic(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CryptoTypeFromString(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoString *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoString *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoString", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_wallet_CryptoTypeFromString(arg1,arg2);
   jresult = result; 
   return jresult;
 }
