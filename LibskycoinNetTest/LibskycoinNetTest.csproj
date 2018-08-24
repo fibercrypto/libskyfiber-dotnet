@@ -35,6 +35,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LibskycoinNetTest.cs" />
+    <Compile Include="cipher_address.cs" />
+    <Compile Include="check_cipher_address.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibskycoinNet\LibskycoinNet.csproj">

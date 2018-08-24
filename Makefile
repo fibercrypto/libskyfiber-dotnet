@@ -50,3 +50,11 @@ build-libskycoin-net:
 	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
 	mv libskycoin.so LibskycoinNetTest/bin/Release
 	#mono-csc -out:skycoin_net.exe LibskycoinNet/skycoin/*.cs
+
+install:
+	nuget restore LibskycoinNet.sln
+	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+
+test: build-libc build-swig build-libskycoin-net install
+	msbuild  LibskycoinNet.sln
+	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Debug/LibskycoinNetTest.dll
