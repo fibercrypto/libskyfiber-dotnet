@@ -42,10 +42,10 @@ public class secp256k1go__XYZ : global::System.IDisposable {
 
   public secp256k1go__Field X {
     set {
-      skycoinPINVOKE.secp256k1go__XYZ_X_set(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XYZ_X(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XYZ_X_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XYZ_X(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -53,10 +53,10 @@ public class secp256k1go__XYZ : global::System.IDisposable {
 
   public secp256k1go__Field Y {
     set {
-      skycoinPINVOKE.secp256k1go__XYZ_Y_set(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XYZ_Y(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XYZ_Y_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XYZ_Y(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -64,10 +64,10 @@ public class secp256k1go__XYZ : global::System.IDisposable {
 
   public secp256k1go__Field Z {
     set {
-      skycoinPINVOKE.secp256k1go__XYZ_Z_set(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XYZ_Z(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XYZ_Z_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XYZ_Z(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -75,11 +75,11 @@ public class secp256k1go__XYZ : global::System.IDisposable {
 
   public SWIGTYPE_p_BOOL Infinity {
     set {
-      skycoinPINVOKE.secp256k1go__XYZ_Infinity_set(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XYZ_Infinity(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.secp256k1go__XYZ_Infinity_get(swigCPtr), true);
+      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.get_secp256k1go__XYZ_Infinity(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

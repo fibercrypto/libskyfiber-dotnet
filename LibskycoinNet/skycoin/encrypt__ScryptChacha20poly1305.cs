@@ -42,11 +42,11 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt_ N {
     set {
-      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_N_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_N(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.encrypt__ScryptChacha20poly1305_N_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt_ R {
     set {
-      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_R_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_R(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.encrypt__ScryptChacha20poly1305_R_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -66,11 +66,11 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt_ P {
     set {
-      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_P_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_P(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.encrypt__ScryptChacha20poly1305_P_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -78,11 +78,11 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt_ KeyLen {
     set {
-      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_KeyLen_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.encrypt__ScryptChacha20poly1305_KeyLen_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

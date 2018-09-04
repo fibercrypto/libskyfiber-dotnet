@@ -42,21 +42,21 @@ public class _GoString_ : global::System.IDisposable {
 
   public string p {
     set {
-      skycoinPINVOKE._GoString__p_set(swigCPtr, value);
+      skycoinPINVOKE.set__GoString__p(swigCPtr, value);
     } 
     get {
-      string ret = skycoinPINVOKE._GoString__p_get(swigCPtr);
+      string ret = skycoinPINVOKE.get__GoString__p(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_ptrdiff_t n {
     set {
-      skycoinPINVOKE._GoString__n_set(swigCPtr, SWIGTYPE_p_ptrdiff_t.getCPtr(value));
+      skycoinPINVOKE.set__GoString__n(swigCPtr, SWIGTYPE_p_ptrdiff_t.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_ptrdiff_t ret = new SWIGTYPE_p_ptrdiff_t(skycoinPINVOKE._GoString__n_get(swigCPtr), true);
+      SWIGTYPE_p_ptrdiff_t ret = new SWIGTYPE_p_ptrdiff_t(skycoinPINVOKE.get__GoString__n(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

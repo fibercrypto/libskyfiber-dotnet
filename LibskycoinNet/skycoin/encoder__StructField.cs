@@ -42,11 +42,11 @@ public class encoder__StructField : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Name {
     set {
-      skycoinPINVOKE.encoder__StructField_Name_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_encoder__StructField_Name(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.encoder__StructField_Name_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_encoder__StructField_Name(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class encoder__StructField : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint32_ Kind {
     set {
-      skycoinPINVOKE.encoder__StructField_Kind_set(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
+      skycoinPINVOKE.set_encoder__StructField_Kind(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoUint32_ ret = new SWIGTYPE_p_GoUint32_(skycoinPINVOKE.encoder__StructField_Kind_get(swigCPtr), true);
+      SWIGTYPE_p_GoUint32_ ret = new SWIGTYPE_p_GoUint32_(skycoinPINVOKE.get_encoder__StructField_Kind(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -66,11 +66,11 @@ public class encoder__StructField : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Type {
     set {
-      skycoinPINVOKE.encoder__StructField_Type_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_encoder__StructField_Type(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.encoder__StructField_Type_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_encoder__StructField_Type(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -78,11 +78,11 @@ public class encoder__StructField : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Tag {
     set {
-      skycoinPINVOKE.encoder__StructField_Tag_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_encoder__StructField_Tag(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.encoder__StructField_Tag_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_encoder__StructField_Tag(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

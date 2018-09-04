@@ -42,11 +42,11 @@ public class cli__SendAmount : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Addr {
     set {
-      skycoinPINVOKE.cli__SendAmount_Addr_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_cli__SendAmount_Addr(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.cli__SendAmount_Addr_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_cli__SendAmount_Addr(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class cli__SendAmount : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt64_ Coins {
     set {
-      skycoinPINVOKE.cli__SendAmount_Coins_set(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
+      skycoinPINVOKE.set_cli__SendAmount_Coins(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.cli__SendAmount_Coins_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_cli__SendAmount_Coins(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

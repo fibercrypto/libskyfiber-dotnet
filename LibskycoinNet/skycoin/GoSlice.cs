@@ -42,10 +42,10 @@ public class GoSlice : global::System.IDisposable {
 
   public SWIGTYPE_p_void data {
     set {
-      skycoinPINVOKE.GoSlice_data_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
+      skycoinPINVOKE.set_GoSlice_data(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.GoSlice_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_GoSlice_data(swigCPtr);
       SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
       return ret;
     } 
@@ -53,20 +53,20 @@ public class GoSlice : global::System.IDisposable {
 
   public long len {
     set {
-      skycoinPINVOKE.GoSlice_len_set(swigCPtr, value);
+      skycoinPINVOKE.set_GoSlice_len(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.GoSlice_len_get(swigCPtr);
+      long ret = skycoinPINVOKE.get_GoSlice_len(swigCPtr);
       return ret;
     } 
   }
 
   public long cap {
     set {
-      skycoinPINVOKE.GoSlice_cap_set(swigCPtr, value);
+      skycoinPINVOKE.set_GoSlice_cap(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.GoSlice_cap_get(swigCPtr);
+      long ret = skycoinPINVOKE.get_GoSlice_cap(swigCPtr);
       return ret;
     } 
   }

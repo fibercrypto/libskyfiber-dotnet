@@ -42,11 +42,11 @@ public class wallet__Wallet : global::System.IDisposable {
 
   public SWIGTYPE_p_GoMap_ Meta {
     set {
-      skycoinPINVOKE.wallet__Wallet_Meta_set(swigCPtr, SWIGTYPE_p_GoMap_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__Wallet_Meta(swigCPtr, SWIGTYPE_p_GoMap_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoMap_ ret = new SWIGTYPE_p_GoMap_(skycoinPINVOKE.wallet__Wallet_Meta_get(swigCPtr), true);
+      SWIGTYPE_p_GoMap_ ret = new SWIGTYPE_p_GoMap_(skycoinPINVOKE.get_wallet__Wallet_Meta(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class wallet__Wallet : global::System.IDisposable {
 
   public SWIGTYPE_p_GoSlice_ Entries {
     set {
-      skycoinPINVOKE.wallet__Wallet_Entries_set(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__Wallet_Entries(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.wallet__Wallet_Entries_get(swigCPtr), true);
+      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.get_wallet__Wallet_Entries(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

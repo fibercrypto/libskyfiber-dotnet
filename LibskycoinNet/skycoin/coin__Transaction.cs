@@ -47,11 +47,11 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt32_ Length {
     set {
-      skycoinPINVOKE.coin__Transaction_Length_set(swigCPtr, SWIGTYPE_p_GoInt32_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_Length(swigCPtr, SWIGTYPE_p_GoInt32_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt32_ ret = new SWIGTYPE_p_GoInt32_(skycoinPINVOKE.coin__Transaction_Length_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt32_ ret = new SWIGTYPE_p_GoInt32_(skycoinPINVOKE.get_coin__Transaction_Length(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -59,11 +59,11 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt8_ Type {
     set {
-      skycoinPINVOKE.coin__Transaction_Type_set(swigCPtr, SWIGTYPE_p_GoInt8_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_Type(swigCPtr, SWIGTYPE_p_GoInt8_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt8_ ret = new SWIGTYPE_p_GoInt8_(skycoinPINVOKE.coin__Transaction_Type_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt8_ ret = new SWIGTYPE_p_GoInt8_(skycoinPINVOKE.get_coin__Transaction_Type(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -71,10 +71,10 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ InnerHash {
     set {
-      skycoinPINVOKE.coin__Transaction_InnerHash_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_InnerHash(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__Transaction_InnerHash_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__Transaction_InnerHash(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -82,11 +82,11 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoSlice_ Sigs {
     set {
-      skycoinPINVOKE.coin__Transaction_Sigs_set(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_Sigs(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.coin__Transaction_Sigs_get(swigCPtr), true);
+      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.get_coin__Transaction_Sigs(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -94,11 +94,11 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoSlice_ In {
     set {
-      skycoinPINVOKE.coin__Transaction_In_set(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_In(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.coin__Transaction_In_get(swigCPtr), true);
+      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.get_coin__Transaction_In(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -106,11 +106,11 @@ public class coin__Transaction : global::System.IDisposable {
 
   public SWIGTYPE_p_GoSlice_ Out {
     set {
-      skycoinPINVOKE.coin__Transaction_Out_set(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
+      skycoinPINVOKE.set_coin__Transaction_Out(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.coin__Transaction_Out_get(swigCPtr), true);
+      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.get_coin__Transaction_Out(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

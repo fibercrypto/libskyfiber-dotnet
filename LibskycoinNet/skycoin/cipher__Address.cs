@@ -47,11 +47,11 @@ public class cipher__Address : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Version {
     set {
-      skycoinPINVOKE.cipher__Address_Version_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoUint8_ ret = new SWIGTYPE_p_GoUint8_(skycoinPINVOKE.cipher__Address_Version_get(swigCPtr), true);
+      SWIGTYPE_p_GoUint8_ ret = new SWIGTYPE_p_GoUint8_(skycoinPINVOKE.get_cipher__Address_Version(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -59,10 +59,10 @@ public class cipher__Address : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Key {
     set {
-      skycoinPINVOKE.cipher__Address_Key_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_cipher__Address_Key(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher__Address_Key_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher__Address_Key(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 

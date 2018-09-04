@@ -42,10 +42,10 @@ public class httphelper__Address : global::System.IDisposable {
 
   public cipher__Address _unnamed {
     set {
-      skycoinPINVOKE.httphelper__Address__unnamed_set(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.set_httphelper__Address__unnamed(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.httphelper__Address__unnamed_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_httphelper__Address__unnamed(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 

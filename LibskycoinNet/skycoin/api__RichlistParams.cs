@@ -42,11 +42,11 @@ public class api__RichlistParams : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt_ N {
     set {
-      skycoinPINVOKE.api__RichlistParams_N_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
+      skycoinPINVOKE.set_api__RichlistParams_N(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.api__RichlistParams_N_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_api__RichlistParams_N(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class api__RichlistParams : global::System.IDisposable {
 
   public SWIGTYPE_p_BOOL IncludeDistribution {
     set {
-      skycoinPINVOKE.api__RichlistParams_IncludeDistribution_set(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
+      skycoinPINVOKE.set_api__RichlistParams_IncludeDistribution(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.api__RichlistParams_IncludeDistribution_get(swigCPtr), true);
+      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.get_api__RichlistParams_IncludeDistribution(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

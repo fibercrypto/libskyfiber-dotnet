@@ -42,10 +42,10 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Hash {
     set {
-      skycoinPINVOKE.wallet__UxBalance_Hash_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__UxBalance_Hash(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__UxBalance_Hash_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__UxBalance_Hash(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -53,11 +53,11 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt64_ BkSeq {
     set {
-      skycoinPINVOKE.wallet__UxBalance_BkSeq_set(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__UxBalance_BkSeq(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.wallet__UxBalance_BkSeq_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_BkSeq(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -65,10 +65,10 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public cipher__Address Address {
     set {
-      skycoinPINVOKE.wallet__UxBalance_Address_set(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.set_wallet__UxBalance_Address(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__UxBalance_Address_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__UxBalance_Address(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 
@@ -76,11 +76,11 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt64_ Coins {
     set {
-      skycoinPINVOKE.wallet__UxBalance_Coins_set(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__UxBalance_Coins(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.wallet__UxBalance_Coins_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_Coins(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -88,11 +88,11 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public SWIGTYPE_p_GoInt64_ Hours {
     set {
-      skycoinPINVOKE.wallet__UxBalance_Hours_set(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__UxBalance_Hours(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.wallet__UxBalance_Hours_get(swigCPtr), true);
+      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_Hours(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
