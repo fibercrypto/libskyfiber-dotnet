@@ -2093,14 +2093,14 @@ public class skycoin {
     return ret;
   }
 
-  public static uint SKY_cli_GetWalletOutputsFromFile(SWIGTYPE_p_Handle p0, _GoString_ p1, SWIGTYPE_p_ReadableOutputSet__Handle p2) {
-    uint ret = skycoinPINVOKE.SKY_cli_GetWalletOutputsFromFile(SWIGTYPE_p_Handle.getCPtr(p0), _GoString_.getCPtr(p1), SWIGTYPE_p_ReadableOutputSet__Handle.getCPtr(p2));
+  public static uint SKY_cli_GetWalletOutputsFromFile(SWIGTYPE_p_Handle p0, _GoString_ p1, SWIGTYPE_p_ReadableOutputSet_Handle p2) {
+    uint ret = skycoinPINVOKE.SKY_cli_GetWalletOutputsFromFile(SWIGTYPE_p_Handle.getCPtr(p0), _GoString_.getCPtr(p1), SWIGTYPE_p_ReadableOutputSet_Handle.getCPtr(p2));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static uint SKY_cli_GetWalletOutputs(SWIGTYPE_p_Handle p0, SWIGTYPE_p_ReadableOutputSet__Handle p2) {
-    uint ret = skycoinPINVOKE.SKY_cli_GetWalletOutputs(SWIGTYPE_p_Handle.getCPtr(p0), SWIGTYPE_p_ReadableOutputSet__Handle.getCPtr(p2));
+  public static uint SKY_cli_GetWalletOutputs(SWIGTYPE_p_Handle p0, SWIGTYPE_p_ReadableOutputSet_Handle p2) {
+    uint ret = skycoinPINVOKE.SKY_cli_GetWalletOutputs(SWIGTYPE_p_Handle.getCPtr(p0), SWIGTYPE_p_ReadableOutputSet_Handle.getCPtr(p2));
     return ret;
   }
 
@@ -2523,7 +2523,6 @@ public class skycoin {
     return ret;
   }
 
-  public static readonly long SKY_ErrVerifySignatureInvalidPubkeysLength = skycoinPINVOKE.get_SKY_ErrVerifySignatureInvalidPubkeysLength();
   public static readonly long SKY_OK = skycoinPINVOKE.get_SKY_OK();
   public static readonly long SKY_ERROR = skycoinPINVOKE.get_SKY_ERROR();
   public static readonly long SKY_PKG_API = skycoinPINVOKE.get_SKY_PKG_API();
@@ -2679,6 +2678,7 @@ public class skycoin {
   public static readonly long SKY_ErrUnknownWalletID = skycoinPINVOKE.get_SKY_ErrUnknownWalletID();
   public static readonly long SKY_ErrSHA256orMissingPassword = skycoinPINVOKE.get_SKY_ErrSHA256orMissingPassword();
   public static readonly long SKY_ErrSHA256LenghtDataOverflowMaxUint32 = skycoinPINVOKE.get_SKY_ErrSHA256LenghtDataOverflowMaxUint32();
+  public static readonly long SKY_ErrVerifySignatureInvalidPubkeysLength = skycoinPINVOKE.get_SKY_ErrVerifySignatureInvalidPubkeysLength();
 }
 
 }

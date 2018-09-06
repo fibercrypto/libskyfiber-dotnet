@@ -118,7 +118,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.base58.base58.go"
+#line 11 "cipher.base58.base58.go"
 
 
   #include <string.h>
@@ -1394,9 +1394,9 @@ extern GoUint32 SKY_file_ResolveResourceDirectory(GoString p0, GoString_* p1);
 
 extern GoUint32 SKY_file_DetermineResourcePath(GoString p0, GoString p1, GoString p2, GoString_* p3);
 
-extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoString p1, ReadableOutputSet__Handle* p2);
+extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoString p1, ReadableOutputSet_Handle* p2);
 
-extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, ReadableOutputSet__Handle* p2);
+extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, ReadableOutputSet_Handle* p2);
 
 extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
 
