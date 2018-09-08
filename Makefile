@@ -55,9 +55,7 @@ install:
 	nuget restore LibskycoinNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
-test: 
-	nuget restore LibskycoinNet.sln
-	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+test: install
 	make build-libc
 	make build-swig
 	msbuild /p:Configuration=Release LibskycoinNet.sln
