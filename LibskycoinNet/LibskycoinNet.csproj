@@ -132,7 +132,8 @@
     <Compile Include="skycoin\wallet__ReadableNote.cs" />
     <Compile Include="skycoin\wallet__UxBalance.cs" />
     <Compile Include="skycoin\wallet__Wallet.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_ReadableOutputSet__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableOutputSet_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_cipher_SecKeys.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_cipher_PubKey.cs" />
   </ItemGroup>
   <ItemGroup>

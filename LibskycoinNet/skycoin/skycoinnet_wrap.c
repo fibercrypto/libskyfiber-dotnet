@@ -331,6 +331,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_skycoin(SWIG_CSharpString
 	}
 
 
+	typedef GoInt64_ Handle;
 /**
  * Memory handle for internal object retrieving password to read
  * encrypted wallets.
@@ -575,1566 +576,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_equalBlockHeaders(void * jarg1, void *
   arg1 = (coin__BlockHeader *)jarg1; 
   arg2 = (coin__BlockHeader *)jarg2; 
   result = (int)equalBlockHeaders(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_OK() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ERROR() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x7FFFFFFF);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_API() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x01000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CIPHER() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CLI() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_COIN() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CONSENSUS() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x05000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_DAEMON() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_GUI() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x07000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_SKYCOIN() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x08000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_UTIL() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_VISOR() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_WALLET() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidLength() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidChecksum() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidVersion() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidFirstByte() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidLastByte() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBufferUnderflow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000006);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidOmitEmpty() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000007);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000008);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromNullSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000009);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromBadSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrECHDInvalidPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrECHDInvalidSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSig() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000E);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthRipemd160() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200000F);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSHA256() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000010);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58Char() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000011);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58String() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000012);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58Length() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000013);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHexLength() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000014);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBytesLength() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000015);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000016);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000017);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigForPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000018);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKeyHex() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000019);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidAddressForSig() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHashForSig() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyRecoverMismatch() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigInvalidPubKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigValidity() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001E);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigForMessage() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0200001F);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKyVerification() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000020);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullPubKeyFromSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000021);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidDerivedPubKeyFromSecKey() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000022);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPubKeyFromHash() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000023);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromSecKeyMissmatch() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x02000024);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTemporaryInsufficientBalance() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletName() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrJSONMarshal() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_WalletLoadError() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_WalletSaveError() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x03000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddEarnedCoinHoursAdditionOverflow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64MultOverflow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64AddOverflow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint32AddOverflow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64OverflowsInt64() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInt64UnderflowsUint64() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x04000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPeerlistFull() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoLocalhost() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNotExternalIP() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPortTooLow() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBlacklistedAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectReadFailed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000006);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectWriteFailed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000007);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectSetReadDeadlineFailed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000008);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectInvalidMessageLength() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000009);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMalformedMessage() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectUnknownMessage() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectUnexpectedError() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrConnectionPoolClosed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWriteQueueFull() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000E);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoReachableConnections() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600000F);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMaxDefaultConnectionsReached() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000010);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectInvalidVersion() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000011);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIntroductionTimeout() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000012);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectVersionSendFailed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000013);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIsBlacklisted() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000014);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectSelf() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000015);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectConnectedTwice() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000016);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIdle() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000017);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectNoIntroduction() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000018);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIPLimitReached() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x06000019);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectOtherError() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600001A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMaxDefaultConnectionReached() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600001B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMaxOutgoingConnectionsReached() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600001C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ConnectionError() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0600001D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnNoFee() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnInsufficientFee() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnInsufficientCoinHours() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNegativeValue() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTooManyDecimals() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTooLarge() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrEmptyDirectoryName() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000006);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDotDirectoryName() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x09000007);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrHistoryDBCorrupted() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUxOutNotExist() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoHeadBlock() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingSignature() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnspentNotExist() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifyStopped() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrCreateBucketFailed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBucketNotExist() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000006);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesHardConstraint() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000007);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesSoftConstraint() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000008);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesUserConstraint() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0A000009);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInsufficientBalance() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000000);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInsufficientHours() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000001);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroSpend() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000002);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSpendingUnconfirmed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000003);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidEncryptedField() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000004);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletEncrypted() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000005);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNotEncrypted() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000006);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingPassword() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000007);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingEncrypt() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000008);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPassword() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000009);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingSeed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingAuthenticated() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWrongCryptoType() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNotExist() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSeedUsed() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000E);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletAPIDisabled() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00000F);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSeedAPIDisabled() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000010);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNameConflict() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000011);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelectionMode() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000012);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelectionType() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000013);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000014);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownUxOut() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000015);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoUnspents() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000016);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullChangeAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000017);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingTo() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000018);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroCoinsTo() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000019);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullAddressTo() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateTo() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingWalletID() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001C);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrIncludesNullAddress() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001D);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateAddresses() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001E);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroToHoursAuto() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00001F);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingModeAuto() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000020);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelMode() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000021);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidModeManual() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000022);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelType() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000023);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingShareFactor() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000024);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidShareFactor() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000025);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrShareFactorOutOfRange() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000026);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletConstraint() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000027);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateUxOuts() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000028);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownWalletID() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B000029);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSHA256orMissingPassword() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00002A);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSHA256LenghtDataOverflowMaxUint32() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0B00002B);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubkeysLength() {
-  long long jresult ;
-  long long result;
-  
-  result = (long long)(0x0b000036);
   jresult = result; 
   return jresult;
 }
@@ -13794,6 +12235,1566 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_httphelper__Address(void * jar
   
   arg1 = (httphelper__Address *)jarg1; 
   free((char *) arg1);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_OK() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ERROR() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x7FFFFFFF);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_API() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x01000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CIPHER() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CLI() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_COIN() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_CONSENSUS() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x05000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_DAEMON() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_GUI() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x07000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_SKYCOIN() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x08000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_UTIL() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_VISOR() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_PKG_WALLET() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidLength() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidChecksum() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidVersion() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidFirstByte() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddressInvalidLastByte() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBufferUnderflow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000006);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidOmitEmpty() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000007);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000008);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromNullSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000009);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromBadSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrECHDInvalidPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrECHDInvalidSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSig() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000E);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthRipemd160() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200000F);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidLengthSHA256() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000010);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58Char() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000011);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58String() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000012);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBase58Length() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000013);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHexLength() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000014);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidBytesLength() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000015);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000016);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000017);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigForPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000018);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKeyHex() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000019);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidAddressForSig() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHashForSig() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyRecoverMismatch() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigInvalidPubKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigValidity() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001E);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSigForMessage() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0200001F);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidSecKyVerification() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000020);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullPubKeyFromSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000021);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidDerivedPubKeyFromSecKey() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000022);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPubKeyFromHash() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000023);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPubKeyFromSecKeyMissmatch() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x02000024);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTemporaryInsufficientBalance() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletName() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrJSONMarshal() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_WalletLoadError() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_WalletSaveError() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x03000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrAddEarnedCoinHoursAdditionOverflow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64MultOverflow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64AddOverflow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint32AddOverflow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUint64OverflowsInt64() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInt64UnderflowsUint64() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x04000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPeerlistFull() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoLocalhost() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNotExternalIP() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrPortTooLow() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBlacklistedAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectReadFailed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000006);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectWriteFailed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000007);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectSetReadDeadlineFailed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000008);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectInvalidMessageLength() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000009);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMalformedMessage() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectUnknownMessage() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectUnexpectedError() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrConnectionPoolClosed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWriteQueueFull() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000E);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoReachableConnections() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600000F);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMaxDefaultConnectionsReached() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000010);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectInvalidVersion() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000011);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIntroductionTimeout() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000012);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectVersionSendFailed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000013);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIsBlacklisted() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000014);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectSelf() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000015);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectConnectedTwice() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000016);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIdle() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000017);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectNoIntroduction() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000018);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectIPLimitReached() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x06000019);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectOtherError() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600001A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMaxDefaultConnectionReached() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600001B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDisconnectMaxOutgoingConnectionsReached() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600001C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ConnectionError() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0600001D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnNoFee() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnInsufficientFee() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnInsufficientCoinHours() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNegativeValue() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTooManyDecimals() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTooLarge() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrEmptyDirectoryName() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000006);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDotDirectoryName() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x09000007);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrHistoryDBCorrupted() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUxOutNotExist() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoHeadBlock() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingSignature() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnspentNotExist() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifyStopped() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrCreateBucketFailed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrBucketNotExist() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000006);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesHardConstraint() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000007);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesSoftConstraint() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000008);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrTxnViolatesUserConstraint() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0A000009);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInsufficientBalance() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000000);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInsufficientHours() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000001);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroSpend() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000002);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSpendingUnconfirmed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000003);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidEncryptedField() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000004);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletEncrypted() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000005);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNotEncrypted() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000006);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingPassword() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000007);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingEncrypt() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000008);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidPassword() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000009);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingSeed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingAuthenticated() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWrongCryptoType() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNotExist() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSeedUsed() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000E);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletAPIDisabled() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00000F);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSeedAPIDisabled() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000010);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletNameConflict() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000011);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelectionMode() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000012);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelectionType() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000013);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000014);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownUxOut() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000015);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNoUnspents() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000016);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullChangeAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000017);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingTo() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000018);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroCoinsTo() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000019);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrNullAddressTo() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateTo() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingWalletID() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001C);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrIncludesNullAddress() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001D);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateAddresses() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001E);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrZeroToHoursAuto() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00001F);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingModeAuto() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000020);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelMode() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000021);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidModeManual() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000022);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidHoursSelType() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000023);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrMissingShareFactor() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000024);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrInvalidShareFactor() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000025);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrShareFactorOutOfRange() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000026);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrWalletConstraint() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000027);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrDuplicateUxOuts() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000028);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrUnknownWalletID() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B000029);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSHA256orMissingPassword() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00002A);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrSHA256LenghtDataOverflowMaxUint32() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0x0B00002B);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubkeysLength() {
+  int jresult ;
+  int result;
+  
+  result = (int)(0X0b000036);
+  jresult = result; 
+  return jresult;
 }
 
 
