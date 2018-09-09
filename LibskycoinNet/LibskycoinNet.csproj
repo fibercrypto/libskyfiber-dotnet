@@ -52,7 +52,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_GoInt64_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoInt8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoInt_.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_GoMap_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoSlice_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoStringMap_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoString_.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="skycoin\coin__BlockBody.cs" />
     <Compile Include="skycoin\coin__BlockHeader.cs" />
     <Compile Include="skycoin\coin__SignedBlock.cs" />
-    <Compile Include="skycoin\coin__SortableTransactions.cs" />
     <Compile Include="skycoin\coin__Transaction.cs" />
     <Compile Include="skycoin\coin__TransactionOutput.cs" />
     <Compile Include="skycoin\coin__UxBody.cs" />
@@ -131,10 +129,7 @@
     <Compile Include="skycoin\wallet__Note.cs" />
     <Compile Include="skycoin\wallet__ReadableNote.cs" />
     <Compile Include="skycoin\wallet__UxBalance.cs" />
-    <Compile Include="skycoin\wallet__Wallet.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableOutputSet_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_cipher_SecKeys.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_cipher_PubKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
