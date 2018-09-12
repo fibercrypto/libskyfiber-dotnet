@@ -78,8 +78,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_Wallets__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WebRpcClient__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_a_20__GoUint8_.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_a_32__GoUint8_.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_a_33__GoUint8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_a_4__GoUint8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_a_65__GoUint8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_long_long.cs" />

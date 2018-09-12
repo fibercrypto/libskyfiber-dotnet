@@ -359,6 +359,29 @@ static cipher_PubKey cipher_PubKeyp_value(cipher_PubKey *obj) {
 }
 
 
+static cipher_SecKey *new_cipher_SecKeyp() { 
+  return (cipher_SecKey *) calloc(1,sizeof(cipher_SecKey)); 
+}
+
+static cipher_SecKey *copy_cipher_SecKeyp(cipher_SecKey value) { 
+  cipher_SecKey *obj = (cipher_SecKey *) calloc(1,sizeof(cipher_SecKey));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_cipher_SecKeyp(cipher_SecKey *obj) { 
+  if (obj) free(obj); 
+}
+
+static void cipher_SecKeyp_assign(cipher_SecKey *obj, cipher_SecKey value) {
+  *obj = value;
+}
+
+static cipher_SecKey cipher_SecKeyp_value(cipher_SecKey *obj) {
+  return *obj;
+}
+
+
 	typedef GoInt64_ Handle;
 /**
  * Memory handle for internal object retrieving password to read
@@ -833,21 +856,69 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher_PubKeyp_value(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_f(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_cipher_SecKeyp() {
   void * jresult ;
-  cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp1 ;
-  cipher_PubKey *result = 0 ;
+  cipher_SecKey *result = 0 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
-  result = (cipher_PubKey *)f(arg1);
+  result = (cipher_SecKey *)new_cipher_SecKeyp();
   jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_cipher_SecKeyp(void * jarg1) {
+  void * jresult ;
+  cipher_SecKey arg1 ;
+  cipher_SecKey *argp1 ;
+  cipher_SecKey *result = 0 ;
+  
+  argp1 = (cipher_SecKey *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null cipher_SecKey", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (cipher_SecKey *)copy_cipher_SecKeyp(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher_SecKeyp(void * jarg1) {
+  cipher_SecKey *arg1 = (cipher_SecKey *) 0 ;
+  
+  arg1 = (cipher_SecKey *)jarg1; 
+  delete_cipher_SecKeyp(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_SecKeyp_assign(void * jarg1, void * jarg2) {
+  cipher_SecKey *arg1 = (cipher_SecKey *) 0 ;
+  cipher_SecKey arg2 ;
+  cipher_SecKey *argp2 ;
+  
+  arg1 = (cipher_SecKey *)jarg1; 
+  argp2 = (cipher_SecKey *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null cipher_SecKey", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  cipher_SecKeyp_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher_SecKeyp_value(void * jarg1) {
+  void * jresult ;
+  cipher_SecKey *arg1 = (cipher_SecKey *) 0 ;
+  cipher_SecKey result;
+  
+  arg1 = (cipher_SecKey *)jarg1; 
+  result = cipher_SecKeyp_value(arg1);
   {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
+    cipher_SecKey * resultptr = (cipher_SecKey *) malloc(sizeof(cipher_SecKey));
+    memmove(resultptr, &result, sizeof(cipher_SecKey));
+    jresult = resultptr;
   }
   return jresult;
 }
@@ -857,28 +928,12 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cipher_PubKey_isEqual(void * jarg1, vo
   int jresult ;
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
   cipher_PubKey *arg2 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp1 ;
-  cipher_PubKey temp2 ;
   int result;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
-  {
-    //Typemap in *cipher_PubKey
-    arg2 = &temp2; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
+  arg2 = (cipher_PubKey *)jarg2; 
   result = (int)cipher_PubKey_isEqual(arg1,arg2);
   jresult = result; 
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
-  }
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
@@ -886,57 +941,33 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cipher_PubKey_isEqual(void * jarg1, vo
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_PubKey_assignFrom(void * jarg1, void * jarg2) {
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
   void *arg2 = (void *) 0 ;
-  cipher_PubKey temp1 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
   arg2 = (void *)jarg2; 
   cipher_PubKey_assignFrom(arg1,arg2);
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
-  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_PubKey_assignTo(void * jarg1, void * jarg2) {
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
   void *arg2 = (void *) 0 ;
-  cipher_PubKey temp1 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
   arg2 = (void *)jarg2; 
   cipher_PubKey_assignTo(arg1,arg2);
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
-  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_cipher_PubKey_data(void * jarg1, void * jarg2) {
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
   GoUint8 *arg2 ;
-  cipher_PubKey temp1 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
   arg2 = (GoUint8 *)jarg2; 
   {
     size_t ii;
     GoUint8 *b = (GoUint8 *) arg1->data;
     for (ii = 0; ii < (size_t)33; ii++) b[ii] = *((GoUint8 *) arg2 + ii);
-  }
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
   }
 }
 
@@ -944,19 +975,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_cipher_PubKey_data(void * jarg1, 
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_cipher_PubKey_data(void * jarg1) {
   void * jresult ;
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint8 *result = 0 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
   result = (GoUint8 *)(GoUint8 *) ((arg1)->data);
   jresult = result; 
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
@@ -973,17 +996,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_cipher_PubKey() {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher_PubKey(void * jarg1) {
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp1 ;
   
-  {
-    //Typemap in *cipher_PubKey
-    arg1 = &temp1; 
-  }
+  arg1 = (cipher_PubKey *)jarg1; 
   free((char *) arg1);
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg1);
-  }
 }
 
 
@@ -1520,21 +1535,13 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cipher_PubKeys_setAt(void * jarg1, int
   cipher_PubKeys *arg1 = (cipher_PubKeys *) 0 ;
   int arg2 ;
   cipher_PubKey *arg3 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp3 ;
   int result;
   
   arg1 = (cipher_PubKeys *)jarg1; 
   arg2 = (int)jarg2; 
-  {
-    //Typemap in *cipher_PubKey
-    arg3 = &temp3; 
-  }
+  arg3 = (cipher_PubKey *)jarg3; 
   result = (int)cipher_PubKeys_setAt(arg1,arg2,arg3);
   jresult = result; 
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg3);
-  }
   return jresult;
 }
 
@@ -1574,18 +1581,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_PubKeys_release(void * jarg1) 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_cipher_PubKeys_data(void * jarg1, void * jarg2) {
   cipher_PubKeys *arg1 = (cipher_PubKeys *) 0 ;
   cipher_PubKey *arg2 = (cipher_PubKey *) 0 ;
-  cipher_PubKey temp2 ;
   
   arg1 = (cipher_PubKeys *)jarg1; 
-  {
-    //Typemap in *cipher_PubKey
-    arg2 = &temp2; 
-  }
+  arg2 = (cipher_PubKey *)jarg2; 
   if (arg1) (arg1)->data = arg2;
-  {
-    //Typemap freearg *cipher_PubKey
-    free(arg2);
-  }
 }
 
 
@@ -2176,7 +2175,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlice(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg1, unsigned long long jarg2, void * jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg1, unsigned long long jarg2, cipher_SecKey* jarg3, void * jarg4, void * jarg5) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   GoUint64 arg2 ;
@@ -2205,24 +2204,16 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SignedBlock_VerifySignature(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SignedBlock_VerifySignature(void * jarg1, cipher_PubKey* jarg2) {
   unsigned int jresult ;
   coin__SignedBlock *arg1 = (coin__SignedBlock *) 0 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   arg1 = (coin__SignedBlock *)jarg1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   result = (GoUint32)SKY_coin_SignedBlock_VerifySignature(arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
@@ -2248,7 +2239,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewGenesisBlock(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2264,7 +2255,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2312,7 +2303,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Seq(void * jar
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2360,7 +2351,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_String(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_GetTransaction(void * jarg1, void * jarg2, void * jarg4) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_GetTransaction(void * jarg1, cipher_SecKey* jarg2, void * jarg4) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2383,7 +2374,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_GetTransaction
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void * jarg1, void * jarg2, unsigned long long jarg3, unsigned long long jarg4, void * jarg5, void * jarg6) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void * jarg1, cipher_SecKey* jarg2, unsigned long long jarg3, unsigned long long jarg4, void * jarg5, void * jarg6) {
   unsigned int jresult ;
   coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2407,7 +2398,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -2449,7 +2440,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_String(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   BlockBody__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -4096,7 +4087,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_CreatedTransaction_To
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionOutput(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_NewCreatedTransactionOutput(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__TransactionOutput *arg1 = (coin__TransactionOutput *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -5738,12 +5729,11 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_RandByte(long long
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewPubKey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewPubKey(void * jarg1, cipher_PubKey* jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
   GoSlice *argp1 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   argp1 = (GoSlice *)jarg1; 
@@ -5752,26 +5742,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewPubKey(void * j
     return 0;
   }
   arg1 = *argp1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   result = (GoUint32)SKY_cipher_NewPubKey(arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromHex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromHex(void * jarg1, cipher_PubKey* jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
   GoString *argp1 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   argp1 = (GoString *)jarg1; 
@@ -5780,131 +5762,84 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromHex(void
     return 0;
   }
   arg1 = *argp1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   result = (GoUint32)SKY_cipher_PubKeyFromHex(arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSecKey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSecKey(cipher_SecKey* jarg1, cipher_PubKey* jarg2) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   arg1 = (cipher__SecKey *)jarg1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   result = (GoUint32)SKY_cipher_PubKeyFromSecKey((GoUint8_ (*)[32])arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSig(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKeyFromSig(void * jarg1, cipher_SecKey* jarg2, cipher_PubKey* jarg3) {
   unsigned int jresult ;
   cipher__Sig *arg1 = (cipher__Sig *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
   cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp3 ;
   GoUint32 result;
   
   arg1 = (cipher__Sig *)jarg1; 
   arg2 = (cipher__SHA256 *)jarg2; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg3 = (cipher_PubKey*)&temp3; 
-  }
+  arg3 = (cipher__PubKey *)jarg3; 
   result = (GoUint32)SKY_cipher_PubKeyFromSig((GoUint8_ (*)[65])arg1,(GoUint8_ (*)[32])arg2,(GoUint8_ (*)[33])arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg3);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Verify(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Verify(cipher_PubKey* jarg1) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   result = (GoUint32)SKY_cipher_PubKey_Verify((GoUint8_ (*)[33])arg1);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Hex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_Hex(cipher_PubKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (GoString_ *)jarg2; 
   result = (GoUint32)SKY_cipher_PubKey_Hex((GoUint8_ (*)[33])arg1,arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_ToAddressHash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_PubKey_ToAddressHash(cipher_PubKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__Ripemd160 *arg2 = (cipher__Ripemd160 *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__Ripemd160 *)jarg2; 
   result = (GoUint32)SKY_cipher_PubKey_ToAddressHash((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[20])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSecKey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSecKey(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
@@ -5924,7 +5859,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_NewSecKey(void * j
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromHex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromHex(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
@@ -5944,7 +5879,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromHex(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Verify(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Verify(cipher_SecKey* jarg1) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   GoUint32 result;
@@ -5956,7 +5891,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Verify(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Hex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Hex(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
@@ -5970,26 +5905,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKey_Hex(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ECDH(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ECDH(cipher_PubKey* jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
   coin__UxArray *arg3 = (coin__UxArray *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__SecKey *)jarg2; 
   arg3 = (coin__UxArray *)jarg3; 
   result = (GoUint32)SKY_cipher_ECDH((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
@@ -6048,7 +5975,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Sig_Hex(void * jar
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SignHash(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SignHash(cipher_SecKey* jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
@@ -6064,7 +5991,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SignHash(void * ja
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ChkSig(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ChkSig(void * jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   cipher__Address *arg1 = (cipher__Address *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -6080,7 +6007,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_ChkSig(void * jarg
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignedHash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignedHash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   cipher__Sig *arg1 = (cipher__Sig *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -6094,37 +6021,28 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignedHash(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignature(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_VerifySignature(cipher_PubKey* jarg1, void * jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__Sig *arg2 = (cipher__Sig *) 0 ;
   cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__Sig *)jarg2; 
   arg3 = (cipher__SHA256 *)jarg3; 
   result = (GoUint32)SKY_cipher_VerifySignature((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[65])arg2,(GoUint8_ (*)[32])arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPair(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterministicKeyPair(void * jarg1, cipher_PubKey* jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   GoSlice arg1 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg3 = (cipher__SecKey *) 0 ;
   GoSlice *argp1 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   argp1 = (GoSlice *)jarg1; 
@@ -6133,29 +6051,21 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterminis
     return 0;
   }
   arg1 = *argp1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   arg3 = (cipher__SecKey *)jarg3; 
   result = (GoUint32)SKY_cipher_GenerateDeterministicKeyPair(arg1,(GoUint8_ (*)[33])arg2,(GoUint8_ (*)[32])arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DeterministicKeyPairIterator(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DeterministicKeyPairIterator(void * jarg1, void * jarg2, cipher_PubKey* jarg3, cipher_SecKey* jarg4) {
   unsigned int jresult ;
   GoSlice arg1 ;
   coin__UxArray *arg2 = (coin__UxArray *) 0 ;
   cipher__PubKey *arg3 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg4 = (cipher__SecKey *) 0 ;
   GoSlice *argp1 ;
-  cipher_PubKey temp3 ;
   GoUint32 result;
   
   argp1 = (GoSlice *)jarg1; 
@@ -6165,17 +6075,10 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DeterministicKeyPa
   }
   arg1 = *argp1; 
   arg2 = (coin__UxArray *)jarg2; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg3 = (cipher_PubKey*)&temp3; 
-  }
+  arg3 = (cipher__PubKey *)jarg3; 
   arg4 = (cipher__SecKey *)jarg4; 
   result = (GoUint32)SKY_cipher_DeterministicKeyPairIterator(arg1,arg2,(GoUint8_ (*)[33])arg3,(GoUint8_ (*)[32])arg4);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg3);
-  }
   return jresult;
 }
 
@@ -6226,7 +6129,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateDeterminis
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKey(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKey(cipher_SecKey* jarg1) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   GoUint32 result;
@@ -6238,7 +6141,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKey(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKeyHash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKeyHash(cipher_SecKey* jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -6252,24 +6155,16 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_TestSecKeyHash(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateKeyPair(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_GenerateKeyPair(cipher_PubKey* jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__SecKey *)jarg2; 
   result = (GoUint32)SKY_cipher_GenerateKeyPair((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
@@ -6898,50 +6793,34 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateAddresses(vo
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetSkycoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetSkycoinWalletEntry(cipher_PubKey* jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
   ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__SecKey *)jarg2; 
   arg3 = (ReadableEntry__Handle *)jarg3; 
   result = (GoUint32)SKY_wallet_GetSkycoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetBitcoinWalletEntry(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_GetBitcoinWalletEntry(cipher_PubKey* jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
   ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__SecKey *)jarg2; 
   arg3 = (ReadableEntry__Handle *)jarg3; 
   result = (GoUint32)SKY_wallet_GetBitcoinWalletEntry((GoUint8_ (*)[33])arg1,(GoUint8_ (*)[32])arg2,arg3);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
@@ -7397,29 +7276,21 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromBytes(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromPubKey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromPubKey(cipher_PubKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   cipher__Address *arg2 = (cipher__Address *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (cipher__Address *)jarg2; 
   result = (GoUint32)SKY_cipher_AddressFromPubKey((GoUint8_ (*)[33])arg1,arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromSecKey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddressFromSecKey(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   cipher__Address *arg2 = (cipher__Address *) 0 ;
@@ -7495,24 +7366,16 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinByt
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Verify(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_Verify(void * jarg1, cipher_PubKey* jarg2) {
   unsigned int jresult ;
   cipher__Address *arg1 = (cipher__Address *) 0 ;
   cipher__PubKey *arg2 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp2 ;
   GoUint32 result;
   
   arg1 = (cipher__Address *)jarg1; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg2 = (cipher_PubKey*)&temp2; 
-  }
+  arg2 = (cipher__PubKey *)jarg2; 
   result = (GoUint32)SKY_cipher_Address_Verify(arg1,(GoUint8_ (*)[33])arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg2);
-  }
   return jresult;
 }
 
@@ -7573,29 +7436,21 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Address_BitcoinChe
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromPubkey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFromPubkey(cipher_PubKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__PubKey *arg1 = (cipher__PubKey *) 0 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
-  cipher_PubKey temp1 ;
   GoUint32 result;
   
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg1 = (cipher_PubKey*)&temp1; 
-  }
+  arg1 = (cipher__PubKey *)jarg1; 
   arg2 = (GoString_ *)jarg2; 
   result = (GoUint32)SKY_cipher_BitcoinAddressFromPubkey((GoUint8_ (*)[33])arg1,arg2);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg1);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinWalletImportFormatFromSeckey(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinWalletImportFormatFromSeckey(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SecKey *arg1 = (cipher__SecKey *) 0 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
@@ -7629,7 +7484,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_BitcoinAddressFrom
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromWalletImportFormat(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SecKeyFromWalletImportFormat(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
   cipher__SecKey *arg2 = (cipher__SecKey *) 0 ;
@@ -7946,13 +7801,12 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Handle_Client_GetWall
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Handle_WalletGetEntry(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Handle_WalletGetEntry(void * jarg1, unsigned int jarg2, void * jarg3, cipher_PubKey* jarg4) {
   unsigned int jresult ;
   Wallet__Handle arg1 ;
   GoUint32 arg2 ;
   cipher__Address *arg3 = (cipher__Address *) 0 ;
   cipher__PubKey *arg4 = (cipher__PubKey *) 0 ;
-  cipher_PubKey temp4 ;
   GoUint32 result;
   
   {
@@ -7960,16 +7814,9 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_api_Handle_WalletGetEntry
   }
   arg2 = (GoUint32)jarg2; 
   arg3 = (cipher__Address *)jarg3; 
-  {
-    //Typemap in *GoUint8_ (*)[33] is cipher_PubKey
-    arg4 = (cipher_PubKey*)&temp4; 
-  }
+  arg4 = (cipher__PubKey *)jarg4; 
   result = (GoUint32)SKY_api_Handle_WalletGetEntry(arg1,arg2,arg3,(GoUint8_ (*)[33])arg4);
   jresult = result; 
-  {
-    //Typemap freearg *GoUint8_ (*)[33] is cipher_PubKey
-    free(arg4);
-  }
   return jresult;
 }
 
@@ -8286,7 +8133,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_secp256k1go_Number_IsEqua
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_Hash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_Hash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__UxOut *arg1 = (coin__UxOut *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -8300,7 +8147,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_Hash(void * ja
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_SnapshotHash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_SnapshotHash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__UxOut *arg1 = (coin__UxOut *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -8314,7 +8161,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxOut_SnapshotHash(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxBody_Hash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_UxBody_Hash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__UxBody *arg1 = (coin__UxBody *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10234,7 +10081,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_HashRipemd160(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Set(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Set(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   GoSlice arg2 ;
@@ -10254,7 +10101,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Set(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Hex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Hex(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   GoString_ *arg2 = (GoString_ *) 0 ;
@@ -10268,7 +10115,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Hex(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Xor(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Xor(cipher_SecKey* jarg1, cipher_SecKey* jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10284,7 +10131,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Xor(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SumSHA256(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SumSHA256(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10304,7 +10151,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SumSHA256(void * j
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256FromHex(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256FromHex(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10324,7 +10171,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256FromHex(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DoubleSHA256(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DoubleSHA256(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10344,7 +10191,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_DoubleSHA256(void 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddSHA256(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddSHA256(cipher_SecKey* jarg1, cipher_SecKey* jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10360,7 +10207,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_AddSHA256(void * j
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Merkle(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Merkle(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   GoSlice *arg1 = (GoSlice *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10374,7 +10221,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_Merkle(void * jarg
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Null(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SHA256_Null(cipher_SecKey* jarg1, void * jarg2) {
   unsigned int jresult ;
   cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
   GoUint8 *arg2 = (GoUint8 *) 0 ;
@@ -10470,7 +10317,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_GetInput
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_GetInputAt(void * jarg1, long long jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_GetInputAt(void * jarg1, long long jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   GoInt arg2 ;
@@ -10488,7 +10335,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_GetInput
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_SetInputAt(void * jarg1, long long jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_SetInputAt(void * jarg1, long long jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   GoInt arg2 ;
@@ -10688,7 +10535,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_VerifyIn
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInput(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInput(void * jarg1, cipher_SecKey* jarg2, void * jarg3) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10706,7 +10553,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInpu
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_TransactionOutput_UxID(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_TransactionOutput_UxID(void * jarg1, cipher_SecKey* jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   coin__TransactionOutput *arg1 = (coin__TransactionOutput *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10780,7 +10627,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_Size(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_Hash(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_Hash(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -10796,7 +10643,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_Hash(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_SizeHash(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_SizeHash(void * jarg1, void * jarg2, cipher_SecKey* jarg3) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   GoInt *arg2 = (GoInt *) 0 ;
@@ -10860,7 +10707,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_UpdateHe
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_HashInner(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_HashInner(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
