@@ -90,17 +90,15 @@ public class skycoin {
   }
 
   public static uint SKY_coin_NewBlock(SWIGTYPE_p_GoInt64_ p0, ulong p1, cipher_SecKey p2, SWIGTYPE_p_GoInt64_ p3, SWIGTYPE_p_FeeCalculator p4) {
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_NewBlock(SWIGTYPE_p_GoInt64_.getCPtr(p0), p1, tmpp2, SWIGTYPE_p_GoInt64_.getCPtr(p3), SWIGTYPE_p_FeeCalculator.getCPtr(p4));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_coin_SignedBlock_VerifySignature(coin__SignedBlock p0, cipher_PubKey p1) {
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
+var tmpp1 = cipher_PubKey.getCPtr (p1);
     {
       uint ret = skycoinPINVOKE.SKY_coin_SignedBlock_VerifySignature(coin__SignedBlock.getCPtr(p0), tmpp1);
       return ret;
@@ -113,22 +111,18 @@ cipher_PubKey tmpp1 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_coin_Block_HashHeader(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Block_HashHeader(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_Block_PreHashHeader(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Block_PreHashHeader(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -143,12 +137,10 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_coin_Block_HashBody(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Block_HashBody(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -163,32 +155,26 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_coin_Block_GetTransaction(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1, SWIGTYPE_p_unsigned_char p3) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Block_GetTransaction(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1, SWIGTYPE_p_unsigned_char.getCPtr(p3));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_NewBlockHeader(coin__BlockHeader p0, cipher_SecKey p1, ulong p2, ulong p3, SWIGTYPE_p_GoInt64_ p4, coin__BlockHeader p5) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_NewBlockHeader(coin__BlockHeader.getCPtr(p0), tmpp1, p2, p3, SWIGTYPE_p_GoInt64_.getCPtr(p4), coin__BlockHeader.getCPtr(p5));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_BlockHeader_Hash(coin__BlockHeader p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_BlockHeader_Hash(coin__BlockHeader.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -203,12 +189,10 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_coin_BlockBody_Hash(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_BlockBody_Hash(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -620,12 +604,10 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_api_NewCreatedTransactionOutput(coin__TransactionOutput p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_api_NewCreatedTransactionOutput(coin__TransactionOutput.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -1083,7 +1065,7 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_cipher_NewPubKey(GoSlice p0, cipher_PubKey p1) {
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
+var tmpp1 = cipher_PubKey.getCPtr (p1);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_NewPubKey(GoSlice.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
@@ -1092,7 +1074,7 @@ cipher_PubKey tmpp1 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_PubKeyFromHex(_GoString_ p0, cipher_PubKey p1) {
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
+var tmpp1 = cipher_PubKey.getCPtr (p1);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromHex(_GoString_.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
@@ -1101,29 +1083,25 @@ cipher_PubKey tmpp1 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_PubKeyFromSecKey(cipher_SecKey p0, cipher_PubKey p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+var tmpp1 = cipher_PubKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSecKey(tmpp0, tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_PubKeyFromSig(SWIGTYPE_p_a_65__GoUint8_ p0, cipher_SecKey p1, cipher_PubKey p2) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-cipher_PubKey tmpp2 = new_cipher_PubKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+var tmpp2 = cipher_PubKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSig(SWIGTYPE_p_a_65__GoUint8_.getCPtr(p0), tmpp1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_PubKey_Verify(cipher_PubKey p0) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
+var tmpp0 = cipher_PubKey.getCPtr (p0);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKey_Verify(tmpp0);
       return ret;
@@ -1131,7 +1109,7 @@ cipher_PubKey tmpp0 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_PubKey_Hex(cipher_PubKey p0, SWIGTYPE_p_GoString_ p1) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
+var tmpp0 = cipher_PubKey.getCPtr (p0);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKey_Hex(tmpp0, SWIGTYPE_p_GoString_.getCPtr(p1));
       return ret;
@@ -1139,7 +1117,7 @@ cipher_PubKey tmpp0 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_PubKey_ToAddressHash(cipher_PubKey p0, SWIGTYPE_p_a_20__GoUint8_ p1) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
+var tmpp0 = cipher_PubKey.getCPtr (p0);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_PubKey_ToAddressHash(tmpp0, SWIGTYPE_p_a_20__GoUint8_.getCPtr(p1));
       return ret;
@@ -1147,55 +1125,45 @@ cipher_PubKey tmpp0 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_NewSecKey(GoSlice p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_NewSecKey(GoSlice.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_SecKeyFromHex(_GoString_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SecKeyFromHex(_GoString_.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_SecKey_Verify(cipher_SecKey p0) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SecKey_Verify(tmpp0);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_SecKey_Hex(cipher_SecKey p0, SWIGTYPE_p_GoString_ p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SecKey_Hex(tmpp0, SWIGTYPE_p_GoString_.getCPtr(p1));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_ECDH(cipher_PubKey p0, cipher_SecKey p1, SWIGTYPE_p_GoSlice_ p2) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_PubKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_ECDH(tmpp0, tmpp1, SWIGTYPE_p_GoSlice_.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -1217,69 +1185,56 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_cipher_SignHash(cipher_SecKey p0, cipher_SecKey p1, SWIGTYPE_p_a_65__GoUint8_ p2) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SignHash(tmpp0, tmpp1, SWIGTYPE_p_a_65__GoUint8_.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_ChkSig(cipher__Address p0, cipher_SecKey p1, SWIGTYPE_p_a_65__GoUint8_ p2) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_ChkSig(cipher__Address.getCPtr(p0), tmpp1, SWIGTYPE_p_a_65__GoUint8_.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_VerifySignedHash(SWIGTYPE_p_a_65__GoUint8_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_VerifySignedHash(SWIGTYPE_p_a_65__GoUint8_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_VerifySignature(cipher_PubKey p0, SWIGTYPE_p_a_65__GoUint8_ p1, cipher_SecKey p2) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_PubKey.getCPtr (p0);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature(tmpp0, SWIGTYPE_p_a_65__GoUint8_.getCPtr(p1), tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_cipher_GenerateDeterministicKeyPair(GoSlice p0, cipher_PubKey p1, cipher_SecKey p2) {
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_PubKey.getCPtr (p1);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_GenerateDeterministicKeyPair(GoSlice.getCPtr(p0), tmpp1, tmpp2);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_cipher_DeterministicKeyPairIterator(GoSlice p0, SWIGTYPE_p_GoSlice_ p1, cipher_PubKey p2, cipher_SecKey p3) {
-cipher_PubKey tmpp2 = new_cipher_PubKeyp();
-cipher_SecKey tmpp3 = new_cipher_SecKeyp();
-    try {
+var tmpp2 = cipher_PubKey.getCPtr (p2);
+var tmpp3 = cipher_SecKey.getCPtr (p3);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_DeterministicKeyPairIterator(GoSlice.getCPtr(p0), SWIGTYPE_p_GoSlice_.getCPtr(p1), tmpp2, tmpp3);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp3);
     }
   }
 
@@ -1296,35 +1251,28 @@ delete_cipher_SecKeyp(tmpp3);
   }
 
   public static uint SKY_cipher_TestSecKey(cipher_SecKey p0) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_TestSecKey(tmpp0);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_TestSecKeyHash(cipher_SecKey p0, cipher_SecKey p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_TestSecKeyHash(tmpp0, tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_GenerateKeyPair(cipher_PubKey p0, cipher_SecKey p1) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_PubKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_GenerateKeyPair(tmpp0, tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -1509,24 +1457,20 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_wallet_GetSkycoinWalletEntry(cipher_PubKey p0, cipher_SecKey p1, SWIGTYPE_p_ReadableEntry__Handle p2) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_PubKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_wallet_GetSkycoinWalletEntry(tmpp0, tmpp1, SWIGTYPE_p_ReadableEntry__Handle.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_wallet_GetBitcoinWalletEntry(cipher_PubKey p0, cipher_SecKey p1, SWIGTYPE_p_ReadableEntry__Handle p2) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_PubKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_wallet_GetBitcoinWalletEntry(tmpp0, tmpp1, SWIGTYPE_p_ReadableEntry__Handle.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -1674,7 +1618,7 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_cipher_AddressFromPubKey(cipher_PubKey p0, cipher__Address p1) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
+var tmpp0 = cipher_PubKey.getCPtr (p0);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_AddressFromPubKey(tmpp0, cipher__Address.getCPtr(p1));
       return ret;
@@ -1682,12 +1626,10 @@ cipher_PubKey tmpp0 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_AddressFromSecKey(cipher_SecKey p0, cipher__Address p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_AddressFromSecKey(tmpp0, cipher__Address.getCPtr(p1));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
@@ -1713,7 +1655,7 @@ delete_cipher_SecKeyp(tmpp0);
   }
 
   public static uint SKY_cipher_Address_Verify(cipher__Address p0, cipher_PubKey p1) {
-cipher_PubKey tmpp1 = new_cipher_PubKeyp();
+var tmpp1 = cipher_PubKey.getCPtr (p1);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_Address_Verify(cipher__Address.getCPtr(p0), tmpp1);
       return ret;
@@ -1741,7 +1683,7 @@ cipher_PubKey tmpp1 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_BitcoinAddressFromPubkey(cipher_PubKey p0, SWIGTYPE_p_GoString_ p1) {
-cipher_PubKey tmpp0 = new_cipher_PubKeyp();
+var tmpp0 = cipher_PubKey.getCPtr (p0);
     {
       uint ret = skycoinPINVOKE.SKY_cipher_BitcoinAddressFromPubkey(tmpp0, SWIGTYPE_p_GoString_.getCPtr(p1));
       return ret;
@@ -1749,12 +1691,10 @@ cipher_PubKey tmpp0 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_cipher_BitcoinWalletImportFormatFromSeckey(cipher_SecKey p0, SWIGTYPE_p_GoString_ p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_BitcoinWalletImportFormatFromSeckey(tmpp0, SWIGTYPE_p_GoString_.getCPtr(p1));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
@@ -1765,13 +1705,11 @@ delete_cipher_SecKeyp(tmpp0);
   }
 
   public static uint SKY_cipher_SecKeyFromWalletImportFormat(_GoString_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SecKeyFromWalletImportFormat(_GoString_.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -1866,7 +1804,7 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_api_Handle_WalletGetEntry(SWIGTYPE_p_GoInt64_ p0, uint p1, cipher__Address p2, cipher_PubKey p3) {
-cipher_PubKey tmpp3 = new_cipher_PubKeyp();
+var tmpp3 = cipher_PubKey.getCPtr (p3);
     {
       uint ret = skycoinPINVOKE.SKY_api_Handle_WalletGetEntry(SWIGTYPE_p_GoInt64_.getCPtr(p0), p1, cipher__Address.getCPtr(p2), tmpp3);
       return ret;
@@ -1963,32 +1901,26 @@ cipher_PubKey tmpp3 = new_cipher_PubKeyp();
   }
 
   public static uint SKY_coin_UxOut_Hash(coin__UxOut p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_UxOut_Hash(coin__UxOut.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_UxOut_SnapshotHash(coin__UxOut p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_UxOut_SnapshotHash(coin__UxOut.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_UxBody_Hash(coin__UxBody p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_UxBody_Hash(coin__UxBody.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
@@ -2490,104 +2422,82 @@ delete_cipher_SecKeyp(tmpp1);
   }
 
   public static uint SKY_cipher_SHA256_Set(cipher_SecKey p0, GoSlice p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Set(tmpp0, GoSlice.getCPtr(p1));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_SHA256_Hex(cipher_SecKey p0, SWIGTYPE_p_GoString_ p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Hex(tmpp0, SWIGTYPE_p_GoString_.getCPtr(p1));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
   public static uint SKY_cipher_SHA256_Xor(cipher_SecKey p0, cipher_SecKey p1, cipher_SecKey p2) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Xor(tmpp0, tmpp1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
-delete_cipher_SecKeyp(tmpp1);
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_cipher_SumSHA256(GoSlice p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SumSHA256(GoSlice.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_SHA256FromHex(_GoString_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SHA256FromHex(_GoString_.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_DoubleSHA256(GoSlice p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_DoubleSHA256(GoSlice.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_AddSHA256(cipher_SecKey p0, cipher_SecKey p1, cipher_SecKey p2) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_AddSHA256(tmpp0, tmpp1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
-delete_cipher_SecKeyp(tmpp1);
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_cipher_Merkle(GoSlice p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_Merkle(GoSlice.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_cipher_SHA256_Null(cipher_SecKey p0, SWIGTYPE_p_unsigned_char p1) {
-cipher_SecKey tmpp0 = new_cipher_SecKeyp();
-    try {
+var tmpp0 = cipher_SecKey.getCPtr (p0);
+    {
       uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Null(tmpp0, SWIGTYPE_p_unsigned_char.getCPtr(p1));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp0);
     }
   }
 
@@ -2617,22 +2527,18 @@ delete_cipher_SecKeyp(tmpp0);
   }
 
   public static uint SKY_coin_Transaction_GetInputAt(SWIGTYPE_p_GoInt64_ p0, long p1, cipher_SecKey p2) {
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_GetInputAt(SWIGTYPE_p_GoInt64_.getCPtr(p0), p1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
   public static uint SKY_coin_Transaction_SetInputAt(SWIGTYPE_p_GoInt64_ p0, long p1, cipher_SecKey p2) {
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_SetInputAt(SWIGTYPE_p_GoInt64_.getCPtr(p0), p1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
@@ -2692,24 +2598,19 @@ delete_cipher_SecKeyp(tmpp2);
   }
 
   public static uint SKY_coin_Transaction_PushInput(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1, SWIGTYPE_p_unsigned_short p2) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_PushInput(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1, SWIGTYPE_p_unsigned_short.getCPtr(p2));
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_TransactionOutput_UxID(coin__TransactionOutput p0, cipher_SecKey p1, cipher_SecKey p2) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_TransactionOutput_UxID(coin__TransactionOutput.getCPtr(p0), tmpp1, tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
@@ -2730,22 +2631,18 @@ delete_cipher_SecKeyp(tmpp2);
   }
 
   public static uint SKY_coin_Transaction_Hash(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_Hash(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
   public static uint SKY_coin_Transaction_SizeHash(SWIGTYPE_p_GoInt64_ p0, SWIGTYPE_p_long_long p1, cipher_SecKey p2) {
-cipher_SecKey tmpp2 = new_cipher_SecKeyp();
-    try {
+var tmpp2 = cipher_SecKey.getCPtr (p2);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_SizeHash(SWIGTYPE_p_GoInt64_.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1), tmpp2);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp2);
     }
   }
 
@@ -2765,12 +2662,10 @@ delete_cipher_SecKeyp(tmpp2);
   }
 
   public static uint SKY_coin_Transaction_HashInner(SWIGTYPE_p_GoInt64_ p0, cipher_SecKey p1) {
-cipher_SecKey tmpp1 = new_cipher_SecKeyp();
-    try {
+var tmpp1 = cipher_SecKey.getCPtr (p1);
+    {
       uint ret = skycoinPINVOKE.SKY_coin_Transaction_HashInner(SWIGTYPE_p_GoInt64_.getCPtr(p0), tmpp1);
       return ret;
-    } finally {
-delete_cipher_SecKeyp(tmpp1);
     }
   }
 
