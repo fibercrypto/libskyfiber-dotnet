@@ -42,6 +42,7 @@ build-swig:
 			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
 		fi \
 	}
+	rm -rf LibskycoinNet/skycoin
 	mkdir -p ./LibskycoinNet/skycoin
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/skycoin.i
 	
