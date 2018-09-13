@@ -570,13 +570,13 @@ class skycoinPINVOKE {
   public static extern void delete_GoSlice(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewBlock")]
-  public static extern uint SKY_coin_NewBlock(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern uint SKY_coin_NewBlock(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_SignedBlock_VerifySignature")]
   public static extern uint SKY_coin_SignedBlock_VerifySignature(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewGenesisBlock")]
-  public static extern uint SKY_coin_NewGenesisBlock(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3);
+  public static extern uint SKY_coin_NewGenesisBlock(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Block_HashHeader")]
   public static extern uint SKY_coin_Block_HashHeader(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -600,7 +600,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_Block_String(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Block_GetTransaction")]
-  public static extern uint SKY_coin_Block_GetTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern uint SKY_coin_Block_GetTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewBlockHeader")]
   public static extern uint SKY_coin_NewBlockHeader(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, ulong jarg3, ulong jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
@@ -618,7 +618,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_BlockBody_Hash(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_BlockBody_Size")]
-  public static extern uint SKY_coin_BlockBody_Size(global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_coin_BlockBody_Size(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_BlockBody_Bytes")]
   public static extern uint SKY_coin_BlockBody_Bytes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -633,10 +633,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_GetBlockObject(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_GetBlockBody")]
-  public static extern uint SKY_coin_GetBlockBody(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_coin_GetBlockBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewEmptyBlock")]
-  public static extern uint SKY_coin_NewEmptyBlock(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_coin_NewEmptyBlock(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_bip39_NewDefaultMnemomic")]
   public static extern uint SKY_bip39_NewDefaultMnemomic(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -660,46 +660,46 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_Client_CSRF(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Version")]
-  public static extern uint SKY_api_Client_Version(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_Version(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Outputs")]
-  public static extern uint SKY_api_Client_Outputs(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_Outputs(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_OutputsForAddresses")]
-  public static extern uint SKY_api_Client_OutputsForAddresses(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_OutputsForAddresses(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_OutputsForHashes")]
-  public static extern uint SKY_api_Client_OutputsForHashes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_OutputsForHashes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_CoinSupply")]
-  public static extern uint SKY_api_Client_CoinSupply(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_CoinSupply(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_BlockByHash")]
-  public static extern uint SKY_api_Client_BlockByHash(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_BlockByHash(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_BlockBySeq")]
-  public static extern uint SKY_api_Client_BlockBySeq(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2);
+  public static extern uint SKY_api_Client_BlockBySeq(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Blocks")]
-  public static extern uint SKY_api_Client_Blocks(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3);
+  public static extern uint SKY_api_Client_Blocks(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_LastBlocks")]
-  public static extern uint SKY_api_Client_LastBlocks(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2);
+  public static extern uint SKY_api_Client_LastBlocks(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_BlockchainMetadata")]
-  public static extern uint SKY_api_Client_BlockchainMetadata(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_BlockchainMetadata(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_BlockchainProgress")]
-  public static extern uint SKY_api_Client_BlockchainProgress(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_BlockchainProgress(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Balance")]
   public static extern uint SKY_api_Client_Balance(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_UxOut")]
-  public static extern uint SKY_api_Client_UxOut(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_UxOut(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_AddressUxOuts")]
-  public static extern uint SKY_api_Client_AddressUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_AddressUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Wallet")]
   public static extern uint SKY_api_Client_Wallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -720,16 +720,16 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_Client_WalletBalance(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Spend")]
-  public static extern uint SKY_api_Client_Spend(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, ulong jarg4, string jarg5);
+  public static extern uint SKY_api_Client_Spend(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, ulong jarg4, string jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_CreateTransaction")]
-  public static extern uint SKY_api_Client_CreateTransaction(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_CreateTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_UpdateWallet")]
   public static extern uint SKY_api_Client_UpdateWallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_WalletFolderName")]
-  public static extern uint SKY_api_Client_WalletFolderName(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_WalletFolderName(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NewSeed")]
   public static extern uint SKY_api_Client_NewSeed(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -738,49 +738,49 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_Client_GetWalletSeed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NetworkConnection")]
-  public static extern uint SKY_api_Client_NetworkConnection(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_NetworkConnection(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NetworkConnections")]
-  public static extern uint SKY_api_Client_NetworkConnections(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_NetworkConnections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NetworkDefaultConnections")]
-  public static extern uint SKY_api_Client_NetworkDefaultConnections(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_NetworkDefaultConnections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NetworkTrustedConnections")]
-  public static extern uint SKY_api_Client_NetworkTrustedConnections(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_NetworkTrustedConnections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_NetworkExchangeableConnections")]
-  public static extern uint SKY_api_Client_NetworkExchangeableConnections(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_NetworkExchangeableConnections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_PendingTransactions")]
-  public static extern uint SKY_api_Client_PendingTransactions(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_PendingTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Transaction")]
-  public static extern uint SKY_api_Client_Transaction(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_Transaction(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Transactions")]
-  public static extern uint SKY_api_Client_Transactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_Transactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_ConfirmedTransactions")]
-  public static extern uint SKY_api_Client_ConfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_ConfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_UnconfirmedTransactions")]
-  public static extern uint SKY_api_Client_UnconfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_UnconfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_InjectTransaction")]
   public static extern uint SKY_api_Client_InjectTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_ResendUnconfirmedTransactions")]
-  public static extern uint SKY_api_Client_ResendUnconfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_ResendUnconfirmedTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_RawTransaction")]
   public static extern uint SKY_api_Client_RawTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_AddressTransactions")]
-  public static extern uint SKY_api_Client_AddressTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_api_Client_AddressTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Richlist")]
-  public static extern uint SKY_api_Client_Richlist(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_Client_Richlist(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_AddressCount")]
   public static extern uint SKY_api_Client_AddressCount(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -789,7 +789,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_Client_UnloadWallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_Health")]
-  public static extern uint SKY_api_Client_Health(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_Client_Health(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_Client_EncryptWallet")]
   public static extern uint SKY_api_Client_EncryptWallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
@@ -834,34 +834,34 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_NewWalletResponse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_NewCreateTransactionResponse")]
-  public static extern uint SKY_api_NewCreateTransactionResponse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_NewCreateTransactionResponse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_NewCreatedTransaction")]
-  public static extern uint SKY_api_NewCreatedTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_NewCreatedTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_CreatedTransaction_ToTransaction")]
-  public static extern uint SKY_api_CreatedTransaction_ToTransaction(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_CreatedTransaction_ToTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_NewCreatedTransactionOutput")]
-  public static extern uint SKY_api_NewCreatedTransactionOutput(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_api_NewCreatedTransactionOutput(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_api_NewCreatedTransactionInput")]
-  public static extern uint SKY_api_NewCreatedTransactionInput(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_api_NewCreatedTransactionInput(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_NewError")]
   public static extern uint SKY_wallet_NewError(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_NewWallet")]
-  public static extern uint SKY_wallet_NewWallet(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_wallet_NewWallet(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_Wallet_Lock")]
   public static extern uint SKY_wallet_Wallet_Lock(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, string jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_Wallet_Unlock")]
-  public static extern uint SKY_wallet_Wallet_Unlock(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_wallet_Wallet_Unlock(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_Load")]
-  public static extern uint SKY_wallet_Load(string jarg1);
+  public static extern uint SKY_wallet_Load(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_Wallet_Save")]
   public static extern uint SKY_wallet_Wallet_Save(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
@@ -915,10 +915,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_wallet_ChooseSpendsMaximizeUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_CheckWalletBalance")]
-  public static extern uint SKY_cli_CheckWalletBalance(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_cli_CheckWalletBalance(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_GetBalanceOfAddresses")]
-  public static extern uint SKY_cli_GetBalanceOfAddresses(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_cli_GetBalanceOfAddresses(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_NewReadableEntry")]
   public static extern uint SKY_wallet_NewReadableEntry(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -999,13 +999,13 @@ class skycoinPINVOKE {
   public static extern uint SKY_base58_Hex2Base58Str(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_GenerateWallet")]
-  public static extern uint SKY_cli_GenerateWallet(string jarg1, ulong jarg3);
+  public static extern uint SKY_cli_GenerateWallet(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, ulong jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_MakeAlphanumericSeed")]
   public static extern uint SKY_cli_MakeAlphanumericSeed(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_webrpc_NewClient")]
-  public static extern uint SKY_webrpc_NewClient(string jarg1);
+  public static extern uint SKY_webrpc_NewClient(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_webrpc_Client_CSRF")]
   public static extern uint SKY_webrpc_Client_CSRF(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1014,10 +1014,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_webrpc_Client_InjectTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_webrpc_Client_GetStatus")]
-  public static extern uint SKY_webrpc_Client_GetStatus(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_webrpc_Client_GetStatus(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_webrpc_Client_GetTransactionByID")]
-  public static extern uint SKY_webrpc_Client_GetTransactionByID(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  public static extern uint SKY_webrpc_Client_GetTransactionByID(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_webrpc_Client_GetAddressUxOuts")]
   public static extern uint SKY_webrpc_Client_GetAddressUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -1167,13 +1167,13 @@ class skycoinPINVOKE {
   public static extern uint SKY_cipher_GenerateKeyPair(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Signature_Create")]
-  public static extern uint SKY_secp256k1go_Signature_Create();
+  public static extern uint SKY_secp256k1go_Signature_Create(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Signature_GetR")]
-  public static extern uint SKY_secp256k1go_Signature_GetR(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_secp256k1go_Signature_GetR(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Signature_GetS")]
-  public static extern uint SKY_secp256k1go_Signature_GetS(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_secp256k1go_Signature_GetS(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Signature_Print")]
   public static extern uint SKY_secp256k1go_Signature_Print(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
@@ -1203,7 +1203,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_cli_Config_GetRPCAddress(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_RPCClientFromApp")]
-  public static extern uint SKY_cli_RPCClientFromApp(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_cli_RPCClientFromApp(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_Getenv")]
   public static extern uint SKY_cli_Getenv(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1329,7 +1329,7 @@ class skycoinPINVOKE {
   public static extern void SKY_handle_close(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_handle_copy")]
-  public static extern uint SKY_handle_copy(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_handle_copy(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_logging_EnableColors")]
   public static extern uint SKY_logging_EnableColors();
@@ -1416,7 +1416,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_Handle_Block_GetPreviousBlockHash(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_Handle_Blocks_GetAt")]
-  public static extern uint SKY_Handle_Blocks_GetAt(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2);
+  public static extern uint SKY_Handle_Blocks_GetAt(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_Handle_Blocks_GetCount")]
   public static extern uint SKY_Handle_Blocks_GetCount(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1485,7 +1485,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_api_Handle_GetBuildInfoData(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_ripemd160_New")]
-  public static extern uint SKY_ripemd160_New();
+  public static extern uint SKY_ripemd160_New(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_ripemd160_Write")]
   public static extern uint SKY_ripemd160_Write(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -1494,7 +1494,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_ripemd160_Sum(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Number_Create")]
-  public static extern uint SKY_secp256k1go_Number_Create();
+  public static extern uint SKY_secp256k1go_Number_Create(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_secp256k1go_Number_Print")]
   public static extern uint SKY_secp256k1go_Number_Print(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
@@ -1551,7 +1551,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_UxArray_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewAddressUxOuts")]
-  public static extern uint SKY_coin_NewAddressUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_coin_NewAddressUxOuts(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_AddressUxOuts_Keys")]
   public static extern uint SKY_coin_AddressUxOuts_Keys(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1560,10 +1560,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_AddressUxOuts_Flatten(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_AddressUxOuts_Sub")]
-  public static extern uint SKY_coin_AddressUxOuts_Sub(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_coin_AddressUxOuts_Sub(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_AddressUxOuts_Add")]
-  public static extern uint SKY_coin_AddressUxOuts_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_coin_AddressUxOuts_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_AddressUxOuts_Get")]
   public static extern uint SKY_coin_AddressUxOuts_Get(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -1587,7 +1587,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_encrypt_ScryptChacha20poly1305_Decrypt(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_wallet_CreateOptionsHandle")]
-  public static extern uint SKY_wallet_CreateOptionsHandle(string jarg1, string jarg2, string jarg3, byte jarg4, string jarg5, string jarg6, ulong jarg7);
+  public static extern uint SKY_wallet_CreateOptionsHandle(string jarg1, string jarg2, string jarg3, byte jarg4, string jarg5, string jarg6, ulong jarg7, global::System.Runtime.InteropServices.HandleRef jarg8);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_AddPrivateKey")]
   public static extern uint SKY_cli_AddPrivateKey(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
@@ -1671,7 +1671,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_fee_TransactionFee(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_LoadConfig")]
-  public static extern uint SKY_cli_LoadConfig();
+  public static extern uint SKY_cli_LoadConfig(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_Config_FullWalletPath")]
   public static extern uint SKY_cli_Config_FullWalletPath(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1683,10 +1683,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_cli_NewApp(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_RPCClientFromContext")]
-  public static extern uint SKY_cli_RPCClientFromContext(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_cli_RPCClientFromContext(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_ConfigFromContext")]
-  public static extern uint SKY_cli_ConfigFromContext(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_cli_ConfigFromContext(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_PasswordFromBytes_Password")]
   public static extern uint SKY_cli_PasswordFromBytes_Password(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1695,16 +1695,16 @@ class skycoinPINVOKE {
   public static extern uint SKY_cli_PasswordFromTerm_Password(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_CreateRawTxFromWallet")]
-  public static extern uint SKY_cli_CreateRawTxFromWallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern uint SKY_cli_CreateRawTxFromWallet(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_CreateRawTxFromAddress")]
-  public static extern uint SKY_cli_CreateRawTxFromAddress(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, string jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern uint SKY_cli_CreateRawTxFromAddress(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, string jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_CreateRawTx")]
-  public static extern uint SKY_cli_CreateRawTx(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, string jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern uint SKY_cli_CreateRawTx(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, string jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_NewTransaction")]
-  public static extern uint SKY_cli_NewTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern uint SKY_cli_NewTransaction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_file_InitDataDir")]
   public static extern uint SKY_file_InitDataDir(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1722,7 +1722,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_cli_GetWalletOutputsFromFile(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cli_GetWalletOutputs")]
-  public static extern uint SKY_cli_GetWalletOutputs(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern uint SKY_cli_GetWalletOutputs(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_testutil_MakeAddress")]
   public static extern uint SKY_testutil_MakeAddress(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -1821,10 +1821,10 @@ class skycoinPINVOKE {
   public static extern uint SKY_cipher_SHA256_Null(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Create_Transaction")]
-  public static extern uint SKY_coin_Create_Transaction();
+  public static extern uint SKY_coin_Create_Transaction(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transaction_Copy")]
-  public static extern uint SKY_coin_Transaction_Copy(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_coin_Transaction_Copy(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_GetTransactionObject")]
   public static extern uint SKY_coin_GetTransactionObject(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1911,13 +1911,13 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_Transaction_Serialize(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_TransactionDeserialize")]
-  public static extern uint SKY_coin_TransactionDeserialize(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern uint SKY_coin_TransactionDeserialize(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transaction_OutputHours")]
   public static extern uint SKY_coin_Transaction_OutputHours(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Create_Transactions")]
-  public static extern uint SKY_coin_Create_Transactions();
+  public static extern uint SKY_coin_Create_Transactions(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_GetTransactionsObject")]
   public static extern uint SKY_coin_GetTransactionsObject(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1932,7 +1932,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_Transactions_Fees(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transactions_GetAt")]
-  public static extern uint SKY_coin_Transactions_GetAt(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+  public static extern uint SKY_coin_Transactions_GetAt(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transactions_Hashes")]
   public static extern uint SKY_coin_Transactions_Hashes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -1941,13 +1941,13 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_Transactions_Size(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transactions_TruncateBytesTo")]
-  public static extern uint SKY_coin_Transactions_TruncateBytesTo(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+  public static extern uint SKY_coin_Transactions_TruncateBytesTo(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_SortTransactions")]
-  public static extern uint SKY_coin_SortTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_coin_SortTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_NewSortableTransactions")]
-  public static extern uint SKY_coin_NewSortableTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern uint SKY_coin_NewSortableTransactions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_SortableTransactions_Sort")]
   public static extern uint SKY_coin_SortableTransactions_Sort(global::System.Runtime.InteropServices.HandleRef jarg1);

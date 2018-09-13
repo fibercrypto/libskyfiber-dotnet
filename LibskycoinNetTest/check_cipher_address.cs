@@ -30,6 +30,9 @@ namespace LibskycoinNetTest {
             var sa = new skycoin._GoString_ ();
             err = skycoin.skycoin.SKY_cipher_Address_String (a, sa);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var b = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_Address_Bytes (a, b);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
         }
     }
 }
