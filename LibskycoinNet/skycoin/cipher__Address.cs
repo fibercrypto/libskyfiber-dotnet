@@ -45,6 +45,15 @@ public class cipher__Address : global::System.IDisposable {
     return ret;
   }
 
+  public char getVersion() {
+    char ret = skycoinPINVOKE.cipher__Address_getVersion(swigCPtr);
+    return ret;
+  }
+
+  public void setVersion(char pValue) {
+    skycoinPINVOKE.cipher__Address_setVersion(swigCPtr, pValue);
+  }
+
   public SWIGTYPE_p_GoUint8_ Version {
     set {
       skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
