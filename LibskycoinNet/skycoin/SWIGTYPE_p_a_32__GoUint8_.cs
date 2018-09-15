@@ -10,18 +10,18 @@
 
 namespace skycoin {
 
-public class SWIGTYPE_p_GoUint16_ {
+public class SWIGTYPE_p_a_32__GoUint8_ {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SWIGTYPE_p_GoUint16_(global::System.IntPtr cPtr, bool futureUse) {
+  internal SWIGTYPE_p_a_32__GoUint8_(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  protected SWIGTYPE_p_GoUint16_() {
+  protected SWIGTYPE_p_a_32__GoUint8_() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_GoUint16_ obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_a_32__GoUint8_ obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }

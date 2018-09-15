@@ -35,138 +35,22 @@ public class skycoin {
     return ret;
   }
 
-  public static cipher_PubKey new_cipher_PubKeyp() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_cipher_PubKeyp();
-    cipher_PubKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_PubKey(cPtr, false);
-    return ret;
-  }
-
-  public static cipher_PubKey copy_cipher_PubKeyp(cipher_PubKey value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_cipher_PubKeyp(cipher_PubKey.getCPtr(value));
-    cipher_PubKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_PubKey(cPtr, false);
+  public static uint SKY_cipher_SumSHA256(GoSlice seed, cipher_SHA256 sha) {
+    uint ret = skycoinPINVOKE.SKY_cipher_SumSHA256__SWIG_0(GoSlice.getCPtr(seed), cipher_SHA256.getCPtr(sha));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static void delete_cipher_PubKeyp(cipher_PubKey obj) {
-    skycoinPINVOKE.delete_cipher_PubKeyp(cipher_PubKey.getCPtr(obj));
+  public static uint SKY_cipher_SignHash(cipher_SHA256 sha, cipher_SecKey sec, cipher_Sig s) {
+var tmpsec = cipher_SecKey.getCPtr (sec);
+    {
+      uint ret = skycoinPINVOKE.SKY_cipher_SignHash__SWIG_0(cipher_SHA256.getCPtr(sha), tmpsec, cipher_Sig.getCPtr(s));
+      return ret;
+    }
   }
 
-  public static void cipher_PubKeyp_assign(cipher_PubKey obj, cipher_PubKey value) {
-    skycoinPINVOKE.cipher_PubKeyp_assign(cipher_PubKey.getCPtr(obj), cipher_PubKey.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public static cipher_PubKey cipher_PubKeyp_value(cipher_PubKey obj) {
-    cipher_PubKey ret = new cipher_PubKey(skycoinPINVOKE.cipher_PubKeyp_value(cipher_PubKey.getCPtr(obj)), true);
-    return ret;
-  }
-
-  public static cipher_SecKey new_cipher_SecKeyp() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_cipher_SecKeyp();
-    cipher_SecKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_SecKey(cPtr, false);
-    return ret;
-  }
-
-  public static cipher_SecKey copy_cipher_SecKeyp(cipher_SecKey value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_cipher_SecKeyp(cipher_SecKey.getCPtr(value));
-    cipher_SecKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_SecKey(cPtr, false);
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static void delete_cipher_SecKeyp(cipher_SecKey obj) {
-    skycoinPINVOKE.delete_cipher_SecKeyp(cipher_SecKey.getCPtr(obj));
-  }
-
-  public static void cipher_SecKeyp_assign(cipher_SecKey obj, cipher_SecKey value) {
-    skycoinPINVOKE.cipher_SecKeyp_assign(cipher_SecKey.getCPtr(obj), cipher_SecKey.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public static cipher_SecKey cipher_SecKeyp_value(cipher_SecKey obj) {
-    cipher_SecKey ret = new cipher_SecKey(skycoinPINVOKE.cipher_SecKeyp_value(cipher_SecKey.getCPtr(obj)), true);
-    return ret;
-  }
-
-  public static cipher_Sig new_cipher_Sigp() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_cipher_Sigp();
-    cipher_Sig ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_Sig(cPtr, false);
-    return ret;
-  }
-
-  public static cipher_Sig copy_cipher_Sigp(cipher_Sig value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_cipher_Sigp(cipher_Sig.getCPtr(value));
-    cipher_Sig ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_Sig(cPtr, false);
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static void delete_cipher_Sigp(cipher_Sig obj) {
-    skycoinPINVOKE.delete_cipher_Sigp(cipher_Sig.getCPtr(obj));
-  }
-
-  public static void cipher_Sigp_assign(cipher_Sig obj, cipher_Sig value) {
-    skycoinPINVOKE.cipher_Sigp_assign(cipher_Sig.getCPtr(obj), cipher_Sig.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public static cipher_Sig cipher_Sigp_value(cipher_Sig obj) {
-    cipher_Sig ret = new cipher_Sig(skycoinPINVOKE.cipher_Sigp_value(cipher_Sig.getCPtr(obj)), true);
-    return ret;
-  }
-
-  public static GoSlice new_GoSlicep() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_GoSlicep();
-    GoSlice ret = (cPtr == global::System.IntPtr.Zero) ? null : new GoSlice(cPtr, false);
-    return ret;
-  }
-
-  public static GoSlice copy_GoSlicep(GoSlice value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_GoSlicep(GoSlice.getCPtr(value));
-    GoSlice ret = (cPtr == global::System.IntPtr.Zero) ? null : new GoSlice(cPtr, false);
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static void delete_GoSlicep(GoSlice obj) {
-    skycoinPINVOKE.delete_GoSlicep(GoSlice.getCPtr(obj));
-  }
-
-  public static void GoSlicep_assign(GoSlice obj, GoSlice value) {
-    skycoinPINVOKE.GoSlicep_assign(GoSlice.getCPtr(obj), GoSlice.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public static GoSlice GoSlicep_value(GoSlice obj) {
-    GoSlice ret = new GoSlice(skycoinPINVOKE.GoSlicep_value(GoSlice.getCPtr(obj)), true);
-    return ret;
-  }
-
-  public static SWIGTYPE_p_GoString_ new_GoStringp_() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_GoStringp_();
-    SWIGTYPE_p_GoString_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoString_(cPtr, false);
-    return ret;
-  }
-
-  public static SWIGTYPE_p_GoString_ copy_GoStringp_(SWIGTYPE_p_GoString_ value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_GoStringp_(SWIGTYPE_p_GoString_.getCPtr(value));
-    SWIGTYPE_p_GoString_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoString_(cPtr, false);
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static void delete_GoStringp_(SWIGTYPE_p_GoString_ obj) {
-    skycoinPINVOKE.delete_GoStringp_(SWIGTYPE_p_GoString_.getCPtr(obj));
-  }
-
-  public static void GoStringp__assign(SWIGTYPE_p_GoString_ obj, SWIGTYPE_p_GoString_ value) {
-    skycoinPINVOKE.GoStringp__assign(SWIGTYPE_p_GoString_.getCPtr(obj), SWIGTYPE_p_GoString_.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public static SWIGTYPE_p_GoString_ GoStringp__value(SWIGTYPE_p_GoString_ obj) {
-    SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.GoStringp__value(SWIGTYPE_p_GoString_.getCPtr(obj)), true);
+  public static uint SKY_cipher_ChkSig(cipher__Address a, cipher_SHA256 sha, cipher_Sig s) {
+    uint ret = skycoinPINVOKE.SKY_cipher_ChkSig__SWIG_0(cipher__Address.getCPtr(a), cipher_SHA256.getCPtr(sha), cipher_Sig.getCPtr(s));
     return ret;
   }
 
@@ -1555,7 +1439,7 @@ var tmpp0 = cipher_SecKey.getCPtr (p0);
 var tmpp1 = cipher_SecKey.getCPtr (p1);
 var tmpp2 = cipher_Sig.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_SignHash(tmpp0, tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_SignHash__SWIG_1(tmpp0, tmpp1, tmpp2);
       return ret;
     }
   }
@@ -1564,7 +1448,7 @@ var tmpp2 = cipher_Sig.getCPtr (p2);
 var tmpp1 = cipher_SecKey.getCPtr (p1);
 var tmpp2 = cipher_Sig.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_ChkSig(cipher__Address.getCPtr(p0), tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_ChkSig__SWIG_1(cipher__Address.getCPtr(p0), tmpp1, tmpp2);
       return ret;
     }
   }
@@ -3138,7 +3022,7 @@ var tmpp2 = cipher_SecKey.getCPtr (p2);
   public static uint SKY_cipher_SumSHA256(GoSlice p0, cipher_SecKey p1) {
 var tmpp1 = cipher_SecKey.getCPtr (p1);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_SumSHA256(GoSlice.getCPtr(p0), tmpp1);
+      uint ret = skycoinPINVOKE.SKY_cipher_SumSHA256__SWIG_1(GoSlice.getCPtr(p0), tmpp1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     }

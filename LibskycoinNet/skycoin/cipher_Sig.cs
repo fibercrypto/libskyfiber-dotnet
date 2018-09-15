@@ -53,6 +53,11 @@ public class cipher_Sig : global::System.IDisposable {
     skycoinPINVOKE.cipher_Sig_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
   }
 
+  public GoSlice toGoSlice() {
+    GoSlice ret = new GoSlice(skycoinPINVOKE.cipher_Sig_toGoSlice(swigCPtr), true);
+    return ret;
+  }
+
   public SWIGTYPE_p_unsigned_char data {
     set {
       skycoinPINVOKE.set_cipher_Sig_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));

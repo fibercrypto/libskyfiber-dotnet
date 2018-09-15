@@ -153,7 +153,7 @@ namespace LibskycoinNetTest {
             err = skycoin.skycoin.SKY_cipher_Address_Verify (a, p);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             // Invalid pubkey
-            err = skycoin.skycoin.SKY_cipher_Address_Verify (a, skycoin.skycoin.new_cipher_PubKeyp ());
+            err = skycoin.skycoin.SKY_cipher_Address_Verify (a, new skycoin.cipher_PubKey());
             Assert.AreEqual (err, skycoin.skycoin.SKY_ErrAddressInvalidPubKey);
             var p2 = new skycoin.cipher_PubKey ();
             var s2 = new skycoin.cipher_SecKey ();

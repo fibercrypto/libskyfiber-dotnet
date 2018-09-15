@@ -40,6 +40,11 @@ public class GoSlice : global::System.IDisposable {
     }
   }
 
+  public int isEqual(GoSlice slice) {
+    int ret = skycoinPINVOKE.GoSlice_isEqual(swigCPtr, GoSlice.getCPtr(slice));
+    return ret;
+  }
+
   public SWIGTYPE_p_void data {
     set {
       skycoinPINVOKE.set_GoSlice_data(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
