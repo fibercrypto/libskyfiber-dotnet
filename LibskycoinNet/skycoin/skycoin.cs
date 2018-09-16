@@ -54,6 +54,21 @@ var tmpsec = cipher_SecKey.getCPtr (sec);
     return ret;
   }
 
+  public static uint SKY_cipher_PubKeyFromSig(cipher_Sig sig, cipher_SHA256 h, cipher_PubKey p) {
+    uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSig__SWIG_0(cipher_Sig.getCPtr(sig), cipher_SHA256.getCPtr(h), cipher_PubKey.getCPtr(p));
+    return ret;
+  }
+
+  public static uint SKY_cipher_VerifySignature(cipher_PubKey p, cipher_Sig sig, cipher_SHA256 h) {
+    uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature__SWIG_0(cipher_PubKey.getCPtr(p), cipher_Sig.getCPtr(sig), cipher_SHA256.getCPtr(h));
+    return ret;
+  }
+
+  public static uint SKY_cipher_TestSecKeyHash(cipher_SecKey s, cipher_SHA256 h) {
+    uint ret = skycoinPINVOKE.SKY_cipher_TestSecKeyHash__SWIG_0(cipher_SecKey.getCPtr(s), cipher_SHA256.getCPtr(h));
+    return ret;
+  }
+
   public static uint SKY_coin_NewBlock(SWIGTYPE_p_Block__Handle p0, ulong p1, cipher_SecKey p2, SWIGTYPE_p_Transactions__Handle p3, SWIGTYPE_p_FeeCalculator p4, SWIGTYPE_p_Block__Handle p5) {
 var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
@@ -1331,7 +1346,7 @@ var tmpp0 = cipher_Sig.getCPtr (p0);
 var tmpp1 = cipher_SecKey.getCPtr (p1);
 var tmpp2 = cipher_PubKey.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSig(tmpp0, tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSig__SWIG_1(tmpp0, tmpp1, tmpp2);
       return ret;
     }
   }
@@ -1467,7 +1482,7 @@ var tmpp0 = cipher_PubKey.getCPtr (p0);
 var tmpp1 = cipher_Sig.getCPtr (p1);
 var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature(tmpp0, tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature__SWIG_1(tmpp0, tmpp1, tmpp2);
       return ret;
     }
   }
@@ -1524,7 +1539,7 @@ var tmpp0 = cipher_SecKey.getCPtr (p0);
 var tmpp0 = cipher_SecKey.getCPtr (p0);
 var tmpp1 = cipher_SecKey.getCPtr (p1);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_TestSecKeyHash(tmpp0, tmpp1);
+      uint ret = skycoinPINVOKE.SKY_cipher_TestSecKeyHash__SWIG_1(tmpp0, tmpp1);
       return ret;
     }
   }

@@ -354,5 +354,158 @@ namespace LibskycoinNetTest {
             err = skycoin.skycoin.SKY_cipher_ChkSig (a, h, sig);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
         }
+
+        [Test]
+        public void TestPubKeyFromSecKey () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            var p1 = new cipher_PubKey ();
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (s, p1);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (p1.isEqual (p), 1);
+            p1 = new cipher_PubKey ();
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (new cipher_SecKey (), p1);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyFromNullSecKey);
+            var b = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (99, b);
+            s = new cipher_SecKey ();
+            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (s, p);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyFromNullSecKey);
+            b = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (33, b);
+            s = new cipher_SecKey ();
+            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (s, p);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyFromNullSecKey);
+
+        }
+
+        [Test]
+        public void TestPubKeyFromSig () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var b = new GoSlice ();
+            var h = new cipher_SHA256 ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+            var sig = new cipher_Sig ();
+            err = skycoin.skycoin.SKY_cipher_SignHash (h, s, sig);
+            var p2 = new cipher_PubKey ();
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSig (sig, h, p2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (p2.isEqual (p), 1);
+            p2 = new cipher_PubKey ();
+            err = skycoin.skycoin.SKY_cipher_PubKeyFromSig (new cipher_Sig (), h, p2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSigForPubKey);
+        }
+
+        [Test]
+        public void TestVerifySignature () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var b = new GoSlice ();
+            var h = new cipher_SHA256 ();
+            var h2 = new cipher_SHA256 ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+            b = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h2);
+            var sig = new cipher_Sig ();
+            err = skycoin.skycoin.SKY_cipher_SignHash (h, s, sig);
+            err = skycoin.skycoin.SKY_cipher_VerifySignature (p, sig, h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_VerifySignature (p, new cipher_Sig (), h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSigForPubKey);
+            err = skycoin.skycoin.SKY_cipher_VerifySignature (p, sig, h2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyRecoverMismatch);
+            var p2 = new cipher_PubKey ();
+            var s2 = new cipher_SecKey ();
+            err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p2, s2);
+            err = skycoin.skycoin.SKY_cipher_VerifySignature (p2, sig, h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyRecoverMismatch);
+            err = skycoin.skycoin.SKY_cipher_VerifySignature (new cipher_PubKey (), sig, h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyRecoverMismatch);
+        }
+
+        [Test]
+        public void TestGenerateKeyPair () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+        }
+
+        [Test]
+        public void TestGenerateDeterministicKeyPair () {
+            // TODO -- deterministic key pairs are useless as is because we can't
+            // generate pair n+1, only pair 0
+            var seed = new GoSlice ();
+            var err = skycoin.skycoin.SKY_cipher_RandByte (32, seed);
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
+            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            p = new cipher_PubKey ();
+            s = new cipher_SecKey ();
+            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
+            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+        }
+
+        [Test]
+        public void TestSecKeTest () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            err = skycoin.skycoin.SKY_cipher_TestSecKey (s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_TestSecKey (new cipher_SecKey ());
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSecKyVerification);
+        }
+
+        [Test]
+        public void TestSecKeyHashTest () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            var b = new GoSlice ();
+            var h = new cipher_SHA256 ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+            err = skycoin.skycoin.SKY_cipher_TestSecKeyHash (s, h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_TestSecKeyHash (new cipher_SecKey (), h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSecKyVerification);
+        }
+
+        [Test]
+        public void TestGenerateDeterministicKeyPairsUsesAllBytes () {
+            // Tests that if a seed >128 bits is used, the generator does not ignore bits >128
+            var seed = new GoSlice ();
+            seed.convertString ("property diet little foster provide disagree witness mountain alley weekend kitten general");
+            var seckeys = new GoSlice ();
+            var err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var seckeys2 = new GoSlice ();
+            seed.len = 16;
+            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (seckeys.isEqual (seckeys2), 0);
+        }
     }
 }
