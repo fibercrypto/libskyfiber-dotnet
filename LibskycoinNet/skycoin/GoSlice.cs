@@ -45,8 +45,14 @@ public class GoSlice : global::System.IDisposable {
     return ret;
   }
 
-  public void convertString(string data) {
-    skycoinPINVOKE.GoSlice_convertString(swigCPtr, data);
+  public void convertString(_GoString_ data) {
+    skycoinPINVOKE.GoSlice_convertString(swigCPtr, _GoString_.getCPtr(data));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public string toString() {
+    string ret = skycoinPINVOKE.GoSlice_toString(swigCPtr);
+    return ret;
   }
 
   public SWIGTYPE_p_void data {

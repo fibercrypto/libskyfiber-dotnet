@@ -40,50 +40,42 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_GoInt_ N {
+  public int N {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_N(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_N(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoInt_ R {
+  public int R {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_R(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_R(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoInt_ P {
+  public int P {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_P(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_P(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoInt_ KeyLen {
+  public int KeyLen {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr);
       return ret;
     } 
   }

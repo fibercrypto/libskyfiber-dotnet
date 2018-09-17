@@ -497,7 +497,10 @@ namespace LibskycoinNetTest {
         public void TestGenerateDeterministicKeyPairsUsesAllBytes () {
             // Tests that if a seed >128 bits is used, the generator does not ignore bits >128
             var seed = new GoSlice ();
-            seed.convertString ("property diet little foster provide disagree witness mountain alley weekend kitten general");
+            var seedText = "property diet little foster provide disagree witness mountain alley weekend kitten general";
+            var seedStr = new _GoString_ ();
+            seedStr.p = seedText;
+            seed.convertString (seedStr);
             var seckeys = new GoSlice ();
             var err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
