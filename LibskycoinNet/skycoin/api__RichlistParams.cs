@@ -40,12 +40,12 @@ public class api__RichlistParams : global::System.IDisposable {
     }
   }
 
-  public int N {
+  public long N {
     set {
       skycoinPINVOKE.set_api__RichlistParams_N(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_api__RichlistParams_N(swigCPtr);
+      long ret = skycoinPINVOKE.get_api__RichlistParams_N(swigCPtr);
       return ret;
     } 
   }

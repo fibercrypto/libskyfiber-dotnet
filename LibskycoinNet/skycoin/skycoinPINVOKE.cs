@@ -236,6 +236,9 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_parseJsonMetaData")]
   public static extern void parseJsonMetaData(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_cutSlice")]
+  public static extern int cutSlice(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cipher_SumSHA256__SWIG_0")]
   public static extern uint SKY_cipher_SumSHA256__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
@@ -579,7 +582,7 @@ class skycoinPINVOKE {
   public static extern void GoSlice_convertString(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_GoSlice_toString")]
-  public static extern string GoSlice_toString(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr GoSlice_toString(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_GoSlice_data")]
   public static extern void set_GoSlice_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -2061,28 +2064,28 @@ class skycoinPINVOKE {
   public static extern void delete_encoder__StructField(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_N")]
-  public static extern void set_encrypt__ScryptChacha20poly1305_N(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  public static extern void set_encrypt__ScryptChacha20poly1305_N(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_N")]
-  public static extern int get_encrypt__ScryptChacha20poly1305_N(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern long get_encrypt__ScryptChacha20poly1305_N(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_R")]
-  public static extern void set_encrypt__ScryptChacha20poly1305_R(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  public static extern void set_encrypt__ScryptChacha20poly1305_R(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_R")]
-  public static extern int get_encrypt__ScryptChacha20poly1305_R(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern long get_encrypt__ScryptChacha20poly1305_R(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_P")]
-  public static extern void set_encrypt__ScryptChacha20poly1305_P(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  public static extern void set_encrypt__ScryptChacha20poly1305_P(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_P")]
-  public static extern int get_encrypt__ScryptChacha20poly1305_P(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern long get_encrypt__ScryptChacha20poly1305_P(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_KeyLen")]
-  public static extern void set_encrypt__ScryptChacha20poly1305_KeyLen(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  public static extern void set_encrypt__ScryptChacha20poly1305_KeyLen(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_KeyLen")]
-  public static extern int get_encrypt__ScryptChacha20poly1305_KeyLen(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern long get_encrypt__ScryptChacha20poly1305_KeyLen(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_new_encrypt__ScryptChacha20poly1305")]
   public static extern global::System.IntPtr new_encrypt__ScryptChacha20poly1305();
@@ -2532,10 +2535,10 @@ class skycoinPINVOKE {
   public static extern void delete_wallet__UxBalance(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_api__RichlistParams_N")]
-  public static extern void set_api__RichlistParams_N(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  public static extern void set_api__RichlistParams_N(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_api__RichlistParams_N")]
-  public static extern int get_api__RichlistParams_N(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern long get_api__RichlistParams_N(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_api__RichlistParams_IncludeDistribution")]
   public static extern void set_api__RichlistParams_IncludeDistribution(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -3046,6 +3049,27 @@ class skycoinPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubkeysLength")]
   public static extern int get_SKY_ErrVerifySignatureInvalidPubkeysLength();
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64_int")]
+  public static extern int b64_int(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64e_size")]
+  public static extern uint b64e_size(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64d_size")]
+  public static extern uint b64d_size(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64_encode")]
+  public static extern uint b64_encode(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64_decode")]
+  public static extern int b64_decode(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64_encodef")]
+  public static extern uint b64_encodef(string jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_b64_decodef")]
+  public static extern int b64_decodef(string jarg1, string jarg2);
 }
 
 }

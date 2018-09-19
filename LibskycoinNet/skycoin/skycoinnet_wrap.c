@@ -278,6 +278,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_skycoin(SWIG_CSharpString
 	#define SWIG_FILE_WITH_INIT
 	#include "libskycoin.h"
 	#include "swig.h"
+	#include "base64.h"
 
 
 	void destroy_cipher_SecKeys(cipher_SecKeys* p){
@@ -441,6 +442,23 @@ static int intp_value(int *obj) {
 			startNumber = -1;
 		}
 	}
+}
+
+int cutSlice(GoSlice_* slice, int start, int end, int elem_size, GoSlice_* result){
+	int size = end - start;
+	if( size <= 0)
+		return 1;
+	void* data = malloc(size * elem_size);
+	if( data == NULL )
+		return 1;
+	registerMemCleanup( data );
+	result->data = data;
+	result->len = size;
+	result->cap = size;
+	char* p = slice->data;
+	p += (elem_size * start);
+	memcpy( data, p, elem_size * size );
+	return 0;
 }
     
 
@@ -654,8 +672,11 @@ SWIGINTERN void GoSlice_convertString(GoSlice *self,_GoString_ data){
 		self->len = strlen(data.p);
 		self->cap = self->len;
 	}
-SWIGINTERN char *GoSlice_toString(GoSlice *self){
-		return (char *)self->data;
+SWIGINTERN _GoString_ GoSlice_toString(GoSlice *self){
+		_GoString_ data;
+		data.p = (char *)self->data; 
+		data.n = self->len; 
+		return data;
 	}
 SWIGINTERN int cipher__Address_isEqual(cipher__Address *self,cipher__Address *a){
 		if( self->Version == a->Version ){
@@ -895,6 +916,26 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_parseJsonMetaData(char * jarg1, void 
   arg4 = (int *)jarg4; 
   arg5 = (int *)jarg5; 
   parseJsonMetaData(arg1,arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cutSlice(void * jarg1, int jarg2, int jarg3, int jarg4, void * jarg5) {
+  int jresult ;
+  GoSlice_ *arg1 = (GoSlice_ *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  GoSlice_ *arg5 = (GoSlice_ *) 0 ;
+  int result;
+  
+  arg1 = (GoSlice_ *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (GoSlice_ *)jarg5; 
+  result = (int)cutSlice(arg1,arg2,arg3,arg4,arg5);
+  jresult = result; 
+  return jresult;
 }
 
 
@@ -2223,14 +2264,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlice_convertString(void * jarg1, v
 }
 
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_skycoin_GoSlice_toString(void * jarg1) {
-  char * jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlice_toString(void * jarg1) {
+  void * jresult ;
   GoSlice *arg1 = (GoSlice *) 0 ;
-  char *result = 0 ;
+  _GoString_ result;
   
   arg1 = (GoSlice *)jarg1; 
-  result = (char *)GoSlice_toString(arg1);
-  jresult = SWIG_csharp_string_callback((const char *)result); 
+  result = GoSlice_toString(arg1);
+  {
+    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
+    memmove(resultptr, &result, sizeof(_GoString_));
+    jresult = resultptr;
+  }
   return jresult;
 }
 
@@ -10869,7 +10914,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_encoder__StructField(void * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_N(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_N(void * jarg1, long long jarg2) {
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ arg2 ;
   
@@ -10879,8 +10924,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_N
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_N(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_N(void * jarg1) {
+  long long jresult ;
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ result;
   
@@ -10891,7 +10936,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_N(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_R(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_R(void * jarg1, long long jarg2) {
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ arg2 ;
   
@@ -10901,8 +10946,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_R
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_R(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_R(void * jarg1) {
+  long long jresult ;
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ result;
   
@@ -10913,7 +10958,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_R(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_P(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_P(void * jarg1, long long jarg2) {
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ arg2 ;
   
@@ -10923,8 +10968,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_P
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_P(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_P(void * jarg1) {
+  long long jresult ;
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ result;
   
@@ -10935,7 +10980,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_P(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_KeyLen(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_KeyLen(void * jarg1, long long jarg2) {
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ arg2 ;
   
@@ -10945,8 +10990,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encrypt__ScryptChacha20poly1305_K
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_KeyLen(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_encrypt__ScryptChacha20poly1305_KeyLen(void * jarg1) {
+  long long jresult ;
   encrypt__ScryptChacha20poly1305 *arg1 = (encrypt__ScryptChacha20poly1305 *) 0 ;
   GoInt_ result;
   
@@ -12845,7 +12890,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_wallet__UxBalance(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_api__RichlistParams_N(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_api__RichlistParams_N(void * jarg1, long long jarg2) {
   api__RichlistParams *arg1 = (api__RichlistParams *) 0 ;
   GoInt_ arg2 ;
   
@@ -12855,8 +12900,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_api__RichlistParams_N(void * jarg
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_api__RichlistParams_N(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_api__RichlistParams_N(void * jarg1) {
+  long long jresult ;
   api__RichlistParams *arg1 = (api__RichlistParams *) 0 ;
   GoInt_ result;
   
@@ -14594,6 +14639,102 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubke
   int result;
   
   result = (int)(0X0b000036);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_int(unsigned int jarg1) {
+  int jresult ;
+  unsigned int arg1 ;
+  int result;
+  
+  arg1 = (unsigned int)jarg1; 
+  result = (int)b64_int(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64e_size(unsigned int jarg1) {
+  unsigned int jresult ;
+  unsigned int arg1 ;
+  unsigned int result;
+  
+  arg1 = (unsigned int)jarg1; 
+  result = (unsigned int)b64e_size(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64d_size(unsigned int jarg1) {
+  unsigned int jresult ;
+  unsigned int arg1 ;
+  unsigned int result;
+  
+  arg1 = (unsigned int)jarg1; 
+  result = (unsigned int)b64d_size(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64_encode(void * jarg1, unsigned int jarg2, void * jarg3) {
+  unsigned int jresult ;
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  unsigned int arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  unsigned int result;
+  
+  arg1 = (unsigned char *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned char *)jarg3; 
+  result = (unsigned int)b64_encode((unsigned char const *)arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_decode(void * jarg1, unsigned int jarg2, void * jarg3) {
+  int jresult ;
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  unsigned int arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  int result;
+  
+  arg1 = (unsigned char *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned char *)jarg3; 
+  result = (int)b64_decode((unsigned char const *)arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64_encodef(char * jarg1, char * jarg2) {
+  unsigned int jresult ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int result;
+  
+  arg1 = (char *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (unsigned int)b64_encodef(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_decodef(char * jarg1, char * jarg2) {
+  int jresult ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  arg1 = (char *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (int)b64_decodef(arg1,arg2);
   jresult = result; 
   return jresult;
 }

@@ -91,6 +91,11 @@ public class skycoin {
     skycoinPINVOKE.parseJsonMetaData(metadata, SWIGTYPE_p_int.getCPtr(n), SWIGTYPE_p_int.getCPtr(r), SWIGTYPE_p_int.getCPtr(p), SWIGTYPE_p_int.getCPtr(keyLen));
   }
 
+  public static int cutSlice(SWIGTYPE_p_GoSlice_ slice, int start, int end, int elem_size, SWIGTYPE_p_GoSlice_ result) {
+    int ret = skycoinPINVOKE.cutSlice(SWIGTYPE_p_GoSlice_.getCPtr(slice), start, end, elem_size, SWIGTYPE_p_GoSlice_.getCPtr(result));
+    return ret;
+  }
+
   public static uint SKY_cipher_SumSHA256(GoSlice seed, cipher_SHA256 sha) {
     uint ret = skycoinPINVOKE.SKY_cipher_SumSHA256__SWIG_0(GoSlice.getCPtr(seed), cipher_SHA256.getCPtr(sha));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
@@ -3182,6 +3187,41 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
 
   public static uint SKY_coin_VerifyTransactionHoursSpending(ulong p0, GoSlice p1, GoSlice p2) {
     uint ret = skycoinPINVOKE.SKY_coin_VerifyTransactionHoursSpending(p0, GoSlice.getCPtr (p1), GoSlice.getCPtr (p2));
+    return ret;
+  }
+
+  public static int b64_int(uint ch) {
+    int ret = skycoinPINVOKE.b64_int(ch);
+    return ret;
+  }
+
+  public static uint b64e_size(uint in_size) {
+    uint ret = skycoinPINVOKE.b64e_size(in_size);
+    return ret;
+  }
+
+  public static uint b64d_size(uint in_size) {
+    uint ret = skycoinPINVOKE.b64d_size(in_size);
+    return ret;
+  }
+
+  public static uint b64_encode(SWIGTYPE_p_unsigned_char arg0, uint in_len, SWIGTYPE_p_unsigned_char arg2) {
+    uint ret = skycoinPINVOKE.b64_encode(SWIGTYPE_p_unsigned_char.getCPtr(arg0), in_len, SWIGTYPE_p_unsigned_char.getCPtr(arg2));
+    return ret;
+  }
+
+  public static int b64_decode(SWIGTYPE_p_unsigned_char arg0, uint in_len, SWIGTYPE_p_unsigned_char arg2) {
+    int ret = skycoinPINVOKE.b64_decode(SWIGTYPE_p_unsigned_char.getCPtr(arg0), in_len, SWIGTYPE_p_unsigned_char.getCPtr(arg2));
+    return ret;
+  }
+
+  public static uint b64_encodef(string InFile, string OutFile) {
+    uint ret = skycoinPINVOKE.b64_encodef(InFile, OutFile);
+    return ret;
+  }
+
+  public static int b64_decodef(string InFile, string OutFile) {
+    int ret = skycoinPINVOKE.b64_decodef(InFile, OutFile);
     return ret;
   }
 

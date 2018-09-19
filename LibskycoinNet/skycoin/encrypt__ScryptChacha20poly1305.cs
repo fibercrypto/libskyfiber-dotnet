@@ -40,42 +40,42 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
     }
   }
 
-  public int N {
+  public long N {
     set {
       skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_N(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr);
+      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr);
       return ret;
     } 
   }
 
-  public int R {
+  public long R {
     set {
       skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_R(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr);
+      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr);
       return ret;
     } 
   }
 
-  public int P {
+  public long P {
     set {
       skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_P(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr);
+      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr);
       return ret;
     } 
   }
 
-  public int KeyLen {
+  public long KeyLen {
     set {
       skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr);
+      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr);
       return ret;
     } 
   }
