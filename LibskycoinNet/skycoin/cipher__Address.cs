@@ -54,12 +54,14 @@ public class cipher__Address : global::System.IDisposable {
     skycoinPINVOKE.cipher__Address_setVersion(swigCPtr, pValue);
   }
 
-  public char Version {
+  public SWIGTYPE_p_GoUint8_ Version {
     set {
-      skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, value);
+      skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      char ret = skycoinPINVOKE.get_cipher__Address_Version(swigCPtr);
+      SWIGTYPE_p_GoUint8_ ret = new SWIGTYPE_p_GoUint8_(skycoinPINVOKE.get_cipher__Address_Version(swigCPtr), true);
+      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }

@@ -130,6 +130,28 @@ var tmpsec = cipher_SecKey.getCPtr (sec);
     return ret;
   }
 
+  public static uint SKY_cipher_SHA256_Set(cipher_SHA256 h, GoSlice s) {
+    uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Set__SWIG_0(cipher_SHA256.getCPtr(h), GoSlice.getCPtr(s));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static uint SKY_cipher_SHA256_Hex(cipher_SHA256 h, _GoString_ s) {
+var tmps = _GoString_.getCPtr (s);
+    {
+      uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Hex__SWIG_0(cipher_SHA256.getCPtr(h), tmps);
+      return ret;
+    }
+  }
+
+  public static uint SKY_cipher_SHA256FromHex(string s, cipher_SHA256 h) {
+var tmps = s;
+    {
+      uint ret = skycoinPINVOKE.SKY_cipher_SHA256FromHex__SWIG_0(tmps, cipher_SHA256.getCPtr(h));
+      return ret;
+    }
+  }
+
   public static uint SKY_coin_NewBlock(SWIGTYPE_p_Block__Handle p0, ulong p1, cipher_SecKey p2, SWIGTYPE_p_Transactions__Handle p3, SWIGTYPE_p_FeeCalculator p4, SWIGTYPE_p_Block__Handle p5) {
 var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
@@ -2827,7 +2849,7 @@ var tmpp1 = cipher_Ripemd160.getCPtr (p1);
   public static uint SKY_cipher_SHA256_Set(cipher_SecKey p0, GoSlice p1) {
 var tmpp0 = cipher_SecKey.getCPtr (p0);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Set(tmpp0, GoSlice.getCPtr(p1));
+      uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Set__SWIG_1(tmpp0, GoSlice.getCPtr(p1));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     }
@@ -2837,7 +2859,7 @@ var tmpp0 = cipher_SecKey.getCPtr (p0);
 var tmpp0 = cipher_SecKey.getCPtr (p0);
 var tmpp1 = _GoString_.getCPtr (p1);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Hex(tmpp0, tmpp1);
+      uint ret = skycoinPINVOKE.SKY_cipher_SHA256_Hex__SWIG_1(tmpp0, tmpp1);
       return ret;
     }
   }
@@ -2865,7 +2887,7 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
 var tmpp0 = p0;
 var tmpp1 = cipher_SecKey.getCPtr (p1);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_SHA256FromHex(tmpp0, tmpp1);
+      uint ret = skycoinPINVOKE.SKY_cipher_SHA256FromHex__SWIG_1(tmpp0, tmpp1);
       return ret;
     }
   }
