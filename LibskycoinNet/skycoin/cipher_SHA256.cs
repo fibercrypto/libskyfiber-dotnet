@@ -53,6 +53,11 @@ public class cipher_SHA256 : global::System.IDisposable {
     skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
   }
 
+  public _GoString_ getStr() {
+    _GoString_ ret = new _GoString_(skycoinPINVOKE.cipher_SHA256_getStr(swigCPtr), true);
+    return ret;
+  }
+
   public SWIGTYPE_p_unsigned_char data {
     set {
       skycoinPINVOKE.set_cipher_SHA256_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));

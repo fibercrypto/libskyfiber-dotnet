@@ -360,6 +360,29 @@ static GoSlice GoSlicep_value(GoSlice *obj) {
 }
 
 
+static _GoString_ *new_GoStringp() { 
+  return (_GoString_ *) calloc(1,sizeof(_GoString_)); 
+}
+
+static _GoString_ *copy_GoStringp(_GoString_ value) { 
+  _GoString_ *obj = (_GoString_ *) calloc(1,sizeof(_GoString_));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_GoStringp(_GoString_ *obj) { 
+  if (obj) free(obj); 
+}
+
+static void GoStringp_assign(_GoString_ *obj, _GoString_ value) {
+  *obj = value;
+}
+
+static _GoString_ GoStringp_value(_GoString_ *obj) {
+  return *obj;
+}
+
+
 static int *new_intp() { 
   return (int *) calloc(1,sizeof(int)); 
 }
@@ -567,6 +590,12 @@ SWIGINTERN void cipher_SHA256_assignFrom(cipher_SHA256 *self,void *data){
 SWIGINTERN void cipher_SHA256_assignTo(cipher_SHA256 *self,void *data){
 		memcpy(data, &self->data, sizeof(self->data));
 	}
+SWIGINTERN _GoString_ cipher_SHA256_getStr(cipher_SHA256 *self){
+		_GoString_ str;
+		str.p = (const char*)self->data;
+		str.n = strlen(str.p);
+		return str;
+    }
 SWIGINTERN int cipher_Checksum_isEqual(cipher_Checksum *self,cipher_Checksum *a){
 		return memcmp(self->data, a->data, sizeof(a->data)) == 0;
 	}
@@ -689,12 +718,6 @@ SWIGINTERN void GoSlice_convertString(GoSlice *self,_GoString_ data){
 		self->data = data.p;
 		self->len = strlen(data.p);
 		self->cap = self->len;
-	}
-SWIGINTERN _GoString_ GoSlice_toString(GoSlice *self){
-		_GoString_ data;
-		data.p = (char *)self->data; 
-		data.n = self->len; 
-		return data;
 	}
 SWIGINTERN int cipher__Address_isEqual(cipher__Address *self,cipher__Address *a){
 		if( self->Version == a->Version ){
@@ -863,6 +886,74 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlicep_value(void * jarg1) {
   {
     GoSlice * resultptr = (GoSlice *) malloc(sizeof(GoSlice));
     memmove(resultptr, &result, sizeof(GoSlice));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoStringp() {
+  void * jresult ;
+  _GoString_ *result = 0 ;
+  
+  result = (_GoString_ *)new_GoStringp();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringp(void * jarg1) {
+  void * jresult ;
+  _GoString_ arg1 ;
+  _GoString_ *argp1 ;
+  _GoString_ *result = 0 ;
+  
+  argp1 = (_GoString_ *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (_GoString_ *)copy_GoStringp(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoStringp(void * jarg1) {
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  delete_GoStringp(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringp_assign(void * jarg1, void * jarg2) {
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  _GoString_ arg2 ;
+  _GoString_ *argp2 ;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  argp2 = (_GoString_ *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  GoStringp_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringp_value(void * jarg1) {
+  void * jresult ;
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  _GoString_ result;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  result = GoStringp_value(arg1);
+  {
+    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
+    memmove(resultptr, &result, sizeof(_GoString_));
     jresult = resultptr;
   }
   return jresult;
@@ -1462,6 +1553,22 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_SHA256_assignTo(void * jarg1, 
   arg1 = (cipher_SHA256 *)jarg1; 
   arg2 = (void *)jarg2; 
   cipher_SHA256_assignTo(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher_SHA256_getStr(void * jarg1) {
+  void * jresult ;
+  cipher_SHA256 *arg1 = (cipher_SHA256 *) 0 ;
+  _GoString_ result;
+  
+  arg1 = (cipher_SHA256 *)jarg1; 
+  result = cipher_SHA256_getStr(arg1);
+  {
+    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
+    memmove(resultptr, &result, sizeof(_GoString_));
+    jresult = resultptr;
+  }
+  return jresult;
 }
 
 
@@ -2327,22 +2434,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlice_convertString(void * jarg1, v
   }
   arg2 = *argp2; 
   GoSlice_convertString(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlice_toString(void * jarg1) {
-  void * jresult ;
-  GoSlice *arg1 = (GoSlice *) 0 ;
-  _GoString_ result;
-  
-  arg1 = (GoSlice *)jarg1; 
-  result = GoSlice_toString(arg1);
-  {
-    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
-    memmove(resultptr, &result, sizeof(_GoString_));
-    jresult = resultptr;
-  }
-  return jresult;
 }
 
 
@@ -6430,18 +6521,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Balance_IsZero(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_utc_UnixNow(void * jarg1) {
-  unsigned int jresult ;
-  GoInt64 *arg1 = (GoInt64 *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt64 *)jarg1; 
-  result = (GoUint32)SKY_utc_UnixNow(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_httphelper_Address_UnmarshalJSON(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   httphelper__Address *arg1 = (httphelper__Address *) 0 ;
@@ -9346,7 +9425,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputs(void
   unsigned int jresult ;
   WebRpcClient__Handle arg1 ;
   Wallet__Handle *arg2 = (Wallet__Handle *) 0 ;
-  ReadableOutputSet_Handle *arg3 = (ReadableOutputSet_Handle *) 0 ;
+  UnspentOutputsSummary_Handle *arg3 = (UnspentOutputsSummary_Handle *) 0 ;
   GoUint32 result;
   
   {
@@ -9355,7 +9434,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetWalletOutputs(void
   {
     jarg2 =  (long*)&arg2;
   }
-  arg3 = (ReadableOutputSet_Handle *)jarg3; 
+  arg3 = (UnspentOutputsSummary_Handle *)jarg3; 
   result = (GoUint32)SKY_cli_GetWalletOutputs(arg1,arg2,arg3);
   jresult = result; 
   return jresult;

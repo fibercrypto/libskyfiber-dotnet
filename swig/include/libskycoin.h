@@ -258,16 +258,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 5 "util.utc.utc.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 10 "util.http.json.go"
 
 
@@ -1070,8 +1060,6 @@ extern GoUint32 SKY_wallet_Balance_Equals(wallet__Balance* p0, wallet__Balance* 
 
 extern GoUint32 SKY_wallet_Balance_IsZero(wallet__Balance* p0, GoUint8* p1);
 
-extern GoUint32 SKY_utc_UnixNow(GoInt64* p0);
-
 extern GoUint32 SKY_httphelper_Address_UnmarshalJSON(httphelper__Address* p0, GoSlice p1);
 
 extern GoUint32 SKY_httphelper_Address_MarshalJSON(httphelper__Address* p0, coin__UxArray* p1);
@@ -1396,7 +1384,7 @@ extern GoUint32 SKY_file_DetermineResourcePath(GoString p0, GoString p1, GoStrin
 
 extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoString p1, ReadableOutputSet_Handle* p2);
 
-extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, ReadableOutputSet_Handle* p2);
+extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, UnspentOutputsSummary_Handle* p2);
 
 extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
 

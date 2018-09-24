@@ -114,7 +114,75 @@ namespace LibskycoinNetTest {
             err = skycoin.skycoin.SKY_cipher_SHA256_Hex (h, s1);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (s1.p == s.p, true);
+        }
 
+        struct StrTest {
+            public string input;
+            public string output;
+        }
+
+        [Test]
+        public void TestSHA256KnownValue () {
+
+            StrTest caseval;
+            caseval.input = "skycoin";
+            caseval.output = "5a42c0643bdb465d90bf673b99c14f5fa02db71513249d904573d2b8b63d353d";
+            StrTest caseval1;
+            caseval1.input = "hello world";
+            caseval1.output = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9";
+            StrTest caseval2;
+            caseval2.input = "hello world asd awd awd awdapodawpokawpod ";
+            caseval2.output = "99d71f95cafe05ea2dddebc35b6083bd5af0e44850c9dc5139b4476c99950be4";
+            StrTest[] val = { caseval, caseval1, caseval2 };
+
+            for (int i = 0; i < val.Length; i++) {
+                var io = val[i];
+                var b = new GoSlice ();
+                var h = new cipher_SHA256 ();
+                var input = new _GoString_ ();
+                var output = new _GoString_ ();
+                input.p = io.input;
+                b.convertString (input);
+                var err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                err = skycoin.skycoin.SKY_cipher_SHA256_Hex (h, output);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (output.p == io.output, true);
+            }
+        }
+
+        [Test]
+        public void TestSumSHA256 () {
+            var b = new GoSlice ();
+            var err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            var h1 = new cipher_SHA256 ();
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h1);
+            Assert.AreEqual (h1.isEqual (new cipher_SHA256 ()), 0);
+            // A second call to Sum should not be influenced by the original
+            var c = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (256, c);
+            var h2 = new cipher_SHA256 ();
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (c, h2);
+            Assert.AreEqual (h2.isEqual (new cipher_SHA256 ()), 0);
+            var h3 = new cipher_SHA256 ();
+            freshSumSHA256 (c, h3);
+            Assert.AreEqual (h2.isEqual (h3), 1);
+        }
+
+        [Test]
+        public void TestSHA256FromHex () {
+            // Invalid hex hash
+            var h = new cipher_SHA256 ();
+            var err = skycoin.skycoin.SKY_cipher_SHA256FromHex ("cawcd", h);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+            // Truncated hex hash
+            var b = new GoSlice ();
+            err = skycoin.skycoin.SKY_cipher_RandByte (128, b);
+            h = new skycoin.cipher_SHA256 ();
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+            var str = h.getStr ();
+            var str1 = skycoin.skycoin.GoStringp_value(str);
+            Console.WriteLine (str1.p);
         }
     }
 }

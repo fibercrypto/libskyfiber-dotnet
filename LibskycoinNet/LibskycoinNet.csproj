@@ -127,6 +127,7 @@
     <Compile Include="skycoin\SWIGTYPE_p_ReadableOutputSet_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_int.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_byte.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_UnspentOutputsSummary_Handle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
