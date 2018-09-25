@@ -128,6 +128,11 @@
     <Compile Include="skycoin\SWIGTYPE_p_int.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_byte.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_UnspentOutputsSummary_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_void.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_json_value.cs" />
+    <Compile Include="skycoin\wallet_register.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_json_value.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_FILE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
