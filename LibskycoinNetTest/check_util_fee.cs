@@ -266,7 +266,6 @@ namespace LibskycoinNetTest {
         StrTest[] ListCases = new StrTest[6];
         public void FullCases () {
 
-            ListCases = new StrTest[2];
             ulong headTime = 1000;
             ulong nextTime = (headTime + 3600); //1 hour later
 
@@ -296,6 +295,67 @@ namespace LibskycoinNetTest {
             cases.ins[1].hours = (ulong) 5;
             cases.headTime = headTime;
             ListCases[1] = cases;
+
+            cases = new StrTest ();
+            cases.fee = 8;
+            cases.outs = new ulong[2];
+            cases.outs[0] = 5;
+            cases.outs[1] = 10;
+            cases.ins = new uxInput[2];
+            cases.ins[0].time = nextTime;
+            cases.ins[0].coins = (ulong) 10e6;
+            cases.ins[0].hours = (ulong) 10;
+            cases.ins[1].time = headTime;
+            cases.ins[1].coins = (ulong) 8e6;
+            cases.ins[1].hours = (ulong) 5;
+            cases.headTime = nextTime;
+            ListCases[2] = cases;
+
+            cases = new StrTest ();
+            cases.err = skycoin.skycoin.SKY_ErrTxnInsufficientCoinHours;
+            cases.outs = new ulong[3];
+            cases.outs[0] = 5;
+            cases.outs[1] = 10;
+            cases.outs[2] = 1;
+            cases.ins = new uxInput[2];
+            cases.ins[0].time = headTime;
+            cases.ins[0].coins = (ulong) 10e6;
+            cases.ins[0].hours = (ulong) 10;
+            cases.ins[1].time = headTime;
+            cases.ins[1].coins = (ulong) 8e6;
+            cases.ins[1].hours = (ulong) 5;
+            cases.headTime = headTime;
+            ListCases[3] = cases;
+
+            cases = new StrTest ();
+            cases.err = skycoin.skycoin.SKY_ErrAddEarnedCoinHoursAdditionOverflow;
+            cases.outs = new ulong[1];
+            cases.outs[0] = 0;
+            cases.ins = new uxInput[2];
+            cases.ins[0].time = headTime;
+            cases.ins[0].coins = (ulong) 10e6;
+            cases.ins[0].hours = (ulong) 10;
+            cases.ins[1].time = headTime;
+            cases.ins[1].coins = (ulong) 10e6;
+            cases.ins[1].hours = (ulong.MaxValue - 9);
+            cases.headTime = nextTime;
+            ListCases[4] = cases;
+
+            cases = new StrTest ();
+            cases.err = skycoin.skycoin.SKY_ERROR;
+            cases.outs = new ulong[3];
+            cases.outs[0] = 0;
+            cases.outs[1] = 10;
+            cases.outs[2] = ulong.MaxValue - 9;
+            cases.ins = new uxInput[2];
+            cases.ins[0].time = headTime;
+            cases.ins[0].coins = (ulong) 10e6;
+            cases.ins[0].hours = (ulong) 10;
+            cases.ins[1].time = headTime;
+            cases.ins[1].coins = (ulong) 10e6;
+            cases.ins[1].hours = (ulong) 100;
+            cases.headTime = headTime;
+            ListCases[5] = cases;
         }
 
         [Test]
@@ -318,17 +378,19 @@ namespace LibskycoinNetTest {
                 err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
                 Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
                 Assert.AreEqual (inUxs.len, tc.ins.Length);
-                for (i = 0; i < tc.ins.Length; i++) {
-                    uxInput b = tc.ins[i];
+                for (int j = 0; j < tc.ins.Length; j++) {
+                    uxInput b = tc.ins[j];
                     coin__UxOut ux = new coin__UxOut ();
                     ux.Head.Time = b.time;
                     ux.Body.Coins = b.coins;
                     ux.Body.Hours = b.hours;
-                    inUxs.setcoin_UxOut (ux, i);
+                    inUxs.setcoin_UxOut (ux, j);
                 }
                 var fee = skycoin.skycoin.new_GoUint64p ();
                 err = skycoin.skycoin.SKY_fee_TransactionFee (tx, tc.headTime, inUxs, fee);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (err, tc.err);
+                var fee_v = skycoin.skycoin.GoUint64p_value (fee);
+                Assert.AreEqual (fee_v, tc.fee);
             }
         }
     }

@@ -1163,8 +1163,8 @@ SWIGINTERN void GoSlice_setcoin_UxOut(GoSlice *self,coin__UxOut ux,int p){
       tmpOut->Head.Time = ux.Head.Time;
       tmpOut->Body.Coins = ux.Body.Coins;
       tmpOut->Body.Hours = ux.Body.Hours;
-    }}
-	      tmpOut++;
+    }
+	      tmpOut++;}
 	}
 SWIGINTERN int cipher__Address_isEqual(cipher__Address *self,cipher__Address *a){
 		if( self->Version == a->Version ){
