@@ -337,98 +337,6 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_skycoin(SWIG_CSharpString
 	}
 
 
-static GoSlice *new_GoSlicep() { 
-  return (GoSlice *) calloc(1,sizeof(GoSlice)); 
-}
-
-static GoSlice *copy_GoSlicep(GoSlice value) { 
-  GoSlice *obj = (GoSlice *) calloc(1,sizeof(GoSlice));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_GoSlicep(GoSlice *obj) { 
-  if (obj) free(obj); 
-}
-
-static void GoSlicep_assign(GoSlice *obj, GoSlice value) {
-  *obj = value;
-}
-
-static GoSlice GoSlicep_value(GoSlice *obj) {
-  return *obj;
-}
-
-
-static _GoString_ *new_GoStringp() { 
-  return (_GoString_ *) calloc(1,sizeof(_GoString_)); 
-}
-
-static _GoString_ *copy_GoStringp(_GoString_ value) { 
-  _GoString_ *obj = (_GoString_ *) calloc(1,sizeof(_GoString_));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_GoStringp(_GoString_ *obj) { 
-  if (obj) free(obj); 
-}
-
-static void GoStringp_assign(_GoString_ *obj, _GoString_ value) {
-  *obj = value;
-}
-
-static _GoString_ GoStringp_value(_GoString_ *obj) {
-  return *obj;
-}
-
-
-static int *new_intp() { 
-  return (int *) calloc(1,sizeof(int)); 
-}
-
-static int *copy_intp(int value) { 
-  int *obj = (int *) calloc(1,sizeof(int));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_intp(int *obj) { 
-  if (obj) free(obj); 
-}
-
-static void intp_assign(int *obj, int value) {
-  *obj = value;
-}
-
-static int intp_value(int *obj) {
-  return *obj;
-}
-
-
-static Transaction__Handle *new_Transaction__Handlep() { 
-  return (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle)); 
-}
-
-static Transaction__Handle *copy_Transaction__Handlep(Transaction__Handle value) { 
-  Transaction__Handle *obj = (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_Transaction__Handlep(Transaction__Handle *obj) { 
-  if (obj) free(obj); 
-}
-
-static void Transaction__Handlep_assign(Transaction__Handle *obj, Transaction__Handle value) {
-  *obj = value;
-}
-
-static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) {
-  return *obj;
-}
-
-
 #include "json.h"
 	//Define function SKY_handle_close to avoid including libskycoin.h
 void SKY_handle_close(Handle p0);
@@ -775,24 +683,99 @@ coin__Transaction* makeEmptyTransaction(Transaction__Handle* handle){
     return ptransaction;
 }
 
-int makeAddress(cipher__Address* paddress){
-  cipher__PubKey pubkey;
-  cipher__SecKey seckey;
-  cipher__Address address;
-  int result;
-
-  result = SKY_cipher_GenerateKeyPair(&pubkey, &seckey);
-  if(result != 0){
-	  return 1;
-  }
-
-  result = SKY_cipher_AddressFromPubKey( &pubkey, paddress );
-    if(result != 0){
-	  return 1;
-  }
-  return result;
-}
     
+
+static GoSlice *new_GoSlicep() { 
+  return (GoSlice *) calloc(1,sizeof(GoSlice)); 
+}
+
+static GoSlice *copy_GoSlicep(GoSlice value) { 
+  GoSlice *obj = (GoSlice *) calloc(1,sizeof(GoSlice));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_GoSlicep(GoSlice *obj) { 
+  if (obj) free(obj); 
+}
+
+static void GoSlicep_assign(GoSlice *obj, GoSlice value) {
+  *obj = value;
+}
+
+static GoSlice GoSlicep_value(GoSlice *obj) {
+  return *obj;
+}
+
+
+static _GoString_ *new_GoStringp() { 
+  return (_GoString_ *) calloc(1,sizeof(_GoString_)); 
+}
+
+static _GoString_ *copy_GoStringp(_GoString_ value) { 
+  _GoString_ *obj = (_GoString_ *) calloc(1,sizeof(_GoString_));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_GoStringp(_GoString_ *obj) { 
+  if (obj) free(obj); 
+}
+
+static void GoStringp_assign(_GoString_ *obj, _GoString_ value) {
+  *obj = value;
+}
+
+static _GoString_ GoStringp_value(_GoString_ *obj) {
+  return *obj;
+}
+
+
+static int *new_intp() { 
+  return (int *) calloc(1,sizeof(int)); 
+}
+
+static int *copy_intp(int value) { 
+  int *obj = (int *) calloc(1,sizeof(int));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_intp(int *obj) { 
+  if (obj) free(obj); 
+}
+
+static void intp_assign(int *obj, int value) {
+  *obj = value;
+}
+
+static int intp_value(int *obj) {
+  return *obj;
+}
+
+
+static Transaction__Handle *new_Transaction__Handlep() { 
+  return (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle)); 
+}
+
+static Transaction__Handle *copy_Transaction__Handlep(Transaction__Handle value) { 
+  Transaction__Handle *obj = (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Transaction__Handlep(Transaction__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Transaction__Handlep_assign(Transaction__Handle *obj, Transaction__Handle value) {
+  *obj = value;
+}
+
+static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) {
+  return *obj;
+}
+
 
 static Handle *new_Handlep() { 
   return (Handle *) calloc(1,sizeof(Handle)); 
@@ -1221,262 +1204,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_equalBlockHeaders(void * jarg1, void *
   arg2 = (coin__BlockHeader *)jarg2; 
   result = (int)equalBlockHeaders(arg1,arg2);
   jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoSlicep() {
-  void * jresult ;
-  GoSlice *result = 0 ;
-  
-  result = (GoSlice *)new_GoSlicep();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoSlicep(void * jarg1) {
-  void * jresult ;
-  GoSlice arg1 ;
-  GoSlice *argp1 ;
-  GoSlice *result = 0 ;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (GoSlice *)copy_GoSlicep(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlicep(void * jarg1) {
-  GoSlice *arg1 = (GoSlice *) 0 ;
-  
-  arg1 = (GoSlice *)jarg1; 
-  delete_GoSlicep(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlicep_assign(void * jarg1, void * jarg2) {
-  GoSlice *arg1 = (GoSlice *) 0 ;
-  GoSlice arg2 ;
-  GoSlice *argp2 ;
-  
-  arg1 = (GoSlice *)jarg1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  GoSlicep_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlicep_value(void * jarg1) {
-  void * jresult ;
-  GoSlice *arg1 = (GoSlice *) 0 ;
-  GoSlice result;
-  
-  arg1 = (GoSlice *)jarg1; 
-  result = GoSlicep_value(arg1);
-  {
-    GoSlice * resultptr = (GoSlice *) malloc(sizeof(GoSlice));
-    memmove(resultptr, &result, sizeof(GoSlice));
-    jresult = resultptr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoStringp() {
-  void * jresult ;
-  _GoString_ *result = 0 ;
-  
-  result = (_GoString_ *)new_GoStringp();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringp(void * jarg1) {
-  void * jresult ;
-  _GoString_ arg1 ;
-  _GoString_ *argp1 ;
-  _GoString_ *result = 0 ;
-  
-  argp1 = (_GoString_ *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (_GoString_ *)copy_GoStringp(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoStringp(void * jarg1) {
-  _GoString_ *arg1 = (_GoString_ *) 0 ;
-  
-  arg1 = (_GoString_ *)jarg1; 
-  delete_GoStringp(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringp_assign(void * jarg1, void * jarg2) {
-  _GoString_ *arg1 = (_GoString_ *) 0 ;
-  _GoString_ arg2 ;
-  _GoString_ *argp2 ;
-  
-  arg1 = (_GoString_ *)jarg1; 
-  argp2 = (_GoString_ *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  GoStringp_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringp_value(void * jarg1) {
-  void * jresult ;
-  _GoString_ *arg1 = (_GoString_ *) 0 ;
-  _GoString_ result;
-  
-  arg1 = (_GoString_ *)jarg1; 
-  result = GoStringp_value(arg1);
-  {
-    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
-    memmove(resultptr, &result, sizeof(_GoString_));
-    jresult = resultptr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_intp() {
-  void * jresult ;
-  int *result = 0 ;
-  
-  result = (int *)new_intp();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_intp(int jarg1) {
-  void * jresult ;
-  int arg1 ;
-  int *result = 0 ;
-  
-  arg1 = (int)jarg1; 
-  result = (int *)copy_intp(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_intp(void * jarg1) {
-  int *arg1 = (int *) 0 ;
-  
-  arg1 = (int *)jarg1; 
-  delete_intp(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_intp_assign(void * jarg1, int jarg2) {
-  int *arg1 = (int *) 0 ;
-  int arg2 ;
-  
-  arg1 = (int *)jarg1; 
-  arg2 = (int)jarg2; 
-  intp_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_intp_value(void * jarg1) {
-  int jresult ;
-  int *arg1 = (int *) 0 ;
-  int result;
-  
-  arg1 = (int *)jarg1; 
-  result = (int)intp_value(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__Handlep() {
-  void * jresult ;
-  Transaction__Handle *result = 0 ;
-  
-  result = (Transaction__Handle *)new_Transaction__Handlep();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * jarg1) {
-  void * jresult ;
-  Transaction__Handle arg1 ;
-  Transaction__Handle *argp1 ;
-  Transaction__Handle *result = 0 ;
-  
-  argp1 = (Transaction__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (Transaction__Handle *)copy_Transaction__Handlep(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__Handlep(void * jarg1) {
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  delete_Transaction__Handlep(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * jarg1, void * jarg2) {
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  Transaction__Handle arg2 ;
-  Transaction__Handle *argp2 ;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  Transaction__Handlep_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * jarg1) {
-  void * jresult ;
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  Transaction__Handle result;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  result = Transaction__Handlep_value(arg1);
-  {
-    Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
-    memmove(resultptr, &result, sizeof(Transaction__Handle));
-    jresult = resultptr;
-  }
   return jresult;
 }
 
@@ -2052,14 +1779,258 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_makeEmptyTransaction(void * jarg1) 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_makeAddress(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoSlicep() {
+  void * jresult ;
+  GoSlice *result = 0 ;
+  
+  result = (GoSlice *)new_GoSlicep();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoSlicep(void * jarg1) {
+  void * jresult ;
+  GoSlice arg1 ;
+  GoSlice *argp1 ;
+  GoSlice *result = 0 ;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (GoSlice *)copy_GoSlicep(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlicep(void * jarg1) {
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  
+  arg1 = (GoSlice *)jarg1; 
+  delete_GoSlicep(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlicep_assign(void * jarg1, void * jarg2) {
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  GoSlice arg2 ;
+  GoSlice *argp2 ;
+  
+  arg1 = (GoSlice *)jarg1; 
+  argp2 = (GoSlice *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  GoSlicep_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlicep_value(void * jarg1) {
+  void * jresult ;
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  GoSlice result;
+  
+  arg1 = (GoSlice *)jarg1; 
+  result = GoSlicep_value(arg1);
+  {
+    GoSlice * resultptr = (GoSlice *) malloc(sizeof(GoSlice));
+    memmove(resultptr, &result, sizeof(GoSlice));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoStringp() {
+  void * jresult ;
+  _GoString_ *result = 0 ;
+  
+  result = (_GoString_ *)new_GoStringp();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringp(void * jarg1) {
+  void * jresult ;
+  _GoString_ arg1 ;
+  _GoString_ *argp1 ;
+  _GoString_ *result = 0 ;
+  
+  argp1 = (_GoString_ *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (_GoString_ *)copy_GoStringp(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoStringp(void * jarg1) {
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  delete_GoStringp(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringp_assign(void * jarg1, void * jarg2) {
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  _GoString_ arg2 ;
+  _GoString_ *argp2 ;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  argp2 = (_GoString_ *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null _GoString_", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  GoStringp_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringp_value(void * jarg1) {
+  void * jresult ;
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  _GoString_ result;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  result = GoStringp_value(arg1);
+  {
+    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
+    memmove(resultptr, &result, sizeof(_GoString_));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_intp() {
+  void * jresult ;
+  int *result = 0 ;
+  
+  result = (int *)new_intp();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_intp(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  int *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  result = (int *)copy_intp(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_intp(void * jarg1) {
+  int *arg1 = (int *) 0 ;
+  
+  arg1 = (int *)jarg1; 
+  delete_intp(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_intp_assign(void * jarg1, int jarg2) {
+  int *arg1 = (int *) 0 ;
+  int arg2 ;
+  
+  arg1 = (int *)jarg1; 
+  arg2 = (int)jarg2; 
+  intp_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_intp_value(void * jarg1) {
   int jresult ;
-  cipher__Address *arg1 = (cipher__Address *) 0 ;
+  int *arg1 = (int *) 0 ;
   int result;
   
-  arg1 = (cipher__Address *)jarg1; 
-  result = (int)makeAddress(arg1);
+  arg1 = (int *)jarg1; 
+  result = (int)intp_value(arg1);
   jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__Handlep() {
+  void * jresult ;
+  Transaction__Handle *result = 0 ;
+  
+  result = (Transaction__Handle *)new_Transaction__Handlep();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * jarg1) {
+  void * jresult ;
+  Transaction__Handle arg1 ;
+  Transaction__Handle *argp1 ;
+  Transaction__Handle *result = 0 ;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Transaction__Handle *)copy_Transaction__Handlep(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__Handlep(void * jarg1) {
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  delete_Transaction__Handlep(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * jarg1, void * jarg2) {
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  Transaction__Handle arg2 ;
+  Transaction__Handle *argp2 ;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  argp2 = (Transaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Transaction__Handlep_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * jarg1) {
+  void * jresult ;
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  Transaction__Handle result;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  result = Transaction__Handlep_value(arg1);
+  {
+    Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
+    memmove(resultptr, &result, sizeof(Transaction__Handle));
+    jresult = resultptr;
+  }
   return jresult;
 }
 
@@ -6986,18 +6957,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_Client_GetLastBloc
   arg2 = (GoUint64)jarg2; 
   arg3 = (coin__UxArray *)jarg3; 
   result = (GoUint32)SKY_webrpc_Client_GetLastBlocks(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_browser_Open(char* jarg1) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  result = (GoUint32)SKY_browser_Open(arg1);
   jresult = result; 
   return jresult;
 }

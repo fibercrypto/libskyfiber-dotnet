@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="transutils.cs" />
     <Compile Include="check_cipher_address.cs" />
     <Compile Include="check_cipher_crypto.cs" />
     <Compile Include="check_cipher_hash.cs" />

@@ -148,16 +148,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 5 "util.browser.browser.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 5 "util.iputil.iputil.go"
 
 
@@ -925,8 +915,6 @@ extern GoUint32 SKY_webrpc_Client_GetBlocks(WebRpcClient__Handle p0, GoUint64 p1
 extern GoUint32 SKY_webrpc_Client_GetBlocksBySeq(WebRpcClient__Handle p0, GoSlice p1, coin__UxArray* p2);
 
 extern GoUint32 SKY_webrpc_Client_GetLastBlocks(WebRpcClient__Handle p0, GoUint64 p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_browser_Open(GoString p0);
 
 extern GoUint32 SKY_iputil_LocalhostIP(GoString_* p0);
 

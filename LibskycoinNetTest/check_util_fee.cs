@@ -1,10 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
 using skycoin;
+using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_util_fee {
 
+        utils.transutils transutils = new utils.transutils ();
         struct verifyTxFeeTestCase {
             public ulong inputHours;
             public ulong ouputHours;
@@ -109,9 +111,10 @@ namespace LibskycoinNetTest {
         public void TestVerifyTransactionFee () {
             FullburnFactor2verifyTxFeeTestCase ();
             var empty = skycoin.skycoin.new_Transaction__Handlep ();
-            skycoin.skycoin.makeEmptyTransaction (empty);
+            var err = transutils.makeEmptyTransaction (empty);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var hours = skycoin.skycoin.new_GoUint64p ();
-            var err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (empty, hours);
+            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (empty, hours);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (skycoin.skycoin.GoUint64p_value (hours), 0);
 
@@ -124,8 +127,8 @@ namespace LibskycoinNetTest {
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var txn = skycoin.skycoin.new_Transaction__Handlep ();
             skycoin.skycoin.makeEmptyTransaction (txn);
-            var addr = skycoin.skycoin.new_cipher__Addressp ();
-            err = (uint) skycoin.skycoin.makeAddress (addr);
+            var addr = new cipher__Address ();
+            err = transutils.makeAddress (addr);
             Assert.AreEqual (err, 0);
             err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0, 1000000);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
@@ -262,6 +265,8 @@ namespace LibskycoinNetTest {
         }
         StrTest[] ListCases = new StrTest[6];
         public void FullCases () {
+
+            ListCases = new StrTest[1];
             ulong headTime = 1000;
             ulong nextTime = (headTime + 3600); //1 hour later
             var cases = new StrTest ();
@@ -278,14 +283,24 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionFee () {
-
+            FullCases ();
+            var addr = new skycoin.cipher__Address ();
+            var err = transutils.makeAddress (addr);
+            Assert.AreEqual (err, 0);
             for (int i = 0; i < ListCases.Length; i++) {
                 var tc = ListCases[i];
                 var tx = skycoin.skycoin.new_Transaction__Handlep ();
-
+                err = transutils.makeEmptyTransaction (tx);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                for (int j = 0; j < tc.outs.Length; j++) {
+                    var h = tc.outs[j];
+                    err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (tx, addr, (ulong) 0, (ulong) h);
+                    Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                }
+                var inUxs = new GoSlice ();
+                // err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
+// c                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             }
-
         }
-
     }
 }

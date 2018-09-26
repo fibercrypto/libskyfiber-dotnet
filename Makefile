@@ -60,4 +60,4 @@ test: install
 	make build-swig
 	msbuild /p:Configuration=Release LibskycoinNet.sln
 	make build-libskycoin-net
-	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll
+	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
