@@ -266,9 +266,10 @@ namespace LibskycoinNetTest {
         StrTest[] ListCases = new StrTest[6];
         public void FullCases () {
 
-            ListCases = new StrTest[1];
+            ListCases = new StrTest[2];
             ulong headTime = 1000;
             ulong nextTime = (headTime + 3600); //1 hour later
+
             var cases = new StrTest ();
             cases.fee = 5;
             cases.outs = new ulong[1];
@@ -279,6 +280,22 @@ namespace LibskycoinNetTest {
             cases.ins[0].hours = (ulong) 10;
             cases.headTime = headTime;
             ListCases[0] = cases;
+
+            cases = new StrTest ();
+            cases.fee = 0;
+            cases.outs = new ulong[3];
+            cases.outs[0] = 5;
+            cases.outs[1] = 7;
+            cases.outs[2] = 3;
+            cases.ins = new uxInput[2];
+            cases.ins[0].time = headTime;
+            cases.ins[0].coins = (ulong) 10e6;
+            cases.ins[0].hours = (ulong) 10;
+            cases.ins[1].time = headTime;
+            cases.ins[1].coins = (ulong) 10e6;
+            cases.ins[1].hours = (ulong) 5;
+            cases.headTime = headTime;
+            ListCases[1] = cases;
         }
 
         [Test]
@@ -298,8 +315,20 @@ namespace LibskycoinNetTest {
                     Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
                 }
                 var inUxs = new GoSlice ();
-                // err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
-// c                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (inUxs.len, tc.ins.Length);
+                for (i = 0; i < tc.ins.Length; i++) {
+                    uxInput b = tc.ins[i];
+                    coin__UxOut ux = new coin__UxOut ();
+                    ux.Head.Time = b.time;
+                    ux.Body.Coins = b.coins;
+                    ux.Body.Hours = b.hours;
+                    inUxs.setcoin_UxOut (ux, i);
+                }
+                var fee = skycoin.skycoin.new_GoUint64p ();
+                err = skycoin.skycoin.SKY_fee_TransactionFee (tx, tc.headTime, inUxs, fee);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             }
         }
     }

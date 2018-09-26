@@ -133,6 +133,8 @@
     <Compile Include="skycoin\wallet_register.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_json_value.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_FILE.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_a_4__unsigned_char.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_a_32__GoUint8_.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />

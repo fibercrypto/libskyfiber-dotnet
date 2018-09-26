@@ -241,6 +241,26 @@ public class skycoin {
     return ret;
   }
 
+  public static int makeUxBodyWithSecret(coin__UxBody puxBody, SWIGTYPE_p_a_32__GoUint8_ pseckey) {
+    int ret = skycoinPINVOKE.makeUxBodyWithSecret(coin__UxBody.getCPtr(puxBody), SWIGTYPE_p_a_32__GoUint8_.getCPtr(pseckey));
+    return ret;
+  }
+
+  public static int makeUxOutWithSecret(coin__UxOut puxOut, SWIGTYPE_p_a_32__GoUint8_ pseckey) {
+    int ret = skycoinPINVOKE.makeUxOutWithSecret(coin__UxOut.getCPtr(puxOut), SWIGTYPE_p_a_32__GoUint8_.getCPtr(pseckey));
+    return ret;
+  }
+
+  public static int makeUxOut(coin__UxOut puxOut) {
+    int ret = skycoinPINVOKE.makeUxOut(coin__UxOut.getCPtr(puxOut));
+    return ret;
+  }
+
+  public static int makeUxArray(GoSlice parray, int n) {
+    int ret = skycoinPINVOKE.makeUxArray(GoSlice.getCPtr(parray), n);
+    return ret;
+  }
+
   public static GoSlice new_GoSlicep() {
     global::System.IntPtr cPtr = skycoinPINVOKE.new_GoSlicep();
     GoSlice ret = (cPtr == global::System.IntPtr.Zero) ? null : new GoSlice(cPtr, false);

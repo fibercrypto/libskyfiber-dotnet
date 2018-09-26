@@ -50,6 +50,11 @@ public class GoSlice : global::System.IDisposable {
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
   }
 
+  public void setcoin_UxOut(coin__UxOut ux, int p) {
+    skycoinPINVOKE.GoSlice_setcoin_UxOut(swigCPtr, coin__UxOut.getCPtr(ux), p);
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
   public SWIGTYPE_p_void data {
     set {
       skycoinPINVOKE.set_GoSlice_data(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
