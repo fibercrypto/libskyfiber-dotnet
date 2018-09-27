@@ -45,6 +45,12 @@ public class coin__Transaction : global::System.IDisposable {
     return ret;
   }
 
+  public int setInnerHash(cipher_SHA256 h) {
+    int ret = skycoinPINVOKE.coin__Transaction_setInnerHash(swigCPtr, cipher_SHA256.getCPtr(h));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
   public SWIGTYPE_p_GoInt32_ Length {
     set {
       skycoinPINVOKE.set_coin__Transaction_Length(swigCPtr, SWIGTYPE_p_GoInt32_.getCPtr(value));
