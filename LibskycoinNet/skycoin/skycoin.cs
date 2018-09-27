@@ -191,6 +191,31 @@ public class skycoin {
     return ret;
   }
 
+  public static SWIGTYPE_p_long_long new_Gointp() {
+    global::System.IntPtr cPtr = skycoinPINVOKE.new_Gointp();
+    SWIGTYPE_p_long_long ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_long_long(cPtr, false);
+    return ret;
+  }
+
+  public static SWIGTYPE_p_long_long copy_Gointp(long value) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.copy_Gointp(value);
+    SWIGTYPE_p_long_long ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_long_long(cPtr, false);
+    return ret;
+  }
+
+  public static void delete_Gointp(SWIGTYPE_p_long_long obj) {
+    skycoinPINVOKE.delete_Gointp(SWIGTYPE_p_long_long.getCPtr(obj));
+  }
+
+  public static void Gointp_assign(SWIGTYPE_p_long_long obj, long value) {
+    skycoinPINVOKE.Gointp_assign(SWIGTYPE_p_long_long.getCPtr(obj), value);
+  }
+
+  public static long Gointp_value(SWIGTYPE_p_long_long obj) {
+    long ret = skycoinPINVOKE.Gointp_value(SWIGTYPE_p_long_long.getCPtr(obj));
+    return ret;
+  }
+
   public static SWIGTYPE_p_unsigned_short new_GoUint16p() {
     global::System.IntPtr cPtr = skycoinPINVOKE.new_GoUint16p();
     SWIGTYPE_p_unsigned_short ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_short(cPtr, false);
@@ -713,6 +738,11 @@ var tmps = s;
   public static uint SKY_coin_Transactions_Hashes(SWIGTYPE_p_Transactions__Handle p0, cipher_SHA256s __out_hashes) {
     uint ret = skycoinPINVOKE.SKY_coin_Transactions_Hashes__SWIG_0(SWIGTYPE_p_Transactions__Handle.getCPtr(p0), cipher_SHA256s.getCPtr(__out_hashes));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static uint SKY_coin_UxOut_Hash(coin__UxOut ux, cipher_SHA256 sha) {
+    uint ret = skycoinPINVOKE.SKY_coin_UxOut_Hash__SWIG_0(coin__UxOut.getCPtr(ux), cipher_SHA256.getCPtr(sha));
     return ret;
   }
 
@@ -2918,7 +2948,7 @@ var tmpp1 = p1;
   public static uint SKY_coin_UxOut_Hash(coin__UxOut p0, cipher_SecKey p1) {
 var tmpp1 = cipher_SecKey.getCPtr (p1);
     {
-      uint ret = skycoinPINVOKE.SKY_coin_UxOut_Hash(coin__UxOut.getCPtr(p0), tmpp1);
+      uint ret = skycoinPINVOKE.SKY_coin_UxOut_Hash__SWIG_1(coin__UxOut.getCPtr(p0), tmpp1);
       return ret;
     }
   }
