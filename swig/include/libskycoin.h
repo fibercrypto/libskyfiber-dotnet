@@ -158,16 +158,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 9 "cipher.encoder.field.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 10 "cipher.secp256k1-go.secp256_rand.go"
 
 
@@ -921,10 +911,6 @@ extern GoUint32 SKY_iputil_LocalhostIP(GoString_* p0);
 extern GoUint32 SKY_iputil_IsLocalhost(GoString p0, GoUint8* p1);
 
 extern GoUint32 SKY_iputil_SplitAddr(GoString p0, GoString_* p1, GoUint16* p2);
-
-extern GoUint32 SKY_encoder_StructField_String(encoder__StructField* p0, GoString_* p1);
-
-extern GoUint32 SKY_encoder_ParseFields(GoSlice p0, GoSlice p1, GoStringMap_* p2);
 
 extern GoUint32 SKY_secp256k1_SumSHA256(GoSlice p0, coin__UxArray* p1);
 

@@ -1001,6 +1001,20 @@ coin__Transaction* makeTransaction(Transaction__Handle* handle){
   if(result != 0) return 1;
   return ptransaction;
 }
+
+int makeTransactions(int n, Transactions__Handle* handle){
+  int result = SKY_coin_Create_Transactions(handle);
+  if(result != 0) return 1;
+  registerHandleClose(*handle);
+  for(int i = 0; i < n; i++){
+    Transaction__Handle thandle;
+    makeTransaction(&thandle);
+    registerHandleClose(thandle);
+    result = SKY_coin_Transactions_Add(*handle, thandle);
+    if(result != 0) return 1;
+  }
+  return result;
+}
     
 
 	GoUint32 CSharp_skycoin_SKY_cipher_SumSHA256(GoSlice seed, cipher_SHA256* sha){
@@ -2897,6 +2911,20 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_makeTransaction(void * jarg1) {
   arg1 = (Transaction__Handle *)jarg1; 
   result = (coin__Transaction *)makeTransaction(arg1);
   jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_makeTransactions(int jarg1, void * jarg2) {
+  int jresult ;
+  int arg1 ;
+  Transactions__Handle *arg2 = (Transactions__Handle *) 0 ;
+  int result;
+  
+  arg1 = (int)jarg1; 
+  arg2 = (Transactions__Handle *)jarg2; 
+  result = (int)makeTransactions(arg1,arg2);
+  jresult = result; 
   return jresult;
 }
 
@@ -8184,48 +8212,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_iputil_SplitAddr(char* ja
   arg2 = (GoString_ *)jarg2; 
   arg3 = (GoUint16 *)jarg3; 
   result = (GoUint32)SKY_iputil_SplitAddr(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_StructField_String(void * jarg1, GoString* jarg2) {
-  unsigned int jresult ;
-  encoder__StructField *arg1 = (encoder__StructField *) 0 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (encoder__StructField *)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_encoder_StructField_String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_encoder_ParseFields(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoSlice arg2 ;
-  GoStringMap_ *arg3 = (GoStringMap_ *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp2 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  argp2 = (GoSlice *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  arg3 = (GoStringMap_ *)jarg3; 
-  result = (GoUint32)SKY_encoder_ParseFields(arg1,arg2,arg3);
   jresult = result; 
   return jresult;
 }

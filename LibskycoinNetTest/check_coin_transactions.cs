@@ -442,15 +442,124 @@ namespace LibskycoinNetTest {
             var b = new GoSlice ();
             var err = skycoin.skycoin.SKY_coin_Transaction_Serialize (handle, b);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            // var handle2 = skycoin.skycoin.new_Transaction__Handlep ();
-            var handle2 = transutils.copyTransaction (handle);
-            // err = skycoin.skycoin.SKY_coin_TransactionDeserialize (b, handle2);
+            var handle2 = skycoin.skycoin.new_Transaction__Handlep ();
+            err = skycoin.skycoin.SKY_coin_TransactionDeserialize (b, handle2);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var tx2 = new coin__Transaction ();
             err = skycoin.skycoin.SKY_coin_GetTransactionObject (handle2, tx2);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (tx.isEqual (tx2), 0);
+        }
 
+        [Test]
+        public void TestTransactionOutputHours () {
+            var handle = transutils.makeEmptyTransaction ();
+            var err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, transutils.makeAddress (), (ulong) 1e6, 100);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, transutils.makeAddress (), (ulong) 1e6, 200);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, transutils.makeAddress (), (ulong) 1e6, 500);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, transutils.makeAddress (), (ulong) 1e6, 0);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var hours = skycoin.skycoin.new_GoUint64p ();
+            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (handle, hours);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.GoUint64p_value (hours), 800);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, transutils.makeAddress (), (ulong) 1e6, ulong.MaxValue - 700);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (handle, hours);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+        }
+
+        [Test]
+        public void TestTransactionsSize () {
+            var handle = skycoin.skycoin.new_Transactions__Handlep ();
+            var err = (uint) skycoin.skycoin.makeTransactions (10, handle);
+            var size = (long) 0;
+            for (int i = 0; i < 10; i++) {
+                var tx = transutils.makeEmptyTransaction ();
+                err = skycoin.skycoin.SKY_coin_Transactions_GetAt (handle, i, tx);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var b = new GoSlice ();
+                err = skycoin.skycoin.SKY_coin_Transaction_Serialize (tx, b);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                size += b.len;
+            }
+            Assert.AreNotEqual (size, 0);
+            var sizetx = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (handle, sizetx);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (sizetx), size);
+        }
+
+        [Test]
+        public void TestTransactionsHashes () {
+            var handle = skycoin.skycoin.new_Transactions__Handlep ();
+            skycoin.skycoin.makeTransactions (4, handle);
+            var hashes = new cipher_SHA256s ();
+            var err = skycoin.skycoin.SKY_coin_Transactions_Hashes (handle, hashes);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var len_hashes = hashes.count;
+            Assert.AreEqual (len_hashes, 4);
+            for (int i = 0; i < len_hashes; i++) {
+                var tx = skycoin.skycoin.new_Transaction__Handlep ();
+                err = skycoin.skycoin.SKY_coin_Transactions_GetAt (handle, i, tx);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var h = new cipher_SHA256 ();
+                err = skycoin.skycoin.SKY_coin_Transaction_Hash (tx, h);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (h.isEqual (hashes.getAt (i)), 1);
+            }
+        }
+
+        [Test]
+        public void TestTransactionsTruncateBytesTo () {
+            var handles = skycoin.skycoin.new_Transactions__Handlep ();
+            var err = (uint) skycoin.skycoin.makeTransactions (10, handles);
+            var trunc = (long) 0;
+            var count = skycoin.skycoin.new_Gointp ();
+            var len_tnxs = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (handles, len_tnxs);
+            long len_tnxs_value = skycoin.skycoin.Gointp_value (len_tnxs);
+            for (long i = 0; i < (len_tnxs_value / 2); i++) {
+                count = skycoin.skycoin.new_Gointp ();
+                var handle = skycoin.skycoin.new_Transaction__Handlep ();
+                err = skycoin.skycoin.SKY_coin_Transactions_GetAt (handles, (long) i, handle);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                err = skycoin.skycoin.SKY_coin_Transaction_Size (handle, count);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                trunc += skycoin.skycoin.Gointp_value (count);
+            }
+            // Trucating halfway
+            var tnxs2 = skycoin.skycoin.new_Transactions__Handlep ();
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, trunc, tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var len_tnxs2 = skycoin.skycoin.new_Gointp ();
+
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (tnxs2, len_tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (len_tnxs2), len_tnxs_value / 2);
+            count = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), trunc);
+
+            // Stepping into next boundary has same cutoff, must exceed
+            trunc += 1;
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, trunc, tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), len_tnxs_value / 2);
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), trunc - 1);
+
+            // Moving to 1 before next level
+            
         }
 
     }
