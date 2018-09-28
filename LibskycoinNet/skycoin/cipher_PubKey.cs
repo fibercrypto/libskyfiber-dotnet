@@ -45,12 +45,12 @@ public class cipher_PubKey : global::System.IDisposable {
     return ret;
   }
 
-  public void assignFrom(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_PubKey_assignFrom(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignFrom(cipher_PubKey data) {
+    skycoinPINVOKE.cipher_PubKey_assignFrom(swigCPtr, cipher_PubKey.getCPtr(data));
   }
 
-  public void assignTo(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_PubKey_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignTo(cipher_PubKey data) {
+    skycoinPINVOKE.cipher_PubKey_assignTo(swigCPtr, cipher_PubKey.getCPtr(data));
   }
 
   public SWIGTYPE_p_unsigned_char data {

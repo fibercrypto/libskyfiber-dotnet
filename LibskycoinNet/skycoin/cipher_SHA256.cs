@@ -45,12 +45,12 @@ public class cipher_SHA256 : global::System.IDisposable {
     return ret;
   }
 
-  public void assignFrom(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_SHA256_assignFrom(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignFrom(cipher_SHA256 data) {
+    skycoinPINVOKE.cipher_SHA256_assignFrom(swigCPtr, cipher_SHA256.getCPtr(data));
   }
 
-  public void assignTo(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignTo(cipher_SHA256 data) {
+    skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, cipher_SHA256.getCPtr(data));
   }
 
   public _GoString_ getStr() {
