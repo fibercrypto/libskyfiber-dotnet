@@ -60,6 +60,10 @@ public class coin_UxOutArray : global::System.IDisposable {
     skycoinPINVOKE.coin_UxOutArray_allocate(swigCPtr, n);
   }
 
+  public void append(coin__UxOut uxout) {
+    skycoinPINVOKE.coin_UxOutArray_append(swigCPtr, coin__UxOut.getCPtr(uxout));
+  }
+
   public void release() {
     skycoinPINVOKE.coin_UxOutArray_release(swigCPtr);
   }

@@ -110,11 +110,9 @@ namespace LibskycoinNetTest {
         [Test]
         public void TestVerifyTransactionFee () {
             FullburnFactor2verifyTxFeeTestCase ();
-            var empty = skycoin.skycoin.new_Transaction__Handlep ();
-            var err = transutils.makeEmptyTransaction (empty);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var empty = transutils.makeEmptyTransaction ();
             var hours = skycoin.skycoin.new_GoUint64p ();
-            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (empty, hours);
+            var err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (empty, hours);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (skycoin.skycoin.GoUint64p_value (hours), 0);
 
@@ -128,7 +126,7 @@ namespace LibskycoinNetTest {
             var txn = skycoin.skycoin.new_Transaction__Handlep ();
             skycoin.skycoin.makeEmptyTransaction (txn);
             var addr = new cipher__Address ();
-            err = transutils.makeAddress (addr);
+            addr = transutils.makeAddress ();
             Assert.AreEqual (err, 0);
             err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0, 1000000);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
@@ -361,21 +359,17 @@ namespace LibskycoinNetTest {
         [Test]
         public void TestTransactionFee () {
             FullCases ();
-            var addr = new skycoin.cipher__Address ();
-            var err = transutils.makeAddress (addr);
-            Assert.AreEqual (err, 0);
+            var addr = transutils.makeAddress ();
             for (int i = 0; i < ListCases.Length; i++) {
                 var tc = ListCases[i];
-                var tx = skycoin.skycoin.new_Transaction__Handlep ();
-                err = transutils.makeEmptyTransaction (tx);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var tx = transutils.makeEmptyTransaction ();
                 for (int j = 0; j < tc.outs.Length; j++) {
                     var h = tc.outs[j];
-                    err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (tx, addr, (ulong) 0, (ulong) h);
-                    Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                    var err1 = skycoin.skycoin.SKY_coin_Transaction_PushOutput (tx, addr, (ulong) 0, (ulong) h);
+                    Assert.AreEqual (err1, skycoin.skycoin.SKY_OK);
                 }
                 var inUxs = new GoSlice ();
-                err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
+                var err = (uint) skycoin.skycoin.makeUxArray (inUxs, tc.ins.Length);
                 Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
                 Assert.AreEqual (inUxs.len, tc.ins.Length);
                 for (int j = 0; j < tc.ins.Length; j++) {

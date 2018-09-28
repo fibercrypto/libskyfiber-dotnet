@@ -1568,6 +1568,10 @@ SWIGINTERN void coin_UxOutArray_allocate(coin_UxOutArray *self,int n){
 		self->data = malloc(n * sizeof(*(self->data)));
 		self->count = n;
 	}
+SWIGINTERN void coin_UxOutArray_append(coin_UxOutArray *self,coin__UxOut *uxout){
+		coin_UxOutArray_allocate(self,self->count+1);
+		coin_UxOutArray_setAt(self,self->count+1,uxout);
+	}
 SWIGINTERN void coin_UxOutArray_release(coin_UxOutArray *self){
 		if(self->data != NULL)
 			free(self->data);
@@ -4556,6 +4560,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin_UxOutArray_allocate(void * jarg1
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin_UxOutArray_append(void * jarg1, void * jarg2) {
+  coin_UxOutArray *arg1 = (coin_UxOutArray *) 0 ;
+  coin__UxOut *arg2 = (coin__UxOut *) 0 ;
+  
+  arg1 = (coin_UxOutArray *)jarg1; 
+  arg2 = (coin__UxOut *)jarg2; 
+  coin_UxOutArray_append(arg1,arg2);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin_UxOutArray_release(void * jarg1) {
   coin_UxOutArray *arg1 = (coin_UxOutArray *) 0 ;
   
@@ -4684,6 +4698,68 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher_Addresses(void * jarg1)
   cipher_Addresses *arg1 = (cipher_Addresses *) 0 ;
   
   arg1 = (cipher_Addresses *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_Fee_Calculator_callback(void * jarg1, void * jarg2) {
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  FeeCalcFunc arg2 = (FeeCalcFunc) 0 ;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
+  arg2 = (FeeCalcFunc)jarg2; 
+  if (arg1) (arg1)->callback = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_Fee_Calculator_callback(void * jarg1) {
+  void * jresult ;
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  FeeCalcFunc result;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
+  result = (FeeCalcFunc) ((arg1)->callback);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_Fee_Calculator_context(void * jarg1, void * jarg2) {
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  void *arg2 = (void *) 0 ;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
+  arg2 = (void *)jarg2; 
+  if (arg1) (arg1)->context = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_Fee_Calculator_context(void * jarg1) {
+  void * jresult ;
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  void *result = 0 ;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
+  result = (void *) ((arg1)->context);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Fee_Calculator() {
+  void * jresult ;
+  Fee_Calculator *result = 0 ;
+  
+  result = (Fee_Calculator *)calloc(1, sizeof(Fee_Calculator));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Fee_Calculator(void * jarg1) {
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
   free((char *) arg1);
 }
 

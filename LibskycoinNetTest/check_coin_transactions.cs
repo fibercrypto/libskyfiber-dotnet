@@ -559,8 +559,151 @@ namespace LibskycoinNetTest {
             Assert.AreEqual (skycoin.skycoin.Gointp_value (count), trunc - 1);
 
             // Moving to 1 before next level
-            
+            var tnxs_5 = transutils.makeEmptyTransaction ();
+            err = skycoin.skycoin.SKY_coin_Transactions_GetAt (handles, 5, tnxs_5);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            count = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transaction_Size (tnxs_5, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            trunc += (skycoin.skycoin.Gointp_value (count) - 2);
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, trunc, tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), 5);
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var count_tnxs5 = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transaction_Size (tnxs_5, count_tnxs5);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual ((trunc - skycoin.skycoin.Gointp_value (count_tnxs5) + 1), skycoin.skycoin.Gointp_value (count));
+
+            // Moving to next level
+            trunc += 1;
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, trunc, tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), 6);
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), trunc);
+
+            // Truncating to full available amt
+            var trunc1 = skycoin.skycoin.new_Gointp ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (handles, trunc1);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, skycoin.skycoin.Gointp_value (trunc1), tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), skycoin.skycoin.Gointp_value (trunc1));
+
+            // Truncating to 0
+            trunc = 0;
+            err = skycoin.skycoin.SKY_coin_Transactions_TruncateBytesTo (handles, 0, tnxs2);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Length (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), 0);
+            err = skycoin.skycoin.SKY_coin_Transactions_Size (tnxs2, count);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.Gointp_value (count), trunc);
         }
+
+        struct ux {
+            public ulong coins;
+            public ulong hours;
+        }
+        struct StrTest {
+            public string name;
+            public ux[] inUxs;
+            public ux[] outUxs;
+            public int err;
+            public long headTime;
+        }
+
+        StrTest[] cases = new StrTest[1];
+        public void FullCases () {
+            var c = new StrTest ();
+            c.name = "Input coins overflow";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) (ulong.MaxValue - 1e6 + 1);
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 1e6;
+            c.inUxs[1].hours = 0;
+            c.outUxs = new ux[0];
+            c.headTime = 0;
+            cases[0] = c;
+        }
+        // TODO: Continuar llenado
+        [Test]
+        public void TestVerifyTransactionCoinsSpending () {
+            FullCases ();
+            var uxIn = new coin_UxOutArray ();
+            var uxOut = new coin_UxOutArray ();
+            for (int i = 0; i < cases.Length; i++) {
+                var tc = cases[i];
+                for (int j = 0; j < tc.inUxs.Length; j++) {
+                    var ch = tc.inUxs[j];
+                    var puxIn = new coin__UxOut ();
+                    puxIn.Body.Coins = ch.coins;
+                    puxIn.Body.Hours = ch.hours;
+                    uxIn.append (puxIn);
+                }
+                for (int j = 0; j < tc.outUxs.Length; j++) {
+                    var ch = tc.outUxs[j];
+                    var puxOut = new coin__UxOut ();
+                    puxOut.Body.Coins = ch.coins;
+                    puxOut.Body.Hours = ch.hours;
+                    uxOut.append (puxOut);
+                }
+                var err = skycoin.skycoin.SKY_coin_VerifyTransactionCoinsSpending (uxIn, uxOut);
+                Assert.AreEqual (err, tc.err);
+            }
+        }
+        public void FullCases2 () {
+            var c = new StrTest ();
+            c.name = "Input coins overflow";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) (ulong.MaxValue - 1e6 + 1);
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 1e6;
+            c.inUxs[1].hours = 0;
+            c.outUxs = new ux[0];
+            c.headTime = 0;
+            cases[0] = c;
+        }
+
+        [Test]
+        public void TestVerifyTransactionHoursSpending () {
+            FullCases2 ();
+            var uxIn = new coin_UxOutArray ();
+            var uxOut = new coin_UxOutArray ();
+            for (int i = 0; i < cases.Length; i++) {
+                var tc = cases[i];
+                for (int j = 0; j < tc.inUxs.Length; j++) {
+                    var ch = tc.inUxs[j];
+                    var puxIn = new coin__UxOut ();
+                    puxIn.Body.Coins = ch.coins;
+                    puxIn.Body.Hours = ch.hours;
+                    uxIn.append (puxIn);
+                }
+                for (int j = 0; j < tc.outUxs.Length; j++) {
+                    var ch = tc.outUxs[j];
+                    var puxOut = new coin__UxOut ();
+                    puxOut.Body.Coins = ch.coins;
+                    puxOut.Body.Hours = ch.hours;
+                    uxOut.append (puxOut);
+                }
+                var err = skycoin.skycoin.SKY_coin_VerifyTransactionCoinsSpending (uxIn, uxOut);
+                Assert.AreEqual (err, tc.err);
+            }
+        }
+
+        // TODO: Fin del relleno
 
     }
 }

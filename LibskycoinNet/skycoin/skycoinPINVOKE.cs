@@ -863,6 +863,9 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_coin_UxOutArray_allocate")]
   public static extern void coin_UxOutArray_allocate(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_coin_UxOutArray_append")]
+  public static extern void coin_UxOutArray_append(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_coin_UxOutArray_release")]
   public static extern void coin_UxOutArray_release(global::System.Runtime.InteropServices.HandleRef jarg1);
 
@@ -901,6 +904,24 @@ class skycoinPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_delete_cipher_Addresses")]
   public static extern void delete_cipher_Addresses(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_Fee_Calculator_callback")]
+  public static extern void set_Fee_Calculator_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_Fee_Calculator_callback")]
+  public static extern global::System.IntPtr get_Fee_Calculator_callback(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_Fee_Calculator_context")]
+  public static extern void set_Fee_Calculator_context(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_Fee_Calculator_context")]
+  public static extern global::System.IntPtr get_Fee_Calculator_context(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_new_Fee_Calculator")]
+  public static extern global::System.IntPtr new_Fee_Calculator();
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_delete_Fee_Calculator")]
+  public static extern void delete_Fee_Calculator(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin__GoString__SetString")]
   public static extern int _GoString__SetString(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
