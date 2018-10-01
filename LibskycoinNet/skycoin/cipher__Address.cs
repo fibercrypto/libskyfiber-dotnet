@@ -54,12 +54,12 @@ public class cipher__Address : global::System.IDisposable {
     skycoinPINVOKE.cipher__Address_setVersion(swigCPtr, pValue);
   }
 
-  public char Version {
+  public byte Version {
     set {
       skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, value);
     } 
     get {
-      char ret = skycoinPINVOKE.get_cipher__Address_Version(swigCPtr);
+      byte ret = skycoinPINVOKE.get_cipher__Address_Version(swigCPtr);
       return ret;
     } 
   }

@@ -40,6 +40,10 @@ public class coin__UxBody : global::System.IDisposable {
     }
   }
 
+  public void SetSrcTransaction(cipher_SHA256 o) {
+    skycoinPINVOKE.coin__UxBody_SetSrcTransaction(swigCPtr, cipher_SHA256.getCPtr(o));
+  }
+
   public SWIGTYPE_p_GoUint8_ SrcTransaction {
     set {
       skycoinPINVOKE.set_coin__UxBody_SrcTransaction(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));

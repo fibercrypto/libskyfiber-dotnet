@@ -5,7 +5,8 @@ namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_cipher_encrypt_scrypt_chacha20poly1305 {
 
-        [Test]
+        // [Test]
+        // [Test]
         public void TestScryptChacha20poly1305Encrypt () {
             for (int i = 1; i < 20; i++) {
                 var name = "N=1<<" + i.ToString () + "(" + (1 << i).ToString () + ")" + ", R=8, p=1, keyLen=32";
@@ -27,7 +28,7 @@ namespace LibskycoinNetTest {
                 var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Encrypt (crypto, plain, passwd, encData);
                 Assert.AreEqual (err, skycoin.skycoin.SKY_OK, name);
                 Assert.AreEqual (encData.len > 2, true);
-                string str = (string) encData.toString ().p;
+                string str = (string) encData.ToString();
                 var base64 = Convert.FromBase64String (str);
                 var meta = System.Text.ASCIIEncoding.ASCII.GetString (base64);
                 Assert.AreEqual (base64.Length >= 2, true);

@@ -620,10 +620,10 @@ namespace LibskycoinNetTest {
             public ux[] inUxs;
             public ux[] outUxs;
             public int err;
-            public long headTime;
+            public ulong headTime;
         }
 
-        StrTest[] cases = new StrTest[1];
+        StrTest[] cases = new StrTest[5];
         public void FullCases () {
             var c = new StrTest ();
             c.name = "Input coins overflow";
@@ -636,54 +636,215 @@ namespace LibskycoinNetTest {
             c.outUxs = new ux[0];
             c.headTime = 0;
             cases[0] = c;
+
+            c = new StrTest ();
+            c.name = "Output coins overflow";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[1];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.outUxs = new ux[2];
+            c.outUxs[0].coins = (ulong) (ulong.MaxValue - 10e6 + 1);
+            c.outUxs[0].coins = 0;
+            c.outUxs[1].coins = (ulong) 20e6;
+            c.outUxs[1].hours = 1;
+            c.headTime = 0;
+            cases[1] = c;
+
+            c = new StrTest ();
+            c.name = "Insufficient coins";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            // c.headTime = 0;
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[2];
+            c.outUxs[0].coins = (ulong) 20e6;
+            c.outUxs[0].coins = 1;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 1;
+            cases[2] = c;
+
+            c = new StrTest ();
+            c.name = "Destroyed coins";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[2];
+            c.outUxs[0].coins = (ulong) 5e6;
+            c.outUxs[0].coins = 1;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 1;
+            c.headTime = 0;
+            cases[3] = c;
+
+            c = new StrTest ();
+            c.name = "valid";
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[3];
+            c.outUxs[0].coins = (ulong) 10e6;
+            c.outUxs[0].coins = 11;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 1;
+            c.outUxs[2].coins = (ulong) 5e6;
+            c.outUxs[2].hours = 0;
+            cases[4] = c;
+
         }
-        // TODO: Continuar llenado
-        [Test]
+
+        // [Test]
         public void TestVerifyTransactionCoinsSpending () {
             FullCases ();
-            var uxIn = new coin_UxOutArray ();
-            var uxOut = new coin_UxOutArray ();
             for (int i = 0; i < cases.Length; i++) {
+                var uxIn = new coin_UxOutArray ();
+                var uxOut = new coin_UxOutArray ();
                 var tc = cases[i];
+                uxIn.allocate (tc.inUxs.Length);
+                uxOut.allocate (tc.outUxs.Length);
+
                 for (int j = 0; j < tc.inUxs.Length; j++) {
                     var ch = tc.inUxs[j];
                     var puxIn = new coin__UxOut ();
+                    skycoin.skycoin.makeUxOut (puxIn);
                     puxIn.Body.Coins = ch.coins;
                     puxIn.Body.Hours = ch.hours;
-                    uxIn.append (puxIn);
+                    uxIn.setAt (j, puxIn);
                 }
-                for (int j = 0; j < tc.outUxs.Length; j++) {
-                    var ch = tc.outUxs[j];
+
+                for (int x = 0; x < tc.outUxs.Length; x++) {
+                    var ch = tc.outUxs[x];
                     var puxOut = new coin__UxOut ();
+                    skycoin.skycoin.makeUxOut (puxOut);
                     puxOut.Body.Coins = ch.coins;
                     puxOut.Body.Hours = ch.hours;
-                    uxOut.append (puxOut);
+                    uxOut.setAt (i, puxOut);
                 }
+                Assert.AreEqual (tc.inUxs.Length, uxIn.count, "Comparacion de inUxs");
+                Assert.AreEqual (tc.outUxs.Length, uxOut.count, "coparacion uxout");
                 var err = skycoin.skycoin.SKY_coin_VerifyTransactionCoinsSpending (uxIn, uxOut);
-                Assert.AreEqual (err, tc.err);
+                Assert.AreEqual (err, tc.err, "Iteration " + i.ToString () + tc.name);
             }
         }
         public void FullCases2 () {
+
+            cases = new StrTest[7];
             var c = new StrTest ();
             c.name = "Input coins overflow";
             c.err = skycoin.skycoin.SKY_ERROR;
             c.inUxs = new ux[2];
-            c.inUxs[0].coins = (ulong) (ulong.MaxValue - 1e6 + 1);
-            c.inUxs[0].hours = 10;
+            c.inUxs[0].hours = (ulong) (ulong.MaxValue - 1e6 + 1);
+            c.inUxs[0].coins = (ulong)3e6;
             c.inUxs[1].coins = (ulong) 1e6;
-            c.inUxs[1].hours = 0;
+            c.inUxs[1].hours = (ulong) 1e6;
             c.outUxs = new ux[0];
-            c.headTime = 0;
             cases[0] = c;
+
+            c = new StrTest ();
+            c.name = "Insufficient coin hours";
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[2];
+            c.outUxs[0].coins = (ulong) 15e6;
+            c.outUxs[0].hours = 10;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 11;
+            c.headTime = 0;
+            cases[1] = c;
+
+            c = new StrTest ();
+            c.name = "coin hours time calculation overflow";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[3];
+            c.outUxs[0].coins = (ulong) 10e6;
+            c.outUxs[0].hours = 11;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 1;
+            c.outUxs[2].coins = (ulong) 5e6;
+            c.outUxs[2].hours = 0;
+            c.headTime = long.MaxValue;
+            cases[2] = c;
+
+            c = new StrTest ();
+            c.name = "Invalid (coin hours overflow when adding earned hours, which is treated as 0, and now enough coin hours)";
+            c.err = skycoin.skycoin.SKY_ERROR;
+            c.inUxs = new ux[1];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = long.MaxValue;
+            c.outUxs = new ux[1];
+            c.outUxs[0].coins = (ulong) 10e6;
+            c.outUxs[0].hours = 1;
+            c.headTime = (long) 1e6;
+            cases[3] = c;
+
+            c = new StrTest ();
+            c.name = "Valid (coin hours overflow when adding earned hours, which is treated as 0, but not sending any hours)";
+            c.inUxs = new ux[1];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = ulong.MaxValue;
+            c.outUxs = new ux[1];
+            c.outUxs[0].coins = (ulong) 10e6;
+            c.outUxs[0].hours = 0;
+            c.headTime = (long) 1e6;
+            cases[4] = c;
+
+            c = new StrTest ();
+            c.name = "Valid (base inputs have insufficient coin hours, but have sufficient after adjusting coinhours by headTime)";
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[2];
+            c.outUxs[0].coins = (ulong) 15e6;
+            c.outUxs[0].hours = 10;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 11;
+            c.headTime = 1492707255;
+            cases[5] = c;
+
+            c = new StrTest ();
+            c.name = "valid";
+            c.inUxs = new ux[2];
+            c.inUxs[0].coins = (ulong) 10e6;
+            c.inUxs[0].hours = 10;
+            c.inUxs[1].coins = (ulong) 15e6;
+            c.inUxs[1].hours = 10;
+            c.outUxs = new ux[3];
+            c.outUxs[0].coins = (ulong) 10e6;
+            c.outUxs[0].hours = 11;
+            c.outUxs[1].coins = (ulong) 10e6;
+            c.outUxs[1].hours = 1;
+            c.outUxs[2].coins = (ulong) 5e6;
+            c.outUxs[2].hours = 0;
+            cases[6] = c;
+
         }
 
-        [Test]
+        // [Test]
         public void TestVerifyTransactionHoursSpending () {
             FullCases2 ();
-            var uxIn = new coin_UxOutArray ();
-            var uxOut = new coin_UxOutArray ();
+
             for (int i = 0; i < cases.Length; i++) {
                 var tc = cases[i];
+                var uxIn = new coin_UxOutArray ();
+                var uxOut = new coin_UxOutArray ();
                 for (int j = 0; j < tc.inUxs.Length; j++) {
                     var ch = tc.inUxs[j];
                     var puxIn = new coin__UxOut ();
@@ -698,12 +859,12 @@ namespace LibskycoinNetTest {
                     puxOut.Body.Hours = ch.hours;
                     uxOut.append (puxOut);
                 }
-                var err = skycoin.skycoin.SKY_coin_VerifyTransactionCoinsSpending (uxIn, uxOut);
-                Assert.AreEqual (err, tc.err);
+                 Assert.AreEqual (tc.inUxs.Length, uxIn.count, "Comparacion de inUxs");
+                Assert.AreEqual (tc.outUxs.Length, uxOut.count, "coparacion uxout");
+                var err = skycoin.skycoin.SKY_coin_VerifyTransactionHoursSpending(tc.headTime,uxIn, uxOut);
+                Assert.AreEqual (err, tc.err, "Iter " + i.ToString () + tc.name);
             }
         }
-
-        // TODO: Fin del relleno
 
     }
 }

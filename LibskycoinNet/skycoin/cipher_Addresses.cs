@@ -40,6 +40,30 @@ public class cipher_Addresses : global::System.IDisposable {
     }
   }
 
+  public cipher__Address getAt(int i) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.cipher_Addresses_getAt(swigCPtr, i);
+    cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
+    return ret;
+  }
+
+  public int setAt(int i, cipher_Addresses addr) {
+    int ret = skycoinPINVOKE.cipher_Addresses_setAt(swigCPtr, i, cipher_Addresses.getCPtr(addr));
+    return ret;
+  }
+
+  public int isEqual(cipher_Addresses a) {
+    int ret = skycoinPINVOKE.cipher_Addresses_isEqual(swigCPtr, cipher_Addresses.getCPtr(a));
+    return ret;
+  }
+
+  public void allocate(int n) {
+    skycoinPINVOKE.cipher_Addresses_allocate(swigCPtr, n);
+  }
+
+  public void release() {
+    skycoinPINVOKE.cipher_Addresses_release(swigCPtr);
+  }
+
   public cipher__Address data {
     set {
       skycoinPINVOKE.set_cipher_Addresses_data(swigCPtr, cipher__Address.getCPtr(value));
