@@ -1,18 +1,29 @@
 ﻿using System;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using skycoin;
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_cipher_encrypt_scrypt_chacha20poly1305 {
 
-        // [Test]
-        // [Test]
+        private String cutString (String str, String ini, String end) {
+            int endIndex = str.LastIndexOf (end);
+            String outs = str.Substring (0, endIndex);
+            int offset = ini.Length;
+            int initIndex = outs.LastIndexOf (ini) + offset;
+            int cut = outs.Length - initIndex;
+            outs = outs.Substring (initIndex, cut);
+            return outs;
+        }
+
+        [Test]
         public void TestScryptChacha20poly1305Encrypt () {
             for (int i = 1; i < 20; i++) {
                 var name = "N=1<<" + i.ToString () + "(" + (1 << i).ToString () + ")" + ", R=8, p=1, keyLen=32";
-                Console.WriteLine ("----------------Iteracion----------------- " + i.ToString () + name);
                 var crypto = new encrypt__ScryptChacha20poly1305 ();
-                crypto.N = ((long) (1 << i));
+                crypto.N = Convert.ToInt64 (1 << i);
                 crypto.R = 8;
                 crypto.P = 1;
                 crypto.KeyLen = 32;
@@ -28,23 +39,23 @@ namespace LibskycoinNetTest {
                 var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Encrypt (crypto, plain, passwd, encData);
                 Assert.AreEqual (err, skycoin.skycoin.SKY_OK, name);
                 Assert.AreEqual (encData.len > 2, true);
-                string str = (string) encData.ToString();
-                var base64 = Convert.FromBase64String (str);
-                var meta = System.Text.ASCIIEncoding.ASCII.GetString (base64);
-                Assert.AreEqual (base64.Length >= 2, true);
-                Assert.AreEqual (base64.Length < 1024, true);
+                var str = encData.getString ();
+                Console.WriteLine (name);
 
-                
-                var n = skycoin.skycoin.new_intp ();
-                var r = skycoin.skycoin.new_intp ();
-                var p = skycoin.skycoin.new_intp ();
-                var keyLen = skycoin.skycoin.new_intp ();
-                Console.WriteLine (meta);
-                skycoin.skycoin.parseJsonMetaData (meta, n, r, p, keyLen);
-                Console.WriteLine ("N =" + skycoin.skycoin.intp_value (n));
-                Console.WriteLine ("R =" + skycoin.skycoin.intp_value (r));
-                Console.WriteLine ("P = " + skycoin.skycoin.intp_value (p));
-                Console.WriteLine ("keyLen= " + skycoin.skycoin.intp_value (keyLen));
+                if (str.n <= 188) {
+                    var base64 = Convert.FromBase64String (str.p);
+                    var meta = System.Text.Encoding.UTF8.GetString (base64);
+                    var n = skycoin.skycoin.new_Gointp ();
+                    var r = skycoin.skycoin.new_Gointp ();
+                    var p = skycoin.skycoin.new_Gointp ();
+                    var keyLen = skycoin.skycoin.new_Gointp ();
+                    meta = cutString (meta, "{", "}");
+                    skycoin.skycoin.parseJsonMetaData (meta, n, r, p, keyLen);
+                    Assert.AreEqual (1 << i, skycoin.skycoin.Gointp_value (n), name);
+                    Assert.AreEqual (8, skycoin.skycoin.Gointp_value (r), name);
+                    Assert.AreEqual (1, skycoin.skycoin.Gointp_value (p), name);
+                    Assert.AreEqual (32, skycoin.skycoin.Gointp_value (keyLen), name);
+                }
             }
         }
 

@@ -623,8 +623,10 @@ namespace LibskycoinNetTest {
             public ulong headTime;
         }
 
-        StrTest[] cases = new StrTest[5];
+        StrTest[] cases;
         public void FullCases () {
+            cases = new StrTest[5];
+
             var c = new StrTest ();
             c.name = "Input coins overflow";
             c.err = skycoin.skycoin.SKY_ERROR;
@@ -692,44 +694,43 @@ namespace LibskycoinNetTest {
             c.inUxs[1].hours = 10;
             c.outUxs = new ux[3];
             c.outUxs[0].coins = (ulong) 10e6;
-            c.outUxs[0].coins = 11;
+            c.outUxs[0].hours = 11;
             c.outUxs[1].coins = (ulong) 10e6;
             c.outUxs[1].hours = 1;
             c.outUxs[2].coins = (ulong) 5e6;
             c.outUxs[2].hours = 0;
+            c.headTime = 0;
+            c.err = skycoin.skycoin.SKY_OK;
             cases[4] = c;
 
         }
 
-        // [Test]
+        [Test]
         public void TestVerifyTransactionCoinsSpending () {
             FullCases ();
             for (int i = 0; i < cases.Length; i++) {
+                var tc = cases[i];
                 var uxIn = new coin_UxOutArray ();
                 var uxOut = new coin_UxOutArray ();
-                var tc = cases[i];
+
                 uxIn.allocate (tc.inUxs.Length);
                 uxOut.allocate (tc.outUxs.Length);
-
                 for (int j = 0; j < tc.inUxs.Length; j++) {
                     var ch = tc.inUxs[j];
                     var puxIn = new coin__UxOut ();
-                    skycoin.skycoin.makeUxOut (puxIn);
                     puxIn.Body.Coins = ch.coins;
                     puxIn.Body.Hours = ch.hours;
                     uxIn.setAt (j, puxIn);
                 }
-
-                for (int x = 0; x < tc.outUxs.Length; x++) {
-                    var ch = tc.outUxs[x];
+                for (int j = 0; j < tc.outUxs.Length; j++) {
+                    var ch = tc.outUxs[j];
                     var puxOut = new coin__UxOut ();
-                    skycoin.skycoin.makeUxOut (puxOut);
                     puxOut.Body.Coins = ch.coins;
                     puxOut.Body.Hours = ch.hours;
-                    uxOut.setAt (i, puxOut);
+                    uxOut.setAt (j, puxOut);
                 }
-                Assert.AreEqual (tc.inUxs.Length, uxIn.count, "Comparacion de inUxs");
-                Assert.AreEqual (tc.outUxs.Length, uxOut.count, "coparacion uxout");
+                Assert.AreEqual (tc.inUxs.Length, uxIn.count);
+                Assert.AreEqual (tc.outUxs.Length, uxOut.count);
                 var err = skycoin.skycoin.SKY_coin_VerifyTransactionCoinsSpending (uxIn, uxOut);
                 Assert.AreEqual (err, tc.err, "Iteration " + i.ToString () + tc.name);
             }
@@ -742,7 +743,7 @@ namespace LibskycoinNetTest {
             c.err = skycoin.skycoin.SKY_ERROR;
             c.inUxs = new ux[2];
             c.inUxs[0].hours = (ulong) (ulong.MaxValue - 1e6 + 1);
-            c.inUxs[0].coins = (ulong)3e6;
+            c.inUxs[0].coins = (ulong) 3e6;
             c.inUxs[1].coins = (ulong) 1e6;
             c.inUxs[1].hours = (ulong) 1e6;
             c.outUxs = new ux[0];
@@ -761,6 +762,7 @@ namespace LibskycoinNetTest {
             c.outUxs[1].coins = (ulong) 10e6;
             c.outUxs[1].hours = 11;
             c.headTime = 0;
+            c.err = skycoin.skycoin.SKY_ERROR;
             cases[1] = c;
 
             c = new StrTest ();
@@ -778,7 +780,7 @@ namespace LibskycoinNetTest {
             c.outUxs[1].hours = 1;
             c.outUxs[2].coins = (ulong) 5e6;
             c.outUxs[2].hours = 0;
-            c.headTime = long.MaxValue;
+            c.headTime = ulong.MaxValue;
             cases[2] = c;
 
             c = new StrTest ();
@@ -786,7 +788,7 @@ namespace LibskycoinNetTest {
             c.err = skycoin.skycoin.SKY_ERROR;
             c.inUxs = new ux[1];
             c.inUxs[0].coins = (ulong) 10e6;
-            c.inUxs[0].hours = long.MaxValue;
+            c.inUxs[0].hours = ulong.MaxValue;
             c.outUxs = new ux[1];
             c.outUxs[0].coins = (ulong) 10e6;
             c.outUxs[0].hours = 1;
@@ -837,7 +839,7 @@ namespace LibskycoinNetTest {
 
         }
 
-        // [Test]
+        [Test]
         public void TestVerifyTransactionHoursSpending () {
             FullCases2 ();
 
@@ -845,26 +847,31 @@ namespace LibskycoinNetTest {
                 var tc = cases[i];
                 var uxIn = new coin_UxOutArray ();
                 var uxOut = new coin_UxOutArray ();
+
+                uxIn.allocate (tc.inUxs.Length);
+                uxOut.allocate (tc.outUxs.Length);
                 for (int j = 0; j < tc.inUxs.Length; j++) {
                     var ch = tc.inUxs[j];
                     var puxIn = new coin__UxOut ();
                     puxIn.Body.Coins = ch.coins;
                     puxIn.Body.Hours = ch.hours;
-                    uxIn.append (puxIn);
+                    uxIn.setAt (j, puxIn);
                 }
                 for (int j = 0; j < tc.outUxs.Length; j++) {
                     var ch = tc.outUxs[j];
                     var puxOut = new coin__UxOut ();
                     puxOut.Body.Coins = ch.coins;
                     puxOut.Body.Hours = ch.hours;
-                    uxOut.append (puxOut);
+                    uxOut.setAt (j, puxOut);
                 }
-                 Assert.AreEqual (tc.inUxs.Length, uxIn.count, "Comparacion de inUxs");
-                Assert.AreEqual (tc.outUxs.Length, uxOut.count, "coparacion uxout");
-                var err = skycoin.skycoin.SKY_coin_VerifyTransactionHoursSpending(tc.headTime,uxIn, uxOut);
-                Assert.AreEqual (err, tc.err, "Iter " + i.ToString () + tc.name);
+                Assert.AreEqual (tc.inUxs.Length, uxIn.count);
+                Assert.AreEqual (tc.outUxs.Length, uxOut.count);
+                var err = skycoin.skycoin.SKY_coin_VerifyTransactionHoursSpending (tc.headTime, uxIn, uxOut);
+                Assert.AreEqual (err, tc.err);
             }
         }
+
+        
 
     }
 }

@@ -52,14 +52,12 @@ public class cli__SendAmount : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_GoInt64_ Coins {
+  public long Coins {
     set {
-      skycoinPINVOKE.set_cli__SendAmount_Coins(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_cli__SendAmount_Coins(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_cli__SendAmount_Coins(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      long ret = skycoinPINVOKE.get_cli__SendAmount_Coins(swigCPtr);
       return ret;
     } 
   }

@@ -349,6 +349,12 @@ public class skycoin {
     return ret;
   }
 
+  public static SWIGTYPE_p_GoUint32_ FeeCalculatorcCall(SWIGTYPE_p_FeeCalculator feeCalc, SWIGTYPE_p_Transaction__Handle handle, SWIGTYPE_p_GoUint64_ pFee) {
+    SWIGTYPE_p_GoUint32_ ret = new SWIGTYPE_p_GoUint32_(skycoinPINVOKE.FeeCalculatorcCall(SWIGTYPE_p_FeeCalculator.getCPtr(feeCalc), SWIGTYPE_p_Transaction__Handle.getCPtr(handle), SWIGTYPE_p_GoUint64_.getCPtr(pFee)), true);
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
   public static void SKY_handle_close(SWIGTYPE_p_Handle p0) {
     skycoinPINVOKE.SKY_handle_close(SWIGTYPE_p_Handle.getCPtr(p0));
   }
@@ -540,8 +546,8 @@ var tmps = _GoString_.getCPtr (s);
     return ret;
   }
 
-  public static void parseJsonMetaData(string metadata, SWIGTYPE_p_int n, SWIGTYPE_p_int r, SWIGTYPE_p_int p, SWIGTYPE_p_int keyLen) {
-    skycoinPINVOKE.parseJsonMetaData(metadata, SWIGTYPE_p_int.getCPtr(n), SWIGTYPE_p_int.getCPtr(r), SWIGTYPE_p_int.getCPtr(p), SWIGTYPE_p_int.getCPtr(keyLen));
+  public static void parseJsonMetaData(string metadata, SWIGTYPE_p_long_long n, SWIGTYPE_p_long_long r, SWIGTYPE_p_long_long p, SWIGTYPE_p_long_long keyLen) {
+    skycoinPINVOKE.parseJsonMetaData(metadata, SWIGTYPE_p_long_long.getCPtr(n), SWIGTYPE_p_long_long.getCPtr(r), SWIGTYPE_p_long_long.getCPtr(p), SWIGTYPE_p_long_long.getCPtr(keyLen));
   }
 
   public static int cutSlice(GoSlice slice, int start, int end, int elem_size, GoSlice result) {

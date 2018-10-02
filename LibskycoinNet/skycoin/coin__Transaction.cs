@@ -56,26 +56,22 @@ public class coin__Transaction : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_GoInt32_ Length {
+  public int Length {
     set {
-      skycoinPINVOKE.set_coin__Transaction_Length(swigCPtr, SWIGTYPE_p_GoInt32_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__Transaction_Length(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt32_ ret = new SWIGTYPE_p_GoInt32_(skycoinPINVOKE.get_coin__Transaction_Length(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get_coin__Transaction_Length(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoInt8_ Type {
+  public sbyte Type {
     set {
-      skycoinPINVOKE.set_coin__Transaction_Type(swigCPtr, SWIGTYPE_p_GoInt8_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__Transaction_Type(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt8_ ret = new SWIGTYPE_p_GoInt8_(skycoinPINVOKE.get_coin__Transaction_Type(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      sbyte ret = skycoinPINVOKE.get_coin__Transaction_Type(swigCPtr);
       return ret;
     } 
   }

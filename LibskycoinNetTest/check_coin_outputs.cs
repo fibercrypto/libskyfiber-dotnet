@@ -610,25 +610,23 @@ namespace LibskycoinNetTest {
             Assert.AreEqual (uxa1.isEqual (uxa2), 0);
 
             uxa2.setAt (1, uxs.getAt (4));
-            uxa1.release();
+            uxa1.release ();
             skycoin.skycoin.SKY_coin_AddressUxOuts_Get (uxo, uxs.getAt (3).Body.Address, uxa1);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            uxa2.release();
+            uxa2.release ();
             uxa2.allocate (3);
             uxa2.setAt (0, uxs.getAt (2));
             uxa2.setAt (1, uxs.getAt (3));
             uxa2.setAt (1, uxs.getAt (4));
             Assert.AreEqual (uxa1.isEqual (uxa2), 0);
 
-             uxa1.release();
+            uxa1.release ();
             skycoin.skycoin.SKY_coin_AddressUxOuts_Get (uxo, uxs.getAt (5).Body.Address, uxa1);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            uxa2.release();
+            uxa2.release ();
             uxa2.allocate (1);
             uxa2.setAt (0, uxs.getAt (5));
             Assert.AreEqual (uxa1.isEqual (uxa2), 1);
-
-
         }
     }
 }

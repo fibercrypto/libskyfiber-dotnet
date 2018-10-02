@@ -51,14 +51,12 @@ public class wallet__UxBalance : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_GoInt64_ BkSeq {
+  public long BkSeq {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_BkSeq(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_wallet__UxBalance_BkSeq(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_BkSeq(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      long ret = skycoinPINVOKE.get_wallet__UxBalance_BkSeq(swigCPtr);
       return ret;
     } 
   }
@@ -74,26 +72,22 @@ public class wallet__UxBalance : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_GoInt64_ Coins {
+  public long Coins {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Coins(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_wallet__UxBalance_Coins(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_Coins(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      long ret = skycoinPINVOKE.get_wallet__UxBalance_Coins(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoInt64_ Hours {
+  public long Hours {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Hours(swigCPtr, SWIGTYPE_p_GoInt64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_wallet__UxBalance_Hours(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt64_ ret = new SWIGTYPE_p_GoInt64_(skycoinPINVOKE.get_wallet__UxBalance_Hours(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      long ret = skycoinPINVOKE.get_wallet__UxBalance_Hours(swigCPtr);
       return ret;
     } 
   }
