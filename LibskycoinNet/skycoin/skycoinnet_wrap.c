@@ -429,29 +429,6 @@ static coin__Transaction coin__Transactionp_value(coin__Transaction *obj) {
 }
 
 
-static Transaction__Handle *new_Transaction__Handlep() { 
-  return (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle)); 
-}
-
-static Transaction__Handle *copy_Transaction__Handlep(Transaction__Handle value) { 
-  Transaction__Handle *obj = (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_Transaction__Handlep(Transaction__Handle *obj) { 
-  if (obj) free(obj); 
-}
-
-static void Transaction__Handlep_assign(Transaction__Handle *obj, Transaction__Handle value) {
-  *obj = value;
-}
-
-static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) {
-  return *obj;
-}
-
-
 static AddressUxOuts_Handle *new_AddressUxOuts__HandlePtr() { 
   return (AddressUxOuts_Handle *) calloc(1,sizeof(AddressUxOuts_Handle)); 
 }
@@ -590,6 +567,29 @@ static Transactions__Handle Transactions__Handlep_value(Transactions__Handle *ob
 }
 
 
+static Transaction__Handle *new_Transaction__Handlep() { 
+  return (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle)); 
+}
+
+static Transaction__Handle *copy_Transaction__Handlep(Transaction__Handle value) { 
+  Transaction__Handle *obj = (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Transaction__Handlep(Transaction__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Transaction__Handlep_assign(Transaction__Handle *obj, Transaction__Handle value) {
+  *obj = value;
+}
+
+static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) {
+  return *obj;
+}
+
+
 static unsigned char *new_charp() { 
   return (unsigned char *) calloc(1,sizeof(unsigned char)); 
 }
@@ -613,10 +613,29 @@ static unsigned char charp_value(unsigned char *obj) {
 }
 
 
-
-	static inline GoUint32_ FeeCalculatorcCall(FeeCalculator* feeCalc, Transaction__Handle handle, GoUint64_* pFee){
-  return feeCalc->callback(handle, pFee, feeCalc->context);
+static FeeCalculator *new_FeeCalculatorPtr() { 
+  return (FeeCalculator *) calloc(1,sizeof(FeeCalculator)); 
 }
+
+static FeeCalculator *copy_FeeCalculatorPtr(FeeCalculator value) { 
+  FeeCalculator *obj = (FeeCalculator *) calloc(1,sizeof(FeeCalculator));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_FeeCalculatorPtr(FeeCalculator *obj) { 
+  if (obj) free(obj); 
+}
+
+static void FeeCalculatorPtr_assign(FeeCalculator *obj, FeeCalculator value) {
+  *obj = value;
+}
+
+static FeeCalculator FeeCalculatorPtr_value(FeeCalculator *obj) {
+  return *obj;
+}
+
+
 #include "json.h"
 	//Define function SKY_handle_close to avoid including libskycoin.h
 void SKY_handle_close(Handle p0);
@@ -2094,74 +2113,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__Transactionp_value(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__Handlep() {
-  void * jresult ;
-  Transaction__Handle *result = 0 ;
-  
-  result = (Transaction__Handle *)new_Transaction__Handlep();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * jarg1) {
-  void * jresult ;
-  Transaction__Handle arg1 ;
-  Transaction__Handle *argp1 ;
-  Transaction__Handle *result = 0 ;
-  
-  argp1 = (Transaction__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  result = (Transaction__Handle *)copy_Transaction__Handlep(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__Handlep(void * jarg1) {
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  delete_Transaction__Handlep(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * jarg1, void * jarg2) {
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  Transaction__Handle arg2 ;
-  Transaction__Handle *argp2 ;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  Transaction__Handlep_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * jarg1) {
-  void * jresult ;
-  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
-  Transaction__Handle result;
-  
-  arg1 = (Transaction__Handle *)jarg1; 
-  result = Transaction__Handlep_value(arg1);
-  {
-    Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
-    memmove(resultptr, &result, sizeof(Transaction__Handle));
-    jresult = resultptr;
-  }
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_AddressUxOuts__HandlePtr() {
   void * jresult ;
   AddressUxOuts_Handle *result = 0 ;
@@ -2522,6 +2473,74 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transactions__Handlep_value(void * 
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__Handlep() {
+  void * jresult ;
+  Transaction__Handle *result = 0 ;
+  
+  result = (Transaction__Handle *)new_Transaction__Handlep();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * jarg1) {
+  void * jresult ;
+  Transaction__Handle arg1 ;
+  Transaction__Handle *argp1 ;
+  Transaction__Handle *result = 0 ;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Transaction__Handle *)copy_Transaction__Handlep(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__Handlep(void * jarg1) {
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  delete_Transaction__Handlep(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * jarg1, void * jarg2) {
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  Transaction__Handle arg2 ;
+  Transaction__Handle *argp2 ;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  argp2 = (Transaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Transaction__Handlep_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * jarg1) {
+  void * jresult ;
+  Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
+  Transaction__Handle result;
+  
+  arg1 = (Transaction__Handle *)jarg1; 
+  result = Transaction__Handlep_value(arg1);
+  {
+    Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
+    memmove(resultptr, &result, sizeof(Transaction__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_charp() {
   void * jresult ;
   unsigned char *result = 0 ;
@@ -2574,31 +2593,68 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_charp_value(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_FeeCalculatorcCall(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_FeeCalculatorPtr() {
   void * jresult ;
-  FeeCalculator *arg1 = (FeeCalculator *) 0 ;
-  Transaction__Handle arg2 ;
-  GoUint64_ *arg3 = (GoUint64_ *) 0 ;
-  FeeCalculator temp1 ;
-  Transaction__Handle *argp2 ;
-  GoUint32_ result;
+  FeeCalculator *result = 0 ;
   
-  {
-    temp1.callback = FeeCalculatorcCall;
-    temp1.context = jarg1;
-    arg1 = &temp1;
-  }
-  argp2 = (Transaction__Handle *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+  result = (FeeCalculator *)new_FeeCalculatorPtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_FeeCalculatorPtr(void * jarg1) {
+  void * jresult ;
+  FeeCalculator arg1 ;
+  FeeCalculator *argp1 ;
+  FeeCalculator *result = 0 ;
+  
+  argp1 = (FeeCalculator *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null FeeCalculator", 0);
     return 0;
   }
+  arg1 = *argp1; 
+  result = (FeeCalculator *)copy_FeeCalculatorPtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_FeeCalculatorPtr(void * jarg1) {
+  FeeCalculator *arg1 = (FeeCalculator *) 0 ;
+  
+  arg1 = (FeeCalculator *)jarg1; 
+  delete_FeeCalculatorPtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_FeeCalculatorPtr_assign(void * jarg1, void * jarg2) {
+  FeeCalculator *arg1 = (FeeCalculator *) 0 ;
+  FeeCalculator arg2 ;
+  FeeCalculator *argp2 ;
+  
+  arg1 = (FeeCalculator *)jarg1; 
+  argp2 = (FeeCalculator *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null FeeCalculator", 0);
+    return ;
+  }
   arg2 = *argp2; 
-  arg3 = (GoUint64_ *)jarg3; 
-  result = FeeCalculatorcCall(arg1,arg2,arg3);
+  FeeCalculatorPtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_FeeCalculatorPtr_value(void * jarg1) {
+  void * jresult ;
+  FeeCalculator *arg1 = (FeeCalculator *) 0 ;
+  FeeCalculator result;
+  
+  arg1 = (FeeCalculator *)jarg1; 
+  result = FeeCalculatorPtr_value(arg1);
   {
-    GoUint32_ * resultptr = (GoUint32_ *) malloc(sizeof(GoUint32_));
-    memmove(resultptr, &result, sizeof(GoUint32_));
+    FeeCalculator * resultptr = (FeeCalculator *) malloc(sizeof(FeeCalculator));
+    memmove(resultptr, &result, sizeof(FeeCalculator));
     jresult = resultptr;
   }
   return jresult;
@@ -5507,7 +5563,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg
   Block__Handle *arg6 = (Block__Handle *) 0 ;
   Block__Handle *argp1 ;
   Transactions__Handle *argp4 ;
-  FeeCalculator temp5 ;
   GoUint32 result;
   
   argp1 = (Block__Handle *)jarg1; 
@@ -5524,11 +5579,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock(void * jarg
     return 0;
   }
   arg4 = *argp4; 
-  {
-    temp5.callback = FeeCalculatorcCall;
-    temp5.context = jarg5;
-    arg5 = &temp5;
-  }
+  arg5 = (FeeCalculator *)jarg5; 
   arg6 = (Block__Handle *)jarg6; 
   result = (GoUint32)SKY_coin_NewBlock(arg1,arg2,(GoUint8_ (*)[32])arg3,arg4,arg5,arg6);
   jresult = result; 
@@ -14148,7 +14199,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(vo
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   GoUint64 *arg3 = (GoUint64 *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -14157,11 +14207,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(vo
     return 0;
   }
   arg1 = *argp1; 
-  {
-    temp2.callback = FeeCalculatorcCall;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (GoUint64 *)jarg3; 
   result = (GoUint32)SKY_coin_Transactions_Fees(arg1,arg2,arg3);
   jresult = result; 
@@ -14259,7 +14305,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SortTransactions(voi
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   Transactions__Handle *arg3 = (Transactions__Handle *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -14268,11 +14313,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SortTransactions(voi
     return 0;
   }
   arg1 = *argp1; 
-  {
-    temp2.callback = FeeCalculatorcCall;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (Transactions__Handle *)jarg3; 
   result = (GoUint32)SKY_coin_SortTransactions(arg1,arg2,arg3);
   jresult = result; 
@@ -14286,7 +14327,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewSortableTransacti
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   SortableTransactionResult_Handle *arg3 = (SortableTransactionResult_Handle *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -14295,11 +14335,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewSortableTransacti
     return 0;
   }
   arg1 = *argp1; 
-  {
-    temp2.callback = FeeCalculatorcCall;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (SortableTransactionResult_Handle *)jarg3; 
   result = (GoUint32)SKY_coin_NewSortableTransactions(arg1,arg2,arg3);
   jresult = result; 

@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using skycoin;
 using utils;
+
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_coin_transactions {
@@ -871,7 +872,11 @@ namespace LibskycoinNetTest {
             }
         }
 
-        
-
+        [Test]
+        public void TestTransactionsFees () {
+            var fee = skycoin.skycoin.new_FeeCalculatorPtr();
+            
+        }
     }
+
 }
