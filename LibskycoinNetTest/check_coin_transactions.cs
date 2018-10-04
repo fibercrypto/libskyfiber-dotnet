@@ -874,8 +874,14 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionsFees () {
-            var fee = skycoin.skycoin.new_FeeCalculatorPtr();
-            
+            var fees = new Fee_Calculator ();
+            var txns = skycoin.skycoin.new_Transactions__Handlep ();
+            skycoin.skycoin.makeTransactions (4, txns);
+            var fee = skycoin.skycoin.new_GoUint64p ();
+            var err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, fees, fee);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Console.WriteLine (skycoin.skycoin.GoUint64p_value (fee));
+
         }
     }
 

@@ -52,14 +52,12 @@ public class encoder__StructField : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_GoUint32_ Kind {
+  public uint Kind {
     set {
-      skycoinPINVOKE.set_encoder__StructField_Kind(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_encoder__StructField_Kind(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint32_ ret = new SWIGTYPE_p_GoUint32_(skycoinPINVOKE.get_encoder__StructField_Kind(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_encoder__StructField_Kind(swigCPtr);
       return ret;
     } 
   }

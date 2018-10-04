@@ -324,6 +324,33 @@ public class skycoin {
     return ret;
   }
 
+  public static SWIGTYPE_p_Block__Handle new_Block__HandlePtr() {
+    global::System.IntPtr cPtr = skycoinPINVOKE.new_Block__HandlePtr();
+    SWIGTYPE_p_Block__Handle ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_Block__Handle(cPtr, false);
+    return ret;
+  }
+
+  public static SWIGTYPE_p_Block__Handle copy_Block__HandlePtr(SWIGTYPE_p_Block__Handle value) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.copy_Block__HandlePtr(SWIGTYPE_p_Block__Handle.getCPtr(value));
+    SWIGTYPE_p_Block__Handle ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_Block__Handle(cPtr, false);
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static void delete_Block__HandlePtr(SWIGTYPE_p_Block__Handle obj) {
+    skycoinPINVOKE.delete_Block__HandlePtr(SWIGTYPE_p_Block__Handle.getCPtr(obj));
+  }
+
+  public static void Block__HandlePtr_assign(SWIGTYPE_p_Block__Handle obj, SWIGTYPE_p_Block__Handle value) {
+    skycoinPINVOKE.Block__HandlePtr_assign(SWIGTYPE_p_Block__Handle.getCPtr(obj), SWIGTYPE_p_Block__Handle.getCPtr(value));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public static SWIGTYPE_p_Block__Handle Block__HandlePtr_value(SWIGTYPE_p_Block__Handle obj) {
+    SWIGTYPE_p_Block__Handle ret = new SWIGTYPE_p_Block__Handle(skycoinPINVOKE.Block__HandlePtr_value(SWIGTYPE_p_Block__Handle.getCPtr(obj)), true);
+    return ret;
+  }
+
   public static SWIGTYPE_p_unsigned_char new_charp() {
     global::System.IntPtr cPtr = skycoinPINVOKE.new_charp();
     SWIGTYPE_p_unsigned_char ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
@@ -871,6 +898,18 @@ var tmps = s;
     return ret;
   }
 
+  public static uint SKY_coin_Transactions_Fees(SWIGTYPE_p_Transactions__Handle handle, Fee_Calculator pFeeCalc, SWIGTYPE_p_unsigned_long_long p3) {
+    uint ret = skycoinPINVOKE.SKY_coin_Transactions_Fees__SWIG_0(SWIGTYPE_p_Transactions__Handle.getCPtr(handle), Fee_Calculator.getCPtr(pFeeCalc), SWIGTYPE_p_unsigned_long_long.getCPtr(p3));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static uint SKY_coin_GetBlockObject(SWIGTYPE_p_Block__Handle handle, coin__Block outBlock) {
+    uint ret = skycoinPINVOKE.SKY_coin_GetBlockObject__SWIG_0(SWIGTYPE_p_Block__Handle.getCPtr(handle), coin__Block.getCPtr(outBlock));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
   public static uint SKY_coin_NewBlock(SWIGTYPE_p_Block__Handle p0, ulong p1, cipher_SecKey p2, SWIGTYPE_p_Transactions__Handle p3, SWIGTYPE_p_FeeCalculator p4, SWIGTYPE_p_Block__Handle p5) {
 var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
@@ -1019,7 +1058,7 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   }
 
   public static uint SKY_coin_GetBlockObject(SWIGTYPE_p_Block__Handle p0, SWIGTYPE_p_p_coin__Block p1) {
-    uint ret = skycoinPINVOKE.SKY_coin_GetBlockObject(SWIGTYPE_p_Block__Handle.getCPtr(p0), SWIGTYPE_p_p_coin__Block.getCPtr(p1));
+    uint ret = skycoinPINVOKE.SKY_coin_GetBlockObject__SWIG_1(SWIGTYPE_p_Block__Handle.getCPtr(p0), SWIGTYPE_p_p_coin__Block.getCPtr(p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -3992,7 +4031,7 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   }
 
   public static uint SKY_coin_Transactions_Fees(SWIGTYPE_p_Transactions__Handle p0, SWIGTYPE_p_FeeCalculator p1, SWIGTYPE_p_unsigned_long_long p2) {
-    uint ret = skycoinPINVOKE.SKY_coin_Transactions_Fees(SWIGTYPE_p_Transactions__Handle.getCPtr(p0), SWIGTYPE_p_FeeCalculator.getCPtr(p1), SWIGTYPE_p_unsigned_long_long.getCPtr(p2));
+    uint ret = skycoinPINVOKE.SKY_coin_Transactions_Fees__SWIG_1(SWIGTYPE_p_Transactions__Handle.getCPtr(p0), SWIGTYPE_p_FeeCalculator.getCPtr(p1), SWIGTYPE_p_unsigned_long_long.getCPtr(p2));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }

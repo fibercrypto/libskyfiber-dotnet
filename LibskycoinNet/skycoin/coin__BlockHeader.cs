@@ -45,14 +45,12 @@ public class coin__BlockHeader : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_GoUint32_ Version {
+  public uint Version {
     set {
-      skycoinPINVOKE.set_coin__BlockHeader_Version(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__BlockHeader_Version(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint32_ ret = new SWIGTYPE_p_GoUint32_(skycoinPINVOKE.get_coin__BlockHeader_Version(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_coin__BlockHeader_Version(swigCPtr);
       return ret;
     } 
   }

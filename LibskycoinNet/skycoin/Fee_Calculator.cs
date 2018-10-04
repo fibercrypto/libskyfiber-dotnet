@@ -40,13 +40,19 @@ public class Fee_Calculator : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_ callback {
+  public uint callFeeCalculator(SWIGTYPE_p_FeeCalculator feeCalc, SWIGTYPE_p_Transaction__Handle handle, SWIGTYPE_p_unsigned_long_long pFee) {
+    uint ret = skycoinPINVOKE.Fee_Calculator_callFeeCalculator(swigCPtr, SWIGTYPE_p_FeeCalculator.getCPtr(feeCalc), SWIGTYPE_p_Transaction__Handle.getCPtr(handle), SWIGTYPE_p_unsigned_long_long.getCPtr(pFee));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_ callback {
     set {
-      skycoinPINVOKE.set_Fee_Calculator_callback(swigCPtr, SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_.getCPtr(value));
+      skycoinPINVOKE.set_Fee_Calculator_callback(swigCPtr, SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.getCPtr(value));
     } 
     get {
       global::System.IntPtr cPtr = skycoinPINVOKE.get_Fee_Calculator_callback(swigCPtr);
-      SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_(cPtr, false);
+      SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_(cPtr, false);
       return ret;
     } 
   }

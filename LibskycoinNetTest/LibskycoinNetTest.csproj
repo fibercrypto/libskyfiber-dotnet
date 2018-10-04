@@ -44,10 +44,12 @@
     <!-- <Compile Include="check_cipher_hash.cs" /> -->
     <!-- <Compile Include="check_coin_math.cs" /> -->
     <!-- <Compile Include="check_coin_coin.cs" /> -->
-    <Compile Include="check_coin_transactions.cs" />
+    <!-- <Compile Include="check_coin_transactions.cs" /> -->
     <!-- <Compile Include="check_coin_outputs.cs" /> -->
+    <Compile Include="check_coin_block.cs" />
     <!-- <Compile Include="check_util_fee.cs" /> -->
     <!-- <Compile Include="check_util_droplet.cs" /> -->
+    
  
     
   </ItemGroup>

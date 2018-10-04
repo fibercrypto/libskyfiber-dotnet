@@ -127,6 +127,16 @@ namespace utils {
             Assert.AreEqual (result.count, n, "Not equal len");
             return result;
         }
+
+        public cipher_SHA256 RandSHA256 () {
+            var sha = new cipher_SHA256 ();
+            var b = new GoSlice ();
+            var err = skycoin.skycoin.SKY_cipher_RandByte (128, b);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, sha);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            return sha;
+        }
     }
 
 }

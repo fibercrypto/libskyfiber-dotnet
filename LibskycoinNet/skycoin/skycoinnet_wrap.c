@@ -590,6 +590,29 @@ static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) 
 }
 
 
+static Block__Handle *new_Block__HandlePtr() { 
+  return (Block__Handle *) calloc(1,sizeof(Block__Handle)); 
+}
+
+static Block__Handle *copy_Block__HandlePtr(Block__Handle value) { 
+  Block__Handle *obj = (Block__Handle *) calloc(1,sizeof(Block__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Block__HandlePtr(Block__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Block__HandlePtr_assign(Block__Handle *obj, Block__Handle value) {
+  *obj = value;
+}
+
+static Block__Handle Block__HandlePtr_value(Block__Handle *obj) {
+  return *obj;
+}
+
+
 static unsigned char *new_charp() { 
   return (unsigned char *) calloc(1,sizeof(unsigned char)); 
 }
@@ -1517,6 +1540,21 @@ int makeTransactions(int n, Transactions__Handle* handle){
 		return result;
 	};
 
+
+	GoUint32 CSharp_skycoin_SKY_coin_Transactions_Fees(Transactions__Handle handle ,Fee_Calculator *pFeeCalc, GoUint64* p3){
+     FeeCalculator *out = {callFeeCalculator,NULL} ;
+	 
+		GoUint32 result = SKY_coin_Transactions_Fees(handle, out,p3);
+		*p3 = 3;
+		return result;
+	};
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_GetBlockObject(Block__Handle handle, coin__Block* outBlock ){
+		GoUint32 result = SKY_coin_GetBlockObject(handle, &outBlock);
+		return result;
+	};
+
 SWIGINTERN int cipher_PubKey_isEqual(cipher_PubKey *self,cipher_PubKey *a){
 		return memcmp(self->data, a->data, sizeof(a->data)) == 0;
 	}
@@ -1718,6 +1756,9 @@ SWIGINTERN void cipher_Addresses_allocate(cipher_Addresses *self,int n){
 SWIGINTERN void cipher_Addresses_release(cipher_Addresses *self){
 		if(self->data != NULL)
 			free(self->data);
+	}
+SWIGINTERN GoUint32_ Fee_Calculator_callFeeCalculator(Fee_Calculator *self,FeeCalculator *feeCalc,Transaction__Handle handle,unsigned long long *pFee){
+  	return feeCalc->callback(handle, pFee, feeCalc->context);
 	}
 SWIGINTERN int _GoString__SetString(_GoString_ *self,char *str){
 		self->p = str;
@@ -2535,6 +2576,74 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * j
   {
     Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
     memmove(resultptr, &result, sizeof(Transaction__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Block__HandlePtr() {
+  void * jresult ;
+  Block__Handle *result = 0 ;
+  
+  result = (Block__Handle *)new_Block__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Block__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Block__Handle arg1 ;
+  Block__Handle *argp1 ;
+  Block__Handle *result = 0 ;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Block__Handle *)copy_Block__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Block__HandlePtr(void * jarg1) {
+  Block__Handle *arg1 = (Block__Handle *) 0 ;
+  
+  arg1 = (Block__Handle *)jarg1; 
+  delete_Block__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Block__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Block__Handle *arg1 = (Block__Handle *) 0 ;
+  Block__Handle arg2 ;
+  Block__Handle *argp2 ;
+  
+  arg1 = (Block__Handle *)jarg1; 
+  argp2 = (Block__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Block__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Block__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Block__Handle *arg1 = (Block__Handle *) 0 ;
+  Block__Handle result;
+  
+  arg1 = (Block__Handle *)jarg1; 
+  result = Block__HandlePtr_value(arg1);
+  {
+    Block__Handle * resultptr = (Block__Handle *) malloc(sizeof(Block__Handle));
+    memmove(resultptr, &result, sizeof(Block__Handle));
     jresult = resultptr;
   }
   return jresult;
@@ -4086,6 +4195,48 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_fee_TransactionFee__SWIG_
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Transactions__Handle arg1 ;
+  Fee_Calculator *arg2 = (Fee_Calculator *) 0 ;
+  GoUint64 *arg3 = (GoUint64 *) 0 ;
+  Transactions__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Transactions__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (Fee_Calculator *)jarg2; 
+  arg3 = (GoUint64 *)jarg3; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_Transactions_Fees(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  coin__Block *arg2 = (coin__Block *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (coin__Block *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_GetBlockObject(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cipher_PubKey_isEqual(void * jarg1, void * jarg2) {
   int jresult ;
   cipher_PubKey *arg1 = (cipher_PubKey *) 0 ;
@@ -5216,6 +5367,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher_Addresses(void * jarg1)
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_Fee_Calculator_callFeeCalculator(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
+  FeeCalculator *arg2 = (FeeCalculator *) 0 ;
+  Transaction__Handle arg3 ;
+  unsigned long long *arg4 = (unsigned long long *) 0 ;
+  Transaction__Handle *argp3 ;
+  GoUint32_ result;
+  
+  arg1 = (Fee_Calculator *)jarg1; 
+  arg2 = (FeeCalculator *)jarg2; 
+  argp3 = (Transaction__Handle *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (unsigned long long *)jarg4; 
+  result = Fee_Calculator_callFeeCalculator(arg1,arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_Fee_Calculator_callback(void * jarg1, void * jarg2) {
   Fee_Calculator *arg1 = (Fee_Calculator *) 0 ;
   FeeCalcFunc arg2 = (FeeCalcFunc) 0 ;
@@ -5953,7 +6128,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_CreateUnspent(void *
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject__SWIG_1(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   coin__Block **arg2 = (coin__Block **) 0 ;
@@ -14193,7 +14368,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Add(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   Transactions__Handle arg1 ;
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
@@ -14591,34 +14766,24 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_encoder__StructField_Name(void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encoder__StructField_Kind(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_encoder__StructField_Kind(void * jarg1, unsigned int jarg2) {
   encoder__StructField *arg1 = (encoder__StructField *) 0 ;
   GoUint32_ arg2 ;
-  GoUint32_ *argp2 ;
   
   arg1 = (encoder__StructField *)jarg1; 
-  argp2 = (GoUint32_ *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoUint32_", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (GoUint32_)jarg2; 
   if (arg1) (arg1)->Kind = arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_encoder__StructField_Kind(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_encoder__StructField_Kind(void * jarg1) {
+  unsigned int jresult ;
   encoder__StructField *arg1 = (encoder__StructField *) 0 ;
   GoUint32_ result;
   
   arg1 = (encoder__StructField *)jarg1; 
   result =  ((arg1)->Kind);
-  {
-    GoUint32_ * resultptr = (GoUint32_ *) malloc(sizeof(GoUint32_));
-    memmove(resultptr, &result, sizeof(GoUint32_));
-    jresult = resultptr;
-  }
+  jresult = result; 
   return jresult;
 }
 
@@ -15411,34 +15576,24 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_coin__BlockHeader_isEqual(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_coin__BlockHeader_Version(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_coin__BlockHeader_Version(void * jarg1, unsigned int jarg2) {
   coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
   GoUint32_ arg2 ;
-  GoUint32_ *argp2 ;
   
   arg1 = (coin__BlockHeader *)jarg1; 
-  argp2 = (GoUint32_ *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoUint32_", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (GoUint32_)jarg2; 
   if (arg1) (arg1)->Version = arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_coin__BlockHeader_Version(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_coin__BlockHeader_Version(void * jarg1) {
+  unsigned int jresult ;
   coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
   GoUint32_ result;
   
   arg1 = (coin__BlockHeader *)jarg1; 
   result =  ((arg1)->Version);
-  {
-    GoUint32_ * resultptr = (GoUint32_ *) malloc(sizeof(GoUint32_));
-    memmove(resultptr, &result, sizeof(GoUint32_));
-    jresult = resultptr;
-  }
+  jresult = result; 
   return jresult;
 }
 
