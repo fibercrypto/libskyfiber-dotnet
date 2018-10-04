@@ -67,6 +67,74 @@ namespace LibskycoinNetTest {
             Assert.AreEqual (0, pBlock.Head.Fee);
         }
 
+        struct testcase {
+            public int index;
+            public int failure;
+        }
+
+        [Test]
+        public void TestCreateUnspent () {
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+            var a = new cipher__Address ();
+
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, a);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var h = new cipher_SHA256 ();
+            var handle = skycoin.skycoin.new_Transaction__Handlep ();
+            skycoin.skycoin.makeEmptyTransaction (handle);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, a, 11000000, 255);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var bh = new coin__BlockHeader ();
+            bh.Time = 0;
+            bh.BkSeq = 1;
+            testcase[] t = new testcase[2];
+            var tc = new testcase ();
+            tc.index = 0;
+            tc.failure = skycoin.skycoin.SKY_OK;
+            t[0] = tc;
+            tc = new testcase ();
+            tc.failure = skycoin.skycoin.SKY_ERROR;
+            tc.index = 10;
+            t[1] = tc;
+            var ux = new coin__UxOut ();
+            var tests_count = t.Length;
+            for (int i = 0; i < tests_count; i++) {
+                err = skycoin.skycoin.SKY_coin_CreateUnspent (bh, handle, t[i].index, ux);
+                if (t[i].failure == skycoin.skycoin.SKY_ERROR) {
+                    continue;
+                }
+                Assert.AreEqual (bh.Time, ux.Head.Time);
+                Assert.AreEqual (bh.BkSeq, ux.Head.BkSeq);
+            }
+        }
+
+        [Test]
+        public void TestCreateUnspents () {
+            var a = new cipher__Address ();
+            var p = new cipher_PubKey ();
+            var s = new cipher_SecKey ();
+
+            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, a);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var h = new cipher_SHA256 ();
+            var txn = skycoin.skycoin.new_Transaction__Handlep ();
+            skycoin.skycoin.makeEmptyTransaction (txn);
+            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, a, (ulong) 11e6, 255);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var bh = new coin__BlockHeader ();
+            bh.Time = 0;
+            bh.BkSeq = 1;
+            var uxouts = new coin_UxOutArray ();
+            err = skycoin.skycoin.SKY_coin_CreateUnspents (bh, txn, uxouts);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (uxouts.count, 1);
+        }
+
     }
 
 }
