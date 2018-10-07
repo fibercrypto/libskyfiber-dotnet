@@ -60,7 +60,10 @@ namespace LibskycoinNetTest {
             var Head = new GoSlice ();
             err = skycoin.skycoin.SKY_coin_BlockHeader_Bytes (pBlock.Head, Head);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.IsTrue (nullHash.getStr ().p == Head.getString ().p);
+            var strnullHash = nullHash.getStr ();
+            var strHead = new _GoString_ ();
+            Head.getString (strHead);
+            Assert.AreEqual (strnullHash.p, strHead.p);
             // Assert.AreEqual (genTime, pBlock.Head.Time);
             Assert.AreEqual (0, pBlock.Head.BkSeq);
             Assert.AreEqual (0, pBlock.Head.Version);

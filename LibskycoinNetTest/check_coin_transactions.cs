@@ -368,7 +368,9 @@ namespace LibskycoinNetTest {
             tx.setInnerHash (new cipher_SHA256 ());
             err = skycoin.skycoin.SKY_coin_Transaction_UpdateHeader (handle);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            h1.assignFrom (tx.getInnerHash ());
+            var arg = new cipher_SHA256 ();
+            arg = tx.getInnerHash ();
+            h1.assignFrom (arg);
             err = skycoin.skycoin.SKY_coin_Transaction_HashInner (handle, h2);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (h1.isEqual (new cipher_SHA256 ()), 0);
@@ -872,17 +874,17 @@ namespace LibskycoinNetTest {
             }
         }
 
-        [Test]
-        public void TestTransactionsFees () {
-            var fees = new Fee_Calculator ();
-            var txns = skycoin.skycoin.new_Transactions__Handlep ();
-            skycoin.skycoin.makeTransactions (4, txns);
-            var fee = skycoin.skycoin.new_GoUint64p ();
-            var err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, fees, fee);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Console.WriteLine (skycoin.skycoin.GoUint64p_value (fee));
+        // [Test]
+        // public void TestTransactionsFees () {
+        //     var fees = new Fee_Calculator ();
+        //     var txns = skycoin.skycoin.new_Transactions__Handlep ();
+        //     skycoin.skycoin.makeTransactions (4, txns);
+        //     var fee = skycoin.skycoin.new_GoUint64p ();
+        //     var err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, fees, fee);
+        //     Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+        //     Console.WriteLine (skycoin.skycoin.GoUint64p_value (fee));
 
-        }
+        // }
     }
 
 }

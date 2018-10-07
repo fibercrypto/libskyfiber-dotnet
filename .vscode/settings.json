@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "transutil.h": "c"
+        "transutil.h": "c",
+        "base64.h": "c"
     }
 }

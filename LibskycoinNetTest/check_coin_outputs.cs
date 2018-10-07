@@ -338,14 +338,14 @@ namespace LibskycoinNetTest {
         public void TestUxArrayHasDupes () {
             var uxa = new coin_UxOutArray ();
             skycoin.skycoin.makeUxArray (uxa, 4);
-            var hasDupes = skycoin.skycoin.new_charp ();
+            var hasDupes = skycoin.skycoin.new_CharPtr();
             var err = skycoin.skycoin.SKY_coin_UxArray_HasDupes (uxa, hasDupes);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreEqual (skycoin.skycoin.charp_value (hasDupes), 0);
+            Assert.AreEqual (skycoin.skycoin.CharPtr_value(hasDupes), 0);
             uxa.setAt (0, uxa.getAt (1));
             err = skycoin.skycoin.SKY_coin_UxArray_HasDupes (uxa, hasDupes);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreEqual (skycoin.skycoin.charp_value (hasDupes), 1);
+            Assert.AreEqual (skycoin.skycoin.CharPtr_value (hasDupes), 1);
         }
 
         [Test]
@@ -416,13 +416,13 @@ namespace LibskycoinNetTest {
             var err = skycoin.skycoin.SKY_coin_UxArray_Hashes (uxa, hashes);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             Assert.AreEqual (hashes.count, uxa.count);
-            var less = skycoin.skycoin.new_charp ();
-            var less2 = skycoin.skycoin.new_charp ();
+            var less = skycoin.skycoin.new_CharPtr ();
+            var less2 = skycoin.skycoin.new_CharPtr ();
             err = skycoin.skycoin.SKY_coin_UxArray_Less (uxa, 0, 1, less);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             err = skycoin.skycoin.SKY_coin_UxArray_Less (uxa, 1, 0, less2);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreNotEqual (skycoin.skycoin.charp_value (less), skycoin.skycoin.charp_value (less2));
+            Assert.AreNotEqual (skycoin.skycoin.CharPtr_value (less), skycoin.skycoin.CharPtr_value (less2));
         }
 
         [Test]

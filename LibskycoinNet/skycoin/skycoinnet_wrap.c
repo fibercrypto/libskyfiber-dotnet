@@ -613,25 +613,71 @@ static Block__Handle Block__HandlePtr_value(Block__Handle *obj) {
 }
 
 
-static unsigned char *new_charp() { 
+static Signature_Handle *new_Signature_HandlePtr() { 
+  return (Signature_Handle *) calloc(1,sizeof(Signature_Handle)); 
+}
+
+static Signature_Handle *copy_Signature_HandlePtr(Signature_Handle value) { 
+  Signature_Handle *obj = (Signature_Handle *) calloc(1,sizeof(Signature_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Signature_HandlePtr(Signature_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Signature_HandlePtr_assign(Signature_Handle *obj, Signature_Handle value) {
+  *obj = value;
+}
+
+static Signature_Handle Signature_HandlePtr_value(Signature_Handle *obj) {
+  return *obj;
+}
+
+
+static Number_Handle *new_Number_HandlePtr() { 
+  return (Number_Handle *) calloc(1,sizeof(Number_Handle)); 
+}
+
+static Number_Handle *copy_Number_HandlePtr(Number_Handle value) { 
+  Number_Handle *obj = (Number_Handle *) calloc(1,sizeof(Number_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Number_HandlePtr(Number_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Number_HandlePtr_assign(Number_Handle *obj, Number_Handle value) {
+  *obj = value;
+}
+
+static Number_Handle Number_HandlePtr_value(Number_Handle *obj) {
+  return *obj;
+}
+
+
+static unsigned char *new_CharPtr() { 
   return (unsigned char *) calloc(1,sizeof(unsigned char)); 
 }
 
-static unsigned char *copy_charp(unsigned char value) { 
+static unsigned char *copy_CharPtr(unsigned char value) { 
   unsigned char *obj = (unsigned char *) calloc(1,sizeof(unsigned char));
   *obj = value;
   return obj; 
 }
 
-static void delete_charp(unsigned char *obj) { 
+static void delete_CharPtr(unsigned char *obj) { 
   if (obj) free(obj); 
 }
 
-static void charp_assign(unsigned char *obj, unsigned char value) {
+static void CharPtr_assign(unsigned char *obj, unsigned char value) {
   *obj = value;
 }
 
-static unsigned char charp_value(unsigned char *obj) {
+static unsigned char CharPtr_value(unsigned char *obj) {
   return *obj;
 }
 
@@ -661,476 +707,730 @@ static FeeCalculator FeeCalculatorPtr_value(FeeCalculator *obj) {
 
 #include "json.h"
 	//Define function SKY_handle_close to avoid including libskycoin.h
-void SKY_handle_close(Handle p0);
+	void SKY_handle_close(Handle p0);
 
-int MEMPOOLIDX = 0;
-void *MEMPOOL[1024 * 256];
+	int MEMPOOLIDX = 0;
+	void *MEMPOOL[1024 * 256];
 
-int JSONPOOLIDX = 0;
-json_value* JSON_POOL[128];
+	int JSONPOOLIDX = 0;
+	json_value *JSON_POOL[128];
 
-int HANDLEPOOLIDX = 0;
-Handle HANDLE_POOL[128];
+	int HANDLEPOOLIDX = 0;
+	Handle HANDLE_POOL[128];
 
-typedef struct {
-	Client__Handle client;
-	WalletResponse__Handle wallet;
-} wallet_register;
+	typedef struct
+	{
+		Client__Handle client;
+		WalletResponse__Handle wallet;
+	} wallet_register;
 
-int WALLETPOOLIDX = 0;
-wallet_register WALLET_POOL[64];
+	int WALLETPOOLIDX = 0;
+	wallet_register WALLET_POOL[64];
 
-int stdout_backup;
-int pipefd[2];
+	int stdout_backup;
+	int pipefd[2];
 
-void * registerMemCleanup(void *p) {
-	int i;
-	for (i = 0; i < MEMPOOLIDX; i++) {
-		if(MEMPOOL[i] == NULL){
-			MEMPOOL[i] = p;
-			return p;
+	void *registerMemCleanup(void *p)
+	{
+		int i;
+		for (i = 0; i < MEMPOOLIDX; i++)
+		{
+			if (MEMPOOL[i] == NULL)
+			{
+				MEMPOOL[i] = p;
+				return p;
+			}
+		}
+		MEMPOOL[MEMPOOLIDX++] = p;
+		return p;
+	}
+
+	void freeRegisteredMemCleanup(void *p)
+	{
+		int i;
+		for (i = 0; i < MEMPOOLIDX; i++)
+		{
+			if (MEMPOOL[i] == p)
+			{
+				free(p);
+				MEMPOOL[i] = NULL;
+				break;
+			}
 		}
 	}
-	MEMPOOL[MEMPOOLIDX++] = p;
-	return p;
-}
 
-void freeRegisteredMemCleanup(void *p){
-	int i;
-	for (i = 0; i < MEMPOOLIDX; i++) {
-		if(MEMPOOL[i] == p){
-			free(p);
-			MEMPOOL[i] = NULL;
-			break;
+	int registerJsonFree(void *p)
+	{
+		int i;
+		for (i = 0; i < JSONPOOLIDX; i++)
+		{
+			if (JSON_POOL[i] == NULL)
+			{
+				JSON_POOL[i] = p;
+				return i;
+			}
+		}
+		JSON_POOL[JSONPOOLIDX++] = p;
+		return JSONPOOLIDX - 1;
+	}
+
+	void freeRegisteredJson(void *p)
+	{
+		int i;
+		for (i = 0; i < JSONPOOLIDX; i++)
+		{
+			if (JSON_POOL[i] == p)
+			{
+				JSON_POOL[i] = NULL;
+				json_value_free((json_value *)p);
+				break;
+			}
 		}
 	}
-}
 
-int registerJsonFree(void *p){
-	int i;
-	for (i = 0; i < JSONPOOLIDX; i++) {
-		if(JSON_POOL[i] == NULL){
-			JSON_POOL[i] = p;
-			return i;
+	int registerWalletClean(Client__Handle clientHandle,
+													WalletResponse__Handle walletHandle)
+	{
+		int i;
+		for (i = 0; i < WALLETPOOLIDX; i++)
+		{
+			if (WALLET_POOL[i].wallet == 0 && WALLET_POOL[i].client == 0)
+			{
+				WALLET_POOL[i].wallet = walletHandle;
+				WALLET_POOL[i].client = clientHandle;
+				return i;
+			}
+		}
+		WALLET_POOL[WALLETPOOLIDX].wallet = walletHandle;
+		WALLET_POOL[WALLETPOOLIDX].client = clientHandle;
+		return WALLETPOOLIDX++;
+	}
+
+	int registerHandleClose(Handle handle)
+	{
+		int i;
+		for (i = 0; i < HANDLEPOOLIDX; i++)
+		{
+			if (HANDLE_POOL[i] == 0)
+			{
+				HANDLE_POOL[i] = handle;
+				return i;
+			}
+		}
+		HANDLE_POOL[HANDLEPOOLIDX++] = handle;
+		return HANDLEPOOLIDX - 1;
+	}
+
+	void closeRegisteredHandle(Handle handle)
+	{
+		int i;
+		for (i = 0; i < HANDLEPOOLIDX; i++)
+		{
+			if (HANDLE_POOL[i] == handle)
+			{
+				HANDLE_POOL[i] = 0;
+				SKY_handle_close(handle);
+				break;
+			}
 		}
 	}
-	JSON_POOL[JSONPOOLIDX++] = p;
-	return JSONPOOLIDX-1;
-}
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+#include <sys/stat.h>
+#include <unistd.h>
+	void cleanupWallet(Client__Handle client, WalletResponse__Handle wallet)
+	{
+		int result;
+		GoString_ strWalletDir;
+		GoString_ strFileName;
+		memset(&strWalletDir, 0, sizeof(GoString_));
+		memset(&strFileName, 0, sizeof(GoString_));
 
-void freeRegisteredJson(void *p){
-	int i;
-	for (i = 0; i < JSONPOOLIDX; i++) {
-		if(JSON_POOL[i] == p){
-			JSON_POOL[i] = NULL;
-			json_value_free( (json_value*)p );
-			break;
-		}
-	}
-}
-
-int registerWalletClean(Client__Handle clientHandle,
-						WalletResponse__Handle walletHandle){
-	int i;
-	for (i = 0; i < WALLETPOOLIDX; i++) {
-		if(WALLET_POOL[i].wallet == 0 && WALLET_POOL[i].client == 0){
-			WALLET_POOL[i].wallet = walletHandle;
-			WALLET_POOL[i].client = clientHandle;
-			return i;
-		}
-	}
-	WALLET_POOL[WALLETPOOLIDX].wallet = walletHandle;
-	WALLET_POOL[WALLETPOOLIDX].client = clientHandle;
-	return WALLETPOOLIDX++;
-}
-
-int registerHandleClose(Handle handle){
-	int i;
-	for (i = 0; i < HANDLEPOOLIDX; i++) {
-		if(HANDLE_POOL[i] == 0){
-			HANDLE_POOL[i] = handle;
-			return i;
-		}
-	}
-	HANDLE_POOL[HANDLEPOOLIDX++] = handle;
-	return HANDLEPOOLIDX - 1;
-}
-
-void closeRegisteredHandle(Handle handle){
-	int i;
-	for (i = 0; i < HANDLEPOOLIDX; i++) {
-		if(HANDLE_POOL[i] == handle){
-			HANDLE_POOL[i] = 0;
-			SKY_handle_close(handle);
-			break;
-		}
-	}
-}
-
-void cleanupWallet(Client__Handle client, WalletResponse__Handle wallet){
-	int result;
-	GoString_ strWalletDir;
-	GoString_ strFileName;
-	memset(&strWalletDir, 0, sizeof(GoString_));
-	memset(&strFileName, 0, sizeof(GoString_));
-
-
-	result = SKY_api_Handle_Client_GetWalletDir(client, &strWalletDir);
-	if( result != 0 ){
-		return;
-	}
-	result = SKY_api_Handle_Client_GetWalletFileName(wallet, &strFileName);
-	if( result != 0 ){
-		free( (void*)strWalletDir.p );
-		return;
-	}
-	char fullPath[128];
-	if( strWalletDir.n + strFileName.n < 126){
-		strcpy( fullPath, strWalletDir.p );
-		if( fullPath[0] == 0 || fullPath[strlen(fullPath) - 1] != '/' )
-			strcat(fullPath, "/");
-		strcat( fullPath, strFileName.p );
-		result = unlink( fullPath );
-		if( strlen(fullPath) < 123 ){
-			strcat( fullPath, ".bak" );
-			result = unlink( fullPath );
-		}
-	}
-	GoString str = { strFileName.p, strFileName.n };
-	result = SKY_api_Client_UnloadWallet( client, str );
-	GoString strFullPath = { fullPath, strlen(fullPath) };
-	free( (void*)strWalletDir.p );
-	free( (void*)strFileName.p );
-}
-
-void cleanRegisteredWallet(
-			Client__Handle client,
-			WalletResponse__Handle wallet){
-
-	int i;
-	for (i = 0; i < WALLETPOOLIDX; i++) {
-		if(WALLET_POOL[i].wallet == wallet && WALLET_POOL[i].client == client){
-			WALLET_POOL[i].wallet = 0;
-			WALLET_POOL[i].client = 0;
-			cleanupWallet( client, wallet );
+		result = SKY_api_Handle_Client_GetWalletDir(client, &strWalletDir);
+		if (result != 0)
+		{
 			return;
 		}
-	}
-}
-
-void cleanupMem() {
-	int i;
-
-	for (i = 0; i < WALLETPOOLIDX; i++) {
-		if(WALLET_POOL[i].client != 0 && WALLET_POOL[i].wallet != 0){
-			cleanupWallet( WALLET_POOL[i].client, WALLET_POOL[i].wallet );
+		result = SKY_api_Handle_Client_GetWalletFileName(wallet, &strFileName);
+		if (result != 0)
+		{
+			free((void *)strWalletDir.p);
+			return;
 		}
+		char fullPath[128];
+		if (strWalletDir.n + strFileName.n < 126)
+		{
+			strcpy(fullPath, strWalletDir.p);
+			if (fullPath[0] == 0 || fullPath[strlen(fullPath) - 1] != '/')
+				strcat(fullPath, "/");
+			strcat(fullPath, strFileName.p);
+			result = unlink(fullPath);
+			if (strlen(fullPath) < 123)
+			{
+				strcat(fullPath, ".bak");
+				result = unlink(fullPath);
+			}
+		}
+		GoString str = {strFileName.p, strFileName.n};
+		result = SKY_api_Client_UnloadWallet(client, str);
+		GoString strFullPath = {fullPath, strlen(fullPath)};
+		free((void *)strWalletDir.p);
+		free((void *)strFileName.p);
 	}
 
-  void **ptr;
-  for (i = MEMPOOLIDX, ptr = MEMPOOL; i; --i) {
-	if( *ptr )
-		free(*ptr);
-	ptr++;
-  }
-  for (i = JSONPOOLIDX, ptr = (void*)JSON_POOL; i; --i) {
-	if( *ptr )
-		json_value_free(*ptr);
-	ptr++;
-  }
-  for (i = 0; i < HANDLEPOOLIDX; i++) {
-	  if( HANDLE_POOL[i] )
-		SKY_handle_close(HANDLE_POOL[i]);
-  }
-}
-
-
-void setup(void) {
-	srand ((unsigned int) time (NULL));
-}
-
-void teardown(void) {
-	cleanupMem();
-}
-
-// TODO: Move to libsky_io.c
-void fprintbuff(FILE *f, void *buff, size_t n) {
-  unsigned char *ptr = (unsigned char *) buff;
-  fprintf(f, "[ ");
-  for (; n; --n, ptr++) {
-    fprintf(f, "%02d ", *ptr);
-  }
-  fprintf(f, "]");
-}
-
-int parseBoolean(const char* str, int length){
-	int result = 0;
-	if(length == 1){
-		result = str[0] == '1' || str[0] == 't' || str[0] == 'T';
-	} else {
-		result = strncmp(str, "true", length) == 0 ||
-			strncmp(str, "True", length) == 0 ||
-			strncmp(str, "TRUE", length) == 0;
-	}
-	return result;
-}
-
-void toGoString(GoString_ *s, GoString *r){
-GoString * tmp = r;
-
-  *tmp = (*(GoString *) s);
-}
-
-int copySlice(GoSlice_* pdest, GoSlice_* psource, int elem_size){
-  pdest->len = psource->len;
-  pdest->cap = psource->len;
-  int size = pdest->len * elem_size;
-  pdest->data = malloc(size);
-	if( pdest->data == NULL )
-		return 1;
-  registerMemCleanup( pdest->data );
-  memcpy(pdest->data, psource->data, size );
-	return 0;
-}
-
-
-
-int concatSlices(GoSlice_* slice1, GoSlice_* slice2, int elem_size, GoSlice_* result){
-	int size1 = slice1->len;
-	int size2 = slice2->len;
-	int size = size1 + size2;
-	if (size <= 0)
-		return 1;
-	void* data = malloc(size * elem_size);
-	if( data == NULL )
-		return 1;
-	registerMemCleanup( data );
-	result->data = data;
-	result->len = size;
-	result->cap = size;
-	char* p = data;
-	if(size1 > 0){
-		memcpy( p, slice1->data, size1 * elem_size );
-		p += (elem_size * size1);
-	}
-	if(size2 > 0){
-		memcpy( p, slice2->data, size2 * elem_size );
-	}
-	return 0;
-}
-    void parseJsonMetaData(char *metadata, long long *n, long long *r, long long *p, long long *keyLen)
-{
-	*n = *r = *p = *keyLen = 0;
-	int length = strlen(metadata);
-	int openingQuote = -1;
-	const char *keys[] = {"n", "r", "p", "keyLen"};
-	int keysCount = 4;
-	int keyIndex = -1;
-	int startNumber = -1;
-	for (int i = 0; i < length; i++)
+	void cleanRegisteredWallet(
+			Client__Handle client,
+			WalletResponse__Handle wallet)
 	{
-		if (metadata[i] == '\"')
+
+		int i;
+		for (i = 0; i < WALLETPOOLIDX; i++)
 		{
-			startNumber = -1;
-			if (openingQuote >= 0)
+			if (WALLET_POOL[i].wallet == wallet && WALLET_POOL[i].client == client)
 			{
-				keyIndex = -1;
-				metadata[i] = 0;
-				for (int k = 0; k < keysCount; k++)
-				{
-					if (strcmp(metadata + openingQuote + 1, keys[k]) == 0)
-					{
-						keyIndex = k;
-					}
-				}
-				openingQuote = -1;
-			}
-			else
-			{
-				openingQuote = i;
+				WALLET_POOL[i].wallet = 0;
+				WALLET_POOL[i].client = 0;
+				cleanupWallet(client, wallet);
+				return;
 			}
 		}
-		else if (metadata[i] >= '0' && metadata[i] <= '9')
+	}
+
+	void cleanupMem()
+	{
+		int i;
+
+		for (i = 0; i < WALLETPOOLIDX; i++)
 		{
-			if (startNumber < 0)
-				startNumber = i;
-		}
-		else if (metadata[i] == ',')
-		{
-			if (startNumber >= 0)
+			if (WALLET_POOL[i].client != 0 && WALLET_POOL[i].wallet != 0)
 			{
-				metadata[i] = 0;
-				int number = atoi(metadata + startNumber);
-				startNumber = -1;
-				if (keyIndex == 0)
-					*n = number;
-				else if (keyIndex == 1)
-					*r = number;
-				else if (keyIndex == 2)
-					*p = number;
-				else if (keyIndex == 3)
-					*keyLen = number;
+				cleanupWallet(WALLET_POOL[i].client, WALLET_POOL[i].wallet);
 			}
+		}
+
+		void **ptr;
+		for (i = MEMPOOLIDX, ptr = MEMPOOL; i; --i)
+		{
+			if (*ptr)
+				free(*ptr);
+			ptr++;
+		}
+		for (i = JSONPOOLIDX, ptr = (void *)JSON_POOL; i; --i)
+		{
+			if (*ptr)
+				json_value_free(*ptr);
+			ptr++;
+		}
+		for (i = 0; i < HANDLEPOOLIDX; i++)
+		{
+			if (HANDLE_POOL[i])
+				SKY_handle_close(HANDLE_POOL[i]);
+		}
+	}
+
+	void setup(void)
+	{
+		srand((unsigned int)time(NULL));
+	}
+
+	void teardown(void)
+	{
+		cleanupMem();
+	}
+
+	// TODO: Move to libsky_io.c
+	void fprintbuff(FILE * f, void *buff, size_t n)
+	{
+		unsigned char *ptr = (unsigned char *)buff;
+		fprintf(f, "[ ");
+		for (; n; --n, ptr++)
+		{
+			fprintf(f, "%02d ", *ptr);
+		}
+		fprintf(f, "]");
+	}
+
+	int parseBoolean(const char *str, int length)
+	{
+		int result = 0;
+		if (length == 1)
+		{
+			result = str[0] == '1' || str[0] == 't' || str[0] == 'T';
 		}
 		else
 		{
-			startNumber = -1;
+			result = strncmp(str, "true", length) == 0 ||
+							 strncmp(str, "True", length) == 0 ||
+							 strncmp(str, "TRUE", length) == 0;
+		}
+		return result;
+	}
+
+	void toGoString(GoString_ * s, GoString * r)
+	{
+		GoString *tmp = r;
+
+		*tmp = (*(GoString *)s);
+	}
+
+	int copySlice(GoSlice_ * pdest, GoSlice_ * psource, int elem_size)
+	{
+		pdest->len = psource->len;
+		pdest->cap = psource->len;
+		int size = pdest->len * elem_size;
+		pdest->data = malloc(size);
+		if (pdest->data == NULL)
+			return 1;
+		registerMemCleanup(pdest->data);
+		memcpy(pdest->data, psource->data, size);
+		return 0;
+	}
+
+	int concatSlices(GoSlice_ * slice1, GoSlice_ * slice2, int elem_size, GoSlice_ *result)
+	{
+		int size1 = slice1->len;
+		int size2 = slice2->len;
+		int size = size1 + size2;
+		if (size <= 0)
+			return 1;
+		void *data = malloc(size * elem_size);
+		if (data == NULL)
+			return 1;
+		registerMemCleanup(data);
+		result->data = data;
+		result->len = size;
+		result->cap = size;
+		char *p = data;
+		if (size1 > 0)
+		{
+			memcpy(p, slice1->data, size1 * elem_size);
+			p += (elem_size * size1);
+		}
+		if (size2 > 0)
+		{
+			memcpy(p, slice2->data, size2 * elem_size);
+		}
+		return 0;
+	}
+	void parseJsonMetaData(char *metadata, long long *n, long long *r, long long *p, long long *keyLen)
+	{
+		*n = *r = *p = *keyLen = 0;
+		int length = strlen(metadata);
+		int openingQuote = -1;
+		const char *keys[] = {"n", "r", "p", "keyLen"};
+		int keysCount = 4;
+		int keyIndex = -1;
+		int startNumber = -1;
+		for (int i = 0; i < length; i++)
+		{
+			if (metadata[i] == '\"')
+			{
+				startNumber = -1;
+				if (openingQuote >= 0)
+				{
+					keyIndex = -1;
+					metadata[i] = 0;
+					for (int k = 0; k < keysCount; k++)
+					{
+						if (strcmp(metadata + openingQuote + 1, keys[k]) == 0)
+						{
+							keyIndex = k;
+						}
+					}
+					openingQuote = -1;
+				}
+				else
+				{
+					openingQuote = i;
+				}
+			}
+			else if (metadata[i] >= '0' && metadata[i] <= '9')
+			{
+				if (startNumber < 0)
+					startNumber = i;
+			}
+			else if (metadata[i] == ',')
+			{
+				if (startNumber >= 0)
+				{
+					metadata[i] = 0;
+					int number = atoi(metadata + startNumber);
+					startNumber = -1;
+					if (keyIndex == 0)
+						*n = number;
+					else if (keyIndex == 1)
+						*r = number;
+					else if (keyIndex == 2)
+						*p = number;
+					else if (keyIndex == 3)
+						*keyLen = number;
+				}
+			}
+			else
+			{
+				startNumber = -1;
+			}
 		}
 	}
+
+	int cutSlice(GoSlice_ * slice, int start, int end, int elem_size, GoSlice_ *result)
+	{
+		int size = end - start;
+		if (size <= 0)
+			return 1;
+		void *data = malloc(size * elem_size);
+		if (data == NULL)
+			return 1;
+		registerMemCleanup(data);
+		result->data = data;
+		result->len = size;
+		result->cap = size;
+		char *p = slice->data;
+		p += (elem_size * start);
+		memcpy(data, p, elem_size * size);
+		return 0;
+	}
+
+	coin__Transaction *makeEmptyTransaction(Transaction__Handle * handle)
+	{
+		int result;
+		coin__Transaction *ptransaction = NULL;
+		result = SKY_coin_Create_Transaction(handle);
+		registerHandleClose(*handle);
+		result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
+		return ptransaction;
+	}
+	int makeUxBodyWithSecret(coin__UxBody * puxBody, cipher__SecKey * pseckey)
+	{
+		cipher__PubKey pubkey;
+		cipher__Address address;
+		int result;
+
+		memset(puxBody, 0, sizeof(coin__UxBody));
+		puxBody->Coins = 1000000;
+		puxBody->Hours = 100;
+
+		result = SKY_cipher_GenerateKeyPair(&pubkey, pseckey);
+		if (result != 0)
+		{
+			return 1;
+		}
+
+		GoSlice slice;
+		memset(&slice, 0, sizeof(GoSlice));
+		cipher__SHA256 hash;
+
+		result = SKY_cipher_RandByte(128, (coin__UxArray *)&slice);
+		registerMemCleanup(slice.data);
+		if (result != 0)
+		{
+			return 1;
+		}
+		result = SKY_cipher_SumSHA256(slice, &puxBody->SrcTransaction);
+		if (result != 0)
+		{
+			return 1;
+		}
+
+		result = SKY_cipher_AddressFromPubKey(&pubkey, &puxBody->Address);
+		if (result != 0)
+		{
+			return 1;
+		}
+		return result;
+	}
+	int makeUxOutWithSecret(coin__UxOut * puxOut, cipher__SecKey * pseckey)
+	{
+		int result;
+		memset(puxOut, 0, sizeof(coin__UxOut));
+		result = makeUxBodyWithSecret(&puxOut->Body, pseckey);
+		puxOut->Head.Time = 100;
+		puxOut->Head.BkSeq = 2;
+		return result;
+	}
+	int makeUxOut(coin__UxOut * puxOut)
+	{
+		cipher__SecKey seckey;
+		return makeUxOutWithSecret(puxOut, &seckey);
+	}
+	int makeUxArray(coin_UxOutArray * parray, int n)
+	{
+		parray->data = malloc(sizeof(coin__UxOut) * n);
+		if (!parray->data)
+			return 1;
+		registerMemCleanup(parray->data);
+		parray->count = parray->count = n;
+		coin__UxOut *p = (coin__UxOut *)parray->data;
+		int result = 0;
+		for (int i = 0; i < n; i++)
+		{
+			result = makeUxOut(p);
+			if (result != 0)
+				break;
+			p++;
+		}
+		return result;
+	}
+	int makeAddress(cipher__Address * paddress)
+	{
+		cipher__PubKey pubkey;
+		cipher__SecKey seckey;
+		cipher__Address address;
+		int result;
+
+		result = SKY_cipher_GenerateKeyPair(&pubkey, &seckey);
+		if (result != 0)
+			return 1;
+
+		result = SKY_cipher_AddressFromPubKey(&pubkey, paddress);
+		if (result != 0)
+			return 1;
+		return result;
+	}
+	coin__Transaction *makeTransactionFromUxOut(coin__UxOut * puxOut, cipher__SecKey * pseckey, Transaction__Handle * handle)
+	{
+		int result;
+		coin__Transaction *ptransaction = NULL;
+		result = SKY_coin_Create_Transaction(handle);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Create_Transaction failed");
+		registerHandleClose(*handle);
+		result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
+		//   cr_assert(result == SKY_OK, "SKY_coin_GetTransactionObject failed");
+		cipher__SHA256 sha256;
+		result = SKY_coin_UxOut_Hash(puxOut, &sha256);
+		//   cr_assert(result == SKY_OK, "SKY_coin_UxOut_Hash failed");
+		GoUint16 r;
+		result = SKY_coin_Transaction_PushInput(*handle, &sha256, &r);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushInput failed");
+
+		cipher__Address address1, address2;
+		result = makeAddress(&address1);
+		//   cr_assert(result == SKY_OK, "makeAddress failed");
+		result = makeAddress(&address2);
+		//   cr_assert(result == SKY_OK, "makeAddress failed");
+
+		result = SKY_coin_Transaction_PushOutput(*handle, &address1, 1000000, 50);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
+		result = SKY_coin_Transaction_PushOutput(*handle, &address2, 5000000, 50);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
+
+		GoSlice secKeys = {pseckey, 1, 1};
+		result = SKY_coin_Transaction_SignInputs(*handle, secKeys);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_SignInputs failed");
+		result = SKY_coin_Transaction_UpdateHeader(*handle);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_UpdateHeader failed");
+		return ptransaction;
+	}
+
+	coin__Transaction *makeTransaction(Transaction__Handle * handle)
+	{
+		int result;
+		coin__UxOut uxOut;
+		cipher__SecKey seckey;
+		coin__Transaction *ptransaction = NULL;
+		result = makeUxOutWithSecret(&uxOut, &seckey);
+		ptransaction = makeTransactionFromUxOut(&uxOut, &seckey, handle);
+		return ptransaction;
+	}
+
+	int makeTransactions(int n, Transactions__Handle *handle)
+	{
+		int result = SKY_coin_Create_Transactions(handle);
+		if (result != 0)
+			return 1;
+		registerHandleClose(*handle);
+		for (int i = 0; i < n; i++)
+		{
+			Transaction__Handle thandle;
+			makeTransaction(&thandle);
+			registerHandleClose(thandle);
+			result = SKY_coin_Transactions_Add(*handle, thandle);
+			if (result != 0)
+				return 1;
+		}
+		return result;
+	}
+
+	// Base 64
+
+	int b64_int(unsigned int ch)
+	{
+		// ASCII to base64_int
+		// 65-90 Upper Case >> 0-25
+		// 97-122 Lower Case >> 26-51
+		// 48-57 Numbers >> 52-61
+		// 43 Plus (+) >> 62
+		// 47 Slash (/) >> 63
+		// 61 Equal (=) >> 64~
+		if (ch == 43)
+			return 62;
+		if (ch == 47)
+			return 63;
+		if (ch == 61)
+			return 64;
+		if ((ch > 47) && (ch < 58))
+			return ch + 4;
+		if ((ch > 64) && (ch < 91))
+			return ch - 'A';
+		if ((ch > 96) && (ch < 123))
+			return (ch - 'a') + 26;
+		return -1;
+	}
+
+	int b64_decode(const unsigned char *in, unsigned int in_len, unsigned char *out)
+	{
+
+		unsigned int i = 0, j = 0, k = 0, s[4];
+		for (i = 0; i < in_len; i++)
+		{
+			int n = b64_int(*(in + i));
+			if (n < 0)
+				return -1;
+			s[j++] = n;
+			if (j == 4)
+			{
+				out[k + 0] = ((s[0] & 255) << 2) + ((s[1] & 0x30) >> 4);
+				if (s[2] != 64)
+				{
+					out[k + 1] = ((s[1] & 0x0F) << 4) + ((s[2] & 0x3C) >> 2);
+					if ((s[3] != 64))
+					{
+						out[k + 2] = ((s[2] & 0x03) << 6) + (s[3]);
+						k += 3;
+					}
+					else
+					{
+						k += 2;
+					}
+				}
+				else
+				{
+					k += 1;
+				}
+				j = 0;
+			}
+		}
+
+		return k;
+	}
+
+	int DecodeBase64(GoSlice encrypted, GoString_ * outs)
+	{
+		char encryptedText[1024];
+		int decode_length = b64_decode((unsigned char *)encrypted.data,
+																	 encrypted.len, encryptedText);
+
+		outs->p=encryptedText;
+		outs->n = decode_length;
+		return decode_length;
+	}
+
+int putUvarint(GoSlice* buf , GoUint64 x){
+	int i = 0;
+	while( x >= 0x80 && i < buf->cap) {
+		((unsigned char*)buf->data)[i] = ((GoUint8)x) | 0x80;
+		x >>= 7;
+		i++;
+	}
+	if( i < buf->cap ){
+		((unsigned char*)buf->data)[i] = (GoUint8)(x);
+		buf->len = i + 1;
+	} else {
+		buf->len = i;
+	}
+	return buf->len;
 }
 
-int cutSlice(GoSlice_* slice, int start, int end, int elem_size, GoSlice_* result){
-	int size = end - start;
-	if( size <= 0)
-		return 1;
-	void* data = malloc(size * elem_size);
-	if( data == NULL )
-		return 1;
-	registerMemCleanup( data );
-	result->data = data;
-	result->len = size;
-	result->cap = size;
-	char* p = slice->data;
-	p += (elem_size * start);
-	memcpy( data, p, elem_size * size );
-	return 0;
+int putVarint(GoSlice* buf , GoInt64 x){
+	GoUint64 ux = (GoUint64)x << 1;
+	if ( x < 0 ) {
+		ux = ~ux;
+	}
+	return putUvarint(buf, ux);
 }
 
-coin__Transaction* makeEmptyTransaction(Transaction__Handle* handle){
-  int result;
-  coin__Transaction* ptransaction = NULL;
-  result  = SKY_coin_Create_Transaction(handle);
-   registerHandleClose(*handle);
-  result = SKY_coin_GetTransactionObject( *handle, &ptransaction );
-    return ptransaction;
-}
-int makeUxBodyWithSecret(coin__UxBody* puxBody, cipher__SecKey* pseckey){
-  cipher__PubKey pubkey;
-  cipher__Address address;
-  int result;
-
-  memset( puxBody, 0, sizeof(coin__UxBody) );
-  puxBody->Coins = 1000000;
-  puxBody->Hours = 100;
-
-  result = SKY_cipher_GenerateKeyPair(&pubkey, pseckey);
-  if(result != 0){ return 1;}
-
-  GoSlice slice;
-  memset(&slice, 0, sizeof(GoSlice));
-  cipher__SHA256 hash;
-
-  result = SKY_cipher_RandByte( 128, (coin__UxArray*)&slice );
-  registerMemCleanup( slice.data );
-  if(result != 0){ return 1;}
-  result = SKY_cipher_SumSHA256( slice, &puxBody->SrcTransaction );
-  if(result != 0){ return 1;}
-
-  result = SKY_cipher_AddressFromPubKey( &pubkey, &puxBody->Address );
-  if(result != 0){ return 1;}
-  return result;
-}
-int makeUxOutWithSecret(coin__UxOut* puxOut, cipher__SecKey* pseckey){
-  int result;
-  memset( puxOut, 0, sizeof(coin__UxOut) );
-  result = makeUxBodyWithSecret(&puxOut->Body, pseckey);
-  puxOut->Head.Time = 100;
-  puxOut->Head.BkSeq = 2;
-  return result;
-}
-int makeUxOut(coin__UxOut* puxOut){
-  cipher__SecKey seckey;
-  return makeUxOutWithSecret(puxOut, &seckey);
-}
-int makeUxArray(coin_UxOutArray* parray, int n){
-  parray->data = malloc( sizeof(coin__UxOut) * n );
-  if(!parray->data)
-    return 1;
-  registerMemCleanup( parray->data );
-  parray->count = parray->count = n;
-  coin__UxOut* p = (coin__UxOut*)parray->data;
-  int result = 0;
-  for(int i = 0; i < n; i++){
-    result = makeUxOut(p);
-    if( result != 0 )
-      break;
-    p++;
-  }
-  return result;
-}
-int makeAddress(cipher__Address* paddress){
-  cipher__PubKey pubkey;
-  cipher__SecKey seckey;
-  cipher__Address address;
-  int result;
-
-  result = SKY_cipher_GenerateKeyPair(&pubkey, &seckey);
-  if(result != 0) return 1;
-
-  result = SKY_cipher_AddressFromPubKey( &pubkey, paddress );
-  if(result != 0) return 1;
-  return result;
-}
-coin__Transaction* makeTransactionFromUxOut(coin__UxOut* puxOut, cipher__SecKey* pseckey, Transaction__Handle* handle ){
-  int result;
-  coin__Transaction* ptransaction = NULL;
-  result  = SKY_coin_Create_Transaction(handle);
-//   cr_assert(result == SKY_OK, "SKY_coin_Create_Transaction failed");
-  registerHandleClose(*handle);
-  result = SKY_coin_GetTransactionObject( *handle, &ptransaction );
-//   cr_assert(result == SKY_OK, "SKY_coin_GetTransactionObject failed");
-  cipher__SHA256 sha256;
-  result = SKY_coin_UxOut_Hash(puxOut, &sha256);
-//   cr_assert(result == SKY_OK, "SKY_coin_UxOut_Hash failed");
-  GoUint16 r;
-  result = SKY_coin_Transaction_PushInput(*handle, &sha256, &r);
-//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushInput failed");
-
-  cipher__Address address1, address2;
-  result = makeAddress(&address1);
-//   cr_assert(result == SKY_OK, "makeAddress failed");
-  result = makeAddress(&address2);
-//   cr_assert(result == SKY_OK, "makeAddress failed");
-
-  result = SKY_coin_Transaction_PushOutput(*handle, &address1, 1000000, 50);
-//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
-  result = SKY_coin_Transaction_PushOutput(*handle, &address2, 5000000, 50);
-//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
-
-  GoSlice secKeys = { pseckey, 1, 1 };
-  result = SKY_coin_Transaction_SignInputs( *handle, secKeys );
-//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_SignInputs failed");
-  result = SKY_coin_Transaction_UpdateHeader( *handle );
-//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_UpdateHeader failed");
-  return ptransaction;
+void hashKeyIndexNonce(GoSlice_ key, GoInt64 index,
+	cipher__SHA256 *nonceHash, cipher__SHA256 *resultHash){
+	GoUint32 errcode;
+	int length = 32 + sizeof(cipher__SHA256);
+	unsigned char buff[length];
+	GoSlice slice = {buff, 0, length};
+	memset(buff, 0, length * sizeof(char));
+	putVarint( &slice, index );
+	memcpy(buff + 32, *nonceHash, sizeof(cipher__SHA256));
+	slice.len = length;
+	cipher__SHA256 indexNonceHash;
+	errcode = SKY_cipher_SumSHA256(slice, &indexNonceHash);
+	SKY_cipher_AddSHA256(key.data, &indexNonceHash, resultHash);
 }
 
-coin__Transaction* makeTransaction(Transaction__Handle* handle){
-  int result;
-  coin__UxOut uxOut;
-  cipher__SecKey seckey;
-  coin__Transaction* ptransaction = NULL;
-  result = makeUxOutWithSecret( &uxOut, &seckey );
-  if(result != 0) return 1;
-  ptransaction = makeTransactionFromUxOut( &uxOut, &seckey, handle );
-  if(result != 0) return 1;
-  return ptransaction;
-}
+void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxArray* encrypted){
+	GoUint32 fullLength = dataLength + 4;
+	GoUint32 n = fullLength / 32;
+	GoUint32 m = fullLength % 32;
+	GoUint32 errcode;
 
-int makeTransactions(int n, Transactions__Handle* handle){
-  int result = SKY_coin_Create_Transactions(handle);
-  if(result != 0) return 1;
-  registerHandleClose(*handle);
-  for(int i = 0; i < n; i++){
-    Transaction__Handle thandle;
-    makeTransaction(&thandle);
-    registerHandleClose(thandle);
-    result = SKY_coin_Transactions_Add(*handle, thandle);
-    if(result != 0) return 1;
-  }
-  return result;
+	if( m > 0 ){
+		fullLength += 32 - m;
+	}
+	if(32 == sizeof(cipher__SHA256)){  return ;}
+	fullLength += 32;
+	char* buffer = malloc(fullLength);
+	if(buffer != NULL){return;}
+	//Add data length to the beginning, saving space for the checksum
+	for(int i = 0; i < 4; i++){
+		int shift = i * 8;
+		buffer[i + 32] = (dataLength & (0xFF << shift)) >> shift;
+	}
+	//Add the data
+	memcpy(buffer + 4 + 32,
+		data.data, dataLength);
+	//Add padding
+	for(int i = dataLength + 4 + 32; i < fullLength; i++){
+		buffer[i] = 0;
+	}
+	//Buffer with space for the checksum, then data length, then data, and then padding
+	GoSlice _data = {buffer + 32,
+		fullLength - 32,
+		fullLength - 32};
+	//GoSlice _hash = {buffer, 0, 32};
+	errcode = SKY_cipher_SumSHA256(_data, (cipher__SHA256*)buffer);
+	char bufferNonce[32];
+	GoSlice sliceNonce = {bufferNonce, 0, 32};
+	randBytes(&sliceNonce, 32);
+	cipher__SHA256 hashNonce;
+	errcode = SKY_cipher_SumSHA256(sliceNonce, &hashNonce);
+	char bufferHash[1024];
+	coin__UxArray hashPassword = {bufferHash, 0, 1024};
+	errcode = SKY_secp256k1_Secp256k1Hash(pwd, &hashPassword);
+	cipher__SHA256 h;
+
+
+	int fullDestLength = fullLength + sizeof(cipher__SHA256) + 32;
+	int destBufferStart = sizeof(cipher__SHA256) + 32;
+	unsigned char* dest_buffer = malloc(fullDestLength);
+	if(dest_buffer != NULL){return;}
+	for(int i = 0; i < n; i++){
+		hashKeyIndexNonce(hashPassword, i, &hashNonce, &h);
+		cipher__SHA256* pBuffer = (cipher__SHA256*)(buffer + i *32);
+		cipher__SHA256* xorResult = (cipher__SHA256*)(dest_buffer + destBufferStart + i *32);
+		SKY_cipher_SHA256_Xor(pBuffer, &h, xorResult);
+	}
+	// Prefix the nonce
+	memcpy(dest_buffer + sizeof(cipher__SHA256), bufferNonce, 32);
+	// Calculates the checksum
+	GoSlice nonceAndDataBytes = {dest_buffer + sizeof(cipher__SHA256),
+								fullLength + 32,
+								fullLength + 32
+						};
+	cipher__SHA256* checksum = (cipher__SHA256*)dest_buffer;
+	errcode = SKY_cipher_SumSHA256(nonceAndDataBytes, checksum);
+	unsigned char bufferb64[1024];
+	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
+	encrypted->len = size;
 }
-    
+	
 
 	GoUint32 CSharp_skycoin_SKY_cipher_SumSHA256(GoSlice seed, cipher_SHA256* sha){
 		GoUint32 result = SKY_cipher_SumSHA256(seed,  sha);
@@ -1541,15 +1841,6 @@ int makeTransactions(int n, Transactions__Handle* handle){
 	};
 
 
-	GoUint32 CSharp_skycoin_SKY_coin_Transactions_Fees(Transactions__Handle handle ,Fee_Calculator *pFeeCalc, GoUint64* p3){
-     FeeCalculator *out = {callFeeCalculator,NULL} ;
-	 
-		GoUint32 result = SKY_coin_Transactions_Fees(handle, out,p3);
-		*p3 = 3;
-		return result;
-	};
-
-
 	GoUint32 CSharp_skycoin_SKY_coin_GetBlockObject(Block__Handle handle, coin__Block* outBlock ){
 		GoUint32 result = SKY_coin_GetBlockObject(handle, &outBlock);
 		return result;
@@ -1590,13 +1881,6 @@ SWIGINTERN void cipher_Sig_assignFrom(cipher_Sig *self,void *data){
 	}
 SWIGINTERN void cipher_Sig_assignTo(cipher_Sig *self,void *data){
 		memcpy(data, &self->data, sizeof(self->data));
-	}
-SWIGINTERN GoSlice cipher_Sig_toGoSlice(cipher_Sig *self){
-	GoSlice slice;
-slice.len = sizeof(cipher_Sig);
-slice.cap = sizeof(cipher_Sig)+1;
-slice.data = (cipher_Sig*)&self;
-return slice;
 	}
 SWIGINTERN int cipher_SHA256_isEqual(cipher_SHA256 *self,cipher_SHA256 *a){
 		return memcmp(self->data, a->data, sizeof(a->data)) == 0;
@@ -1772,12 +2056,9 @@ SWIGINTERN void GoSlice_convertString(GoSlice *self,_GoString_ data){
 		self->len = strlen(data.p);
 		self->cap = self->len;
 	}
-SWIGINTERN _GoString_ GoSlice_getString(GoSlice *self){
-	_GoString_ out;
-	char * a = (char *)self->data;
-	out.p = a;
-	out.n = strlen(a);
-return out;
+SWIGINTERN void GoSlice_getString(GoSlice *self,_GoString_ *out){
+	out->p = (char *)self->data;
+	out->n = strlen((char *)self->data);
 }
 SWIGINTERN int cipher__Address_isEqual(cipher__Address *self,cipher__Address *a){
 		if( self->Version == a->Version ){
@@ -2650,53 +2931,189 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Block__HandlePtr_value(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_charp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Signature_HandlePtr() {
   void * jresult ;
-  unsigned char *result = 0 ;
+  Signature_Handle *result = 0 ;
   
-  result = (unsigned char *)new_charp();
+  result = (Signature_Handle *)new_Signature_HandlePtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_charp(unsigned char jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Signature_HandlePtr(void * jarg1) {
+  void * jresult ;
+  Signature_Handle arg1 ;
+  Signature_Handle *argp1 ;
+  Signature_Handle *result = 0 ;
+  
+  argp1 = (Signature_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Signature_Handle *)copy_Signature_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Signature_HandlePtr(void * jarg1) {
+  Signature_Handle *arg1 = (Signature_Handle *) 0 ;
+  
+  arg1 = (Signature_Handle *)jarg1; 
+  delete_Signature_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Signature_HandlePtr_assign(void * jarg1, void * jarg2) {
+  Signature_Handle *arg1 = (Signature_Handle *) 0 ;
+  Signature_Handle arg2 ;
+  Signature_Handle *argp2 ;
+  
+  arg1 = (Signature_Handle *)jarg1; 
+  argp2 = (Signature_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Signature_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Signature_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Signature_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Signature_Handle *arg1 = (Signature_Handle *) 0 ;
+  Signature_Handle result;
+  
+  arg1 = (Signature_Handle *)jarg1; 
+  result = Signature_HandlePtr_value(arg1);
+  {
+    Signature_Handle * resultptr = (Signature_Handle *) malloc(sizeof(Signature_Handle));
+    memmove(resultptr, &result, sizeof(Signature_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Number_HandlePtr() {
+  void * jresult ;
+  Number_Handle *result = 0 ;
+  
+  result = (Number_Handle *)new_Number_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Number_HandlePtr(void * jarg1) {
+  void * jresult ;
+  Number_Handle arg1 ;
+  Number_Handle *argp1 ;
+  Number_Handle *result = 0 ;
+  
+  argp1 = (Number_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Number_Handle *)copy_Number_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Number_HandlePtr(void * jarg1) {
+  Number_Handle *arg1 = (Number_Handle *) 0 ;
+  
+  arg1 = (Number_Handle *)jarg1; 
+  delete_Number_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Number_HandlePtr_assign(void * jarg1, void * jarg2) {
+  Number_Handle *arg1 = (Number_Handle *) 0 ;
+  Number_Handle arg2 ;
+  Number_Handle *argp2 ;
+  
+  arg1 = (Number_Handle *)jarg1; 
+  argp2 = (Number_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Number_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Number_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Number_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Number_Handle *arg1 = (Number_Handle *) 0 ;
+  Number_Handle result;
+  
+  arg1 = (Number_Handle *)jarg1; 
+  result = Number_HandlePtr_value(arg1);
+  {
+    Number_Handle * resultptr = (Number_Handle *) malloc(sizeof(Number_Handle));
+    memmove(resultptr, &result, sizeof(Number_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CharPtr() {
+  void * jresult ;
+  unsigned char *result = 0 ;
+  
+  result = (unsigned char *)new_CharPtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CharPtr(unsigned char jarg1) {
   void * jresult ;
   unsigned char arg1 ;
   unsigned char *result = 0 ;
   
   arg1 = (unsigned char)jarg1; 
-  result = (unsigned char *)copy_charp(arg1);
+  result = (unsigned char *)copy_CharPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_charp(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CharPtr(void * jarg1) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   
   arg1 = (unsigned char *)jarg1; 
-  delete_charp(arg1);
+  delete_CharPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_charp_assign(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CharPtr_assign(void * jarg1, unsigned char jarg2) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   unsigned char arg2 ;
   
   arg1 = (unsigned char *)jarg1; 
   arg2 = (unsigned char)jarg2; 
-  charp_assign(arg1,arg2);
+  CharPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_charp_value(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_CharPtr_value(void * jarg1) {
   unsigned char jresult ;
   unsigned char *arg1 = (unsigned char *) 0 ;
   unsigned char result;
   
   arg1 = (unsigned char *)jarg1; 
-  result = (unsigned char)charp_value(arg1);
+  result = (unsigned char)CharPtr_value(arg1);
   jresult = result; 
   return jresult;
 }
@@ -3439,6 +3856,128 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_makeTransactions(int jarg1, void * jar
   result = (int)makeTransactions(arg1,arg2);
   jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_int(unsigned int jarg1) {
+  int jresult ;
+  unsigned int arg1 ;
+  int result;
+  
+  arg1 = (unsigned int)jarg1; 
+  result = (int)b64_int(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_decode(void * jarg1, unsigned int jarg2, void * jarg3) {
+  int jresult ;
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  unsigned int arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  int result;
+  
+  arg1 = (unsigned char *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned char *)jarg3; 
+  result = (int)b64_decode((unsigned char const *)arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_DecodeBase64(void * jarg1, GoString* jarg2) {
+  int jresult ;
+  GoSlice arg1 ;
+  GoString_ *arg2 = (GoString_ *) 0 ;
+  GoSlice *argp1 ;
+  int result;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoString_ *)jarg2; 
+  result = (int)DecodeBase64(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_putUvarint(void * jarg1, unsigned long long jarg2) {
+  int jresult ;
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  GoUint64 arg2 ;
+  int result;
+  
+  arg1 = (GoSlice *)jarg1; 
+  arg2 = (GoUint64)jarg2; 
+  result = (int)putUvarint(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_putVarint(void * jarg1, long long jarg2) {
+  int jresult ;
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  GoInt64 arg2 ;
+  int result;
+  
+  arg1 = (GoSlice *)jarg1; 
+  arg2 = (GoInt64)jarg2; 
+  result = (int)putVarint(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_hashKeyIndexNonce(void * jarg1, long long jarg2, cipher_SecKey* jarg3, cipher_SecKey* jarg4) {
+  GoSlice_ arg1 ;
+  GoInt64 arg2 ;
+  cipher__SHA256 *arg3 = (cipher__SHA256 *) 0 ;
+  cipher__SHA256 *arg4 = (cipher__SHA256 *) 0 ;
+  GoSlice_ *argp1 ;
+  
+  argp1 = (GoSlice_ *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice_", 0);
+    return ;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoInt64)jarg2; 
+  arg3 = (cipher__SHA256 *)jarg3; 
+  arg4 = (cipher__SHA256 *)jarg4; 
+  hashKeyIndexNonce(arg1,arg2,(GoUint8_ (*)[32])arg3,(GoUint8_ (*)[32])arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_makeEncryptedData(void * jarg1, unsigned int jarg2, void * jarg3, GoSlice_ * jarg4) {
+  GoSlice arg1 ;
+  GoUint32 arg2 ;
+  GoSlice arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  GoSlice *argp1 ;
+  GoSlice *argp3 ;
+  
+  argp1 = (GoSlice *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return ;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint32)jarg2; 
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return ;
+  }
+  arg3 = *argp3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  makeEncryptedData(arg1,arg2,arg3,arg4);
 }
 
 
@@ -4195,28 +4734,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_fee_TransactionFee__SWIG_
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  Transactions__Handle arg1 ;
-  Fee_Calculator *arg2 = (Fee_Calculator *) 0 ;
-  GoUint64 *arg3 = (GoUint64 *) 0 ;
-  Transactions__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Transactions__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transactions__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Fee_Calculator *)jarg2; 
-  arg3 = (GoUint64 *)jarg3; 
-  result = (GoUint32)CSharp_skycoin_SKY_coin_Transactions_Fees(arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_GetBlockObject__SWIG_0(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
@@ -4502,22 +5019,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher_Sig_assignTo(void * jarg1, voi
   arg1 = (cipher_Sig *)jarg1; 
   arg2 = (void *)jarg2; 
   cipher_Sig_assignTo(arg1,arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher_Sig_toGoSlice(void * jarg1) {
-  void * jresult ;
-  cipher_Sig *arg1 = (cipher_Sig *) 0 ;
-  GoSlice result;
-  
-  arg1 = (cipher_Sig *)jarg1; 
-  result = cipher_Sig_toGoSlice(arg1);
-  {
-    GoSlice * resultptr = (GoSlice *) malloc(sizeof(GoSlice));
-    memmove(resultptr, &result, sizeof(GoSlice));
-    jresult = resultptr;
-  }
-  return jresult;
 }
 
 
@@ -5628,19 +6129,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlice_convertString(void * jarg1, v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlice_getString(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlice_getString(void * jarg1, void * jarg2) {
   GoSlice *arg1 = (GoSlice *) 0 ;
-  _GoString_ result;
+  _GoString_ *arg2 = (_GoString_ *) 0 ;
   
   arg1 = (GoSlice *)jarg1; 
-  result = GoSlice_getString(arg1);
-  {
-    _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
-    memmove(resultptr, &result, sizeof(_GoString_));
-    jresult = resultptr;
-  }
-  return jresult;
+  arg2 = (_GoString_ *)jarg2; 
+  GoSlice_getString(arg1,arg2);
 }
 
 
@@ -14368,7 +14863,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Add(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(void * jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   Transactions__Handle arg1 ;
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
@@ -18466,18 +18961,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubke
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_int(unsigned int jarg1) {
-  int jresult ;
-  unsigned int arg1 ;
-  int result;
-  
-  arg1 = (unsigned int)jarg1; 
-  result = (int)b64_int(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64e_size(unsigned int jarg1) {
   unsigned int jresult ;
   unsigned int arg1 ;
@@ -18513,22 +18996,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64_encode(void * jarg1, unsi
   arg2 = (unsigned int)jarg2; 
   arg3 = (unsigned char *)jarg3; 
   result = (unsigned int)b64_encode((unsigned char const *)arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_decode(void * jarg1, unsigned int jarg2, void * jarg3) {
-  int jresult ;
-  unsigned char *arg1 = (unsigned char *) 0 ;
-  unsigned int arg2 ;
-  unsigned char *arg3 = (unsigned char *) 0 ;
-  int result;
-  
-  arg1 = (unsigned char *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned char *)jarg3; 
-  result = (int)b64_decode((unsigned char const *)arg1,arg2,arg3);
   jresult = result; 
   return jresult;
 }

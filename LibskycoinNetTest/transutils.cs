@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using skycoin;
+using System.Text.RegularExpressions;
 namespace utils {
     public class transutils {
         public cipher__Address makeAddress () {
@@ -137,6 +138,44 @@ namespace utils {
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             return sha;
         }
-    }
 
+        public GoSlice RandBytes (int n) {
+            var b = new GoSlice ();
+            var err = skycoin.skycoin.SKY_cipher_RandByte (n, b);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            return b;
+        }
+
+        public  bool IsBase64String (string s) {
+            s = s.Trim ();
+            return (s.Length % 4 == 0) && Regex.IsMatch (s, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
+
+        }
+        public string base64Encode (string data) {
+            try {
+                byte[] encData_byte = new byte[data.Length];
+                encData_byte = System.Text.Encoding.ASCII.GetBytes (data);
+                string encodedData = Convert.ToBase64String (encData_byte);
+                return encodedData;
+            } catch (Exception e) {
+                throw new Exception ("Error in base64Encode " + e.Message);
+            }
+        }
+
+        public string base64Decode (string data) {
+            try {
+                System.Text.ASCIIEncoding encoder = new System.Text.ASCIIEncoding ();
+                System.Text.Decoder utf8Decode = encoder.GetDecoder ();
+
+                byte[] todecode_byte = Convert.FromBase64String (data);
+                int charCount = utf8Decode.GetCharCount (todecode_byte, 0, todecode_byte.Length);
+                char[] decoded_char = new char[charCount];
+                utf8Decode.GetChars (todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+                string result = new String (decoded_char);
+                return result;
+            } catch (Exception e) {
+                throw new Exception ("Error in base64Decode " + e.Message);
+            }
+        }
+    }
 }

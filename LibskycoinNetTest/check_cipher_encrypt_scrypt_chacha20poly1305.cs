@@ -4,10 +4,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using skycoin;
+using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_cipher_encrypt_scrypt_chacha20poly1305 {
-
+        utils.transutils utils = new utils.transutils ();
         private String cutString (String str, String ini, String end) {
             int endIndex = str.LastIndexOf (end);
             String outs = str.Substring (0, endIndex);
@@ -39,12 +40,12 @@ namespace LibskycoinNetTest {
                 var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Encrypt (crypto, plain, passwd, encData);
                 Assert.AreEqual (err, skycoin.skycoin.SKY_OK, name);
                 Assert.AreEqual (encData.len > 2, true);
-                var str = encData.getString ();
+                var str = new _GoString_ ();
+                encData.getString (str);
                 Console.WriteLine (name);
 
                 if (str.n <= 188) {
-                    var base64 = Convert.FromBase64String (str.p);
-                    var meta = System.Text.Encoding.UTF8.GetString (base64);
+                    var meta = utils.base64Decode (str.p);
                     var n = skycoin.skycoin.new_Gointp ();
                     var r = skycoin.skycoin.new_Gointp ();
                     var p = skycoin.skycoin.new_Gointp ();

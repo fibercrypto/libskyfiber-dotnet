@@ -50,9 +50,8 @@ public class GoSlice : global::System.IDisposable {
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public _GoString_ getString() {
-    _GoString_ ret = new _GoString_(skycoinPINVOKE.GoSlice_getString(swigCPtr), true);
-    return ret;
+  public void getString(_GoString_ arg0) {
+    skycoinPINVOKE.GoSlice_getString(swigCPtr, _GoString_.getCPtr(arg0));
   }
 
   public SWIGTYPE_p_void data {
