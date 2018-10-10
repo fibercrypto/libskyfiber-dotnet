@@ -53,6 +53,16 @@ public class cipher_PubKey : global::System.IDisposable {
     skycoinPINVOKE.cipher_PubKey_assignTo(swigCPtr, cipher_PubKey.getCPtr(data));
   }
 
+  public void assignSlice(GoSlice slice) {
+    skycoinPINVOKE.cipher_PubKey_assignSlice(swigCPtr, GoSlice.getCPtr(slice));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public GoSlice toSlice() {
+    GoSlice ret = new GoSlice(skycoinPINVOKE.cipher_PubKey_toSlice(swigCPtr), true);
+    return ret;
+  }
+
   public SWIGTYPE_p_unsigned_char data {
     set {
       skycoinPINVOKE.set_cipher_PubKey_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));

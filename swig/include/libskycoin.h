@@ -258,7 +258,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "wallet.addresses.go"
+#line 7 "wallet.addresses.go"
 
 
   #include <string.h>
@@ -440,16 +440,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 5 "util.cert.cert.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 10 "util.fee.fee.go"
 
 
@@ -487,6 +477,16 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
   #include <stdlib.h>
 
   #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "cipher.bitcoin.go"
+
+#include <string.h>
+#include <stdlib.h>
+
+#include "skytypes.h"
+
 
 #line 1 "cgo-generated-wrapper"
 
@@ -672,7 +672,7 @@ extern GoUint32 SKY_api_Client_BlockByHash(Client__Handle p0, GoString p1, Handl
 
 extern GoUint32 SKY_api_Client_BlockBySeq(Client__Handle p0, GoUint64 p1, Handle* p2);
 
-extern GoUint32 SKY_api_Client_Blocks(Client__Handle p0, GoUint64 p1, GoUint64 p2, Handle* p3);
+extern GoUint32 SKY_api_Client_Blocks(Client__Handle p0, GoSlice p1, Handle* p2);
 
 extern GoUint32 SKY_api_Client_LastBlocks(Client__Handle p0, GoUint64 p1, Handle* p2);
 
@@ -708,7 +708,7 @@ extern GoUint32 SKY_api_Client_WalletFolderName(Client__Handle p0, Handle* p1);
 
 extern GoUint32 SKY_api_Client_NewSeed(Client__Handle p0, GoInt p1, GoString_* p2);
 
-extern GoUint32 SKY_api_Client_GetWalletSeed(Client__Handle p0, GoString p1, GoString p2, GoString_* p3);
+extern GoUint32 SKY_api_Client_WalletSeed(Client__Handle p0, GoString p1, GoString p2, GoString_* p3);
 
 extern GoUint32 SKY_api_Client_NetworkConnection(Client__Handle p0, GoString p1, Handle* p2);
 
@@ -900,7 +900,7 @@ extern GoUint32 SKY_webrpc_Client_GetTransactionByID(WebRpcClient__Handle p0, Go
 
 extern GoUint32 SKY_webrpc_Client_GetAddressUxOuts(WebRpcClient__Handle p0, GoSlice p1, coin__UxArray* p2);
 
-extern GoUint32 SKY_webrpc_Client_GetBlocks(WebRpcClient__Handle p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
+extern GoUint32 SKY_webrpc_Client_GetBlocksInRange(WebRpcClient__Handle p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
 
 extern GoUint32 SKY_webrpc_Client_GetBlocksBySeq(WebRpcClient__Handle p0, GoSlice p1, coin__UxArray* p2);
 
@@ -930,12 +930,6 @@ extern GoUint32 SKY_coin_Uint64ToInt64(GoUint64 p0, GoInt64* p1);
 
 extern GoUint32 SKY_coin_Int64ToUint64(GoInt64 p0, GoUint64* p1);
 
-extern GoUint32 SKY_cipher_PubKeySlice_Len(coin__UxArray* p0, GoInt* p1);
-
-extern GoUint32 SKY_cipher_PubKeySlice_Less(coin__UxArray* p0, GoInt p1, GoInt p2, GoUint8* p3);
-
-extern GoUint32 SKY_cipher_PubKeySlice_Swap(coin__UxArray* p0, GoInt p1, GoInt p2);
-
 extern GoUint32 SKY_cipher_RandByte(GoInt p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_cipher_NewPubKey(GoSlice p0, cipher__PubKey* p1);
@@ -950,7 +944,7 @@ extern GoUint32 SKY_cipher_PubKey_Verify(cipher__PubKey* p0);
 
 extern GoUint32 SKY_cipher_PubKey_Hex(cipher__PubKey* p0, GoString_* p1);
 
-extern GoUint32 SKY_cipher_PubKey_ToAddressHash(cipher__PubKey* p0, cipher__Ripemd160* p1);
+extern GoUint32 SKY_cipher_PubKeyRipemd160(cipher__PubKey* p0, cipher__Ripemd160* p1);
 
 extern GoUint32 SKY_cipher_NewSecKey(GoSlice p0, cipher__SecKey* p1);
 
@@ -976,6 +970,8 @@ extern GoUint32 SKY_cipher_VerifySignedHash(cipher__Sig* p0, cipher__SHA256* p1)
 
 extern GoUint32 SKY_cipher_VerifySignature(cipher__PubKey* p0, cipher__Sig* p1, cipher__SHA256* p2);
 
+extern GoUint32 SKY_cipher_GenerateKeyPair(cipher__PubKey* p0, cipher__SecKey* p1);
+
 extern GoUint32 SKY_cipher_GenerateDeterministicKeyPair(GoSlice p0, cipher__PubKey* p1, cipher__SecKey* p2);
 
 extern GoUint32 SKY_cipher_DeterministicKeyPairIterator(GoSlice p0, coin__UxArray* p1, cipher__PubKey* p2, cipher__SecKey* p3);
@@ -984,11 +980,9 @@ extern GoUint32 SKY_cipher_GenerateDeterministicKeyPairs(GoSlice p0, GoInt p1, c
 
 extern GoUint32 SKY_cipher_GenerateDeterministicKeyPairsSeed(GoSlice p0, GoInt p1, coin__UxArray* p2, coin__UxArray* p3);
 
-extern GoUint32 SKY_cipher_TestSecKey(cipher__SecKey* p0);
+extern GoUint32 SKY_cipher_CheckSecKey(cipher__SecKey* p0);
 
-extern GoUint32 SKY_cipher_TestSecKeyHash(cipher__SecKey* p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_cipher_GenerateKeyPair(cipher__PubKey* p0, cipher__SecKey* p1);
+extern GoUint32 SKY_cipher_CheckSecKeyHash(cipher__SecKey* p0, cipher__SHA256* p1);
 
 extern GoUint32 SKY_secp256k1go_Signature_Create(Signature_Handle* p0);
 
@@ -1056,10 +1050,6 @@ extern GoUint32 SKY_wallet_Entry_VerifyPublic(wallet__Entry* p0);
 
 extern GoUint32 SKY_wallet_CreateAddresses(GoString p0, GoString p1, GoInt p2, GoUint8 p3, ReadableWallet__Handle* p4);
 
-extern GoUint32 SKY_wallet_GetSkycoinWalletEntry(cipher__PubKey* p0, cipher__SecKey* p1, ReadableEntry__Handle* p2);
-
-extern GoUint32 SKY_wallet_GetBitcoinWalletEntry(cipher__PubKey* p0, cipher__SecKey* p1, ReadableEntry__Handle* p2);
-
 extern GoUint32 SKY_secp256k1go_XYZ_Print(secp256k1go__XYZ* p0, GoString p1);
 
 extern GoUint32 SKY_secp256k1go_XYZ_SetXY(secp256k1go__XYZ* p0, secp256k1go__XY* p1);
@@ -1118,31 +1108,15 @@ extern GoUint32 SKY_cipher_AddressFromPubKey(cipher__PubKey* p0, cipher__Address
 
 extern GoUint32 SKY_cipher_AddressFromSecKey(cipher__SecKey* p0, cipher__Address* p1);
 
-extern GoUint32 SKY_cipher_BitcoinDecodeBase58Address(GoString p0, cipher__Address* p1);
-
 extern GoUint32 SKY_cipher_Address_Null(cipher__Address* p0, GoUint8* p1);
 
 extern GoUint32 SKY_cipher_Address_Bytes(cipher__Address* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_cipher_Address_BitcoinBytes(cipher__Address* p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_cipher_Address_Verify(cipher__Address* p0, cipher__PubKey* p1);
 
 extern GoUint32 SKY_cipher_Address_String(cipher__Address* p0, GoString_* p1);
 
-extern GoUint32 SKY_cipher_Address_BitcoinString(cipher__Address* p0, GoString_* p1);
-
 extern GoUint32 SKY_cipher_Address_Checksum(cipher__Address* p0, cipher__Checksum* p1);
-
-extern GoUint32 SKY_cipher_Address_BitcoinChecksum(cipher__Address* p0, cipher__Checksum* p1);
-
-extern GoUint32 SKY_cipher_BitcoinAddressFromPubkey(cipher__PubKey* p0, GoString_* p1);
-
-extern GoUint32 SKY_cipher_BitcoinWalletImportFormatFromSeckey(cipher__SecKey* p0, GoString_* p1);
-
-extern GoUint32 SKY_cipher_BitcoinAddressFromBytes(GoSlice p0, cipher__Address* p1);
-
-extern GoUint32 SKY_cipher_SecKeyFromWalletImportFormat(GoString p0, cipher__SecKey* p1);
 
 extern GoUint32 SKY_JsonEncode_Handle(Handle p0, GoString_* p1);
 
@@ -1312,8 +1286,6 @@ extern GoUint32 SKY_apputil_CatchDebug();
 
 extern GoUint32 SKY_apputil_PrintProgramStatus();
 
-extern GoUint32 SKY_cert_CreateCertIfNotExists(GoString p0, GoString p1, GoString p2, GoString p3);
-
 extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1);
 
 extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1);
@@ -1356,9 +1328,31 @@ extern GoUint32 SKY_file_ResolveResourceDirectory(GoString p0, GoString_* p1);
 
 extern GoUint32 SKY_file_DetermineResourcePath(GoString p0, GoString p1, GoString p2, GoString_* p3);
 
-extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoString p1, ReadableOutputSet_Handle* p2);
+extern GoUint32 SKY_cipher_DecodeBase58BitcoinAddress(GoString p0, cipher__BitcoinAddress* p1);
 
-extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, UnspentOutputsSummary_Handle* p2);
+extern void SKY_cipher_BitcoinAddressFromPubKey(cipher__PubKey* p0, cipher__BitcoinAddress* p1);
+
+extern GoUint32 SKY_cipher_BitcoinAddressFromSecKey(cipher__SecKey* p0, cipher__BitcoinAddress* p1);
+
+extern void SKY_cipher_BitcoinWalletImportFormatFromSeckey(cipher__SecKey* p0, GoString_* p1);
+
+extern GoUint32 SKY_cipher_BitcoinAddressFromBytes(GoSlice p0, cipher__BitcoinAddress* p1);
+
+extern GoUint32 SKY_cipher_SecKeyFromBitcoinWalletImportFormat(GoString p0, cipher__SecKey* p1);
+
+extern GoUint8 SKY_cipher_BitcoinAddress_Null(cipher__BitcoinAddress* p0);
+
+extern void SKY_cipher_BitcoinAddress_Bytes(cipher__BitcoinAddress* p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_cipher_BitcoinAddress_Verify(cipher__BitcoinAddress* p0, cipher__PubKey* p1);
+
+extern void SKY_cipher_BitcoinAddress_String(cipher__BitcoinAddress* p0, GoString_* p1);
+
+extern void SKY_cipher_BitcoinAddress_Checksum(cipher__BitcoinAddress* p0, cipher__Checksum* p1);
+
+extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoString p1, ReadableUnspentOutputsSummary_Handle* p2);
+
+extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, ReadableUnspentOutputsSummary_Handle* p2);
 
 extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
 

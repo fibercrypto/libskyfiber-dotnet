@@ -47,8 +47,9 @@
     <Compile Include="check_cipher_sha256xor.cs" />
     <Compile Include="check_cipher_field.cs" />
     <Compile Include="check_cipher_bip39.cs" />
+    <Compile Include="check_cipher_bitcoin.cs" />
     <Compile Include="check_coin_math.cs" />
-    <Compile Include="check_coin_coin.cs" />
+    <!-- <Compile Include="check_coin_coin.cs" /> -->
     <Compile Include="check_coin_transactions.cs" />
     <Compile Include="check_coin_outputs.cs" />
     <Compile Include="check_coin_block.cs" />

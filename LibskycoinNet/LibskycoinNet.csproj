@@ -110,7 +110,6 @@
     <Compile Include="skycoin\coin__UxBody.cs" />
     <Compile Include="skycoin\coin__UxHead.cs" />
     <Compile Include="skycoin\coin__UxOut.cs" />
-    <Compile Include="skycoin\encoder__StructField.cs" />
     <Compile Include="skycoin\encrypt__ScryptChacha20poly1305.cs" />
     <Compile Include="skycoin\httphelper__Address.cs" />
     <Compile Include="skycoin\secp256k1go__Field.cs" />
@@ -135,6 +134,8 @@
     <Compile Include="skycoin\cipher_Addresses.cs" />
     <Compile Include="skycoin\Fee_Calculator.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
+    <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
