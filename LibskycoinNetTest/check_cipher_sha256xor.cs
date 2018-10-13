@@ -187,9 +187,9 @@ namespace LibskycoinNetTest {
                 pwdStr.SetString ("pwd");
                 pwd.convertString (pwdStr);
                 err = skycoin.skycoin.SKY_encrypt_Sha256Xor_Encrypt (data, pwd, encrypted);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK, i.ToString () + " failed SKY_encrypt_Sha256Xor_Encrypt");
                 err = skycoin.skycoin.SKY_encrypt_Sha256Xor_Decrypt (encrypted, pwd, decrypted);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                Assert.AreEqual (err, skycoin.skycoin.SKY_OK, i.ToString () + " failed  SKY_encrypt_Sha256Xor_Decrypt");
                 Assert.AreEqual (data.isEqual (decrypted), 1);
             }
         }

@@ -24,7 +24,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
   #include <stdlib.h>
 
   #include "skytypes.h"
-	#include "feecalc.h"
+	#include "skyfee.h"
 
 #line 1 "cgo-generated-wrapper"
 
@@ -258,16 +258,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 7 "wallet.addresses.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 9 "cipher.secp256k1-go.secp256k1-go2.xyz.go"
 
 
@@ -345,8 +335,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 #include <string.h>
 #include <stdlib.h>
 #include "skytypes.h"
-
-  #include "skytypes.h"
 
 #line 1 "cgo-generated-wrapper"
 
@@ -431,6 +419,16 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 #line 1 "cgo-generated-wrapper"
 
 #line 5 "util.apputil.apputil.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "util.cert.cert.go"
 
 
   #include <string.h>
@@ -540,14 +538,14 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 12 "coin.transactions.go"
+#line 13 "coin.transactions.go"
 
 
   #include <string.h>
   #include <stdlib.h>
 
   #include "skytypes.h"
-	#include "feecalc.h"
+	#include "skyfee.h"
 
 #line 1 "cgo-generated-wrapper"
 
@@ -832,13 +830,7 @@ extern GoUint32 SKY_cli_CheckWalletBalance(WebRpcClient__Handle p0, GoString p1,
 
 extern GoUint32 SKY_cli_GetBalanceOfAddresses(WebRpcClient__Handle p0, GoSlice p1, BalanceResult_Handle* p2);
 
-extern GoUint32 SKY_wallet_NewReadableEntry(wallet__Entry* p0, ReadableEntry__Handle* p1);
-
-extern GoUint32 SKY_wallet_LoadReadableEntry(GoString p0, ReadableEntry__Handle* p1);
-
-extern GoUint32 SKY_wallet_NewReadableEntryFromPubkey(GoString p0, ReadableEntry__Handle* p1);
-
-extern GoUint32 SKY_wallet_ReadableEntry_Save(ReadableEntry__Handle p0, GoString p1);
+extern GoUint32 SKY_wallet_NewReadableEntry(GoString p0, wallet__Entry* p1, ReadableEntry__Handle* p2);
 
 extern GoUint32 SKY_wallet_LoadReadableWallet(GoString p0, ReadableWallet__Handle* p1);
 
@@ -1047,8 +1039,6 @@ extern GoUint32 SKY_httphelper_Hours_Value(httphelper__Hours* p0, GoUint64* p1);
 extern GoUint32 SKY_wallet_Entry_Verify(wallet__Entry* p0);
 
 extern GoUint32 SKY_wallet_Entry_VerifyPublic(wallet__Entry* p0);
-
-extern GoUint32 SKY_wallet_CreateAddresses(GoString p0, GoString p1, GoInt p2, GoUint8 p3, ReadableWallet__Handle* p4);
 
 extern GoUint32 SKY_secp256k1go_XYZ_Print(secp256k1go__XYZ* p0, GoString p1);
 
@@ -1285,6 +1275,8 @@ extern GoUint32 SKY_apputil_CatchInterruptPanic();
 extern GoUint32 SKY_apputil_CatchDebug();
 
 extern GoUint32 SKY_apputil_PrintProgramStatus();
+
+extern GoUint32 SKY_certutil_NewTLSCertPair(GoString p0, GoString p1, GoSlice p2, coin__UxArray* p3, coin__UxArray* p4);
 
 extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1);
 

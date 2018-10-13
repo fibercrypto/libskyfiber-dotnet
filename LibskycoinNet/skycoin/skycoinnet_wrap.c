@@ -278,7 +278,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_skycoin(SWIG_CSharpString
 	#define SWIG_FILE_WITH_INIT
 	#include "libskycoin.h"
 	#include "swig.h"
-	#include "base64.h"
+	// #include "base64.h"
 
 
 	void destroy_cipher_SecKeys(cipher_SecKeys* p){
@@ -8734,63 +8734,17 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_GetBalanceOfAddresses
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntry(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  wallet__Entry *arg1 = (wallet__Entry *) 0 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (wallet__Entry *)jarg1; 
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableEntry(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_LoadReadableEntry(char* jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntry(char* jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   GoString arg1 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
+  wallet__Entry *arg2 = (wallet__Entry *) 0 ;
+  ReadableEntry__Handle *arg3 = (ReadableEntry__Handle *) 0 ;
   GoUint32 result;
   
   (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_LoadReadableEntry(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_NewReadableEntryFromPubkey(char* jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  ReadableEntry__Handle *arg2 = (ReadableEntry__Handle *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (ReadableEntry__Handle *)jarg2; 
-  result = (GoUint32)SKY_wallet_NewReadableEntryFromPubkey(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_ReadableEntry_Save(void * jarg1, char* jarg2) {
-  unsigned int jresult ;
-  ReadableEntry__Handle arg1 ;
-  GoString arg2 ;
-  ReadableEntry__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (ReadableEntry__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableEntry__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  (&arg2)->p=jarg2;(&arg2)->n=strlen(jarg2);
-  result = (GoUint32)SKY_wallet_ReadableEntry_Save(arg1,arg2);
+  arg2 = (wallet__Entry *)jarg2; 
+  arg3 = (ReadableEntry__Handle *)jarg3; 
+  result = (GoUint32)SKY_wallet_NewReadableEntry(arg1,arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -10699,26 +10653,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_Entry_VerifyPublic
   
   arg1 = (wallet__Entry *)jarg1; 
   result = (GoUint32)SKY_wallet_Entry_VerifyPublic(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_wallet_CreateAddresses(char* jarg1, char* jarg2, long long jarg3, unsigned char jarg4, void * jarg5) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoString arg2 ;
-  GoInt arg3 ;
-  GoUint8 arg4 ;
-  ReadableWallet__Handle *arg5 = (ReadableWallet__Handle *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  (&arg2)->p=jarg2;(&arg2)->n=strlen(jarg2);
-  arg3 = (GoInt)jarg3; 
-  arg4 = (GoUint8)jarg4; 
-  arg5 = (ReadableWallet__Handle *)jarg5; 
-  result = (GoUint32)SKY_wallet_CreateAddresses(arg1,arg2,arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -12927,6 +12861,32 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_apputil_PrintProgramStatu
   GoUint32 result;
   
   result = (GoUint32)SKY_apputil_PrintProgramStatus();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_certutil_NewTLSCertPair(char* jarg1, char* jarg2, void * jarg3, GoSlice_ * jarg4, GoSlice_ * jarg5) {
+  unsigned int jresult ;
+  GoString arg1 ;
+  GoString arg2 ;
+  GoSlice arg3 ;
+  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
+  coin__UxArray *arg5 = (coin__UxArray *) 0 ;
+  GoSlice *argp3 ;
+  GoUint32 result;
+  
+  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
+  (&arg2)->p=jarg2;(&arg2)->n=strlen(jarg2);
+  argp3 = (GoSlice *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  arg4 = (coin__UxArray *)jarg4; 
+  arg5 = (coin__UxArray *)jarg5; 
+  result = (GoUint32)SKY_certutil_NewTLSCertPair(arg1,arg2,arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -19047,74 +19007,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_ErrVerifySignatureInvalidPubke
   int result;
   
   result = (int)(0x0B000035);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64e_size(unsigned int jarg1) {
-  unsigned int jresult ;
-  unsigned int arg1 ;
-  unsigned int result;
-  
-  arg1 = (unsigned int)jarg1; 
-  result = (unsigned int)b64e_size(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64d_size(unsigned int jarg1) {
-  unsigned int jresult ;
-  unsigned int arg1 ;
-  unsigned int result;
-  
-  arg1 = (unsigned int)jarg1; 
-  result = (unsigned int)b64d_size(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64_encode(void * jarg1, unsigned int jarg2, void * jarg3) {
-  unsigned int jresult ;
-  unsigned char *arg1 = (unsigned char *) 0 ;
-  unsigned int arg2 ;
-  unsigned char *arg3 = (unsigned char *) 0 ;
-  unsigned int result;
-  
-  arg1 = (unsigned char *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned char *)jarg3; 
-  result = (unsigned int)b64_encode((unsigned char const *)arg1,arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_b64_encodef(char * jarg1, char * jarg2) {
-  unsigned int jresult ;
-  char *arg1 = (char *) 0 ;
-  char *arg2 = (char *) 0 ;
-  unsigned int result;
-  
-  arg1 = (char *)jarg1; 
-  arg2 = (char *)jarg2; 
-  result = (unsigned int)b64_encodef(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_b64_decodef(char * jarg1, char * jarg2) {
-  int jresult ;
-  char *arg1 = (char *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int result;
-  
-  arg1 = (char *)jarg1; 
-  arg2 = (char *)jarg2; 
-  result = (int)b64_decodef(arg1,arg2);
   jresult = result; 
   return jresult;
 }
