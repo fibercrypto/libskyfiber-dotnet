@@ -3104,8 +3104,8 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_SKY_BAD_HANDLE")]
   public static extern int get_SKY_BAD_HANDLE();
 
-  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_SKY_API_LOCKED")]
-  public static extern int get_SKY_API_LOCKED();
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_SKY_INVALID_TIMESTRING")]
+  public static extern int get_SKY_INVALID_TIMESTRING();
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_get_SKY_PKG_API")]
   public static extern int get_SKY_PKG_API();

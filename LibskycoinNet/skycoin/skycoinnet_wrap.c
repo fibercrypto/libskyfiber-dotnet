@@ -15234,10 +15234,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_cipher__BitcoinAddress_isEqual(void * 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_cipher__BitcoinAddress_Version(void * jarg1, unsigned char jarg2) {
   cipher__BitcoinAddress *arg1 = (cipher__BitcoinAddress *) 0 ;
-  unsigned char arg2 ;
+  GoUint8_ arg2 ;
   
   arg1 = (cipher__BitcoinAddress *)jarg1; 
-  arg2 = (unsigned char)jarg2; 
+  arg2 = (GoUint8_)jarg2; 
   if (arg1) (arg1)->Version = arg2;
 }
 
@@ -15245,10 +15245,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_cipher__BitcoinAddress_Version(vo
 SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_get_cipher__BitcoinAddress_Version(void * jarg1) {
   unsigned char jresult ;
   cipher__BitcoinAddress *arg1 = (cipher__BitcoinAddress *) 0 ;
-  unsigned char result;
+  GoUint8_ result;
   
   arg1 = (cipher__BitcoinAddress *)jarg1; 
-  result = (unsigned char) ((arg1)->Version);
+  result =  ((arg1)->Version);
   jresult = result; 
   return jresult;
 }
@@ -17292,7 +17292,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_BAD_HANDLE() {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_API_LOCKED() {
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get_SKY_INVALID_TIMESTRING() {
   int jresult ;
   int result;
   
