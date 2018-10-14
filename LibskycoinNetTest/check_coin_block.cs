@@ -2,6 +2,8 @@ using System;
 using NUnit.Framework;
 using skycoin;
 using utils;
+
+public delegate uint call (object sender, object fee, object context);
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_coin_block {
@@ -31,6 +33,11 @@ namespace LibskycoinNetTest {
             pBlock.Head.BkSeq = 98;
             var uxHash = transutils.RandSHA256 ();
             // TODO: Not complete by callback
+            var zf = skycoin.skycoin.new_FeeCalculatorPtr();
+            // var a = skycoin.skycoin.new_FeeCalcFuncPtr ();
+            // zf.setCallBack (a);
+            err = skycoin.skycoin.SKY_coin_NewBlock (block, 133, uxHash, txns, zf, block);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
         }
 
         [Test]
