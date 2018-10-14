@@ -1874,18 +1874,6 @@ void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxA
 		return result;
 	}
 
-
-
-GoUint32_ _WrapperFeeCalculator(Transaction__Handle handle, GoUint64_* pFee, void* context){
-	FeeCalcFunc* feeCalc = (FeeCalcFunc*)context;
-	int *result = callFeeCalculator(feeCalc, handle, pFee);
-	GoUint32_ error = 0;
-	if(result != 0)
-		return error;
-
-  return 0;
-}
-
 SWIGINTERN int cipher_PubKey_isEqual(cipher_PubKey *self,cipher_PubKey *a){
 		return memcmp(self->data, a->data, sizeof(a->data)) == 0;
 	}
@@ -6411,7 +6399,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock__SWIG_1(voi
   Block__Handle *arg6 = (Block__Handle *) 0 ;
   Block__Handle *argp1 ;
   Transactions__Handle *argp4 ;
-  FeeCalculator temp5 ;
   GoUint32 result;
   
   argp1 = (Block__Handle *)jarg1; 
@@ -6428,12 +6415,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock__SWIG_1(voi
     return 0;
   }
   arg4 = *argp4; 
-  {
-    if (!PyCallable_Check(jarg5)) return ;
-    temp5.callback = _WrapperFeeCalculator;
-    temp5.context = jarg5;
-    arg5 = &temp5;
-  }
+  arg5 = (FeeCalculator *)jarg5; 
   arg6 = (Block__Handle *)jarg6; 
   result = (GoUint32)SKY_coin_NewBlock(arg1,arg2,(GoUint8_ (*)[32])arg3,arg4,arg5,arg6);
   jresult = result; 
@@ -14939,7 +14921,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(vo
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   GoUint64 *arg3 = (GoUint64 *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -14948,12 +14929,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transactions_Fees(vo
     return 0;
   }
   arg1 = *argp1; 
-  {
-    if (!PyCallable_Check(jarg2)) return ;
-    temp2.callback = _WrapperFeeCalculator;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (GoUint64 *)jarg3; 
   result = (GoUint32)SKY_coin_Transactions_Fees(arg1,arg2,arg3);
   jresult = result; 
@@ -15051,7 +15027,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SortTransactions(voi
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   Transactions__Handle *arg3 = (Transactions__Handle *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -15060,12 +15035,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_SortTransactions(voi
     return 0;
   }
   arg1 = *argp1; 
-  {
-    if (!PyCallable_Check(jarg2)) return ;
-    temp2.callback = _WrapperFeeCalculator;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (Transactions__Handle *)jarg3; 
   result = (GoUint32)SKY_coin_SortTransactions(arg1,arg2,arg3);
   jresult = result; 
@@ -15079,7 +15049,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewSortableTransacti
   FeeCalculator *arg2 = (FeeCalculator *) 0 ;
   SortableTransactionResult_Handle *arg3 = (SortableTransactionResult_Handle *) 0 ;
   Transactions__Handle *argp1 ;
-  FeeCalculator temp2 ;
   GoUint32 result;
   
   argp1 = (Transactions__Handle *)jarg1; 
@@ -15088,12 +15057,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewSortableTransacti
     return 0;
   }
   arg1 = *argp1; 
-  {
-    if (!PyCallable_Check(jarg2)) return ;
-    temp2.callback = _WrapperFeeCalculator;
-    temp2.context = jarg2;
-    arg2 = &temp2;
-  }
+  arg2 = (FeeCalculator *)jarg2; 
   arg3 = (SortableTransactionResult_Handle *)jarg3; 
   result = (GoUint32)SKY_coin_NewSortableTransactions(arg1,arg2,arg3);
   jresult = result; 

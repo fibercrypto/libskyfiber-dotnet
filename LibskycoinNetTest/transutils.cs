@@ -1,9 +1,10 @@
 using System;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using skycoin;
-using System.Text.RegularExpressions;
 namespace utils {
     public class transutils {
+        public delegate uint call (SWIGTYPE_p_Transaction__Handle tranas, SWIGTYPE_p_GoInt64_ fee, SWIGTYPE_p_FeeCalcFunc context);
         public cipher__Address makeAddress () {
             var pubkey = new cipher_PubKey ();
             var seckey = new cipher_SecKey ();
@@ -146,7 +147,7 @@ namespace utils {
             return b;
         }
 
-        public  bool IsBase64String (string s) {
+        public bool IsBase64String (string s) {
             s = s.Trim ();
             return (s.Length % 4 == 0) && Regex.IsMatch (s, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
 

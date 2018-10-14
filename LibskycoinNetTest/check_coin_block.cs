@@ -3,7 +3,6 @@ using NUnit.Framework;
 using skycoin;
 using utils;
 
-public delegate uint call (object sender, object fee, object context);
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_coin_block {
@@ -19,6 +18,12 @@ namespace LibskycoinNetTest {
             return txns;
         }
 
+        public uint zeroFeeCalculator (SWIGTYPE_p_Transaction__Handle tranas, SWIGTYPE_p_unsigned_long_long fee, SWIGTYPE_p_FeeCalcFunc context) {
+            skycoin.skycoin.GoUint64p_assign (fee, 0);
+            return 0;
+
+        }
+
         [Test]
         public void TestNewBlock () {
             var txns = makeTestTransactions ();
@@ -32,10 +37,7 @@ namespace LibskycoinNetTest {
             pBlock.Head.Time = 100;
             pBlock.Head.BkSeq = 98;
             var uxHash = transutils.RandSHA256 ();
-            // TODO: Not complete by callback
-            var zf = skycoin.skycoin.new_FeeCalculatorPtr();
-            // var a = skycoin.skycoin.new_FeeCalcFuncPtr ();
-            // zf.setCallBack (a);
+            var zf = skycoin.skycoin.new_FeeCalculatorPtr ();
             err = skycoin.skycoin.SKY_coin_NewBlock (block, 133, uxHash, txns, zf, block);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
         }
