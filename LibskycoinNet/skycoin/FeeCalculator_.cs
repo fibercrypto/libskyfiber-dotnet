@@ -40,13 +40,14 @@ public class FeeCalculator_ : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_ callback {
+  public SWIGTYPE_p_FeeCalcFunc callback {
     set {
-      skycoinPINVOKE.set_FeeCalculator__callback(swigCPtr, SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_.getCPtr(value));
+      skycoinPINVOKE.set_FeeCalculator__callback(swigCPtr, SWIGTYPE_p_FeeCalcFunc.getCPtr(value));
+      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_FeeCalculator__callback(swigCPtr);
-      SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_f_Transaction__Handle_p_GoUint64__p_void__GoUint32_(cPtr, false);
+      SWIGTYPE_p_FeeCalcFunc ret = new SWIGTYPE_p_FeeCalcFunc(skycoinPINVOKE.get_FeeCalculator__callback(swigCPtr), true);
+      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
