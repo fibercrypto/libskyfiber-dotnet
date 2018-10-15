@@ -773,25 +773,25 @@ static FeeCalcFunc FeeCalcFuncPtr_value(FeeCalcFunc *obj) {
 }
 
 
-static coin__Block* *new_coin__BlockPtrPtr() { 
+static coin__Block* *new_coin__BlockPtr() { 
   return (coin__Block* *) calloc(1,sizeof(coin__Block*)); 
 }
 
-static coin__Block* *copy_coin__BlockPtrPtr(coin__Block* value) { 
+static coin__Block* *copy_coin__BlockPtr(coin__Block* value) { 
   coin__Block* *obj = (coin__Block* *) calloc(1,sizeof(coin__Block*));
   *obj = value;
   return obj; 
 }
 
-static void delete_coin__BlockPtrPtr(coin__Block* *obj) { 
+static void delete_coin__BlockPtr(coin__Block* *obj) { 
   if (obj) free(obj); 
 }
 
-static void coin__BlockPtrPtr_assign(coin__Block* *obj, coin__Block* value) {
+static void coin__BlockPtr_assign(coin__Block* *obj, coin__Block* value) {
   *obj = value;
 }
 
-static coin__Block* coin__BlockPtrPtr_value(coin__Block* *obj) {
+static coin__Block* coin__BlockPtr_value(coin__Block* *obj) {
   return *obj;
 }
 
@@ -3525,53 +3525,53 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_FeeCalcFuncPtr_value(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__BlockPtrPtr() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__BlockPtr() {
   void * jresult ;
   coin__Block **result = 0 ;
   
-  result = (coin__Block **)new_coin__BlockPtrPtr();
+  result = (coin__Block **)new_coin__BlockPtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__BlockPtrPtr(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__BlockPtr(void * jarg1) {
   void * jresult ;
   coin__Block *arg1 = (coin__Block *) 0 ;
   coin__Block **result = 0 ;
   
   arg1 = (coin__Block *)jarg1; 
-  result = (coin__Block **)copy_coin__BlockPtrPtr(arg1);
+  result = (coin__Block **)copy_coin__BlockPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__BlockPtrPtr(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__BlockPtr(void * jarg1) {
   coin__Block **arg1 = (coin__Block **) 0 ;
   
   arg1 = (coin__Block **)jarg1; 
-  delete_coin__BlockPtrPtr(arg1);
+  delete_coin__BlockPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__BlockPtrPtr_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__BlockPtr_assign(void * jarg1, void * jarg2) {
   coin__Block **arg1 = (coin__Block **) 0 ;
   coin__Block *arg2 = (coin__Block *) 0 ;
   
   arg1 = (coin__Block **)jarg1; 
   arg2 = (coin__Block *)jarg2; 
-  coin__BlockPtrPtr_assign(arg1,arg2);
+  coin__BlockPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__BlockPtrPtr_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__BlockPtr_value(void * jarg1) {
   void * jresult ;
   coin__Block **arg1 = (coin__Block **) 0 ;
   coin__Block *result = 0 ;
   
   arg1 = (coin__Block **)jarg1; 
-  result = (coin__Block *)coin__BlockPtrPtr_value(arg1);
+  result = (coin__Block *)coin__BlockPtr_value(arg1);
   jresult = (void *)result; 
   return jresult;
 }

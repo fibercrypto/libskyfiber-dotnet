@@ -538,28 +538,28 @@ public class skycoin {
     return ret;
   }
 
-  public static SWIGTYPE_p_p_coin__Block new_coin__BlockPtrPtr() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_coin__BlockPtrPtr();
+  public static SWIGTYPE_p_p_coin__Block new_coin__BlockPtr() {
+    global::System.IntPtr cPtr = skycoinPINVOKE.new_coin__BlockPtr();
     SWIGTYPE_p_p_coin__Block ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_coin__Block(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_p_coin__Block copy_coin__BlockPtrPtr(coin__Block value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_coin__BlockPtrPtr(coin__Block.getCPtr(value));
+  public static SWIGTYPE_p_p_coin__Block copy_coin__BlockPtr(coin__Block value) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.copy_coin__BlockPtr(coin__Block.getCPtr(value));
     SWIGTYPE_p_p_coin__Block ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_coin__Block(cPtr, false);
     return ret;
   }
 
-  public static void delete_coin__BlockPtrPtr(SWIGTYPE_p_p_coin__Block obj) {
-    skycoinPINVOKE.delete_coin__BlockPtrPtr(SWIGTYPE_p_p_coin__Block.getCPtr(obj));
+  public static void delete_coin__BlockPtr(SWIGTYPE_p_p_coin__Block obj) {
+    skycoinPINVOKE.delete_coin__BlockPtr(SWIGTYPE_p_p_coin__Block.getCPtr(obj));
   }
 
-  public static void coin__BlockPtrPtr_assign(SWIGTYPE_p_p_coin__Block obj, coin__Block value) {
-    skycoinPINVOKE.coin__BlockPtrPtr_assign(SWIGTYPE_p_p_coin__Block.getCPtr(obj), coin__Block.getCPtr(value));
+  public static void coin__BlockPtr_assign(SWIGTYPE_p_p_coin__Block obj, coin__Block value) {
+    skycoinPINVOKE.coin__BlockPtr_assign(SWIGTYPE_p_p_coin__Block.getCPtr(obj), coin__Block.getCPtr(value));
   }
 
-  public static coin__Block coin__BlockPtrPtr_value(SWIGTYPE_p_p_coin__Block obj) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.coin__BlockPtrPtr_value(SWIGTYPE_p_p_coin__Block.getCPtr(obj));
+  public static coin__Block coin__BlockPtr_value(SWIGTYPE_p_p_coin__Block obj) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.coin__BlockPtr_value(SWIGTYPE_p_p_coin__Block.getCPtr(obj));
     coin__Block ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__Block(cPtr, false);
     return ret;
   }
