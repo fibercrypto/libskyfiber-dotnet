@@ -268,16 +268,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.encrypt.sha256xor.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 5 "util.droplet.droplet.go"
 
 
@@ -1063,10 +1053,6 @@ extern GoUint32 SKY_secp256k1go_XYZ_AddXY(secp256k1go__XYZ* p0, secp256k1go__XYZ
 extern GoUint32 SKY_secp256k1go_XYZ_Add(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1, secp256k1go__XYZ* p2);
 
 extern GoUint32 SKY_secp256k1go_ECmultGen(secp256k1go__XYZ* p0, Number_Handle p1);
-
-extern GoUint32 SKY_encrypt_Sha256Xor_Encrypt(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_encrypt_Sha256Xor_Decrypt(GoSlice p0, GoSlice p1, coin__UxArray* p2);
 
 extern GoUint32 SKY_droplet_FromString(GoString p0, GoUint64* p1);
 

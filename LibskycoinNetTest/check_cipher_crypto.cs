@@ -41,7 +41,6 @@ namespace LibskycoinNetTest {
             var pTemp = new GoSlice ();
             err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
             pTemp = p.toSlice ();
-            Console.WriteLine (pTemp.len);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var p2 = new cipher_PubKey ();
             err = skycoin.skycoin.SKY_cipher_NewPubKey (pTemp, p2);

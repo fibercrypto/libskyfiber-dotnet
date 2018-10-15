@@ -18,28 +18,43 @@ namespace LibskycoinNetTest {
             return txns;
         }
 
-        public uint zeroFeeCalculator (SWIGTYPE_p_Transaction__Handle tranas, SWIGTYPE_p_unsigned_long_long fee, SWIGTYPE_p_FeeCalcFunc context) {
-            skycoin.skycoin.GoUint64p_assign (fee, 0);
-            return 0;
-
-        }
-
         [Test]
         public void TestNewBlock () {
-            var txns = makeTestTransactions ();
+            var txns = transutils.makeTransactions (1);
             var block = skycoin.skycoin.new_Block__HandlePtr ();
             var err = skycoin.skycoin.SKY_coin_NewEmptyBlock (txns, block);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            var pBlock = new coin__Block ();
-            err = skycoin.skycoin.SKY_coin_GetBlockObject (block, pBlock);
+            var pBlockP = skycoin.skycoin.new_coin__BlockPtrPtr ();
+            err = skycoin.skycoin.SKY_coin_GetBlockObject (block, pBlockP);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var pBlock = skycoin.skycoin.coin__BlockPtrPtr_value (pBlockP);
             pBlock.Head.Version = 0x02;
             pBlock.Head.Time = 100;
             pBlock.Head.BkSeq = 98;
             var uxHash = transutils.RandSHA256 ();
-            var zf = skycoin.skycoin.new_FeeCalculatorPtr ();
-            err = skycoin.skycoin.SKY_coin_NewBlock (block, 133, uxHash, txns, zf, block);
+            // invalid txn fees panics
+            err = skycoin.skycoin.SKY_coin_NewBlock (block, 133, uxHash, txns, transutils.badCalc, block);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+            // no txns panics
+            var tnxs1 = skycoin.skycoin.new_Transactions__Handlep ();
+            skycoin.skycoin.SKY_coin_Create_Transactions (tnxs1);
+            err = skycoin.skycoin.SKY_coin_NewBlock (block, 133, uxHash, tnxs1, transutils.feeCalc, block);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+
+            // Valid block in fine
+            ulong fee = 121;
+            ulong currentTime = 133;
+            var b = skycoin.skycoin.new_Block__HandlePtr ();
+            err = skycoin.skycoin.SKY_coin_NewBlock (block, currentTime, uxHash, txns, transutils.fix121, b);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            var pBlock2P = skycoin.skycoin.new_coin__BlockPtrPtr ();
+            err = skycoin.skycoin.SKY_coin_GetBlockObject (b, pBlock2P);
+            var pBlock2 = skycoin.skycoin.coin__BlockPtrPtr_value (pBlock2P);
+            Assert.AreEqual (pBlock2.Head.Fee, fee);
+            var hashs = skycoin.skycoin.GoUint8Ptr_value (pBlock2.Head.PrevHash);
+            Console.WriteLine (hashs.ToString ());
+
         }
 
         [Test]
@@ -62,8 +77,9 @@ namespace LibskycoinNetTest {
             var block = skycoin.skycoin.new_Block__HandlePtr ();
             err = skycoin.skycoin.SKY_coin_NewGenesisBlock (addr, genCoins, genTime, block);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            var pBlock = new coin__Block ();
-            err = skycoin.skycoin.SKY_coin_GetBlockObject (block, pBlock);
+            var pBlockPP = skycoin.skycoin.new_coin__BlockPtrPtr ();
+            err = skycoin.skycoin.SKY_coin_GetBlockObject (block, pBlockPP);
+            var pBlock = skycoin.skycoin.coin__BlockPtrPtr_value (pBlockPP);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var nullHash = new cipher_SHA256 ();
             var Head = new GoSlice ();
@@ -73,7 +89,7 @@ namespace LibskycoinNetTest {
             var strHead = new _GoString_ ();
             Head.getString (strHead);
             Assert.AreEqual (strnullHash.p, strHead.p);
-            // Assert.AreEqual (genTime, pBlock.Head.Time);
+            Assert.AreEqual (genTime, pBlock.Head.Time);
             Assert.AreEqual (0, pBlock.Head.BkSeq);
             Assert.AreEqual (0, pBlock.Head.Version);
             Assert.AreEqual (0, pBlock.Head.Fee);

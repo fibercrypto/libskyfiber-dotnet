@@ -4,7 +4,6 @@ using NUnit.Framework;
 using skycoin;
 namespace utils {
     public class transutils {
-        public delegate uint call (SWIGTYPE_p_Transaction__Handle tranas, SWIGTYPE_p_GoInt64_ fee, SWIGTYPE_p_FeeCalcFunc context);
         public cipher__Address makeAddress () {
             var pubkey = new cipher_PubKey ();
             var seckey = new cipher_SecKey ();
@@ -162,6 +161,10 @@ namespace utils {
                 throw new Exception ("Error in base64Encode " + e.Message);
             }
         }
+
+        public SWIGTYPE_p_FeeCalculator feeCalc = skycoin.skycoin.feeCalc ();
+        public SWIGTYPE_p_FeeCalculator badCalc = skycoin.skycoin.badCalc ();
+        public SWIGTYPE_p_FeeCalculator fix121 = skycoin.skycoin.fix121 ();
 
         public string base64Decode (string data) {
             try {
