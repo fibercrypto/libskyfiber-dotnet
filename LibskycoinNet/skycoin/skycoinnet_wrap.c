@@ -805,6 +805,11 @@ static coin__Block* coin__BlockPtr_value(coin__Block* *obj) {
   return 0;
 }
 
+	GoUint32_ calcFeeCalculator(Transaction__Handle handle, GoUint64_ *pFee, void* context){
+  *pFee = 1;
+  return 0;
+}
+
  GoUint32_ fix121FeeCalculator(Transaction__Handle handle, GoUint64_ *pFee, void* context){
   *pFee = 121;
   return 0;
@@ -812,6 +817,12 @@ static coin__Block* coin__BlockPtr_value(coin__Block* *obj) {
 
  GoUint32_ badFeeCalculator(Transaction__Handle handle, GoUint64_ *pFee, void* context){
   return 0x7FFFFFFF;
+}
+
+GoUint32_ overflowFeeCalculator(Transaction__Handle handle, GoUint64_ *pFee, void *context)
+{
+  *pFee = 0xFFFFFFFFFFFFFFFF;
+  return 0;
 }
 
 FeeCalculator feeCalc(){
@@ -829,6 +840,15 @@ FeeCalculator badCalc(){
  return feeCalc;
 }
 
+FeeCalculator calcCalc(){
+ FeeCalculator feeCalc = {calcFeeCalculator, NULL};
+ return feeCalc;
+}
+
+FeeCalculator overflow(){
+ FeeCalculator feeCalc = {overflowFeeCalculator, NULL};
+ return feeCalc;
+}
 	int MEMPOOLIDX = 0;
 	void *MEMPOOL[1024 * 256];
 
@@ -1550,6 +1570,10 @@ void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxA
 	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
 	encrypted->len = size;
 }
+
+void convertGoUint8toSHA256(GoUint8_* __in, cipher_SHA256* __out){
+memcpy(__out->data, __in, 32);
+}
 	
 
 	GoUint32 CSharp_skycoin_SKY_cipher_SumSHA256(GoSlice seed, cipher_SHA256* sha){
@@ -1953,6 +1977,36 @@ void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxA
 
 	GoUint32 CSharp_skycoin_SKY_coin_NewBlock(Block__Handle p0, GoUint64 p1, cipher_SHA256* p2, Transactions__Handle p3, FeeCalculator* p4, Block__Handle* p5){
 		GoUint32 result = SKY_coin_NewBlock(p0,  p1,p2,p3,p4,p5);
+		return result;
+	}
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_Block_HashHeader(Block__Handle p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_Block_HashHeader(p0,  p1);
+		return result;
+	}
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_Block_PreHashHeader(Block__Handle p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_Block_PreHashHeader(p0,  p1);
+		return result;
+	}
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_BlockBody_Hash(BlockBody__Handle p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_BlockBody_Hash(p0,  p1);
+		return result;
+	}
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_BlockHeader_Hash(coin__BlockHeader* p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_BlockHeader_Hash(p0,  p1);
+		return result;
+	}
+
+
+	GoUint32 CSharp_skycoin_SKY_coin_Block_HashBody(Block__Handle p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_Block_HashBody(p0,  p1);
 		return result;
 	}
 
@@ -3609,6 +3663,28 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_zeroFeeCalculator(void * jarg
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_calcFeeCalculator(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Transaction__Handle arg1 ;
+  GoUint64_ *arg2 = (GoUint64_ *) 0 ;
+  void *arg3 = (void *) 0 ;
+  Transaction__Handle *argp1 ;
+  GoUint32_ result;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64_ *)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = calcFeeCalculator(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_fix121FeeCalculator(void * jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   Transaction__Handle arg1 ;
@@ -3653,6 +3729,28 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_badFeeCalculator(void * jarg1
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_overflowFeeCalculator(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  Transaction__Handle arg1 ;
+  GoUint64_ *arg2 = (GoUint64_ *) 0 ;
+  void *arg3 = (void *) 0 ;
+  Transaction__Handle *argp1 ;
+  GoUint32_ result;
+  
+  argp1 = (Transaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Transaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (GoUint64_ *)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = overflowFeeCalculator(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_feeCalc() {
   void * jresult ;
   FeeCalculator result;
@@ -3686,6 +3784,34 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_badCalc() {
   FeeCalculator result;
   
   result = badCalc();
+  {
+    FeeCalculator * resultptr = (FeeCalculator *) malloc(sizeof(FeeCalculator));
+    memmove(resultptr, &result, sizeof(FeeCalculator));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_calcCalc() {
+  void * jresult ;
+  FeeCalculator result;
+  
+  result = calcCalc();
+  {
+    FeeCalculator * resultptr = (FeeCalculator *) malloc(sizeof(FeeCalculator));
+    memmove(resultptr, &result, sizeof(FeeCalculator));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_overflow() {
+  void * jresult ;
+  FeeCalculator result;
+  
+  result = overflow();
   {
     FeeCalculator * resultptr = (FeeCalculator *) malloc(sizeof(FeeCalculator));
     memmove(resultptr, &result, sizeof(FeeCalculator));
@@ -4479,6 +4605,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_makeEncryptedData(void * jarg1, unsig
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_convertGoUint8toSHA256(void * jarg1, void * jarg2) {
+  GoUint8_ *arg1 = (GoUint8_ *) 0 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  
+  arg1 = (GoUint8_ *)jarg1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  convertGoUint8toSHA256(arg1,arg2);
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_SumSHA256__SWIG_0(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   GoSlice arg1 ;
@@ -5242,6 +5378,100 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlock__SWIG_0(voi
   arg5 = (FeeCalculator *)jarg5; 
   arg6 = (Block__Handle *)jarg6; 
   result = (GoUint32)CSharp_skycoin_SKY_coin_NewBlock(arg1,arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_Block_HashHeader(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_Block_PreHashHeader(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  BlockBody__Handle arg1 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  BlockBody__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (BlockBody__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BlockBody__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_BlockBody_Hash(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (coin__BlockHeader *)jarg1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_BlockHeader_Hash(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  Block__Handle arg1 ;
+  cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
+  Block__Handle *argp1 ;
+  GoUint32 result;
+  
+  argp1 = (Block__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Block__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (cipher_SHA256 *)jarg2; 
+  result = (GoUint32)CSharp_skycoin_SKY_coin_Block_HashBody(arg1,arg2);
   jresult = result; 
   return jresult;
 }
@@ -6842,7 +7072,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewGenesisBlock(void
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(void * jarg1, cipher_SecKey* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader__SWIG_1(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -6862,7 +7092,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashHeader(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader(void * jarg1, cipher_SecKey* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_PreHashHeader__SWIG_1(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -6922,7 +7152,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_Seq(void * jar
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody(void * jarg1, cipher_SecKey* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Block_HashBody__SWIG_1(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   Block__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -7034,7 +7264,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewBlockHeader(void 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash(void * jarg1, cipher_SecKey* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_Hash__SWIG_1(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   coin__BlockHeader *arg1 = (coin__BlockHeader *) 0 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;
@@ -7076,7 +7306,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockHeader_String(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash(void * jarg1, cipher_SecKey* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_BlockBody_Hash__SWIG_1(void * jarg1, cipher_SecKey* jarg2) {
   unsigned int jresult ;
   BlockBody__Handle arg1 ;
   cipher__SHA256 *arg2 = (cipher__SHA256 *) 0 ;

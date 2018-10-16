@@ -8,6 +8,7 @@ namespace LibskycoinNetTest {
     public class check_coin_block {
 
         utils.transutils transutils = new utils.transutils ();
+
         public SWIGTYPE_p_Transactions__Handle makeTestTransactions () {
             var txns = skycoin.skycoin.new_Transactions__Handlep ();
             var err = skycoin.skycoin.SKY_coin_Create_Transactions (txns);
@@ -16,6 +17,30 @@ namespace LibskycoinNetTest {
             err = skycoin.skycoin.SKY_coin_Transactions_Add (txns, txn);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             return txns;
+        }
+        public uint makeNewBlock (cipher_SHA256 uxHash, SWIGTYPE_p_Block__Handle newBlock) {
+            var bodyhash = new cipher_SHA256 ();
+            var block = skycoin.skycoin.new_Block__HandlePtr ();
+            var transactions = makeTestTransactions ();
+            var err = skycoin.skycoin.SKY_coin_NewEmptyBlock (transactions, block);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            var pBlockP = skycoin.skycoin.new_coin__BlockPtr ();
+            err = skycoin.skycoin.SKY_coin_GetBlockObject (block, pBlockP);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var pBlock = skycoin.skycoin.coin__BlockPtr_value (pBlockP);
+            pBlock.Head.Version = 0x02;
+            pBlock.Head.Time = 100;
+            pBlock.Head.BkSeq = 0;
+            pBlock.Head.Fee = 10;
+            var body = skycoin.skycoin.new_BlockBody__HandlePtr ();
+            err = skycoin.skycoin.SKY_coin_GetBlockBody (block, body);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_BlockBody_Hash (body, bodyhash);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_NewBlock (block, 100 + 200, uxHash, transactions, transutils.feeCalc, newBlock);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            return err;
         }
 
         [Test]
@@ -53,13 +78,57 @@ namespace LibskycoinNetTest {
             var pBlock2 = skycoin.skycoin.coin__BlockPtr_value (pBlock2P);
             Assert.AreEqual (pBlock2.Head.Fee, fee);
             var hashs = skycoin.skycoin.GoUint8Ptr_value (pBlock2.Head.PrevHash);
-            Console.WriteLine (hashs.ToString ());
+            var prevHash = new cipher_SHA256 ();
+            var prevHashP = new cipher_SHA256 ();
+            skycoin.skycoin.SKY_coin_Block_PreHashHeader (block, prevHash);
+            skycoin.skycoin.SKY_coin_Block_HashHeader (b, prevHashP);
+            Assert.AreEqual (prevHash.isEqual (prevHashP), 0);
+            Assert.AreEqual (pBlock2.Head.Time, currentTime);
+            Assert.AreEqual (pBlock2.Head.BkSeq, pBlock.Head.BkSeq + 1);
+            var pUxHash = new cipher_SHA256 ();
+            skycoin.skycoin.convertGoUint8toSHA256 (pBlock2.Head.UxHash, pUxHash);
+            Assert.AreEqual (uxHash.isEqual (pUxHash), 1);
+        }
 
+        [Test]
+        public void TestBlockHashHeader () {
+            var uxHash = transutils.RandSHA256 ();
+            var b = skycoin.skycoin.new_Block__HandlePtr ();
+            var err = makeNewBlock (uxHash, b);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            var sha1 = new cipher_SHA256 ();
+            var sha2 = new cipher_SHA256 ();
+            err = skycoin.skycoin.SKY_coin_Block_HashHeader (b, sha1);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            var chP = skycoin.skycoin.new_coin__BlockPtr ();
+            skycoin.skycoin.SKY_coin_GetBlockObject (b, chP);
+            var ch = skycoin.skycoin.coin__BlockPtr_value (chP);
+            skycoin.skycoin.SKY_coin_BlockHeader_Hash (ch.Head, sha2);
+            Assert.AreEqual (sha1.isEqual (sha2), 1);
+            Assert.AreEqual (sha1.isEqual (new cipher_SHA256 ()), 0);
         }
 
         [Test]
         public void TestBlockHashBody () {
-            // TODO: not complete by callback
+            var uxHash = transutils.RandSHA256 ();
+            var b = skycoin.skycoin.new_Block__HandlePtr ();
+            var err = makeNewBlock (uxHash, b);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            var sha1 = new cipher_SHA256 ();
+            var sha2 = new cipher_SHA256 ();
+            skycoin.skycoin.SKY_coin_Block_HashBody (b, sha1);
+            var body = skycoin.skycoin.new_BlockBody__HandlePtr ();
+            skycoin.skycoin.SKY_coin_GetBlockBody (b, body);
+            skycoin.skycoin.SKY_coin_BlockBody_Hash (body, sha2);
+            Assert.AreEqual (sha1.isEqual (sha2), 1);
+            var hb = new cipher_SHA256 ();
+            skycoin.skycoin.SKY_coin_Block_HashBody (b, hb);
+            var bh = new cipher_SHA256 ();
+            skycoin.skycoin.SKY_coin_BlockBody_Hash (body, bh);
+            Assert.AreEqual (bh.isEqual (hb), 1);
         }
 
         [Test]

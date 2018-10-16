@@ -874,17 +874,40 @@ namespace LibskycoinNetTest {
             }
         }
 
-        // [Test]
-        // public void TestTransactionsFees () {
-        //     var fees = new Fee_Calculator ();
-        //     var txns = skycoin.skycoin.new_Transactions__Handlep ();
-        //     skycoin.skycoin.makeTransactions (4, txns);
-        //     var fee = skycoin.skycoin.new_GoUint64p ();
-        //     var err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, fees, fee);
-        //     Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-        //     Console.WriteLine (skycoin.skycoin.GoUint64p_value (fee));
+        [Test]
+        public void TestTransactionsFees () {
+            var txns = skycoin.skycoin.new_Transactions__Handlep ();
+            skycoin.skycoin.SKY_coin_Create_Transactions (txns);
 
-        // }
+            // Nil txns
+            var fee = skycoin.skycoin.new_GoUint64p ();
+            var err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, transutils.calc, fee);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.GoUint64p_value (fee), 0);
+
+            var txn = skycoin.skycoin.new_Transaction__Handlep ();
+            skycoin.skycoin.SKY_coin_Create_Transaction (txn);
+            err = skycoin.skycoin.SKY_coin_Transactions_Add (txns, txn);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = skycoin.skycoin.SKY_coin_Transactions_Add (txns, txn);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+
+            // 2 transactions, calc() always returns 1
+            fee = skycoin.skycoin.new_GoUint64p ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, transutils.calc, fee);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (skycoin.skycoin.GoUint64p_value (fee), 2);
+
+            // calc error
+            fee = skycoin.skycoin.new_GoUint64p ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, transutils.badCalc, fee);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+
+            // summing of calculated fees overflows
+            fee = skycoin.skycoin.new_GoUint64p ();
+            err = skycoin.skycoin.SKY_coin_Transactions_Fees (txns, transutils.overflow, fee);
+            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+        }
     }
 
 }

@@ -165,6 +165,8 @@ namespace utils {
         public SWIGTYPE_p_FeeCalculator feeCalc = skycoin.skycoin.feeCalc ();
         public SWIGTYPE_p_FeeCalculator badCalc = skycoin.skycoin.badCalc ();
         public SWIGTYPE_p_FeeCalculator fix121 = skycoin.skycoin.fix121 ();
+        public SWIGTYPE_p_FeeCalculator calc = skycoin.skycoin.calcCalc ();
+        public SWIGTYPE_p_FeeCalculator overflow = skycoin.skycoin.overflow();
 
         public string base64Decode (string data) {
             try {
