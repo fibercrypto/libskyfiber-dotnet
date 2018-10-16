@@ -4,9 +4,9 @@
 
 -	[`develop` (*docker/images/dev-cli/Dockerfile*)](https://github.com/simelo/libskycoin-dotnet/blob/develop/docker/images/dev-cli/Dockerfile)
 
-# Libskycoin DotNet CLI development image
+# Libskycoin .NET  CLI development image
 
-This image has the necessary tools to build, test, edit, lint and version the Libskycoin DotNet
+This image has the necessary tools to build, test, edit, lint and version the Libskycoin .NET
 source code.  It comes with Vim editor installed, along with some plugins
 to ease go development and version control with git.
 
@@ -35,7 +35,7 @@ in a container and deleted when finished.
 
 ```sh
 $ docker run --rm \
-    -v ${PWD}/src:/usr/local/src skycoin/skycoindev-dotnet:develop \
+    -v ${PWD}/src:/usr/local/src simelotech/skycoindev-dotnet:develop \
     sh -c "cd libskycoin-dotnet; make test"
 ```
 
@@ -43,7 +43,7 @@ $ docker run --rm \
 
 ```sh
 $ docker run --rm \
-    -v ${PWD}/src:/usr/local/src skycoin/skycoindev-libdotnet:develop \
+    -v ${PWD}/src:/usr/local/src simelotech/skycoindev-dotnet:develop \
     vim
 ```
 
