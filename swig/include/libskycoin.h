@@ -38,17 +38,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 9 "api.client.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.secp256k1-go.secp256k1-go2.xy.go"
+#line 12 "api.client.go"
 
 
   #include <string.h>
@@ -108,16 +98,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.secp256k1-go.secp256k1-go2.ec.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 11 "cipher.base58.base58.go"
 
 
@@ -158,16 +138,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.secp256k1-go.secp256_rand.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 11 "cli.generate_addrs.go"
 
 
@@ -198,27 +168,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.secp256k1-go.secp256k1-go2.sig.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 9 "cli_helper.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "cipher.poly1305.poly1305.go"
 
 
   #include <string.h>
@@ -249,16 +199,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 #line 1 "cgo-generated-wrapper"
 
 #line 9 "wallet.entry.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "cipher.secp256k1-go.secp256k1-go2.xyz.go"
 
 
   #include <string.h>
@@ -339,26 +279,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.ripemd160.ripemd160.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "cipher.secp256k1-go.secp256k1-go2.num.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
 #line 11 "coin.outputs.go"
 
 
@@ -389,16 +309,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 #line 1 "cgo-generated-wrapper"
 
 #line 7 "cli.add_private_key.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.secp256k1-go.secp256k1.go"
 
 
   #include <string.h>
@@ -489,26 +399,6 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 #line 1 "cgo-generated-wrapper"
 
 #line 9 "testutil.testutil.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "cipher.secp256k1-go.secp256k1-go2.field.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.scrypt.scrypt.go"
 
 
   #include <string.h>
@@ -700,13 +590,13 @@ extern GoUint32 SKY_api_Client_WalletSeed(Client__Handle p0, GoString p1, GoStri
 
 extern GoUint32 SKY_api_Client_NetworkConnection(Client__Handle p0, GoString p1, Handle* p2);
 
-extern GoUint32 SKY_api_Client_NetworkConnections(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_api_Client_NetworkConnections(Client__Handle p0, api__NetworkConnectionsFilter* p1, Handle* p2);
 
-extern GoUint32 SKY_api_Client_NetworkDefaultConnections(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_api_Client_NetworkDefaultPeers(Client__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_api_Client_NetworkTrustedConnections(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_api_Client_NetworkTrustedPeers(Client__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_api_Client_NetworkExchangeableConnections(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_api_Client_NetworkExchangedPeers(Client__Handle p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_api_Client_PendingTransactions(Client__Handle p0, Handle* p1);
 
@@ -737,28 +627,6 @@ extern GoUint32 SKY_api_Client_Health(Client__Handle p0, Handle* p1);
 extern GoUint32 SKY_api_Client_EncryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
 
 extern GoUint32 SKY_api_Client_DecryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
-
-extern GoUint32 SKY_secp256k1go_XY_Print(secp256k1go__XY* p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_XY_ParsePubkey(secp256k1go__XY* p0, GoSlice p1, GoUint8* p2);
-
-extern GoUint32 SKY_secp256k1go_XY_Bytes(secp256k1go__XY* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_BytesUncompressed(secp256k1go__XY* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_SetXY(secp256k1go__XY* p0, secp256k1go__Field* p1, secp256k1go__Field* p2);
-
-extern GoUint32 SKY_secp256k1go_XY_IsValid(secp256k1go__XY* p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_SetXYZ(secp256k1go__XY* p0, secp256k1go__XYZ* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_Neg(secp256k1go__XY* p0, secp256k1go__XY* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_SetXO(secp256k1go__XY* p0, secp256k1go__Field* p1, GoUint8 p2);
-
-extern GoUint32 SKY_secp256k1go_XY_AddXY(secp256k1go__XY* p0, secp256k1go__XY* p1);
-
-extern GoUint32 SKY_secp256k1go_XY_GetPublicKey(secp256k1go__XY* p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_api_NewWalletResponse(Wallet__Handle p0, WalletResponse__Handle* p1);
 
@@ -830,22 +698,6 @@ extern GoUint32 SKY_wallet_ReadableWallet_Load(ReadableWallet__Handle p0, GoStri
 
 extern GoUint32 SKY_wallet_ReadableWallet_Erase(ReadableWallet__Handle p0);
 
-extern GoUint32 SKY_secp256k1go_DecompressPoint(GoSlice p0, GoUint8 p1, GoSlice p2);
-
-extern GoUint32 SKY_secp256k1go_RecoverPublicKey(GoSlice p0, GoSlice p1, GoInt p2, coin__UxArray* p3, GoInt* p4);
-
-extern GoUint32 SKY_secp256k1go_Multiply(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1go_BaseMultiply(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1go_BaseMultiplyAdd(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1go_GeneratePublicKey(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1go_SeckeyIsValid(GoSlice p0, GoInt* p1);
-
-extern GoUint32 SKY_secp256k1go_PubkeyIsValid(GoSlice p0, GoInt* p1);
-
 extern GoUint32 SKY_base58_String2Hex(GoString p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_base58_Base58_ToInt(GoString p0, GoInt* p1);
@@ -893,10 +745,6 @@ extern GoUint32 SKY_iputil_LocalhostIP(GoString_* p0);
 extern GoUint32 SKY_iputil_IsLocalhost(GoString p0, GoUint8* p1);
 
 extern GoUint32 SKY_iputil_SplitAddr(GoString p0, GoString_* p1, GoUint16* p2);
-
-extern GoUint32 SKY_secp256k1_SumSHA256(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_RandByte(GoInt p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_cli_GenerateAddressesInFile(GoString p0, GoUint64 p1, PasswordReader__Handle p2, coin__UxArray* p3);
 
@@ -946,11 +794,11 @@ extern GoUint32 SKY_cipher_Sig_Hex(cipher__Sig* p0, GoString_* p1);
 
 extern GoUint32 SKY_cipher_SignHash(cipher__SHA256* p0, cipher__SecKey* p1, cipher__Sig* p2);
 
-extern GoUint32 SKY_cipher_ChkSig(cipher__Address* p0, cipher__SHA256* p1, cipher__Sig* p2);
+extern GoUint32 SKY_cipher_VerifyAddressSignedHash(cipher__Address* p0, cipher__Sig* p1, cipher__SHA256* p2);
 
 extern GoUint32 SKY_cipher_VerifySignedHash(cipher__Sig* p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_cipher_VerifySignature(cipher__PubKey* p0, cipher__Sig* p1, cipher__SHA256* p2);
+extern GoUint32 SKY_cipher_VerifyPubKeySignedHash(cipher__PubKey* p0, cipher__Sig* p1, cipher__SHA256* p2);
 
 extern GoUint32 SKY_cipher_GenerateKeyPair(cipher__PubKey* p0, cipher__SecKey* p1);
 
@@ -966,24 +814,6 @@ extern GoUint32 SKY_cipher_CheckSecKey(cipher__SecKey* p0);
 
 extern GoUint32 SKY_cipher_CheckSecKeyHash(cipher__SecKey* p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_secp256k1go_Signature_Create(Signature_Handle* p0);
-
-extern GoUint32 SKY_secp256k1go_Signature_GetR(Signature_Handle p0, Number_Handle* p1);
-
-extern GoUint32 SKY_secp256k1go_Signature_GetS(Signature_Handle p0, Number_Handle* p1);
-
-extern GoUint32 SKY_secp256k1go_Signature_Print(Signature_Handle p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_Signature_Verify(Signature_Handle p0, secp256k1go__XY* p1, Number_Handle p2, GoUint8* p3);
-
-extern GoUint32 SKY_secp256k1go_Signature_Recover(Signature_Handle p0, secp256k1go__XY* p1, Number_Handle p2, GoInt p3, GoUint8* p4);
-
-extern GoUint32 SKY_secp256k1go_Signature_Sign(Signature_Handle p0, Number_Handle p1, Number_Handle p2, Number_Handle p3, GoInt* p4, GoInt* p5);
-
-extern GoUint32 SKY_secp256k1go_Signature_ParseBytes(Signature_Handle p0, GoSlice p1);
-
-extern GoUint32 SKY_secp256k1go_Signature_Bytes(Signature_Handle p0, coin__UxArray* p1);
-
 extern GoUint32 SKY_cli_App_Run(App__Handle p0, GoString p1);
 
 extern GoUint32 SKY_cli_Config_GetCoin(Config__Handle p0, GoString_* p1);
@@ -995,8 +825,6 @@ extern GoUint32 SKY_cli_RPCClientFromApp(App__Handle p0, WebRpcClient__Handle* p
 extern GoUint32 SKY_cli_Getenv(GoString p0, GoString_* p1);
 
 extern GoUint32 SKY_cli_Setenv(GoString p0, GoString p1);
-
-extern GoUint32 SKY_poly1305_Verify(coin__UxArray* p0, GoSlice p1, coin__UxArray* p2, GoUint8* p3);
 
 extern GoUint32 SKY_wallet_NewBalance(GoUint64 p0, GoUint64 p1, wallet__Balance* p2);
 
@@ -1029,30 +857,6 @@ extern GoUint32 SKY_httphelper_Hours_Value(httphelper__Hours* p0, GoUint64* p1);
 extern GoUint32 SKY_wallet_Entry_Verify(wallet__Entry* p0);
 
 extern GoUint32 SKY_wallet_Entry_VerifyPublic(wallet__Entry* p0);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Print(secp256k1go__XYZ* p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_SetXY(secp256k1go__XYZ* p0, secp256k1go__XY* p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_IsInfinity(secp256k1go__XYZ* p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_IsValid(secp256k1go__XYZ* p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Normalize(secp256k1go__XYZ* p0);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Equals(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1, GoUint8* p2);
-
-extern GoUint32 SKY_secp256k1go_XYZ_ECmult(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1, Number_Handle p2, Number_Handle p3);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Neg(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Double(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1);
-
-extern GoUint32 SKY_secp256k1go_XYZ_AddXY(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1, secp256k1go__XY* p2);
-
-extern GoUint32 SKY_secp256k1go_XYZ_Add(secp256k1go__XYZ* p0, secp256k1go__XYZ* p1, secp256k1go__XYZ* p2);
-
-extern GoUint32 SKY_secp256k1go_ECmultGen(secp256k1go__XYZ* p0, Number_Handle p1);
 
 extern GoUint32 SKY_droplet_FromString(GoString p0, GoUint64* p1);
 
@@ -1150,22 +954,6 @@ extern GoUint32 SKY_api_Handle_GetWalletLastSeed(Wallet__Handle p0, GoString_* p
 
 extern GoUint32 SKY_api_Handle_GetBuildInfoData(BuildInfo_Handle p0, GoString_* p1, GoString_* p2, GoString_* p3);
 
-extern GoUint32 SKY_ripemd160_New(Hash_Handle* p0);
-
-extern GoUint32 SKY_ripemd160_Write(Hash_Handle p0, GoSlice p1, GoInt* p2);
-
-extern GoUint32 SKY_ripemd160_Sum(Hash_Handle p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1go_Number_Create(Number_Handle* p0);
-
-extern GoUint32 SKY_secp256k1go_Number_Print(Number_Handle p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_Number_SetHex(Number_Handle p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_Number_IsOdd(Number_Handle p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_Number_IsEqual(Number_Handle p0, Number_Handle p1, GoUint8* p2);
-
 extern GoUint32 SKY_coin_UxOut_Hash(coin__UxOut* p0, cipher__SHA256* p1);
 
 extern GoUint32 SKY_coin_UxOut_SnapshotHash(coin__UxOut* p0, cipher__SHA256* p1);
@@ -1224,38 +1012,6 @@ extern GoUint32 SKY_cli_AddPrivateKey(Wallet__Handle p0, GoString p1);
 
 extern GoUint32 SKY_cli_AddPrivateKeyToFile(GoString p0, GoString p1, PasswordReader__Handle p2);
 
-extern GoUint32 SKY_secp256k1_GenerateKeyPair(coin__UxArray* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_PubkeyFromSeckey(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_UncompressPubkey(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_UncompressedPubkeyFromSeckey(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_Secp256k1Hash(GoSlice p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_secp256k1_GenerateDeterministicKeyPair(GoSlice p0, coin__UxArray* p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1_DeterministicKeyPairIterator(GoSlice p0, coin__UxArray* p1, coin__UxArray* p2, coin__UxArray* p3);
-
-extern GoUint32 SKY_secp256k1_Sign(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1_SignDeterministic(GoSlice p0, GoSlice p1, GoSlice p2, coin__UxArray* p3);
-
-extern GoUint32 SKY_secp256k1_VerifySeckey(GoSlice p0, GoInt* p1);
-
-extern GoUint32 SKY_secp256k1_VerifyPubkey(GoSlice p0, GoInt* p1);
-
-extern GoUint32 SKY_secp256k1_VerifySignatureValidity(GoSlice p0, GoInt* p1);
-
-extern GoUint32 SKY_secp256k1_VerifySignature(GoSlice p0, GoSlice p1, GoSlice p2, GoInt* p3);
-
-extern GoUint32 SKY_secp256k1_SignatureErrorString(GoSlice p0, GoSlice p1, GoSlice p2, GoString_* p3);
-
-extern GoUint32 SKY_secp256k1_RecoverPubkey(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_secp256k1_ECDH(GoSlice p0, GoSlice p1, coin__UxArray* p2);
-
 extern GoUint32 SKY_apputil_CatchInterruptPanic();
 
 extern GoUint32 SKY_apputil_CatchDebug();
@@ -1264,13 +1020,13 @@ extern GoUint32 SKY_apputil_PrintProgramStatus();
 
 extern GoUint32 SKY_certutil_NewTLSCertPair(GoString p0, GoString p1, GoSlice p2, coin__UxArray* p3, coin__UxArray* p4);
 
-extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1);
+extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1, GoUint64 p2);
 
-extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1);
+extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1, GoUint64 p2);
 
-extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint64* p1);
+extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint64 p1, GoUint64* p2);
 
-extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint64* p1);
+extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint64 p1, GoUint64* p2);
 
 extern GoUint32 SKY_fee_TransactionFee(Transaction__Handle p0, GoUint64 p1, coin__UxArray* p2, GoUint64* p3);
 
@@ -1333,46 +1089,6 @@ extern GoUint32 SKY_cli_GetWalletOutputsFromFile(WebRpcClient__Handle p0, GoStri
 extern GoUint32 SKY_cli_GetWalletOutputs(WebRpcClient__Handle p0, Wallet__Handle* p1, ReadableUnspentOutputsSummary_Handle* p2);
 
 extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
-
-extern GoUint32 SKY_secp256k1go_Field_String(secp256k1go__Field* p0, GoString_* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Print(secp256k1go__Field* p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_Field_SetB32(secp256k1go__Field* p0, GoSlice p1);
-
-extern GoUint32 SKY_secp256k1go_Field_SetBytes(secp256k1go__Field* p0, GoSlice p1);
-
-extern GoUint32 SKY_secp256k1go_Field_SetHex(secp256k1go__Field* p0, GoString p1);
-
-extern GoUint32 SKY_secp256k1go_Field_IsOdd(secp256k1go__Field* p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_IsZero(secp256k1go__Field* p0, GoUint8* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_SetInt(secp256k1go__Field* p0, GoUint32 p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Normalize(secp256k1go__Field* p0);
-
-extern GoUint32 SKY_secp256k1go_Field_GetB32(secp256k1go__Field* p0, GoSlice p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Equals(secp256k1go__Field* p0, secp256k1go__Field* p1, GoUint8* p2);
-
-extern GoUint32 SKY_secp256k1go_Field_SetAdd(secp256k1go__Field* p0, secp256k1go__Field* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_MulInt(secp256k1go__Field* p0, GoUint32 p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Negate(secp256k1go__Field* p0, secp256k1go__Field* p1, GoUint32 p2);
-
-extern GoUint32 SKY_secp256k1go_Field_Inv(secp256k1go__Field* p0, secp256k1go__Field* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Sqrt(secp256k1go__Field* p0, secp256k1go__Field* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_InvVar(secp256k1go__Field* p0, secp256k1go__Field* p1);
-
-extern GoUint32 SKY_secp256k1go_Field_Mul(secp256k1go__Field* p0, secp256k1go__Field* p1, secp256k1go__Field* p2);
-
-extern GoUint32 SKY_secp256k1go_Field_Sqr(secp256k1go__Field* p0, secp256k1go__Field* p1);
-
-extern GoUint32 SKY_scrypt_Key(GoSlice p0, GoSlice p1, GoInt p2, GoInt p3, GoInt p4, GoInt p5, coin__UxArray* p6);
 
 extern GoUint32 SKY_cipher_Ripemd160_Set(cipher__Ripemd160* p0, GoSlice p1);
 

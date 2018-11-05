@@ -937,18 +937,8 @@ var tmpsec = cipher_SecKey.getCPtr (sec);
     }
   }
 
-  public static uint SKY_cipher_ChkSig(cipher__Address a, cipher_SHA256 sha, cipher_Sig s) {
-    uint ret = skycoinPINVOKE.SKY_cipher_ChkSig__SWIG_0(cipher__Address.getCPtr(a), cipher_SHA256.getCPtr(sha), cipher_Sig.getCPtr(s));
-    return ret;
-  }
-
   public static uint SKY_cipher_PubKeyFromSig(cipher_Sig sig, cipher_SHA256 h, cipher_PubKey p) {
     uint ret = skycoinPINVOKE.SKY_cipher_PubKeyFromSig__SWIG_0(cipher_Sig.getCPtr(sig), cipher_SHA256.getCPtr(h), cipher_PubKey.getCPtr(p));
-    return ret;
-  }
-
-  public static uint SKY_cipher_VerifySignature(cipher_PubKey p, cipher_Sig sig, cipher_SHA256 h) {
-    uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature__SWIG_0(cipher_PubKey.getCPtr(p), cipher_Sig.getCPtr(sig), cipher_SHA256.getCPtr(h));
     return ret;
   }
 
@@ -1621,26 +1611,26 @@ var tmpp1 = p1;
     }
   }
 
-  public static uint SKY_api_Client_NetworkConnections(SWIGTYPE_p_Client__Handle p0, SWIGTYPE_p_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkConnections(SWIGTYPE_p_Client__Handle.getCPtr(p0), SWIGTYPE_p_Handle.getCPtr(p1));
+  public static uint SKY_api_Client_NetworkConnections(SWIGTYPE_p_Client__Handle p0, api__NetworkConnectionsFilter p1, SWIGTYPE_p_Handle p2) {
+    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkConnections(SWIGTYPE_p_Client__Handle.getCPtr(p0), api__NetworkConnectionsFilter.getCPtr(p1), SWIGTYPE_p_Handle.getCPtr(p2));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static uint SKY_api_Client_NetworkDefaultConnections(SWIGTYPE_p_Client__Handle p0, SWIGTYPE_p_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkDefaultConnections(SWIGTYPE_p_Client__Handle.getCPtr(p0), SWIGTYPE_p_Handle.getCPtr(p1));
+  public static uint SKY_api_Client_NetworkDefaultPeers(SWIGTYPE_p_Client__Handle p0, GoSlice p1) {
+    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkDefaultPeers(SWIGTYPE_p_Client__Handle.getCPtr(p0), GoSlice.getCPtr (p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static uint SKY_api_Client_NetworkTrustedConnections(SWIGTYPE_p_Client__Handle p0, SWIGTYPE_p_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkTrustedConnections(SWIGTYPE_p_Client__Handle.getCPtr(p0), SWIGTYPE_p_Handle.getCPtr(p1));
+  public static uint SKY_api_Client_NetworkTrustedPeers(SWIGTYPE_p_Client__Handle p0, GoSlice p1) {
+    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkTrustedPeers(SWIGTYPE_p_Client__Handle.getCPtr(p0), GoSlice.getCPtr (p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static uint SKY_api_Client_NetworkExchangeableConnections(SWIGTYPE_p_Client__Handle p0, SWIGTYPE_p_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkExchangeableConnections(SWIGTYPE_p_Client__Handle.getCPtr(p0), SWIGTYPE_p_Handle.getCPtr(p1));
+  public static uint SKY_api_Client_NetworkExchangedPeers(SWIGTYPE_p_Client__Handle p0, GoSlice p1) {
+    uint ret = skycoinPINVOKE.SKY_api_Client_NetworkExchangedPeers(SWIGTYPE_p_Client__Handle.getCPtr(p0), GoSlice.getCPtr (p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -1757,65 +1747,6 @@ var tmpp2 = p2;
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     }
-  }
-
-  public static uint SKY_secp256k1go_XY_Print(secp256k1go__XY p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_Print(secp256k1go__XY.getCPtr(p0), tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_XY_ParsePubkey(secp256k1go__XY p0, GoSlice p1, SWIGTYPE_p_unsigned_char p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_ParsePubkey(secp256k1go__XY.getCPtr(p0), GoSlice.getCPtr(p1), SWIGTYPE_p_unsigned_char.getCPtr(p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_Bytes(secp256k1go__XY p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_Bytes(secp256k1go__XY.getCPtr(p0), GoSlice.getCPtr (p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_BytesUncompressed(secp256k1go__XY p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_BytesUncompressed(secp256k1go__XY.getCPtr(p0), GoSlice.getCPtr (p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_SetXY(secp256k1go__XY p0, secp256k1go__Field p1, secp256k1go__Field p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_SetXY(secp256k1go__XY.getCPtr(p0), secp256k1go__Field.getCPtr(p1), secp256k1go__Field.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_IsValid(secp256k1go__XY p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_IsValid(secp256k1go__XY.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_SetXYZ(secp256k1go__XY p0, secp256k1go__XYZ p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_SetXYZ(secp256k1go__XY.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_Neg(secp256k1go__XY p0, secp256k1go__XY p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_Neg(secp256k1go__XY.getCPtr(p0), secp256k1go__XY.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_SetXO(secp256k1go__XY p0, secp256k1go__Field p1, byte p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_SetXO(secp256k1go__XY.getCPtr(p0), secp256k1go__Field.getCPtr(p1), p2);
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_AddXY(secp256k1go__XY p0, secp256k1go__XY p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_AddXY(secp256k1go__XY.getCPtr(p0), secp256k1go__XY.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XY_GetPublicKey(secp256k1go__XY p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XY_GetPublicKey(secp256k1go__XY.getCPtr(p0), GoSlice.getCPtr (p1));
-    return ret;
   }
 
   public static uint SKY_api_NewWalletResponse(SWIGTYPE_p_Wallet__Handle p0, SWIGTYPE_p_WalletResponse__Handle p1) {
@@ -2062,54 +1993,6 @@ var tmpp1 = p1;
     return ret;
   }
 
-  public static uint SKY_secp256k1go_DecompressPoint(GoSlice p0, byte p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_DecompressPoint(GoSlice.getCPtr(p0), p1, GoSlice.getCPtr(p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_RecoverPublicKey(GoSlice p0, GoSlice p1, long p2, GoSlice p3, SWIGTYPE_p_long_long p4) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_RecoverPublicKey(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), p2, GoSlice.getCPtr (p3), SWIGTYPE_p_long_long.getCPtr(p4));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Multiply(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Multiply(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_BaseMultiply(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_BaseMultiply(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_BaseMultiplyAdd(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_BaseMultiplyAdd(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_GeneratePublicKey(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_GeneratePublicKey(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_SeckeyIsValid(GoSlice p0, SWIGTYPE_p_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_SeckeyIsValid(GoSlice.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_PubkeyIsValid(GoSlice p0, SWIGTYPE_p_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_PubkeyIsValid(GoSlice.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
   public static uint SKY_base58_String2Hex(string p0, GoSlice p1) {
 var tmpp0 = p0;
     {
@@ -2297,17 +2180,6 @@ var tmpp1 = _GoString_.getCPtr (p1);
       uint ret = skycoinPINVOKE.SKY_iputil_SplitAddr(tmpp0, tmpp1, SWIGTYPE_p_unsigned_short.getCPtr(p2));
       return ret;
     }
-  }
-
-  public static uint SKY_secp256k1_SumSHA256(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_SumSHA256(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_RandByte(long p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_RandByte(p0, GoSlice.getCPtr (p1));
-    return ret;
   }
 
   public static uint SKY_cli_GenerateAddressesInFile(string p0, ulong p1, SWIGTYPE_p_PasswordReader__Handle p2, GoSlice p3) {
@@ -2507,11 +2379,11 @@ var tmpp2 = cipher_Sig.getCPtr (p2);
     }
   }
 
-  public static uint SKY_cipher_ChkSig(cipher__Address p0, cipher_SecKey p1, cipher_Sig p2) {
-var tmpp1 = cipher_SecKey.getCPtr (p1);
-var tmpp2 = cipher_Sig.getCPtr (p2);
+  public static uint SKY_cipher_VerifyAddressSignedHash(cipher__Address p0, cipher_Sig p1, cipher_SecKey p2) {
+var tmpp1 = cipher_Sig.getCPtr (p1);
+var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_ChkSig__SWIG_1(cipher__Address.getCPtr(p0), tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_VerifyAddressSignedHash(cipher__Address.getCPtr(p0), tmpp1, tmpp2);
       return ret;
     }
   }
@@ -2525,12 +2397,12 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
     }
   }
 
-  public static uint SKY_cipher_VerifySignature(cipher_PubKey p0, cipher_Sig p1, cipher_SecKey p2) {
+  public static uint SKY_cipher_VerifyPubKeySignedHash(cipher_PubKey p0, cipher_Sig p1, cipher_SecKey p2) {
 var tmpp0 = cipher_PubKey.getCPtr (p0);
 var tmpp1 = cipher_Sig.getCPtr (p1);
 var tmpp2 = cipher_SecKey.getCPtr (p2);
     {
-      uint ret = skycoinPINVOKE.SKY_cipher_VerifySignature__SWIG_1(tmpp0, tmpp1, tmpp2);
+      uint ret = skycoinPINVOKE.SKY_cipher_VerifyPubKeySignedHash(tmpp0, tmpp1, tmpp2);
       return ret;
     }
   }
@@ -2593,62 +2465,6 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
     }
   }
 
-  public static uint SKY_secp256k1go_Signature_Create(SWIGTYPE_p_Signature_Handle p0) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Create(SWIGTYPE_p_Signature_Handle.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_GetR(SWIGTYPE_p_Signature_Handle p0, SWIGTYPE_p_Number_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_GetR(SWIGTYPE_p_Signature_Handle.getCPtr(p0), SWIGTYPE_p_Number_Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_GetS(SWIGTYPE_p_Signature_Handle p0, SWIGTYPE_p_Number_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_GetS(SWIGTYPE_p_Signature_Handle.getCPtr(p0), SWIGTYPE_p_Number_Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_Print(SWIGTYPE_p_Signature_Handle p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Print(SWIGTYPE_p_Signature_Handle.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Signature_Verify(SWIGTYPE_p_Signature_Handle p0, secp256k1go__XY p1, SWIGTYPE_p_Number_Handle p2, SWIGTYPE_p_unsigned_char p3) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Verify(SWIGTYPE_p_Signature_Handle.getCPtr(p0), secp256k1go__XY.getCPtr(p1), SWIGTYPE_p_Number_Handle.getCPtr(p2), SWIGTYPE_p_unsigned_char.getCPtr(p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_Recover(SWIGTYPE_p_Signature_Handle p0, secp256k1go__XY p1, SWIGTYPE_p_Number_Handle p2, long p3, SWIGTYPE_p_unsigned_char p4) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Recover(SWIGTYPE_p_Signature_Handle.getCPtr(p0), secp256k1go__XY.getCPtr(p1), SWIGTYPE_p_Number_Handle.getCPtr(p2), p3, SWIGTYPE_p_unsigned_char.getCPtr(p4));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_Sign(SWIGTYPE_p_Signature_Handle p0, SWIGTYPE_p_Number_Handle p1, SWIGTYPE_p_Number_Handle p2, SWIGTYPE_p_Number_Handle p3, SWIGTYPE_p_long_long p4, SWIGTYPE_p_long_long p5) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Sign(SWIGTYPE_p_Signature_Handle.getCPtr(p0), SWIGTYPE_p_Number_Handle.getCPtr(p1), SWIGTYPE_p_Number_Handle.getCPtr(p2), SWIGTYPE_p_Number_Handle.getCPtr(p3), SWIGTYPE_p_long_long.getCPtr(p4), SWIGTYPE_p_long_long.getCPtr(p5));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_ParseBytes(SWIGTYPE_p_Signature_Handle p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_ParseBytes(SWIGTYPE_p_Signature_Handle.getCPtr(p0), GoSlice.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Signature_Bytes(SWIGTYPE_p_Signature_Handle p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Signature_Bytes(SWIGTYPE_p_Signature_Handle.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
   public static uint SKY_cli_App_Run(SWIGTYPE_p_App__Handle p0, string p1) {
 var tmpp1 = p1;
     {
@@ -2698,12 +2514,6 @@ var tmpp1 = p1;
       uint ret = skycoinPINVOKE.SKY_cli_Setenv(tmpp0, tmpp1);
       return ret;
     }
-  }
-
-  public static uint SKY_poly1305_Verify(GoSlice p0, GoSlice p1, GoSlice p2, SWIGTYPE_p_unsigned_char p3) {
-    uint ret = skycoinPINVOKE.SKY_poly1305_Verify(GoSlice.getCPtr (p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2), SWIGTYPE_p_unsigned_char.getCPtr(p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
   public static uint SKY_wallet_NewBalance(ulong p0, ulong p1, wallet__Balance p2) {
@@ -2786,71 +2596,6 @@ var tmpp1 = p1;
 
   public static uint SKY_wallet_Entry_VerifyPublic(wallet__Entry p0) {
     uint ret = skycoinPINVOKE.SKY_wallet_Entry_VerifyPublic(wallet__Entry.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Print(secp256k1go__XYZ p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Print(secp256k1go__XYZ.getCPtr(p0), tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_XYZ_SetXY(secp256k1go__XYZ p0, secp256k1go__XY p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_SetXY(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XY.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_IsInfinity(secp256k1go__XYZ p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_IsInfinity(secp256k1go__XYZ.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_IsValid(secp256k1go__XYZ p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_IsValid(secp256k1go__XYZ.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Normalize(secp256k1go__XYZ p0) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Normalize(secp256k1go__XYZ.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Equals(secp256k1go__XYZ p0, secp256k1go__XYZ p1, SWIGTYPE_p_unsigned_char p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Equals(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1), SWIGTYPE_p_unsigned_char.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_ECmult(secp256k1go__XYZ p0, secp256k1go__XYZ p1, SWIGTYPE_p_Number_Handle p2, SWIGTYPE_p_Number_Handle p3) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_ECmult(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1), SWIGTYPE_p_Number_Handle.getCPtr(p2), SWIGTYPE_p_Number_Handle.getCPtr(p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Neg(secp256k1go__XYZ p0, secp256k1go__XYZ p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Neg(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Double(secp256k1go__XYZ p0, secp256k1go__XYZ p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Double(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_AddXY(secp256k1go__XYZ p0, secp256k1go__XYZ p1, secp256k1go__XY p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_AddXY(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1), secp256k1go__XY.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_XYZ_Add(secp256k1go__XYZ p0, secp256k1go__XYZ p1, secp256k1go__XYZ p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_XYZ_Add(secp256k1go__XYZ.getCPtr(p0), secp256k1go__XYZ.getCPtr(p1), secp256k1go__XYZ.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_ECmultGen(secp256k1go__XYZ p0, SWIGTYPE_p_Number_Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_ECmultGen(secp256k1go__XYZ.getCPtr(p0), SWIGTYPE_p_Number_Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -3189,58 +2934,6 @@ var tmpp3 = _GoString_.getCPtr (p3);
     }
   }
 
-  public static uint SKY_ripemd160_New(SWIGTYPE_p_Hash_Handle p0) {
-    uint ret = skycoinPINVOKE.SKY_ripemd160_New(SWIGTYPE_p_Hash_Handle.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_ripemd160_Write(SWIGTYPE_p_Hash_Handle p0, GoSlice p1, SWIGTYPE_p_long_long p2) {
-    uint ret = skycoinPINVOKE.SKY_ripemd160_Write(SWIGTYPE_p_Hash_Handle.getCPtr(p0), GoSlice.getCPtr(p1), SWIGTYPE_p_long_long.getCPtr(p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_ripemd160_Sum(SWIGTYPE_p_Hash_Handle p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_ripemd160_Sum(SWIGTYPE_p_Hash_Handle.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Number_Create(SWIGTYPE_p_Number_Handle p0) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Number_Create(SWIGTYPE_p_Number_Handle.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Number_Print(SWIGTYPE_p_Number_Handle p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Number_Print(SWIGTYPE_p_Number_Handle.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Number_SetHex(SWIGTYPE_p_Number_Handle p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Number_SetHex(SWIGTYPE_p_Number_Handle.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Number_IsOdd(SWIGTYPE_p_Number_Handle p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Number_IsOdd(SWIGTYPE_p_Number_Handle.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Number_IsEqual(SWIGTYPE_p_Number_Handle p0, SWIGTYPE_p_Number_Handle p1, SWIGTYPE_p_unsigned_char p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Number_IsEqual(SWIGTYPE_p_Number_Handle.getCPtr(p0), SWIGTYPE_p_Number_Handle.getCPtr(p1), SWIGTYPE_p_unsigned_char.getCPtr(p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
   public static uint SKY_coin_UxOut_Hash(coin__UxOut p0, cipher_SecKey p1) {
 var tmpp1 = cipher_SecKey.getCPtr (p1);
     {
@@ -3422,104 +3115,6 @@ var tmpp1 = p1;
     }
   }
 
-  public static uint SKY_secp256k1_GenerateKeyPair(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_GenerateKeyPair(GoSlice.getCPtr (p0), GoSlice.getCPtr (p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_PubkeyFromSeckey(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_PubkeyFromSeckey(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_UncompressPubkey(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_UncompressPubkey(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_UncompressedPubkeyFromSeckey(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_UncompressedPubkeyFromSeckey(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_Secp256k1Hash(GoSlice p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_Secp256k1Hash(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_GenerateDeterministicKeyPair(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_GenerateDeterministicKeyPair(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_DeterministicKeyPairIterator(GoSlice p0, GoSlice p1, GoSlice p2, GoSlice p3) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_DeterministicKeyPairIterator(GoSlice.getCPtr(p0), GoSlice.getCPtr (p1), GoSlice.getCPtr (p2), GoSlice.getCPtr (p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_Sign(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_Sign(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_SignDeterministic(GoSlice p0, GoSlice p1, GoSlice p2, GoSlice p3) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_SignDeterministic(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr(p2), GoSlice.getCPtr (p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_VerifySeckey(GoSlice p0, SWIGTYPE_p_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_VerifySeckey(GoSlice.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_VerifyPubkey(GoSlice p0, SWIGTYPE_p_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_VerifyPubkey(GoSlice.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_VerifySignatureValidity(GoSlice p0, SWIGTYPE_p_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_VerifySignatureValidity(GoSlice.getCPtr(p0), SWIGTYPE_p_long_long.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_VerifySignature(GoSlice p0, GoSlice p1, GoSlice p2, SWIGTYPE_p_long_long p3) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_VerifySignature(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr(p2), SWIGTYPE_p_long_long.getCPtr(p3));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_SignatureErrorString(GoSlice p0, GoSlice p1, GoSlice p2, _GoString_ p3) {
-var tmpp3 = _GoString_.getCPtr (p3);
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1_SignatureErrorString(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr(p2), tmpp3);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1_RecoverPubkey(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_RecoverPubkey(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1_ECDH(GoSlice p0, GoSlice p1, GoSlice p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1_ECDH(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), GoSlice.getCPtr (p2));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
   public static uint SKY_apputil_CatchInterruptPanic() {
     uint ret = skycoinPINVOKE.SKY_apputil_CatchInterruptPanic();
     return ret;
@@ -3545,24 +3140,24 @@ var tmpp1 = p1;
     }
   }
 
-  public static uint SKY_fee_VerifyTransactionFee(SWIGTYPE_p_Transaction__Handle p0, ulong p1) {
-    uint ret = skycoinPINVOKE.SKY_fee_VerifyTransactionFee(SWIGTYPE_p_Transaction__Handle.getCPtr(p0), p1);
+  public static uint SKY_fee_VerifyTransactionFee(SWIGTYPE_p_Transaction__Handle p0, ulong p1, ulong p2) {
+    uint ret = skycoinPINVOKE.SKY_fee_VerifyTransactionFee(SWIGTYPE_p_Transaction__Handle.getCPtr(p0), p1, p2);
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static uint SKY_fee_VerifyTransactionFeeForHours(ulong p0, ulong p1) {
-    uint ret = skycoinPINVOKE.SKY_fee_VerifyTransactionFeeForHours(p0, p1);
+  public static uint SKY_fee_VerifyTransactionFeeForHours(ulong p0, ulong p1, ulong p2) {
+    uint ret = skycoinPINVOKE.SKY_fee_VerifyTransactionFeeForHours(p0, p1, p2);
     return ret;
   }
 
-  public static uint SKY_fee_RequiredFee(ulong p0, SWIGTYPE_p_unsigned_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_fee_RequiredFee(p0, SWIGTYPE_p_unsigned_long_long.getCPtr(p1));
+  public static uint SKY_fee_RequiredFee(ulong p0, ulong p1, SWIGTYPE_p_unsigned_long_long p2) {
+    uint ret = skycoinPINVOKE.SKY_fee_RequiredFee(p0, p1, SWIGTYPE_p_unsigned_long_long.getCPtr(p2));
     return ret;
   }
 
-  public static uint SKY_fee_RemainingHours(ulong p0, SWIGTYPE_p_unsigned_long_long p1) {
-    uint ret = skycoinPINVOKE.SKY_fee_RemainingHours(p0, SWIGTYPE_p_unsigned_long_long.getCPtr(p1));
+  public static uint SKY_fee_RemainingHours(ulong p0, ulong p1, SWIGTYPE_p_unsigned_long_long p2) {
+    uint ret = skycoinPINVOKE.SKY_fee_RemainingHours(p0, p1, SWIGTYPE_p_unsigned_long_long.getCPtr(p2));
     return ret;
   }
 
@@ -3787,119 +3382,6 @@ var tmpp1 = p1;
 
   public static uint SKY_testutil_MakeAddress(cipher__Address p0) {
     uint ret = skycoinPINVOKE.SKY_testutil_MakeAddress(cipher__Address.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_String(secp256k1go__Field p0, _GoString_ p1) {
-var tmpp1 = _GoString_.getCPtr (p1);
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_String(secp256k1go__Field.getCPtr(p0), tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Field_Print(secp256k1go__Field p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Print(secp256k1go__Field.getCPtr(p0), tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Field_SetB32(secp256k1go__Field p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_SetB32(secp256k1go__Field.getCPtr(p0), GoSlice.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_SetBytes(secp256k1go__Field p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_SetBytes(secp256k1go__Field.getCPtr(p0), GoSlice.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_SetHex(secp256k1go__Field p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_SetHex(secp256k1go__Field.getCPtr(p0), tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_secp256k1go_Field_IsOdd(secp256k1go__Field p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_IsOdd(secp256k1go__Field.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_IsZero(secp256k1go__Field p0, SWIGTYPE_p_unsigned_char p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_IsZero(secp256k1go__Field.getCPtr(p0), SWIGTYPE_p_unsigned_char.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_SetInt(secp256k1go__Field p0, uint p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_SetInt(secp256k1go__Field.getCPtr(p0), p1);
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Normalize(secp256k1go__Field p0) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Normalize(secp256k1go__Field.getCPtr(p0));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_GetB32(secp256k1go__Field p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_GetB32(secp256k1go__Field.getCPtr(p0), GoSlice.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Equals(secp256k1go__Field p0, secp256k1go__Field p1, SWIGTYPE_p_unsigned_char p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Equals(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1), SWIGTYPE_p_unsigned_char.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_SetAdd(secp256k1go__Field p0, secp256k1go__Field p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_SetAdd(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_MulInt(secp256k1go__Field p0, uint p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_MulInt(secp256k1go__Field.getCPtr(p0), p1);
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Negate(secp256k1go__Field p0, secp256k1go__Field p1, uint p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Negate(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1), p2);
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Inv(secp256k1go__Field p0, secp256k1go__Field p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Inv(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Sqrt(secp256k1go__Field p0, secp256k1go__Field p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Sqrt(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_InvVar(secp256k1go__Field p0, secp256k1go__Field p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_InvVar(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Mul(secp256k1go__Field p0, secp256k1go__Field p1, secp256k1go__Field p2) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Mul(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1), secp256k1go__Field.getCPtr(p2));
-    return ret;
-  }
-
-  public static uint SKY_secp256k1go_Field_Sqr(secp256k1go__Field p0, secp256k1go__Field p1) {
-    uint ret = skycoinPINVOKE.SKY_secp256k1go_Field_Sqr(secp256k1go__Field.getCPtr(p0), secp256k1go__Field.getCPtr(p1));
-    return ret;
-  }
-
-  public static uint SKY_scrypt_Key(GoSlice p0, GoSlice p1, long p2, long p3, long p4, long p5, GoSlice p6) {
-    uint ret = skycoinPINVOKE.SKY_scrypt_Key(GoSlice.getCPtr(p0), GoSlice.getCPtr(p1), p2, p3, p4, p5, GoSlice.getCPtr (p6));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -4365,7 +3847,7 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   public static readonly int SKY_ErrInvalidBytesLength = skycoinPINVOKE.get_SKY_ErrInvalidBytesLength();
   public static readonly int SKY_ErrInvalidPubKey = skycoinPINVOKE.get_SKY_ErrInvalidPubKey();
   public static readonly int SKY_ErrInvalidSecKey = skycoinPINVOKE.get_SKY_ErrInvalidSecKey();
-  public static readonly int SKY_ErrInvalidSigForPubKey = skycoinPINVOKE.get_SKY_ErrInvalidSigForPubKey();
+  public static readonly int SKY_ErrInvalidSigPubKeyRecovery = skycoinPINVOKE.get_SKY_ErrInvalidSigPubKeyRecovery();
   public static readonly int SKY_ErrInvalidSecKeyHex = skycoinPINVOKE.get_SKY_ErrInvalidSecKeyHex();
   public static readonly int SKY_ErrInvalidAddressForSig = skycoinPINVOKE.get_SKY_ErrInvalidAddressForSig();
   public static readonly int SKY_ErrInvalidHashForSig = skycoinPINVOKE.get_SKY_ErrInvalidHashForSig();
@@ -4384,14 +3866,14 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   public static readonly int SKY_ErrBitcoinWIFInvalidChecksum = skycoinPINVOKE.get_SKY_ErrBitcoinWIFInvalidChecksum();
   public static readonly int SKY_ErrEmptySeed = skycoinPINVOKE.get_SKY_ErrEmptySeed();
   public static readonly int SKY_ErrInvalidSig = skycoinPINVOKE.get_SKY_ErrInvalidSig();
-  public static readonly int SKY_ErrSHA256orMissingPassword = skycoinPINVOKE.get_SKY_ErrSHA256orMissingPassword();
-  public static readonly int SKY_ErrLenghtDataOverflowMaxUint32 = skycoinPINVOKE.get_SKY_ErrLenghtDataOverflowMaxUint32();
+  public static readonly int SKY_ErrMissingPassword = skycoinPINVOKE.get_SKY_ErrMissingPassword();
+  public static readonly int SKY_ErrDataTooLarge = skycoinPINVOKE.get_SKY_ErrDataTooLarge();
   public static readonly int SKY_ErrInvalidChecksumLength = skycoinPINVOKE.get_SKY_ErrInvalidChecksumLength();
-  public static readonly int SKY_ErrInvalidDataChecksumNotMatched = skycoinPINVOKE.get_SKY_ErrInvalidDataChecksumNotMatched();
+  public static readonly int SKY_ErrInvalidChecksum = skycoinPINVOKE.get_SKY_ErrInvalidChecksum();
   public static readonly int SKY_ErrInvalidNonceLength = skycoinPINVOKE.get_SKY_ErrInvalidNonceLength();
-  public static readonly int SKY_ErrInvalidBlockSizeMultiple32Bytes = skycoinPINVOKE.get_SKY_ErrInvalidBlockSizeMultiple32Bytes();
-  public static readonly int SKY_ErrReadDataHashFailedLength = skycoinPINVOKE.get_SKY_ErrReadDataHashFailedLength();
-  public static readonly int SKY_ErrSHA256orInvalidPassword = skycoinPINVOKE.get_SKY_ErrSHA256orInvalidPassword();
+  public static readonly int SKY_ErrInvalidBlockSize = skycoinPINVOKE.get_SKY_ErrInvalidBlockSize();
+  public static readonly int SKY_ErrReadDataHashFailed = skycoinPINVOKE.get_SKY_ErrReadDataHashFailed();
+  public static readonly int SKY_ErrInvalidPassword = skycoinPINVOKE.get_SKY_ErrInvalidPassword();
   public static readonly int SKY_ErrReadDataLengthFailed = skycoinPINVOKE.get_SKY_ErrReadDataLengthFailed();
   public static readonly int SKY_ErrInvalidDataLength = skycoinPINVOKE.get_SKY_ErrInvalidDataLength();
   public static readonly int SKY_ErrTemporaryInsufficientBalance = skycoinPINVOKE.get_SKY_ErrTemporaryInsufficientBalance();
@@ -4412,27 +3894,23 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   public static readonly int SKY_ErrNotExternalIP = skycoinPINVOKE.get_SKY_ErrNotExternalIP();
   public static readonly int SKY_ErrPortTooLow = skycoinPINVOKE.get_SKY_ErrPortTooLow();
   public static readonly int SKY_ErrBlacklistedAddress = skycoinPINVOKE.get_SKY_ErrBlacklistedAddress();
-  public static readonly int SKY_ErrDisconnectReadFailed = skycoinPINVOKE.get_SKY_ErrDisconnectReadFailed();
   public static readonly int SKY_ErrDisconnectWriteFailed = skycoinPINVOKE.get_SKY_ErrDisconnectWriteFailed();
   public static readonly int SKY_ErrDisconnectSetReadDeadlineFailed = skycoinPINVOKE.get_SKY_ErrDisconnectSetReadDeadlineFailed();
   public static readonly int SKY_ErrDisconnectInvalidMessageLength = skycoinPINVOKE.get_SKY_ErrDisconnectInvalidMessageLength();
   public static readonly int SKY_ErrDisconnectMalformedMessage = skycoinPINVOKE.get_SKY_ErrDisconnectMalformedMessage();
   public static readonly int SKY_ErrDisconnectUnknownMessage = skycoinPINVOKE.get_SKY_ErrDisconnectUnknownMessage();
-  public static readonly int SKY_ErrDisconnectUnexpectedError = skycoinPINVOKE.get_SKY_ErrDisconnectUnexpectedError();
   public static readonly int SKY_ErrConnectionPoolClosed = skycoinPINVOKE.get_SKY_ErrConnectionPoolClosed();
   public static readonly int SKY_ErrWriteQueueFull = skycoinPINVOKE.get_SKY_ErrWriteQueueFull();
   public static readonly int SKY_ErrNoReachableConnections = skycoinPINVOKE.get_SKY_ErrNoReachableConnections();
   public static readonly int SKY_ErrMaxDefaultConnectionsReached = skycoinPINVOKE.get_SKY_ErrMaxDefaultConnectionsReached();
-  public static readonly int SKY_ErrDisconnectInvalidVersion = skycoinPINVOKE.get_SKY_ErrDisconnectInvalidVersion();
+  public static readonly int SKY_ErrDisconnectVersionNotSupported = skycoinPINVOKE.get_SKY_ErrDisconnectVersionNotSupported();
   public static readonly int SKY_ErrDisconnectIntroductionTimeout = skycoinPINVOKE.get_SKY_ErrDisconnectIntroductionTimeout();
-  public static readonly int SKY_ErrDisconnectVersionSendFailed = skycoinPINVOKE.get_SKY_ErrDisconnectVersionSendFailed();
   public static readonly int SKY_ErrDisconnectIsBlacklisted = skycoinPINVOKE.get_SKY_ErrDisconnectIsBlacklisted();
   public static readonly int SKY_ErrDisconnectSelf = skycoinPINVOKE.get_SKY_ErrDisconnectSelf();
   public static readonly int SKY_ErrDisconnectConnectedTwice = skycoinPINVOKE.get_SKY_ErrDisconnectConnectedTwice();
   public static readonly int SKY_ErrDisconnectIdle = skycoinPINVOKE.get_SKY_ErrDisconnectIdle();
   public static readonly int SKY_ErrDisconnectNoIntroduction = skycoinPINVOKE.get_SKY_ErrDisconnectNoIntroduction();
   public static readonly int SKY_ErrDisconnectIPLimitReached = skycoinPINVOKE.get_SKY_ErrDisconnectIPLimitReached();
-  public static readonly int SKY_ErrDisconnectOtherError = skycoinPINVOKE.get_SKY_ErrDisconnectOtherError();
   public static readonly int SKY_ErrDisconnectMaxDefaultConnectionReached = skycoinPINVOKE.get_SKY_ErrDisconnectMaxDefaultConnectionReached();
   public static readonly int SKY_ErrDisconnectMaxOutgoingConnectionsReached = skycoinPINVOKE.get_SKY_ErrDisconnectMaxOutgoingConnectionsReached();
   public static readonly int SKY_ConnectionError = skycoinPINVOKE.get_SKY_ConnectionError();
@@ -4462,9 +3940,9 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
   public static readonly int SKY_ErrInvalidEncryptedField = skycoinPINVOKE.get_SKY_ErrInvalidEncryptedField();
   public static readonly int SKY_ErrWalletEncrypted = skycoinPINVOKE.get_SKY_ErrWalletEncrypted();
   public static readonly int SKY_ErrWalletNotEncrypted = skycoinPINVOKE.get_SKY_ErrWalletNotEncrypted();
-  public static readonly int SKY_ErrMissingPassword = skycoinPINVOKE.get_SKY_ErrMissingPassword();
+  public static readonly int SKY_ErrWalletMissingPassword = skycoinPINVOKE.get_SKY_ErrWalletMissingPassword();
   public static readonly int SKY_ErrMissingEncrypt = skycoinPINVOKE.get_SKY_ErrMissingEncrypt();
-  public static readonly int SKY_ErrInvalidPassword = skycoinPINVOKE.get_SKY_ErrInvalidPassword();
+  public static readonly int SKY_ErrWalletInvalidPassword = skycoinPINVOKE.get_SKY_ErrWalletInvalidPassword();
   public static readonly int SKY_ErrMissingSeed = skycoinPINVOKE.get_SKY_ErrMissingSeed();
   public static readonly int SKY_ErrMissingAuthenticated = skycoinPINVOKE.get_SKY_ErrMissingAuthenticated();
   public static readonly int SKY_ErrWrongCryptoType = skycoinPINVOKE.get_SKY_ErrWrongCryptoType();

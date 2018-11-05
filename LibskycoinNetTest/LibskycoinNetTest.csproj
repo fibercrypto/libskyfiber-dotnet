@@ -42,9 +42,6 @@
     <Compile Include="check_cipher_address.cs" />
     <Compile Include="check_cipher_crypto.cs" />
     <Compile Include="check_cipher_hash.cs" />
-    <Compile Include="check_cipher_sig.cs" />
-    <Compile Include="check_cipher_ec.cs" />
-    <Compile Include="check_cipher_field.cs" />
     <Compile Include="check_cipher_bip39.cs" />
     <Compile Include="check_cipher_bitcoin.cs" />
     <Compile Include="check_coin_math.cs" />

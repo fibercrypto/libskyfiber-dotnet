@@ -332,14 +332,6 @@ namespace LibskycoinNetTest {
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             err = skycoin.skycoin.SKY_coin_Transaction_GetSignatureAt (handle, 1, txsig1);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_ChkSig (a, sha1, txsig0);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_ChkSig (a2, sha2, txsig1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_ChkSig (a, h, txsig1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidAddressForSig);
-            err = skycoin.skycoin.SKY_cipher_ChkSig (a2, h, txsig0);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidAddressForSig);
         }
 
         [Test]
@@ -369,7 +361,7 @@ namespace LibskycoinNetTest {
             err = skycoin.skycoin.SKY_coin_Transaction_UpdateHeader (handle);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             var arg = new cipher_SHA256 ();
-            arg = tx.getInnerHash ();
+            arg = tx.GetInnerHash ();
             h1.assignFrom (arg);
             err = skycoin.skycoin.SKY_coin_Transaction_HashInner (handle, h2);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
