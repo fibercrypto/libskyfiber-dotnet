@@ -40,11 +40,6 @@ public class coin__Transaction : global::System.IDisposable {
     }
   }
 
-  public int isEqual(coin__Transaction t) {
-    int ret = skycoinPINVOKE.coin__Transaction_isEqual(swigCPtr, coin__Transaction.getCPtr(t));
-    return ret;
-  }
-
   public int setInnerHash(cipher_SHA256 h) {
     int ret = skycoinPINVOKE.coin__Transaction_setInnerHash(swigCPtr, cipher_SHA256.getCPtr(h));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
@@ -53,6 +48,16 @@ public class coin__Transaction : global::System.IDisposable {
 
   public cipher_SHA256 GetInnerHash() {
     cipher_SHA256 ret = new cipher_SHA256(skycoinPINVOKE.coin__Transaction_GetInnerHash(swigCPtr), true);
+    return ret;
+  }
+
+  public int isEqual(coin__Transaction t) {
+    int ret = skycoinPINVOKE.coin__Transaction_isEqual(swigCPtr, coin__Transaction.getCPtr(t));
+    return ret;
+  }
+
+  public cipher_SHA256 getInnerHash() {
+    cipher_SHA256 ret = new cipher_SHA256(skycoinPINVOKE.coin__Transaction_getInnerHash(swigCPtr), true);
     return ret;
   }
 

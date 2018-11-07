@@ -40,6 +40,11 @@ public class cipher_SHA256 : global::System.IDisposable {
     }
   }
 
+  public _GoString_ getStr() {
+    _GoString_ ret = new _GoString_(skycoinPINVOKE.cipher_SHA256_getStr(swigCPtr), true);
+    return ret;
+  }
+
   public int isEqual(cipher_SHA256 a) {
     int ret = skycoinPINVOKE.cipher_SHA256_isEqual(swigCPtr, cipher_SHA256.getCPtr(a));
     return ret;
@@ -51,11 +56,6 @@ public class cipher_SHA256 : global::System.IDisposable {
 
   public void assignTo(cipher_SHA256 data) {
     skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, cipher_SHA256.getCPtr(data));
-  }
-
-  public _GoString_ getStr() {
-    _GoString_ ret = new _GoString_(skycoinPINVOKE.cipher_SHA256_getStr(swigCPtr), true);
-    return ret;
   }
 
   public SWIGTYPE_p_unsigned_char data {

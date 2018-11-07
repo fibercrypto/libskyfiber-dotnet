@@ -40,12 +40,6 @@ public class Fee_Calculator : global::System.IDisposable {
     }
   }
 
-  public uint callFeeCalculator(SWIGTYPE_p_FeeCalculator feeCalc, SWIGTYPE_p_Transaction__Handle handle, SWIGTYPE_p_unsigned_long_long pFee) {
-    uint ret = skycoinPINVOKE.Fee_Calculator_callFeeCalculator(swigCPtr, SWIGTYPE_p_FeeCalculator.getCPtr(feeCalc), SWIGTYPE_p_Transaction__Handle.getCPtr(handle), SWIGTYPE_p_unsigned_long_long.getCPtr(pFee));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
   public SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_ callback {
     set {
       skycoinPINVOKE.set_Fee_Calculator_callback(swigCPtr, SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.getCPtr(value));

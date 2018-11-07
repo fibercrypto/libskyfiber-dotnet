@@ -129,12 +129,12 @@
     <Compile Include="skycoin\wallet_register.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_FILE.cs" />
     <Compile Include="skycoin\cipher_Addresses.cs" />
-    <Compile Include="skycoin\FeeCalculator_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_FeeCalcFunc.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
     <Compile Include="skycoin\api__NetworkConnectionsFilter.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />

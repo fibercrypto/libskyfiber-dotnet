@@ -40,11 +40,6 @@ public class cipher__Address : global::System.IDisposable {
     }
   }
 
-  public int isEqual(cipher__Address a) {
-    int ret = skycoinPINVOKE.cipher__Address_isEqual(swigCPtr, cipher__Address.getCPtr(a));
-    return ret;
-  }
-
   public char getVersion() {
     char ret = skycoinPINVOKE.cipher__Address_getVersion(swigCPtr);
     return ret;
@@ -52,6 +47,11 @@ public class cipher__Address : global::System.IDisposable {
 
   public void setVersion(char pValue) {
     skycoinPINVOKE.cipher__Address_setVersion(swigCPtr, pValue);
+  }
+
+  public int isEqual(cipher__Address a) {
+    int ret = skycoinPINVOKE.cipher__Address_isEqual(swigCPtr, cipher__Address.getCPtr(a));
+    return ret;
   }
 
   public byte Version {
