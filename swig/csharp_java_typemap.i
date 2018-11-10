@@ -13,6 +13,7 @@
 %pointer_functions(GoUint8_, GoUint8Ptr);
 %pointer_functions(_GoString_, GoStringp);
 %pointer_functions(int, intp);
+%pointer_functions( unsigned int, GoUint32Ptr);
 %pointer_functions(coin__Transaction, coin__Transactionp);
 %pointer_functions(AddressUxOuts_Handle, AddressUxOuts__HandlePtr);
 %pointer_functions(unsigned long long, GoUint64p);

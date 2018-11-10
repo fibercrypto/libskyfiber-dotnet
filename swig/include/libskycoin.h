@@ -138,6 +138,16 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
+#line 9 "params.distribution.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
 #line 11 "cli.generate_addrs.go"
 
 
@@ -492,7 +502,7 @@ extern GoUint32 SKY_coin_Block_Seq(Block__Handle p0, GoUint64* p1);
 
 extern GoUint32 SKY_coin_Block_HashBody(Block__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_coin_Block_Size(Block__Handle p0, GoInt* p1);
+extern GoUint32 SKY_coin_Block_Size(Block__Handle p0, GoUint32* p1);
 
 extern GoUint32 SKY_coin_Block_String(Block__Handle p0, GoString_* p1);
 
@@ -508,7 +518,7 @@ extern GoUint32 SKY_coin_BlockHeader_String(coin__BlockHeader* p0, GoString_* p1
 
 extern GoUint32 SKY_coin_BlockBody_Hash(BlockBody__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_coin_BlockBody_Size(BlockBody__Handle* p0, GoInt* p1);
+extern GoUint32 SKY_coin_BlockBody_Size(BlockBody__Handle* p0, GoUint32* p1);
 
 extern GoUint32 SKY_coin_BlockBody_Bytes(BlockBody__Handle p0, coin__UxArray* p1);
 
@@ -745,6 +755,12 @@ extern GoUint32 SKY_iputil_LocalhostIP(GoString_* p0);
 extern GoUint32 SKY_iputil_IsLocalhost(GoString p0, GoUint8* p1);
 
 extern GoUint32 SKY_iputil_SplitAddr(GoString p0, GoString_* p1, GoUint16* p2);
+
+extern void SKY_params_GetDistributionAddresses(coin__UxArray* p0);
+
+extern void SKY_params_GetUnlockedDistributionAddresses(coin__UxArray* p0);
+
+extern void SKY_params_GetLockedDistributionAddresses(coin__UxArray* p0);
 
 extern GoUint32 SKY_cli_GenerateAddressesInFile(GoString p0, GoUint64 p1, PasswordReader__Handle p2, coin__UxArray* p3);
 
@@ -1020,13 +1036,13 @@ extern GoUint32 SKY_apputil_PrintProgramStatus();
 
 extern GoUint32 SKY_certutil_NewTLSCertPair(GoString p0, GoString p1, GoSlice p2, coin__UxArray* p3, coin__UxArray* p4);
 
-extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1, GoUint64 p2);
+extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1, GoUint32 p2);
 
-extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1, GoUint64 p2);
+extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1, GoUint32 p2);
 
-extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint64 p1, GoUint64* p2);
+extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint32 p1, GoUint64* p2);
 
-extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint64 p1, GoUint64* p2);
+extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint32 p1, GoUint64* p2);
 
 extern GoUint32 SKY_fee_TransactionFee(Transaction__Handle p0, GoUint64 p1, coin__UxArray* p2, GoUint64* p3);
 
@@ -1156,11 +1172,11 @@ extern GoUint32 SKY_coin_Transaction_PushOutput(Transaction__Handle p0, cipher__
 
 extern GoUint32 SKY_coin_Transaction_SignInputs(Transaction__Handle p0, GoSlice p1);
 
-extern GoUint32 SKY_coin_Transaction_Size(Transaction__Handle p0, GoInt* p1);
+extern GoUint32 SKY_coin_Transaction_Size(Transaction__Handle p0, GoUint32* p1);
 
 extern GoUint32 SKY_coin_Transaction_Hash(Transaction__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_coin_Transaction_SizeHash(Transaction__Handle p0, GoInt* p1, cipher__SHA256* p2);
+extern GoUint32 SKY_coin_Transaction_SizeHash(Transaction__Handle p0, GoUint32* p1, cipher__SHA256* p2);
 
 extern GoUint32 SKY_coin_Transaction_TxID(Transaction__Handle p0, coin__UxArray* p1);
 
@@ -1190,9 +1206,9 @@ extern GoUint32 SKY_coin_Transactions_GetAt(Transactions__Handle p0, GoInt p1, T
 
 extern GoUint32 SKY_coin_Transactions_Hashes(Transactions__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_coin_Transactions_Size(Transactions__Handle p0, GoInt* p1);
+extern GoUint32 SKY_coin_Transactions_Size(Transactions__Handle p0, GoUint32* p1);
 
-extern GoUint32 SKY_coin_Transactions_TruncateBytesTo(Transactions__Handle p0, GoInt p1, Transactions__Handle* p2);
+extern GoUint32 SKY_coin_Transactions_TruncateBytesTo(Transactions__Handle p0, GoUint32 p1, Transactions__Handle* p2);
 
 extern GoUint32 SKY_coin_SortTransactions(Transactions__Handle p0, FeeCalculator* p1, Transactions__Handle* p2);
 
