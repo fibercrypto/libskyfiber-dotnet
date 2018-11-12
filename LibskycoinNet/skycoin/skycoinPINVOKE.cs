@@ -716,9 +716,6 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_hashKeyIndexNonce")]
   public static extern void hashKeyIndexNonce(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_makeEncryptedData")]
-  public static extern void makeEncryptedData(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
-
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_convertGoUint8toSHA256")]
   public static extern void convertGoUint8toSHA256(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
@@ -1196,6 +1193,9 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin__GoString__SetString")]
   public static extern int _GoString__SetString(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin__GoString__getString")]
+  public static extern string _GoString__getString(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set__GoString__p")]
   public static extern void set__GoString__p(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
@@ -1243,6 +1243,9 @@ class skycoinPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_GoSlice_getString")]
   public static extern void GoSlice_getString(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_GoSlice_getAtString")]
+  public static extern int GoSlice_getAtString(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set_GoSlice_data")]
   public static extern void set_GoSlice_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);

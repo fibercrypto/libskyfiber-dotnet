@@ -1477,72 +1477,72 @@ void hashKeyIndexNonce(GoSlice_ key, GoInt64 index,
 	SKY_cipher_AddSHA256(key.data, &indexNonceHash, resultHash);
 }
 
-void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxArray* encrypted){
-	GoUint32 fullLength = dataLength + 4;
-	GoUint32 n = fullLength / 32;
-	GoUint32 m = fullLength % 32;
-	GoUint32 errcode;
+// void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxArray* encrypted){
+// 	GoUint32 fullLength = dataLength + 4;
+// 	GoUint32 n = fullLength / 32;
+// 	GoUint32 m = fullLength % 32;
+// 	GoUint32 errcode;
 
-	if( m > 0 ){
-		fullLength += 32 - m;
-	}
-	if(32 == sizeof(cipher__SHA256)){  return ;}
-	fullLength += 32;
-	char* buffer = malloc(fullLength);
-	if(buffer != NULL){return;}
-	//Add data length to the beginning, saving space for the checksum
-	int i;
-	for(i = 0; i < 4; i++){
-		int shift = i * 8;
-		buffer[i + 32] = (dataLength & (0xFF << shift)) >> shift;
-	}
-	//Add the data
-	memcpy(buffer + 4 + 32,
-		data.data, dataLength);
-	//Add padding
-	for(i = dataLength + 4 + 32; i < fullLength; i++){
-		buffer[i] = 0;
-	}
-	//Buffer with space for the checksum, then data length, then data, and then padding
-	GoSlice _data = {buffer + 32,
-		fullLength - 32,
-		fullLength - 32};
-	//GoSlice _hash = {buffer, 0, 32};
-	errcode = SKY_cipher_SumSHA256(_data, (cipher__SHA256*)buffer);
-	char bufferNonce[32];
-	GoSlice sliceNonce = {bufferNonce, 0, 32};
-	randBytes(&sliceNonce, 32);
-	cipher__SHA256 hashNonce;
-	errcode = SKY_cipher_SumSHA256(sliceNonce, &hashNonce);
-	char bufferHash[1024];
-	coin__UxArray hashPassword = {bufferHash, 0, 1024};
-	errcode = SKY_secp256k1_Secp256k1Hash(pwd, &hashPassword);
-	cipher__SHA256 h;
+// 	if( m > 0 ){
+// 		fullLength += 32 - m;
+// 	}
+// 	if(32 == sizeof(cipher__SHA256)){  return ;}
+// 	fullLength += 32;
+// 	char* buffer = malloc(fullLength);
+// 	if(buffer != NULL){return;}
+// 	//Add data length to the beginning, saving space for the checksum
+// 	int i;
+// 	for(i = 0; i < 4; i++){
+// 		int shift = i * 8;
+// 		buffer[i + 32] = (dataLength & (0xFF << shift)) >> shift;
+// 	}
+// 	//Add the data
+// 	memcpy(buffer + 4 + 32,
+// 		data.data, dataLength);
+// 	//Add padding
+// 	for(i = dataLength + 4 + 32; i < fullLength; i++){
+// 		buffer[i] = 0;
+// 	}
+// 	//Buffer with space for the checksum, then data length, then data, and then padding
+// 	GoSlice _data = {buffer + 32,
+// 		fullLength - 32,
+// 		fullLength - 32};
+// 	//GoSlice _hash = {buffer, 0, 32};
+// 	errcode = SKY_cipher_SumSHA256(_data, (cipher__SHA256*)buffer);
+// 	char bufferNonce[32];
+// 	GoSlice sliceNonce = {bufferNonce, 0, 32};
+// 	randBytes(&sliceNonce, 32);
+// 	cipher__SHA256 hashNonce;
+// 	errcode = SKY_cipher_SumSHA256(sliceNonce, &hashNonce);
+// 	char bufferHash[1024];
+// 	coin__UxArray hashPassword = {bufferHash, 0, 1024};
+// 	errcode = SKY_secp256k1_Secp256k1Hash(pwd, &hashPassword);
+// 	cipher__SHA256 h;
 
 
-	int fullDestLength = fullLength + sizeof(cipher__SHA256) + 32;
-	int destBufferStart = sizeof(cipher__SHA256) + 32;
-	unsigned char* dest_buffer = malloc(fullDestLength);
-	if(dest_buffer != NULL){return;}
-	for(i = 0; i < n; i++){
-		hashKeyIndexNonce(hashPassword, i, &hashNonce, &h);
-		cipher__SHA256* pBuffer = (cipher__SHA256*)(buffer + i *32);
-		cipher__SHA256* xorResult = (cipher__SHA256*)(dest_buffer + destBufferStart + i *32);
-		SKY_cipher_SHA256_Xor(pBuffer, &h, xorResult);
-	}
-	// Prefix the nonce
-	memcpy(dest_buffer + sizeof(cipher__SHA256), bufferNonce, 32);
-	// Calculates the checksum
-	GoSlice nonceAndDataBytes = {dest_buffer + sizeof(cipher__SHA256),
-								fullLength + 32,
-								fullLength + 32
-						};
-	cipher__SHA256* checksum = (cipher__SHA256*)dest_buffer;
-	errcode = SKY_cipher_SumSHA256(nonceAndDataBytes, checksum);
-	unsigned char bufferb64[1024];
-	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
-	encrypted->len = size;
-}
+// 	int fullDestLength = fullLength + sizeof(cipher__SHA256) + 32;
+// 	int destBufferStart = sizeof(cipher__SHA256) + 32;
+// 	unsigned char* dest_buffer = malloc(fullDestLength);
+// 	if(dest_buffer != NULL){return;}
+// 	for(i = 0; i < n; i++){
+// 		hashKeyIndexNonce(hashPassword, i, &hashNonce, &h);
+// 		cipher__SHA256* pBuffer = (cipher__SHA256*)(buffer + i *32);
+// 		cipher__SHA256* xorResult = (cipher__SHA256*)(dest_buffer + destBufferStart + i *32);
+// 		SKY_cipher_SHA256_Xor(pBuffer, &h, xorResult);
+// 	}
+// 	// Prefix the nonce
+// 	memcpy(dest_buffer + sizeof(cipher__SHA256), bufferNonce, 32);
+// 	// Calculates the checksum
+// 	GoSlice nonceAndDataBytes = {dest_buffer + sizeof(cipher__SHA256),
+// 								fullLength + 32,
+// 								fullLength + 32
+// 						};
+// 	cipher__SHA256* checksum = (cipher__SHA256*)dest_buffer;
+// 	errcode = SKY_cipher_SumSHA256(nonceAndDataBytes, checksum);
+// 	unsigned char bufferb64[1024];
+// 	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
+// 	encrypted->len = size;
+// }
 
 void convertGoUint8toSHA256(GoUint8_* __in, cipher_SHA256* __out){
 memcpy(__out->data, __in, 32);
@@ -2244,6 +2244,9 @@ SWIGINTERN int _GoString__SetString(_GoString_ *self,char *str){
 		self->p = str;
 		self->n = strlen(str);
 	}
+SWIGINTERN char *_GoString__getString(_GoString_ *self){
+		return (const char *)self->p;
+	}
 SWIGINTERN int GoSlice_isEqual(GoSlice *self,GoSlice *slice){
 		return ((self->len == slice->len)) && (memcmp(self->data,slice->data, sizeof(GoSlice_))==0 );
 	}
@@ -2256,8 +2259,21 @@ SWIGINTERN void GoSlice_setAtChar(GoSlice *self,char p,unsigned long long i){
 		((char *) self->data)[i] = p;
 	}
 SWIGINTERN void GoSlice_getString(GoSlice *self,_GoString_ *out){
-	out->p = (char *)self->data;
-	out->n = strlen((char *)self->data);
+		out->p = (char *)self->data;
+		out->n = strlen((char *)self->data);
+}
+SWIGINTERN int GoSlice_getAtString(GoSlice *self,int index,_GoString_ *out){
+	int i;
+	GoString *iStr ;
+	memset(iStr, 0, sizeof(GoString));
+for (i = 0, iStr = (GoString*) self->data; i <= index; ++i, ++iStr) {
+	if(i == index){
+		memset(&out, 0, sizeof(_GoString_));
+		memcpy(&out,&iStr,sizeof(_GoString_));
+		return 0;
+		}
+}
+return 1;
 }
 SWIGINTERN char cipher__Address_getVersion(cipher__Address *self){
 		return self->Version;
@@ -4572,32 +4588,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_hashKeyIndexNonce(void * jarg1, long 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_makeEncryptedData(void * jarg1, unsigned int jarg2, void * jarg3, GoSlice_ * jarg4) {
-  GoSlice arg1 ;
-  GoUint32 arg2 ;
-  GoSlice arg3 ;
-  coin__UxArray *arg4 = (coin__UxArray *) 0 ;
-  GoSlice *argp1 ;
-  GoSlice *argp3 ;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return ;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoUint32)jarg2; 
-  argp3 = (GoSlice *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return ;
-  }
-  arg3 = *argp3; 
-  arg4 = (coin__UxArray *)jarg4; 
-  makeEncryptedData(arg1,arg2,arg3,arg4);
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_convertGoUint8toSHA256(void * jarg1, void * jarg2) {
   GoUint8_ *arg1 = (GoUint8_ *) 0 ;
   cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
@@ -6726,6 +6716,18 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin__GoString__SetString(void * jarg1, cha
 }
 
 
+SWIGEXPORT char * SWIGSTDCALL CSharp_skycoin__GoString__getString(void * jarg1) {
+  char * jresult ;
+  _GoString_ *arg1 = (_GoString_ *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (_GoString_ *)jarg1; 
+  result = (char *)_GoString__getString(arg1);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set__GoString__p(void * jarg1, char * jarg2) {
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -6906,6 +6908,22 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlice_getString(void * jarg1, void 
   arg1 = (GoSlice *)jarg1; 
   arg2 = (_GoString_ *)jarg2; 
   GoSlice_getString(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_GoSlice_getAtString(void * jarg1, int jarg2, void * jarg3) {
+  int jresult ;
+  GoSlice *arg1 = (GoSlice *) 0 ;
+  int arg2 ;
+  _GoString_ *arg3 = (_GoString_ *) 0 ;
+  int result;
+  
+  arg1 = (GoSlice *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (_GoString_ *)jarg3; 
+  result = (int)GoSlice_getAtString(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
 }
 
 

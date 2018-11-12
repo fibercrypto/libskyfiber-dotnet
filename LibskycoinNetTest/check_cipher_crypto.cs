@@ -3,48 +3,48 @@ using NUnit.Framework;
 using skycoin;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_cipher_cryto {
+    public class check_cipher_cryto : skycoin.skycoin {
         [Test]
         public void TestNewPubKey () {
             var b = new GoSlice ();
             var p = new cipher_PubKey ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (31, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            var err = SKY_cipher_RandByte (31, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (32, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            err = SKY_cipher_RandByte (32, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (34, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            err = SKY_cipher_RandByte (34, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (0, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            err = SKY_cipher_RandByte (0, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (100, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            err = SKY_cipher_RandByte (100, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
             b = new GoSlice ();
             p = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthPubKey);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthPubKey);
 
             var s = new cipher_SecKey ();
             var pTemp = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            err = SKY_cipher_GenerateKeyPair (p, s);
             pTemp = p.toSlice ();
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            Assert.AreEqual (err, SKY_OK);
             var p2 = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (pTemp, p2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_NewPubKey (pTemp, p2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (p.isEqual (p2), 1);
         }
 
@@ -54,12 +54,12 @@ namespace LibskycoinNetTest {
             var failed = false;
             for (int i = 0; i < 10; i++) {
                 var b = new GoSlice ();
-                var err = skycoin.skycoin.SKY_cipher_RandByte (33, b);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_cipher_RandByte (33, b);
+                Assert.AreEqual (err, SKY_OK);
                 var p = new cipher_PubKey ();
                 p.assignSlice (b);
-                err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-                if (err != skycoin.skycoin.SKY_OK) {
+                err = SKY_cipher_PubKey_Verify (p);
+                if (err != SKY_OK) {
                     failed = true;
                     break;
                 }
@@ -71,8 +71,8 @@ namespace LibskycoinNetTest {
         public void TestPubKeyVerifyNil () {
             // Empty public key should not be valid
             var p = new cipher_PubKey ();
-            var err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreNotEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreNotEqual (err, SKY_OK);
         }
 
         [Test]
@@ -80,9 +80,9 @@ namespace LibskycoinNetTest {
             // Generated pub key should be valid
             var p = new cipher_PubKey ();
             var s = new cipher_SecKey ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_GenerateKeyPair (p, s);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
@@ -90,9 +90,9 @@ namespace LibskycoinNetTest {
             for (int i = 0; i < 1024; i++) {
                 var p = new cipher_PubKey ();
                 var s = new cipher_SecKey ();
-                var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-                err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_cipher_GenerateKeyPair (p, s);
+                err = SKY_cipher_PubKey_Verify (p);
+                Assert.AreEqual (err, SKY_OK);
             }
         }
 
@@ -102,15 +102,15 @@ namespace LibskycoinNetTest {
             var s = new cipher_SecKey ();
             var addr = new cipher__Address ();
             var addr1 = new cipher__Address ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, addr);
-            err = skycoin.skycoin.SKY_cipher_Address_Verify (addr, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_GenerateKeyPair (p, s);
+            err = SKY_cipher_AddressFromPubKey (p, addr);
+            err = SKY_cipher_Address_Verify (addr, p);
+            Assert.AreEqual (err, SKY_OK);
             var addrStr = new _GoString_ ();
-            err = skycoin.skycoin.SKY_cipher_Address_String (addr, addrStr);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_DecodeBase58Address (addrStr.p, addr1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_Address_String (addr, addrStr);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_DecodeBase58Address (addrStr.p, addr1);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
@@ -120,15 +120,15 @@ namespace LibskycoinNetTest {
                 var s = new cipher_SecKey ();
                 var addr = new cipher__Address ();
                 var addr1 = new cipher__Address ();
-                var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-                err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, addr);
-                err = skycoin.skycoin.SKY_cipher_Address_Verify (addr, p);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_cipher_GenerateKeyPair (p, s);
+                err = SKY_cipher_AddressFromPubKey (p, addr);
+                err = SKY_cipher_Address_Verify (addr, p);
+                Assert.AreEqual (err, SKY_OK);
                 var addrStr = new _GoString_ ();
-                err = skycoin.skycoin.SKY_cipher_Address_String (addr, addrStr);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                err = skycoin.skycoin.SKY_cipher_DecodeBase58Address (addrStr.p, addr1);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                err = SKY_cipher_Address_String (addr, addrStr);
+                Assert.AreEqual (err, SKY_OK);
+                err = SKY_cipher_DecodeBase58Address (addrStr.p, addr1);
+                Assert.AreEqual (err, SKY_OK);
             }
         }
 
@@ -136,51 +136,51 @@ namespace LibskycoinNetTest {
         public void TestMustNewSecKey () {
             var b = new GoSlice ();
             var p = new cipher_SecKey ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (31, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
-            err = skycoin.skycoin.SKY_cipher_RandByte (32, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
-            err = skycoin.skycoin.SKY_cipher_RandByte (34, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
-            err = skycoin.skycoin.SKY_cipher_RandByte (0, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
-            err = skycoin.skycoin.SKY_cipher_RandByte (100, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSecKey);
+            var err = SKY_cipher_RandByte (31, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSecKey);
+            err = SKY_cipher_RandByte (32, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSecKey);
+            err = SKY_cipher_RandByte (34, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSecKey);
+            err = SKY_cipher_RandByte (0, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSecKey);
+            err = SKY_cipher_RandByte (100, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSecKey);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (32, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_RandByte (32, b);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b, p);
+            Assert.AreEqual (err, SKY_OK);
             var b1 = new GoSlice ();
             var p1 = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (32, b1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b1, p1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_RandByte (32, b1);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_NewSecKey (b1, p1);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
         public void TestSecKeyVerify () {
             // Empty secret key should not be valid
             var s = new cipher_SecKey ();
-            var err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSecKey);
+            var err = SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, SKY_ErrInvalidSecKey);
             // Generated sec key should be valid
             var p = new cipher_PubKey ();
             s = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreEqual (skycoin.skycoin.SKY_cipher_SecKey_Verify (s), skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_GenerateKeyPair (p, s);
+            Assert.AreEqual (err, SKY_OK);
+            Assert.AreEqual (SKY_cipher_SecKey_Verify (s), SKY_OK);
         }
 
         [Test]
@@ -191,14 +191,14 @@ namespace LibskycoinNetTest {
             var sec2 = new cipher_SecKey ();
             var buf1 = new GoSlice ();
             var buf2 = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (pub1, sec1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (pub2, sec2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_ECDH (pub2, sec1, buf1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_ECDH (pub1, sec2, buf2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_GenerateKeyPair (pub1, sec1);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_GenerateKeyPair (pub2, sec2);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_ECDH (pub2, sec1, buf1);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_ECDH (pub1, sec2, buf2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (buf1.isEqual (buf2), 1);
         }
 
@@ -211,14 +211,14 @@ namespace LibskycoinNetTest {
                 var sec2 = new cipher_SecKey ();
                 var buf1 = new GoSlice ();
                 var buf2 = new GoSlice ();
-                var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (pub1, sec1);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (pub2, sec2);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                err = skycoin.skycoin.SKY_cipher_ECDH (pub2, sec1, buf1);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                err = skycoin.skycoin.SKY_cipher_ECDH (pub1, sec2, buf2);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_cipher_GenerateKeyPair (pub1, sec1);
+                Assert.AreEqual (err, SKY_OK);
+                err = SKY_cipher_GenerateKeyPair (pub2, sec2);
+                Assert.AreEqual (err, SKY_OK);
+                err = SKY_cipher_ECDH (pub2, sec1, buf1);
+                Assert.AreEqual (err, SKY_OK);
+                err = SKY_cipher_ECDH (pub1, sec2, buf2);
+                Assert.AreEqual (err, SKY_OK);
                 Assert.AreEqual (buf1.isEqual (buf2), 1);
             }
         }
@@ -226,34 +226,33 @@ namespace LibskycoinNetTest {
         [Test]
         public void TestNewSig () {
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (64, b);
+            var err = SKY_cipher_RandByte (64, b);
             var s = new cipher_Sig ();
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSig);
-            err = skycoin.skycoin.SKY_cipher_RandByte (66, b);
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSig);
-            err = skycoin.skycoin.SKY_cipher_RandByte (67, b);
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSig);
-            err = skycoin.skycoin.SKY_cipher_RandByte (0, b);
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSig);
-            err = skycoin.skycoin.SKY_cipher_RandByte (100, b);
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSig);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSig);
+            err = SKY_cipher_RandByte (66, b);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSig);
+            err = SKY_cipher_RandByte (67, b);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSig);
+            err = SKY_cipher_RandByte (0, b);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSig);
+            err = SKY_cipher_RandByte (100, b);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSig);
             s = new cipher_Sig ();
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (65, b);
-            err = skycoin.skycoin.SKY_cipher_NewSig (b, s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_RandByte (65, b);
+            err = SKY_cipher_NewSig (b, s);
+            Assert.AreEqual (err, SKY_OK);
             var b1 = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (65, b1);
+            err = SKY_cipher_RandByte (65, b1);
             var s1 = new cipher_Sig ();
-            err = skycoin.skycoin.SKY_cipher_NewSig (b1, s1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_NewSig (b1, s1);
+            Assert.AreEqual (err, SKY_OK);
         }
-
 
         [Test]
 
@@ -261,15 +260,15 @@ namespace LibskycoinNetTest {
             var p = new cipher_PubKey ();
             var s = new cipher_SecKey ();
             var a = new cipher__Address ();
-            skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            var err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, a);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            SKY_cipher_GenerateKeyPair (p, s);
+            var err = SKY_cipher_AddressFromPubKey (p, a);
+            Assert.AreEqual (err, SKY_OK);
             var b_temp = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (256, b_temp);
+            SKY_cipher_RandByte (256, b_temp);
             var h = new cipher_SHA256 ();
-            skycoin.skycoin.SKY_cipher_SumSHA256 (b_temp, h);
+            SKY_cipher_SumSHA256 (b_temp, h);
             var sig = new cipher_Sig ();
-            skycoin.skycoin.SKY_cipher_SignHash (h, s, sig);
+            SKY_cipher_SignHash (h, s, sig);
             Assert.AreEqual (sig.isEqual (new cipher_Sig ()), 0);
         }
 
@@ -277,15 +276,15 @@ namespace LibskycoinNetTest {
         public void TestPubKeyFromSecKey () {
             var p = new cipher_PubKey ();
             var s = new cipher_SecKey ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
+            var err = SKY_cipher_GenerateKeyPair (p, s);
             var p1 = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (s, p1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_PubKeyFromSecKey (s, p1);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (p1.isEqual (p), 1);
 
             s = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (s, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrPubKeyFromNullSecKey);
+            err = SKY_cipher_PubKeyFromSecKey (s, p);
+            Assert.AreEqual (err, SKY_ErrPubKeyFromNullSecKey);
         }
 
         [Test]
@@ -294,31 +293,29 @@ namespace LibskycoinNetTest {
             var s = new cipher_SecKey ();
             var b = new GoSlice ();
             var h = new cipher_SHA256 ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
-            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+            var err = SKY_cipher_GenerateKeyPair (p, s);
+            err = SKY_cipher_RandByte (256, b);
+            err = SKY_cipher_SumSHA256 (b, h);
             var sig = new cipher_Sig ();
-            err = skycoin.skycoin.SKY_cipher_SignHash (h, s, sig);
+            err = SKY_cipher_SignHash (h, s, sig);
             var p2 = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_PubKeyFromSig (sig, h, p2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_PubKeyFromSig (sig, h, p2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (p2.isEqual (p), 1);
             p2 = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_PubKeyFromSig (new cipher_Sig (), h, p2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidSigPubKeyRecovery);
+            err = SKY_cipher_PubKeyFromSig (new cipher_Sig (), h, p2);
+            Assert.AreEqual (err, SKY_ErrInvalidSigPubKeyRecovery);
         }
-
- 
 
         [Test]
         public void TestGenerateKeyPair () {
             var p = new cipher_PubKey ();
             var s = new cipher_SecKey ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateKeyPair (p, s);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_GenerateKeyPair (p, s);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
@@ -326,21 +323,21 @@ namespace LibskycoinNetTest {
             // TODO -- deterministic key pairs are useless as is because we can't
             // generate pair n+1, only pair 0
             var seed = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (32, seed);
+            var err = SKY_cipher_RandByte (32, seed);
             var p = new cipher_PubKey ();
             var s = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, SKY_OK);
             p = new cipher_PubKey ();
             s = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (s);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_GenerateDeterministicKeyPair (seed, p, s);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_SecKey_Verify (s);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
@@ -352,12 +349,12 @@ namespace LibskycoinNetTest {
             seedStr.p = seedText;
             seed.convertString (seedStr);
             var seckeys = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys);
+            Assert.AreEqual (err, SKY_OK);
             var seckeys2 = new GoSlice ();
             seed.len = 16;
-            err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_GenerateDeterministicKeyPairs (seed, 3, seckeys2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (seckeys.isEqual (seckeys2), 0);
         }
 
@@ -366,20 +363,20 @@ namespace LibskycoinNetTest {
             // This was migrated from coin/coin_test.go
             var a = "02fa939957e9fc52140e180264e621c2576a1bfe781f88792fb315ca3d1786afb8";
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_base58_String2Hex (a, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_base58_String2Hex (a, b);
+            Assert.AreEqual (err, SKY_OK);
 
             var p = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_NewPubKey (b, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_NewPubKey (b, p);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
 
             var addr = new cipher__Address ();
-            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, addr);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_Address_Verify (addr, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_AddressFromPubKey (p, addr);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_Address_Verify (addr, p);
+            Assert.AreEqual (err, SKY_OK);
 
         }
 
@@ -388,36 +385,36 @@ namespace LibskycoinNetTest {
             // This was migrated from coin/coin_test.go
             var a = "5a42c0643bdb465d90bf673b99c14f5fa02db71513249d904573d2b8b63d353d";
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_base58_String2Hex (a, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            var err = SKY_base58_String2Hex (a, b);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (b.len, 32);
 
             var seckey = new cipher_SecKey ();
-            err = skycoin.skycoin.SKY_cipher_NewSecKey (b, seckey);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_SecKey_Verify (seckey);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_NewSecKey (b, seckey);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_SecKey_Verify (seckey);
+            Assert.AreEqual (err, SKY_OK);
 
             var p = new cipher_PubKey ();
-            err = skycoin.skycoin.SKY_cipher_PubKeyFromSecKey (seckey, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_cipher_PubKey_Verify (p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_PubKeyFromSecKey (seckey, p);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_cipher_PubKey_Verify (p);
+            Assert.AreEqual (err, SKY_OK);
 
             var addr = new cipher__Address ();
-            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey (p, addr);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            skycoin.skycoin.SKY_cipher_Address_Verify (addr, p);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_AddressFromPubKey (p, addr);
+            Assert.AreEqual (err, SKY_OK);
+            SKY_cipher_Address_Verify (addr, p);
+            Assert.AreEqual (err, SKY_OK);
 
             var test = new GoSlice ();
             var strTest = new _GoString_ ();
             strTest.SetString ("test message");
             test.convertString (strTest);
             var hash = new cipher_SHA256 ();
-            skycoin.skycoin.SKY_cipher_SumSHA256 (test, hash);
-            err = skycoin.skycoin.SKY_cipher_CheckSecKeyHash (seckey, hash);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            SKY_cipher_SumSHA256 (test, hash);
+            err = SKY_cipher_CheckSecKeyHash (seckey, hash);
+            Assert.AreEqual (err, SKY_OK);
         }
     }
 }

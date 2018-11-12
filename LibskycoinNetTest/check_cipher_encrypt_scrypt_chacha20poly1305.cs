@@ -7,7 +7,7 @@ using skycoin;
 using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_cipher_encrypt_scrypt_chacha20poly1305 {
+    public class check_cipher_encrypt_scrypt_chacha20poly1305 : skycoin.skycoin {
         utils.transutils utils = new utils.transutils ();
         private String cutString (String str, String ini, String end) {
             int endIndex = str.LastIndexOf (end);
@@ -37,8 +37,8 @@ namespace LibskycoinNetTest {
                 plain.convertString (plaintext);
                 passwdText.p = "password";
                 passwd.convertString (passwdText);
-                var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Encrypt (crypto, plain, passwd, encData);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK, name);
+                var err = SKY_encrypt_ScryptChacha20poly1305_Encrypt (crypto, plain, passwd, encData);
+                Assert.AreEqual (err, SKY_OK, name);
                 Assert.AreEqual (encData.len > 2, true);
                 var str = new _GoString_ ();
                 encData.getString (str);
@@ -46,16 +46,16 @@ namespace LibskycoinNetTest {
 
                 if (str.n <= 188) {
                     var meta = utils.base64Decode (str.p);
-                    var n = skycoin.skycoin.new_Gointp ();
-                    var r = skycoin.skycoin.new_Gointp ();
-                    var p = skycoin.skycoin.new_Gointp ();
-                    var keyLen = skycoin.skycoin.new_Gointp ();
+                    var n = new_Gointp ();
+                    var r = new_Gointp ();
+                    var p = new_Gointp ();
+                    var keyLen = new_Gointp ();
                     meta = cutString (meta, "{", "}");
-                    skycoin.skycoin.parseJsonMetaData (meta, n, r, p, keyLen);
-                    Assert.AreEqual (1 << i, skycoin.skycoin.Gointp_value (n), name);
-                    Assert.AreEqual (8, skycoin.skycoin.Gointp_value (r), name);
-                    Assert.AreEqual (1, skycoin.skycoin.Gointp_value (p), name);
-                    Assert.AreEqual (32, skycoin.skycoin.Gointp_value (keyLen), name);
+                    parseJsonMetaData (meta, n, r, p, keyLen);
+                    Assert.AreEqual (1 << i, Gointp_value (n), name);
+                    Assert.AreEqual (8, Gointp_value (r), name);
+                    Assert.AreEqual (1, Gointp_value (p), name);
+                    Assert.AreEqual (32, Gointp_value (keyLen), name);
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace LibskycoinNetTest {
             casett.decPwd = pdecPwd;
             casett.encData = pencData;
             casett.encPwd = pencPwd;
-            casett.err = skycoin.skycoin.SKY_OK;
+            casett.err = SKY_OK;
             StructTest[] tt = { casett };
 
             // for (int i = 0; i < tt.Length; i++) {
@@ -109,7 +109,7 @@ namespace LibskycoinNetTest {
             //     var name = "N=1<<19 r=8 p=1 keyLen=32 " + tc.name;
             //     var crypto = new encrypt__ScryptChacha20poly1305 ();
             //     var data = new GoSlice ();
-            //     var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Decrypt (crypto, tc.encData, tc.decPwd, data);
+            //     var err = SKY_encrypt_ScryptChacha20poly1305_Decrypt (crypto, tc.encData, tc.decPwd, data);
             //     Assert.AreEqual (err, tc.err, name);
 
             // }

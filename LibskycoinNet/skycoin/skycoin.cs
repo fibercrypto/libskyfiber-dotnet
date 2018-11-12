@@ -914,11 +914,6 @@ var tmpresultHash = cipher_SecKey.getCPtr (resultHash);
     }
   }
 
-  public static void makeEncryptedData(GoSlice data, uint dataLength, GoSlice pwd, GoSlice encrypted) {
-    skycoinPINVOKE.makeEncryptedData(GoSlice.getCPtr(data), dataLength, GoSlice.getCPtr(pwd), GoSlice.getCPtr (encrypted));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-  }
-
   public static void convertGoUint8toSHA256(SWIGTYPE_p_GoUint8_ __in, cipher_SHA256 __out) {
     skycoinPINVOKE.convertGoUint8toSHA256(SWIGTYPE_p_GoUint8_.getCPtr(__in), cipher_SHA256.getCPtr(__out));
   }

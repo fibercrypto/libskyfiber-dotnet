@@ -4,7 +4,7 @@ using skycoin;
 using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_util_fee {
+    public class check_util_fee : skycoin.skycoin{
 
         utils.transutils transutils = new utils.transutils ();
         struct verifyTxFeeTestCase {
@@ -19,91 +19,91 @@ namespace LibskycoinNetTest {
             verifyTxFeeTestCase cases = new verifyTxFeeTestCase ();
             cases.inputHours = 0;
             cases.ouputHours = 0;
-            cases.err = skycoin.skycoin.SKY_ErrTxnNoFee;
+            cases.err = SKY_ErrTxnNoFee;
             burnFactor2verifyTxFeeTestCase[0] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 1;
             cases.ouputHours = 0;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[1] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 1;
             cases.ouputHours = 1;
-            cases.err = skycoin.skycoin.SKY_ErrTxnNoFee;
+            cases.err = SKY_ErrTxnNoFee;
             burnFactor2verifyTxFeeTestCase[2] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 2;
             cases.ouputHours = 0;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[3] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 2;
             cases.ouputHours = 1;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[4] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 2;
             cases.ouputHours = 2;
-            cases.err = skycoin.skycoin.SKY_ErrTxnNoFee;
+            cases.err = SKY_ErrTxnNoFee;
             burnFactor2verifyTxFeeTestCase[5] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 3;
             cases.ouputHours = 0;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[6] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 3;
             cases.ouputHours = 1;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[7] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 3;
             cases.ouputHours = 2;
-            cases.err = skycoin.skycoin.SKY_ErrTxnInsufficientFee;
+            cases.err = SKY_ErrTxnInsufficientFee;
             burnFactor2verifyTxFeeTestCase[8] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 3;
             cases.ouputHours = 3;
-            cases.err = skycoin.skycoin.SKY_ErrTxnNoFee;
+            cases.err = SKY_ErrTxnNoFee;
             burnFactor2verifyTxFeeTestCase[9] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 4;
             cases.ouputHours = 0;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[10] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 4;
             cases.ouputHours = 1;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[11] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 4;
             cases.ouputHours = 2;
-            cases.err = skycoin.skycoin.SKY_OK;
+            cases.err = SKY_OK;
             burnFactor2verifyTxFeeTestCase[12] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 4;
             cases.ouputHours = 3;
-            cases.err = skycoin.skycoin.SKY_ErrTxnInsufficientFee;
+            cases.err = SKY_ErrTxnInsufficientFee;
             burnFactor2verifyTxFeeTestCase[13] = cases;
 
             cases = new verifyTxFeeTestCase ();
             cases.inputHours = 4;
             cases.ouputHours = 4;
-            cases.err = skycoin.skycoin.SKY_ErrTxnNoFee;
+            cases.err = SKY_ErrTxnNoFee;
             burnFactor2verifyTxFeeTestCase[14] = cases;
         }
 
@@ -111,66 +111,66 @@ namespace LibskycoinNetTest {
         public void TestVerifyTransactionFee () {
             FullburnFactor2verifyTxFeeTestCase ();
             var empty = transutils.makeEmptyTransaction ();
-            var hours = skycoin.skycoin.new_GoUint64p ();
-            var err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (empty, hours);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreEqual (skycoin.skycoin.GoUint64p_value (hours), 0);
+            var hours = new_GoUint64p ();
+            var err = SKY_coin_Transaction_OutputHours (empty, hours);
+            Assert.AreEqual (err, SKY_OK);
+            Assert.AreEqual (GoUint64p_value (hours), 0);
 
             // A txn with no outputs hours and no coinhours burn fee is valid
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (empty, 0,2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrTxnNoFee);
+            err = SKY_fee_VerifyTransactionFee (empty, 0,2);
+            Assert.AreEqual (err, SKY_ErrTxnNoFee);
 
             // A txn with no outputs hours but with a coinhours burn fee is valid
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (empty, 100,2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_fee_VerifyTransactionFee (empty, 100,2);
+            Assert.AreEqual (err, SKY_OK);
             var txn = transutils.makeEmptyTransaction ();
             var addr = new cipher__Address ();
             addr = transutils.makeAddress ();
             Assert.AreEqual (err, 0);
-            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0, 1000000);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0, 3000000);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (txn, hours);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            Assert.AreEqual (skycoin.skycoin.GoUint64p_value (hours), 4000000);
+            err = SKY_coin_Transaction_PushOutput (txn, addr, 0, 1000000);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_coin_Transaction_PushOutput (txn, addr, 0, 3000000);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_coin_Transaction_OutputHours (txn, hours);
+            Assert.AreEqual (err, SKY_OK);
+            Assert.AreEqual (GoUint64p_value (hours), 4000000);
 
             // A txn with insufficient net coinhours burn fee is invalid
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, 0,2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrTxnNoFee);
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, 1,2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrTxnInsufficientFee);
+            err = SKY_fee_VerifyTransactionFee (txn, 0,2);
+            Assert.AreEqual (err, SKY_ErrTxnNoFee);
+            err = SKY_fee_VerifyTransactionFee (txn, 1,2);
+            Assert.AreEqual (err, SKY_ErrTxnInsufficientFee);
 
             // A txn with sufficient net coinhours burn fee is valid
-            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (txn, hours);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, skycoin.skycoin.GoUint64p_value (hours),2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_coin_Transaction_OutputHours (txn, hours);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, ((ulong) (skycoin.skycoin.GoUint64p_value (hours) * 10)),2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_coin_Transaction_OutputHours (txn, hours);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_fee_VerifyTransactionFee (txn, GoUint64p_value (hours),2);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_coin_Transaction_OutputHours (txn, hours);
+            Assert.AreEqual (err, SKY_OK);
+            err = SKY_fee_VerifyTransactionFee (txn, ((ulong) (GoUint64p_value (hours) * 10)),2);
+            Assert.AreEqual (err, SKY_OK);
 
             // fee + hours overflows
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, ((ulong.MaxValue - 3000000)),2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+            err = SKY_fee_VerifyTransactionFee (txn, ((ulong.MaxValue - 3000000)),2);
+            Assert.AreEqual (err, SKY_ERROR);
 
             // txn has overflowing output hours
-            err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0,
+            err = SKY_coin_Transaction_PushOutput (txn, addr, 0,
                 (ulong.MaxValue - 1000000 - 3000000 + 1));
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK, "txn has overflowing output hours");
-            err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, 10,2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR, "SKY_fee_VerifyTransactionFee failed");
+            Assert.AreEqual (err, SKY_OK, "txn has overflowing output hours");
+            err = SKY_fee_VerifyTransactionFee (txn, 10,2);
+            Assert.AreEqual (err, SKY_ERROR, "SKY_fee_VerifyTransactionFee failed");
 
             int len = burnFactor2verifyTxFeeTestCase.Length;
             for (int i = 0; i < len; i++) {
-                txn = skycoin.skycoin.new_Transaction__Handlep ();
+                txn = new_Transaction__Handlep ();
                 txn = transutils.makeEmptyTransaction ();
                 verifyTxFeeTestCase tc = burnFactor2verifyTxFeeTestCase[i];
-                err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (txn, addr, 0, tc.ouputHours);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                err = SKY_coin_Transaction_PushOutput (txn, addr, 0, tc.ouputHours);
+                Assert.AreEqual (err, SKY_OK);
                 Assert.IsTrue (tc.inputHours >= tc.ouputHours);
-                err = skycoin.skycoin.SKY_fee_VerifyTransactionFee (txn, (ulong) (tc.inputHours - tc.ouputHours),2);
+                err = SKY_fee_VerifyTransactionFee (txn, (ulong) (tc.inputHours - tc.ouputHours),2);
                 Assert.AreEqual (tc.err, err, "Iter " + i.ToString () + " is " + tc.err.ToString () + " != " + err.ToString ());;
             }
         }
@@ -237,14 +237,14 @@ namespace LibskycoinNetTest {
 
             for (int i = 0; i < cases.Length; i++) {
                 var tc = cases[i];
-                var fee = skycoin.skycoin.new_GoUint64p ();
-                var err = skycoin.skycoin.SKY_fee_RequiredFee (tc.hours,2, fee);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                Assert.AreEqual (tc.fee, skycoin.skycoin.GoUint64p_value (fee));
-                var remainingHours = skycoin.skycoin.new_GoUint64p ();
-                err = skycoin.skycoin.SKY_fee_RemainingHours (tc.hours,2, remainingHours);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                Assert.AreEqual (tc.hours - skycoin.skycoin.GoUint64p_value (fee), skycoin.skycoin.GoUint64p_value (remainingHours));
+                var fee = new_GoUint64p ();
+                var err = SKY_fee_RequiredFee (tc.hours,2, fee);
+                Assert.AreEqual (err, SKY_OK);
+                Assert.AreEqual (tc.fee, GoUint64p_value (fee));
+                var remainingHours = new_GoUint64p ();
+                err = SKY_fee_RemainingHours (tc.hours,2, remainingHours);
+                Assert.AreEqual (err, SKY_OK);
+                Assert.AreEqual (tc.hours - GoUint64p_value (fee), GoUint64p_value (remainingHours));
             }
         }
 
@@ -309,7 +309,7 @@ namespace LibskycoinNetTest {
             ListCases[2] = cases;
 
             cases = new StrTest ();
-            cases.err = skycoin.skycoin.SKY_ErrTxnInsufficientCoinHours;
+            cases.err = SKY_ErrTxnInsufficientCoinHours;
             cases.outs = new ulong[3];
             cases.outs[0] = 5;
             cases.outs[1] = 10;
@@ -325,7 +325,7 @@ namespace LibskycoinNetTest {
             ListCases[3] = cases;
 
             cases = new StrTest ();
-            cases.err = skycoin.skycoin.SKY_ErrAddEarnedCoinHoursAdditionOverflow;
+            cases.err = SKY_ErrAddEarnedCoinHoursAdditionOverflow;
             cases.outs = new ulong[1];
             cases.outs[0] = 0;
             cases.ins = new uxInput[2];
@@ -339,7 +339,7 @@ namespace LibskycoinNetTest {
             ListCases[4] = cases;
 
             cases = new StrTest ();
-            cases.err = skycoin.skycoin.SKY_ERROR;
+            cases.err = SKY_ERROR;
             cases.outs = new ulong[3];
             cases.outs[0] = 0;
             cases.outs[1] = 10;
@@ -364,8 +364,8 @@ namespace LibskycoinNetTest {
                 var tx = transutils.makeEmptyTransaction ();
                 for (int j = 0; j < tc.outs.Length; j++) {
                     var h = tc.outs[j];
-                    var err1 = skycoin.skycoin.SKY_coin_Transaction_PushOutput (tx, addr, (ulong) 0, (ulong) h);
-                    Assert.AreEqual (err1, skycoin.skycoin.SKY_OK);
+                    var err1 = SKY_coin_Transaction_PushOutput (tx, addr, (ulong) 0, (ulong) h);
+                    Assert.AreEqual (err1, SKY_OK);
                 }
                 var inUxs = transutils.makeUxOutArray (tc.ins.Length);
                 Assert.AreEqual (inUxs.count, tc.ins.Length);
@@ -377,10 +377,10 @@ namespace LibskycoinNetTest {
                     ux.Body.Hours = b.hours;
                     inUxs.setAt (j, ux);
                 }
-                var fee = skycoin.skycoin.new_GoUint64p ();
-                var err = skycoin.skycoin.SKY_fee_TransactionFee (tx, tc.headTime, inUxs, fee);
+                var fee = new_GoUint64p ();
+                var err = SKY_fee_TransactionFee (tx, tc.headTime, inUxs, fee);
                 Assert.AreEqual (err, tc.err);
-                var fee_v = skycoin.skycoin.GoUint64p_value (fee);
+                var fee_v = GoUint64p_value (fee);
                 Assert.AreEqual (fee_v, tc.fee);
             }
         }

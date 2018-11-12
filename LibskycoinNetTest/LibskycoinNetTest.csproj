@@ -50,6 +50,7 @@
     <Compile Include="check_coin_block.cs" />
     <Compile Include="check_util_fee.cs" />
     <Compile Include="check_util_droplet.cs" />
+    <!-- <Compile Include="check_util_param_distributions.cs" /> -->
     
  
     

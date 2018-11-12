@@ -3,33 +3,33 @@ using NUnit.Framework;
 using skycoin;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_cipher_hash {
+    public class check_cipher_hash : skycoin.skycoin {
         public void freshSumRipemd160 (skycoin.GoSlice bytes, cipher_Ripemd160 rp160) {
-            skycoin.skycoin.SKY_cipher_HashRipemd160 (bytes, rp160);
+            SKY_cipher_HashRipemd160 (bytes, rp160);
         }
 
         void freshSumSHA256 (GoSlice bytes, cipher_SHA256 sha256) {
-            skycoin.skycoin.SKY_cipher_SumSHA256 (bytes, sha256);
+            SKY_cipher_SumSHA256 (bytes, sha256);
         }
 
         [Test]
         public void TestHashRipemd160 () {
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (128, b);
+            var err = SKY_cipher_RandByte (128, b);
             var hr = new cipher_Ripemd160 ();
-            err = skycoin.skycoin.SKY_cipher_HashRipemd160 (b, hr);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_HashRipemd160 (b, hr);
+            Assert.AreEqual (err, SKY_OK);
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (160, b);
+            err = SKY_cipher_RandByte (160, b);
             var r = new cipher_Ripemd160 ();
-            err = skycoin.skycoin.SKY_cipher_HashRipemd160 (b, r);
+            err = SKY_cipher_HashRipemd160 (b, r);
             Assert.AreEqual (r.isEqual (new cipher_Ripemd160 ()), 0);
             // 2nd hash should not be affected by previous
             b = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            err = SKY_cipher_RandByte (256, b);
             var r2 = new cipher_Ripemd160 ();
-            err = skycoin.skycoin.SKY_cipher_HashRipemd160 (b, r2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_HashRipemd160 (b, r2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (r2.isEqual (new cipher_Ripemd160 ()), 0);
             var r3 = new cipher_Ripemd160 ();
             freshSumRipemd160 (b, r3);
@@ -40,79 +40,79 @@ namespace LibskycoinNetTest {
         public void TestRipemd160Set () {
             var h = new cipher_Ripemd160 ();
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (21, b);
-            err = skycoin.skycoin.SKY_cipher_Ripemd160_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthRipemd160);
+            var err = SKY_cipher_RandByte (21, b);
+            err = SKY_cipher_Ripemd160_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthRipemd160);
             b = new GoSlice ();
             h = new cipher_Ripemd160 ();
-            skycoin.skycoin.SKY_cipher_RandByte (100, b);
-            err = skycoin.skycoin.SKY_cipher_Ripemd160_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthRipemd160);
+            SKY_cipher_RandByte (100, b);
+            err = SKY_cipher_Ripemd160_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthRipemd160);
 
             b = new GoSlice ();
             h = new cipher_Ripemd160 ();
-            skycoin.skycoin.SKY_cipher_RandByte (19, b);
-            err = skycoin.skycoin.SKY_cipher_Ripemd160_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthRipemd160);
+            SKY_cipher_RandByte (19, b);
+            err = SKY_cipher_Ripemd160_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthRipemd160);
 
             b = new GoSlice ();
             h = new cipher_Ripemd160 ();
-            skycoin.skycoin.SKY_cipher_RandByte (0, b);
-            err = skycoin.skycoin.SKY_cipher_Ripemd160_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthRipemd160);
+            SKY_cipher_RandByte (0, b);
+            err = SKY_cipher_Ripemd160_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthRipemd160);
 
             b = new GoSlice ();
             h = new cipher_Ripemd160 ();
-            skycoin.skycoin.SKY_cipher_RandByte (20, b);
-            err = skycoin.skycoin.SKY_cipher_Ripemd160_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            SKY_cipher_RandByte (20, b);
+            err = SKY_cipher_Ripemd160_Set (h, b);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
         public void TestSHA256Set () {
             var h = new cipher_SHA256 ();
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (33, b);
-            err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSHA256);
+            var err = SKY_cipher_RandByte (33, b);
+            err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSHA256);
             h = new cipher_SHA256 ();
             b = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (100, b);
-            err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSHA256);
+            SKY_cipher_RandByte (100, b);
+            err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSHA256);
             h = new cipher_SHA256 ();
             b = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (31, b);
-            err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSHA256);
+            SKY_cipher_RandByte (31, b);
+            err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSHA256);
             h = new cipher_SHA256 ();
             b = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (0, b);
-            err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_ErrInvalidLengthSHA256);
+            SKY_cipher_RandByte (0, b);
+            err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_ErrInvalidLengthSHA256);
             h = new cipher_SHA256 ();
             b = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (32, b);
-            err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            SKY_cipher_RandByte (32, b);
+            err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_OK);
         }
 
         [Test]
         public void TestSHA256Hex () {
             var h = new cipher_SHA256 ();
             var b = new GoSlice ();
-            skycoin.skycoin.SKY_cipher_RandByte (32, b);
-            var err = skycoin.skycoin.SKY_cipher_SHA256_Set (h, b);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            SKY_cipher_RandByte (32, b);
+            var err = SKY_cipher_SHA256_Set (h, b);
+            Assert.AreEqual (err, SKY_OK);
             var s = new _GoString_ ();
-            err = skycoin.skycoin.SKY_cipher_SHA256_Hex (h, s);
+            err = SKY_cipher_SHA256_Hex (h, s);
             var h2 = new cipher_SHA256 ();
-            err = skycoin.skycoin.SKY_cipher_SHA256FromHex (s.p, h2);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_SHA256FromHex (s.p, h2);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (h.isEqual (h2), 1);
             var s1 = new _GoString_ ();
-            err = skycoin.skycoin.SKY_cipher_SHA256_Hex (h, s1);
-            Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+            err = SKY_cipher_SHA256_Hex (h, s1);
+            Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (s1.p == s.p, true);
         }
 
@@ -143,10 +143,10 @@ namespace LibskycoinNetTest {
                 var output = new _GoString_ ();
                 input.p = io.input;
                 b.convertString (input);
-                var err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-                err = skycoin.skycoin.SKY_cipher_SHA256_Hex (h, output);
-                Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_cipher_SumSHA256 (b, h);
+                Assert.AreEqual (err, SKY_OK);
+                err = SKY_cipher_SHA256_Hex (h, output);
+                Assert.AreEqual (err, SKY_OK);
                 Assert.AreEqual (output.p == io.output, true);
             }
         }
@@ -154,15 +154,15 @@ namespace LibskycoinNetTest {
         [Test]
         public void TestSumSHA256 () {
             var b = new GoSlice ();
-            var err = skycoin.skycoin.SKY_cipher_RandByte (256, b);
+            var err = SKY_cipher_RandByte (256, b);
             var h1 = new cipher_SHA256 ();
-            err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h1);
+            err = SKY_cipher_SumSHA256 (b, h1);
             Assert.AreEqual (h1.isEqual (new cipher_SHA256 ()), 0);
             // A second call to Sum should not be influenced by the original
             var c = new GoSlice ();
-            err = skycoin.skycoin.SKY_cipher_RandByte (256, c);
+            err = SKY_cipher_RandByte (256, c);
             var h2 = new cipher_SHA256 ();
-            err = skycoin.skycoin.SKY_cipher_SumSHA256 (c, h2);
+            err = SKY_cipher_SumSHA256 (c, h2);
             Assert.AreEqual (h2.isEqual (new cipher_SHA256 ()), 0);
             var h3 = new cipher_SHA256 ();
             freshSumSHA256 (c, h3);
@@ -173,15 +173,15 @@ namespace LibskycoinNetTest {
         // public void TestSHA256FromHex () {
         //     // Invalid hex hash
         //     var h = new cipher_SHA256 ();
-        //     var err = skycoin.skycoin.SKY_cipher_SHA256FromHex ("cawcd", h);
-        //     Assert.AreEqual (err, skycoin.skycoin.SKY_ERROR);
+        //     var err = SKY_cipher_SHA256FromHex ("cawcd", h);
+        //     Assert.AreEqual (err, SKY_ERROR);
         //     // Truncated hex hash
         //     var b = new GoSlice ();
-        //     err = skycoin.skycoin.SKY_cipher_RandByte (128, b);
+        //     err = SKY_cipher_RandByte (128, b);
         //     h = new skycoin.cipher_SHA256 ();
-        //     err = skycoin.skycoin.SKY_cipher_SumSHA256 (b, h);
+        //     err = SKY_cipher_SumSHA256 (b, h);
         //     var str = h.getStr ();
-        //     var str1 = skycoin.skycoin.GoStringp_value(str);
+        //     var str1 = GoStringp_value(str);
         //     Console.WriteLine (str1.p);
         // }
     }

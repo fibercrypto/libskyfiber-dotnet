@@ -22,9 +22,23 @@
 		((char *) $self->data)[i] = p;
 	}
 
-void getString(_GoString_ *out){
-	out->p = (char *)$self->data;
-	out->n = strlen((char *)$self->data);
+	void getString(_GoString_ *out){
+		out->p = (char *)$self->data;
+		out->n = strlen((char *)$self->data);
+}
+
+int  getAtString(int index, _GoString_ *out){
+	int i;
+	GoString *iStr ;
+	memset(iStr, 0, sizeof(GoString));
+for (i = 0, iStr = (GoString*) $self->data; i <= index; ++i, ++iStr) {
+	if(i == index){
+		memset(&out, 0, sizeof(_GoString_));
+		memcpy(&out,&iStr,sizeof(_GoString_));
+		return 0;
+		}
+}
+return 1;
 }
 
 }
@@ -33,6 +47,10 @@ void getString(_GoString_ *out){
 	int SetString(char * str){
 		$self->p = str;
 		$self->n = strlen(str);
+	}
+
+	char * getString(){
+		return (const char *)$self->p;
 	}
 }
 

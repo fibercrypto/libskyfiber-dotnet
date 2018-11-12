@@ -4,7 +4,7 @@ using skycoin;
 using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_util_droplet {
+    public class check_util_droplet : skycoin.skycoin {
 
         utils.transutils transutils = new utils.transutils ();
 
@@ -45,7 +45,7 @@ namespace LibskycoinNetTest {
             cas = new TestStr ();
             cas.s = "0.0000001";
             cas.n = 0;
-            cas.e = skycoin.skycoin.SKY_ErrTooManyDecimals;
+            cas.e = SKY_ErrTooManyDecimals;
             cases[5] = cas;
 
             cas = new TestStr ();
@@ -70,7 +70,7 @@ namespace LibskycoinNetTest {
 
             cas = new TestStr ();
             cas.s = "-1";
-            cas.e = skycoin.skycoin.SKY_ErrNegativeValue;
+            cas.e = SKY_ErrNegativeValue;
             cases[10] = cas;
 
             cas = new TestStr ();
@@ -90,17 +90,17 @@ namespace LibskycoinNetTest {
 
             cas = new TestStr ();
             cas.s = "100SKY";
-            cas.e = skycoin.skycoin.SKY_ERROR;
+            cas.e = SKY_ERROR;
             cases[14] = cas;
 
             cas = new TestStr ();
             cas.s = "";
-            cas.e = skycoin.skycoin.SKY_ERROR;
+            cas.e = SKY_ERROR;
             cases[15] = cas;
 
             cas = new TestStr ();
             cas.s = "999999999999999999999999999999999999999999";
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[16] = cas;
 
             cas = new TestStr ();
@@ -110,27 +110,27 @@ namespace LibskycoinNetTest {
 
             cas = new TestStr ();
             cas.s = "-9223372036854.775807";
-            cas.e = skycoin.skycoin.SKY_ErrNegativeValue;
+            cas.e = SKY_ErrNegativeValue;
             cases[18] = cas;
 
             cas = new TestStr ();
             cas.s = "9223372036854775808";
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[19] = cas;
 
             cas = new TestStr ();
             cas.s = "9223372036854775807.000001";
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[20] = cas;
 
             cas = new TestStr ();
             cas.s = "9223372036854775807";
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[21] = cas;
 
             cas = new TestStr ();
             cas.s = "9223372036854775806.000001";
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[22] = cas;
 
             cas = new TestStr ();
@@ -165,7 +165,7 @@ namespace LibskycoinNetTest {
 
             cas = new TestStr ();
             cas.s = "1.0000001";
-            cas.e = skycoin.skycoin.SKY_ErrTooManyDecimals;
+            cas.e = SKY_ErrTooManyDecimals;
             cases[29] = cas;
         }
 
@@ -174,11 +174,11 @@ namespace LibskycoinNetTest {
             FullTestStr ();
             for (int i = 0; i < cases.Length; i++) {
                 var tc = cases[i];
-                var n = skycoin.skycoin.new_GoUint64p ();
-                var err = skycoin.skycoin.SKY_droplet_FromString (tc.s, n);
-                var n_v = skycoin.skycoin.GoUint64p_value (n);
-                if (tc.e == skycoin.skycoin.SKY_OK) {
-                    Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var n = new_GoUint64p ();
+                var err = SKY_droplet_FromString (tc.s, n);
+                var n_v = GoUint64p_value (n);
+                if (tc.e == SKY_OK) {
+                    Assert.AreEqual (err, SKY_OK);
 
                     Assert.AreEqual (tc.n, n_v, "result " + n_v.ToString ());
                 } else {
@@ -232,7 +232,7 @@ namespace LibskycoinNetTest {
 
             cas = new TestStr ();
             cas.n = 9223372036854775808;
-            cas.e = skycoin.skycoin.SKY_ErrTooLarge;
+            cas.e = SKY_ErrTooLarge;
             cases[8] = cas;
         }
 
@@ -242,9 +242,9 @@ namespace LibskycoinNetTest {
             for (int i = 0; i < cases.Length; i++) {
                 var tc = cases[i];
                 var s = new _GoString_ ();
-                var err = skycoin.skycoin.SKY_droplet_ToString (tc.n, s);
-                if (tc.e == skycoin.skycoin.SKY_OK) {
-                    Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
+                var err = SKY_droplet_ToString (tc.n, s);
+                if (tc.e == SKY_OK) {
+                    Assert.AreEqual (err, SKY_OK);
                     Assert.IsTrue (tc.s == s.p, i.ToString ());
                 } else {
                     Assert.AreEqual (tc.e, err);

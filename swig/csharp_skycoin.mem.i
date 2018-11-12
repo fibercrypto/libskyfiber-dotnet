@@ -536,3 +536,10 @@
 		return result;
 	}
 }
+
+// %rename(SKY_params_GetDistributionAddresses) CSharp_skycoin_SKY_params_GetDistributionAddresses;
+// %inline{
+// 	 void CSharp_skycoin_SKY_params_GetDistributionAddresses(coin__UxArray* __return_strings){
+// 		SKY_params_GetDistributionAddresses(__return_strings);
+// 	}
+// }

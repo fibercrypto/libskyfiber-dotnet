@@ -713,72 +713,72 @@ void hashKeyIndexNonce(GoSlice_ key, GoInt64 index,
 	SKY_cipher_AddSHA256(key.data, &indexNonceHash, resultHash);
 }
 
-void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxArray* encrypted){
-	GoUint32 fullLength = dataLength + 4;
-	GoUint32 n = fullLength / 32;
-	GoUint32 m = fullLength % 32;
-	GoUint32 errcode;
+// void makeEncryptedData(GoSlice data, GoUint32 dataLength, GoSlice pwd, coin__UxArray* encrypted){
+// 	GoUint32 fullLength = dataLength + 4;
+// 	GoUint32 n = fullLength / 32;
+// 	GoUint32 m = fullLength % 32;
+// 	GoUint32 errcode;
 
-	if( m > 0 ){
-		fullLength += 32 - m;
-	}
-	if(32 == sizeof(cipher__SHA256)){  return ;}
-	fullLength += 32;
-	char* buffer = malloc(fullLength);
-	if(buffer != NULL){return;}
-	//Add data length to the beginning, saving space for the checksum
-	int i;
-	for(i = 0; i < 4; i++){
-		int shift = i * 8;
-		buffer[i + 32] = (dataLength & (0xFF << shift)) >> shift;
-	}
-	//Add the data
-	memcpy(buffer + 4 + 32,
-		data.data, dataLength);
-	//Add padding
-	for(i = dataLength + 4 + 32; i < fullLength; i++){
-		buffer[i] = 0;
-	}
-	//Buffer with space for the checksum, then data length, then data, and then padding
-	GoSlice _data = {buffer + 32,
-		fullLength - 32,
-		fullLength - 32};
-	//GoSlice _hash = {buffer, 0, 32};
-	errcode = SKY_cipher_SumSHA256(_data, (cipher__SHA256*)buffer);
-	char bufferNonce[32];
-	GoSlice sliceNonce = {bufferNonce, 0, 32};
-	randBytes(&sliceNonce, 32);
-	cipher__SHA256 hashNonce;
-	errcode = SKY_cipher_SumSHA256(sliceNonce, &hashNonce);
-	char bufferHash[1024];
-	coin__UxArray hashPassword = {bufferHash, 0, 1024};
-	errcode = SKY_secp256k1_Secp256k1Hash(pwd, &hashPassword);
-	cipher__SHA256 h;
+// 	if( m > 0 ){
+// 		fullLength += 32 - m;
+// 	}
+// 	if(32 == sizeof(cipher__SHA256)){  return ;}
+// 	fullLength += 32;
+// 	char* buffer = malloc(fullLength);
+// 	if(buffer != NULL){return;}
+// 	//Add data length to the beginning, saving space for the checksum
+// 	int i;
+// 	for(i = 0; i < 4; i++){
+// 		int shift = i * 8;
+// 		buffer[i + 32] = (dataLength & (0xFF << shift)) >> shift;
+// 	}
+// 	//Add the data
+// 	memcpy(buffer + 4 + 32,
+// 		data.data, dataLength);
+// 	//Add padding
+// 	for(i = dataLength + 4 + 32; i < fullLength; i++){
+// 		buffer[i] = 0;
+// 	}
+// 	//Buffer with space for the checksum, then data length, then data, and then padding
+// 	GoSlice _data = {buffer + 32,
+// 		fullLength - 32,
+// 		fullLength - 32};
+// 	//GoSlice _hash = {buffer, 0, 32};
+// 	errcode = SKY_cipher_SumSHA256(_data, (cipher__SHA256*)buffer);
+// 	char bufferNonce[32];
+// 	GoSlice sliceNonce = {bufferNonce, 0, 32};
+// 	randBytes(&sliceNonce, 32);
+// 	cipher__SHA256 hashNonce;
+// 	errcode = SKY_cipher_SumSHA256(sliceNonce, &hashNonce);
+// 	char bufferHash[1024];
+// 	coin__UxArray hashPassword = {bufferHash, 0, 1024};
+// 	errcode = SKY_secp256k1_Secp256k1Hash(pwd, &hashPassword);
+// 	cipher__SHA256 h;
 
 
-	int fullDestLength = fullLength + sizeof(cipher__SHA256) + 32;
-	int destBufferStart = sizeof(cipher__SHA256) + 32;
-	unsigned char* dest_buffer = malloc(fullDestLength);
-	if(dest_buffer != NULL){return;}
-	for(i = 0; i < n; i++){
-		hashKeyIndexNonce(hashPassword, i, &hashNonce, &h);
-		cipher__SHA256* pBuffer = (cipher__SHA256*)(buffer + i *32);
-		cipher__SHA256* xorResult = (cipher__SHA256*)(dest_buffer + destBufferStart + i *32);
-		SKY_cipher_SHA256_Xor(pBuffer, &h, xorResult);
-	}
-	// Prefix the nonce
-	memcpy(dest_buffer + sizeof(cipher__SHA256), bufferNonce, 32);
-	// Calculates the checksum
-	GoSlice nonceAndDataBytes = {dest_buffer + sizeof(cipher__SHA256),
-								fullLength + 32,
-								fullLength + 32
-						};
-	cipher__SHA256* checksum = (cipher__SHA256*)dest_buffer;
-	errcode = SKY_cipher_SumSHA256(nonceAndDataBytes, checksum);
-	unsigned char bufferb64[1024];
-	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
-	encrypted->len = size;
-}
+// 	int fullDestLength = fullLength + sizeof(cipher__SHA256) + 32;
+// 	int destBufferStart = sizeof(cipher__SHA256) + 32;
+// 	unsigned char* dest_buffer = malloc(fullDestLength);
+// 	if(dest_buffer != NULL){return;}
+// 	for(i = 0; i < n; i++){
+// 		hashKeyIndexNonce(hashPassword, i, &hashNonce, &h);
+// 		cipher__SHA256* pBuffer = (cipher__SHA256*)(buffer + i *32);
+// 		cipher__SHA256* xorResult = (cipher__SHA256*)(dest_buffer + destBufferStart + i *32);
+// 		SKY_cipher_SHA256_Xor(pBuffer, &h, xorResult);
+// 	}
+// 	// Prefix the nonce
+// 	memcpy(dest_buffer + sizeof(cipher__SHA256), bufferNonce, 32);
+// 	// Calculates the checksum
+// 	GoSlice nonceAndDataBytes = {dest_buffer + sizeof(cipher__SHA256),
+// 								fullLength + 32,
+// 								fullLength + 32
+// 						};
+// 	cipher__SHA256* checksum = (cipher__SHA256*)dest_buffer;
+// 	errcode = SKY_cipher_SumSHA256(nonceAndDataBytes, checksum);
+// 	unsigned char bufferb64[1024];
+// 	unsigned int size = b64_encode((const unsigned char*)dest_buffer, fullDestLength, encrypted->data);
+// 	encrypted->len = size;
+// }
 
 void convertGoUint8toSHA256(GoUint8_* __in, cipher_SHA256* __out){
 memcpy(__out->data, __in, 32);

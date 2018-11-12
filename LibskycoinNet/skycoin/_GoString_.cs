@@ -45,6 +45,11 @@ public class _GoString_ : global::System.IDisposable {
     return ret;
   }
 
+  public string getString() {
+    string ret = skycoinPINVOKE._GoString__getString(swigCPtr);
+    return ret;
+  }
+
   public string p {
     set {
       skycoinPINVOKE.set__GoString__p(swigCPtr, value);
