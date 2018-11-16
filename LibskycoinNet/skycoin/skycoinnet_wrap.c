@@ -9997,6 +9997,20 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Int64ToUint64(long l
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_IntToUint32(long long jarg1, void * jarg2) {
+  unsigned int jresult ;
+  GoInt arg1 ;
+  GoUint32 *arg2 = (GoUint32 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (GoInt)jarg1; 
+  arg2 = (GoUint32 *)jarg2; 
+  result = (GoUint32)SKY_coin_IntToUint32(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cipher_RandByte(long long jarg1, GoSlice_ * jarg2) {
   unsigned int jresult ;
   GoInt arg1 ;

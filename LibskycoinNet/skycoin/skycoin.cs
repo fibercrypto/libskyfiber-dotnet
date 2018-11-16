@@ -2261,6 +2261,11 @@ var tmpp1 = _GoString_.getCPtr (p1);
     return ret;
   }
 
+  public static uint SKY_coin_IntToUint32(long p0, SWIGTYPE_p_unsigned_int p1) {
+    uint ret = skycoinPINVOKE.SKY_coin_IntToUint32(p0, SWIGTYPE_p_unsigned_int.getCPtr(p1));
+    return ret;
+  }
+
   public static uint SKY_cipher_RandByte(long p0, GoSlice p1) {
     uint ret = skycoinPINVOKE.SKY_cipher_RandByte(p0, GoSlice.getCPtr (p1));
     return ret;

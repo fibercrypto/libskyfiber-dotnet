@@ -776,6 +776,8 @@ extern GoUint32 SKY_coin_Uint64ToInt64(GoUint64 p0, GoInt64* p1);
 
 extern GoUint32 SKY_coin_Int64ToUint64(GoInt64 p0, GoUint64* p1);
 
+extern GoUint32 SKY_coin_IntToUint32(GoInt p0, GoUint32* p1);
+
 extern GoUint32 SKY_cipher_RandByte(GoInt p0, coin__UxArray* p1);
 
 extern GoUint32 SKY_cipher_NewPubKey(GoSlice p0, cipher__PubKey* p1);

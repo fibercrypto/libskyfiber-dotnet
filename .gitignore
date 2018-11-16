@@ -254,3 +254,6 @@ paket-files/
 .idea/
 *.sln.iml
 testrunner/
+
+# VSCODE
+.angulardoc.json

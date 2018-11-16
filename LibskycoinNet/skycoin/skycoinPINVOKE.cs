@@ -1706,6 +1706,9 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Int64ToUint64")]
   public static extern uint SKY_coin_Int64ToUint64(long jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_IntToUint32")]
+  public static extern uint SKY_coin_IntToUint32(long jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_cipher_RandByte")]
   public static extern uint SKY_cipher_RandByte(long jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
