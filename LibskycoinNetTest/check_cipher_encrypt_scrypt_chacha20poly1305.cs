@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
+git using NUnit.Framework;
 using skycoin;
 using utils;
 namespace LibskycoinNetTest {
