@@ -1,8 +1,7 @@
 ﻿using System;
-using System.IO;
-git using NUnit.Framework;
+using NUnit.Framework;
 using skycoin;
-using utils;
+using  utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_cipher_encrypt_scrypt_chacha20poly1305 : skycoin.skycoin {
