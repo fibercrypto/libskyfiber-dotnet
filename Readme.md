@@ -8,6 +8,7 @@ A .Net extension generated with SWIG to access Skycoin API from .Net.
 ## Table of Contents
 
 <!-- MarkdownTOC levels="1,2,3,4,5" autolink="true" bracket="round" -->
+
 - [Installation](#installation)
 - [Using the API](#usage)
   - [Naming](#naming)
@@ -20,17 +21,19 @@ A .Net extension generated with SWIG to access Skycoin API from .Net.
     - [Memory Managemanet](#memory-management)
 - [Make rules](#make-rules)
 - [Development setup](#development-setup)
-<!-- /MarkdownTOC -->
+  <!-- /MarkdownTOC -->
 
 ## Installation
 
-Download the repository from http://github.com/simelo/libskycoin-dotnet.git. 
+Download the repository from http://github.com/simelo/libskycoin-dotnet.git.
 Execute (`nuget restore LibskycoinNet.sln`) to install the library. Although executing (`nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner`) is a better choice for making changes to the library. However, when using tox these commands are not required at all because calling tox will make any necessary installation and execute the tests.
 
 ## Usage
+
 ### Naming
 
 The exported function in Libskycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
+
 ### Parameters
 
 All skycoin exported functions return an error object as the last of the return parameters. In .NET error is return as an `uint` and it is the first return parameter. The rest of the parameters are returned in the same order.
@@ -46,30 +49,34 @@ Some of Skycoin types are too complex to be exported to a scripting language. So
 	func (c Config) FullWalletPath() string
 ```
 
-
 Config is a struct type that is treated as a handle in Libskycoin .Net . The usage in .Net will be:
 
 ```csharp
 
 using skycoin;
-	
-public function main(){
-    var configHandle = skycoin.skycoin.new_Config_HandlePtr();
-	var err = skycoin.skycoin.SKY_cli_LoadConfig(configHandle);
-    if(err == skycoin.skycoin.SKY_OK) //0 then no error
+namespace LibskycoinNet
+{
+    public class Skycoin : skycoin.skycoin
     {
-        var fullWalletPath = new _GoString()_;
-	    err = skycoin.SKY_cli_FullWalletPath(configHandle,fullWallerPath);
-        Assert.AreEqual(err,skycoin.skycoin.SKY_OK);
-	    Console.WriteLine(fullWallerPath.p);
-	//Close the handle after using the it
-	//so the garbage collector can delete the object associated with  it. 
-	skycoin.skycoin.SKY_handle_close( configHandle );
-    }
-	else{
-		#Error
-		Console.WriteLine(err);
-    }
+		public function main(){
+			var configHandle = new_Config_HandlePtr();
+			var err = SKY_cli_LoadConfig(configHandle);
+			if(err == SKY_OK) //0 then no error
+			{
+				var fullWalletPath = new _GoString()_;
+				err =SKY_cli_FullWalletPath(configHandle,fullWallerPath);
+				Assert.AreEqual(err,SKY_OK);
+				Console.WriteLine(fullWallerPath.p);
+			//Close the handle after using the it
+			//so the garbage collector can delete the object associated with  it.
+			SKY_handle_close( configHandle );
+			}
+			else{
+				#Error
+				Console.WriteLine(err);
+			}
+		}
+	}
 }
 ```
 
@@ -94,8 +101,8 @@ data.convertString(dataStr);
 pwdStr.SetString("password");
 pwd.convertString(pwdStr);
 var encrypted = new GoSlice();
-var err = skycoin.skycoin.SKY_encrypt_ScryptChacha20poly1305_Encrypt(encrypt_settings, data, pwd,encrypted);
-if(err == skycoin.skycoin.SKY_OK){
+var err = SKY_encrypt_ScryptChacha20poly1305_Encrypt(encrypt_settings, data, pwd,encrypted);
+if(err == SKY_OK){
 
 Console.WriteLine(encrypted.getString().p); //Encrypted is GoSlice
 }
@@ -127,17 +134,17 @@ And this exported function:
 ```go
 	func GenerateDeterministicKeyPair(seed []byte) (PubKey, SecKey)
 ```
-	
+
 This is how it is used in .NET:
 
 ```csharp
 //Generates random seed
 var data = new GoSlice();
-var err = skycoin.skycoin.SKY_cipher_RandByte(32,data);
-Assert.AreEqual(err,skycoin.skycoin.SKY_OK);
+var err = SKY_cipher_RandByte(32,data);
+Assert.AreEqual(err,SKY_OK);
 var pubkey = new cipher_PubKey();
 var seckey = new cipher_SecKey();
-err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPair(data, pubkey, seckey);
+err = SKY_cipher_GenerateDeterministicKeyPair(data, pubkey,seckey);
 ```
 
 pubkey and seckey are objects of type structure containing a field name data for the corresponding type of PubKey and SecKey. Something like:
@@ -159,22 +166,22 @@ Other slices of type different than byte were wrapped inside classes. Calling th
 ```go
 func GenerateDeterministicKeyPairs(seed []byte, n int) []SecKey
 ```
-	
+
 Would be like:
 
 ```csharp
 //Generates random seed
 var seed = new GoSlice();
-var err = skycoin.SKY_cipher_RandByte(32,seed);
+var err = SKY_cipher_RandByte(32,seed);
 var seckeys = new cipher__SecKeys();
-err = skycoin.SKY_cipher_GenerateDeterministicKeyPairs(seed, 2,seckeys);
+err = SKY_cipher_GenerateDeterministicKeyPairs(seed, 2,seckeys);
 for(int i=0;i<seckeys.count,i++){
 	var pubkey = new cipher_PubKey();
     var seckey = new cipher_SecKey();
     seckeys.getAt(seckey,i);
-	skycoin.skycoin.SKY_cipher_PubKeyFromSecKey(seckey, pubkey);
-	err = skycoin.skycoin.SKY_cipher_PubKey_Verify(pubkey);
-	Assert.AreEqual(err,skycoin.skycoin.SKY_OK);
+	SKY_cipher_PubKeyFromSecKey(seckey, pubkey);
+	err = SKY_cipher_PubKey_Verify(pubkey);
+	Assert.AreEqual(err,SKY_OK);
 }
 ```
 
@@ -187,6 +194,6 @@ Memory management is transparent to the user. Any object allocated inside the li
 All these make rules require skycoin to be a git submodule of libskycoin .NET
 
 - build-libc
-  * Compiles skycoin C language library.
+  - Compiles skycoin C language library.
 - build-swig
-  * Creates the wrapper C code to generate the Python library.
+  - Creates the wrapper C code to generate the .NET library.
