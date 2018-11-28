@@ -12,8 +12,9 @@
     <PackOnBuild>true</PackOnBuild>
     <PackageId>LibskycoinNet</PackageId>
     <PackageVersion>0.0.1</PackageVersion>
-    <Authors>stdevHan</Authors>
-    <Description>This library  .NET</Description>
+    <Company>Skycoin</Company>
+    <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin Team (skycoin)</Authors>
+    <Description>Skycoin client library for .NET</Description>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Skycoin</Owners>
     <DelaySign>true</DelaySign>
@@ -46,5 +47,5 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.1.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.0\build\NuGet.Build.Packaging.targets')" />
 </Project>
