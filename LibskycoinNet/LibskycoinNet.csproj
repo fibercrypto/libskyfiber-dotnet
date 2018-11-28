@@ -20,7 +20,7 @@
     <Description>Skycoin client library for .NET</Description>
     <Product>Skycoin client library for .NET</Product>
     <PackageProjectUrl>https://github.com/simelo/libskycoin-dotnet</PackageProjectUrl>
-    <PackageIconUrl>https://avatars3.githubusercontent.com/u/29321691?s=200&v=4</PackageIconUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/29321691?s=200&amp;v=4</PackageIconUrl>
     <RepositoryUrl>https://github.com/simelo/libskycoin-dotnet</RepositoryUrl>
     <RepositoryType />
     <PackageTags>skycoin;client-library;rest-client;restapi;rest-api;swagger;openapi;swig;dotnet;dotnet-library;csharp;csharp-library;pinvoke;pinvoke-wrapper;vbnet;dotnet-assembly</PackageTags>
