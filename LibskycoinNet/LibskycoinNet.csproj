@@ -11,10 +11,19 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>LibskycoinNet</PackageId>
-    <PackageVersion>0.0.1</PackageVersion>
+    <Version Condition=" '$(PackageVersion)' == '' ">0.1.0-local</Version>
+    <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
+    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.1.0-local</PackageVersion>
+    <PackageVersion Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</PackageVersion>
     <Company>Skycoin</Company>
-    <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin Team (skycoin)</Authors>
+    <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin (skycoin)</Authors>
     <Description>Skycoin client library for .NET</Description>
+    <Product>Skycoin client library for .NET</Product>
+    <PackageProjectUrl>https://github.com/simelo/libskycoin-dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/29321691?s=200&v=4</PackageIconUrl>
+    <RepositoryUrl>https://github.com/simelo/libskycoin-dotnet</RepositoryUrl>
+    <RepositoryType />
+    <PackageTags>skycoin;client-library;rest-client;restapi;rest-api;swagger;openapi;swig;dotnet;dotnet-library;csharp;csharp-library;pinvoke;pinvoke-wrapper;vbnet;dotnet-assembly</PackageTags>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Skycoin</Owners>
     <DelaySign>true</DelaySign>
