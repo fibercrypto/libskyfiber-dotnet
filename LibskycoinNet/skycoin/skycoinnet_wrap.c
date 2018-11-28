@@ -2307,11 +2307,6 @@ memset(&h, 0, sizeof(cipher__SHA256));
 SWIGINTERN int coin__Transaction_isEqual(coin__Transaction *self,coin__Transaction *t){
 		return equalTransactions(self, t);
 	}
-SWIGINTERN cipher_SHA256 coin__Transaction_getInnerHash(coin__Transaction *self){
-		cipher_SHA256 h;
-		cipher_SHA256_assignFrom(&h,self->InnerHash);
-		return h;
-	}
 SWIGINTERN int coin__TransactionOutput_isEqual(coin__TransactionOutput *self,coin__TransactionOutput *t){
 		if( self->Coins != t->Coins ||
 			self->Hours != t->Hours ){
@@ -14877,22 +14872,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_coin__Transaction_isEqual(void * jarg1
   arg2 = (coin__Transaction *)jarg2; 
   result = (int)coin__Transaction_isEqual(arg1,arg2);
   jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__Transaction_getInnerHash(void * jarg1) {
-  void * jresult ;
-  coin__Transaction *arg1 = (coin__Transaction *) 0 ;
-  cipher_SHA256 result;
-  
-  arg1 = (coin__Transaction *)jarg1; 
-  result = coin__Transaction_getInnerHash(arg1);
-  {
-    cipher_SHA256 * resultptr = (cipher_SHA256 *) malloc(sizeof(cipher_SHA256));
-    memmove(resultptr, &result, sizeof(cipher_SHA256));
-    jresult = resultptr;
-  }
   return jresult;
 }
 

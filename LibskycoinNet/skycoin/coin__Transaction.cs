@@ -56,11 +56,6 @@ public class coin__Transaction : global::System.IDisposable {
     return ret;
   }
 
-  public cipher_SHA256 getInnerHash() {
-    cipher_SHA256 ret = new cipher_SHA256(skycoinPINVOKE.coin__Transaction_getInnerHash(swigCPtr), true);
-    return ret;
-  }
-
   public int Length {
     set {
       skycoinPINVOKE.set_coin__Transaction_Length(swigCPtr, value);

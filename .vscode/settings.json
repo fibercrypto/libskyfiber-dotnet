@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "transutil.h": "c",
-        "base64.h": "c"
-    }
-}
