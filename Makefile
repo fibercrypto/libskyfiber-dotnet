@@ -57,10 +57,10 @@ install:
 	nuget restore LibskycoinNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
-test: install
-	make build-libc
-	make build-swig
+build: install build-libc build-swig
 	msbuild /p:Configuration=Release LibskycoinNet.sln
 	msbuild /p:Configuration=Debug LibskycoinNet.sln
 	make build-libskycoin-net
+
+test: build
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
