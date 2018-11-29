@@ -46,7 +46,7 @@ build-swig:
 	rm -f swig/include/swig.h
 	rm -f LibskycoinNet/skycoin/skycoinnet_wrap.c
 	cp -v gopath/src/github.com/skycoin/skycoin/include/swig.h swig/include/
-	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/skycoin.i
+	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net:
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
