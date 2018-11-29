@@ -27,20 +27,22 @@
 		out->n = strlen((char *)$self->data);
 }
 
-int  getAtString(int index, _GoString_ *out){
+int getAtString(int index, _GoString_ *outs )
+{
 	int i;
-	GoString *iStr ;
-	memset(iStr, 0, sizeof(GoString));
-for (i = 0, iStr = (GoString*) $self->data; i <= index; ++i, ++iStr) {
-	if(i == index){
-		memset(&out, 0, sizeof(_GoString_));
-		memcpy(&out,&iStr,sizeof(_GoString_));
-		return 0;
+	_GoString_ *iStr;
+	char *out;
+	for (i = 0, iStr = (_GoString_ *)$self->data; i < $self->len; ++i, ++iStr)
+	{
+		if (index == i)
+		{
+			out = _GoString__getString(iStr);
+			_GoString__SetString(outs,out);
+			return 0;
 		}
+	}
+	return 1;
 }
-return 1;
-}
-
 }
 
 %extend _GoString_ {
@@ -52,6 +54,12 @@ return 1;
 	char * getString(){
 		return (const char *)$self->p;
 	}
+
+	int isEqual( _GoString_ *string2)
+{
+  return ($self->n == string2->n) &&
+         (strcmp((char *)$self->p, (char *)string2->p) == 0);
+}
 }
 
 %extend cipher_SHA256 {

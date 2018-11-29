@@ -1196,6 +1196,9 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin__GoString__getString")]
   public static extern string _GoString__getString(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin__GoString__isEqual")]
+  public static extern int _GoString__isEqual(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_set__GoString__p")]
   public static extern void set__GoString__p(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 

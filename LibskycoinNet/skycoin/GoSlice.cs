@@ -58,8 +58,8 @@ public class GoSlice : global::System.IDisposable {
     skycoinPINVOKE.GoSlice_getString(swigCPtr, _GoString_.getCPtr(arg0));
   }
 
-  public int getAtString(int index, _GoString_ arg1) {
-    int ret = skycoinPINVOKE.GoSlice_getAtString(swigCPtr, index, _GoString_.getCPtr(arg1));
+  public int getAtString(int index, _GoString_ outs) {
+    int ret = skycoinPINVOKE.GoSlice_getAtString(swigCPtr, index, _GoString_.getCPtr(outs));
     return ret;
   }
 

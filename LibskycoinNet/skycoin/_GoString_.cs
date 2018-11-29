@@ -50,6 +50,11 @@ public class _GoString_ : global::System.IDisposable {
     return ret;
   }
 
+  public int isEqual(_GoString_ string2) {
+    int ret = skycoinPINVOKE._GoString__isEqual(swigCPtr, _GoString_.getCPtr(string2));
+    return ret;
+  }
+
   public string p {
     set {
       skycoinPINVOKE.set__GoString__p(swigCPtr, value);
