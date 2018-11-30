@@ -1,6 +1,15 @@
 language: csharp
 solution: LibskycoinNet.sln
 
+mono:
+  - latest
+  - 4.8.0
+
+matrix:
+  include:
+    - os: linux
+    - os: osx
+
 install:
   - nuget restore LibskycoinNet.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
