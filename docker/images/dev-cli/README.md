@@ -2,7 +2,7 @@
 
 ## Simple Tags
 
--	[`develop` (*docker/images/dev-cli/Dockerfile*)](https://github.com/simelo/libskycoin-dotnet/blob/develop/docker/images/dev-cli/Dockerfile)
+-	[`develop, dind, vscode, vscode-dind` (*docker/images/dev-cli/Dockerfile*)](https://github.com/simelo/libskycoin-dotnet/blob/develop/docker/images/dev-cli/Dockerfile)
 
 # Libskycoin .NET  CLI development image
 
