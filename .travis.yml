@@ -20,11 +20,10 @@ matrix:
 install:
   - nuget restore LibskycoinNet.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - ./.travis/install-deps.sh
   
 script:
-  - if [[ $MONO_VERSION == '4.8.0' ]]; then echo "alias msbuild='xbuild'" >> ~/$BASH_FILE; fi
-  - cat ~/$BASH_FILE
-  - xbuild /p:Configuration=Release LibskycoinNet.sln
+  - msbuild /p:Configuration=Release LibskycoinNet.sln
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll
   
 notifications:
