@@ -1,19 +1,12 @@
 language: csharp
 solution: LibskycoinNet.sln
 
-matrix:
-  include:
-    - os: linux
-      language: csharp
-      dist: xenial
-      mono: latest
-      env:
-        - MONO=4.8.0
-    - os: osx
-      language: csharp
-      mono: latest
-      env:
-        - MONO=4.8.0
+os:
+  - linux
+  - osx
+  
+mono:
+  - latest
 
 install:
   - nuget restore LibskycoinNet.sln
