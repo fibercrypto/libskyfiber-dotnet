@@ -1,18 +1,24 @@
 language: csharp
 solution: LibskycoinNet.sln
 
-os:
-  - linux
-  - osx
-
-mono:
-  - 4.8.0
+matrix:
+  include:
+    - os: linux
+      language: csharp
+      mono: 4.8.0
+      env:
+        - MONO_VERSION=4.8.0
+    - os: osx
+      languague: csharp
+      env:
+        - MONO_VERSION=4.8.0
 
 install:
   - nuget restore LibskycoinNet.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   
 script:
+  - if [[ $MONO_VERSION == '4.8.0' ]]; then alias msbuild=xbuild; fi
   - msbuild /p:Configuration=Release LibskycoinNet.sln
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll
   
