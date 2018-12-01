@@ -7,7 +7,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     sudo echo "deb https://download.mono-project.com/repo/ubuntu wheezy/snapshots/$MONO_VERSION main" > /etc/apt/sources.list.d/mono-official-stable.list
     sudo dpkg -i packages-microsoft-prod.deb
     sudo apt-get update
-    sudo apt-get upgrade
+#    sudo apt-get upgrade
     sudo apt-get install -y \
                  dotnet-sdk-2.1 \
                  mono-devel \
