@@ -42,4 +42,9 @@ build-swig:
 			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
 		fi \
 	}
+	mkdir -p ./LibskycoinNet/skycoin
 	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir ./LibskycoinNet/skycoin -o ./LibskycoinNet/skycoin/skycoin.cs $(LIBSWIG_DIR)/skycoin.i
+
+lint:
+	gendarme LibskycoinNetTest/bin/Debug/LibskycoinNetTest.dll --severity critical
+
