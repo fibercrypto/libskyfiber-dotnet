@@ -4,10 +4,16 @@ solution: LibskycoinNet.sln
 matrix:
   include:
     - os: linux
+      language: csharp
       dist: xenial
       mono: 4.8.0
+      env:
+        - MONO=4.8.0
     - os: osx
+      language: csharp
       mono: 4.8.0
+      env:
+        - MONO=4.8.0
 
 install:
   - nuget restore LibskycoinNet.sln
