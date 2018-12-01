@@ -1,10 +1,12 @@
 language: csharp
 solution: LibskycoinNet.sln
 
+before_install:
+  - sudo apt-get install -y gendarme
+
 install:
   - nuget restore LibskycoinNet.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
-  - apt-get install gendarme
   
 script:
   - msbuild /p:Configuration=Release LibskycoinNet.sln
