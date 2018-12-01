@@ -46,5 +46,5 @@ build-swig:
 	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir ./LibskycoinNet/skycoin -o ./LibskycoinNet/skycoin/skycoin.cs $(LIBSWIG_DIR)/skycoin.i
 
 lint:
-	gendarme LibskycoinNetTest/bin/Debug/LibskycoinNetTest.dll --severity critical
+	gendarme ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll --severity critical
 
