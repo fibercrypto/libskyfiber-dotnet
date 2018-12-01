@@ -5,6 +5,7 @@ matrix:
   include:
     - os: linux
       language: csharp
+      dist: xenial
       mono: 4.8.0
       env:
         - MONO_VERSION=4.8.0
@@ -22,7 +23,8 @@ install:
   
 script:
   - if [[ $MONO_VERSION == '4.8.0' ]]; then echo "alias msbuild='xbuild'" >> ~/$BASH_FILE; fi
-  - msbuild /p:Configuration=Release LibskycoinNet.sln
+  - cat ~/$BASH_FILE
+  - xbuild /p:Configuration=Release LibskycoinNet.sln
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll
   
 notifications:
