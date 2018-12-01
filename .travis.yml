@@ -9,13 +9,11 @@ matrix:
       mono: 4.8.0
       env:
         - MONO_VERSION=4.8.0
-        - BASH_FILE='.bashrc'
     - os: osx
       languague: csharp
       mono: 4.8.0
       env:
         - MONO_VERSION=4.8.0
-        - BASH_FILE='.bash_profile'
 
 install:
   - nuget restore LibskycoinNet.sln
