@@ -28,8 +28,7 @@ install:
   - set PATH=%MINGW_W64%\bin;%PATH%
   - cmd: cp %MINGW_W64%\bin\mingw32-make.exe %MINGW_W64%\bin\make.exe
   - cmd: git submodule update --init --recursive --remote
-  - echo %GOPATH%
-  - cmd: cd c:\projects\libskycoin-dotnet\gopath
+  - cmd: cd %GOPATH%\src\github.com\skycoin\skycoin
   - cmd: git checkout origin/stdevEclipse_t1568_swig_files
   - cmd: go get github.com/gz-c/gox
   - cmd: go get -t ./...
