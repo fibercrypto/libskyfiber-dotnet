@@ -42,6 +42,6 @@ build-swig:
 			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
 		fi \
 	}
-	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir ./LibskycoinNet/skycoin -o ./LibskycoinNet/skycoin/skycoin.cs $(LIBSWIG_DIR)/skycoin.i
+	swig -csharp -Iswig/include -I$(INCLUDE_DIR) -outdir ./LibskycoinNet/skycoin -o ./LibskycoinNet/skycoin/skycoin.cs $(LIBSWIG_DIR)/skycoin.coin.i
 
 test: build-libc build-swig
