@@ -1,12 +1,14 @@
 version: '0.2.0.{build}'
-image: Visual Studio 2015
+image: Visual Studio 2017
 platform:
-  - x64
+  - Any CPU
 
 clone_folder: c:\projects\libskycoin-dotnet
 
 # build Configuration, i.e. Debug, Release, etc.
-configuration: Release
+configuration:
+  - Release
+  - Debug
 environment:
   GOOS: windows
   GOARCH: amd64
@@ -33,7 +35,7 @@ before_build:
 
 # use custom build_script
 build_script:
-  - msbuild /p:Configuration=Release LibskycoinNet.sln /p:Platform=x64
+  - msbuild /p:Configuration=Release LibskycoinNet.sln
 
 # to run tests against only selected assemblies and/or categories
 test:
