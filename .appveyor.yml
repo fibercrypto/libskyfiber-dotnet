@@ -33,7 +33,7 @@ before_build:
 
 # use custom build_script
 build_script:
-  - msbuild /p:Configuration=Release LibskycoinNet.sln
+  - msbuild /p:Configuration=Release LibskycoinNet.sln /p:Platform=x64
 
 # to run tests against only selected assemblies and/or categories
 test:
