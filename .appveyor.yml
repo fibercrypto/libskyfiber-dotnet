@@ -33,7 +33,7 @@ install:
   - cmd: git checkout origin/stdevEclipse_t1568_swig_files
   - cmd: go get github.com/gz-c/gox
   - cmd: go get -t ./...
-  - cmd: cd c:\projects\libskycoin-dotnet
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%
   - cmd: curl -fsSL -o swigwin-3.0.12.zip "https://downloads.sourceforge.net/project/swig/swigwin/swigwin-3.0.12/swigwin-3.0.12.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fswig%2Ffiles%2Fswigwin%2Fswigwin-3.0.12%2Fswigwin-3.0.12.zip%2Fdownload%3Fuse_mirror%3Dayera&ts=1531774939"
   - cmd: 7z x swigwin-3.0.12.zip
   - cmd: set PATH=%APPVEYOR_BUILD_FOLDER%\swigwin-3.0.12;%PATH%
@@ -42,7 +42,7 @@ install:
 # scripts to run before build
 # packages from nuget
 before_build:
-  - cd c:\projects\libskycoin-dotnet
+  - cd %APPVEYOR_BUILD_FOLDER%
   - nuget restore LibskycoinNet.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
