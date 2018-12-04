@@ -13,6 +13,7 @@ environment:
   global:
     GOOS: windows
     GOARCH: amd64
+    GIT_PATH: c:\Program Files\Git\bin
     GOPATH: c:\projects\libskycoin-dotnet\gopath
     MINGW_W64: c:\mingw-w64\x86_64-7.3.0-posix-seh-rt_v5-rev0\mingw64
     # APPVEYOR_RDP_PASSWORD: defineYourPasswordHere
@@ -25,7 +26,7 @@ stack: go 1.11
 
 # Install dev dependencies
 install:
-  - set PATH=%MINGW_W64%\bin;%PATH%
+  - set PATH=%MINGW_W64%\bin;%GIT_PATH%;%PATH%
   - cmd: cp %MINGW_W64%\bin\mingw32-make.exe %MINGW_W64%\bin\make.exe
   - cmd: git submodule update --init --recursive --remote
   - cmd: cd %GOPATH%\src\github.com\skycoin\skycoin
