@@ -5,6 +5,8 @@ platform:
 
 clone_folder: c:\projects\libskycoin-dotnet
 
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
 environment:
   GOOS: windows
   GOARCH: amd64
@@ -21,27 +23,17 @@ install:
   - cmd: cd %GOPATH%
   - cmd: go get github.com/gz-c/gox
   - cmd: go get -t ./...
-  - cmd: cd %APPVEYOR_BUILD_FOLDER%
-  - cmd: nuget restore LibskycoinNet.sln
-  - cmd: nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  
+# scripts to run before build
+# packages from nuget
+before_build:
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - nuget restore LibskycoinNet.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
-# build Configuration, i.e. Debug, Release, etc.
-configuration: Release
-
-# Build settings, not to be confused with "before_build" and "after_build".
-# "project" is relative to the original build directory and not influenced by directory changes in "before_build".
-build:
-  parallel: true                   # enable MSBuild parallel builds
-  project: LibskycoinNet.sln       # path to Visual Studio solution or project
-  publish_wap: false               # package Web Application Projects (WAP) for Web Deploy
-  publish_wap_xcopy: false         # package Web Application Projects (WAP) for XCopy deployment
-  publish_azure: false             # package Azure Cloud Service projects and push to artifacts
-  publish_nuget: false             # package projects with .nuspec files and push to artifacts
-  publish_nuget_symbols: false     # generate and publish NuGet symbol packages
-  include_nuget_references: false  # add -IncludeReferencedProjects option while packaging NuGet artifacts
-
-  # MSBuild verbosity level
-  verbosity: detailed
+# use custom build_script
+build_script:
+  - msbuild /p:Configuration=Release LibskycoinNet.sln
 
 # to run tests against only selected assemblies and/or categories
 test:
@@ -49,4 +41,5 @@ test:
     only:
       - LibskycoinNetTest\bin\Release\LibskycoinNetTest.dll
 
+      
 deploy: off      
