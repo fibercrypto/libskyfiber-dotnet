@@ -11,6 +11,30 @@
 namespace skycoin {
 
 public class skycoin {
+  public static int equalSlices(GoSlice slice1, GoSlice slice2, int elem_size) {
+    int ret = skycoinPINVOKE.equalSlices(GoSlice.getCPtr(slice1), GoSlice.getCPtr(slice2), elem_size);
+    return ret;
+  }
+
+  public static int equalTransactions(coin__Transaction t1, coin__Transaction t2) {
+    int ret = skycoinPINVOKE.equalTransactions(coin__Transaction.getCPtr(t1), coin__Transaction.getCPtr(t2));
+    return ret;
+  }
+
+  public static int equalTransactionsArrays(SWIGTYPE_p_GoSlice_ pTxs1, SWIGTYPE_p_GoSlice_ pTxs2) {
+    int ret = skycoinPINVOKE.equalTransactionsArrays(SWIGTYPE_p_GoSlice_.getCPtr(pTxs1), SWIGTYPE_p_GoSlice_.getCPtr(pTxs2));
+    return ret;
+  }
+
+  public static int equalBlockHeaders(coin__BlockHeader bh1, coin__BlockHeader bh2) {
+    int ret = skycoinPINVOKE.equalBlockHeaders(coin__BlockHeader.getCPtr(bh1), coin__BlockHeader.getCPtr(bh2));
+    return ret;
+  }
+
+  public static void destroy_cipher_SecKeys(cipher_SecKeys p) {
+    skycoinPINVOKE.destroy_cipher_SecKeys(cipher_SecKeys.getCPtr(p));
+  }
+
   public static GoSlice new_GoSlicep() {
     global::System.IntPtr cPtr = skycoinPINVOKE.new_GoSlicep();
     GoSlice ret = (cPtr == global::System.IntPtr.Zero) ? null : new GoSlice(cPtr, false);
@@ -44,10 +68,9 @@ public class skycoin {
     return ret;
   }
 
-  public static SWIGTYPE_p_GoUint8_ copy_GoUint8Ptr(SWIGTYPE_p_GoUint8_ value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_GoUint8Ptr(SWIGTYPE_p_GoUint8_.getCPtr(value));
+  public static SWIGTYPE_p_GoUint8_ copy_GoUint8Ptr(byte value) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.copy_GoUint8Ptr(value);
     SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -55,13 +78,12 @@ public class skycoin {
     skycoinPINVOKE.delete_GoUint8Ptr(SWIGTYPE_p_GoUint8_.getCPtr(obj));
   }
 
-  public static void GoUint8Ptr_assign(SWIGTYPE_p_GoUint8_ obj, SWIGTYPE_p_GoUint8_ value) {
-    skycoinPINVOKE.GoUint8Ptr_assign(SWIGTYPE_p_GoUint8_.getCPtr(obj), SWIGTYPE_p_GoUint8_.getCPtr(value));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  public static void GoUint8Ptr_assign(SWIGTYPE_p_GoUint8_ obj, byte value) {
+    skycoinPINVOKE.GoUint8Ptr_assign(SWIGTYPE_p_GoUint8_.getCPtr(obj), value);
   }
 
-  public static SWIGTYPE_p_GoUint8_ GoUint8Ptr_value(SWIGTYPE_p_GoUint8_ obj) {
-    SWIGTYPE_p_GoUint8_ ret = new SWIGTYPE_p_GoUint8_(skycoinPINVOKE.GoUint8Ptr_value(SWIGTYPE_p_GoUint8_.getCPtr(obj)), true);
+  public static byte GoUint8Ptr_value(SWIGTYPE_p_GoUint8_ obj) {
+    byte ret = skycoinPINVOKE.GoUint8Ptr_value(SWIGTYPE_p_GoUint8_.getCPtr(obj));
     return ret;
   }
 
@@ -1174,30 +1196,6 @@ var tmps = s;
     uint ret = skycoinPINVOKE.SKY_coin_Block_HashBody__SWIG_0(SWIGTYPE_p_Block__Handle.getCPtr(p0), cipher_SHA256.getCPtr(p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
-  }
-
-  public static int equalSlices(GoSlice slice1, GoSlice slice2, int elem_size) {
-    int ret = skycoinPINVOKE.equalSlices(GoSlice.getCPtr(slice1), GoSlice.getCPtr(slice2), elem_size);
-    return ret;
-  }
-
-  public static int equalTransactions(coin__Transaction t1, coin__Transaction t2) {
-    int ret = skycoinPINVOKE.equalTransactions(coin__Transaction.getCPtr(t1), coin__Transaction.getCPtr(t2));
-    return ret;
-  }
-
-  public static int equalTransactionsArrays(GoSlice pTxs1, GoSlice pTxs2) {
-    int ret = skycoinPINVOKE.equalTransactionsArrays(GoSlice.getCPtr (pTxs1), GoSlice.getCPtr (pTxs2));
-    return ret;
-  }
-
-  public static int equalBlockHeaders(coin__BlockHeader bh1, coin__BlockHeader bh2) {
-    int ret = skycoinPINVOKE.equalBlockHeaders(coin__BlockHeader.getCPtr(bh1), coin__BlockHeader.getCPtr(bh2));
-    return ret;
-  }
-
-  public static void destroy_cipher_SecKeys(cipher_SecKeys p) {
-    skycoinPINVOKE.destroy_cipher_SecKeys(cipher_SecKeys.getCPtr(p));
   }
 
   public static uint SKY_coin_NewBlock(SWIGTYPE_p_Block__Handle p0, ulong p1, cipher_SecKey p2, SWIGTYPE_p_Transactions__Handle p3, SWIGTYPE_p_FeeCalculator p4, SWIGTYPE_p_Block__Handle p5) {
@@ -3749,8 +3747,8 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
     return ret;
   }
 
-  public static uint SKY_coin_GetTransactionsObject(SWIGTYPE_p_Transactions__Handle p0, GoSlice p1) {
-    uint ret = skycoinPINVOKE.SKY_coin_GetTransactionsObject(SWIGTYPE_p_Transactions__Handle.getCPtr(p0), GoSlice.getCPtr (p1));
+  public static uint SKY_coin_GetTransactionsObject(SWIGTYPE_p_Transactions__Handle p0, SWIGTYPE_p_p_GoSlice_ p1) {
+    uint ret = skycoinPINVOKE.SKY_coin_GetTransactionsObject(SWIGTYPE_p_Transactions__Handle.getCPtr(p0), SWIGTYPE_p_p_GoSlice_.getCPtr(p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
