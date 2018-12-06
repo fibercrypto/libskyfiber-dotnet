@@ -20,15 +20,16 @@ environment:
 
 stack: go 1.11
 
+# Do some things before build and test
+init:
 # Enable Windows RDP Client Access to Build Worker
-# init:
-#   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
-# Install dev dependencies
-install:
+#  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   - set PATH=%MINGW_W64%\bin;%GIT_PATH%;%PATH%
   - cmd: cp %MINGW_W64%\bin\mingw32-make.exe %MINGW_W64%\bin\make.exe
   - cmd: git submodule update --init --recursive --remote
+
+# Install dev dependencies
+install:
   - cmd: cd %GOPATH%\src\github.com\skycoin\skycoin
   - cmd: git checkout origin/stdevEclipse_t1568_swig_files
   - cmd: go get github.com/gz-c/gox
@@ -38,27 +39,22 @@ install:
   - cmd: 7z x swigwin-3.0.12.zip
   - cmd: set PATH=%APPVEYOR_BUILD_FOLDER%\swigwin-3.0.12;%PATH%
   - cmd: swig -version
+  - cmd: curl -fsSL -o mono-4.8.0.524-x64-0.msi https://download.mono-project.com/archive/4.8.0/windows-installer/mono-4.8.0.524-x64-0.msi
+  - msiexec /i mono-4.8.0.524-x64-0.msi /qn /norestart
+  - set PATH=c:\Program Files (x86)\Mono\bin\;%PATH%
 
 # scripts to run before build
 # packages from nuget
 before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - nuget restore LibskycoinNet.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - make install-deps
 
 # use custom build_script
 build_script:
+  - cmd: make build
+
+test_script:
   - cmd: make test
-
-# # use custom build_script
-# build_script:
-#   - msbuild /p:Configuration=Release LibskycoinNet.sln
-
-# # to run tests against only selected assemblies and/or categories
-# test:
-#   assemblies:
-#     only:
-#       - LibskycoinNetTest\bin\Release\LibskycoinNetTest.dll
 
 deploy: off 
 
