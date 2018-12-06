@@ -10,7 +10,7 @@ matrix:
         - MONO_VERSION=4.8.0
     - os: linux
       dist: xenial
-      dotnet: 2.2.0
+      dotnet: 2.2.100
       mono: none
       env:
         - DOTNETCORE=1
@@ -19,7 +19,7 @@ matrix:
       env:
         - MONO_VERSION=4.8.0
     - os: osx
-      dotnet: 2.2.0
+      dotnet: 2.2.100
       mono: none
       env:
         - DOTNETCORE=1
