@@ -26,10 +26,10 @@ init:
 #  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   - set PATH=%MINGW_W64%\bin;%GIT_PATH%;%PATH%
   - cmd: cp %MINGW_W64%\bin\mingw32-make.exe %MINGW_W64%\bin\make.exe
-  - cmd: git submodule update --init --recursive --remote
 
 # Install dev dependencies
 install:
+  - cmd: git submodule update --init --recursive --remote
   - cmd: cd %GOPATH%\src\github.com\skycoin\skycoin
   - cmd: git checkout origin/stdevEclipse_t1568_swig_files
   - cmd: go get github.com/gz-c/gox
