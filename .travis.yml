@@ -25,7 +25,7 @@ matrix:
         - DOTNETCORE=2
 
 install:
-  - if [ "${DOTNETCORE}" != ""] ; then export NUGET='dotnet'; else export NUGET='nuget'; fi
+  - if [ "${DOTNETCORE}" -ne ""] ; then export NUGET='dotnet'; else export NUGET='nuget'; fi
   - $NUGET restore LibskycoinNet.sln
   - $NUGET install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   - ./.travis/install-deps.sh
