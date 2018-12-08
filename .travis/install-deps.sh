@@ -10,15 +10,11 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 #    sudo apt-get upgrade
     sudo apt-get install -y \
                  dotnet-sdk-2.1 \
-                 mono-devel \
-                 mono-complete \
+#                 mono-devel \
+#                 mono-complete \
                  referenceassemblies-pcl \
                  ca-certificates-mono \
                  msbuild
-    if [ "$DOTNETCORE" != "" ]; then
-      sudo apt install nuget
-      sudo nuget update -self
-    fi
 fi
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
