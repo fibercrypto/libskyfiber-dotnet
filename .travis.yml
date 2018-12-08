@@ -13,7 +13,7 @@ matrix:
       dotnet: 2.2.100
       mono: none
       env:
-        - DOTNETCORE=1
+        - DOTNETCORE=2
     - os: osx
       mono: 4.8.0
       env:
@@ -22,11 +22,12 @@ matrix:
       dotnet: 2.2.100
       mono: none
       env:
-        - DOTNETCORE=1
+        - DOTNETCORE=2
 
 install:
-  - nuget restore LibskycoinNet.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - if [ "${MONO_VERSION}" == ""] ; then export NUGET='dotnet'; else export NUGET='nuget'; fi
+  - $NUGET restore LibskycoinNet.sln
+  - $NUGET install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   - ./.travis/install-deps.sh
   
 script:
