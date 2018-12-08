@@ -469,7 +469,7 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionsSize () {
-            var handle = new_Transactions__Handlep ();
+            var handle = new_Transactions__HandlePtr ();
             var err = (uint) makeTransactions (10, handle);
             var size = (long) 0;
             for (int i = 0; i < 10; i++) {
@@ -490,7 +490,7 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionsHashes () {
-            var handle = new_Transactions__Handlep ();
+            var handle = new_Transactions__HandlePtr ();
             makeTransactions (4, handle);
             var hashes = new cipher_SHA256s ();
             var err = SKY_coin_Transactions_Hashes (handle, hashes);
@@ -510,7 +510,7 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionsTruncateBytesTo () {
-            var handles = new_Transactions__Handlep ();
+            var handles = new_Transactions__HandlePtr ();
             var err = (uint) makeTransactions (10, handles);
             var trunc = (uint) 0;
             var count = new_GoUint32Ptr ();
@@ -527,7 +527,7 @@ namespace LibskycoinNetTest {
                 trunc += GoUint32Ptr_value (count);
             }
             // Trucating halfway
-            var tnxs2 = new_Transactions__Handlep ();
+            var tnxs2 = new_Transactions__HandlePtr ();
             err = SKY_coin_Transactions_TruncateBytesTo (handles, trunc, tnxs2);
             Assert.AreEqual (err, SKY_OK);
             var len_tnxs2 = new_Gointp ();
@@ -868,7 +868,7 @@ namespace LibskycoinNetTest {
 
         [Test]
         public void TestTransactionsFees () {
-            var txns = new_Transactions__Handlep ();
+            var txns = new_Transactions__HandlePtr ();
             SKY_coin_Create_Transactions (txns);
 
             // Nil txns

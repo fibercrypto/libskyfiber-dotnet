@@ -50,14 +50,12 @@ public class api__RichlistParams : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_BOOL IncludeDistribution {
+  public uint IncludeDistribution {
     set {
-      skycoinPINVOKE.set_api__RichlistParams_IncludeDistribution(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_api__RichlistParams_IncludeDistribution(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.get_api__RichlistParams_IncludeDistribution(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_api__RichlistParams_IncludeDistribution(swigCPtr);
       return ret;
     } 
   }

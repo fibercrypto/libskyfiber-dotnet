@@ -604,13 +604,6 @@ FeeCalculator overflow(){
 
 	int b64_int(unsigned int ch)
 	{
-		// ASCII to base64_int
-		// 65-90 Upper Case >> 0-25
-		// 97-122 Lower Case >> 26-51
-		// 48-57 Numbers >> 52-61
-		// 43 Plus (+) >> 62
-		// 47 Slash (/) >> 63
-		// 61 Equal (=) >> 64~
 		if (ch == 43)
 			return 62;
 		if (ch == 47)

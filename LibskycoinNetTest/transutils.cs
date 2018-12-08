@@ -91,7 +91,7 @@ namespace utils {
         }
 
         public SWIGTYPE_p_Transactions__Handle makeTransactions (int n) {
-            var handle = skycoin.skycoin.new_Transactions__Handlep ();
+            var handle = skycoin.skycoin.new_Transactions__HandlePtr ();
             skycoin.skycoin.SKY_coin_Create_Transactions (handle);
             for (int i = 0; i < n; i++) {
                 var thandle = makeEmptyTransaction ();

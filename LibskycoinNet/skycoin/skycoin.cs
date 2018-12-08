@@ -320,30 +320,30 @@ public class skycoin {
     return ret;
   }
 
-  public static SWIGTYPE_p_Transactions__Handle new_Transactions__Handlep() {
-    global::System.IntPtr cPtr = skycoinPINVOKE.new_Transactions__Handlep();
+  public static SWIGTYPE_p_Transactions__Handle new_Transactions__HandlePtr() {
+    global::System.IntPtr cPtr = skycoinPINVOKE.new_Transactions__HandlePtr();
     SWIGTYPE_p_Transactions__Handle ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_Transactions__Handle(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_Transactions__Handle copy_Transactions__Handlep(SWIGTYPE_p_Transactions__Handle value) {
-    global::System.IntPtr cPtr = skycoinPINVOKE.copy_Transactions__Handlep(SWIGTYPE_p_Transactions__Handle.getCPtr(value));
+  public static SWIGTYPE_p_Transactions__Handle copy_Transactions__HandlePtr(SWIGTYPE_p_Transactions__Handle value) {
+    global::System.IntPtr cPtr = skycoinPINVOKE.copy_Transactions__HandlePtr(SWIGTYPE_p_Transactions__Handle.getCPtr(value));
     SWIGTYPE_p_Transactions__Handle ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_Transactions__Handle(cPtr, false);
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static void delete_Transactions__Handlep(SWIGTYPE_p_Transactions__Handle obj) {
-    skycoinPINVOKE.delete_Transactions__Handlep(SWIGTYPE_p_Transactions__Handle.getCPtr(obj));
+  public static void delete_Transactions__HandlePtr(SWIGTYPE_p_Transactions__Handle obj) {
+    skycoinPINVOKE.delete_Transactions__HandlePtr(SWIGTYPE_p_Transactions__Handle.getCPtr(obj));
   }
 
-  public static void Transactions__Handlep_assign(SWIGTYPE_p_Transactions__Handle obj, SWIGTYPE_p_Transactions__Handle value) {
-    skycoinPINVOKE.Transactions__Handlep_assign(SWIGTYPE_p_Transactions__Handle.getCPtr(obj), SWIGTYPE_p_Transactions__Handle.getCPtr(value));
+  public static void Transactions__HandlePtr_assign(SWIGTYPE_p_Transactions__Handle obj, SWIGTYPE_p_Transactions__Handle value) {
+    skycoinPINVOKE.Transactions__HandlePtr_assign(SWIGTYPE_p_Transactions__Handle.getCPtr(obj), SWIGTYPE_p_Transactions__Handle.getCPtr(value));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public static SWIGTYPE_p_Transactions__Handle Transactions__Handlep_value(SWIGTYPE_p_Transactions__Handle obj) {
-    SWIGTYPE_p_Transactions__Handle ret = new SWIGTYPE_p_Transactions__Handle(skycoinPINVOKE.Transactions__Handlep_value(SWIGTYPE_p_Transactions__Handle.getCPtr(obj)), true);
+  public static SWIGTYPE_p_Transactions__Handle Transactions__HandlePtr_value(SWIGTYPE_p_Transactions__Handle obj) {
+    SWIGTYPE_p_Transactions__Handle ret = new SWIGTYPE_p_Transactions__Handle(skycoinPINVOKE.Transactions__HandlePtr_value(SWIGTYPE_p_Transactions__Handle.getCPtr(obj)), true);
     return ret;
   }
 

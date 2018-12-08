@@ -10,7 +10,7 @@ namespace LibskycoinNetTest {
         utils.transutils transutils = new utils.transutils ();
 
         public SWIGTYPE_p_Transactions__Handle makeTestTransactions () {
-            var txns = new_Transactions__Handlep ();
+            var txns = new_Transactions__HandlePtr();
             var err = SKY_coin_Create_Transactions (txns);
             Assert.AreEqual (err, SKY_OK);
             var txn = transutils.makeEmptyTransaction ();
@@ -61,7 +61,7 @@ namespace LibskycoinNetTest {
             err = SKY_coin_NewBlock (block, 133, uxHash, txns, transutils.badCalc, block);
             Assert.AreEqual (err, SKY_ERROR);
             // no txns panics
-            var tnxs1 = new_Transactions__Handlep ();
+            var tnxs1 = new_Transactions__HandlePtr ();
             SKY_coin_Create_Transactions (tnxs1);
             err = SKY_coin_NewBlock (block, 133, uxHash, tnxs1, transutils.feeCalc, block);
             Assert.AreEqual (err, SKY_ERROR);

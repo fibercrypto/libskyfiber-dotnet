@@ -10,11 +10,11 @@
 %}
 %include "/gopath/src/github.com/skycoin/skycoin/lib/swig/common/common.i"
 %include "/gopath/src/github.com/skycoin/skycoin/lib/swig//static/static.i"
-%include "csharp_java_typemap.i"
+%include "csharp_typemap.i"
 %include "csharp_structs_typemaps.i"
-%include "csharp_java_basic.i"
+%include "csharp_basic.i"
 %include "csharp_skycoin.mem.i"
-%include "csharp_java_callback.i"
+%include "csharp_callback.i"
 
 %include "swig.h"
 /* Find the modified copy of libskycoin */

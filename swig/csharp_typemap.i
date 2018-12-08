@@ -1,13 +1,4 @@
-
-/* Handle not as pointer is input. */
-%typemap(in) Handle {
-	$input =  (long*)&$1;
-} 
-%typemap(in) Handle* {
-	$input =  (long*)&$1;
-} 
 %include "arrays_csharp.i"
-%include "typemaps.i"
 %include cpointer.i
 %pointer_functions(GoSlice, GoSlicep);
 %pointer_functions(GoUint8_, GoUint8Ptr);
@@ -20,7 +11,7 @@
 %pointer_functions(long long, Gointp);
 %pointer_functions(unsigned short, GoUint16p);
 %pointer_functions(cipher__Address, cipher__Addressp);
-%pointer_functions(Transactions__Handle, Transactions__Handlep);
+%pointer_functions(Transactions__Handle, Transactions__HandlePtr);
 %pointer_functions(Transaction__Handle, Transaction__Handlep);
 %pointer_functions(Block__Handle,Block__HandlePtr);
 %pointer_functions(BlockBody__Handle,BlockBody__HandlePtr);
@@ -30,11 +21,6 @@
 %pointer_functions(FeeCalculator, FeeCalculatorPtr);
 %pointer_functions(FeeCalcFunc, FeeCalcFuncPtr);
 %pointer_functions(coin__Block*, coin__BlockPtr);
-
-CSHARP_ARRAYS(int, int)
-// CSHARP_ARRAYS(unsigned char, byte)
-CSHARP_ARRAYS_FIXED(int, int)
-%apply int INPUT[] { int *$imput }
 
 /*GoString* parameter as reference */
 %typemap(in, numinputs=0) GoString* (GoString temp) {
@@ -84,9 +70,6 @@ CSHARP_ARRAYS_FIXED(int, int)
 %typemap(ctype) GoSlice_*  "GoSlice_ *"
 %typemap(cstype,pre=" var tmp$csinput = GoSlice.getCPtr ($csinput);") GoSlice_*  "GoSlice"
 %typemap(csin) GoSlice_*  "GoSlice.getCPtr ($csinput)"
-
-
-
 
 %typemap(freearg) (cipher_PubKeys* __in_pubKeys) {
   if ($1->data) free($1->data);

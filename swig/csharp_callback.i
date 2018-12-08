@@ -10,12 +10,6 @@ GoUint32_ _WrapperFeeCalculator(Transaction__Handle handle, GoUint64_* pFee, voi
 }
 %}
 
-%typemap(in) FeeCalculator_* (FeeCalculator temp) {
-  if (!PyCallable_Check($input)) return ;
-  temp.callback = _WrapperFeeCalculator;
-  temp.context = $input;
-  $1 = &temp;
-}
 
 
 %define %cs_callback(TYPE, CSTYPE) 

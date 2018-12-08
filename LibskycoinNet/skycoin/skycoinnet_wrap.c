@@ -590,25 +590,25 @@ static cipher__Address cipher__Addressp_value(cipher__Address *obj) {
 }
 
 
-static Transactions__Handle *new_Transactions__Handlep() { 
+static Transactions__Handle *new_Transactions__HandlePtr() { 
   return (Transactions__Handle *) calloc(1,sizeof(Transactions__Handle)); 
 }
 
-static Transactions__Handle *copy_Transactions__Handlep(Transactions__Handle value) { 
+static Transactions__Handle *copy_Transactions__HandlePtr(Transactions__Handle value) { 
   Transactions__Handle *obj = (Transactions__Handle *) calloc(1,sizeof(Transactions__Handle));
   *obj = value;
   return obj; 
 }
 
-static void delete_Transactions__Handlep(Transactions__Handle *obj) { 
+static void delete_Transactions__HandlePtr(Transactions__Handle *obj) { 
   if (obj) free(obj); 
 }
 
-static void Transactions__Handlep_assign(Transactions__Handle *obj, Transactions__Handle value) {
+static void Transactions__HandlePtr_assign(Transactions__Handle *obj, Transactions__Handle value) {
   *obj = value;
 }
 
-static Transactions__Handle Transactions__Handlep_value(Transactions__Handle *obj) {
+static Transactions__Handle Transactions__HandlePtr_value(Transactions__Handle *obj) {
   return *obj;
 }
 
@@ -1424,13 +1424,6 @@ FeeCalculator overflow(){
 
 	int b64_int(unsigned int ch)
 	{
-		// ASCII to base64_int
-		// 65-90 Upper Case >> 0-25
-		// 97-122 Lower Case >> 26-51
-		// 48-57 Numbers >> 52-61
-		// 43 Plus (+) >> 62
-		// 47 Slash (/) >> 63
-		// 61 Equal (=) >> 64~
 		if (ch == 43)
 			return 62;
 		if (ch == 47)
@@ -2991,17 +2984,17 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher__Addressp_value(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transactions__Handlep() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transactions__HandlePtr() {
   void * jresult ;
   Transactions__Handle *result = 0 ;
   
-  result = (Transactions__Handle *)new_Transactions__Handlep();
+  result = (Transactions__Handle *)new_Transactions__HandlePtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transactions__Handlep(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transactions__HandlePtr(void * jarg1) {
   void * jresult ;
   Transactions__Handle arg1 ;
   Transactions__Handle *argp1 ;
@@ -3013,21 +3006,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transactions__Handlep(void * j
     return 0;
   }
   arg1 = *argp1; 
-  result = (Transactions__Handle *)copy_Transactions__Handlep(arg1);
+  result = (Transactions__Handle *)copy_Transactions__HandlePtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transactions__Handlep(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transactions__HandlePtr(void * jarg1) {
   Transactions__Handle *arg1 = (Transactions__Handle *) 0 ;
   
   arg1 = (Transactions__Handle *)jarg1; 
-  delete_Transactions__Handlep(arg1);
+  delete_Transactions__HandlePtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transactions__Handlep_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transactions__HandlePtr_assign(void * jarg1, void * jarg2) {
   Transactions__Handle *arg1 = (Transactions__Handle *) 0 ;
   Transactions__Handle arg2 ;
   Transactions__Handle *argp2 ;
@@ -3039,17 +3032,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transactions__Handlep_assign(void * j
     return ;
   }
   arg2 = *argp2; 
-  Transactions__Handlep_assign(arg1,arg2);
+  Transactions__HandlePtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transactions__Handlep_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transactions__HandlePtr_value(void * jarg1) {
   void * jresult ;
   Transactions__Handle *arg1 = (Transactions__Handle *) 0 ;
   Transactions__Handle result;
   
   arg1 = (Transactions__Handle *)jarg1; 
-  result = Transactions__Handlep_value(arg1);
+  result = Transactions__HandlePtr_value(arg1);
   {
     Transactions__Handle * resultptr = (Transactions__Handle *) malloc(sizeof(Transactions__Handle));
     memmove(resultptr, &result, sizeof(Transactions__Handle));
@@ -6688,7 +6681,7 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_skycoin_get__GoString__p(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set__GoString__n(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set__GoString__n(void * jarg1, long jarg2) {
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   ptrdiff_t arg2 ;
   
@@ -6698,8 +6691,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set__GoString__n(void * jarg1, int ja
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_get__GoString__n(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long SWIGSTDCALL CSharp_skycoin_get__GoString__n(void * jarg1) {
+  long jresult ;
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   ptrdiff_t result;
   
@@ -14016,34 +14009,24 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_api__RichlistParams_N(void *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_api__RichlistParams_IncludeDistribution(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_api__RichlistParams_IncludeDistribution(void * jarg1, unsigned int jarg2) {
   api__RichlistParams *arg1 = (api__RichlistParams *) 0 ;
   BOOL arg2 ;
-  BOOL *argp2 ;
   
   arg1 = (api__RichlistParams *)jarg1; 
-  argp2 = (BOOL *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BOOL", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (BOOL)jarg2; 
   if (arg1) (arg1)->IncludeDistribution = arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_api__RichlistParams_IncludeDistribution(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_api__RichlistParams_IncludeDistribution(void * jarg1) {
+  unsigned int jresult ;
   api__RichlistParams *arg1 = (api__RichlistParams *) 0 ;
   BOOL result;
   
   arg1 = (api__RichlistParams *)jarg1; 
   result =  ((arg1)->IncludeDistribution);
-  {
-    BOOL * resultptr = (BOOL *) malloc(sizeof(BOOL));
-    memmove(resultptr, &result, sizeof(BOOL));
-    jresult = resultptr;
-  }
+  jresult = result; 
   return jresult;
 }
 
@@ -14524,34 +14507,24 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XY_Y(void * jarg1)
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_secp256k1go__XY_Infinity(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_secp256k1go__XY_Infinity(void * jarg1, unsigned int jarg2) {
   secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
   BOOL arg2 ;
-  BOOL *argp2 ;
   
   arg1 = (secp256k1go__XY *)jarg1; 
-  argp2 = (BOOL *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BOOL", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (BOOL)jarg2; 
   if (arg1) (arg1)->Infinity = arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XY_Infinity(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XY_Infinity(void * jarg1) {
+  unsigned int jresult ;
   secp256k1go__XY *arg1 = (secp256k1go__XY *) 0 ;
   BOOL result;
   
   arg1 = (secp256k1go__XY *)jarg1; 
   result =  ((arg1)->Infinity);
-  {
-    BOOL * resultptr = (BOOL *) malloc(sizeof(BOOL));
-    memmove(resultptr, &result, sizeof(BOOL));
-    jresult = resultptr;
-  }
+  jresult = result; 
   return jresult;
 }
 
@@ -14640,34 +14613,24 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XYZ_Z(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_secp256k1go__XYZ_Infinity(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_secp256k1go__XYZ_Infinity(void * jarg1, unsigned int jarg2) {
   secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
   BOOL arg2 ;
-  BOOL *argp2 ;
   
   arg1 = (secp256k1go__XYZ *)jarg1; 
-  argp2 = (BOOL *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BOOL", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (BOOL)jarg2; 
   if (arg1) (arg1)->Infinity = arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XYZ_Infinity(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_secp256k1go__XYZ_Infinity(void * jarg1) {
+  unsigned int jresult ;
   secp256k1go__XYZ *arg1 = (secp256k1go__XYZ *) 0 ;
   BOOL result;
   
   arg1 = (secp256k1go__XYZ *)jarg1; 
   result =  ((arg1)->Infinity);
-  {
-    BOOL * resultptr = (BOOL *) malloc(sizeof(BOOL));
-    memmove(resultptr, &result, sizeof(BOOL));
-    jresult = resultptr;
-  }
+  jresult = result; 
   return jresult;
 }
 

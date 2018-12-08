@@ -54,7 +54,6 @@
     <Compile Include="skycoin\GoSlice.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_AddressUxOuts_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_App__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_BOOL.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BlockBody__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Block__Handle.cs" />
@@ -138,16 +137,13 @@
     <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
     <Compile Include="skycoin\api__NetworkConnectionsFilter.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__unsigned_int.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__unsigned_int.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_a_4__unsigned_char.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_GoSlice_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint64_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_a_4__GoUint8_.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />

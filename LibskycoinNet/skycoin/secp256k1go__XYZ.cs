@@ -73,14 +73,12 @@ public class secp256k1go__XYZ : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_BOOL Infinity {
+  public uint Infinity {
     set {
-      skycoinPINVOKE.set_secp256k1go__XYZ_Infinity(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_secp256k1go__XYZ_Infinity(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.get_secp256k1go__XYZ_Infinity(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_secp256k1go__XYZ_Infinity(swigCPtr);
       return ret;
     } 
   }
