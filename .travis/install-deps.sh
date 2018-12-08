@@ -17,6 +17,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                  msbuild
     if [ "$DOTNETCORE" != "" ]; then
       sudo apt install nuget
+      sudo nuget update -self
     fi
 fi
 
