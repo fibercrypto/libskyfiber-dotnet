@@ -26,8 +26,8 @@ matrix:
 
 before-install:
   - if [ "$DOTNETCORE" != "" ] ; \
-                            then export NUGET=dotnet DOTNET=dotnet; \
-                            else export NUGET=nuget DOTNET=mono; \
+                            then export NUGET=dotnet; export DOTNET=dotnet; \
+                            else export NUGET=nuget; export DOTNET=mono; \
                             fi
 
 install:
