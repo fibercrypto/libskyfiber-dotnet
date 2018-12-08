@@ -25,7 +25,7 @@ matrix:
         - DOTNETCORE=2
 
 before_install:
-  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet build' else export DOTNET=mono; export MSBUILD=msbuild ; fi
+  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet build'; else export DOTNET=mono; export MSBUILD=msbuild ; fi
   - ./.travis/install-deps.sh
 
 install:
