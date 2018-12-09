@@ -22,9 +22,6 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     curl -o dotnet-sdk-2.1.500-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/576dbb8d-03f2-4d45-857a-b226d39b3dbe/0d4fbf91aa1137352680ec98ef9edb5d/dotnet-sdk-2.1.500-osx-gs-x64.pkg
     sudo installer -pkg MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg -target /
     sudo installer -pkg dotnet-sdk-2.1.500-osx-gs-x64.pkg -target /
-    if [ "$DOTNETCORE" != "" ]; then
-      brew install nuget
-    fi
 fi
 
 if [ "$DOTNETCORE" != "" ]; then
