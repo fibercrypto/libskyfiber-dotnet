@@ -1,6 +1,5 @@
 %module skycoin
 %include "typemaps.i"
-%include "cstring.i"
 
 %{
 	#define SWIG_FILE_WITH_INIT

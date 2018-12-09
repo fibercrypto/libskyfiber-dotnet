@@ -25,7 +25,7 @@ $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	ls $(BUILDLIBC_DIR)
 	rm -f swig/include/libskycoin.h
 	mkdir -p swig/include
-	grep -i "_Complex" $(INCLUDE_DIR)/libskycoin.h > swig/include/libskycoin.h
+	grep -v "_Complex" $(INCLUDE_DIR)/libskycoin.h > swig/include/libskycoin.h
 
 build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a ## Build libskycoin static C client library
 
