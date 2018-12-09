@@ -26,3 +26,9 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
       brew install nuget
     fi
 fi
+
+if [ "$DOTNETCORE" != "" ]; then
+    mkdir ./.travis/bin
+    curl -o ./.travis/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+fi
+

@@ -25,13 +25,13 @@ matrix:
         - DOTNETCORE=2
 
 before_install:
-  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet build'; export RESTORE='dotnet restore' ; export INSTALLPKG='dotnet add package' ; else export DOTNET=mono; export MSBUILD=msbuild ; export RESTORE='nuget restore' ; INSTALLiPKG='nuget install' ; fi
+  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet build'; export NUGET="dotnet $(pwd)/.travis/bin/nuget.exe" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; fi
   - ./.travis/install-deps.sh
 
 install:
   - $MSBUILD -version
-  - $RESTORE LibskycoinNet.sln
-  - .travis/installpkg.sh NUnit.Runners 2.6.4 testrunner
+  - $NUGET restore LibskycoinNet.sln
+  - $NUGET install NUnit.Runners 2.6.4 testrunner
   
 script:
   - $MSBUILD /p:Configuration=Release LibskycoinNet.sln
