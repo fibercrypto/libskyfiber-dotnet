@@ -31,7 +31,7 @@ before_install:
 install:
   - $MSBUILD -version
   - $NUGET restore LibskycoinNet.sln
-  - $NUGET install NUnit.Runners 2.6.4 testrunner
+  - $NUGET install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   
 script:
   - $MSBUILD /p:Configuration=Release LibskycoinNet.sln
