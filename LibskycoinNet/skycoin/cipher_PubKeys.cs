@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class cipher_PubKeys : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -65,10 +66,10 @@ public class cipher_PubKeys : global::System.IDisposable {
 
   public cipher_PubKey data {
     set {
-      skycoinPINVOKE.cipher_PubKeys_data_set(swigCPtr, cipher_PubKey.getCPtr(value));
+      skycoinPINVOKE.set_cipher_PubKeys_data(swigCPtr, cipher_PubKey.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_PubKeys_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_PubKeys_data(swigCPtr);
       cipher_PubKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_PubKey(cPtr, false);
       return ret;
     } 
@@ -76,15 +77,17 @@ public class cipher_PubKeys : global::System.IDisposable {
 
   public int count {
     set {
-      skycoinPINVOKE.cipher_PubKeys_count_set(swigCPtr, value);
+      skycoinPINVOKE.set_cipher_PubKeys_count(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.cipher_PubKeys_count_get(swigCPtr);
+      int ret = skycoinPINVOKE.get_cipher_PubKeys_count(swigCPtr);
       return ret;
     } 
   }
 
   public cipher_PubKeys() : this(skycoinPINVOKE.new_cipher_PubKeys(), true) {
   }
+
+}
 
 }

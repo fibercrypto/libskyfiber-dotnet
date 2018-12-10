@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class wallet__Note : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,11 +42,11 @@ public class wallet__Note : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ TxID {
     set {
-      skycoinPINVOKE.wallet__Note_TxID_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__Note_TxID(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.wallet__Note_TxID_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_wallet__Note_TxID(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -53,11 +54,11 @@ public class wallet__Note : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Value {
     set {
-      skycoinPINVOKE.wallet__Note_Value_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__Note_Value(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.wallet__Note_Value_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_wallet__Note_Value(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -65,5 +66,7 @@ public class wallet__Note : global::System.IDisposable {
 
   public wallet__Note() : this(skycoinPINVOKE.new_wallet__Note(), true) {
   }
+
+}
 
 }

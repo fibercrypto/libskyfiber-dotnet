@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class coin__UxHead : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -39,31 +40,29 @@ public class coin__UxHead : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_GoUint64_ Time {
+  public ulong Time {
     set {
-      skycoinPINVOKE.coin__UxHead_Time_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__UxHead_Time(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.coin__UxHead_Time_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_coin__UxHead_Time(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoUint64_ BkSeq {
+  public ulong BkSeq {
     set {
-      skycoinPINVOKE.coin__UxHead_BkSeq_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__UxHead_BkSeq(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.coin__UxHead_BkSeq_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_coin__UxHead_BkSeq(swigCPtr);
       return ret;
     } 
   }
 
   public coin__UxHead() : this(skycoinPINVOKE.new_coin__UxHead(), true) {
   }
+
+}
 
 }

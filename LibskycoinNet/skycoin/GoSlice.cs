@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class GoSlice : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -39,12 +40,35 @@ public class GoSlice : global::System.IDisposable {
     }
   }
 
+  public int isEqual(GoSlice slice) {
+    int ret = skycoinPINVOKE.GoSlice_isEqual(swigCPtr, GoSlice.getCPtr(slice));
+    return ret;
+  }
+
+  public void convertString(_GoString_ data) {
+    skycoinPINVOKE.GoSlice_convertString(swigCPtr, _GoString_.getCPtr(data));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void setAtChar(char p, ulong i) {
+    skycoinPINVOKE.GoSlice_setAtChar(swigCPtr, p, i);
+  }
+
+  public void getString(_GoString_ arg0) {
+    skycoinPINVOKE.GoSlice_getString(swigCPtr, _GoString_.getCPtr(arg0));
+  }
+
+  public int getAtString(int index, _GoString_ outs) {
+    int ret = skycoinPINVOKE.GoSlice_getAtString(swigCPtr, index, _GoString_.getCPtr(outs));
+    return ret;
+  }
+
   public SWIGTYPE_p_void data {
     set {
-      skycoinPINVOKE.GoSlice_data_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
+      skycoinPINVOKE.set_GoSlice_data(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.GoSlice_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_GoSlice_data(swigCPtr);
       SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
       return ret;
     } 
@@ -52,25 +76,27 @@ public class GoSlice : global::System.IDisposable {
 
   public long len {
     set {
-      skycoinPINVOKE.GoSlice_len_set(swigCPtr, value);
+      skycoinPINVOKE.set_GoSlice_len(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.GoSlice_len_get(swigCPtr);
+      long ret = skycoinPINVOKE.get_GoSlice_len(swigCPtr);
       return ret;
     } 
   }
 
   public long cap {
     set {
-      skycoinPINVOKE.GoSlice_cap_set(swigCPtr, value);
+      skycoinPINVOKE.set_GoSlice_cap(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.GoSlice_cap_get(swigCPtr);
+      long ret = skycoinPINVOKE.get_GoSlice_cap(swigCPtr);
       return ret;
     } 
   }
 
   public GoSlice() : this(skycoinPINVOKE.new_GoSlice(), true) {
   }
+
+}
 
 }

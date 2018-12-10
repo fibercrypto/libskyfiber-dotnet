@@ -5,13 +5,13 @@ before_install:
   - sudo apt-get install -y gendarme
 
 install:
-  - nuget restore LibskycoinNet.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - eval "$(gimme 1.10)"
+  - go version
+  - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build	
   
 script:
-  - msbuild /p:Configuration=Release LibskycoinNet.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll
   - make lint
+  - make test
   
 notifications:
   email: false

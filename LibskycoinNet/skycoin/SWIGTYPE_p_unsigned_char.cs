@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class SWIGTYPE_p_unsigned_char {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -23,4 +24,6 @@ public class SWIGTYPE_p_unsigned_char {
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_unsigned_char obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
+}
+
 }

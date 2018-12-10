@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class coin__TransactionOutput : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -46,40 +47,38 @@ public class coin__TransactionOutput : global::System.IDisposable {
 
   public cipher__Address Address {
     set {
-      skycoinPINVOKE.coin__TransactionOutput_Address_set(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.set_coin__TransactionOutput_Address(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__TransactionOutput_Address_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__TransactionOutput_Address(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoUint64_ Coins {
+  public ulong Coins {
     set {
-      skycoinPINVOKE.coin__TransactionOutput_Coins_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__TransactionOutput_Coins(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.coin__TransactionOutput_Coins_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_coin__TransactionOutput_Coins(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoUint64_ Hours {
+  public ulong Hours {
     set {
-      skycoinPINVOKE.coin__TransactionOutput_Hours_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_coin__TransactionOutput_Hours(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.coin__TransactionOutput_Hours_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_coin__TransactionOutput_Hours(swigCPtr);
       return ret;
     } 
   }
 
   public coin__TransactionOutput() : this(skycoinPINVOKE.new_coin__TransactionOutput(), true) {
   }
+
+}
 
 }

@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class wallet__Balance : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -39,31 +40,29 @@ public class wallet__Balance : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_GoUint64_ Coins {
+  public ulong Coins {
     set {
-      skycoinPINVOKE.wallet__Balance_Coins_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_wallet__Balance_Coins(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.wallet__Balance_Coins_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_wallet__Balance_Coins(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_GoUint64_ Hours {
+  public ulong Hours {
     set {
-      skycoinPINVOKE.wallet__Balance_Hours_set(swigCPtr, SWIGTYPE_p_GoUint64_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_wallet__Balance_Hours(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint64_ ret = new SWIGTYPE_p_GoUint64_(skycoinPINVOKE.wallet__Balance_Hours_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      ulong ret = skycoinPINVOKE.get_wallet__Balance_Hours(swigCPtr);
       return ret;
     } 
   }
 
   public wallet__Balance() : this(skycoinPINVOKE.new_wallet__Balance(), true) {
   }
+
+}
 
 }

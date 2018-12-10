@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class coin__BlockBody : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -46,11 +47,11 @@ public class coin__BlockBody : global::System.IDisposable {
 
   public SWIGTYPE_p_GoSlice_ Transactions {
     set {
-      skycoinPINVOKE.coin__BlockBody_Transactions_set(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
+      skycoinPINVOKE.set_coin__BlockBody_Transactions(swigCPtr, SWIGTYPE_p_GoSlice_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.coin__BlockBody_Transactions_get(swigCPtr), true);
+      SWIGTYPE_p_GoSlice_ ret = new SWIGTYPE_p_GoSlice_(skycoinPINVOKE.get_coin__BlockBody_Transactions(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -58,5 +59,7 @@ public class coin__BlockBody : global::System.IDisposable {
 
   public coin__BlockBody() : this(skycoinPINVOKE.new_coin__BlockBody(), true) {
   }
+
+}
 
 }

@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class wallet__BalancePair : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,10 +42,10 @@ public class wallet__BalancePair : global::System.IDisposable {
 
   public wallet__Balance Confirmed {
     set {
-      skycoinPINVOKE.wallet__BalancePair_Confirmed_set(swigCPtr, wallet__Balance.getCPtr(value));
+      skycoinPINVOKE.set_wallet__BalancePair_Confirmed(swigCPtr, wallet__Balance.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__BalancePair_Confirmed_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__BalancePair_Confirmed(swigCPtr);
       wallet__Balance ret = (cPtr == global::System.IntPtr.Zero) ? null : new wallet__Balance(cPtr, false);
       return ret;
     } 
@@ -52,10 +53,10 @@ public class wallet__BalancePair : global::System.IDisposable {
 
   public wallet__Balance Predicted {
     set {
-      skycoinPINVOKE.wallet__BalancePair_Predicted_set(swigCPtr, wallet__Balance.getCPtr(value));
+      skycoinPINVOKE.set_wallet__BalancePair_Predicted(swigCPtr, wallet__Balance.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__BalancePair_Predicted_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__BalancePair_Predicted(swigCPtr);
       wallet__Balance ret = (cPtr == global::System.IntPtr.Zero) ? null : new wallet__Balance(cPtr, false);
       return ret;
     } 
@@ -63,5 +64,7 @@ public class wallet__BalancePair : global::System.IDisposable {
 
   public wallet__BalancePair() : this(skycoinPINVOKE.new_wallet__BalancePair(), true) {
   }
+
+}
 
 }

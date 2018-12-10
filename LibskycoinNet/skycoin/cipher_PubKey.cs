@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class cipher_PubKey : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -44,20 +45,30 @@ public class cipher_PubKey : global::System.IDisposable {
     return ret;
   }
 
-  public void assignFrom(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_PubKey_assignFrom(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignFrom(cipher_PubKey data) {
+    skycoinPINVOKE.cipher_PubKey_assignFrom(swigCPtr, cipher_PubKey.getCPtr(data));
   }
 
-  public void assignTo(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_PubKey_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignTo(cipher_PubKey data) {
+    skycoinPINVOKE.cipher_PubKey_assignTo(swigCPtr, cipher_PubKey.getCPtr(data));
+  }
+
+  public void assignSlice(GoSlice slice) {
+    skycoinPINVOKE.cipher_PubKey_assignSlice(swigCPtr, GoSlice.getCPtr(slice));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public GoSlice toSlice() {
+    GoSlice ret = new GoSlice(skycoinPINVOKE.cipher_PubKey_toSlice(swigCPtr), true);
+    return ret;
   }
 
   public SWIGTYPE_p_unsigned_char data {
     set {
-      skycoinPINVOKE.cipher_PubKey_data_set(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
+      skycoinPINVOKE.set_cipher_PubKey_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_PubKey_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_PubKey_data(swigCPtr);
       SWIGTYPE_p_unsigned_char ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
       return ret;
     } 
@@ -65,5 +76,7 @@ public class cipher_PubKey : global::System.IDisposable {
 
   public cipher_PubKey() : this(skycoinPINVOKE.new_cipher_PubKey(), true) {
   }
+
+}
 
 }

@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class cipher_SHA256 : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -44,20 +45,25 @@ public class cipher_SHA256 : global::System.IDisposable {
     return ret;
   }
 
-  public void assignFrom(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_SHA256_assignFrom(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignFrom(cipher_SHA256 data) {
+    skycoinPINVOKE.cipher_SHA256_assignFrom(swigCPtr, cipher_SHA256.getCPtr(data));
   }
 
-  public void assignTo(SWIGTYPE_p_void data) {
-    skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, SWIGTYPE_p_void.getCPtr(data));
+  public void assignTo(cipher_SHA256 data) {
+    skycoinPINVOKE.cipher_SHA256_assignTo(swigCPtr, cipher_SHA256.getCPtr(data));
+  }
+
+  public _GoString_ getStr() {
+    _GoString_ ret = new _GoString_(skycoinPINVOKE.cipher_SHA256_getStr(swigCPtr), true);
+    return ret;
   }
 
   public SWIGTYPE_p_unsigned_char data {
     set {
-      skycoinPINVOKE.cipher_SHA256_data_set(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
+      skycoinPINVOKE.set_cipher_SHA256_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_SHA256_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_SHA256_data(swigCPtr);
       SWIGTYPE_p_unsigned_char ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
       return ret;
     } 
@@ -65,5 +71,7 @@ public class cipher_SHA256 : global::System.IDisposable {
 
   public cipher_SHA256() : this(skycoinPINVOKE.new_cipher_SHA256(), true) {
   }
+
+}
 
 }
