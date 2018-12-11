@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class api__RichlistParams : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -39,31 +40,29 @@ public class api__RichlistParams : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_GoInt_ N {
+  public long N {
     set {
-      skycoinPINVOKE.api__RichlistParams_N_set(swigCPtr, SWIGTYPE_p_GoInt_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_api__RichlistParams_N(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoInt_ ret = new SWIGTYPE_p_GoInt_(skycoinPINVOKE.api__RichlistParams_N_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      long ret = skycoinPINVOKE.get_api__RichlistParams_N(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_BOOL IncludeDistribution {
+  public uint IncludeDistribution {
     set {
-      skycoinPINVOKE.api__RichlistParams_IncludeDistribution_set(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_api__RichlistParams_IncludeDistribution(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.api__RichlistParams_IncludeDistribution_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_api__RichlistParams_IncludeDistribution(swigCPtr);
       return ret;
     } 
   }
 
   public api__RichlistParams() : this(skycoinPINVOKE.new_api__RichlistParams(), true) {
   }
+
+}
 
 }

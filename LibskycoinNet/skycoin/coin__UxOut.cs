@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class coin__UxOut : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -46,10 +47,10 @@ public class coin__UxOut : global::System.IDisposable {
 
   public coin__UxHead Head {
     set {
-      skycoinPINVOKE.coin__UxOut_Head_set(swigCPtr, coin__UxHead.getCPtr(value));
+      skycoinPINVOKE.set_coin__UxOut_Head(swigCPtr, coin__UxHead.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__UxOut_Head_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__UxOut_Head(swigCPtr);
       coin__UxHead ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__UxHead(cPtr, false);
       return ret;
     } 
@@ -57,10 +58,10 @@ public class coin__UxOut : global::System.IDisposable {
 
   public coin__UxBody Body {
     set {
-      skycoinPINVOKE.coin__UxOut_Body_set(swigCPtr, coin__UxBody.getCPtr(value));
+      skycoinPINVOKE.set_coin__UxOut_Body(swigCPtr, coin__UxBody.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__UxOut_Body_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__UxOut_Body(swigCPtr);
       coin__UxBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__UxBody(cPtr, false);
       return ret;
     } 
@@ -68,5 +69,7 @@ public class coin__UxOut : global::System.IDisposable {
 
   public coin__UxOut() : this(skycoinPINVOKE.new_coin__UxOut(), true) {
   }
+
+}
 
 }

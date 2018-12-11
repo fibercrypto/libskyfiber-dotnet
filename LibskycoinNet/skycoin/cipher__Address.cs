@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class cipher__Address : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -44,24 +45,31 @@ public class cipher__Address : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_GoUint8_ Version {
+  public char getVersion() {
+    char ret = skycoinPINVOKE.cipher__Address_getVersion(swigCPtr);
+    return ret;
+  }
+
+  public void setVersion(char pValue) {
+    skycoinPINVOKE.cipher__Address_setVersion(swigCPtr, pValue);
+  }
+
+  public byte Version {
     set {
-      skycoinPINVOKE.cipher__Address_Version_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_GoUint8_ ret = new SWIGTYPE_p_GoUint8_(skycoinPINVOKE.cipher__Address_Version_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      byte ret = skycoinPINVOKE.get_cipher__Address_Version(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_GoUint8_ Key {
     set {
-      skycoinPINVOKE.cipher__Address_Key_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_cipher__Address_Key(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher__Address_Key_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher__Address_Key(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -69,5 +77,7 @@ public class cipher__Address : global::System.IDisposable {
 
   public cipher__Address() : this(skycoinPINVOKE.new_cipher__Address(), true) {
   }
+
+}
 
 }

@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class GoInterface : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,10 +42,10 @@ public class GoInterface : global::System.IDisposable {
 
   public SWIGTYPE_p_void t {
     set {
-      skycoinPINVOKE.GoInterface_t_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
+      skycoinPINVOKE.set_GoInterface_t(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.GoInterface_t_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_GoInterface_t(swigCPtr);
       SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
       return ret;
     } 
@@ -52,10 +53,10 @@ public class GoInterface : global::System.IDisposable {
 
   public SWIGTYPE_p_void v {
     set {
-      skycoinPINVOKE.GoInterface_v_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
+      skycoinPINVOKE.set_GoInterface_v(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.GoInterface_v_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_GoInterface_v(swigCPtr);
       SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
       return ret;
     } 
@@ -63,5 +64,7 @@ public class GoInterface : global::System.IDisposable {
 
   public GoInterface() : this(skycoinPINVOKE.new_GoInterface(), true) {
   }
+
+}
 
 }

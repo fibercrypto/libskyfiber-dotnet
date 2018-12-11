@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class wallet__ReadableNote : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,11 +42,11 @@ public class wallet__ReadableNote : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ TransactionID {
     set {
-      skycoinPINVOKE.wallet__ReadableNote_TransactionID_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__ReadableNote_TransactionID(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.wallet__ReadableNote_TransactionID_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_wallet__ReadableNote_TransactionID(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -53,11 +54,11 @@ public class wallet__ReadableNote : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ ActualNote {
     set {
-      skycoinPINVOKE.wallet__ReadableNote_ActualNote_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.set_wallet__ReadableNote_ActualNote(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.wallet__ReadableNote_ActualNote_get(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_wallet__ReadableNote_ActualNote(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -65,5 +66,7 @@ public class wallet__ReadableNote : global::System.IDisposable {
 
   public wallet__ReadableNote() : this(skycoinPINVOKE.new_wallet__ReadableNote(), true) {
   }
+
+}
 
 }

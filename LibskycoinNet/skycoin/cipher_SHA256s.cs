@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class cipher_SHA256s : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -65,10 +66,10 @@ public class cipher_SHA256s : global::System.IDisposable {
 
   public cipher_SHA256 data {
     set {
-      skycoinPINVOKE.cipher_SHA256s_data_set(swigCPtr, cipher_SHA256.getCPtr(value));
+      skycoinPINVOKE.set_cipher_SHA256s_data(swigCPtr, cipher_SHA256.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_SHA256s_data_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_SHA256s_data(swigCPtr);
       cipher_SHA256 ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_SHA256(cPtr, false);
       return ret;
     } 
@@ -76,15 +77,17 @@ public class cipher_SHA256s : global::System.IDisposable {
 
   public int count {
     set {
-      skycoinPINVOKE.cipher_SHA256s_count_set(swigCPtr, value);
+      skycoinPINVOKE.set_cipher_SHA256s_count(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.cipher_SHA256s_count_get(swigCPtr);
+      int ret = skycoinPINVOKE.get_cipher_SHA256s_count(swigCPtr);
       return ret;
     } 
   }
 
   public cipher_SHA256s() : this(skycoinPINVOKE.new_cipher_SHA256s(), true) {
   }
+
+}
 
 }

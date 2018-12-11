@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class coin__SignedBlock : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,10 +42,10 @@ public class coin__SignedBlock : global::System.IDisposable {
 
   public coin__Block _unnamed {
     set {
-      skycoinPINVOKE.coin__SignedBlock__unnamed_set(swigCPtr, coin__Block.getCPtr(value));
+      skycoinPINVOKE.set_coin__SignedBlock__unnamed(swigCPtr, coin__Block.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__SignedBlock__unnamed_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__SignedBlock__unnamed(swigCPtr);
       coin__Block ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__Block(cPtr, false);
       return ret;
     } 
@@ -52,10 +53,10 @@ public class coin__SignedBlock : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Sig {
     set {
-      skycoinPINVOKE.coin__SignedBlock_Sig_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.set_coin__SignedBlock_Sig(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.coin__SignedBlock_Sig_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__SignedBlock_Sig(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -63,5 +64,7 @@ public class coin__SignedBlock : global::System.IDisposable {
 
   public coin__SignedBlock() : this(skycoinPINVOKE.new_coin__SignedBlock(), true) {
   }
+
+}
 
 }

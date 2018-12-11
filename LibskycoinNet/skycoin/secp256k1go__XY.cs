@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class secp256k1go__XY : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -41,10 +42,10 @@ public class secp256k1go__XY : global::System.IDisposable {
 
   public secp256k1go__Field X {
     set {
-      skycoinPINVOKE.secp256k1go__XY_X_set(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XY_X(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XY_X_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XY_X(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -52,28 +53,28 @@ public class secp256k1go__XY : global::System.IDisposable {
 
   public secp256k1go__Field Y {
     set {
-      skycoinPINVOKE.secp256k1go__XY_Y_set(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.set_secp256k1go__XY_Y(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XY_Y_get(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XY_Y(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_BOOL Infinity {
+  public uint Infinity {
     set {
-      skycoinPINVOKE.secp256k1go__XY_Infinity_set(swigCPtr, SWIGTYPE_p_BOOL.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set_secp256k1go__XY_Infinity(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_BOOL ret = new SWIGTYPE_p_BOOL(skycoinPINVOKE.secp256k1go__XY_Infinity_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      uint ret = skycoinPINVOKE.get_secp256k1go__XY_Infinity(swigCPtr);
       return ret;
     } 
   }
 
   public secp256k1go__XY() : this(skycoinPINVOKE.new_secp256k1go__XY(), true) {
   }
+
+}
 
 }

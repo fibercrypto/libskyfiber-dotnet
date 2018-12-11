@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace skycoin {
 
 public class _GoString_ : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -39,29 +40,44 @@ public class _GoString_ : global::System.IDisposable {
     }
   }
 
+  public int SetString(string str) {
+    int ret = skycoinPINVOKE._GoString__SetString(swigCPtr, str);
+    return ret;
+  }
+
+  public string getString() {
+    string ret = skycoinPINVOKE._GoString__getString(swigCPtr);
+    return ret;
+  }
+
+  public int isEqual(_GoString_ string2) {
+    int ret = skycoinPINVOKE._GoString__isEqual(swigCPtr, _GoString_.getCPtr(string2));
+    return ret;
+  }
+
   public string p {
     set {
-      skycoinPINVOKE._GoString__p_set(swigCPtr, value);
+      skycoinPINVOKE.set__GoString__p(swigCPtr, value);
     } 
     get {
-      string ret = skycoinPINVOKE._GoString__p_get(swigCPtr);
+      string ret = skycoinPINVOKE.get__GoString__p(swigCPtr);
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_ptrdiff_t n {
+  public int n {
     set {
-      skycoinPINVOKE._GoString__n_set(swigCPtr, SWIGTYPE_p_ptrdiff_t.getCPtr(value));
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      skycoinPINVOKE.set__GoString__n(swigCPtr, value);
     } 
     get {
-      SWIGTYPE_p_ptrdiff_t ret = new SWIGTYPE_p_ptrdiff_t(skycoinPINVOKE._GoString__n_get(swigCPtr), true);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+      int ret = skycoinPINVOKE.get__GoString__n(swigCPtr);
       return ret;
     } 
   }
 
   public _GoString_() : this(skycoinPINVOKE.new__GoString_(), true) {
   }
+
+}
 
 }
