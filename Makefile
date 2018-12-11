@@ -30,7 +30,9 @@ $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	mkdir -p swig/include
 	grep -v "_Complex" $(INCLUDE_DIR)/libskycoin.h > swig/include/libskycoin.h
 
-build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a ## Build libskycoin static C client library
+build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a build-swig ## Build libskycoin static C client library
+	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o LibskycoinNetTest/bin/Release/libskycoin.so
 
 build-swig: ## Generate csharp source code from SWIG interface definitions
 	#Generate structs.i from skytypes.gen.h
@@ -48,30 +50,23 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	rm -f swig/include/swig.h
 	rm -f LibskycoinNet/skycoin/skycoinnet_wrap.c
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
-	
-build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
-	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
-	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
-	mv libskycoin.so LibskycoinNetTest/bin/Release
 
 install-deps: ## Install development dependencies
 	nuget restore LibskycoinNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
-build-sln: install-deps build-libc build-swig
+build-debug: install-deps build-libc build-swig
 	msbuild /p:Configuration=Release LibskycoinNet.sln
+
+build-release: install-deps build-libc build-swig
 	msbuild /p:Configuration=Debug LibskycoinNet.sln
 
-build: build-sln build-libskycoin-net ## Build LibSkycoinNet Assembly
+build: build-libc build-release ## Build LibSkycoinNet Assembly
 
-test: build ## Run LibSkycoinNet test suite
+test: install-deps build-libc build-sln ## Run LibSkycoinNet test suite
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	gendarme ./LibskycoinNet/bin/Release/LibskycoinNet.dll --severity critical
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-test: ## Run the test suite and CIL checks
-	gendarme ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll --severity critical
-
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
