@@ -22,7 +22,7 @@ LABEL "org.label-schema.name"="libskycoin-dotnet" \
 ENV MONO_VERSION 4.8.0.524
 ENV DEBIAN_FRONTEND noninteractive
 
-# Add mono and repo and install necessary packages
+# Add mono and dotnet repos and install necessary packages
 RUN apt update \
     && apt upgrade -y \
     && apt install -y curl \
