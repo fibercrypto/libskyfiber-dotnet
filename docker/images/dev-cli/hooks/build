@@ -22,7 +22,7 @@ docker build --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 
 # Build :dind, :vscode and :vscode-dind tag
 # Only build if 
-# if [ "$CACHE_TAG" -eq "develop" ]; then
+if [ "$CACHE_TAG" -eq "develop" ]; then
   docker build --build-arg IMAGE_FROM="skycoin/skycoindev-cli:dind" \
                --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                --build-arg SCOMMIT=$SOURCE_COMMIT \
@@ -42,4 +42,4 @@ docker build --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                --build-arg VS_EXTENSIONS="ms-vscode.csharp Leopotam.csharpfixformat jchannon.csharpextensions" \
                -f $DOCKERFILE_PATH \
                -t "$DOCKER_REPO:vscode-dind" .
-# fi
+fi

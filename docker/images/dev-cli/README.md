@@ -49,13 +49,21 @@ $ docker run --rm \
 
 ### Use Visual Studio Code
 
-In order to use Visual Studio Code on development, please read carefull 
+In order to use Visual Studio Code on development process, please read carefull
 the [documentation of oficial Skycoin Visual Studio Code dev image](https://github.com/skycoin/skycoin/tree/develop/docker/images/dev-vscode#initialize-your-development-environment)
+
+#### Installed extensions
+
+- [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+- [C# FixFormat](https://marketplace.visualstudio.com/items?itemName=Leopotam.csharpfixformat)
+- [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions)
+- [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+- [.NET Core Tools](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet)
 
 #### Add extensions to Visual Studio Code
 
 Like Skycoin Visual Studio Code dev image, you must pass `VS_EXTENSIONS` environment variable
-to the command-line with extensions you prefer.
+to the command-line with extensions you prefer. **Pass it if you use a docker image with Visual Studio Code**
 
 ```sh
 $ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -68,4 +76,41 @@ $ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix \
 
 ### Build your own images
 
-To be filled
+The following arguments influence the Docker build process.
+
+- `IMAGE_FROM`: base image used to build libskycoin-dotnet
+- `SOURCE_COMMIT`: the SHA1 hash of the commit being tested.
+- `IMAGE_NAME`: the name and tag of the Docker repository being built.
+- `DOCKERFILE_PATH`: the dockerfile currently being built.
+- `VS_EXTENSIONS` Visual Studio Code extensions to add on docker image.
+
+For instance, the following commands can be executed in order to build using `skycoindev-cli:develop` as base image. **Pay attention, you can't use `VS_EXTENSIONS` build arg when base image is only for CLI purpose**
+
+```sh
+$ git clone https://github.com/simelo/libskycoin-dotnet.git && cd libskycoin-dotnet
+$ IMAGE_FROM="skycoin/skycoindev-cli:develop"
+$ SOURCE_COMMIT=$(git rev-parse HEAD)
+$ IMAGE_NAME=simelotech/libskycoin-dotnet:develop
+$ DOCKERFILE_PATH=docker/images/dev-cli/Dockerfile
+$ docker build --build-arg IMAGE_FROM=$IMAGE_FROM \
+               --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+               --build-arg SCOMMIT=$SOURCE_COMMIT \
+               -f $DOCKERFILE_PATH \
+               -t "$IMAGE_NAME" .
+```
+
+If you want use Visual Studio Code as IDE, yo can change `IMAGE_FROM` to build it. **When base image use Visual Studio Code, you can use `VS_EXTENSIONS` build arg**
+
+```sh
+$ git clone https://github.com/simelo/libskycoin-dotnet.git && cd libskycoin-dotnet
+$ IMAGE_FROM="simelotech/skycoindev-vscode:develop"
+$ SOURCE_COMMIT=$(git rev-parse HEAD)
+$ IMAGE_NAME=simelotech/libskycoin-dotnet:vscode
+$ DOCKERFILE_PATH=docker/images/dev-cli/Dockerfile
+$ docker build --build-arg IMAGE_FROM=$IMAGE_FROM \
+               --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+               --build-arg SCOMMIT=$SOURCE_COMMIT \
+               --build-arg VS_EXTENSIONS="ms-vscode.Go windmilleng.vscode-go-autotest" \
+               -f $DOCKERFILE_PATH \
+               -t "$IMAGE_NAME" .
+```
