@@ -11,6 +11,8 @@
 # CACHE_TAG: the Docker repository tag being built.
 # IMAGE_NAME: the name and tag of the Docker repository being built.
 #             (This variable is a combination of DOCKER_REPO:CACHE_TAG.)
+# VS_EXTENSIONS: Visual Studio Code extensions to add on docker image,
+#                only if base image is not CLI purpose.
 
 echo "Build hook running"
 
@@ -21,7 +23,7 @@ docker build --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
              -t "$IMAGE_NAME" .
 
 # Build :dind, :vscode and :vscode-dind tag
-# Only build if 
+# Only build if docker tag is develop
 if [ "$CACHE_TAG" -eq "develop" ]; then
   docker build --build-arg IMAGE_FROM="skycoin/skycoindev-cli:dind" \
                --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
