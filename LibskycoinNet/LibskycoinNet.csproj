@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LibskycoinNet</RootNamespace>
     <AssemblyName>LibskycoinNet</AssemblyName>
-    <!-- TargetFrameworkVersion>v4.5</TargetFrameworkVersion -->
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworks>netcoreapp2.2;netstandard2.0;net45</TargetFrameworks>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>LibskycoinNet</PackageId>
