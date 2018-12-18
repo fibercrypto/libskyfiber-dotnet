@@ -11,16 +11,16 @@ matrix:
     - os: linux
       dist: xenial
       dotnet: 2.1.500
-      mono: 4.8.0
+      mono: latest
       env:
         - DOTNETCORE=2
     - os: osx
-      mono: 4.8.0
+      mono: latest
       env:
         - MONO_VERSION=4.8.0
     - os: osx
       dotnet: 2.1.500
-      mono: 4.8.0
+      mono: latest
       env:
         - DOTNETCORE=2
 
