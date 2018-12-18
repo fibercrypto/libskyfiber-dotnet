@@ -16,17 +16,11 @@ matrix:
         - DOTNETCORE=2
     - os: osx
       mono: latest
-      homebrew:
-        packages:
-        - swig
       env:
         - MONO_VERSION=4.8.0
     - os: osx
       dotnet: 2.1.500
       mono: latest
-      homebrew:
-        packages:
-        - swig
       env:
         - DOTNETCORE=2
 
@@ -37,6 +31,7 @@ before_install:
 install:
   - eval "$(gimme 1.11)"
   - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build ; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null  && brew install swig; fi
   
 script:
   - make test
