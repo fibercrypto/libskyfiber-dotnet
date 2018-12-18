@@ -5,7 +5,7 @@ matrix:
   include:
     - os: linux
       dist: xenial
-      mono: 4.8.0
+      mono: latest
       env:
         - MONO_VERSION=4.8.0
     - os: linux
