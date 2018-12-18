@@ -38,7 +38,7 @@ install:
   - cd swig-3.0.12 
   - ./configure --prefix=/usr 
   - make 
-  - make install 
+  - sudo make install 
   - cd ../../ 
   - rm -rf swig_build
   
