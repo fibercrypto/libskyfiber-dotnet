@@ -1,6 +1,6 @@
 language: csharp
 solution: LibskycoinNet.sln
-sudo: true
+sudo: required
 matrix:
   include:
     - os: linux
