@@ -35,7 +35,7 @@ before_install:
 
 install:
   - eval "$(gimme 1.11)"
-  - .gopath/src/github.com/skycoin/skycoin/ci-scripts/install-travis-gcc.sh
+  - ./.travis/install-travis-gcc.sh
   - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build ; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null  && brew install swig; fi
   
