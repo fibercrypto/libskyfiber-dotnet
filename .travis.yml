@@ -1,6 +1,5 @@
 language: csharp
 solution: LibskycoinNet.sln
-sudo: required
 
 matrix:
   include:
@@ -16,12 +15,10 @@ matrix:
       env:
         - DOTNETCORE=2
     - os: osx
-      osx_image: xcode8
       mono: latest
       env:
         - MONO_VERSION=4.8.0
     - os: osx
-      osx_image: xcode8
       dotnet: 2.1.500
       mono: latest
       env:
@@ -30,7 +27,6 @@ matrix:
 before_install:
   - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet msbuild'; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; fi
   - ./.travis/install-deps.sh
-  - eval "CC=gcc-6 && CXX=g++-6"
 
 install:
   - ./.travis/install-travis-gcc.sh
@@ -39,7 +35,8 @@ install:
   - eval "$(gimme 1.11)"
   
 script:
-  - CC=gcc-6 make test
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then CC=gcc-6 make test ; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then make test ; fi
   
 notifications:
   email: false
