@@ -1,8 +1,7 @@
 language: csharp
 solution: LibskycoinNet.sln
 sudo: required
-go:
-  - "1.11.x"
+
 matrix:
   include:
     - os: linux
@@ -34,10 +33,10 @@ before_install:
   - eval "CC=gcc-6 && CXX=g++-6"
 
 install:
-  - eval "$(gimme 1.11)"
   - ./.travis/install-travis-gcc.sh
   - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build ; fi
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null  && brew install swig; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null  && brew install swig && brew install gimme; fi
+  - eval "$(gimme 1.11)"
   
 script:
   - make test
