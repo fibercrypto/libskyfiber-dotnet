@@ -27,6 +27,7 @@ matrix:
 before_install:
   - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet msbuild'; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; fi
   - ./.travis/install-deps.sh
+  - eval "CC=gcc && CXX=g++"
 
 install:
   - ./.travis/install-travis-gcc.sh
