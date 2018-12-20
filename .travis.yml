@@ -35,8 +35,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then CC=gcc-6 make test ; fi
-  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then make test ; fi
+  - make test
   
 notifications:
   email: false
