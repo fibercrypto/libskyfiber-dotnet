@@ -39,7 +39,7 @@ install:
   - eval "$(gimme 1.11)"
   
 script:
-  - make test
+  - CC=gcc-6 make test
   
 notifications:
   email: false
