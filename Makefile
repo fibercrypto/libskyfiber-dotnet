@@ -18,7 +18,7 @@ HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 OSNAME = $(TRAVIS_OS_NAME)
 
 ifeq ($(shell uname -s),Linux)
-  LDFLAGS= -ILibskycoinNet/swig/include -I$(INCLUDE_DIR)
+  LDFLAGS= 
 ifndef OSNAME
   OSNAME = linux
 endif
@@ -26,12 +26,9 @@ else ifeq ($(shell uname -s),Darwin)
 ifndef OSNAME
   OSNAME = osx
 endif
-  LDFLAGS= -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) -framework CoreFoundation -framework Security
+  LDFLAGS= -framework CoreFoundation -framework Security
 else
-  LDLIBS = $(LIBC_LIBS)
-  LDPATH=$(shell printenv LD_LIBRARY_PATH)
-  LDPATHVAR=LD_LIBRARY_PATH
-  LDFLAGS=$(LIBC_FLAGS)
+  LDFLAGS= 
 endif
 configure: ## Setup build environment
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
@@ -65,8 +62,8 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
-	gcc -c -fpic $(LDFLAGS) LibskycoinNet/skycoin/skycoinnet_wrap.c
-	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
+	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR)  LibskycoinNet/skycoin/skycoinnet_wrap.c
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
 	mv libskycoin.so LibskycoinNetTest/bin/Release
 
 install-deps: ## Install development dependencies
