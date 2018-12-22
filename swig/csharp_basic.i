@@ -234,10 +234,6 @@ FeeCalculator overflow(){
 		srand((unsigned int)time(NULL));
 	}
 
-	void teardown(void)
-	{
-		cleanupMem();
-	}
 
 	// TODO: Move to libsky_io.c
 	void fprintbuff(FILE * f, void *buff, size_t n)

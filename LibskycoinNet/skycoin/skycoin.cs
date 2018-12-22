@@ -766,10 +766,6 @@ public class skycoin {
     return ret;
   }
 
-  public static void freeRegisteredJson(SWIGTYPE_p_void p) {
-    skycoinPINVOKE.freeRegisteredJson(SWIGTYPE_p_void.getCPtr(p));
-  }
-
   public static int registerWalletClean(SWIGTYPE_p_Client__Handle clientHandle, SWIGTYPE_p_WalletResponse__Handle walletHandle) {
     int ret = skycoinPINVOKE.registerWalletClean(SWIGTYPE_p_Client__Handle.getCPtr(clientHandle), SWIGTYPE_p_WalletResponse__Handle.getCPtr(walletHandle));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
@@ -797,16 +793,8 @@ public class skycoin {
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public static void cleanupMem() {
-    skycoinPINVOKE.cleanupMem();
-  }
-
   public static void setup() {
     skycoinPINVOKE.setup();
-  }
-
-  public static void teardown() {
-    skycoinPINVOKE.teardown();
   }
 
   public static void fprintbuff(SWIGTYPE_p_FILE f, SWIGTYPE_p_void buff, uint n) {
