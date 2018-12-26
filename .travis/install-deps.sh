@@ -15,6 +15,15 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                  referenceassemblies-pcl \
                  ca-certificates-mono \
                  msbuild
+    mkdir swig_build && \
+      cd swig_build && \
+      wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && \
+      tar -zxf swig-3.0.12.tar.gz && \
+      cd swig-3.0.12 && \
+      sudo ./configure --prefix=/usr && \
+      sudo make && sudo make install && \
+      cd ../../ && \
+      sudo rm -rf swig_build
 fi
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
@@ -22,6 +31,10 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     curl -o dotnet-sdk-2.1.500-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/576dbb8d-03f2-4d45-857a-b226d39b3dbe/0d4fbf91aa1137352680ec98ef9edb5d/dotnet-sdk-2.1.500-osx-gs-x64.pkg
     sudo installer -pkg MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg -target /
     sudo installer -pkg dotnet-sdk-2.1.500-osx-gs-x64.pkg -target /
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+    brew install swig
+    brew install gimme
 fi
 
 if [ "$DOTNETCORE" != "" ]; then

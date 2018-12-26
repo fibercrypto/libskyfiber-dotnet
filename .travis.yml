@@ -27,12 +27,10 @@ matrix:
 before_install:
   - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet msbuild'; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; fi
   - ./.travis/install-deps.sh
+  - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
 
 install:
-  - ./.travis/install-travis-gcc.sh
-  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build ; fi
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null  && brew install swig && brew install gimme; fi
   - eval "$(gimme 1.10)"
   
 script:
