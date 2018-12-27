@@ -16,6 +16,9 @@
 
 echo "Build hook running"
 
+# Move to project root path to build from here
+cd ../../../
+
 # Build :develop tag
 docker build --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
              --build-arg SCOMMIT=$SOURCE_COMMIT \
