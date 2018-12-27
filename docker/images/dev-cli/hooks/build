@@ -16,8 +16,6 @@
 
 echo "Build hook running"
 
-ls ../../../gopath/src/github.com/skycoin/skycoin/
-
 # Build :develop tag
 docker build --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
              --build-arg SCOMMIT=$SOURCE_COMMIT \
@@ -37,13 +35,13 @@ if [ "$CACHE_TAG" == "develop" ]; then
                --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                --build-arg SCOMMIT=$SOURCE_COMMIT \
                --build-arg VS_EXTENSIONS="ms-vscode.csharp Leopotam.csharpfixformat jchannon.csharpextensions k--kato.docomment formulahendry.dotnet" \
-               -f ../../../gopath/src/github.com/skycoin/skycoin/docker/images/dev-vscode/Dockerfile \
+               -f gopath/src/github.com/skycoin/skycoin/docker/images/dev-vscode/Dockerfile \
                -t "$DOCKER_REPO:vscode" .
 
   docker build --build-arg IMAGE_FROM="$DOCKER_REPO:dind" \
                --build-arg BDATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                --build-arg SCOMMIT=$SOURCE_COMMIT \
                --build-arg VS_EXTENSIONS="ms-vscode.csharp Leopotam.csharpfixformat jchannon.csharpextensions k--kato.docomment formulahendry.dotnet" \
-               -f ../../../gopath/src/github.com/skycoin/skycoin/docker/images/dev-vscode/Dockerfile \
+               -f gopath/src/github.com/skycoin/skycoin/docker/images/dev-vscode/Dockerfile \
                -t "$DOCKER_REPO:vscode-dind" .
 fi
