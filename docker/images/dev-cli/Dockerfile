@@ -3,7 +3,6 @@ FROM $IMAGE_FROM
 
 ARG BDATE
 ARG SCOMMIT
-ARG VS_EXTENSIONS
 
 # Image labels (see ./hooks/build for ARGS)
 LABEL "org.label-schema.name"="libskycoin-dotnet" \
@@ -42,7 +41,6 @@ RUN apt update \
            nuget \
            referenceassemblies-pcl \
            dotnet-sdk-2.2 \
-    && for ext in $VS_EXTENSIONS; do code --user-data-dir $HOME --install-extension $ext; done \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/*
   
