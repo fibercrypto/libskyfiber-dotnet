@@ -63,8 +63,8 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
-	gcc -c -fPIC -Iswig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
-	gcc -shared -fPIC skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
+	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) -L$(BUILDLIBC_DIR) $(LDFLAGS)  LibskycoinNet/skycoin/skycoinnet_wrap.c
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
 	mv libskycoin.so LibskycoinNetTest/bin/Release
 
 install-deps: ## Install development dependencies
