@@ -32,8 +32,8 @@ $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 
 build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a build-swig ## Build libskycoin static C client library
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
-	rm -fv LibskycoinNetTest/bin/Release/libskycoin.so
-	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o LibskycoinNetTest/bin/Release/libskycoin.so
+	rm -fv ./LibskycoinNetTest/bin/Release/libskycoin.so
+	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o ./LibskycoinNetTest/bin/Release/libskycoin.so
 
 build-swig: ## Generate csharp source code from SWIG interface definitions
 	#Generate structs.i from skytypes.gen.h
