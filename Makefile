@@ -32,6 +32,7 @@ $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 
 build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a build-swig ## Build libskycoin static C client library
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) LibskycoinNet/skycoin/skycoinnet_wrap.c
+	rm -fv LibskycoinNetTest/bin/Release/libskycoin.so
 	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o LibskycoinNetTest/bin/Release/libskycoin.so
 
 build-swig: ## Generate csharp source code from SWIG interface definitions
@@ -56,10 +57,10 @@ install-deps: ## Install development dependencies
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-debug: install-deps build-libc build-swig
-	msbuild /p:Configuration=Release LibskycoinNet.sln
+	msbuild /p:Configuration=Debug LibskycoinNet.sln
 
 build-release: install-deps build-libc build-swig
-	msbuild /p:Configuration=Debug LibskycoinNet.sln
+	msbuild /p:Configuration=Release LibskycoinNet.sln
 
 build: build-libc build-release ## Build LibSkycoinNet Assembly
 
