@@ -63,7 +63,7 @@ build-release: install-deps build-libc build-swig
 
 build: build-libc build-release ## Build LibSkycoinNet Assembly
 
-test: install-deps build-libc build-sln ## Run LibSkycoinNet test suite
+test: install-deps build ## Run LibSkycoinNet test suite
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 	gendarme ./LibskycoinNet/bin/Release/LibskycoinNet.dll --severity critical
 
