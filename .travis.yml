@@ -12,3 +12,10 @@ script:
 notifications:
   email: false
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: chmod +x ./travis/deploy.sh && ./travis/deploy.sh $NUGET_API_KEY $NUGET_SOURCE
+  on:
+    branch: develop

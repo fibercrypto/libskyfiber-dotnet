@@ -262,3 +262,4 @@ testrunner/
 *.swp
 *.swo
 
+.directory
