@@ -1,6 +1,10 @@
 .DEFAULT_GOAL := help
 .PHONY: configure build-libc build-swig test help
 
+# Compilation output
+.ONESHELL:
+SHELL := /bin/bash
+
 PWD = $(shell pwd)
 GOPATH_DIR = $(PWD)/gopath
 SKYCOIN_DIR = gopath/src/github.com/skycoin/skycoin
