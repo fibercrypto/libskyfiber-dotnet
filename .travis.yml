@@ -25,7 +25,7 @@ matrix:
         - DOTNETCORE=2
 
 before_install:
-  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet msbuild'; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; fi
+  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD='dotnet msbuild'; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; export DOTNET_RUN='dotnet run' ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; export DOTNET_RUN='mono' fi
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
@@ -34,7 +34,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test
+  - make test DOTNET_RUN=$DOTNET_RUN CC=gcc MSBUILD=$MSBUILD NUGET=$NUGET
   
 notifications:
   email: false

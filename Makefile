@@ -17,6 +17,21 @@ HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
 OSNAME = $(TRAVIS_OS_NAME)
 
+# Default values for buiding .NET assemblies with mono
+ifndef DOTNET_RUN
+  DOTNET_RUN = mono
+endif
+ifndef MSBUILD
+  MSBUILD = msbuild
+endif
+ifndef NUGET
+  NUGET = nuget
+endif
+ifndef DOTNET
+  DOTNET = mono
+endif
+
+
 ifeq ($(shell uname -s),Linux)
   LDFLAGS= 
 ifndef OSNAME
@@ -61,22 +76,22 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	rm -f LibskycoinNet/skycoin/skycoinnet_wrap.c
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
-build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
-	gcc -c -fpic -I LibskycoinNet/swig/include -I $(INCLUDE_DIR) -libskycoin LibskycoinNet/skycoin/skycoinnet_wrap.c
-	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
+build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
+	$(CC) -c -fpic -I LibskycoinNet/swig/include -I $(INCLUDE_DIR) -libskycoin LibskycoinNet/skycoin/skycoinnet_wrap.c
+	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
 	mv libskycoin.so LibskycoinNetTest/bin/Release
 
 install-deps: ## Install development dependencies
-	nuget restore LibskycoinNet.sln
-	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+	$(NUGET) restore LibskycoinNet.sln
+	$(NUGET) install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	$(MSBUILD) /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
-build: build-sln build-libskycoin-net ## Build LibSkycoinNet Assembly
+build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	mono  ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(DOTNET_RUN)  ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
