@@ -80,8 +80,8 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -I ./LibskycoinNet/swig/include -I $(INCLUDE_DIR) -libskycoin ./LibskycoinNet/skycoin/skycoinnet_wrap.c
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
-	rm -rfv  ./LibskycoinNetTest/bin/Release/libskycoin.so
-	mv libskycoin.so ./LibskycoinNetTest/bin/Release/
+	rm -rfv  /LibskycoinNetTest/bin/Release/libskycoin.so
+	mv libskycoin.so /LibskycoinNetTest/bin/Release/
 
 install-deps: ## Install development dependencies
 	$(NUGET) restore LibskycoinNet.sln
