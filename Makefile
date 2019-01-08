@@ -86,8 +86,8 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mv libskycoin.so LibskycoinNetTest/bin/Release/
 
 install-deps: ## Install development dependencies
-	$(NUGET) restore LibskycoinNet.sln
-	$(NUGET) install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+	nuget restore LibskycoinNet.sln
+	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
 	$(MSBUILD) /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
