@@ -90,7 +90,7 @@ install-deps: ## Install development dependencies
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	$(MSBUILD) /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
