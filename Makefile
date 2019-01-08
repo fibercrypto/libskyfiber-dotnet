@@ -16,8 +16,7 @@ SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
 OSNAME = $(TRAVIS_OS_NAME)
-MSBUILD = msbuild
-NUGET = nuget
+
 # Default values for buiding .NET assemblies with mono
 ifndef DOTNET_RUN
   DOTNET_RUN = mono

@@ -34,7 +34,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test DOTNET_RUN=$DOTNET_RUN CC=gcc MSBUILD=$MSBUILD NUGET=$NUGET
+  - make test DOTNET_RUN="$DOTNET_RUN" CC=gcc MSBUILD="$MSBUILD" NUGET="$NUGET"
   
 notifications:
   email: false
