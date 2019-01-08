@@ -7,7 +7,7 @@ matrix:
       dist: xenial
       mono: latest
       env:
-        - MONO_VERSION=4.8.0
+        - MONO_VERSION=5.16
     - os: linux
       dist: xenial
       dotnet: 2.1.500

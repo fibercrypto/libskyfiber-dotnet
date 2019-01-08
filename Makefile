@@ -16,7 +16,8 @@ SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
 OSNAME = $(TRAVIS_OS_NAME)
-
+MSBUILD = msbuild
+NUGET = nuget
 # Default values for buiding .NET assemblies with mono
 ifndef DOTNET_RUN
   DOTNET_RUN = mono
@@ -86,11 +87,11 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mv libskycoin.so LibskycoinNetTest/bin/Release/
 
 install-deps: ## Install development dependencies
-	nuget restore LibskycoinNet.sln
-	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+	$(NUGET) restore LibskycoinNet.sln
+	$(NUGET) install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	$(MSBUILD) /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
