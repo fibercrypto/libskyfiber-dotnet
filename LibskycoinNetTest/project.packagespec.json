@@ -1,0 +1,39 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/maykel/go/src/github.com/simelo/libskycoin-dotnet/LibskycoinNetTest/LibskycoinNetTest.csproj",
+    "projectName": "LibskycoinNetTest",
+    "projectPath": "/home/maykel/go/src/github.com/simelo/libskycoin-dotnet/LibskycoinNetTest/LibskycoinNetTest.csproj",
+    "outputPath": "/home/maykel/go/src/github.com/simelo/libskycoin-dotnet/LibskycoinNetTest/",
+    "projectStyle": "PackageReference",
+    "crossTargeting": true,
+    "originalTargetFrameworks": [
+      "net45",
+      "netcoreapp2.2",
+      "netstandard2.0"
+    ],
+    "frameworks": {
+      "net45": {
+        "projectReferences": {
+          "/home/maykel/go/src/github.com/simelo/libskycoin-dotnet/LibskycoinNet/LibskycoinNet.csproj": {
+            "projectPath": "/home/maykel/go/src/github.com/simelo/libskycoin-dotnet/LibskycoinNet/LibskycoinNet.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net45": {}
+  },
+  "runtimes": {
+    "win": {
+      "#import": []
+    },
+    "win-x64": {
+      "#import": []
+    },
+    "win-x86": {
+      "#import": []
+    }
+  }
+}

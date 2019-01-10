@@ -72,30 +72,39 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 		fi \
 	}
 	mkdir -p ./LibskycoinNet/skycoin
+	mkdir -p ./LibSkycoinDotNet/skycoin
 	rm -f swig/include/swig.h
 	rm -f skycoinnet_wrap.o
 	rm -f LibskycoinNet/skycoin/skycoinnet_wrap.c
-	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
+	rm -f LibSkycoinDotNet/skycoin/skycoinnet_wrap.c
+	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
+	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibSkycoinDotNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
-	$(CC) -c -fpic -I ./LibskycoinNet/swig/include -I $(INCLUDE_DIR) -libskycoin ./LibskycoinNet/skycoin/skycoinnet_wrap.c
+	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
+	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
-	rm -rfv  LibskycoinNetTest/bin/Release/libskycoin.so
-	mv libskycoin.so LibskycoinNetTest/bin/Release/
+	mkdir -p LibSkycoinDotNetTest/bin/Release
+	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
+	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
+	cp libskycoin.so LibskycoinNetTest/bin/Release/
+	mv libskycoin.so LibSkycoinDotNetTest/bin/Release/netcoreapp2.2/
 
 install-deps: ## Install development dependencies
-	$(NUGET) restore LibskycoinNet.sln
-	$(NUGET) install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+	nuget restore LibskycoinNet.sln
+	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	$(MSBUILD) /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
 
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	$(DOTNET_RUN)  ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	dotnet test LibSkycoinDotNet.sln 
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
