@@ -6,26 +6,12 @@ matrix:
     - os: linux
       dist: xenial
       mono: 4.8.0
-      env:
-        - MONO_VERSION=5.16
-    - os: linux
-      dist: xenial
-      dotnet: 2.1.500
-      mono: 4.8.0
-      env:
-        - DOTNETCORE=2
-    - os: osx
-      mono: 4.8.0
-      env:
-        - MONO_VERSION=5.16
+
     - os: osx
       dotnet: 2.1.500
       mono: 4.8.0
-      env:
-        - DOTNETCORE=2
 
 before_install:
-  - if [ "$DOTNETCORE" != "" ] ; then export DOTNET=dotnet; export MSBUILD="dotnet msbuild"; export NUGET="mono $(pwd)/.travis/bin/nuget.exe" ; export DOTNET_RUN="dotnet run" ; else export DOTNET=mono; export MSBUILD=msbuild ; export NUGET=nuget ; export DOTNET_RUN='mono' ; fi
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
@@ -34,7 +20,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test DOTNET_RUN="$DOTNET_RUN" CC=gcc MSBUILD="$MSBUILD" NUGET="$NUGET"
+  - make test
   
 notifications:
   email: false
