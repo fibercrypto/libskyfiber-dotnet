@@ -82,16 +82,17 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
-	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so $(LDFLAGS)
+	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o skycoin.so $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
-	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
-	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
-	cp libskycoin.so LibskycoinNetTest/bin/Release/
-	mv libskycoin.so LibSkycoinDotNetTest/bin/Release/netcoreapp2.2/
+	rm -rfv  LibSkycoinNetTest/bin/Release/skycoin.so
+	rm -rfv  LibSkycoinDotNetTest/bin/Release/skycoin.so
+	#cp skycoin.so LibskycoinNetTest/bin/Release/
+	#cp skycoin.so LibSkycoinDotNetTest/bin/Release/netcoreapp2.2/
+	sudo cp skycoin.so /usr/lib/
 
 install-deps: ## Install development dependencies
 	nuget restore LibskycoinNet.sln
