@@ -15,25 +15,21 @@ SRC_FILES = $(shell find $(SKYCOIN_DIR)/src -type f -name "*.go")
 SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
+# Compilation flags for libskycoin
+CC_VERSION = $(shell $(CC) -dumpversion)
+STDC_FLAG = $(python -c "if tuple(map(int, '$(CC_VERSION)'.split('.'))) < (6,): print('-std=C99'")
+LIBC_LIBS = -lcriterion
+LIBC_FLAGS = -I$(LIBSRC_DIR) -I$(INCLUDE_DIR) -I$(BUILD_DIR)/usr/include -L $(BUILDLIB_DIR) -L$(BUILD_DIR)/usr/lib
+
+# Platform specific checks
 OSNAME = $(TRAVIS_OS_NAME)
 
-# Default values for buiding .NET assemblies with mono
-ifndef DOTNET_RUN
-  DOTNET_RUN = mono
-endif
-ifndef MSBUILD
-  MSBUILD = msbuild
-endif
-ifndef NUGET
-  NUGET = nuget
-endif
-ifndef DOTNET
-  DOTNET = mono
-endif
-
-
 ifeq ($(shell uname -s),Linux)
-  LDFLAGS= 
+  LDLIBS=$(LIBC_LIBS) -lpthread
+  LDPATH=$(shell printenv LD_LIBRARY_PATH)
+  LDPATHVAR=LD_LIBRARY_PATH
+  LDFLAGS=$(LIBC_FLAGS) $(STDC_FLAG)
+  LDCOPY=/usr/lib/
 ifndef OSNAME
   OSNAME = linux
 endif
@@ -41,10 +37,18 @@ else ifeq ($(shell uname -s),Darwin)
 ifndef OSNAME
   OSNAME = osx
 endif
-  LDFLAGS= -framework CoreFoundation -framework Security
+  LDLIBS = $(LIBC_LIBS)
+  LDPATH=$(shell printenv DYLD_LIBRARY_PATH)
+  LDPATHVAR=DYLD_LIBRARY_PATH
+  LDFLAGS=$(LIBC_FLAGS) -framework CoreFoundation -framework Security
+  LDCOPY=~/lib/
 else
-  LDFLAGS= 
+  LDLIBS = $(LIBC_LIBS)
+  LDPATH=$(shell printenv LD_LIBRARY_PATH)
+  LDPATHVAR=LD_LIBRARY_PATH
+  LDFLAGS=$(LIBC_FLAGS)
 endif
+
 configure: ## Setup build environment
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
 	mkdir -p $(BUILDLIBC_DIR) $(BIN_DIR) $(INCLUDE_DIR)
@@ -82,7 +86,8 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
-	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o skycoin.so $(LDFLAGS)
+	rm -rfv build/usr/lib/libskycoin.so
+	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o build/usr/lib/libskycoin.so $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
@@ -90,9 +95,8 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
 	rm -rfv  LibSkycoinNetTest/bin/Release/skycoin.so
 	rm -rfv  LibSkycoinDotNetTest/bin/Release/skycoin.so
-	#cp skycoin.so LibskycoinNetTest/bin/Release/
-	#cp skycoin.so LibSkycoinDotNetTest/bin/Release/netcoreapp2.2/
-	sudo cp skycoin.so /usr/lib/
+	cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
+	
 
 install-deps: ## Install development dependencies
 	nuget restore LibskycoinNet.sln
@@ -105,8 +109,8 @@ build-sln: install-deps build-libc build-swig
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
-	dotnet test LibSkycoinDotNet.sln 
+	$(LDPATHVAR)="$(LDPATH):$(BUILD_DIR)/usr/lib:$(BUILDLIB_DIR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(LDPATH):$(BUILD_DIR)/usr/lib:$(BUILDLIB_DIR)" dotnet test LibSkycoinDotNet.sln
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

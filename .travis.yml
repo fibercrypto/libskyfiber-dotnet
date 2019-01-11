@@ -1,3 +1,4 @@
+sudo: required
 language: csharp
 solution: LibskycoinNet.sln
 
@@ -6,6 +7,7 @@ matrix:
     - os: linux
       dist: xenial
       mono: 4.8.0
+      dotnet: 2.1.500
 
     - os: osx
       dotnet: 2.1.500

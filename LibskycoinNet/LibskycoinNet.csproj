@@ -149,6 +149,11 @@
     <None Include="skycoin\skycoinnet_wrap.c" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\build\usr\lib\libskycoin.so">
+      <Link>libskycoin.so</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
