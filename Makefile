@@ -87,6 +87,7 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release
+	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
 	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
 	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
 	cp libskycoin.so LibskycoinNetTest/bin/Release/
