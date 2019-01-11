@@ -100,6 +100,7 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 
 install-deps: ## Install development dependencies
 	nuget restore LibskycoinNet.sln
+	dotnet restore LibSkycoinDotNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig

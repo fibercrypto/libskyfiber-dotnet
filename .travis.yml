@@ -7,10 +7,10 @@ matrix:
     - os: linux
       dist: xenial
       mono: 4.8.0
-      dotnet: 2.1.500
+      dotnet: 2.2.102
 
     - os: osx
-      dotnet: 2.1.500
+      dotnet: 2.2.102
       mono: 4.8.0
 
 before_install:

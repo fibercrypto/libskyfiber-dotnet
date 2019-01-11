@@ -9,7 +9,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     sudo apt-get update
 #    sudo apt-get upgrade
     sudo apt-get install -y \
-                 dotnet-sdk-2.1 \
+                 dotnet-sdk-2.2 \
                  mono-devel \
                  mono-complete \
                  referenceassemblies-pcl \
@@ -28,9 +28,9 @@ fi
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     curl -o MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg https://download.mono-project.com/archive/4.8.0/macos-10-universal/MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg
-    curl -o dotnet-sdk-2.1.500-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/576dbb8d-03f2-4d45-857a-b226d39b3dbe/0d4fbf91aa1137352680ec98ef9edb5d/dotnet-sdk-2.1.500-osx-gs-x64.pkg
+    curl -o dotnet-sdk-2.2.102-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/34608266-602a-4f3c-9608-48364b01ac9a/3b890a39949af4592189ca9a300cf651/dotnet-sdk-2.2.102-osx-x64.pkg
     sudo installer -pkg MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg -target /
-    sudo installer -pkg dotnet-sdk-2.1.500-osx-gs-x64.pkg -target /
+    sudo installer -pkg dotnet-sdk-2.2.102-osx-gs-x64.pkg -target /
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
     brew install swig
