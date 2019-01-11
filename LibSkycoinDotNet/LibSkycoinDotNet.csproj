@@ -10,5 +10,40 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <_UnmanagedRegistrationCache Remove="obj\LibSkycoinDotNet.csproj.UnmanagedRegistration.cache" />
+    <_UnmanagedRegistrationCache Remove="obj\LibSkycoinDotNet.csproj.UnmanagedRegistration.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ResolveComReferenceCache Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.csproj.ResolveComReference.cache" />
+    <_ResolveComReferenceCache Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.csproj.ResolveComReference.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <IntermediateAssembly Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.dll" />
+    <IntermediateAssembly Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_DebugSymbolsIntermediatePath Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.pdb" />
+    <_DebugSymbolsIntermediatePath Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.pdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_DeploymentManifestEntryPoint Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.dll" />
+    <_DeploymentManifestEntryPoint Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationManifest Remove="obj\Debug\netstandard2.0\Native.LibSkycoinDotNet.manifest" />
+    <ApplicationManifest Remove="obj\Debug\netstandard2.0\Native.LibSkycoinDotNet.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DeployManifest Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.application" />
+    <DeployManifest Remove="obj\Debug\netstandard2.0\LibSkycoinDotNet.application" />
+  </ItemGroup>
+
 
 </Project>
