@@ -18,7 +18,6 @@ before_install:
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
-  - csrutil disable
 
 before_script:
   - export PATH=$PATH:$PWD/build/lib/

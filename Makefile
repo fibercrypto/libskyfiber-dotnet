@@ -29,7 +29,7 @@ ifeq ($(shell uname -s),Linux)
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
   LDPATHVAR=LD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) $(STDC_FLAG)
-  LDCOPY=/usr/lib/
+  LDCOPY=.
 ifndef OSNAME
   OSNAME = linux
 endif
@@ -96,9 +96,8 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
 	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
 	cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
-	#mkdir -p $(LDCOPY)
-	sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
-	sudo cp build/usr/lib/libskycoin.so /usr/lib/
+	mkdir -p $(LDCOPY)
+	cp build/usr/lib/libskycoin.so $(LDCOPY)
 	
 
 install-deps: ## Install development dependencies
