@@ -12,6 +12,7 @@ matrix:
     - os: osx
       dotnet: 2.2.102
       mono: 4.8.0
+      csrutil: disable
 
 before_install:
   - ./.travis/install-deps.sh
