@@ -93,8 +93,8 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mkdir -p LibskycoinNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
-	rm -rfv  LibSkycoinNetTest/bin/Release/skycoin.so
-	rm -rfv  LibSkycoinDotNetTest/bin/Release/skycoin.so
+	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
+	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
 	# cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
 	# sudo mkdir -p $(LDCOPY)
 	# sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
@@ -114,8 +114,8 @@ build-sln: install-deps build-libc build-swig
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	$(LDPATHVAR)="$(PATH):$(BUILD_DIR)/usr/lib" dotnet test LibSkycoinDotNet.sln
-	$(LDPATHVAR)="$(PATH):$(BUILD_DIR)/usr/lib" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(PATH):$(BUILD_DIR)/usr/lib:$(LDCOPY)" dotnet test LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(PATH):$(BUILD_DIR)/usr/lib:$(LDCOPY)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 	
 
 help:

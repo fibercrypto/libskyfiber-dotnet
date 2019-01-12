@@ -18,6 +18,9 @@ before_install:
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
 
+before_script:
+  - export PATH=$PATH:$PWD/build/lib/
+
 install:
   - eval "$(gimme 1.10)"
   
