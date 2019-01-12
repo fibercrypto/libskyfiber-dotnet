@@ -96,6 +96,7 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	rm -rfv  LibSkycoinNetTest/bin/Release/skycoin.so
 	rm -rfv  LibSkycoinDotNetTest/bin/Release/skycoin.so
 	cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
+	sudo mkdir -p $(LDCOPY)
 	sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
 	
 
