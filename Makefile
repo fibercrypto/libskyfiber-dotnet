@@ -41,7 +41,7 @@ endif
   LDPATH=$(shell printenv DYLD_LIBRARY_PATH)
   LDPATHVAR=DYLD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) -framework CoreFoundation -framework Security
-  LDCOPY=~/lib/
+  LDCOPY=~/Library/Frameworks
 else
   LDLIBS = $(LIBC_LIBS)
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
