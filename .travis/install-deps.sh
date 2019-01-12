@@ -27,9 +27,9 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 fi
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-    curl -o MonoFramework-MDK-5.18.0.225.macos10.xamarin.universal.pkg https://download.mono-project.com/archive/5.18.0/macos-10-universal/MonoFramework-MDK-5.18.0.225.macos10.xamarin.universal.pkg
+    curl -o MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg https://download.mono-project.com/archive/4.8.0/macos-10-universal/MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg
     curl -o dotnet-sdk-2.2.102-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/34608266-602a-4f3c-9608-48364b01ac9a/3b890a39949af4592189ca9a300cf651/dotnet-sdk-2.2.102-osx-x64.pkg
-    sudo installer -pkg MonoFramework-MDK-5.18.0.225.macos10.xamarin.universal.pkg -target /
+    sudo installer -pkg MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg -target /
     sudo installer -pkg dotnet-sdk-2.2.102-osx-gs-x64.pkg -target /
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
