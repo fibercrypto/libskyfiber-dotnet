@@ -4,10 +4,10 @@ solution: LibSkycoinDotNet.sln
 
 matrix:
   include:
-    - os: linux
-      dist: bionic
-      mono: latest
-      dotnet: 2.2.102
+    #- os: linux
+    #  dist: bionic
+    #  mono: latest
+    #  dotnet: 2.2.102
 
     - os: osx
       dotnet: 2.2.102

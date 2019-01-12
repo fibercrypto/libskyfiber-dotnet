@@ -41,7 +41,7 @@ endif
   LDPATH=$(shell printenv DYLD_LIBRARY_PATH)
   LDPATHVAR=DYLD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) -framework CoreFoundation -framework Security
-  LDCOPY=~/Library/Frameworks
+  LDCOPY=~/Library/Frameworks/
 else
   LDLIBS = $(LIBC_LIBS)
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
@@ -98,6 +98,7 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
 	sudo mkdir -p $(LDCOPY)
 	sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
+	sudo cp build/usr/lib/libskycoin.so /usr/lib/
 	
 
 install-deps: ## Install development dependencies
