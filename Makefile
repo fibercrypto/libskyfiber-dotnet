@@ -113,8 +113,8 @@ build-sln: install-deps build-libc build-swig
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	LD_LIBRARY_PATH="$(PWD)/build/usr/lib"  dotnet test LibSkycoinDotNet.sln
-	LD_LIBRARY_PATH="$(PWD)/build/usr/lib"  mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	dotnet test LibSkycoinDotNet.sln
+	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 	
 
 help:

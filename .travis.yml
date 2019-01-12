@@ -18,6 +18,8 @@ before_install:
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
+  - eval "DYLD_LIBRARY_PATH=./build/usr/lib"
+  - eval "LD_LIBRARY_PATH=./build/usr/lib"
 
 
 install:
