@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C5320CD3-B673-461B-8899-19BB52862364}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>LibSkycoinNet</RootNamespace>
-    <AssemblyName>LibSkycoinNet</AssemblyName>
+    <RootNamespace>LibskycoinNet</RootNamespace>
+    <AssemblyName>LibskycoinNet</AssemblyName>
      <TargetFramework>netstandard2.0;netcoreapp2.1;netstandard1.4;net40;net45</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <PackageId>LibSkycoinNet</PackageId>
+    <PackageId>LibskycoinNet</PackageId>
     <Version Condition=" '$(PackageVersion)' == '' ">0.0.4</Version>
     <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
     <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.0.4</PackageVersion>
