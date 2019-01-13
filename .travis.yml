@@ -1,6 +1,5 @@
 sudo: required
 language: csharp
-solution: LibSkycoinDotNet.sln
 
 matrix:
   include:
@@ -9,17 +8,16 @@ matrix:
       mono: latest
       dotnet: 2.2.102
 
-    - os: osx
-      dotnet: 2.2.102
-      mono: 4.8.0
-      csrutil: disable
+    #- os: osx
+    #  dotnet: 2.2.102
+    #  mono: 4.8.0
 
 before_install:
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
-  - eval "DYLD_LIBRARY_PATH=./build/usr/lib"
-  - eval "LD_LIBRARY_PATH=./build/usr/lib"
+  - eval "DYLD_LIBRARY_PATH=PWD/build/usr/lib"
+  - eval "LD_LIBRARY_PATH=PWD/build/usr/lib"
 
 
 install:

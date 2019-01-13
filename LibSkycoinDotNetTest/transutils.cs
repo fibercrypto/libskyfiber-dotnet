@@ -2,7 +2,8 @@ using System;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 using skycoin;
-namespace utils {
+
+namespace LibSkycoinDotNetTest {
     public class transutils {
         public cipher__Address makeAddress () {
             var pubkey = new cipher_PubKey ();

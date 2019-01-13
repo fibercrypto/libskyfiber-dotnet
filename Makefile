@@ -95,9 +95,9 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
 	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
 	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
-	#cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
-	mkdir -p $(LDCOPY)
-	/usr/bin/sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
+	# cp build/usr/lib/libskycoin.so LibskycoinNetTest/bin/Release/
+	# mkdir -p $(LDCOPY)
+	# /usr/bin/sudo cp build/usr/lib/libskycoin.so $(LDCOPY)
 	
 
 install-deps: ## Install development dependencies
@@ -106,15 +106,15 @@ install-deps: ## Install development dependencies
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	$(LDPATHVAR)="$(PWD)/build/usr/lib" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
-	$(LDPATHVAR)="$(PWD)/build/usr/lib" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib/" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib/" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
 
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	$(LDPATHVAR)="$(PWD)/build/usr/lib" dotnet test LibSkycoinDotNet.sln
-	$(LDPATHVAR)="$(PWD)/build/usr/lib" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" dotnet test LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 	
 
 help:

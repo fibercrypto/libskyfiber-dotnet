@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using skycoin;
 using utils;
-namespace LibskycoinNetTest {
+namespace LibSkycoinNetTest {
     [TestFixture ()]
     public class check_cipher_bitcoin : skycoin.skycoin {
         utils.transutils utils = new transutils ();

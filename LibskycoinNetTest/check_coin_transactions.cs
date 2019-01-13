@@ -3,7 +3,7 @@ using NUnit.Framework;
 using skycoin;
 using utils;
 
-namespace LibskycoinNetTest {
+namespace LibSkycoinNetTest {
     [TestFixture ()]
     public class check_coin_transactions : skycoin.skycoin {
 

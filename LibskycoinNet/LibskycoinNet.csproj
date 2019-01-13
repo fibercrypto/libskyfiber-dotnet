@@ -10,7 +10,7 @@
     <AssemblyName>LibSkycoinNet</AssemblyName>
      <TargetFramework>netstandard2.0;netcoreapp2.1;netstandard1.4;net40;net45</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <PackageId>LibskycoinNet</PackageId>
+    <PackageId>LibSkycoinNet</PackageId>
     <Version Condition=" '$(PackageVersion)' == '' ">0.0.4</Version>
     <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
     <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.0.4</PackageVersion>

@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using skycoin;
-namespace LibskycoinNetTest {
+namespace LibSkycoinNetTest {
     [TestFixture ()]
     public class check_cipher_address : skycoin.skycoin {
         [Test ()]
