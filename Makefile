@@ -114,8 +114,9 @@ build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
 	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" dotnet test LibSkycoinDotNet.sln
-	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibSkycoinNetTest.dll -labels
 	
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)"
