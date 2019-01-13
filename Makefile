@@ -106,15 +106,15 @@ install-deps: ## Install development dependencies
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
-	dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
-	msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
 
 build: build-libskycoin-net build-sln ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	dotnet test LibSkycoinDotNet.sln
-	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(PWD)/build/usr/lib" dotnet test LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(PWD)/build/usr/lib" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 	
 
 help:
