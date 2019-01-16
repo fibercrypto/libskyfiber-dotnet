@@ -4,9 +4,13 @@ language: csharp
 matrix:
   include:
     - os: linux
-      dist: bionic
       mono: latest
+      solution: LibskycoinNet.sln
+      TYPE: mono
+    - os: linux
       dotnet: 2.2.102
+      solution: LibSkycoinDotNet.sln
+      TYPE: dotnet
 
     #- os: osx
     #  dotnet: 2.2.102
@@ -24,7 +28,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test
+  - make test-$(TYPE)
   
 notifications:
   email: false
