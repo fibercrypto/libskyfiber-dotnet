@@ -6,11 +6,11 @@ matrix:
     - os: linux
       mono: latest
       solution: LibskycoinNet.sln
-      TYPE: mono
+      env: TYPE=mono
     - os: linux
       dotnet: 2.2.102
       solution: LibSkycoinDotNet.sln
-      TYPE: dotnet
+      env: TYPE=dotnet
 
     #- os: osx
     #  dotnet: 2.2.102
