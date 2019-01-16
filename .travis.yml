@@ -30,7 +30,7 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test-$(TYPE)
+  - make test-$TYPE
   
 notifications:
   email: false
