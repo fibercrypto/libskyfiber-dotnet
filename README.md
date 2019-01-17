@@ -1,4 +1,4 @@
-# Libskycoin for .Net
+ # Libskycoin for .Net
 
 [![Build Status](https://travis-ci.org/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
 
@@ -261,7 +261,7 @@ in sync with the corresponding tag of `skycoin/skycoin` official repository.
 Stable development branches are created most of the time for the following reasons:
 
 - A Skycoin release increasing [patch version number](https://semver.org/).
-- Enhanced support and bug fixes for a version of PySkycoin compiled against an
+- Enhanced support and bug fixes for a version of LibSkycoinNet compiled against an
   stable version of Skycoin
 - Backporting useful features added in `develop`.
 
@@ -278,7 +278,7 @@ $ make test
 0. If the `master` branch has commits that are not in `develop` (e.g. due to a hotfix applied to `master`), merge `master` into `develop` (and fix any build or test failures)
 0. Switch to a new release branch named `release-X.Y.Z` for preparing the release.
 0. Ensure that the submodule at `gopath/src/github.com/skycoin/skycoin` is in sync with respect to the corresponding tag in https://github.com/skycoin/skycoin repository.
-0. Update package version (TODO: where? how?)
+0. Update package version (`LibskycoinNet/LibskycoinNet.csproj`)
 0. Run `make build` to make sure that the code base is up to date
 0. Update `CHANGELOG.md`: move the "unreleased" changes to the version and add the date.
 0. Follow the steps in [pre-release testing](#pre-release-testing)
@@ -293,11 +293,19 @@ $ make test
 
 Perform these actions before releasing:
 
-TODO: Explain how to test a release package
+    make test
 
 #### Creating release builds
 
 Release builds should be created from `master` branch . After [updating release version](#update-the-version) it is necessary to follow these steps
 
-TODO: Explain how to build `LibSkycoinNet` package and upload automatically onto NuGet and Chocolatey, plus signing , etc ...
+##### Requirements
+Have installed the `mono` for the creation of the package.
 
+https://www.mono-project.com/download/stable/
+
+##### Building
+
+    msbuild /p:Configuration=Release LibskycoinNet.sln
+
+Final results are placed in the LibskycoinNet/bin/Release/ folder.
