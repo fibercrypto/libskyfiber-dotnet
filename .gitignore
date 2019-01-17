@@ -261,4 +261,6 @@ testrunner/
 #Temporary files
 *.swp
 *.swo
+*.orig
 
+.directory
