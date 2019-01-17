@@ -1,6 +1,6 @@
  # Libskycoin for .Net
 
-[![Build Status](https://travis-ci.org/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
+[![Build Status](https://travis-ci.org/simelo/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
 
 .Net client library for Skycoin API. This library is a .Net assembly generated with SWIG to access Skycoin API from .Net.
 
@@ -66,7 +66,7 @@ Execute (`nuget restore LibskycoinNet.sln`) to install the library. Although exe
 
 ### Naming
 
-The exported function in Libskycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
+The exported function in LibSkycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
 
 ### Parameters
 
@@ -83,7 +83,7 @@ Some of Skycoin types are too complex to be exported to a scripting language. So
   func (c Config) FullWalletPath() string
 ```
 
-Config is a struct type that is treated as a handle in Libskycoin .Net . The usage in .Net will be:
+Config is a struct type that is treated as a handle in LibSkycoin .Net . The usage in .Net will be:
 
 ```csharp
 
@@ -287,7 +287,7 @@ $ make test
 0. Update files in https://github.com/skycoin/repo-info/tree/master/repos/skycoin/remote for `skycoin/skycoindev-dotnet` Docker image, adding a new file for the new version and adjusting any configuration text that may have changed
 0. Tag the `master` branch with the version number. Version tags start with `v`, e.g. `v0.20.0`. Sign the tag. If you have your GPG key in github, creating a release on the Github website will automatically tag the release. It can be tagged from the command line with `git tag -as v0.20.0 $COMMIT_ID`, but Github will not recognize it as a "release".
 0. Release builds are created and uploaded by travis. To do it manually, checkout the master branch and follow the [create release builds instructions](#creating-release-builds).
-0. Checkout `develop` branch and bump package up to next [`dev` version number](https://www.python.org/dev/peps/pep-0440/#developmental-releases).
+0. Checkout `develop` branch and bump package up to next [`dev` version number](https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages).
 
 #### Pre-release testing
 
