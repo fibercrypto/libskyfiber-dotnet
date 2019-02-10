@@ -1,6 +1,6 @@
 PWD = $(shell pwd)
 GOPATH_DIR = $(PWD)/gopath
-SKYCOIN_DIR = gopath/src/github.com/skycoin/skycoin
+SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
 SKYBUILD_DIR = $(SKYCOIN_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
 LIBC_DIR = $(SKYCOIN_DIR)/lib/cgo
