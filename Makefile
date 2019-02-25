@@ -15,9 +15,23 @@ SRC_FILES = $(shell find $(SKYCOIN_DIR)/src -type f -name "*.go")
 SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
+# Added by Swagger
+LIB_SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
+SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.openapi.v2.yml
+CSHARP_CLIENT_DIR = lib/restsharp/csharp_swagger
+
+
 configure: ## Setup build environment
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
 	mkdir -p $(BUILDLIBC_DIR) $(BIN_DIR) $(INCLUDE_DIR)
+
+generate-csharp-client: ## Generate a Csharp wrapper for skycoin api with openapi-generator
+    ## Generate swagger spec
+	GOPATH="$(GOPATH_DIR)" make -C $(LIB_SKYCOIN_DIR) swagger2
+	## Remove, if exist, previous Csharp Client
+	rm -rf CSHARP_CLIENT_DIR
+	## Generate new Csharp Client
+    @openapi-generator generate -g csharp --additional-properties=prependFormOrBodyParameters=true -o $(lib/restsharp/csharp_swagger) -i $(SWAGGER_SPEC_DIR)
 
 $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
