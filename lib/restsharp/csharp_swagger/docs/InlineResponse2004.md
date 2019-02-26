@@ -1,11 +1,13 @@
-# IO.Swagger.Model.InlineResponse2004
+# Org.OpenAPITools.Model.InlineResponse2004
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Head** | [**InlineResponse2004Head**](InlineResponse2004Head.md) |  | [optional] 
-**Unconfirmed** | **long?** |  | [optional] 
-**Unspents** | **long?** |  | [optional] 
+**Announced** | **string** |  | [optional] 
+**IsValid** | **bool?** |  | [optional] 
+**Checked** | **string** |  | [optional] 
+**Received** | **string** |  | [optional] 
+**Transaction** | [**Apiv1pendingTxsTransaction**](Apiv1pendingTxsTransaction.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

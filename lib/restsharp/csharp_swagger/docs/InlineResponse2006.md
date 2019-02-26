@@ -1,9 +1,9 @@
-# IO.Swagger.Model.InlineResponse2006
+# Org.OpenAPITools.Model.InlineResponse2006
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Blocks** | [**List&lt;InlineResponse2006Blocks&gt;**](InlineResponse2006Blocks.md) |  | [optional] 
+**Address** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

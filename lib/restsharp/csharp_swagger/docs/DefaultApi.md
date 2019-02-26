@@ -1,6 +1,6 @@
-# IO.Swagger.Api.DefaultApi
+# Org.OpenAPITools.Api.DefaultApi
 
-All URIs are relative to *http://staging.node.skycoin.net*
+All URIs are relative to *http://127.0.0.1:6420*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,24 +18,25 @@ Method | HTTP request | Description
 [**DefaultConnections**](DefaultApi.md#defaultconnections) | **GET** /api/v1/network/defaultConnections | defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
 [**ExplorerAddress**](DefaultApi.md#exploreraddress) | **GET** /api/v1/explorer/address | 
 [**Health**](DefaultApi.md#health) | **GET** /api/v1/health | Returns node health data.
-[**InjectTransaction**](DefaultApi.md#injecttransaction) | **POST** /api/v1/injectTransaction | Broadcast a hex-encoded, serialized transaction to the network.
 [**LastBlocks**](DefaultApi.md#lastblocks) | **GET** /api/v1/last_blocks | 
 [**NetworkConnection**](DefaultApi.md#networkconnection) | **GET** /api/v1/network/connection | This endpoint returns a specific connection.
 [**NetworkConnections**](DefaultApi.md#networkconnections) | **GET** /api/v1/network/connections | This endpoint returns all outgoings connections.
-[**NetworkConnectionsDisconnect**](DefaultApi.md#networkconnectionsdisconnect) | **GET** /api/v1/network/connection/disconnect | 
+[**NetworkConnectionsDisconnect**](DefaultApi.md#networkconnectionsdisconnect) | **POST** /api/v1/network/connection/disconnect | 
 [**NetworkConnectionsExchange**](DefaultApi.md#networkconnectionsexchange) | **GET** /api/v1/network/connections/exchange | 
 [**NetworkConnectionsTrust**](DefaultApi.md#networkconnectionstrust) | **GET** /api/v1/network/connections/trust | trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
 [**OutputsGet**](DefaultApi.md#outputsget) | **GET** /api/v1/outputs | If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 [**OutputsPost**](DefaultApi.md#outputspost) | **POST** /api/v1/outputs | If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 [**PendingTxs**](DefaultApi.md#pendingtxs) | **GET** /api/v1/pendingTxs | 
-[**Rawtx**](DefaultApi.md#rawtx) | **GET** /api/v1/rawtx | Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
 [**ResendUnconfirmedTxns**](DefaultApi.md#resendunconfirmedtxns) | **POST** /api/v1/resendUnconfirmedTxns | 
 [**Richlist**](DefaultApi.md#richlist) | **GET** /api/v1/richlist | Returns the top skycoin holders.
 [**Transaction**](DefaultApi.md#transaction) | **GET** /api/v1/transaction | 
+[**TransactionInject**](DefaultApi.md#transactioninject) | **POST** /api/v2/transaction/inject | Broadcast a hex-encoded, serialized transaction to the network.
+[**TransactionRaw**](DefaultApi.md#transactionraw) | **GET** /api/v2/transaction/raw | Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
+[**TransactionVerify**](DefaultApi.md#transactionverify) | **POST** /api/v2/transaction/verify | 
 [**TransactionsGet**](DefaultApi.md#transactionsget) | **GET** /api/v1/transactions | Returns transactions that match the filters.
 [**TransactionsPost**](DefaultApi.md#transactionspost) | **POST** /api/v1/transactions | Returns transactions that match the filters.
 [**Uxout**](DefaultApi.md#uxout) | **GET** /api/v1/uxout | Returns an unspent output by ID.
-[**VerifyAddress**](DefaultApi.md#verifyaddress) | **POST** /api/v2/address/verify | healthHandler returns node health data.
+[**VerifyAddress**](DefaultApi.md#verifyaddress) | **POST** /api/v2/address/verify | Verifies a Skycoin address.
 [**Version**](DefaultApi.md#version) | **GET** /api/v1/version | 
 [**Wallet**](DefaultApi.md#wallet) | **GET** /api/v1/wallet | Returns a wallet by id.
 [**WalletBalance**](DefaultApi.md#walletbalance) | **GET** /api/v1/wallet/balance | Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -47,8 +48,10 @@ Method | HTTP request | Description
 [**WalletNewSeed**](DefaultApi.md#walletnewseed) | **GET** /api/v1/wallet/newSeed | 
 [**WalletRecover**](DefaultApi.md#walletrecover) | **POST** /api/v2/wallet/recover | Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
 [**WalletSeed**](DefaultApi.md#walletseed) | **POST** /api/v1/wallet/seed | This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
+[**WalletSeedVerify**](DefaultApi.md#walletseedverify) | **POST** /api/v2/wallet/seed/verify | Verifies a wallet seed.
 [**WalletSpent**](DefaultApi.md#walletspent) | **POST** /api/v1/wallet/spend | 
-[**WalletTransactions**](DefaultApi.md#wallettransactions) | **GET** /api/v1/wallet/transactions | Returns returns all unconfirmed transactions for all addresses in a given wallet.
+[**WalletTransaction**](DefaultApi.md#wallettransaction) | **POST** /api/v1/wallet/transaction | 
+[**WalletTransactions**](DefaultApi.md#wallettransactions) | **GET** /api/v1/wallet/transactions | 
 [**WalletUnload**](DefaultApi.md#walletunload) | **POST** /api/v1/wallet/unload | Unloads wallet from the wallet service.
 [**WalletUpdate**](DefaultApi.md#walletupdate) | **POST** /api/v1/wallet/update | Update the wallet.
 [**Wallets**](DefaultApi.md#wallets) | **GET** /api/v1/wallets | 
@@ -56,7 +59,7 @@ Method | HTTP request | Description
 
 <a name="addresscount"></a>
 # **AddressCount**
-> InlineResponse2001 AddressCount ()
+> Object AddressCount ()
 
 Returns the total number of unique address that have coins.
 
@@ -64,9 +67,9 @@ Returns the total number of unique address that have coins.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -74,17 +77,12 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
 
             try
             {
                 // Returns the total number of unique address that have coins.
-                InlineResponse2001 result = apiInstance.AddressCount();
+                Object result = apiInstance.AddressCount();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -101,22 +99,22 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+**Object**
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="addressuxouts"></a>
 # **AddressUxouts**
-> List<InlineResponse200> AddressUxouts (string address = null)
+> List<InlineResponse200> AddressUxouts (string address)
 
 
 
@@ -126,9 +124,9 @@ Returns the historical, spent outputs associated with an address
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -137,7 +135,7 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var address = address_example;  // string | address to filter by (optional) 
+            var address = address_example;  // string | address to filter by
 
             try
             {
@@ -157,7 +155,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **string**| address to filter by | [optional] 
+ **address** | **string**| address to filter by | 
 
 ### Return type
 
@@ -169,14 +167,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="balanceget"></a>
 # **BalanceGet**
-> InlineResponse2002 BalanceGet (string addrs)
+> Object BalanceGet (string addrs)
 
 Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
@@ -184,9 +182,9 @@ Returns the balance of one or more addresses, both confirmed and predicted. The 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -200,7 +198,7 @@ namespace Example
             try
             {
                 // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
-                InlineResponse2002 result = apiInstance.BalanceGet(addrs);
+                Object result = apiInstance.BalanceGet(addrs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -220,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+**Object**
 
 ### Authorization
 
@@ -228,14 +226,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="balancepost"></a>
 # **BalancePost**
-> InlineResponse2002 BalancePost (string addrs)
+> Object BalancePost (string addrs)
 
 Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
@@ -243,9 +241,9 @@ Returns the balance of one or more addresses, both confirmed and predicted. The 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -253,13 +251,18 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var addrs = addrs_example;  // string | command separated list of addresses
 
             try
             {
                 // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
-                InlineResponse2002 result = apiInstance.BalancePost(addrs);
+                Object result = apiInstance.BalancePost(addrs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -279,22 +282,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="block"></a>
 # **Block**
-> InlineResponse2003 Block (bool? verbose = null, string hash = null, int? seq = null)
+> Object Block (string hash = null, int? seq = null)
 
 
 
@@ -304,9 +307,9 @@ Returns a block by hash or seq. Note: only one of hash or seq is allowed
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -315,13 +318,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var verbose = true;  // bool? | include verbose (optional)  (default to true)
             var hash = hash_example;  // string |  (optional) 
             var seq = 56;  // int? |  (optional) 
 
             try
             {
-                InlineResponse2003 result = apiInstance.Block(verbose, hash, seq);
+                Object result = apiInstance.Block(hash, seq);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -337,13 +339,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verbose** | **bool?**| include verbose | [optional] [default to true]
  **hash** | **string**|  | [optional] 
  **seq** | **int?**|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+**Object**
 
 ### Authorization
 
@@ -351,14 +352,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="blockchainmetadata"></a>
 # **BlockchainMetadata**
-> InlineResponse2004 BlockchainMetadata ()
+> Object BlockchainMetadata ()
 
 Returns the blockchain metadata.
 
@@ -366,9 +367,9 @@ Returns the blockchain metadata.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -381,7 +382,7 @@ namespace Example
             try
             {
                 // Returns the blockchain metadata.
-                InlineResponse2004 result = apiInstance.BlockchainMetadata();
+                Object result = apiInstance.BlockchainMetadata();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -398,7 +399,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+**Object**
 
 ### Authorization
 
@@ -406,14 +407,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="blockchainprogress"></a>
 # **BlockchainProgress**
-> InlineResponse2005 BlockchainProgress ()
+> Object BlockchainProgress ()
 
 Returns the blockchain sync progress.
 
@@ -421,9 +422,9 @@ Returns the blockchain sync progress.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -436,7 +437,7 @@ namespace Example
             try
             {
                 // Returns the blockchain sync progress.
-                InlineResponse2005 result = apiInstance.BlockchainProgress();
+                Object result = apiInstance.BlockchainProgress();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -453,7 +454,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+**Object**
 
 ### Authorization
 
@@ -461,26 +462,26 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="blocksget"></a>
 # **BlocksGet**
-> InlineResponse2006 BlocksGet (bool? verbose = null, int? start = null, int? end = null, string seqs = null)
+> Object BlocksGet (int? start = null, int? end = null, List<int?> seqs = null)
 
 blocksHandler returns blocks between a start and end point,
 
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end.
+or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose.
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -489,15 +490,14 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var verbose = true;  // bool? | include verbose (optional)  (default to true)
             var start = 56;  // int? |  (optional) 
             var end = 56;  // int? |  (optional) 
-            var seqs = seqs_example;  // string |  (optional) 
+            var seqs = new List<int?>(); // List<int?> |  (optional) 
 
             try
             {
                 // blocksHandler returns blocks between a start and end point,
-                InlineResponse2006 result = apiInstance.BlocksGet(verbose, start, end, seqs);
+                Object result = apiInstance.BlocksGet(start, end, seqs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -513,14 +513,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verbose** | **bool?**| include verbose | [optional] [default to true]
  **start** | **int?**|  | [optional] 
  **end** | **int?**|  | [optional] 
- **seqs** | **string**|  | [optional] 
+ **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**Object**
 
 ### Authorization
 
@@ -528,26 +527,26 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="blockspost"></a>
 # **BlocksPost**
-> InlineResponse2006 BlocksPost (bool? verbose = null, int? start = null, int? end = null, string seqs = null)
+> Object BlocksPost (int? start = null, int? end = null, List<int?> seqs = null)
 
 blocksHandler returns blocks between a start and end point,
 
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end.
+or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -555,16 +554,20 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
-            var verbose = true;  // bool? | include verbose (optional)  (default to true)
             var start = 56;  // int? |  (optional) 
             var end = 56;  // int? |  (optional) 
-            var seqs = seqs_example;  // string |  (optional) 
+            var seqs = new List<int?>(); // List<int?> |  (optional) 
 
             try
             {
                 // blocksHandler returns blocks between a start and end point,
-                InlineResponse2006 result = apiInstance.BlocksPost(verbose, start, end, seqs);
+                Object result = apiInstance.BlocksPost(start, end, seqs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -580,22 +583,21 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verbose** | **bool?**| include verbose | [optional] [default to true]
  **start** | **int?**|  | [optional] 
  **end** | **int?**|  | [optional] 
- **seqs** | **string**|  | [optional] 
+ **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -612,9 +614,9 @@ coinSupplyHandler returns coin distribution supply stats
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -650,14 +652,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="csrf"></a>
 # **Csrf**
-> InlineResponse2007 Csrf ()
+> InlineResponse2001 Csrf ()
 
 Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
 
@@ -665,9 +667,9 @@ Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -680,7 +682,7 @@ namespace Example
             try
             {
                 // Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
-                InlineResponse2007 result = apiInstance.Csrf();
+                InlineResponse2001 result = apiInstance.Csrf();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -697,7 +699,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -705,7 +707,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -720,9 +722,9 @@ defaultConnectionsHandler returns the list of default hardcoded bootstrap addres
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -730,11 +732,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
 
             try
@@ -761,18 +758,18 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="exploreraddress"></a>
 # **ExplorerAddress**
-> List<InlineResponse2008> ExplorerAddress (string address = null)
+> List<InlineResponse2002> ExplorerAddress (string address = null)
 
 
 
@@ -782,9 +779,9 @@ Returns all transactions (confirmed and unconfirmed) for an address
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -797,7 +794,7 @@ namespace Example
 
             try
             {
-                List&lt;InlineResponse2008&gt; result = apiInstance.ExplorerAddress(address);
+                List&lt;InlineResponse2002&gt; result = apiInstance.ExplorerAddress(address);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -817,7 +814,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse2008>**](InlineResponse2008.md)
+[**List<InlineResponse2002>**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -825,14 +822,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="health"></a>
 # **Health**
-> InlineResponse2009 Health ()
+> Object Health ()
 
 Returns node health data.
 
@@ -840,9 +837,9 @@ Returns node health data.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -855,7 +852,7 @@ namespace Example
             try
             {
                 // Returns node health data.
-                InlineResponse2009 result = apiInstance.Health();
+                Object result = apiInstance.Health();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -872,7 +869,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+**Object**
 
 ### Authorization
 
@@ -880,72 +877,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="injecttransaction"></a>
-# **InjectTransaction**
-> void InjectTransaction (string rawtx)
-
-Broadcast a hex-encoded, serialized transaction to the network.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class InjectTransactionExample
-    {
-        public void main()
-        {
-            var apiInstance = new DefaultApi();
-            var rawtx = rawtx_example;  // string | hex-encoded serialized transaction string.
-
-            try
-            {
-                // Broadcast a hex-encoded, serialized transaction to the network.
-                apiInstance.InjectTransaction(rawtx);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.InjectTransaction: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rawtx** | **string**| hex-encoded serialized transaction string. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="lastblocks"></a>
 # **LastBlocks**
-> InlineResponse2006 LastBlocks (bool? verbose = null, int? num = null)
+> Object LastBlocks (int? num)
 
 
 
@@ -955,9 +894,9 @@ Returns the most recent N blocks on the blockchain
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -966,12 +905,11 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var verbose = true;  // bool? | include verbose (optional)  (default to true)
-            var num = 56;  // int? |  (optional) 
+            var num = 56;  // int? | 
 
             try
             {
-                InlineResponse2006 result = apiInstance.LastBlocks(verbose, num);
+                Object result = apiInstance.LastBlocks(num);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -987,12 +925,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verbose** | **bool?**| include verbose | [optional] [default to true]
- **num** | **int?**|  | [optional] 
+ **num** | **int?**|  | 
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**Object**
 
 ### Authorization
 
@@ -1000,14 +937,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="networkconnection"></a>
 # **NetworkConnection**
-> InlineResponse20010 NetworkConnection (string addr)
+> InlineResponse2003 NetworkConnection (string addr)
 
 This endpoint returns a specific connection.
 
@@ -1015,9 +952,9 @@ This endpoint returns a specific connection.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1025,18 +962,13 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
             var addr = addr_example;  // string | Address port
 
             try
             {
                 // This endpoint returns a specific connection.
-                InlineResponse20010 result = apiInstance.NetworkConnection(addr);
+                InlineResponse2003 result = apiInstance.NetworkConnection(addr);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1056,22 +988,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="networkconnections"></a>
 # **NetworkConnections**
-> List<InlineResponse20010> NetworkConnections (string states = null, string direction = null)
+> List<InlineResponse2003> NetworkConnections (string states = null, string direction = null)
 
 This endpoint returns all outgoings connections.
 
@@ -1079,9 +1011,9 @@ This endpoint returns all outgoings connections.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1090,9 +1022,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var states = states_example;  // string | Connection status. (optional) 
@@ -1101,7 +1033,7 @@ namespace Example
             try
             {
                 // This endpoint returns all outgoings connections.
-                List&lt;InlineResponse20010&gt; result = apiInstance.NetworkConnections(states, direction);
+                List&lt;InlineResponse2003&gt; result = apiInstance.NetworkConnections(states, direction);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1122,7 +1054,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse20010>**](InlineResponse20010.md)
+[**List<InlineResponse2003>**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -1130,7 +1062,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1147,9 +1079,9 @@ This endpoint disconnects a connection by ID or address
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1158,9 +1090,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Address id.
@@ -1194,7 +1126,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1211,9 +1143,9 @@ This endpoint returns all connections found through peer exchange
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1221,11 +1153,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
 
             try
@@ -1251,11 +1178,11 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1270,9 +1197,9 @@ trustConnectionsHandler returns all trusted connections.\\n They are not necessa
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1281,9 +1208,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
 
@@ -1315,14 +1242,14 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="outputsget"></a>
 # **OutputsGet**
-> InlineResponse20011 OutputsGet (string address, string hash)
+> Object OutputsGet (List<string> address = null, List<string> hash = null)
 
 If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 
@@ -1330,9 +1257,9 @@ If neither addrs nor hashes are specificed, return all unspent outputs. If only 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1341,13 +1268,13 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var address = address_example;  // string | 
-            var hash = hash_example;  // string | 
+            var address = new List<string>(); // List<string> |  (optional) 
+            var hash = new List<string>(); // List<string> |  (optional) 
 
             try
             {
                 // If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
-                InlineResponse20011 result = apiInstance.OutputsGet(address, hash);
+                Object result = apiInstance.OutputsGet(address, hash);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1363,12 +1290,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **string**|  | 
- **hash** | **string**|  | 
+ **address** | [**List&lt;string&gt;**](string.md)|  | [optional] 
+ **hash** | [**List&lt;string&gt;**](string.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse20011**](InlineResponse20011.md)
+**Object**
 
 ### Authorization
 
@@ -1376,14 +1303,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="outputspost"></a>
 # **OutputsPost**
-> InlineResponse20011 OutputsPost (string address, string hash)
+> Object OutputsPost (string address = null, string hash = null)
 
 If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 
@@ -1391,9 +1318,9 @@ If neither addrs nor hashes are specificed, return all unspent outputs. If only 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1401,14 +1328,19 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
-            var address = address_example;  // string | 
-            var hash = hash_example;  // string | 
+            var address = address_example;  // string |  (optional) 
+            var hash = hash_example;  // string |  (optional) 
 
             try
             {
                 // If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
-                InlineResponse20011 result = apiInstance.OutputsPost(address, hash);
+                Object result = apiInstance.OutputsPost(address, hash);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1424,39 +1356,39 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **string**|  | 
- **hash** | **string**|  | 
+ **address** | **string**|  | [optional] 
+ **hash** | **string**|  | [optional] 
 
 ### Return type
 
-[**InlineResponse20011**](InlineResponse20011.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="pendingtxs"></a>
 # **PendingTxs**
-> List<InlineResponse20012> PendingTxs (bool? verbose = null)
+> List<InlineResponse2004> PendingTxs ()
 
 
 
-Returns pending (unconfirmed) transactions
+Returns pending (unconfirmed) transactions without verbose
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1465,11 +1397,10 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var verbose = true;  // bool? | include verbose transaction input data (optional)  (default to true)
 
             try
             {
-                List&lt;InlineResponse20012&gt; result = apiInstance.PendingTxs(verbose);
+                List&lt;InlineResponse2004&gt; result = apiInstance.PendingTxs();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1482,14 +1413,11 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verbose** | **bool?**| include verbose transaction input data | [optional] [default to true]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse20012>**](InlineResponse20012.md)
+[**List<InlineResponse2004>**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -1497,65 +1425,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="rawtx"></a>
-# **Rawtx**
-> void Rawtx (string txid = null)
-
-Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class RawtxExample
-    {
-        public void main()
-        {
-            var apiInstance = new DefaultApi();
-            var txid = txid_example;  // string | Transaction id hash (optional) 
-
-            try
-            {
-                // Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-                apiInstance.Rawtx(txid);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.Rawtx: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **txid** | **string**| Transaction id hash | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1572,9 +1442,9 @@ Broadcasts all unconfirmed transactions from the unconfirmed transaction pool
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1582,6 +1452,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
 
             try
@@ -1606,18 +1481,18 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="richlist"></a>
 # **Richlist**
-> InlineResponse20013 Richlist (string includeDistribution = null, string n = null)
+> Object Richlist (bool? includeDistribution = null, string n = null)
 
 Returns the top skycoin holders.
 
@@ -1625,9 +1500,9 @@ Returns the top skycoin holders.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1636,13 +1511,13 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var includeDistribution = includeDistribution_example;  // string | include distribution addresses or not, default value false (optional) 
+            var includeDistribution = true;  // bool? | include distribution addresses or not, default value false (optional) 
             var n = n_example;  // string | include distribution addresses or not, default value false (optional) 
 
             try
             {
                 // Returns the top skycoin holders.
-                InlineResponse20013 result = apiInstance.Richlist(includeDistribution, n);
+                Object result = apiInstance.Richlist(includeDistribution, n);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1658,12 +1533,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **includeDistribution** | **string**| include distribution addresses or not, default value false | [optional] 
+ **includeDistribution** | **bool?**| include distribution addresses or not, default value false | [optional] 
  **n** | **string**| include distribution addresses or not, default value false | [optional] 
 
 ### Return type
 
-[**InlineResponse20013**](InlineResponse20013.md)
+**Object**
 
 ### Authorization
 
@@ -1671,26 +1546,26 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="transaction"></a>
 # **Transaction**
-> InlineResponse20014 Transaction (string txid, bool? encoded = null, bool? verbose = null)
+> Object Transaction (string txid, bool? encoded = null)
 
 
 
-Returns a transaction identified by its txid hash
+Returns a transaction identified by its txid hash with just id
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1701,11 +1576,10 @@ namespace Example
             var apiInstance = new DefaultApi();
             var txid = txid_example;  // string | transaction hash
             var encoded = true;  // bool? | return as a raw encoded transaction. (optional) 
-            var verbose = true;  // bool? | include verbose transaction input data (optional)  (default to true)
 
             try
             {
-                InlineResponse20014 result = apiInstance.Transaction(txid, encoded, verbose);
+                Object result = apiInstance.Transaction(txid, encoded);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1723,11 +1597,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **txid** | **string**| transaction hash | 
  **encoded** | **bool?**| return as a raw encoded transaction. | [optional] 
- **verbose** | **bool?**| include verbose transaction input data | [optional] [default to true]
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+**Object**
 
 ### Authorization
 
@@ -1735,14 +1608,198 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="transactioninject"></a>
+# **TransactionInject**
+> Object TransactionInject (string rawtx)
+
+Broadcast a hex-encoded, serialized transaction to the network.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class TransactionInjectExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var rawtx = rawtx_example;  // string | hex-encoded serialized transaction string.
+
+            try
+            {
+                // Broadcast a hex-encoded, serialized transaction to the network.
+                Object result = apiInstance.TransactionInject(rawtx);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionInject: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rawtx** | **string**| hex-encoded serialized transaction string. | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="transactionraw"></a>
+# **TransactionRaw**
+> Object TransactionRaw (string txid = null)
+
+Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class TransactionRawExample
+    {
+        public void main()
+        {
+            var apiInstance = new DefaultApi();
+            var txid = txid_example;  // string | Transaction id hash (optional) 
+
+            try
+            {
+                // Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
+                Object result = apiInstance.TransactionRaw(txid);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionRaw: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **txid** | **string**| Transaction id hash | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="transactionverify"></a>
+# **TransactionVerify**
+> Object TransactionVerify ()
+
+
+
+Decode and verify an encoded transaction
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class TransactionVerifyExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                Object result = apiInstance.TransactionVerify();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionVerify: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="transactionsget"></a>
 # **TransactionsGet**
-> List<InlineResponse20014> TransactionsGet (string addrs = null, string confirmed = null, bool? verbose = null)
+> Object TransactionsGet (string addrs = null, string confirmed = null)
 
 Returns transactions that match the filters.
 
@@ -1750,9 +1807,9 @@ Returns transactions that match the filters.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1763,12 +1820,11 @@ namespace Example
             var apiInstance = new DefaultApi();
             var addrs = addrs_example;  // string | command separated list of addresses (optional) 
             var confirmed = confirmed_example;  // string | Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional) 
-            var verbose = true;  // bool? | include verbose transaction input data (optional)  (default to true)
 
             try
             {
                 // Returns transactions that match the filters.
-                List&lt;InlineResponse20014&gt; result = apiInstance.TransactionsGet(addrs, confirmed, verbose);
+                Object result = apiInstance.TransactionsGet(addrs, confirmed);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1786,11 +1842,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **addrs** | **string**| command separated list of addresses | [optional] 
  **confirmed** | **string**| Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] | [optional] 
- **verbose** | **bool?**| include verbose transaction input data | [optional] [default to true]
 
 ### Return type
 
-[**List<InlineResponse20014>**](InlineResponse20014.md)
+**Object**
 
 ### Authorization
 
@@ -1798,14 +1853,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="transactionspost"></a>
 # **TransactionsPost**
-> List<InlineResponse20014> TransactionsPost (string addrs = null, string confirmed = null, bool? verbose = null)
+> Object TransactionsPost (string addrs = null, string confirmed = null)
 
 Returns transactions that match the filters.
 
@@ -1813,9 +1868,9 @@ Returns transactions that match the filters.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1823,15 +1878,19 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var addrs = addrs_example;  // string | command separated list of addresses (optional) 
             var confirmed = confirmed_example;  // string | Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional) 
-            var verbose = true;  // bool? | include verbose transaction input data (optional)  (default to true)
 
             try
             {
                 // Returns transactions that match the filters.
-                List&lt;InlineResponse20014&gt; result = apiInstance.TransactionsPost(addrs, confirmed, verbose);
+                Object result = apiInstance.TransactionsPost(addrs, confirmed);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1849,26 +1908,25 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **addrs** | **string**| command separated list of addresses | [optional] 
  **confirmed** | **string**| Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] | [optional] 
- **verbose** | **bool?**| include verbose transaction input data | [optional] [default to true]
 
 ### Return type
 
-[**List<InlineResponse20014>**](InlineResponse20014.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="uxout"></a>
 # **Uxout**
-> InlineResponse200 Uxout (string uxid = null)
+> Object Uxout (string uxid = null)
 
 Returns an unspent output by ID.
 
@@ -1876,9 +1934,9 @@ Returns an unspent output by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1892,7 +1950,7 @@ namespace Example
             try
             {
                 // Returns an unspent output by ID.
-                InlineResponse200 result = apiInstance.Uxout(uxid);
+                Object result = apiInstance.Uxout(uxid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1912,7 +1970,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+**Object**
 
 ### Authorization
 
@@ -1920,24 +1978,24 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="verifyaddress"></a>
 # **VerifyAddress**
-> InlineResponse20022 VerifyAddress (string address)
+> InlineResponse2007 VerifyAddress (string address)
 
-healthHandler returns node health data.
+Verifies a Skycoin address.
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -1946,17 +2004,17 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var address = address_example;  // string | Address id.
 
             try
             {
-                // healthHandler returns node health data.
-                InlineResponse20022 result = apiInstance.VerifyAddress(address);
+                // Verifies a Skycoin address.
+                InlineResponse2007 result = apiInstance.VerifyAddress(address);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1976,7 +2034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -1984,7 +2042,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2001,9 +2059,9 @@ versionHandler returns the application version info
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2039,14 +2097,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="wallet"></a>
 # **Wallet**
-> InlineResponse20015 Wallet (string id = null)
+> Object Wallet (string id)
 
 Returns a wallet by id.
 
@@ -2054,9 +2112,9 @@ Returns a wallet by id.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2065,12 +2123,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var id = id_example;  // string | tags to filter by (optional) 
+            var id = id_example;  // string | tags to filter by
 
             try
             {
                 // Returns a wallet by id.
-                InlineResponse20015 result = apiInstance.Wallet(id);
+                Object result = apiInstance.Wallet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2086,11 +2144,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| tags to filter by | [optional] 
+ **id** | **string**| tags to filter by | 
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+**Object**
 
 ### Authorization
 
@@ -2098,14 +2156,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletbalance"></a>
 # **WalletBalance**
-> InlineResponse2002 WalletBalance (string id)
+> Object WalletBalance (string id)
 
 Returns the wallet's balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
 
@@ -2113,9 +2171,9 @@ Returns the wallet's balance, both confirmed and predicted.  The predicted balan
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2129,7 +2187,7 @@ namespace Example
             try
             {
                 // Returns the wallet's balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
-                InlineResponse2002 result = apiInstance.WalletBalance(id);
+                Object result = apiInstance.WalletBalance(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2149,7 +2207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+**Object**
 
 ### Authorization
 
@@ -2157,14 +2215,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletcreate"></a>
 # **WalletCreate**
-> InlineResponse20015 WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+> Object WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
 
 
 
@@ -2174,9 +2232,9 @@ Loads wallet from seed, will scan ahead N address and load addresses till the la
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2184,6 +2242,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var seed = seed_example;  // string | Wallet seed.
             var label = label_example;  // string | Wallet label.
@@ -2193,7 +2256,7 @@ namespace Example
 
             try
             {
-                InlineResponse20015 result = apiInstance.WalletCreate(seed, label, scan, encrypt, password);
+                Object result = apiInstance.WalletCreate(seed, label, scan, encrypt, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2217,22 +2280,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletdecrypt"></a>
 # **WalletDecrypt**
-> InlineResponse20015 WalletDecrypt (string id, string password)
+> Object WalletDecrypt (string id, string password)
 
 Decrypts wallet.
 
@@ -2240,9 +2303,9 @@ Decrypts wallet.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2250,6 +2313,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet id.
             var password = password_example;  // string | Wallet password.
@@ -2257,7 +2325,7 @@ namespace Example
             try
             {
                 // Decrypts wallet.
-                InlineResponse20015 result = apiInstance.WalletDecrypt(id, password);
+                Object result = apiInstance.WalletDecrypt(id, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2278,22 +2346,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletencrypt"></a>
 # **WalletEncrypt**
-> InlineResponse20015 WalletEncrypt (string id, string password)
+> Object WalletEncrypt (string id, string password)
 
 Encrypt wallet.
 
@@ -2301,9 +2369,9 @@ Encrypt wallet.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2311,6 +2379,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet id.
             var password = password_example;  // string | Wallet password.
@@ -2318,7 +2391,7 @@ namespace Example
             try
             {
                 // Encrypt wallet.
-                InlineResponse20015 result = apiInstance.WalletEncrypt(id, password);
+                Object result = apiInstance.WalletEncrypt(id, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2339,22 +2412,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletfolder"></a>
 # **WalletFolder**
-> InlineResponse20021 WalletFolder (string addr)
+> InlineResponse2006 WalletFolder (string addr)
 
 
 
@@ -2364,9 +2437,9 @@ Returns the wallet directory path
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2374,17 +2447,12 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
             var addr = addr_example;  // string | Address port
 
             try
             {
-                InlineResponse20021 result = apiInstance.WalletFolder(addr);
+                InlineResponse2006 result = apiInstance.WalletFolder(addr);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2404,22 +2472,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletnewaddress"></a>
 # **WalletNewAddress**
-> InlineResponse20016 WalletNewAddress (string id, string num = null, string password = null)
+> Object WalletNewAddress (string id, string num = null, string password = null)
 
 
 
@@ -2429,9 +2497,9 @@ Generates new addresses
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2439,6 +2507,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet Id
             var num = num_example;  // string | The number you want to generate (optional) 
@@ -2446,7 +2519,7 @@ namespace Example
 
             try
             {
-                InlineResponse20016 result = apiInstance.WalletNewAddress(id, num, password);
+                Object result = apiInstance.WalletNewAddress(id, num, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2468,22 +2541,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletnewseed"></a>
 # **WalletNewSeed**
-> InlineResponse20017 WalletNewSeed (string entropy = null)
+> Object WalletNewSeed (string entropy = null)
 
 
 
@@ -2493,9 +2566,9 @@ Returns the wallet directory path
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2503,17 +2576,12 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
             var entropy = entropy_example;  // string | Entropy bitSize. (optional) 
 
             try
             {
-                InlineResponse20017 result = apiInstance.WalletNewSeed(entropy);
+                Object result = apiInstance.WalletNewSeed(entropy);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2533,22 +2601,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+**Object**
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletrecover"></a>
 # **WalletRecover**
-> InlineResponse20023 WalletRecover (string id, string seed, string password = null)
+> Object WalletRecover (string id, string seed, string password = null)
 
 Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
 
@@ -2556,9 +2624,9 @@ Recovers an encrypted wallet by providing the seed. The first address will be ge
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2566,6 +2634,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet id.
             var seed = seed_example;  // string | Wallet seed.
@@ -2574,7 +2647,7 @@ namespace Example
             try
             {
                 // Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
-                InlineResponse20023 result = apiInstance.WalletRecover(id, seed, password);
+                Object result = apiInstance.WalletRecover(id, seed, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2596,22 +2669,22 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletseed"></a>
 # **WalletSeed**
-> InlineResponse20017 WalletSeed (string id, string password)
+> Object WalletSeed (string id, string password)
 
 This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
 
@@ -2619,9 +2692,9 @@ This endpoint only works for encrypted wallets. If the wallet is unencrypted, Th
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2630,9 +2703,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet Id.
@@ -2641,7 +2714,7 @@ namespace Example
             try
             {
                 // This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
-                InlineResponse20017 result = apiInstance.WalletSeed(id, password);
+                Object result = apiInstance.WalletSeed(id, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2662,7 +2735,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+**Object**
 
 ### Authorization
 
@@ -2670,14 +2743,78 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="walletseedverify"></a>
+# **WalletSeedVerify**
+> Object WalletSeedVerify (string seed = null)
+
+Verifies a wallet seed.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class WalletSeedVerifyExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var seed = seed_example;  // string | Seed to be verified. (optional) 
+
+            try
+            {
+                // Verifies a wallet seed.
+                Object result = apiInstance.WalletSeedVerify(seed);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.WalletSeedVerify: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seed** | **string**| Seed to be verified. | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="walletspent"></a>
 # **WalletSpent**
-> InlineResponse20018 WalletSpent (string id, string dst, string coins, string password)
+> Object WalletSpent (string id, string dst, string coins, string password)
 
 
 
@@ -2687,9 +2824,9 @@ Creates and broadcasts a transaction sending money from one of our wallets to de
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2697,6 +2834,11 @@ namespace Example
     {
         public void main()
         {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet id
             var dst = dst_example;  // string | Recipient address
@@ -2705,7 +2847,7 @@ namespace Example
 
             try
             {
-                InlineResponse20018 result = apiInstance.WalletSpent(id, dst, coins, password);
+                Object result = apiInstance.WalletSpent(id, dst, coins, password);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2728,11 +2870,76 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20018**](InlineResponse20018.md)
+**Object**
 
 ### Authorization
 
-No authorization required
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="wallettransaction"></a>
+# **WalletTransaction**
+> Object WalletTransaction (InlineObject inlineObject = null)
+
+
+
+Creates a signed transaction
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class WalletTransactionExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var inlineObject = new InlineObject(); // InlineObject |  (optional) 
+
+            try
+            {
+                Object result = apiInstance.WalletTransaction(inlineObject);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.WalletTransaction: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
 
 ### HTTP request headers
 
@@ -2743,17 +2950,19 @@ No authorization required
 
 <a name="wallettransactions"></a>
 # **WalletTransactions**
-> InlineResponse20019 WalletTransactions (string id, bool? verbose = null)
+> Object WalletTransactions (string id)
 
-Returns returns all unconfirmed transactions for all addresses in a given wallet.
+
+
+Returns returns all unconfirmed transactions for all addresses in a given wallet verbose
 
 ### Example
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2763,12 +2972,10 @@ namespace Example
         {
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet id.
-            var verbose = true;  // bool? | include verbose transaction input data (optional)  (default to true)
 
             try
             {
-                // Returns returns all unconfirmed transactions for all addresses in a given wallet.
-                InlineResponse20019 result = apiInstance.WalletTransactions(id, verbose);
+                Object result = apiInstance.WalletTransactions(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2785,11 +2992,10 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Wallet id. | 
- **verbose** | **bool?**| include verbose transaction input data | [optional] [default to true]
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+**Object**
 
 ### Authorization
 
@@ -2797,7 +3003,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2812,9 +3018,9 @@ Unloads wallet from the wallet service.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2823,9 +3029,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet Id.
@@ -2860,7 +3066,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2875,9 +3081,9 @@ Update the wallet.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2886,9 +3092,9 @@ namespace Example
         public void main()
         {
             // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | Wallet Id.
@@ -2925,14 +3131,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="wallets"></a>
 # **Wallets**
-> List<InlineResponse20020> Wallets ()
+> List<InlineResponse2005> Wallets ()
 
 
 
@@ -2942,9 +3148,9 @@ Returns all loaded wallets
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -2952,16 +3158,11 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("csrf_Token", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("csrf_Token", "Bearer");
-
             var apiInstance = new DefaultApi();
 
             try
             {
-                List&lt;InlineResponse20020&gt; result = apiInstance.Wallets();
+                List&lt;InlineResponse2005&gt; result = apiInstance.Wallets();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2978,15 +3179,15 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse20020>**](InlineResponse20020.md)
+[**List<InlineResponse2005>**](InlineResponse2005.md)
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

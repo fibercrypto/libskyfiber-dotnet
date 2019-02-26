@@ -30,8 +30,8 @@ generate-csharp-client: ## Generate a Csharp wrapper for skycoin api with openap
 	GOPATH="$(GOPATH_DIR)" make -C $(LIB_SKYCOIN_DIR) swagger2
 	## Remove, if exist, previous Csharp Client
 	rm -rf CSHARP_CLIENT_DIR
-	## Generate new Csharp Client
-    @openapi-generator generate -g csharp --additional-properties=prependFormOrBodyParameters=true -o $(lib/restsharp/csharp_swagger) -i $(SWAGGER_SPEC_DIR)
+	openapi-generator generate -g csharp --additional-properties=prependFormOrBodyParameters=true -o $(CSHARP_CLIENT_DIR) -i $(SWAGGER_SPEC_DIR)
+
 
 $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
