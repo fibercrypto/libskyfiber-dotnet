@@ -1,5 +1,8 @@
 language: csharp
-solution: LibskycoinNet.sln
+mono:
+- latest
+#
+#solution: LibskycoinNet.sln
 
 install:
   - eval "$(gimme 1.10)"
@@ -8,7 +11,8 @@ install:
   
 script:
   - make test
-  
+  - /bin/sh .lib/restsharp/csharp_swagger/mono_nunit_test.sh
+
 notifications:
   email: false
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
