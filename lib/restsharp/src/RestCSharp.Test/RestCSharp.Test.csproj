@@ -81,7 +81,7 @@ Contact: skycoin.doe@example.com
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\RestCSharp\RestCSharp.csproj">
-          <Project>{10B22E03-E604-47AA-B8BB-538DDFE0D442}</Project>
+          <Project>{423FA43C-42F0-453D-8D08-0B727AA78D7A}</Project>
           <Name>RestCSharp</Name>
       </ProjectReference>
   </ItemGroup>

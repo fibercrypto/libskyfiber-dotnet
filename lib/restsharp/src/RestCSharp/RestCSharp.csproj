@@ -12,7 +12,7 @@ Contact: skycoin.doe@example.com
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10B22E03-E604-47AA-B8BB-538DDFE0D442}</ProjectGuid>
+    <ProjectGuid>{423FA43C-42F0-453D-8D08-0B727AA78D7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RestCSharp</RootNamespace>
