@@ -8,10 +8,11 @@ install:
   - eval "$(gimme 1.10)"
   - go version
   - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build	
-  
+
 script:
   - make test
-  - /bin/sh .lib/restsharp/csharp_swagger/mono_nunit_test.sh
+  - /bin/sh build.sh
+  - /bin/sh .lib/restsharp/mono_nunit_test.sh
 
 notifications:
   email: false
