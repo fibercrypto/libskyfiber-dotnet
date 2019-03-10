@@ -105,7 +105,7 @@ namespace RestCSharp.Model
                 (
                     this.Error == input.Error ||
                     this.Error != null &&
-                    this.Error.SequenceEqual(input.Error)
+                    this.Error.Equals(input.Error)
                 );
         }
 
