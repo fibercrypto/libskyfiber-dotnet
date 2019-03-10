@@ -3,6 +3,7 @@ mono:
 - latest
 #
 #solution: LibskycoinNet.sln
+sudo: required
 
 install:
   - eval "$(gimme 1.10)"
@@ -11,8 +12,8 @@ install:
 
 script:
   - make test
-  - /bin/sh .lib/restsharp/build.sh
-  - /bin/sh .lib/restsharp/mono_nunit_test.sh
+  - sudo /bin/sh .lib/restsharp/build.sh
+  - sudo /bin/sh .lib/restsharp/mono_nunit_test.sh
 
 notifications:
   email: false
