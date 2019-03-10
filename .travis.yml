@@ -11,7 +11,7 @@ install:
 
 script:
   - make test
-  - /bin/sh build.sh
+  - /bin/sh .lib/restsharp/build.sh
   - /bin/sh .lib/restsharp/mono_nunit_test.sh
 
 notifications:
