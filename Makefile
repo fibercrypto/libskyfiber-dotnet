@@ -26,12 +26,6 @@ configure: ## Setup build environment
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
 	mkdir -p $(BUILDLIBC_DIR) $(BIN_DIR) $(INCLUDE_DIR)
 
-generate-csharp-client: ## Generate a Csharp wrapper for skycoin api with openapi-generator
-    ## Remove, if exist, previous Csharp Client
-	rm -rf $(CSHARP_CLIENT_DIR)
-	openapi-generator generate -g csharp --additional-properties=packageName=RestCSharp -o $(CSHARP_CLIENT_DIR) -i $(SWAGGER_SPEC_DIR)
-
-
 $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
 	GOPATH="$(GOPATH_DIR)" make -C $(SKYCOIN_DIR) build-libc-static
@@ -65,6 +59,7 @@ build-libskycoin-net:	build-swig build-libc ## Build shared library including SW
 	mv libskycoin.so $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
 
 install-deps: ## Install development dependencies
+	/bin/sh $(CSHARP_CLIENT_DIR)/build.sh
 	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
@@ -75,7 +70,7 @@ build-sln: install-deps build-libc build-swig
 build: build-sln build-libskycoin-net ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
-	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+#	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
