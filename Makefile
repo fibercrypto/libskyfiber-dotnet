@@ -27,7 +27,7 @@ configure: ## Setup build environment
 
 $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
-	GOPATH="$(GOPATH_DIR)" make -C $(SKYCOIN_DIR) build-libc-static
+	GOPATH="$(GOPATH_DIR)" make -C $(LIB_SKYCOIN_DIR) build-libc-static
 	ls $(BUILDLIBC_DIR)
 	rm -f lib/swig/include/libskycoin.h
 	mkdir -p lib/swig/include
@@ -60,6 +60,7 @@ build-libskycoin-net:	build-swig build-libc ## Build shared library including SW
 install-deps: ## Install development dependencies
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
 	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
+	/bin/sh ./lib/restsharp/build.sh
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
