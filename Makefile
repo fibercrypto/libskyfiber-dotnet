@@ -60,7 +60,6 @@ build-libskycoin-net:	build-swig build-libc ## Build shared library including SW
 install-deps: ## Install development dependencies
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
 	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
-	/bin/sh ./lib/restsharp/build.sh
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 build-sln: install-deps build-libc build-swig
@@ -71,6 +70,7 @@ build: build-sln build-libskycoin-net ## Build LibSkycoinNet Assembly
 
 test: build ## Run LibSkycoinNet test suite
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	(cd $(CSHARP_CLIENT_DIR) && /bin/sh mono_nunit_test.sh)
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
