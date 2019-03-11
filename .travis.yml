@@ -12,8 +12,8 @@ install:
 
 script:
   - make test
-  - sudo /bin/sh .lib/restsharp/build.sh
-  - sudo /bin/sh .lib/restsharp/mono_nunit_test.sh
+  - sudo /bin/sh ./lib/restsharp/build.sh
+  - sudo /bin/sh ./lib/restsharp/mono_nunit_test.sh
 
 notifications:
   email: false
