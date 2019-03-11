@@ -1,6 +1,6 @@
 PWD = $(shell pwd)
 GOPATH_DIR = $(PWD)/gopath
-SKYCOIN_DIR = gopath/src/github.com/skycoin/skycoin
+SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
 SKYBUILD_DIR = $(SKYCOIN_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
 LIBC_DIR = $(SKYCOIN_DIR)/lib/cgo
@@ -11,7 +11,6 @@ INCLUDE_DIR = $(SKYCOIN_DIR)/include
 FULL_PATH_LIB = $(PWD)/$(BUILDLIBC_DIR)
 
 LIB_FILES = $(shell find $(SKYCOIN_DIR)/lib/cgo -type f -name "*.go")
-SRC_FILES = $(shell find $(SKYCOIN_DIR)/src -type f -name "*.go")
 SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 

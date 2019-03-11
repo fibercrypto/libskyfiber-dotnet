@@ -144,6 +144,7 @@
     <Compile Include="skycoin\SWIGTYPE_p_a_4__GoUint8_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CLI__Handle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
