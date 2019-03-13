@@ -38,20 +38,20 @@ build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a ## Build libskycoin static C
 build-swig: ## Generate csharp source code from SWIG interface definitions
 	#Generate structs.i from skytypes.gen.h
 	rm -f $(LIBSWIG_DIR)/structs.i
-	cp $(INCLUDE_DIR)/skytypes.gen.h $(LIBSWIG_DIR)/structs.i
+	cp $(INCLUDE_DIR)/skytypes.gen.h $(LIBSWIG_DIR)/swig/structs.i
 	#sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i
 	{ \
 		if [[ "$$(uname -s)" == "Darwin" ]]; then \
-			sed -i '.kbk' 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
+			sed -i '.kbk' 's/#/%/g' $(LIBSWIG_DIR)/swig/structs.i ;\
 		else \
-			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
+			sed -i 's/#/%/g' $(LIBSWIG_DIR)/swig/structs.i ;\
 		fi \
 	}
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
 	rm -f $(LIBSWIG_DIR)/swig/include/swig.h
 	rm -f $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
 	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/swig/libdotnet.i
-	
+
 build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
 	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
