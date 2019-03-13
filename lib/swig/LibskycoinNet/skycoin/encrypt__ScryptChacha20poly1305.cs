@@ -42,40 +42,40 @@ public class encrypt__ScryptChacha20poly1305 : global::System.IDisposable {
 
   public long N {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_N(swigCPtr, value);
+      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_N_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_N(swigCPtr);
+      long ret = skycoinPINVOKE.encrypt__ScryptChacha20poly1305_N_get(swigCPtr);
       return ret;
     } 
   }
 
   public long R {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_R(swigCPtr, value);
+      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_R_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_R(swigCPtr);
+      long ret = skycoinPINVOKE.encrypt__ScryptChacha20poly1305_R_get(swigCPtr);
       return ret;
     } 
   }
 
   public long P {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_P(swigCPtr, value);
+      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_P_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_P(swigCPtr);
+      long ret = skycoinPINVOKE.encrypt__ScryptChacha20poly1305_P_get(swigCPtr);
       return ret;
     } 
   }
 
   public long KeyLen {
     set {
-      skycoinPINVOKE.set_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr, value);
+      skycoinPINVOKE.encrypt__ScryptChacha20poly1305_KeyLen_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_encrypt__ScryptChacha20poly1305_KeyLen(swigCPtr);
+      long ret = skycoinPINVOKE.encrypt__ScryptChacha20poly1305_KeyLen_get(swigCPtr);
       return ret;
     } 
   }

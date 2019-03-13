@@ -47,20 +47,20 @@ public class cipher__BitcoinAddress : global::System.IDisposable {
 
   public byte Version {
     set {
-      skycoinPINVOKE.set_cipher__BitcoinAddress_Version(swigCPtr, value);
+      skycoinPINVOKE.cipher__BitcoinAddress_Version_set(swigCPtr, value);
     } 
     get {
-      byte ret = skycoinPINVOKE.get_cipher__BitcoinAddress_Version(swigCPtr);
+      byte ret = skycoinPINVOKE.cipher__BitcoinAddress_Version_get(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_GoUint8_ Key {
     set {
-      skycoinPINVOKE.set_cipher__BitcoinAddress_Key(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.cipher__BitcoinAddress_Key_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher__BitcoinAddress_Key(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher__BitcoinAddress_Key_get(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 

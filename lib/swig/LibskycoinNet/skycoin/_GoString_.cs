@@ -57,20 +57,20 @@ public class _GoString_ : global::System.IDisposable {
 
   public string p {
     set {
-      skycoinPINVOKE.set__GoString__p(swigCPtr, value);
+      skycoinPINVOKE._GoString__p_set(swigCPtr, value);
     } 
     get {
-      string ret = skycoinPINVOKE.get__GoString__p(swigCPtr);
+      string ret = skycoinPINVOKE._GoString__p_get(swigCPtr);
       return ret;
     } 
   }
 
   public int n {
     set {
-      skycoinPINVOKE.set__GoString__n(swigCPtr, value);
+      skycoinPINVOKE._GoString__n_set(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get__GoString__n(swigCPtr);
+      int ret = skycoinPINVOKE._GoString__n_get(swigCPtr);
       return ret;
     } 
   }

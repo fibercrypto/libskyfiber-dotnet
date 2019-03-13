@@ -42,10 +42,10 @@ public class wallet__Entry : global::System.IDisposable {
 
   public cipher__Address Address {
     set {
-      skycoinPINVOKE.set_wallet__Entry_Address(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.wallet__Entry_Address_set(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__Entry_Address(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__Entry_Address_get(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 
@@ -53,10 +53,10 @@ public class wallet__Entry : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Public {
     set {
-      skycoinPINVOKE.set_wallet__Entry_Public(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.wallet__Entry_Public_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__Entry_Public(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__Entry_Public_get(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -64,10 +64,10 @@ public class wallet__Entry : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Secret {
     set {
-      skycoinPINVOKE.set_wallet__Entry_Secret(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.wallet__Entry_Secret_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__Entry_Secret(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__Entry_Secret_get(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 

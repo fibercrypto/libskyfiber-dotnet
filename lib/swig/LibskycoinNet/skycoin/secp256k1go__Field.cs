@@ -42,10 +42,10 @@ public class secp256k1go__Field : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint32_ n {
     set {
-      skycoinPINVOKE.set_secp256k1go__Field_n(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
+      skycoinPINVOKE.secp256k1go__Field_n_set(swigCPtr, SWIGTYPE_p_GoUint32_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__Field_n(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__Field_n_get(swigCPtr);
       SWIGTYPE_p_GoUint32_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint32_(cPtr, false);
       return ret;
     } 

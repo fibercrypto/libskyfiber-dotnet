@@ -66,10 +66,10 @@ public class cipher_PubKeys : global::System.IDisposable {
 
   public cipher_PubKey data {
     set {
-      skycoinPINVOKE.set_cipher_PubKeys_data(swigCPtr, cipher_PubKey.getCPtr(value));
+      skycoinPINVOKE.cipher_PubKeys_data_set(swigCPtr, cipher_PubKey.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_PubKeys_data(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_PubKeys_data_get(swigCPtr);
       cipher_PubKey ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_PubKey(cPtr, false);
       return ret;
     } 
@@ -77,10 +77,10 @@ public class cipher_PubKeys : global::System.IDisposable {
 
   public int count {
     set {
-      skycoinPINVOKE.set_cipher_PubKeys_count(swigCPtr, value);
+      skycoinPINVOKE.cipher_PubKeys_count_set(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_cipher_PubKeys_count(swigCPtr);
+      int ret = skycoinPINVOKE.cipher_PubKeys_count_get(swigCPtr);
       return ret;
     } 
   }

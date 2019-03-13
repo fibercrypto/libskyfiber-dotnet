@@ -29,15 +29,15 @@ $(BUILDLIBC_DIR)/libskycoin.a: $(LIB_FILES) $(SRC_FILES) $(HEADER_FILES)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
 	GOPATH="$(GOPATH_DIR)" make -C $(LIB_SKYCOIN_DIR) build-libc-static
 	ls $(BUILDLIBC_DIR)
-	rm -f lib/swig/include/libskycoin.h
-	mkdir -p lib/swig/include
-	grep -v "_Complex" $(INCLUDE_DIR)/libskycoin.h > lib/swig/include/libskycoin.h
+	rm -f lib/swig/swig/include/libskycoin.h
+	mkdir -p lib/swig/swig/include
+	grep -v "_Complex" $(INCLUDE_DIR)/libskycoin.h > lib/swig/swig/include/libskycoin.h
 
 build-libc: configure $(BUILDLIBC_DIR)/libskycoin.a ## Build libskycoin static C client library
 
 build-swig: ## Generate csharp source code from SWIG interface definitions
 	#Generate structs.i from skytypes.gen.h
-	rm -f $(LIBSWIG_DIR)/structs.i
+	rm -f $(LIBSWIG_DIR)/swig/structs.i
 	cp $(INCLUDE_DIR)/skytypes.gen.h $(LIBSWIG_DIR)/swig/structs.i
 	#sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i
 	{ \
@@ -50,7 +50,7 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
 	rm -f $(LIBSWIG_DIR)/swig/include/swig.h
 	rm -f $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
-	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/swig/libdotnet.i
+	swig -csharp -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/swig/libdotnet.i
 
 build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c

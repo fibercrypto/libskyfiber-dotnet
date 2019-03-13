@@ -42,10 +42,10 @@ public class coin__Block : global::System.IDisposable {
 
   public coin__BlockHeader Head {
     set {
-      skycoinPINVOKE.set_coin__Block_Head(swigCPtr, coin__BlockHeader.getCPtr(value));
+      skycoinPINVOKE.coin__Block_Head_set(swigCPtr, coin__BlockHeader.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__Block_Head(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.coin__Block_Head_get(swigCPtr);
       coin__BlockHeader ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__BlockHeader(cPtr, false);
       return ret;
     } 
@@ -53,10 +53,10 @@ public class coin__Block : global::System.IDisposable {
 
   public coin__BlockBody Body {
     set {
-      skycoinPINVOKE.set_coin__Block_Body(swigCPtr, coin__BlockBody.getCPtr(value));
+      skycoinPINVOKE.coin__Block_Body_set(swigCPtr, coin__BlockBody.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__Block_Body(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.coin__Block_Body_get(swigCPtr);
       coin__BlockBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__BlockBody(cPtr, false);
       return ret;
     } 

@@ -42,11 +42,11 @@ public class api__NetworkConnectionsFilter : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ States {
     set {
-      skycoinPINVOKE.set_api__NetworkConnectionsFilter_States(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.api__NetworkConnectionsFilter_States_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_api__NetworkConnectionsFilter_States(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.api__NetworkConnectionsFilter_States_get(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class api__NetworkConnectionsFilter : global::System.IDisposable {
 
   public SWIGTYPE_p_GoString_ Direction {
     set {
-      skycoinPINVOKE.set_api__NetworkConnectionsFilter_Direction(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
+      skycoinPINVOKE.api__NetworkConnectionsFilter_Direction_set(swigCPtr, SWIGTYPE_p_GoString_.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.get_api__NetworkConnectionsFilter_Direction(swigCPtr), true);
+      SWIGTYPE_p_GoString_ ret = new SWIGTYPE_p_GoString_(skycoinPINVOKE.api__NetworkConnectionsFilter_Direction_get(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

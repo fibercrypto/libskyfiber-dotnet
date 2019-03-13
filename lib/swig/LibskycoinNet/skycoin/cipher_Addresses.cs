@@ -66,10 +66,10 @@ public class cipher_Addresses : global::System.IDisposable {
 
   public cipher__Address data {
     set {
-      skycoinPINVOKE.set_cipher_Addresses_data(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.cipher_Addresses_data_set(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_Addresses_data(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_Addresses_data_get(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 
@@ -77,10 +77,10 @@ public class cipher_Addresses : global::System.IDisposable {
 
   public int count {
     set {
-      skycoinPINVOKE.set_cipher_Addresses_count(swigCPtr, value);
+      skycoinPINVOKE.cipher_Addresses_count_set(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_cipher_Addresses_count(swigCPtr);
+      int ret = skycoinPINVOKE.cipher_Addresses_count_get(swigCPtr);
       return ret;
     } 
   }

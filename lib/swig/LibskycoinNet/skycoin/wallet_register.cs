@@ -42,11 +42,11 @@ public class wallet_register : global::System.IDisposable {
 
   public SWIGTYPE_p_Client__Handle client {
     set {
-      skycoinPINVOKE.set_wallet_register_client(swigCPtr, SWIGTYPE_p_Client__Handle.getCPtr(value));
+      skycoinPINVOKE.wallet_register_client_set(swigCPtr, SWIGTYPE_p_Client__Handle.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_Client__Handle ret = new SWIGTYPE_p_Client__Handle(skycoinPINVOKE.get_wallet_register_client(swigCPtr), true);
+      SWIGTYPE_p_Client__Handle ret = new SWIGTYPE_p_Client__Handle(skycoinPINVOKE.wallet_register_client_get(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -54,11 +54,11 @@ public class wallet_register : global::System.IDisposable {
 
   public SWIGTYPE_p_WalletResponse__Handle wallet {
     set {
-      skycoinPINVOKE.set_wallet_register_wallet(swigCPtr, SWIGTYPE_p_WalletResponse__Handle.getCPtr(value));
+      skycoinPINVOKE.wallet_register_wallet_set(swigCPtr, SWIGTYPE_p_WalletResponse__Handle.getCPtr(value));
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_WalletResponse__Handle ret = new SWIGTYPE_p_WalletResponse__Handle(skycoinPINVOKE.get_wallet_register_wallet(swigCPtr), true);
+      SWIGTYPE_p_WalletResponse__Handle ret = new SWIGTYPE_p_WalletResponse__Handle(skycoinPINVOKE.wallet_register_wallet_get(swigCPtr), true);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 

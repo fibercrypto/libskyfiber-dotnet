@@ -42,20 +42,20 @@ public class coin__UxHead : global::System.IDisposable {
 
   public ulong Time {
     set {
-      skycoinPINVOKE.set_coin__UxHead_Time(swigCPtr, value);
+      skycoinPINVOKE.coin__UxHead_Time_set(swigCPtr, value);
     } 
     get {
-      ulong ret = skycoinPINVOKE.get_coin__UxHead_Time(swigCPtr);
+      ulong ret = skycoinPINVOKE.coin__UxHead_Time_get(swigCPtr);
       return ret;
     } 
   }
 
   public ulong BkSeq {
     set {
-      skycoinPINVOKE.set_coin__UxHead_BkSeq(swigCPtr, value);
+      skycoinPINVOKE.coin__UxHead_BkSeq_set(swigCPtr, value);
     } 
     get {
-      ulong ret = skycoinPINVOKE.get_coin__UxHead_BkSeq(swigCPtr);
+      ulong ret = skycoinPINVOKE.coin__UxHead_BkSeq_get(swigCPtr);
       return ret;
     } 
   }

@@ -65,10 +65,10 @@ public class cipher_PubKey : global::System.IDisposable {
 
   public SWIGTYPE_p_unsigned_char data {
     set {
-      skycoinPINVOKE.set_cipher_PubKey_data(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
+      skycoinPINVOKE.cipher_PubKey_data_set(swigCPtr, SWIGTYPE_p_unsigned_char.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_PubKey_data(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_PubKey_data_get(swigCPtr);
       SWIGTYPE_p_unsigned_char ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
       return ret;
     } 

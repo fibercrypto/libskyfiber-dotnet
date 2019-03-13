@@ -42,10 +42,10 @@ public class secp256k1go__XY : global::System.IDisposable {
 
   public secp256k1go__Field X {
     set {
-      skycoinPINVOKE.set_secp256k1go__XY_X(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.secp256k1go__XY_X_set(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XY_X(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XY_X_get(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -53,10 +53,10 @@ public class secp256k1go__XY : global::System.IDisposable {
 
   public secp256k1go__Field Y {
     set {
-      skycoinPINVOKE.set_secp256k1go__XY_Y(swigCPtr, secp256k1go__Field.getCPtr(value));
+      skycoinPINVOKE.secp256k1go__XY_Y_set(swigCPtr, secp256k1go__Field.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_secp256k1go__XY_Y(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.secp256k1go__XY_Y_get(swigCPtr);
       secp256k1go__Field ret = (cPtr == global::System.IntPtr.Zero) ? null : new secp256k1go__Field(cPtr, false);
       return ret;
     } 
@@ -64,10 +64,10 @@ public class secp256k1go__XY : global::System.IDisposable {
 
   public uint Infinity {
     set {
-      skycoinPINVOKE.set_secp256k1go__XY_Infinity(swigCPtr, value);
+      skycoinPINVOKE.secp256k1go__XY_Infinity_set(swigCPtr, value);
     } 
     get {
-      uint ret = skycoinPINVOKE.get_secp256k1go__XY_Infinity(swigCPtr);
+      uint ret = skycoinPINVOKE.secp256k1go__XY_Infinity_get(swigCPtr);
       return ret;
     } 
   }

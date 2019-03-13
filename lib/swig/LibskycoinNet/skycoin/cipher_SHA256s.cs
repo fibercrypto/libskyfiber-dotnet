@@ -66,10 +66,10 @@ public class cipher_SHA256s : global::System.IDisposable {
 
   public cipher_SHA256 data {
     set {
-      skycoinPINVOKE.set_cipher_SHA256s_data(swigCPtr, cipher_SHA256.getCPtr(value));
+      skycoinPINVOKE.cipher_SHA256s_data_set(swigCPtr, cipher_SHA256.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher_SHA256s_data(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher_SHA256s_data_get(swigCPtr);
       cipher_SHA256 ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher_SHA256(cPtr, false);
       return ret;
     } 
@@ -77,10 +77,10 @@ public class cipher_SHA256s : global::System.IDisposable {
 
   public int count {
     set {
-      skycoinPINVOKE.set_cipher_SHA256s_count(swigCPtr, value);
+      skycoinPINVOKE.cipher_SHA256s_count_set(swigCPtr, value);
     } 
     get {
-      int ret = skycoinPINVOKE.get_cipher_SHA256s_count(swigCPtr);
+      int ret = skycoinPINVOKE.cipher_SHA256s_count_get(swigCPtr);
       return ret;
     } 
   }

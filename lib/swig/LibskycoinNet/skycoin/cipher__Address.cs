@@ -56,20 +56,20 @@ public class cipher__Address : global::System.IDisposable {
 
   public byte Version {
     set {
-      skycoinPINVOKE.set_cipher__Address_Version(swigCPtr, value);
+      skycoinPINVOKE.cipher__Address_Version_set(swigCPtr, value);
     } 
     get {
-      byte ret = skycoinPINVOKE.get_cipher__Address_Version(swigCPtr);
+      byte ret = skycoinPINVOKE.cipher__Address_Version_get(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_GoUint8_ Key {
     set {
-      skycoinPINVOKE.set_cipher__Address_Key(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.cipher__Address_Key_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_cipher__Address_Key(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.cipher__Address_Key_get(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 

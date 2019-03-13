@@ -42,20 +42,20 @@ public class wallet__Balance : global::System.IDisposable {
 
   public ulong Coins {
     set {
-      skycoinPINVOKE.set_wallet__Balance_Coins(swigCPtr, value);
+      skycoinPINVOKE.wallet__Balance_Coins_set(swigCPtr, value);
     } 
     get {
-      ulong ret = skycoinPINVOKE.get_wallet__Balance_Coins(swigCPtr);
+      ulong ret = skycoinPINVOKE.wallet__Balance_Coins_get(swigCPtr);
       return ret;
     } 
   }
 
   public ulong Hours {
     set {
-      skycoinPINVOKE.set_wallet__Balance_Hours(swigCPtr, value);
+      skycoinPINVOKE.wallet__Balance_Hours_set(swigCPtr, value);
     } 
     get {
-      ulong ret = skycoinPINVOKE.get_wallet__Balance_Hours(swigCPtr);
+      ulong ret = skycoinPINVOKE.wallet__Balance_Hours_get(swigCPtr);
       return ret;
     } 
   }

@@ -47,10 +47,10 @@ public class coin__UxOut : global::System.IDisposable {
 
   public coin__UxHead Head {
     set {
-      skycoinPINVOKE.set_coin__UxOut_Head(swigCPtr, coin__UxHead.getCPtr(value));
+      skycoinPINVOKE.coin__UxOut_Head_set(swigCPtr, coin__UxHead.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__UxOut_Head(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.coin__UxOut_Head_get(swigCPtr);
       coin__UxHead ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__UxHead(cPtr, false);
       return ret;
     } 
@@ -58,10 +58,10 @@ public class coin__UxOut : global::System.IDisposable {
 
   public coin__UxBody Body {
     set {
-      skycoinPINVOKE.set_coin__UxOut_Body(swigCPtr, coin__UxBody.getCPtr(value));
+      skycoinPINVOKE.coin__UxOut_Body_set(swigCPtr, coin__UxBody.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_coin__UxOut_Body(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.coin__UxOut_Body_get(swigCPtr);
       coin__UxBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new coin__UxBody(cPtr, false);
       return ret;
     } 

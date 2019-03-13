@@ -42,10 +42,10 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public SWIGTYPE_p_GoUint8_ Hash {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Hash(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
+      skycoinPINVOKE.wallet__UxBalance_Hash_set(swigCPtr, SWIGTYPE_p_GoUint8_.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__UxBalance_Hash(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__UxBalance_Hash_get(swigCPtr);
       SWIGTYPE_p_GoUint8_ ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_GoUint8_(cPtr, false);
       return ret;
     } 
@@ -53,20 +53,20 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public long BkSeq {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_BkSeq(swigCPtr, value);
+      skycoinPINVOKE.wallet__UxBalance_BkSeq_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_wallet__UxBalance_BkSeq(swigCPtr);
+      long ret = skycoinPINVOKE.wallet__UxBalance_BkSeq_get(swigCPtr);
       return ret;
     } 
   }
 
   public cipher__Address Address {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Address(swigCPtr, cipher__Address.getCPtr(value));
+      skycoinPINVOKE.wallet__UxBalance_Address_set(swigCPtr, cipher__Address.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = skycoinPINVOKE.get_wallet__UxBalance_Address(swigCPtr);
+      global::System.IntPtr cPtr = skycoinPINVOKE.wallet__UxBalance_Address_get(swigCPtr);
       cipher__Address ret = (cPtr == global::System.IntPtr.Zero) ? null : new cipher__Address(cPtr, false);
       return ret;
     } 
@@ -74,20 +74,20 @@ public class wallet__UxBalance : global::System.IDisposable {
 
   public long Coins {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Coins(swigCPtr, value);
+      skycoinPINVOKE.wallet__UxBalance_Coins_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_wallet__UxBalance_Coins(swigCPtr);
+      long ret = skycoinPINVOKE.wallet__UxBalance_Coins_get(swigCPtr);
       return ret;
     } 
   }
 
   public long Hours {
     set {
-      skycoinPINVOKE.set_wallet__UxBalance_Hours(swigCPtr, value);
+      skycoinPINVOKE.wallet__UxBalance_Hours_set(swigCPtr, value);
     } 
     get {
-      long ret = skycoinPINVOKE.get_wallet__UxBalance_Hours(swigCPtr);
+      long ret = skycoinPINVOKE.wallet__UxBalance_Hours_get(swigCPtr);
       return ret;
     } 
   }
