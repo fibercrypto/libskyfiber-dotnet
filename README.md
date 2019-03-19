@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
 
-.Net client library for Skycoin API. This library is a .Net assembly generated with SWIG to access Skycoin API from .Net.
+.Net client library for Skycoin API. This library is a .Net composed assembly generated with SWIG and OPENAPI to access Skycoin API from .Net.
 
 ## Table of Contents
 
