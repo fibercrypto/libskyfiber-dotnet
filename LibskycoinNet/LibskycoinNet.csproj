@@ -11,9 +11,9 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>LibskycoinNet</PackageId>
-    <Version Condition=" '$(PackageVersion)' == '' ">0.0.2-local</Version>
+    <Version Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</Version>
     <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
-    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.0.2-local</PackageVersion>
+    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</PackageVersion>
     <PackageVersion Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</PackageVersion>
     <Company>Skycoin</Company>
     <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin (skycoin)</Authors>
