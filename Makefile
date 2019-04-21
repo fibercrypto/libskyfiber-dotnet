@@ -17,7 +17,7 @@ HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 # Added by Swagger
 LIB_SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
 SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.v0.25.1.openapi.v2.yml
-CSHARP_CLIENT_DIR = lib/restsharp
+CSHARP_CLIENT_DIR = lib/skyapi
 
 CSHARP_SWIG_DIR = lib/swig
 
