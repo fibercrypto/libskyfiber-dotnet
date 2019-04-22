@@ -23,7 +23,7 @@ namespace LibSkycoinDotNetTest {
             err = SKY_cipher_Address_Verify (a, p);
             Assert.AreEqual (err, SKY_OK, " Failed SKY_cipher_Address_Verify");
             err = SKY_cipher_DecodeBase58Address ("", a1);
-            Assert.AreEqual (err, SKY_ErrInvalidBase58String, "Failed SKY_cipher_DecodeBase58Address 1");
+            Assert.AreEqual (err, SKY_ERROR, "Failed SKY_cipher_DecodeBase58Address 1");
             err = SKY_cipher_DecodeBase58Address ("asa", a1);
             Assert.AreEqual (err, SKY_ErrAddressInvalidLength, "Failed SKY_cipher_DecodeBase58Address 2");
 
@@ -35,15 +35,15 @@ namespace LibSkycoinDotNetTest {
             Assert.IsTrue (a.isEqual (a2) == 1);
             var as2 = " " + addrStr.p;
             err = SKY_cipher_DecodeBase58Address (as2, a1);
-            Assert.AreEqual (err, SKY_ErrInvalidBase58Char, "Failed SKY_cipher_DecodeBase58Address 3");
+            Assert.AreEqual (err, SKY_ERROR, "Failed SKY_cipher_DecodeBase58Address 3");
 
             as2 = "000" + addrStr.p;
             err = SKY_cipher_DecodeBase58Address (as2, a1);
-            Assert.AreEqual (err, SKY_ErrInvalidBase58Char, "Failed SKY_cipher_DecodeBase58Address 3");
+            Assert.AreEqual (err, SKY_ERROR, "Failed SKY_cipher_DecodeBase58Address 3");
 
             as2 = addrStr.p + "000";
             err = SKY_cipher_DecodeBase58Address (as2, a1);
-            Assert.AreEqual (err, SKY_ErrInvalidBase58Char, "Failed SKY_cipher_DecodeBase58Address 3");
+            Assert.AreEqual (err, SKY_ERROR, "Failed SKY_cipher_DecodeBase58Address 3");
         }
 
         [Test]
