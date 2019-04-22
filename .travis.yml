@@ -13,9 +13,10 @@ matrix:
       dotnet: 2.2.102
       solution: LibSkycoinDotNet.sln
       env: TYPE=dotnet
-
-    #- os: osx
-    #  dotnet: 2.2.102
+    - os: osx
+      dotnet: 2.2.102
+      solution: LibSkycoinDotNet.sln
+      env: TYPE=dotnet
     #  mono: 4.8.0
 
 before_install:
