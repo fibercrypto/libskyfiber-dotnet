@@ -28,8 +28,9 @@ ifeq ($(shell uname -s),Linux)
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
   LDPATHVAR=LD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) $(STDC_FLAG)
-  LDCOPY=.
+  LDCOPY=$(PWD)/build/usr/lib/
   LDNAME= libskycoin.so
+  OS = linux
 ifndef OSNAME
   OSNAME = linux
 endif
@@ -48,9 +49,15 @@ else
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
   LDPATHVAR=LD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS)
+  OS = darwin
 endif
 
-configure: ## Setup build environment
+configure-linux:
+
+configure-darwin:
+	mkdir -p ~/Library/ ~/Library/Frameworks
+
+configure: configure-$(OS)
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
 	mkdir -p $(BUILDLIBC_DIR) $(BIN_DIR) $(INCLUDE_DIR)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
@@ -85,7 +92,7 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	rm -rf build/usr/lib/libskycoin.so
-	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o build/usr/lib/$(LDNAME) $(LDFLAGS)
+	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o $(LDCOPY)/$(LDNAME) $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
@@ -102,20 +109,20 @@ install-deps-dotnet: ## Install development dependencies by dotnet
 	dotnet restore LibSkycoinDotNet.sln
 
 build-sln-dotnet: install-deps-dotnet build-libc build-swig
-	$(LDPATHVAR)="$(PWD)/build/usr/lib/" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY)" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibSkycoinDotNet.sln
 	
 build-sln-mono: install-deps-mono build-libc build-swig
-	$(LDPATHVAR)="$(PWD)/build/usr/lib/" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
+	$(LDPATHVAR)="$(LDCOPY)" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release LibskycoinNet.sln
 
 build-dotnet: build-libskycoin-net build-sln-dotnet ## Build LibSkycoinNet Assembly by DotNet
 
 build-mono: build-libskycoin-net build-sln-mono ## Build LibSkycoinNet Assembly by Mono
 
 test-mono: build-mono ## Run LibSkycoinNet test suite mono
-	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibSkycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./LibskycoinNetTest/bin/Release/LibSkycoinNetTest.dll -labels
 
 test-dotnet: build-dotnet
-	$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)" dotnet test LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test LibSkycoinDotNet.sln
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
