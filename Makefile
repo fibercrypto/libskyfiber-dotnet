@@ -76,25 +76,24 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	rm -f swig/include/swig.h
 	rm -f skycoinnet_wrap.o
 	rm -f LibskycoinNet/skycoin/skycoinnet_wrap.c
-	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
+	swig -csharp -oldvarnames -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibskycoinNet/skycoin -o LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	rm -f LibSkycoinDotNet/skycoin/skycoinnet_wrap.c
-	swig -csharp -oldvarnames -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibSkycoinDotNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
+	swig -csharp -oldvarnames -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir LibSkycoinDotNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
-	rm -rfv build/usr/lib/libskycoin.so
+	rm -rf build/usr/lib/libskycoin.so
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o build/usr/lib/libskycoin.so $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
-	rm -rfv  LibSkycoinNetTest/bin/Release/libskycoin.so
-	rm -rfv  LibSkycoinDotNetTest/bin/Release/libskycoin.so
+	rm -rf  LibSkycoinNetTest/bin/Release/libskycoin.so
+	rm -rf  LibSkycoinDotNetTest/bin/Release/libskycoin.so
 
 install-deps-mono: ## Install development dependencies by mono
 	nuget restore LibskycoinNet.sln
-
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 install-deps-dotnet: ## Install development dependencies by dotnet
@@ -118,4 +117,3 @@ test-dotnet: build-dotnet
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-$(LDPATHVAR)="$(PWD)/build/usr/lib/:$(LDPATHVAR)"
