@@ -2610,81 +2610,6 @@ var tmpp0 = p0;
     }
   }
 
-  public static uint SKY_base58_Base58_ToInt(string p0, SWIGTYPE_p_long_long p1) {
-var tmpp0 = p0;
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Base58_ToInt(tmpp0, SWIGTYPE_p_long_long.getCPtr(p1));
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Base58_ToHex(string p0, GoSlice p1) {
-var tmpp0 = p0;
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Base58_ToHex(tmpp0, GoSlice.getCPtr (p1));
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Base58_Base582Int(string p0, SWIGTYPE_p_long_long p1) {
-var tmpp0 = p0;
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Base58_Base582Int(tmpp0, SWIGTYPE_p_long_long.getCPtr(p1));
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Base582Hex(string p0, GoSlice p1) {
-var tmpp0 = p0;
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Base582Hex(tmpp0, GoSlice.getCPtr (p1));
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Base58_BitHex(string p0, GoSlice p1) {
-var tmpp0 = p0;
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Base58_BitHex(tmpp0, GoSlice.getCPtr (p1));
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Int2Base58(long p0, _GoString_ p1) {
-var tmpp1 = _GoString_.getCPtr (p1);
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Int2Base58(p0, tmpp1);
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Hex2Base58(GoSlice p0, _GoString_ p1) {
-var tmpp1 = _GoString_.getCPtr (p1);
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Hex2Base58(GoSlice.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Hex2Base58String(GoSlice p0, _GoString_ p1) {
-var tmpp1 = _GoString_.getCPtr (p1);
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Hex2Base58String(GoSlice.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
-  public static uint SKY_base58_Hex2Base58Str(GoSlice p0, _GoString_ p1) {
-var tmpp1 = _GoString_.getCPtr (p1);
-    {
-      uint ret = skycoinPINVOKE.SKY_base58_Hex2Base58Str(GoSlice.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
-  }
-
   public static uint SKY_webrpc_NewClient(string p0, SWIGTYPE_p_WebRpcClient__Handle p1) {
 var tmpp0 = p0;
     {
@@ -2773,20 +2698,8 @@ var tmpp1 = _GoString_.getCPtr (p1);
     }
   }
 
-  public static uint SKY_cli_NewApp(SWIGTYPE_p_Config__Handle p0, SWIGTYPE_p_App__Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_cli_NewApp(SWIGTYPE_p_Config__Handle.getCPtr(p0), SWIGTYPE_p_App__Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_cli_RPCClientFromContext(SWIGTYPE_p_Context__Handle p0, SWIGTYPE_p_WebRpcClient__Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_cli_RPCClientFromContext(SWIGTYPE_p_Context__Handle.getCPtr(p0), SWIGTYPE_p_WebRpcClient__Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public static uint SKY_cli_ConfigFromContext(SWIGTYPE_p_Context__Handle p0, SWIGTYPE_p_Config__Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_cli_ConfigFromContext(SWIGTYPE_p_Context__Handle.getCPtr(p0), SWIGTYPE_p_Config__Handle.getCPtr(p1));
+  public static uint SKY_cli_NewCLI(SWIGTYPE_p_Config__Handle p0, SWIGTYPE_p_CLI__Handle p1) {
+    uint ret = skycoinPINVOKE.SKY_cli_NewCLI(SWIGTYPE_p_Config__Handle.getCPtr(p0), SWIGTYPE_p_CLI__Handle.getCPtr(p1));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -2982,13 +2895,10 @@ var tmpp1 = cipher_SecKey.getCPtr (p1);
     return ret;
   }
 
-  public static uint SKY_cli_App_Run(SWIGTYPE_p_App__Handle p0, string p1) {
-var tmpp1 = p1;
-    {
-      uint ret = skycoinPINVOKE.SKY_cli_App_Run(SWIGTYPE_p_App__Handle.getCPtr(p0), tmpp1);
-      if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    }
+  public static uint SKY_cli_CLI_Run(SWIGTYPE_p_CLI__Handle p0) {
+    uint ret = skycoinPINVOKE.SKY_cli_CLI_Run(SWIGTYPE_p_CLI__Handle.getCPtr(p0));
+    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
   }
 
   public static uint SKY_cli_Config_GetCoin(SWIGTYPE_p_Config__Handle p0, _GoString_ p1) {
@@ -3007,12 +2917,6 @@ var tmpp1 = _GoString_.getCPtr (p1);
       if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     }
-  }
-
-  public static uint SKY_cli_RPCClientFromApp(SWIGTYPE_p_App__Handle p0, SWIGTYPE_p_WebRpcClient__Handle p1) {
-    uint ret = skycoinPINVOKE.SKY_cli_RPCClientFromApp(SWIGTYPE_p_App__Handle.getCPtr(p0), SWIGTYPE_p_WebRpcClient__Handle.getCPtr(p1));
-    if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
   public static uint SKY_cli_Getenv(string p0, _GoString_ p1) {

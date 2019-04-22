@@ -279,7 +279,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 11 "cipher.base58.base58.go"
+#line 8 "cipher.base58.base58.go"
 
 
   #include <string.h>
@@ -299,7 +299,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 11 "cli.cli.go"
+#line 10 "cli.cli.go"
 
 
   #include <string.h>
@@ -330,7 +330,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 9 "cli_helper.go"
+#line 7 "cli_helper.go"
 
 
   #include <string.h>
@@ -878,24 +878,6 @@ extern GoUint32 SKY_api_NewCreatedTransactionInput(wallet__UxBalance* p0, Create
 
 extern GoUint32 SKY_base58_String2Hex(GoString p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_base58_Base58_ToInt(GoString p0, GoInt* p1);
-
-extern GoUint32 SKY_base58_Base58_ToHex(GoString p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_base58_Base58_Base582Int(GoString p0, GoInt* p1);
-
-extern GoUint32 SKY_base58_Base582Hex(GoString p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_base58_Base58_BitHex(GoString p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_base58_Int2Base58(GoInt p0, GoString_* p1);
-
-extern GoUint32 SKY_base58_Hex2Base58(GoSlice p0, GoString_* p1);
-
-extern GoUint32 SKY_base58_Hex2Base58String(GoSlice p0, GoString_* p1);
-
-extern GoUint32 SKY_base58_Hex2Base58Str(GoSlice p0, GoString_* p1);
-
 extern GoUint32 SKY_webrpc_NewClient(GoString p0, WebRpcClient__Handle* p1);
 
 extern GoUint32 SKY_webrpc_Client_CSRF(WebRpcClient__Handle p0, GoString_* p1);
@@ -920,11 +902,7 @@ extern GoUint32 SKY_cli_Config_FullWalletPath(Config__Handle p0, GoString_* p1);
 
 extern GoUint32 SKY_cli_Config_FullDBPath(Config__Handle p0, GoString_* p1);
 
-extern GoUint32 SKY_cli_NewApp(Config__Handle p0, App__Handle* p1);
-
-extern GoUint32 SKY_cli_RPCClientFromContext(Context__Handle p0, WebRpcClient__Handle* p1);
-
-extern GoUint32 SKY_cli_ConfigFromContext(Context__Handle p0, Config__Handle* p1);
+extern GoUint32 SKY_cli_NewCLI(Config__Handle p0, CLI__Handle* p1);
 
 extern GoUint32 SKY_cli_PasswordFromBytes_Password(coin__UxArray* p0, coin__UxArray* p1);
 
@@ -982,13 +960,11 @@ extern GoUint32 SKY_coin_GetBlockBody(Block__Handle p0, BlockBody__Handle* p1);
 
 extern GoUint32 SKY_coin_NewEmptyBlock(Transactions__Handle p0, Block__Handle* p1);
 
-extern GoUint32 SKY_cli_App_Run(App__Handle p0, GoString p1);
+extern GoUint32 SKY_cli_CLI_Run(CLI__Handle p0);
 
 extern GoUint32 SKY_cli_Config_GetCoin(Config__Handle p0, GoString_* p1);
 
 extern GoUint32 SKY_cli_Config_GetRPCAddress(Config__Handle p0, GoString_* p1);
-
-extern GoUint32 SKY_cli_RPCClientFromApp(App__Handle p0, WebRpcClient__Handle* p1);
 
 extern GoUint32 SKY_cli_Getenv(GoString p0, GoString_* p1);
 

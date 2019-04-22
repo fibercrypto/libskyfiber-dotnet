@@ -10617,150 +10617,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_String2Hex(char* j
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToInt(char* jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_ToInt(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_ToHex(char* jarg1, GoSlice_ * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_ToHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_Base582Int(char* jarg1, void * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  GoInt *arg2 = (GoInt *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (GoInt *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_Base582Int(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base582Hex(char* jarg1, GoSlice_ * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base582Hex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Base58_BitHex(char* jarg1, GoSlice_ * jarg2) {
-  unsigned int jresult ;
-  GoString arg1 ;
-  coin__UxArray *arg2 = (coin__UxArray *) 0 ;
-  GoUint32 result;
-  
-  (&arg1)->p=jarg1;(&arg1)->n=strlen(jarg1);
-  arg2 = (coin__UxArray *)jarg2; 
-  result = (GoUint32)SKY_base58_Base58_BitHex(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Int2Base58(long long jarg1, GoString* jarg2) {
-  unsigned int jresult ;
-  GoInt arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoUint32 result;
-  
-  arg1 = (GoInt)jarg1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Int2Base58(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58(void * jarg1, GoString* jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58String(void * jarg1, GoString* jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58String(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_base58_Hex2Base58Str(void * jarg1, GoString* jarg2) {
-  unsigned int jresult ;
-  GoSlice arg1 ;
-  GoString_ *arg2 = (GoString_ *) 0 ;
-  GoSlice *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (GoSlice *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (GoString_ *)jarg2; 
-  result = (GoUint32)SKY_base58_Hex2Base58Str(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_webrpc_NewClient(char* jarg1, void * jarg2) {
   unsigned int jresult ;
   GoString arg1 ;
@@ -11019,10 +10875,10 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_FullDBPath(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewApp(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewCLI(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   Config__Handle arg1 ;
-  App__Handle *arg2 = (App__Handle *) 0 ;
+  CLI__Handle *arg2 = (CLI__Handle *) 0 ;
   Config__Handle *argp1 ;
   GoUint32 result;
   
@@ -11032,48 +10888,8 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_NewApp(void * jarg1, 
     return 0;
   }
   arg1 = *argp1; 
-  arg2 = (App__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_NewApp(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromContext(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Context__Handle arg1 ;
-  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
-  Context__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Context__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WebRpcClient__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_RPCClientFromContext(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_ConfigFromContext(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  Context__Handle arg1 ;
-  Config__Handle *arg2 = (Config__Handle *) 0 ;
-  Context__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (Context__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Context__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (Config__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_ConfigFromContext(arg1,arg2);
+  arg2 = (CLI__Handle *)jarg2; 
+  result = (GoUint32)SKY_cli_NewCLI(arg1,arg2);
   jresult = result; 
   return jresult;
 }
@@ -11595,21 +11411,19 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_NewEmptyBlock(void *
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_App_Run(void * jarg1, char* jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_CLI_Run(void * jarg1) {
   unsigned int jresult ;
-  App__Handle arg1 ;
-  GoString arg2 ;
-  App__Handle *argp1 ;
+  CLI__Handle arg1 ;
+  CLI__Handle *argp1 ;
   GoUint32 result;
   
-  argp1 = (App__Handle *)jarg1; 
+  argp1 = (CLI__Handle *)jarg1; 
   if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CLI__Handle", 0);
     return 0;
   }
   arg1 = *argp1; 
-  (&arg2)->p=jarg2;(&arg2)->n=strlen(jarg2);
-  result = (GoUint32)SKY_cli_App_Run(arg1,arg2);
+  result = (GoUint32)SKY_cli_CLI_Run(arg1);
   jresult = result; 
   return jresult;
 }
@@ -11650,26 +11464,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_Config_GetRPCAddress(
   arg1 = *argp1; 
   arg2 = (GoString_ *)jarg2; 
   result = (GoUint32)SKY_cli_Config_GetRPCAddress(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_cli_RPCClientFromApp(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  App__Handle arg1 ;
-  WebRpcClient__Handle *arg2 = (WebRpcClient__Handle *) 0 ;
-  App__Handle *argp1 ;
-  GoUint32 result;
-  
-  argp1 = (App__Handle *)jarg1; 
-  if (!argp1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null App__Handle", 0);
-    return 0;
-  }
-  arg1 = *argp1; 
-  arg2 = (WebRpcClient__Handle *)jarg2; 
-  result = (GoUint32)SKY_cli_RPCClientFromApp(arg1,arg2);
   jresult = result; 
   return jresult;
 }
