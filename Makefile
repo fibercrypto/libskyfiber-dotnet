@@ -22,13 +22,14 @@ LIBC_FLAGS = -I$(LIBSRC_DIR) -I$(INCLUDE_DIR) -I$(BUILD_DIR)/usr/include -L $(BU
 
 # Platform specific checks
 OSNAME = $(TRAVIS_OS_NAME)
-
+LDNAME = 
 ifeq ($(shell uname -s),Linux)
   LDLIBS=$(LIBC_LIBS) -lpthread
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
   LDPATHVAR=LD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) $(STDC_FLAG)
   LDCOPY=.
+  LDNAME= libskycoin.so
 ifndef OSNAME
   OSNAME = linux
 endif
@@ -41,6 +42,7 @@ endif
   LDPATHVAR=DYLD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) -framework CoreFoundation -framework Security
   LDCOPY=~/Library/Frameworks/
+  LDNAME= libskycoin.dylib
 else
   LDLIBS = $(LIBC_LIBS)
   LDPATH=$(shell printenv LD_LIBRARY_PATH)
@@ -83,14 +85,14 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -Iswig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	rm -rf build/usr/lib/libskycoin.so
-	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o build/usr/lib/libskycoin.so $(LDFLAGS)
+	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o build/usr/lib/$(LDNAME) $(LDFLAGS)
 	mkdir -p LibskycoinNetTest/bin
 	mkdir -p LibSkycoinDotNetTest/bin
 	mkdir -p LibskycoinNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release
 	mkdir -p LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
-	rm -rf  LibSkycoinNetTest/bin/Release/libskycoin.so
-	rm -rf  LibSkycoinDotNetTest/bin/Release/libskycoin.so
+	rm -rf  LibSkycoinNetTest/bin/Release/$(LDNAME)
+	rm -rf  LibSkycoinDotNetTest/bin/Release/$(LDNAME)
 
 install-deps-mono: ## Install development dependencies by mono
 	nuget restore LibskycoinNet.sln
