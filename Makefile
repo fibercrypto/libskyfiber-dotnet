@@ -41,7 +41,7 @@ endif
   LDLIBS = $(LIBC_LIBS)
   LDPATH=$(shell printenv DYLD_LIBRARY_PATH)
   LDPATHVAR=DYLD_LIBRARY_PATH
-  LDFLAGS=$(LIBC_FLAGS) -framework CoreFoundation -framework Security
+  LDFLAGS=$(LIBC_FLAGS) -dynamiclib -flat_namespace -static -framework CoreFoundation -framework Security
   LDCOPY=~/Library/Frameworks/
   LDNAME= libskycoin.dylib
   OS = darwin
