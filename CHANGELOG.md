@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Submodule change skycoin/skycoin => skycoin/libskycoin@develop
+
 ### Added
 
 - Feature compatible with Skycoin `v0.25.0`
