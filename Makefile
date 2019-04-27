@@ -70,7 +70,7 @@ build-libsky: build-libsky-sln build-libsky-shared ## Build LibSkycoinNet Assemb
 build-skyapi: ## Build SkyApi Assembly
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
 
-test-libsky: ## Run LibSkycoinNet test suite
+test-libsky: build-libsky ## Run LibSkycoinNet test suite
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 
 test-skyapi: ## Run SkyApi test suite
