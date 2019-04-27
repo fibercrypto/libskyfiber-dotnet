@@ -1,17 +1,24 @@
 language: csharp
-solution: LibskycoinNet.sln
+mono:
+- latest
+#
+#solution: LibskycoinNet.sln
+sudo: required
 
 before_install:
   - sudo apt-get install -y gendarme
 
 install:
-  - eval "$(gimme 1.10)"
+  - eval "$(gimme 1.11)"
   - go version
-  - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build	
-  
+  - python --version
+  - go get github.com/gz-c/gox
+  - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build
+
 script:
-  - make test
-  
+  - make test-libsky
+  - make test-skyapi
+
 notifications:
   email: false
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
