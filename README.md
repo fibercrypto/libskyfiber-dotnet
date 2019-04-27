@@ -8,23 +8,28 @@
 
 <!-- MarkdownTOC levels="1,2,3,4,5" autolink="true" bracket="round" -->
 
-- [Installation](#installation)
-- [Using the API](#usage)
-  - [Naming](#naming)
-  - [Parameters](#parameters)
-    - [Handles](#handles)
-    - [Byte Slices](#byte-slices)
-    - [Structures](#structures)
-    - [Fixed Size Arrays](#fixed-size-array)
-    - [Other Slices](#other-slices)
+- [LibSkycoinNet wrappers for the Skycoin cipher](libskycoinnet-wrappers-for the skycoin cipher)
+  - [Installation](#installation)
+  - [Using the API](#usage)
+    - [Naming](#naming)
+    - [Parameters](#parameters)
+      - [Handles](#handles)
+      - [Byte Slices](#byte-slices)
+      - [Structures](#structures)
+      - [Fixed Size Arrays](#fixed-size-array)
+      - [Other Slices](#other-slices)
     - [Memory Managemanet](#memory-management)
+- [SkyApi wrapper for Skycoin REST API](#skyapi-wrapper-for-skycoin-rest-api)
 - [Make rules](#make-rules)
 - [Development setup](#development-setup)
-- [RestCSharp, a Wrapper for Skycoin Api](#restCSharp,-wrapper-for-skycoin-api)
   <!-- /MarkdownTOC -->
 
 
-## Installation
+## LibSkycoinNet wrappers for the Skycoin cipher
+
+**LibSkycoinNet** is an assembly that provides wrappers to the Skycoin core cipher API's, implemented in go lang, hence linking directly to the original node code. No transpilation involved.
+
+### Installation
 
 Before installing, make sure you understand the choices available to [install a Nuget package](https://docs.microsoft.com/en-us/nuget/consume-packages/ways-to-install-a-package) and the [level of support in your platform](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools) for each possible configuration. For instance, in case of [installing Nuget client tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools) the process would look like this, using [`dotnet add package` command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-add-package).
 
@@ -53,24 +58,24 @@ For getting similar results using a graphical IDE interface consider package nam
 - [Package Manager UI reference for Windows users](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui)
 - [Including a NuGet package in your project using Mac OS](https://docs.microsoft.com/en-us/visualstudio/mac/nuget-walkthrough)
 
-## Install from sources
+### Install from sources
 
 Download the repository from http://github.com/simelo/libskycoin-dotnet.git.
 Execute (`nuget restore LibskycoinNet.sln`) to install the library. Although executing (`nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner`) is a better choice for making changes to the library. However, when using tox these commands are not required at all because calling tox will make any necessary installation and execute the tests.
 
-## Usage
+### Usage
 
-### Naming
+#### Naming
 
 The exported function in Libskycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
 
-### Parameters
+#### Parameters
 
 All skycoin exported functions return an error object as the last of the return parameters. In .NET error is return as an `uint` and it is the first return parameter. The rest of the parameters are returned in the same order.
 
 Receivers in Skycoin are the first of the input parameters. Simple types, like integer, float, string will be used as the corresponding types in .NET, except what act as pointers.
 
-#### Handles
+##### Handles
 
 Some of Skycoin types are too complex to be exported to a scripting language. So, handles are used instead. Therefore all functions taking a complex type will receive a handle instead of the original Skycoin type. For example, having these functions exported from Skycoin:
 
@@ -110,7 +115,7 @@ namespace LibskycoinNet
 }
 ```
 
-#### Byte slices
+##### Byte slices
 
 Parameters of type byte[] will treated as string . Example, this function in Skycoin:
 
@@ -139,7 +144,7 @@ if(err == SKY_OK){
 }
 ```
 
-#### Structures
+##### Structures
 
 Structures that are not exported as handles are treated like .NET classes. In the previous example type ScryptChacha20poly1305 is created in .NET like:
 
@@ -149,7 +154,7 @@ var encrypt_settings = new encrypt__ScryptChacha20poly1305()
 
 And passed as first parameter in call to `SKY_encrypt_ScryptChacha20poly1305_Encrypt`.
 
-#### Fixed Sized Arrays
+##### Fixed Sized Arrays
 
 Parameters of fixed size array are wrapped in structures when called from .NET.
 
@@ -189,7 +194,7 @@ In the example above `pubkey` and `seckey` are objects of an structure type cont
   } ;
 ```
 
-#### Other Slices
+##### Other Slices
 
 Other slices of base type different from `byte` are indeed wrapped inside classes. Let's see how to call the following function:
 
@@ -222,16 +227,7 @@ for(int i=0;i<seckeys.count,i++){
 
 Memory management is transparent to the user. Any object allocated inside the library is left to be managed by the .NET garbage collector.
 
-## Make Rules
-
-The following `make` rules are available after `git checkout` of this repository. They all require [Skycoin](https://github.com/skycoin/skycoin) to be checked out as a `git submodule` of libskycoin .NET .
-
-- `build-libc`
-  - Compiles skycoin C language library.
-- `build-swig`
-  - Creates the wrapper C code to generate the .NET library.
-
-## RestCSharp, a Wrapper for Skycoin Api
+## SkyApi wrapper for Skycoin REST API
 
 This wrapper is Auto generated by openapi-generator directly from `Skycoin Api` code for version v0.25.1.
 
@@ -246,3 +242,23 @@ var restSharpClient = new ApiClient("specific_node_address")
 ```
 
 Then in `restSharpClient` you can use all methods related to Api Client.
+
+## Make Rules
+
+The following `make` rules are available after `git checkout` of this repository. They all require [Skycoin](https://github.com/skycoin/skycoin) to be checked out as a `git submodule` of libskycoin .NET .
+
+```
+$ make help
+
+configure                      Setup build environment
+build-libc                     Build libskycoin static C client library
+build-swig                     Generate csharp source code from SWIG interface definitions
+build-libsky-shared            Build shared library including SWIG wrappers
+install-deps-libsky            Install development dependencies for LibSkycoinNet
+build-libsky                   Build LibSkycoinNet Assembly
+build-skyapi                   Build SkyApi Assembly
+test-libsky                    Run LibSkycoinNet test suite
+test-skyapi                    Run SkyApi test suite
+test                           Run all tests
+```
+

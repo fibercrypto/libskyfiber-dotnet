@@ -17,7 +17,7 @@ HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 # Added by Swagger
 LIB_SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
 SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.v0.25.1.openapi.v2.yml
-CSHARP_CLIENT_DIR = lib/restsharp
+CSHARP_CLIENT_DIR = lib/skyapi
 
 CSHARP_SWIG_DIR = lib/swig
 
@@ -52,25 +52,31 @@ build-swig: ## Generate csharp source code from SWIG interface definitions
 	rm -f $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
 	swig -csharp -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/swig/libdotnet.i
 
-build-libskycoin-net:	build-swig build-libc ## Build shared library including SWIG wrappers
+build-libsky-shared:	build-swig build-libc ## Build shared library including SWIG wrappers
 	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
 	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
 	mv libskycoin.so $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
 
-install-deps: ## Install development dependencies
-	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
+install-deps-libsky: ## Install development dependencies for LibSkycoinNet
 	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
-build-sln: install-deps build-libc build-swig
+build-libsky-sln: install-deps-libsky build-libc build-swig
 	msbuild /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
 	msbuild /p:Configuration=Debug $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
 
-build: build-sln build-libskycoin-net ## Build LibSkycoinNet Assembly
+build-libsky: build-libsky-sln build-libsky-shared ## Build LibSkycoinNet Assembly
 
-test: build ## Run LibSkycoinNet test suite
+build-skyapi: ## Build SkyApi Assembly
+	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
+
+test-libsky: build-libsky ## Run LibSkycoinNet test suite
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+
+test-skyapi: ## Run SkyApi test suite
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh mono_nunit_test.sh)
+
+test: build test-libsky test-skyapi ## Run all tests
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
