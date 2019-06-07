@@ -15535,6 +15535,50 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_httphelper__Address(void * jar
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_httphelper__SHA256__unnamed_set(void * jarg1, void * jarg2) {
+  httphelper__SHA256 *arg1 = (httphelper__SHA256 *) 0 ;
+  GoUint8_ *arg2 ;
+  
+  arg1 = (httphelper__SHA256 *)jarg1; 
+  arg2 = (GoUint8_ *)jarg2; 
+  {
+    size_t ii;
+    GoUint8_ *b = (GoUint8_ *) arg1->_unnamed;
+    for (ii = 0; ii < (size_t)32; ii++) b[ii] = *((GoUint8_ *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_httphelper__SHA256__unnamed_get(void * jarg1) {
+  void * jresult ;
+  httphelper__SHA256 *arg1 = (httphelper__SHA256 *) 0 ;
+  GoUint8_ *result = 0 ;
+  
+  arg1 = (httphelper__SHA256 *)jarg1; 
+  result = (GoUint8_ *) ((arg1)->_unnamed);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_httphelper__SHA256() {
+  void * jresult ;
+  httphelper__SHA256 *result = 0 ;
+  
+  result = (httphelper__SHA256 *)calloc(1, sizeof(httphelper__SHA256));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_httphelper__SHA256(void * jarg1) {
+  httphelper__SHA256 *arg1 = (httphelper__SHA256 *) 0 ;
+  
+  arg1 = (httphelper__SHA256 *)jarg1; 
+  free((char *) arg1);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_wallet__Balance_Coins_set(void * jarg1, unsigned long long jarg2) {
   wallet__Balance *arg1 = (wallet__Balance *) 0 ;
   GoUint64_ arg2 ;

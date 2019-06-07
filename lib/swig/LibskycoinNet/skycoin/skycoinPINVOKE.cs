@@ -2810,6 +2810,18 @@ class skycoinPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_delete_httphelper__Address")]
   public static extern void delete_httphelper__Address(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_httphelper__SHA256__unnamed_set")]
+  public static extern void httphelper__SHA256__unnamed_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_httphelper__SHA256__unnamed_get")]
+  public static extern global::System.IntPtr httphelper__SHA256__unnamed_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_new_httphelper__SHA256")]
+  public static extern global::System.IntPtr new_httphelper__SHA256();
+
+  [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_delete_httphelper__SHA256")]
+  public static extern void delete_httphelper__SHA256(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_wallet__Balance_Coins_set")]
   public static extern void wallet__Balance_Coins_set(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2);
 
