@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Entries** | [**List&lt;ApiV1WalletsEntries&gt;**](ApiV1WalletsEntries.md) |  | [optional] 
-**Meta** | [**ApiV1WalletsMeta**](ApiV1WalletsMeta.md) |  | [optional] 
+**Branch** | **string** | git branch name | [optional] 
+**Commit** | **string** | git commit id | [optional] 
+**Version** | **string** | version number | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

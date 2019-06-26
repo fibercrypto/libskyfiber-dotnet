@@ -6,17 +6,20 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddressCount**](DefaultApi.md#addresscount) | **GET** /api/v1/addresscount | Returns the total number of unique address that have coins.
 [**AddressUxouts**](DefaultApi.md#addressuxouts) | **GET** /api/v1/address_uxouts | 
+[**ApiV1RawtxGet**](DefaultApi.md#apiv1rawtxget) | **GET** /api/v1/rawtx | 
+[**ApiV2MetricsGet**](DefaultApi.md#apiv2metricsget) | **GET** /api/v2/metrics | 
 [**BalanceGet**](DefaultApi.md#balanceget) | **GET** /api/v1/balance | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**BalancePost**](DefaultApi.md#balancepost) | **POST** /api/v1/balance | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
-[**Block**](DefaultApi.md#block) | **GET** /api/v1/block | 
+[**Block**](DefaultApi.md#block) | **GET** /api/v1/block | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**BlockchainMetadata**](DefaultApi.md#blockchainmetadata) | **GET** /api/v1/blockchain/metadata | Returns the blockchain metadata.
 [**BlockchainProgress**](DefaultApi.md#blockchainprogress) | **GET** /api/v1/blockchain/progress | Returns the blockchain sync progress.
-[**BlocksGet**](DefaultApi.md#blocksget) | **GET** /api/v1/blocks | blocksHandler returns blocks between a start and end point,
-[**BlocksPost**](DefaultApi.md#blockspost) | **POST** /api/v1/blocks | blocksHandler returns blocks between a start and end point,
+[**Blocks**](DefaultApi.md#blocks) | **GET** /api/v1/blocks | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**CoinSupply**](DefaultApi.md#coinsupply) | **GET** /api/v1/coinSupply | 
 [**Csrf**](DefaultApi.md#csrf) | **GET** /api/v1/csrf | Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
+[**DataDELETE**](DefaultApi.md#datadelete) | **DELETE** /api/v2/data | 
+[**DataGET**](DefaultApi.md#dataget) | **GET** /api/v2/data | 
+[**DataPOST**](DefaultApi.md#datapost) | **POST** /api/v2/data | 
 [**DefaultConnections**](DefaultApi.md#defaultconnections) | **GET** /api/v1/network/defaultConnections | defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
-[**ExplorerAddress**](DefaultApi.md#exploreraddress) | **GET** /api/v1/explorer/address | 
 [**Health**](DefaultApi.md#health) | **GET** /api/v1/health | Returns node health data.
 [**LastBlocks**](DefaultApi.md#lastblocks) | **GET** /api/v1/last_blocks | 
 [**NetworkConnection**](DefaultApi.md#networkconnection) | **GET** /api/v1/network/connection | This endpoint returns a specific connection.
@@ -30,7 +33,9 @@ Method | HTTP request | Description
 [**ResendUnconfirmedTxns**](DefaultApi.md#resendunconfirmedtxns) | **POST** /api/v1/resendUnconfirmedTxns | 
 [**Richlist**](DefaultApi.md#richlist) | **GET** /api/v1/richlist | Returns the top skycoin holders.
 [**Transaction**](DefaultApi.md#transaction) | **GET** /api/v1/transaction | 
-[**TransactionInject**](DefaultApi.md#transactioninject) | **POST** /api/v2/transaction/inject | Broadcast a hex-encoded, serialized transaction to the network.
+[**TransactionInject**](DefaultApi.md#transactioninject) | **POST** /api/v1/injectTransaction | Broadcast a hex-encoded, serialized transaction to the network.
+[**TransactionPost**](DefaultApi.md#transactionpost) | **POST** /api/v2/transaction | 
+[**TransactionPostUnspent**](DefaultApi.md#transactionpostunspent) | **POST** /api/v2/transaction/unspent | 
 [**TransactionRaw**](DefaultApi.md#transactionraw) | **GET** /api/v2/transaction/raw | Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
 [**TransactionVerify**](DefaultApi.md#transactionverify) | **POST** /api/v2/transaction/verify | 
 [**TransactionsGet**](DefaultApi.md#transactionsget) | **GET** /api/v1/transactions | Returns transactions that match the filters.
@@ -49,8 +54,8 @@ Method | HTTP request | Description
 [**WalletRecover**](DefaultApi.md#walletrecover) | **POST** /api/v2/wallet/recover | Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
 [**WalletSeed**](DefaultApi.md#walletseed) | **POST** /api/v1/wallet/seed | This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
 [**WalletSeedVerify**](DefaultApi.md#walletseedverify) | **POST** /api/v2/wallet/seed/verify | Verifies a wallet seed.
-[**WalletSpent**](DefaultApi.md#walletspent) | **POST** /api/v1/wallet/spend | 
-[**WalletTransaction**](DefaultApi.md#wallettransaction) | **POST** /api/v1/wallet/transaction | 
+[**WalletTransaction**](DefaultApi.md#wallettransaction) | **POST** /api/v1/wallet/transaction | Creates a signed transaction
+[**WalletTransactionSign**](DefaultApi.md#wallettransactionsign) | **POST** /api/v2/wallet/transaction/sign | Creates a signed transaction
 [**WalletTransactions**](DefaultApi.md#wallettransactions) | **GET** /api/v1/wallet/transactions | 
 [**WalletUnload**](DefaultApi.md#walletunload) | **POST** /api/v1/wallet/unload | Unloads wallet from the wallet service.
 [**WalletUpdate**](DefaultApi.md#walletupdate) | **POST** /api/v1/wallet/update | Update the wallet.
@@ -60,7 +65,7 @@ Method | HTTP request | Description
 
 ## AddressCount
 
-> Object AddressCount ()
+> InlineResponse200 AddressCount ()
 
 Returns the total number of unique address that have coins.
 
@@ -84,7 +89,7 @@ namespace Example
             try
             {
                 // Returns the total number of unique address that have coins.
-                Object result = apiInstance.AddressCount();
+                InlineResponse200 result = apiInstance.AddressCount();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -104,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Object**
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -113,7 +118,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -123,7 +128,7 @@ No authorization required
 
 ## AddressUxouts
 
-> List<InlineResponse200> AddressUxouts (string address)
+> List<Object> AddressUxouts (string address)
 
 
 
@@ -149,7 +154,7 @@ namespace Example
 
             try
             {
-                List&lt;InlineResponse200&gt; result = apiInstance.AddressUxouts(address);
+                List&lt;Object&gt; result = apiInstance.AddressUxouts(address);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -172,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse200>**](InlineResponse200.md)
+**List<Object>**
 
 ### Authorization
 
@@ -181,7 +186,131 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1RawtxGet
+
+> string ApiV1RawtxGet ()
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class ApiV1RawtxGetExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                string result = apiInstance.ApiV1RawtxGet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ApiV1RawtxGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV2MetricsGet
+
+> string ApiV2MetricsGet ()
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class ApiV2MetricsGetExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                string result = apiInstance.ApiV2MetricsGet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ApiV2MetricsGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -248,7 +377,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -320,7 +449,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -330,11 +459,9 @@ Name | Type | Description  | Notes
 
 ## Block
 
-> Object Block (string hash = null, int? seq = null)
+> List<BlockSchema> Block (string hash = null, int? seq = null)
 
-
-
-Returns a block by hash or seq. Note: only one of hash or seq is allowed
+Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
 
@@ -352,12 +479,13 @@ namespace Example
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
             var apiInstance = new DefaultApi(Configuration.Default);
-            var hash = hash_example;  // string |  (optional) 
-            var seq = 56;  // int? |  (optional) 
+            var hash = hash_example;  // string | get block by hash (optional) 
+            var seq = 56;  // int? | get block by sequence number (optional) 
 
             try
             {
-                Object result = apiInstance.Block(hash, seq);
+                // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
+                List&lt;BlockSchema&gt; result = apiInstance.Block(hash, seq);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -376,12 +504,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hash** | **string**|  | [optional] 
- **seq** | **int?**|  | [optional] 
+ **hash** | **string**| get block by hash | [optional] 
+ **seq** | **int?**| get block by sequence number | [optional] 
 
 ### Return type
 
-**Object**
+[**List<BlockSchema>**](BlockSchema.md)
 
 ### Authorization
 
@@ -390,7 +518,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -453,7 +581,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -516,7 +644,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -524,13 +652,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## BlocksGet
+## Blocks
 
-> Object BlocksGet (int? start = null, int? end = null, List<int?> seqs = null)
+> InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seq = null)
 
-blocksHandler returns blocks between a start and end point,
-
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose.
+Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
 
@@ -542,25 +668,25 @@ using Skyapi.Model;
 
 namespace Example
 {
-    public class BlocksGetExample
+    public class BlocksExample
     {
         public static void Main()
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
             var apiInstance = new DefaultApi(Configuration.Default);
-            var start = 56;  // int? |  (optional) 
-            var end = 56;  // int? |  (optional) 
-            var seqs = new List<int?>(); // List<int?> |  (optional) 
+            var start = 56;  // int? | start seq (optional) 
+            var end = 56;  // int? | end seq (optional) 
+            var seq = new List<int?>(); // List<int?> | comma-separated list of block seqs (optional) 
 
             try
             {
-                // blocksHandler returns blocks between a start and end point,
-                Object result = apiInstance.BlocksGet(start, end, seqs);
+                // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
+                InlineResponse2001 result = apiInstance.Blocks(start, end, seq);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling DefaultApi.BlocksGet: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Blocks: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -574,13 +700,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start** | **int?**|  | [optional] 
- **end** | **int?**|  | [optional] 
- **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
+ **start** | **int?**| start seq | [optional] 
+ **end** | **int?**| end seq | [optional] 
+ **seq** | [**List&lt;int?&gt;**](int?.md)| comma-separated list of block seqs | [optional] 
 
 ### Return type
 
-**Object**
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -589,85 +715,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## BlocksPost
-
-> Object BlocksPost (int? start = null, int? end = null, List<int?> seqs = null)
-
-blocksHandler returns blocks between a start and end point,
-
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose
-
-### Example
-
-```csharp
-using System.Diagnostics;
-using Skyapi.Api;
-using Skyapi.Client;
-using Skyapi.Model;
-
-namespace Example
-{
-    public class BlocksPostExample
-    {
-        public static void Main()
-        {
-            Configuration.Default.BasePath = "http://127.0.0.1:6420";
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
-            var apiInstance = new DefaultApi(Configuration.Default);
-            var start = 56;  // int? |  (optional) 
-            var end = 56;  // int? |  (optional) 
-            var seqs = new List<int?>(); // List<int?> |  (optional) 
-
-            try
-            {
-                // blocksHandler returns blocks between a start and end point,
-                Object result = apiInstance.BlocksPost(start, end, seqs);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException e)
-            {
-                Debug.Print("Exception when calling DefaultApi.BlocksPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **int?**|  | [optional] 
- **end** | **int?**|  | [optional] 
- **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[csrfAuth](../README.md#csrfAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -677,7 +725,7 @@ Name | Type | Description  | Notes
 
 ## CoinSupply
 
-> Object CoinSupply ()
+> InlineResponse2002 CoinSupply ()
 
 
 
@@ -702,7 +750,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.CoinSupply();
+                InlineResponse2002 result = apiInstance.CoinSupply();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -722,7 +770,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Object**
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -731,7 +779,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -741,7 +789,7 @@ No authorization required
 
 ## Csrf
 
-> InlineResponse2001 Csrf ()
+> InlineResponse2003 Csrf ()
 
 Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
 
@@ -765,7 +813,7 @@ namespace Example
             try
             {
                 // Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
-                InlineResponse2001 result = apiInstance.Csrf();
+                InlineResponse2003 result = apiInstance.Csrf();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -785,7 +833,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -794,7 +842,211 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataDELETE
+
+> void DataDELETE (string type = null, string key = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataDELETEExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+
+            try
+            {
+                apiInstance.DataDELETE(type, key);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataDELETE: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataGET
+
+> Object DataGET (string type = null, string key = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataGETExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+
+            try
+            {
+                Object result = apiInstance.DataGET(type, key);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataGET: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataPOST
+
+> void DataPOST (string type = null, string key = null, string val = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataPOSTExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+            var val = val_example;  // string | additional value. (optional) 
+
+            try
+            {
+                apiInstance.DataPOST(type, key, val);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataPOST: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+ **val** | **string**| additional value. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -857,75 +1109,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ExplorerAddress
-
-> List<InlineResponse2002> ExplorerAddress (string address = null)
-
-
-
-Returns all transactions (confirmed and unconfirmed) for an address
-
-### Example
-
-```csharp
-using System.Diagnostics;
-using Skyapi.Api;
-using Skyapi.Client;
-using Skyapi.Model;
-
-namespace Example
-{
-    public class ExplorerAddressExample
-    {
-        public static void Main()
-        {
-            Configuration.Default.BasePath = "http://127.0.0.1:6420";
-            var apiInstance = new DefaultApi(Configuration.Default);
-            var address = address_example;  // string | tags to filter by (optional) 
-
-            try
-            {
-                List&lt;InlineResponse2002&gt; result = apiInstance.ExplorerAddress(address);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException e)
-            {
-                Debug.Print("Exception when calling DefaultApi.ExplorerAddress: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **address** | **string**| tags to filter by | [optional] 
-
-### Return type
-
-[**List<InlineResponse2002>**](InlineResponse2002.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -988,7 +1172,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1020,7 +1204,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
             var apiInstance = new DefaultApi(Configuration.Default);
-            var num = 56;  // int? | 
+            var num = 56;  // int? | Num of blockss
 
             try
             {
@@ -1043,7 +1227,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **num** | **int?**|  | 
+ **num** | **int?**| Num of blockss | 
 
 ### Return type
 
@@ -1056,7 +1240,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1066,7 +1250,7 @@ No authorization required
 
 ## NetworkConnection
 
-> InlineResponse2003 NetworkConnection (string addr)
+> NetworkConnectionSchema NetworkConnection (string addr)
 
 This endpoint returns a specific connection.
 
@@ -1091,7 +1275,7 @@ namespace Example
             try
             {
                 // This endpoint returns a specific connection.
-                InlineResponse2003 result = apiInstance.NetworkConnection(addr);
+                NetworkConnectionSchema result = apiInstance.NetworkConnection(addr);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1114,7 +1298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**NetworkConnectionSchema**](NetworkConnectionSchema.md)
 
 ### Authorization
 
@@ -1123,7 +1307,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1133,7 +1317,7 @@ No authorization required
 
 ## NetworkConnections
 
-> List<InlineResponse2003> NetworkConnections (string states = null, string direction = null)
+> InlineResponse2004 NetworkConnections (string states = null, string direction = null)
 
 This endpoint returns all outgoings connections.
 
@@ -1164,7 +1348,7 @@ namespace Example
             try
             {
                 // This endpoint returns all outgoings connections.
-                List&lt;InlineResponse2003&gt; result = apiInstance.NetworkConnections(states, direction);
+                InlineResponse2004 result = apiInstance.NetworkConnections(states, direction);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1188,7 +1372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse2003>**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -1197,7 +1381,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1269,7 +1453,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1333,7 +1517,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1362,11 +1546,6 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
             var apiInstance = new DefaultApi(Configuration.Default);
 
             try
@@ -1396,12 +1575,12 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1470,7 +1649,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1544,7 +1723,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1554,11 +1733,9 @@ Name | Type | Description  | Notes
 
 ## PendingTxs
 
-> List<InlineResponse2004> PendingTxs ()
+> List<InlineResponse20010> PendingTxs ()
 
 
-
-Returns pending (unconfirmed) transactions without verbose
 
 ### Example
 
@@ -1579,7 +1756,7 @@ namespace Example
 
             try
             {
-                List&lt;InlineResponse2004&gt; result = apiInstance.PendingTxs();
+                List&lt;InlineResponse20010&gt; result = apiInstance.PendingTxs();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1599,7 +1776,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse2004>**](InlineResponse2004.md)
+[**List<InlineResponse20010>**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1608,7 +1785,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1618,7 +1795,7 @@ No authorization required
 
 ## ResendUnconfirmedTxns
 
-> void ResendUnconfirmedTxns ()
+> Object ResendUnconfirmedTxns ()
 
 
 
@@ -1648,7 +1825,8 @@ namespace Example
 
             try
             {
-                apiInstance.ResendUnconfirmedTxns();
+                Object result = apiInstance.ResendUnconfirmedTxns();
+                Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
@@ -1667,7 +1845,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1676,7 +1854,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application-json, application/json, application/xml
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1745,7 +1923,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1755,11 +1933,11 @@ No authorization required
 
 ## Transaction
 
-> Object Transaction (string txid, bool? encoded = null)
+> Transaction Transaction (string txid)
 
 
 
-Returns a transaction identi`fied by its txid hash with just id
+Returns a transaction identified by its txid hash with just id
 
 ### Example
 
@@ -1777,12 +1955,11 @@ namespace Example
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
             var apiInstance = new DefaultApi(Configuration.Default);
-            var txid = txid_example;  // string | transaction hash
-            var encoded = true;  // bool? | return as a raw encoded transaction. (optional) 
+            var txid = txid_example;  // string | transaction Id
 
             try
             {
-                Object result = apiInstance.Transaction(txid, encoded);
+                Transaction result = apiInstance.Transaction(txid);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1801,12 +1978,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **txid** | **string**| transaction hash | 
- **encoded** | **bool?**| return as a raw encoded transaction. | [optional] 
+ **txid** | **string**| transaction Id | 
 
 ### Return type
 
-**Object**
+[**Transaction**](Transaction.md)
 
 ### Authorization
 
@@ -1815,7 +1991,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1825,7 +2001,7 @@ No authorization required
 
 ## TransactionInject
 
-> Object TransactionInject (string rawtx)
+> string TransactionInject (string rawtx)
 
 Broadcast a hex-encoded, serialized transaction to the network.
 
@@ -1855,7 +2031,7 @@ namespace Example
             try
             {
                 // Broadcast a hex-encoded, serialized transaction to the network.
-                Object result = apiInstance.TransactionInject(rawtx);
+                string result = apiInstance.TransactionInject(rawtx);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1878,7 +2054,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**string**
 
 ### Authorization
 
@@ -1887,7 +2063,149 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, application/xml
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TransactionPost
+
+> InlineResponse2008 TransactionPost (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class TransactionPostExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionV2ParamsAddress = new TransactionV2ParamsAddress(); // TransactionV2ParamsAddress |  (optional) 
+
+            try
+            {
+                InlineResponse2008 result = apiInstance.TransactionPost(transactionV2ParamsAddress);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionV2ParamsAddress** | [**TransactionV2ParamsAddress**](TransactionV2ParamsAddress.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TransactionPostUnspent
+
+> InlineResponse2008 TransactionPostUnspent (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class TransactionPostUnspentExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionV2ParamsUnspent = new TransactionV2ParamsUnspent(); // TransactionV2ParamsUnspent | Unspent parameters
+
+            try
+            {
+                InlineResponse2008 result = apiInstance.TransactionPostUnspent(transactionV2ParamsUnspent);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionPostUnspent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionV2ParamsUnspent** | [**TransactionV2ParamsUnspent**](TransactionV2ParamsUnspent.md)| Unspent parameters | 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1954,7 +2272,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1964,7 +2282,7 @@ No authorization required
 
 ## TransactionVerify
 
-> Object TransactionVerify ()
+> Object TransactionVerify (TransactionVerifyRequest transactionVerifyRequest)
 
 
 
@@ -1991,10 +2309,11 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionVerifyRequest = new TransactionVerifyRequest(); // TransactionVerifyRequest | 
 
             try
             {
-                Object result = apiInstance.TransactionVerify();
+                Object result = apiInstance.TransactionVerify(transactionVerifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2010,7 +2329,10 @@ namespace Example
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionVerifyRequest** | [**TransactionVerifyRequest**](TransactionVerifyRequest.md)|  | 
 
 ### Return type
 
@@ -2022,8 +2344,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2092,7 +2414,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2166,7 +2488,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2233,7 +2555,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2243,7 +2565,7 @@ No authorization required
 
 ## VerifyAddress
 
-> InlineResponse2007 VerifyAddress (string address)
+> Object VerifyAddress (Object address)
 
 Verifies a Skycoin address.
 
@@ -2268,12 +2590,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi(Configuration.Default);
-            var address = address_example;  // string | Address id.
+            var address = new Object(); // Object | Address id.
 
             try
             {
                 // Verifies a Skycoin address.
-                InlineResponse2007 result = apiInstance.VerifyAddress(address);
+                Object result = apiInstance.VerifyAddress(address);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2292,11 +2614,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **string**| Address id. | 
+ **address** | [**Object**](Object.md)| Address id. | 
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+**Object**
 
 ### Authorization
 
@@ -2305,7 +2627,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2315,7 +2637,7 @@ Name | Type | Description  | Notes
 
 ## Version
 
-> Object Version ()
+> InlineResponse2005 Version ()
 
 
 
@@ -2340,7 +2662,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.Version();
+                InlineResponse2005 result = apiInstance.Version();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2360,7 +2682,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Object**
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -2369,7 +2691,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2436,7 +2758,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2503,7 +2825,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2584,7 +2906,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2658,7 +2980,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2732,7 +3054,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2742,7 +3064,7 @@ Name | Type | Description  | Notes
 
 ## WalletFolder
 
-> InlineResponse2006 WalletFolder (string addr)
+> InlineResponse2007 WalletFolder (string addr)
 
 
 
@@ -2768,7 +3090,7 @@ namespace Example
 
             try
             {
-                InlineResponse2006 result = apiInstance.WalletFolder(addr);
+                InlineResponse2007 result = apiInstance.WalletFolder(addr);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2791,7 +3113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -2800,7 +3122,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2877,7 +3199,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2945,7 +3267,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3021,7 +3343,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3095,7 +3417,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3167,86 +3489,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## WalletSpent
-
-> Object WalletSpent (string id, string dst, string coins, string password)
-
-
-
-Creates and broadcasts a transaction sending money from one of our wallets to destination address.
-
-### Example
-
-```csharp
-using System.Diagnostics;
-using Skyapi.Api;
-using Skyapi.Client;
-using Skyapi.Model;
-
-namespace Example
-{
-    public class WalletSpentExample
-    {
-        public static void Main()
-        {
-            Configuration.Default.BasePath = "http://127.0.0.1:6420";
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
-            var apiInstance = new DefaultApi(Configuration.Default);
-            var id = id_example;  // string | Wallet id
-            var dst = dst_example;  // string | Recipient address
-            var coins = coins_example;  // string | Number of coins to spend, in droplets. 1 coin equals 1e6 droplets.
-            var password = password_example;  // string | Wallet password.
-
-            try
-            {
-                Object result = apiInstance.WalletSpent(id, dst, coins, password);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException e)
-            {
-                Debug.Print("Exception when calling DefaultApi.WalletSpent: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Wallet id | 
- **dst** | **string**| Recipient address | 
- **coins** | **string**| Number of coins to spend, in droplets. 1 coin equals 1e6 droplets. | 
- **password** | **string**| Wallet password. | 
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[csrfAuth](../README.md#csrfAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3256,9 +3499,7 @@ Name | Type | Description  | Notes
 
 ## WalletTransaction
 
-> Object WalletTransaction (InlineObject body)
-
-
+> Object WalletTransaction (WalletTransactionRequest walletTransactionRequest)
 
 Creates a signed transaction
 
@@ -3283,11 +3524,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi(Configuration.Default);
-            var body = new InlineObject(); // InlineObject | 
+            var walletTransactionRequest = new WalletTransactionRequest(); // WalletTransactionRequest | 
 
             try
             {
-                Object result = apiInstance.WalletTransaction(body);
+                // Creates a signed transaction
+                Object result = apiInstance.WalletTransaction(walletTransactionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -3306,7 +3548,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**InlineObject**](InlineObject.md)|  | 
+ **walletTransactionRequest** | [**WalletTransactionRequest**](WalletTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -3318,8 +3560,80 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/xml
-- **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WalletTransactionSign
+
+> InlineResponse2009 WalletTransactionSign (WalletTransactionSignRequest walletTransactionSignRequest)
+
+Creates a signed transaction
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class WalletTransactionSignExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var walletTransactionSignRequest = new WalletTransactionSignRequest(); // WalletTransactionSignRequest | 
+
+            try
+            {
+                // Creates a signed transaction
+                InlineResponse2009 result = apiInstance.WalletTransactionSign(walletTransactionSignRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.WalletTransactionSign: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletTransactionSignRequest** | [**WalletTransactionSignRequest**](WalletTransactionSignRequest.md)|  | 
+
+### Return type
+
+[**InlineResponse2009**](InlineResponse2009.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3329,11 +3643,9 @@ Name | Type | Description  | Notes
 
 ## WalletTransactions
 
-> Object WalletTransactions (string id)
+> InlineResponse2006 WalletTransactions (string id)
 
 
-
-Returns returns all unconfirmed transactions for all addresses in a given wallet verbose
 
 ### Example
 
@@ -3351,11 +3663,11 @@ namespace Example
         {
             Configuration.Default.BasePath = "http://127.0.0.1:6420";
             var apiInstance = new DefaultApi(Configuration.Default);
-            var id = id_example;  // string | Wallet id.
+            var id = id_example;  // string | Wallet Id.
 
             try
             {
-                Object result = apiInstance.WalletTransactions(id);
+                InlineResponse2006 result = apiInstance.WalletTransactions(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -3374,11 +3686,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Wallet id. | 
+ **id** | **string**| Wallet Id. | 
 
 ### Return type
 
-**Object**
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -3387,7 +3699,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3458,7 +3770,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3468,7 +3780,7 @@ void (empty response body)
 
 ## WalletUpdate
 
-> void WalletUpdate (string id, string label)
+> string WalletUpdate (string id, string label)
 
 Update the wallet.
 
@@ -3499,7 +3811,8 @@ namespace Example
             try
             {
                 // Update the wallet.
-                apiInstance.WalletUpdate(id, label);
+                string result = apiInstance.WalletUpdate(id, label);
+                Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
@@ -3522,7 +3835,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -3531,7 +3844,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, application/xml
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3541,7 +3854,7 @@ void (empty response body)
 
 ## Wallets
 
-> List<InlineResponse2005> Wallets ()
+> List<Object> Wallets ()
 
 
 
@@ -3566,7 +3879,7 @@ namespace Example
 
             try
             {
-                List&lt;InlineResponse2005&gt; result = apiInstance.Wallets();
+                List&lt;Object&gt; result = apiInstance.Wallets();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -3586,7 +3899,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse2005>**](InlineResponse2005.md)
+**List<Object>**
 
 ### Authorization
 
@@ -3595,7 +3908,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, 
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
