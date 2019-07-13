@@ -10,18 +10,18 @@
 
 namespace skycoin {
 
-public class SWIGTYPE_p_Context__Handle {
+public class SWIGTYPE_p_p_coin__BlockHeader {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SWIGTYPE_p_Context__Handle(global::System.IntPtr cPtr, bool futureUse) {
+  internal SWIGTYPE_p_p_coin__BlockHeader(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  protected SWIGTYPE_p_Context__Handle() {
+  protected SWIGTYPE_p_p_coin__BlockHeader() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_Context__Handle obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_p_coin__BlockHeader obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }

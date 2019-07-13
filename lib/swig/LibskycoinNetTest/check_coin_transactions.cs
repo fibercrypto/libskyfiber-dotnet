@@ -180,7 +180,7 @@ namespace LibskycoinNetTest {
             var seckeys = new coin_UxOutArray ();
             seckeys.allocate (1);
             seckeys.setAt (0, ux);
-            var err = SKY_coin_Transaction_VerifyInput (tx, seckeys);
+            var err = SKY_coin_Transaction_SignInputs (tx, seckeys);
             Assert.AreEqual (err, SKY_OK);
         }
 

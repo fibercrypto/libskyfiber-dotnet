@@ -208,16 +208,16 @@
 	}
 }
 
-%rename(SKY_coin_Transaction_VerifyInput) CSharp_skycoin_SKY_coin_Transaction_VerifyInput;
-%inline{
-	GoUint32 CSharp_skycoin_SKY_coin_Transaction_VerifyInput(Transaction__Handle handle, coin_UxOutArray* __uxIn){
-		GoSlice_ data;
-		data.data = __uxIn->data;
-		data.len = __uxIn->count;
-		data.cap = __uxIn->count;
-		return SKY_coin_Transaction_VerifyInput(handle, &data);
-	}
-}
+// %rename(SKY_coin_Transaction_SignInputs) SKY_coin_Transaction_SignInputs;
+// %inline{
+// 	GoUint32 SKY_coin_Transaction_SignInputs(Transaction__Handle handle, coin_UxOutArray* __uxIn){
+// 		GoSlice_ data;
+// 		data.data = __uxIn->data;
+// 		data.len = __uxIn->count;
+// 		data.cap = __uxIn->count;
+// 		return SKY_coin_Transaction_SignInputs(handle, &data);
+// 	}
+// }
 
 %rename(SKY_coin_UxArray_HasDupes) CSharp_skycoin_SKY_coin_UxArray_HasDupes;
 %inline{
@@ -501,14 +501,6 @@
 %inline {
 	GoUint32 CSharp_skycoin_SKY_coin_Block_HashHeader(Block__Handle p0, cipher_SHA256* p1){
 		GoUint32 result = SKY_coin_Block_HashHeader(p0,  p1);
-		return result;
-	}
-}
-
-%rename(SKY_coin_Block_PreHashHeader) CSharp_skycoin_SKY_coin_Block_PreHashHeader;
-%inline {
-	GoUint32 CSharp_skycoin_SKY_coin_Block_PreHashHeader(Block__Handle p0, cipher_SHA256* p1){
-		GoUint32 result = SKY_coin_Block_PreHashHeader(p0,  p1);
 		return result;
 	}
 }

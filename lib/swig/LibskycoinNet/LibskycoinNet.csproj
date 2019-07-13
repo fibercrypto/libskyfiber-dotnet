@@ -53,14 +53,12 @@
     <Compile Include="skycoin\GoInterface.cs" />
     <Compile Include="skycoin\GoSlice.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_AddressUxOuts_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_App__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BlockBody__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Block__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BuildInfo_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Client__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Config__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_Context__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreateTransactionResponse__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionInput__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionOutput__Handle.cs" />
@@ -127,7 +125,6 @@
     <Compile Include="skycoin\wallet__Entry.cs" />
     <Compile Include="skycoin\wallet__Note.cs" />
     <Compile Include="skycoin\wallet__ReadableNote.cs" />
-    <Compile Include="skycoin\wallet__UxBalance.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_int.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_void.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_json_value.cs" />
@@ -145,6 +142,11 @@
     <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CLI__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_wallet__UxBalance.cs" />
+    <Compile Include="skycoin\api__TransactionInput.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_BlockHeader__Handle.cs" />
+    <Compile Include="skycoin\transaction__UxBalance.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_coin__BlockHeader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
