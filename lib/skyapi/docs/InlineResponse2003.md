@@ -1,4 +1,6 @@
-# RestCSharp.Model.InlineResponse2003
+
+# Skyapi.Model.InlineResponse2003
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -17,5 +19,7 @@ Name | Type | Description | Notes
 **UserAgent** | **string** |  | [optional] 
 **Height** | **long?** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 
