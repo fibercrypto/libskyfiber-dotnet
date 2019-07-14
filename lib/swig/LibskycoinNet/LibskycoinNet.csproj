@@ -57,7 +57,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_Block__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BuildInfo_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Client__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_Config__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreateTransactionResponse__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionInput__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionOutput__Handle.cs" />
@@ -68,7 +67,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_GoString_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Number_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_Options__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_PasswordReader__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableEntry__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableWallet__Handle.cs" />
@@ -78,7 +76,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_Transaction__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Transactions__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletResponse__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_Wallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Wallets__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_long_long.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_coin__Block.cs" />
@@ -140,6 +137,9 @@
     <Compile Include="skycoin\SWIGTYPE_p_BlockHeader__Handle.cs" />
     <Compile Include="skycoin\transaction__UxBalance.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_coin__BlockHeader.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Wallet__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Options__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Config__Handle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />

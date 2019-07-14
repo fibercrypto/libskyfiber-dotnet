@@ -57,7 +57,7 @@ build-swig: ## Generate Python C module from SWIG interfaces
 			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/structs.i ;\
 		fi \
 	}
-	rm -rf $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
+	rm -rfv $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
 	swig -csharp -namespace skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(CSHARP_SWIG_DIR)/swig/libdotnet.i
 
