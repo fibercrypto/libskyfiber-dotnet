@@ -92,9 +92,9 @@
 
 %rename(SKY_coin_Transaction_PushInput) CSharp_skycoin_SKY_coin_Transaction_PushInput;
 %inline {
-	GoUint32 CSharp_skycoin_SKY_coin_Transaction_PushInput(Transaction__Handle tx, cipher_SHA256* h, GoUint16* p1){
-		GoUint32 result = SKY_coin_Transaction_PushInput(tx,h,p1);
-		return result;
+	GoUint16 CSharp_skycoin_SKY_coin_Transaction_PushInput(Transaction__Handle tx, cipher_SHA256* h){
+		GoUint16 p1 = SKY_coin_Transaction_PushInput(tx,h);
+		return p1;
 	}
 }
 

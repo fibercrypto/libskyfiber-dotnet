@@ -765,7 +765,7 @@ class skycoinPINVOKE {
   public static extern uint SKY_coin_Transaction_GetInputAt__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transaction_PushInput__SWIG_0")]
-  public static extern uint SKY_coin_Transaction_PushInput__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern ushort SKY_coin_Transaction_PushInput__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("skycoin", EntryPoint="CSharp_skycoin_SKY_coin_Transaction_SignInputs__SWIG_0")]
   public static extern uint SKY_coin_Transaction_SignInputs__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);

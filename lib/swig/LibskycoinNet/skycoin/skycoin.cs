@@ -1008,8 +1008,8 @@ var tmps = s;
     return ret;
   }
 
-  public static uint SKY_coin_Transaction_PushInput(SWIGTYPE_p_Transaction__Handle tx, cipher_SHA256 h, SWIGTYPE_p_unsigned_short p1) {
-    uint ret = skycoinPINVOKE.SKY_coin_Transaction_PushInput__SWIG_0(SWIGTYPE_p_Transaction__Handle.getCPtr(tx), cipher_SHA256.getCPtr(h), SWIGTYPE_p_unsigned_short.getCPtr(p1));
+  public static ushort SKY_coin_Transaction_PushInput(SWIGTYPE_p_Transaction__Handle tx, cipher_SHA256 h) {
+    ushort ret = skycoinPINVOKE.SKY_coin_Transaction_PushInput__SWIG_0(SWIGTYPE_p_Transaction__Handle.getCPtr(tx), cipher_SHA256.getCPtr(h));
     if (skycoinPINVOKE.SWIGPendingException.Pending) throw skycoinPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }

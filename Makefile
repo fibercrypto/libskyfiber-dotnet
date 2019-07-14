@@ -14,7 +14,6 @@ SKYCOIN_DIR  ?= $(SKYLIBC_DIR)/vendor/github.com/skycoin/skycoin
 SKYBUILD_DIR  = $(SKYLIBC_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
 LIBC_DIR      = $(SKYLIBC_DIR)/lib/cgo
-LIBSWIG_DIR   = lib/swig
 BUILD_DIR     = build
 DIST_DIR      = dist
 BIN_DIR       = $(SKYLIBC_DIR)/bin
@@ -22,7 +21,7 @@ INCLUDE_DIR   = $(SKYLIBC_DIR)/include
 FULL_PATH_LIB = $(REPO_ROOT)/$(BUILDLIBC_DIR)
 
 LIB_FILES = $(shell find $(SKYCOIN_DIR)/lib/cgo -type f -name "*.go")
-SWIG_FILES = $(shell find $(LIBSWIG_DIR) -type f -name "*.i")
+SWIG_FILES = $(shell find $(CSHARP_SWIG_DIR) -type f -name "*.i")
 HEADER_FILES = $(shell find $(SKYCOIN_DIR)/include -type f -name "*.h")
 
 # Added by Swagger
@@ -49,20 +48,21 @@ build-libc: configure ## Build libskycoin C client library
 
 build-swig: ## Generate Python C module from SWIG interfaces
 	#Generate structs.i from skytypes.gen.h
-	rm -f $(LIBSWIG_DIR)/structs.i
-	cp $(INCLUDE_DIR)/skytypes.gen.h $(LIBSWIG_DIR)/structs.i
+	rm -f $(CSHARP_SWIG_DIR)/structs.i
+	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/structs.i
 	{ \
 		if [[ "$$(uname -s)" == "Darwin" ]]; then \
-			sed -i '.kbk' 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
+			sed -i '.kbk' 's/#/%/g' $(CSHARP_SWIG_DIR)/structs.i ;\
 		else \
-			sed -i 's/#/%/g' $(LIBSWIG_DIR)/structs.i ;\
+			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/structs.i ;\
 		fi \
 	}
+	rm -rf $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
-	swig -csharp -v -namespace  skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(LIBSWIG_DIR)/swig/libdotnet.i
+	swig -csharp -namespace skycoin -Iswig/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c $(CSHARP_SWIG_DIR)/swig/libdotnet.i
 
-build-libsky-shared: build-swig## Build shared library including SWIG wrappers
-	gcc -c -fpic -ILibskycoinNet/swig/include -I$(INCLUDE_DIR) $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
+build-libsky-shared: build-swig ## Build shared library including SWIG wrappers
+	gcc -c -fpic -I$(CSHARP_SWIG_DIR)/swig/include -I$(INCLUDE_DIR) $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin/skycoinnet_wrap.c
 	gcc -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o libskycoin.so
 	mv libskycoin.so $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
 

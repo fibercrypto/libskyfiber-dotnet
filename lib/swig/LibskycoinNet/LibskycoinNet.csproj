@@ -53,7 +53,6 @@
     <Compile Include="skycoin\GoInterface.cs" />
     <Compile Include="skycoin\GoSlice.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_AddressUxOuts_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BlockBody__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Block__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BuildInfo_Handle.cs" />
@@ -75,16 +74,12 @@
     <Compile Include="skycoin\SWIGTYPE_p_ReadableWallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Signature_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_SortableTransactionResult_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_SpendResult_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_StatusResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Strings__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_TransactionResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Transaction__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Transactions__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletResponse__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Wallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Wallets__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_WebRpcClient__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_long_long.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_coin__Block.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_coin__Transaction.cs" />
@@ -132,7 +127,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_FILE.cs" />
     <Compile Include="skycoin\cipher_Addresses.cs" />
     <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
     <Compile Include="skycoin\api__NetworkConnectionsFilter.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_p_GoSlice_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint32_.cs" />
@@ -142,7 +136,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CLI__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_wallet__UxBalance.cs" />
     <Compile Include="skycoin\api__TransactionInput.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BlockHeader__Handle.cs" />
     <Compile Include="skycoin\transaction__UxBalance.cs" />

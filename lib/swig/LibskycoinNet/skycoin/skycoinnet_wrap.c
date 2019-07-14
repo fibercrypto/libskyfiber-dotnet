@@ -1368,8 +1368,7 @@ FeeCalculator overflow(){
 		result = SKY_coin_UxOut_Hash(puxOut, &sha256);
 		//   cr_assert(result == SKY_OK, "SKY_coin_UxOut_Hash failed");
 		GoUint16 r;
-		result = SKY_coin_Transaction_PushInput(*handle, &sha256, &r);
-		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushInput failed");
+		r = SKY_coin_Transaction_PushInput(*handle, &sha256);
 
 		cipher__Address address1, address2;
 		result = makeAddress(&address1);
@@ -1591,9 +1590,9 @@ memcpy(__out->data, __in, 32);
 	}
 
 
-	GoUint32 CSharp_skycoin_SKY_coin_Transaction_PushInput(Transaction__Handle tx, cipher_SHA256* h, GoUint16* p1){
-		GoUint32 result = SKY_coin_Transaction_PushInput(tx,h,p1);
-		return result;
+	GoUint16 CSharp_skycoin_SKY_coin_Transaction_PushInput(Transaction__Handle tx, cipher_SHA256* h){
+		GoUint16 p1 = SKY_coin_Transaction_PushInput(tx,h);
+		return p1;
 	}
 
 
@@ -4755,13 +4754,12 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_GetInput
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInput__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInput__SWIG_0(void * jarg1, void * jarg2) {
+  unsigned short jresult ;
   Transaction__Handle arg1 ;
   cipher_SHA256 *arg2 = (cipher_SHA256 *) 0 ;
-  GoUint16 *arg3 = (GoUint16 *) 0 ;
   Transaction__Handle *argp1 ;
-  GoUint32 result;
+  GoUint16 result;
   
   argp1 = (Transaction__Handle *)jarg1; 
   if (!argp1) {
@@ -4770,8 +4768,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_Transaction_PushInpu
   }
   arg1 = *argp1; 
   arg2 = (cipher_SHA256 *)jarg2; 
-  arg3 = (GoUint16 *)jarg3; 
-  result = (GoUint32)CSharp_skycoin_SKY_coin_Transaction_PushInput(arg1,arg2,arg3);
+  result = (GoUint16)CSharp_skycoin_SKY_coin_Transaction_PushInput(arg1,arg2);
   jresult = result; 
   return jresult;
 }
