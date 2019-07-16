@@ -1,9 +1,11 @@
 language: csharp
 mono:
 - latest
-#
-#solution: LibskycoinNet.sln
+
 sudo: required
+env:
+  global:
+    - CGO_ENABLED: 1
 
 install:
   - eval "$(gimme 1.11)"
