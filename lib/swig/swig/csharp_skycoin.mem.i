@@ -24,14 +24,6 @@
 }
 
 
-// %rename(SKY_cipher_TestSecKeyHash) CSharp_skycoin_SKY_cipher_TestSecKeyHash;
-// %inline {
-// 	GoUint32 CSharp_skycoin_SKY_cipher_TestSecKeyHash(cipher_SecKey *s,cipher_SHA256 *h){
-// 		GoUint32 result = SKY_cipher_TestSecKeyHash(s,h);
-// 		return result;
-// 	}
-// }
-
 %rename(SKY_cipher_SHA256_Set) CSharp_skycoin_SKY_cipher_SHA256_Set;
 %inline {
 	GoUint32 CSharp_skycoin_SKY_cipher_SHA256_Set(cipher_SHA256 *h,GoSlice s){
@@ -525,6 +517,14 @@
 %inline {
 	GoUint32 CSharp_skycoin_SKY_coin_Block_HashBody(Block__Handle p0, cipher_SHA256* p1){
 		GoUint32 result = SKY_coin_Block_HashBody(p0,  p1);
+		return result;
+	}
+}
+
+%rename(SKY_coin_BlockHeader_UxHash) CSharp_skycoin_SKY_coin_BlockHeader_UxHash;
+%inline {
+	GoUint32 CSharp_skycoin_SKY_coin_BlockHeader_UxHash(BlockHeader__Handle p0, cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_BlockHeader_UxHash(p0,  p1);
 		return result;
 	}
 }
