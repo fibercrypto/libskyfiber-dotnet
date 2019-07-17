@@ -507,7 +507,7 @@
 
 %rename(SKY_coin_BlockHeader_Hash) CSharp_skycoin_SKY_coin_BlockHeader_Hash;
 %inline {
-	GoUint32 CSharp_skycoin_SKY_coin_BlockHeader_Hash(coin__BlockHeader* p0, cipher_SHA256* p1){
+	GoUint32 CSharp_skycoin_SKY_coin_BlockHeader_Hash(BlockHeader__Handle p0, cipher_SHA256* p1){
 		GoUint32 result = SKY_coin_BlockHeader_Hash(p0,  p1);
 		return result;
 	}
