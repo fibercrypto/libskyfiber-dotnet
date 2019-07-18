@@ -1,5 +1,4 @@
 language: csharp
-dist: xenial
 mono:
 - latest
 
