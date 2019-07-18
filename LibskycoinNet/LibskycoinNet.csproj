@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5320CD3-B673-461B-8899-19BB52862364}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LibskycoinNet</RootNamespace>
+    <AssemblyName>LibskycoinNet</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>LibskycoinNet</PackageId>
+    <Version Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</Version>
+    <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
+    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</PackageVersion>
+    <PackageVersion Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</PackageVersion>
+    <Company>Skycoin</Company>
+    <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin (skycoin)</Authors>
+    <Description>Skycoin client library for .NET</Description>
+    <Product>Skycoin client library for .NET</Product>
+    <PackageProjectUrl>https://github.com/simelo/libskycoin-dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/29321691?s=200&amp;v=4</PackageIconUrl>
+    <RepositoryUrl>https://github.com/simelo/libskycoin-dotnet</RepositoryUrl>
+    <RepositoryType />
+    <PackageTags>skycoin;client-library;rest-client;restapi;rest-api;swagger;openapi;swig;dotnet;dotnet-library;csharp;csharp-library;pinvoke;pinvoke-wrapper;vbnet;dotnet-assembly</PackageTags>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <Owners>Skycoin</Owners>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="skycoin\GoInterface.cs" />
+    <Compile Include="skycoin\GoSlice.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_AddressUxOuts_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_App__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_BlockBody__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Block__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_BuildInfo_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Client__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Config__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Context__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreateTransactionResponse__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionInput__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreatedTransactionOutput__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreatedTransaction__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_FeeCalculator.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoSlice_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoStringMap_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoString_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Number_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Options__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_PasswordReader__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableEntry__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableWallet__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Signature_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_SortableTransactionResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_SpendResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_StatusResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Strings__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_TransactionResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Transaction__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Transactions__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WalletResponse__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Wallet__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Wallets__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WebRpcClient__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_long_long.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_coin__Block.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_coin__Transaction.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_unsigned_char.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_unsigned_int.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_unsigned_long_long.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_unsigned_short.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_void.cs" />
+    <Compile Include="skycoin\_GoString_.cs" />
+    <Compile Include="skycoin\api__RichlistParams.cs" />
+    <Compile Include="skycoin\cipher_Checksum.cs" />
+    <Compile Include="skycoin\cipher_PubKey.cs" />
+    <Compile Include="skycoin\cipher_PubKeys.cs" />
+    <Compile Include="skycoin\cipher_Ripemd160.cs" />
+    <Compile Include="skycoin\cipher_SHA256.cs" />
+    <Compile Include="skycoin\cipher_SHA256s.cs" />
+    <Compile Include="skycoin\cipher_SecKey.cs" />
+    <Compile Include="skycoin\cipher_SecKeys.cs" />
+    <Compile Include="skycoin\cipher_Sig.cs" />
+    <Compile Include="skycoin\cipher__Address.cs" />
+    <Compile Include="skycoin\cli__SendAmount.cs" />
+    <Compile Include="skycoin\coin_UxOutArray.cs" />
+    <Compile Include="skycoin\coin__Block.cs" />
+    <Compile Include="skycoin\coin__BlockBody.cs" />
+    <Compile Include="skycoin\coin__BlockHeader.cs" />
+    <Compile Include="skycoin\coin__SignedBlock.cs" />
+    <Compile Include="skycoin\coin__Transaction.cs" />
+    <Compile Include="skycoin\coin__TransactionOutput.cs" />
+    <Compile Include="skycoin\coin__UxBody.cs" />
+    <Compile Include="skycoin\coin__UxHead.cs" />
+    <Compile Include="skycoin\coin__UxOut.cs" />
+    <Compile Include="skycoin\encrypt__ScryptChacha20poly1305.cs" />
+    <Compile Include="skycoin\httphelper__Address.cs" />
+    <Compile Include="skycoin\skycoin.cs" />
+    <Compile Include="skycoin\skycoinPINVOKE.cs" />
+    <Compile Include="skycoin\wallet__Balance.cs" />
+    <Compile Include="skycoin\wallet__BalancePair.cs" />
+    <Compile Include="skycoin\wallet__Entry.cs" />
+    <Compile Include="skycoin\wallet__Note.cs" />
+    <Compile Include="skycoin\wallet__ReadableNote.cs" />
+    <Compile Include="skycoin\wallet__UxBalance.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_int.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_void.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_json_value.cs" />
+    <Compile Include="skycoin\wallet_register.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_FILE.cs" />
+    <Compile Include="skycoin\cipher_Addresses.cs" />
+    <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
+    <Compile Include="skycoin\api__NetworkConnectionsFilter.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_GoSlice_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoUint32_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoUint64_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GoUint8_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_a_4__GoUint8_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_f_Transaction__Handle_p_unsigned_long_long_p_void__GoUint32_.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="skycoin\skycoinnet_wrap.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
+</Project>
