@@ -32,7 +32,7 @@
 
 ## LibSkycoinNet wrappers for the Skycoin cipher
 
-**LibSkycoinNet** is an assembly that provides wrappers to the Skycoin core cipher API's, implemented in go lang, hence linking directly to the original node code. No transpilation involved.
+**LibSkycoinNet** is an assembly that provides wrappers to the Skycoin core cipher API's, implemented in `golang`, hence linking directly to the original node code. No transpilation involved.
 
 ### Installation
 

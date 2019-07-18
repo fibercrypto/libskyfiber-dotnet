@@ -46,7 +46,7 @@ build-libc: configure ## Build libskycoin C client library
 	cp $(SKYLIBC_DIR)/include/swig.h swig/include/
 	grep -v _Complex $(SKYLIBC_DIR)/include/libskycoin.h > swig/include/libskycoin.h
 
-build-swig: ## Generate Python C module from SWIG interfaces
+build-swig: ## Generate C# C module from SWIG interfaces
 	#Generate structs.i from skytypes.gen.h
 	rm -f $(CSHARP_SWIG_DIR)/structs.i
 	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/structs.i
