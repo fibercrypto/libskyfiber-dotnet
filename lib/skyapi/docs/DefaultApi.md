@@ -1,4 +1,4 @@
-# RestCSharp.Api.DefaultApi
+# Skyapi.Api.DefaultApi
 
 All URIs are relative to *http://127.0.0.1:6420*
 
@@ -6,17 +6,20 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddressCount**](DefaultApi.md#addresscount) | **GET** /api/v1/addresscount | Returns the total number of unique address that have coins.
 [**AddressUxouts**](DefaultApi.md#addressuxouts) | **GET** /api/v1/address_uxouts | 
+[**ApiV1RawtxGet**](DefaultApi.md#apiv1rawtxget) | **GET** /api/v1/rawtx | 
+[**ApiV2MetricsGet**](DefaultApi.md#apiv2metricsget) | **GET** /api/v2/metrics | 
 [**BalanceGet**](DefaultApi.md#balanceget) | **GET** /api/v1/balance | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**BalancePost**](DefaultApi.md#balancepost) | **POST** /api/v1/balance | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
-[**Block**](DefaultApi.md#block) | **GET** /api/v1/block | 
+[**Block**](DefaultApi.md#block) | **GET** /api/v1/block | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**BlockchainMetadata**](DefaultApi.md#blockchainmetadata) | **GET** /api/v1/blockchain/metadata | Returns the blockchain metadata.
 [**BlockchainProgress**](DefaultApi.md#blockchainprogress) | **GET** /api/v1/blockchain/progress | Returns the blockchain sync progress.
-[**BlocksGet**](DefaultApi.md#blocksget) | **GET** /api/v1/blocks | blocksHandler returns blocks between a start and end point,
-[**BlocksPost**](DefaultApi.md#blockspost) | **POST** /api/v1/blocks | blocksHandler returns blocks between a start and end point,
+[**Blocks**](DefaultApi.md#blocks) | **GET** /api/v1/blocks | Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 [**CoinSupply**](DefaultApi.md#coinsupply) | **GET** /api/v1/coinSupply | 
 [**Csrf**](DefaultApi.md#csrf) | **GET** /api/v1/csrf | Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
+[**DataDELETE**](DefaultApi.md#datadelete) | **DELETE** /api/v2/data | 
+[**DataGET**](DefaultApi.md#dataget) | **GET** /api/v2/data | 
+[**DataPOST**](DefaultApi.md#datapost) | **POST** /api/v2/data | 
 [**DefaultConnections**](DefaultApi.md#defaultconnections) | **GET** /api/v1/network/defaultConnections | defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
-[**ExplorerAddress**](DefaultApi.md#exploreraddress) | **GET** /api/v1/explorer/address | 
 [**Health**](DefaultApi.md#health) | **GET** /api/v1/health | Returns node health data.
 [**LastBlocks**](DefaultApi.md#lastblocks) | **GET** /api/v1/last_blocks | 
 [**NetworkConnection**](DefaultApi.md#networkconnection) | **GET** /api/v1/network/connection | This endpoint returns a specific connection.
@@ -30,7 +33,9 @@ Method | HTTP request | Description
 [**ResendUnconfirmedTxns**](DefaultApi.md#resendunconfirmedtxns) | **POST** /api/v1/resendUnconfirmedTxns | 
 [**Richlist**](DefaultApi.md#richlist) | **GET** /api/v1/richlist | Returns the top skycoin holders.
 [**Transaction**](DefaultApi.md#transaction) | **GET** /api/v1/transaction | 
-[**TransactionInject**](DefaultApi.md#transactioninject) | **POST** /api/v2/transaction/inject | Broadcast a hex-encoded, serialized transaction to the network.
+[**TransactionInject**](DefaultApi.md#transactioninject) | **POST** /api/v1/injectTransaction | Broadcast a hex-encoded, serialized transaction to the network.
+[**TransactionPost**](DefaultApi.md#transactionpost) | **POST** /api/v2/transaction | 
+[**TransactionPostUnspent**](DefaultApi.md#transactionpostunspent) | **POST** /api/v2/transaction/unspent | 
 [**TransactionRaw**](DefaultApi.md#transactionraw) | **GET** /api/v2/transaction/raw | Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
 [**TransactionVerify**](DefaultApi.md#transactionverify) | **POST** /api/v2/transaction/verify | 
 [**TransactionsGet**](DefaultApi.md#transactionsget) | **GET** /api/v1/transactions | Returns transactions that match the filters.
@@ -49,45 +54,49 @@ Method | HTTP request | Description
 [**WalletRecover**](DefaultApi.md#walletrecover) | **POST** /api/v2/wallet/recover | Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
 [**WalletSeed**](DefaultApi.md#walletseed) | **POST** /api/v1/wallet/seed | This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
 [**WalletSeedVerify**](DefaultApi.md#walletseedverify) | **POST** /api/v2/wallet/seed/verify | Verifies a wallet seed.
-[**WalletSpent**](DefaultApi.md#walletspent) | **POST** /api/v1/wallet/spend | 
-[**WalletTransaction**](DefaultApi.md#wallettransaction) | **POST** /api/v1/wallet/transaction | 
+[**WalletTransaction**](DefaultApi.md#wallettransaction) | **POST** /api/v1/wallet/transaction | Creates a signed transaction
+[**WalletTransactionSign**](DefaultApi.md#wallettransactionsign) | **POST** /api/v2/wallet/transaction/sign | Creates a signed transaction
 [**WalletTransactions**](DefaultApi.md#wallettransactions) | **GET** /api/v1/wallet/transactions | 
 [**WalletUnload**](DefaultApi.md#walletunload) | **POST** /api/v1/wallet/unload | Unloads wallet from the wallet service.
 [**WalletUpdate**](DefaultApi.md#walletupdate) | **POST** /api/v1/wallet/update | Update the wallet.
 [**Wallets**](DefaultApi.md#wallets) | **GET** /api/v1/wallets | 
 
 
-<a name="addresscount"></a>
-# **AddressCount**
-> Object AddressCount ()
+
+## AddressCount
+
+> InlineResponse200 AddressCount ()
 
 Returns the total number of unique address that have coins.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class AddressCountExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
                 // Returns the total number of unique address that have coins.
-                Object result = apiInstance.AddressCount();
+                InlineResponse200 result = apiInstance.AddressCount();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddressCount: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -95,11 +104,12 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-**Object**
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -107,44 +117,51 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addressuxouts"></a>
-# **AddressUxouts**
-> List<InlineResponse200> AddressUxouts (string address)
+
+## AddressUxouts
+
+> List<Object> AddressUxouts (string address)
 
 
 
 Returns the historical, spent outputs associated with an address
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class AddressUxoutsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var address = address_example;  // string | address to filter by
 
             try
             {
-                List&lt;InlineResponse200&gt; result = apiInstance.AddressUxouts(address);
+                List&lt;Object&gt; result = apiInstance.AddressUxouts(address);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddressUxouts: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -152,6 +169,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -159,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse200>**](InlineResponse200.md)
+**List<Object>**
 
 ### Authorization
 
@@ -167,32 +185,161 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="balanceget"></a>
-# **BalanceGet**
+
+## ApiV1RawtxGet
+
+> string ApiV1RawtxGet ()
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class ApiV1RawtxGetExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                string result = apiInstance.ApiV1RawtxGet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ApiV1RawtxGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV2MetricsGet
+
+> string ApiV2MetricsGet ()
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class ApiV2MetricsGetExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                string result = apiInstance.ApiV2MetricsGet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ApiV2MetricsGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## BalanceGet
+
 > Object BalanceGet (string addrs)
 
 Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class BalanceGetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addrs = addrs_example;  // string | command separated list of addresses
 
             try
@@ -201,9 +348,11 @@ namespace Example
                 Object result = apiInstance.BalanceGet(addrs);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.BalanceGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -211,6 +360,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -226,37 +376,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="balancepost"></a>
-# **BalancePost**
+
+## BalancePost
+
 > Object BalancePost (string addrs)
 
 Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class BalancePostExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addrs = addrs_example;  // string | command separated list of addresses
 
             try
@@ -265,9 +420,11 @@ namespace Example
                 Object result = apiInstance.BalancePost(addrs);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.BalancePost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -275,6 +432,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -290,45 +448,51 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="block"></a>
-# **Block**
-> Object Block (string hash = null, int? seq = null)
-
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
-Returns a block by hash or seq. Note: only one of hash or seq is allowed
+## Block
+
+> List<BlockSchema> Block (string hash = null, int? seq = null)
+
+Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class BlockExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
-            var hash = hash_example;  // string |  (optional) 
-            var seq = 56;  // int? |  (optional) 
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var hash = hash_example;  // string | get block by hash (optional) 
+            var seq = 56;  // int? | get block by sequence number (optional) 
 
             try
             {
-                Object result = apiInstance.Block(hash, seq);
+                // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
+                List&lt;BlockSchema&gt; result = apiInstance.Block(hash, seq);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Block: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -337,14 +501,15 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hash** | **string**|  | [optional] 
- **seq** | **int?**|  | [optional] 
+ **hash** | **string**| get block by hash | [optional] 
+ **seq** | **int?**| get block by sequence number | [optional] 
 
 ### Return type
 
-**Object**
+[**List<BlockSchema>**](BlockSchema.md)
 
 ### Authorization
 
@@ -352,32 +517,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="blockchainmetadata"></a>
-# **BlockchainMetadata**
+
+## BlockchainMetadata
+
 > Object BlockchainMetadata ()
 
 Returns the blockchain metadata.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class BlockchainMetadataExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -385,9 +555,11 @@ namespace Example
                 Object result = apiInstance.BlockchainMetadata();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.BlockchainMetadata: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -395,6 +567,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -407,32 +580,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="blockchainprogress"></a>
-# **BlockchainProgress**
+
+## BlockchainProgress
+
 > Object BlockchainProgress ()
 
 Returns the blockchain sync progress.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class BlockchainProgressExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -440,9 +618,11 @@ namespace Example
                 Object result = apiInstance.BlockchainProgress();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.BlockchainProgress: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -450,6 +630,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -462,47 +643,52 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="blocksget"></a>
-# **BlocksGet**
-> Object BlocksGet (int? start = null, int? end = null, List<int?> seqs = null)
 
-blocksHandler returns blocks between a start and end point,
+## Blocks
 
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose.
+> InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seq = null)
+
+Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
-    public class BlocksGetExample
+    public class BlocksExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
-            var start = 56;  // int? |  (optional) 
-            var end = 56;  // int? |  (optional) 
-            var seqs = new List<int?>(); // List<int?> |  (optional) 
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var start = 56;  // int? | start seq (optional) 
+            var end = 56;  // int? | end seq (optional) 
+            var seq = new List<int?>(); // List<int?> | comma-separated list of block seqs (optional) 
 
             try
             {
-                // blocksHandler returns blocks between a start and end point,
-                Object result = apiInstance.BlocksGet(start, end, seqs);
+                // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
+                InlineResponse2001 result = apiInstance.Blocks(start, end, seq);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling DefaultApi.BlocksGet: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Blocks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -510,192 +696,13 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start** | **int?**|  | [optional] 
- **end** | **int?**|  | [optional] 
- **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="blockspost"></a>
-# **BlocksPost**
-> Object BlocksPost (int? start = null, int? end = null, List<int?> seqs = null)
-
-blocksHandler returns blocks between a start and end point,
-
-or an explicit list of sequences. If using start and end, the block sequences include both the start and end point. Explicit sequences cannot be combined with start and end. Without verbose
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
-
-namespace Example
-{
-    public class BlocksPostExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var start = 56;  // int? |  (optional) 
-            var end = 56;  // int? |  (optional) 
-            var seqs = new List<int?>(); // List<int?> |  (optional) 
-
-            try
-            {
-                // blocksHandler returns blocks between a start and end point,
-                Object result = apiInstance.BlocksPost(start, end, seqs);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.BlocksPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **int?**|  | [optional] 
- **end** | **int?**|  | [optional] 
- **seqs** | [**List&lt;int?&gt;**](int?.md)|  | [optional] 
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[csrfAuth](../README.md#csrfAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="coinsupply"></a>
-# **CoinSupply**
-> void CoinSupply ()
-
-
-
-coinSupplyHandler returns coin distribution supply stats
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
-
-namespace Example
-{
-    public class CoinSupplyExample
-    {
-        public void main()
-        {
-            var apiInstance = new DefaultApi();
-
-            try
-            {
-                apiInstance.CoinSupply();
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.CoinSupply: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="csrf"></a>
-# **Csrf**
-> InlineResponse2001 Csrf ()
-
-Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
-
-namespace Example
-{
-    public class CsrfExample
-    {
-        public void main()
-        {
-            var apiInstance = new DefaultApi();
-
-            try
-            {
-                // Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
-                InlineResponse2001 result = apiInstance.Csrf();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.Csrf: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
+ **start** | **int?**| start seq | [optional] 
+ **end** | **int?**| end seq | [optional] 
+ **seq** | [**List&lt;int?&gt;**](int?.md)| comma-separated list of block seqs | [optional] 
 
 ### Return type
 
@@ -707,42 +714,50 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="defaultconnections"></a>
-# **DefaultConnections**
-> List<string> DefaultConnections ()
 
-defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
+## CoinSupply
+
+> InlineResponse2002 CoinSupply ()
+
+
+
+coinSupplyHandler returns coin distribution supply stats
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
-    public class DefaultConnectionsExample
+    public class CoinSupplyExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
-                // defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
-                List&lt;string&gt; result = apiInstance.DefaultConnections();
+                InlineResponse2002 result = apiInstance.CoinSupply();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling DefaultApi.DefaultConnections: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.CoinSupply: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -750,6 +765,337 @@ namespace Example
 ```
 
 ### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InlineResponse2002**](InlineResponse2002.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Csrf
+
+> InlineResponse2003 Csrf ()
+
+Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class CsrfExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                // Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
+                InlineResponse2003 result = apiInstance.Csrf();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.Csrf: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InlineResponse2003**](InlineResponse2003.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataDELETE
+
+> void DataDELETE (string type = null, string key = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataDELETEExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+
+            try
+            {
+                apiInstance.DataDELETE(type, key);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataDELETE: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataGET
+
+> Object DataGET (string type = null, string key = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataGETExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+
+            try
+            {
+                Object result = apiInstance.DataGET(type, key);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataGET: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DataPOST
+
+> void DataPOST (string type = null, string key = null, string val = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DataPOSTExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | storage type. (optional) 
+            var key = key_example;  // string | key of the specific value to get. (optional) 
+            var val = val_example;  // string | additional value. (optional) 
+
+            try
+            {
+                apiInstance.DataPOST(type, key, val);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DataPOST: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| storage type. | [optional] 
+ **key** | **string**| key of the specific value to get. | [optional] 
+ **val** | **string**| additional value. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DefaultConnections
+
+> List<string> DefaultConnections ()
+
+defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class DefaultConnectionsExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+
+            try
+            {
+                // defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
+                List&lt;string&gt; result = apiInstance.DefaultConnections();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DefaultConnections: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -762,92 +1108,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="exploreraddress"></a>
-# **ExplorerAddress**
-> List<InlineResponse2002> ExplorerAddress (string address = null)
-
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
-Returns all transactions (confirmed and unconfirmed) for an address
+## Health
 
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
-
-namespace Example
-{
-    public class ExplorerAddressExample
-    {
-        public void main()
-        {
-            var apiInstance = new DefaultApi();
-            var address = address_example;  // string | tags to filter by (optional) 
-
-            try
-            {
-                List&lt;InlineResponse2002&gt; result = apiInstance.ExplorerAddress(address);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.ExplorerAddress: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **address** | **string**| tags to filter by | [optional] 
-
-### Return type
-
-[**List<InlineResponse2002>**](InlineResponse2002.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="health"></a>
-# **Health**
 > Object Health ()
 
 Returns node health data.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class HealthExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -855,9 +1146,11 @@ namespace Example
                 Object result = apiInstance.Health();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Health: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -865,6 +1158,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -877,13 +1171,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="lastblocks"></a>
-# **LastBlocks**
+
+## LastBlocks
+
 > Object LastBlocks (int? num)
 
 
@@ -891,30 +1189,33 @@ No authorization required
 Returns the most recent N blocks on the blockchain
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class LastBlocksExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
-            var num = 56;  // int? | 
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var num = 56;  // int? | Num of blockss
 
             try
             {
                 Object result = apiInstance.LastBlocks(num);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.LastBlocks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -923,9 +1224,10 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **num** | **int?**|  | 
+ **num** | **int?**| Num of blockss | 
 
 ### Return type
 
@@ -937,43 +1239,50 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="networkconnection"></a>
-# **NetworkConnection**
-> InlineResponse2003 NetworkConnection (string addr)
+
+## NetworkConnection
+
+> NetworkConnectionSchema NetworkConnection (string addr)
 
 This endpoint returns a specific connection.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class NetworkConnectionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addr = addr_example;  // string | Address port
 
             try
             {
                 // This endpoint returns a specific connection.
-                InlineResponse2003 result = apiInstance.NetworkConnection(addr);
+                NetworkConnectionSchema result = apiInstance.NetworkConnection(addr);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NetworkConnection: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -981,6 +1290,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -988,7 +1298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**NetworkConnectionSchema**](NetworkConnectionSchema.md)
 
 ### Authorization
 
@@ -996,49 +1306,56 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="networkconnections"></a>
-# **NetworkConnections**
-> List<InlineResponse2003> NetworkConnections (string states = null, string direction = null)
+
+## NetworkConnections
+
+> InlineResponse2004 NetworkConnections (string states = null, string direction = null)
 
 This endpoint returns all outgoings connections.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class NetworkConnectionsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var states = states_example;  // string | Connection status. (optional) 
             var direction = direction_example;  // string | Direction of the connection. (optional) 
 
             try
             {
                 // This endpoint returns all outgoings connections.
-                List&lt;InlineResponse2003&gt; result = apiInstance.NetworkConnections(states, direction);
+                InlineResponse2004 result = apiInstance.NetworkConnections(states, direction);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NetworkConnections: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1046,6 +1363,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1054,7 +1372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InlineResponse2003>**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -1062,13 +1380,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="networkconnectionsdisconnect"></a>
-# **NetworkConnectionsDisconnect**
+
+## NetworkConnectionsDisconnect
+
 > void NetworkConnectionsDisconnect (string id)
 
 
@@ -1076,34 +1398,37 @@ Name | Type | Description  | Notes
 This endpoint disconnects a connection by ID or address
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class NetworkConnectionsDisconnectExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Address id.
 
             try
             {
                 apiInstance.NetworkConnectionsDisconnect(id);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NetworkConnectionsDisconnect: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1111,6 +1436,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1126,13 +1452,17 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="networkconnectionsexchange"></a>
-# **NetworkConnectionsExchange**
+
+## NetworkConnectionsExchange
+
 > List<string> NetworkConnectionsExchange ()
 
 
@@ -1140,29 +1470,32 @@ void (empty response body)
 This endpoint returns all connections found through peer exchange
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class NetworkConnectionsExchangeExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
                 List&lt;string&gt; result = apiInstance.NetworkConnectionsExchange();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NetworkConnectionsExchange: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1170,6 +1503,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1182,37 +1516,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="networkconnectionstrust"></a>
-# **NetworkConnectionsTrust**
+
+## NetworkConnectionsTrust
+
 > List<string> NetworkConnectionsTrust ()
 
 trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class NetworkConnectionsTrustExample
     {
-        public void main()
+        public static void Main()
         {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -1220,9 +1554,11 @@ namespace Example
                 List&lt;string&gt; result = apiInstance.NetworkConnectionsTrust();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NetworkConnectionsTrust: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1230,6 +1566,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1238,36 +1575,41 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[csrfAuth](../README.md#csrfAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="outputsget"></a>
-# **OutputsGet**
+
+## OutputsGet
+
 > Object OutputsGet (List<string> address = null, List<string> hash = null)
 
 If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class OutputsGetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var address = new List<string>(); // List<string> |  (optional) 
             var hash = new List<string>(); // List<string> |  (optional) 
 
@@ -1277,9 +1619,11 @@ namespace Example
                 Object result = apiInstance.OutputsGet(address, hash);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.OutputsGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1287,6 +1631,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1303,37 +1648,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="outputspost"></a>
-# **OutputsPost**
+
+## OutputsPost
+
 > Object OutputsPost (string address = null, string hash = null)
 
 If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class OutputsPostExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var address = address_example;  // string |  (optional) 
             var hash = hash_example;  // string |  (optional) 
 
@@ -1343,9 +1693,11 @@ namespace Example
                 Object result = apiInstance.OutputsPost(address, hash);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.OutputsPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1353,6 +1705,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1369,43 +1722,48 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="pendingtxs"></a>
-# **PendingTxs**
-> List<InlineResponse2004> PendingTxs ()
-
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
-Returns pending (unconfirmed) transactions without verbose
+## PendingTxs
+
+> List<InlineResponse20010> PendingTxs ()
+
+
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class PendingTxsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
-                List&lt;InlineResponse2004&gt; result = apiInstance.PendingTxs();
+                List&lt;InlineResponse20010&gt; result = apiInstance.PendingTxs();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.PendingTxs: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1413,11 +1771,12 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse2004>**](InlineResponse2004.md)
+[**List<InlineResponse20010>**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1425,47 +1784,55 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="resendunconfirmedtxns"></a>
-# **ResendUnconfirmedTxns**
-> void ResendUnconfirmedTxns ()
+
+## ResendUnconfirmedTxns
+
+> Object ResendUnconfirmedTxns ()
 
 
 
 Broadcasts all unconfirmed transactions from the unconfirmed transaction pool
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class ResendUnconfirmedTxnsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
-                apiInstance.ResendUnconfirmedTxns();
+                Object result = apiInstance.ResendUnconfirmedTxns();
+                Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ResendUnconfirmedTxns: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1473,11 +1840,12 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1485,32 +1853,37 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application-json, application/json, application/xml
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="richlist"></a>
-# **Richlist**
+
+## Richlist
+
 > Object Richlist (bool? includeDistribution = null, string n = null)
 
 Returns the top skycoin holders.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class RichlistExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var includeDistribution = true;  // bool? | include distribution addresses or not, default value false (optional) 
             var n = n_example;  // string | include distribution addresses or not, default value false (optional) 
 
@@ -1520,9 +1893,11 @@ namespace Example
                 Object result = apiInstance.Richlist(includeDistribution, n);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Richlist: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1530,6 +1905,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1546,45 +1922,51 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transaction"></a>
-# **Transaction**
-> Object Transaction (string txid, bool? encoded = null)
+
+## Transaction
+
+> Transaction Transaction (string txid)
 
 
 
 Returns a transaction identified by its txid hash with just id
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
-            var txid = txid_example;  // string | transaction hash
-            var encoded = true;  // bool? | return as a raw encoded transaction. (optional) 
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var txid = txid_example;  // string | transaction Id
 
             try
             {
-                Object result = apiInstance.Transaction(txid, encoded);
+                Transaction result = apiInstance.Transaction(txid);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Transaction: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1593,14 +1975,14 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **txid** | **string**| transaction hash | 
- **encoded** | **bool?**| return as a raw encoded transaction. | [optional] 
+ **txid** | **string**| transaction Id | 
 
 ### Return type
 
-**Object**
+[**Transaction**](Transaction.md)
 
 ### Authorization
 
@@ -1608,48 +1990,55 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transactioninject"></a>
-# **TransactionInject**
-> Object TransactionInject (string rawtx)
+
+## TransactionInject
+
+> string TransactionInject (string rawtx)
 
 Broadcast a hex-encoded, serialized transaction to the network.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionInjectExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var rawtx = rawtx_example;  // string | hex-encoded serialized transaction string.
 
             try
             {
                 // Broadcast a hex-encoded, serialized transaction to the network.
-                Object result = apiInstance.TransactionInject(rawtx);
+                string result = apiInstance.TransactionInject(rawtx);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransactionInject: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1658,13 +2047,14 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rawtx** | **string**| hex-encoded serialized transaction string. | 
 
 ### Return type
 
-**Object**
+**string**
 
 ### Authorization
 
@@ -1672,32 +2062,179 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, application/xml
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transactionraw"></a>
-# **TransactionRaw**
+
+## TransactionPost
+
+> InlineResponse2008 TransactionPost (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class TransactionPostExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionV2ParamsAddress = new TransactionV2ParamsAddress(); // TransactionV2ParamsAddress |  (optional) 
+
+            try
+            {
+                InlineResponse2008 result = apiInstance.TransactionPost(transactionV2ParamsAddress);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionV2ParamsAddress** | [**TransactionV2ParamsAddress**](TransactionV2ParamsAddress.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TransactionPostUnspent
+
+> InlineResponse2008 TransactionPostUnspent (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class TransactionPostUnspentExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionV2ParamsUnspent = new TransactionV2ParamsUnspent(); // TransactionV2ParamsUnspent | Unspent parameters
+
+            try
+            {
+                InlineResponse2008 result = apiInstance.TransactionPostUnspent(transactionV2ParamsUnspent);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.TransactionPostUnspent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionV2ParamsUnspent** | [**TransactionV2ParamsUnspent**](TransactionV2ParamsUnspent.md)| Unspent parameters | 
+
+### Return type
+
+[**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TransactionRaw
+
 > Object TransactionRaw (string txid = null)
 
 Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionRawExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var txid = txid_example;  // string | Transaction id hash (optional) 
 
             try
@@ -1706,9 +2243,11 @@ namespace Example
                 Object result = apiInstance.TransactionRaw(txid);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransactionRaw: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1716,6 +2255,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1731,48 +2271,56 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transactionverify"></a>
-# **TransactionVerify**
-> Object TransactionVerify ()
+
+## TransactionVerify
+
+> Object TransactionVerify (TransactionVerifyRequest transactionVerifyRequest)
 
 
 
 Decode and verify an encoded transaction
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionVerifyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var transactionVerifyRequest = new TransactionVerifyRequest(); // TransactionVerifyRequest | 
 
             try
             {
-                Object result = apiInstance.TransactionVerify();
+                Object result = apiInstance.TransactionVerify(transactionVerifyRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransactionVerify: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1780,7 +2328,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionVerifyRequest** | [**TransactionVerifyRequest**](TransactionVerifyRequest.md)|  | 
 
 ### Return type
 
@@ -1792,32 +2344,37 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transactionsget"></a>
-# **TransactionsGet**
+
+## TransactionsGet
+
 > Object TransactionsGet (string addrs = null, string confirmed = null)
 
 Returns transactions that match the filters.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionsGetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addrs = addrs_example;  // string | command separated list of addresses (optional) 
             var confirmed = confirmed_example;  // string | Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional) 
 
@@ -1827,9 +2384,11 @@ namespace Example
                 Object result = apiInstance.TransactionsGet(addrs, confirmed);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransactionsGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1837,6 +2396,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1853,37 +2413,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transactionspost"></a>
-# **TransactionsPost**
+
+## TransactionsPost
+
 > Object TransactionsPost (string addrs = null, string confirmed = null)
 
 Returns transactions that match the filters.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class TransactionsPostExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addrs = addrs_example;  // string | command separated list of addresses (optional) 
             var confirmed = confirmed_example;  // string | Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional) 
 
@@ -1893,9 +2458,11 @@ namespace Example
                 Object result = apiInstance.TransactionsPost(addrs, confirmed);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransactionsPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1903,6 +2470,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1919,32 +2487,37 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="uxout"></a>
-# **Uxout**
+
+## Uxout
+
 > Object Uxout (string uxid = null)
 
 Returns an unspent output by ID.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class UxoutExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var uxid = uxid_example;  // string | uxid to filter by (optional) 
 
             try
@@ -1953,9 +2526,11 @@ namespace Example
                 Object result = apiInstance.Uxout(uxid);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Uxout: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1963,6 +2538,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1978,48 +2554,55 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="verifyaddress"></a>
-# **VerifyAddress**
-> InlineResponse2007 VerifyAddress (string address)
+
+## VerifyAddress
+
+> Object VerifyAddress (Object address)
 
 Verifies a Skycoin address.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class VerifyAddressExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var address = address_example;  // string | Address id.
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var address = new Object(); // Object | Address id.
 
             try
             {
                 // Verifies a Skycoin address.
-                InlineResponse2007 result = apiInstance.VerifyAddress(address);
+                Object result = apiInstance.VerifyAddress(address);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.VerifyAddress: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2028,13 +2611,14 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **string**| Address id. | 
+ **address** | [**Object**](Object.md)| Address id. | 
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+**Object**
 
 ### Authorization
 
@@ -2042,42 +2626,50 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="version"></a>
-# **Version**
-> void Version ()
+
+## Version
+
+> InlineResponse2005 Version ()
 
 
 
 versionHandler returns the application version info
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class VersionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
-                apiInstance.Version();
+                InlineResponse2005 result = apiInstance.Version();
+                Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Version: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2085,11 +2677,12 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -2097,32 +2690,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="wallet"></a>
-# **Wallet**
+
+## Wallet
+
 > Object Wallet (string id)
 
 Returns a wallet by id.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | tags to filter by
 
             try
@@ -2131,9 +2729,11 @@ namespace Example
                 Object result = apiInstance.Wallet(id);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Wallet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2141,6 +2741,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2156,32 +2757,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletbalance"></a>
-# **WalletBalance**
+
+## WalletBalance
+
 > Object WalletBalance (string id)
 
 Returns the wallet's balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletBalanceExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | tags to filter by
 
             try
@@ -2190,9 +2796,11 @@ namespace Example
                 Object result = apiInstance.WalletBalance(id);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletBalance: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2200,6 +2808,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2215,13 +2824,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletcreate"></a>
-# **WalletCreate**
+
+## WalletCreate
+
 > Object WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
 
 
@@ -2229,25 +2842,26 @@ No authorization required
 Loads wallet from seed, will scan ahead N address and load addresses till the last one that have coins.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletCreateExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var seed = seed_example;  // string | Wallet seed.
             var label = label_example;  // string | Wallet label.
             var scan = 56;  // int? | The number of addresses to scan ahead for balances. (optional) 
@@ -2259,9 +2873,11 @@ namespace Example
                 Object result = apiInstance.WalletCreate(seed, label, scan, encrypt, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletCreate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2269,6 +2885,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2288,37 +2905,42 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletdecrypt"></a>
-# **WalletDecrypt**
+
+## WalletDecrypt
+
 > Object WalletDecrypt (string id, string password)
 
 Decrypts wallet.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletDecryptExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet id.
             var password = password_example;  // string | Wallet password.
 
@@ -2328,9 +2950,11 @@ namespace Example
                 Object result = apiInstance.WalletDecrypt(id, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletDecrypt: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2338,6 +2962,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2354,37 +2979,42 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletencrypt"></a>
-# **WalletEncrypt**
+
+## WalletEncrypt
+
 > Object WalletEncrypt (string id, string password)
 
 Encrypt wallet.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletEncryptExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet id.
             var password = password_example;  // string | Wallet password.
 
@@ -2394,9 +3024,11 @@ namespace Example
                 Object result = apiInstance.WalletEncrypt(id, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletEncrypt: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2404,6 +3036,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2420,44 +3053,51 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletfolder"></a>
-# **WalletFolder**
-> InlineResponse2006 WalletFolder (string addr)
+
+## WalletFolder
+
+> InlineResponse2007 WalletFolder (string addr)
 
 
 
 Returns the wallet directory path
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletFolderExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addr = addr_example;  // string | Address port
 
             try
             {
-                InlineResponse2006 result = apiInstance.WalletFolder(addr);
+                InlineResponse2007 result = apiInstance.WalletFolder(addr);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletFolder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2466,13 +3106,14 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **addr** | **string**| Address port | 
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -2480,13 +3121,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletnewaddress"></a>
-# **WalletNewAddress**
+
+## WalletNewAddress
+
 > Object WalletNewAddress (string id, string num = null, string password = null)
 
 
@@ -2494,25 +3139,26 @@ No authorization required
 Generates new addresses
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletNewAddressExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet Id
             var num = num_example;  // string | The number you want to generate (optional) 
             var password = password_example;  // string | Wallet Password (optional) 
@@ -2522,9 +3168,11 @@ namespace Example
                 Object result = apiInstance.WalletNewAddress(id, num, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletNewAddress: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2532,6 +3180,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2549,13 +3198,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletnewseed"></a>
-# **WalletNewSeed**
+
+## WalletNewSeed
+
 > Object WalletNewSeed (string entropy = null)
 
 
@@ -2563,20 +3216,21 @@ Name | Type | Description  | Notes
 Returns the wallet directory path
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletNewSeedExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
             var entropy = entropy_example;  // string | Entropy bitSize. (optional) 
 
             try
@@ -2584,9 +3238,11 @@ namespace Example
                 Object result = apiInstance.WalletNewSeed(entropy);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletNewSeed: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2594,6 +3250,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2609,37 +3266,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletrecover"></a>
-# **WalletRecover**
+
+## WalletRecover
+
 > Object WalletRecover (string id, string seed, string password = null)
 
 Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletRecoverExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet id.
             var seed = seed_example;  // string | Wallet seed.
             var password = password_example;  // string | Wallet password. (optional) 
@@ -2650,9 +3312,11 @@ namespace Example
                 Object result = apiInstance.WalletRecover(id, seed, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletRecover: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2660,6 +3324,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2677,37 +3342,42 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletseed"></a>
-# **WalletSeed**
+
+## WalletSeed
+
 > Object WalletSeed (string id, string password)
 
 This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletSeedExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet Id.
             var password = password_example;  // string | Wallet password.
 
@@ -2717,9 +3387,11 @@ namespace Example
                 Object result = apiInstance.WalletSeed(id, password);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletSeed: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2727,6 +3399,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2743,37 +3416,42 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletseedverify"></a>
-# **WalletSeedVerify**
+
+## WalletSeedVerify
+
 > Object WalletSeedVerify (string seed = null)
 
 Verifies a wallet seed.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletSeedVerifyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var seed = seed_example;  // string | Seed to be verified. (optional) 
 
             try
@@ -2782,9 +3460,11 @@ namespace Example
                 Object result = apiInstance.WalletSeedVerify(seed);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletSeedVerify: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2792,6 +3472,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2807,120 +3488,55 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="walletspent"></a>
-# **WalletSpent**
-> Object WalletSpent (string id, string dst, string coins, string password)
-
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
-Creates and broadcasts a transaction sending money from one of our wallets to destination address.
+## WalletTransaction
 
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
-
-namespace Example
-{
-    public class WalletSpentExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: csrfAuth
-            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var id = id_example;  // string | Wallet id
-            var dst = dst_example;  // string | Recipient address
-            var coins = coins_example;  // string | Number of coins to spend, in droplets. 1 coin equals 1e6 droplets.
-            var password = password_example;  // string | Wallet password.
-
-            try
-            {
-                Object result = apiInstance.WalletSpent(id, dst, coins, password);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.WalletSpent: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Wallet id | 
- **dst** | **string**| Recipient address | 
- **coins** | **string**| Number of coins to spend, in droplets. 1 coin equals 1e6 droplets. | 
- **password** | **string**| Wallet password. | 
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[csrfAuth](../README.md#csrfAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="wallettransaction"></a>
-# **WalletTransaction**
-> Object WalletTransaction (InlineObject inlineObject = null)
-
-
+> Object WalletTransaction (WalletTransactionRequest walletTransactionRequest)
 
 Creates a signed transaction
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletTransactionExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var inlineObject = new InlineObject(); // InlineObject |  (optional) 
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var walletTransactionRequest = new WalletTransactionRequest(); // WalletTransactionRequest | 
 
             try
             {
-                Object result = apiInstance.WalletTransaction(inlineObject);
+                // Creates a signed transaction
+                Object result = apiInstance.WalletTransaction(walletTransactionRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletTransaction: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2929,9 +3545,10 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+ **walletTransactionRequest** | [**WalletTransactionRequest**](WalletTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -2943,44 +3560,55 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="wallettransactions"></a>
-# **WalletTransactions**
-> Object WalletTransactions (string id)
-
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
-Returns returns all unconfirmed transactions for all addresses in a given wallet verbose
+## WalletTransactionSign
+
+> InlineResponse2009 WalletTransactionSign (WalletTransactionSignRequest walletTransactionSignRequest)
+
+Creates a signed transaction
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
-    public class WalletTransactionsExample
+    public class WalletTransactionSignExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
-            var id = id_example;  // string | Wallet id.
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            // Configure API key authorization: csrfAuth
+            Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var walletTransactionSignRequest = new WalletTransactionSignRequest(); // WalletTransactionSignRequest | 
 
             try
             {
-                Object result = apiInstance.WalletTransactions(id);
+                // Creates a signed transaction
+                InlineResponse2009 result = apiInstance.WalletTransactionSign(walletTransactionSignRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling DefaultApi.WalletTransactions: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.WalletTransactionSign: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2989,13 +3617,80 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Wallet id. | 
+ **walletTransactionSignRequest** | [**WalletTransactionSignRequest**](WalletTransactionSignRequest.md)|  | 
 
 ### Return type
 
-**Object**
+[**InlineResponse2009**](InlineResponse2009.md)
+
+### Authorization
+
+[csrfAuth](../README.md#csrfAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/xml, 
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WalletTransactions
+
+> InlineResponse2006 WalletTransactions (string id)
+
+
+
+### Example
+
+```csharp
+using System.Diagnostics;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
+
+namespace Example
+{
+    public class WalletTransactionsExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var id = id_example;  // string | Wallet Id.
+
+            try
+            {
+                InlineResponse2006 result = apiInstance.WalletTransactions(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DefaultApi.WalletTransactions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Wallet Id. | 
+
+### Return type
+
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -3003,37 +3698,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletunload"></a>
-# **WalletUnload**
+
+## WalletUnload
+
 > void WalletUnload (string id)
 
 Unloads wallet from the wallet service.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletUnloadExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet Id.
 
             try
@@ -3041,9 +3741,11 @@ namespace Example
                 // Unloads wallet from the wallet service.
                 apiInstance.WalletUnload(id);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletUnload: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3051,6 +3753,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3066,48 +3769,56 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="walletupdate"></a>
-# **WalletUpdate**
-> void WalletUpdate (string id, string label)
+
+## WalletUpdate
+
+> string WalletUpdate (string id, string label)
 
 Update the wallet.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletUpdateExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
             // Configure API key authorization: csrfAuth
             Configuration.Default.AddApiKey("X-CSRF-TOKEN", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet Id.
             var label = label_example;  // string | The label the wallet will be updated to.
 
             try
             {
                 // Update the wallet.
-                apiInstance.WalletUpdate(id, label);
+                string result = apiInstance.WalletUpdate(id, label);
+                Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.WalletUpdate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3115,6 +3826,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3123,7 +3835,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -3131,43 +3843,50 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, application/xml
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="wallets"></a>
-# **Wallets**
-> List<InlineResponse2005> Wallets ()
+
+## Wallets
+
+> List<Object> Wallets ()
 
 
 
 Returns all loaded wallets
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
-using RestCSharp.Api;
-using RestCSharp.Client;
-using RestCSharp.Model;
+using Skyapi.Api;
+using Skyapi.Client;
+using Skyapi.Model;
 
 namespace Example
 {
     public class WalletsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://127.0.0.1:6420";
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
-                List&lt;InlineResponse2005&gt; result = apiInstance.Wallets();
+                List&lt;Object&gt; result = apiInstance.Wallets();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Wallets: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3175,11 +3894,12 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse2005>**](InlineResponse2005.md)
+**List<Object>**
 
 ### Authorization
 
@@ -3187,8 +3907,11 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, 
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

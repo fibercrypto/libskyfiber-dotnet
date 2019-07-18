@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Feature compatible with Skycoin `v0.25.0`
+- Feature compatible with Skycoin `v0.26.0`
 - .NET specific SWIG typemaps
 - Support for `api`, `cipher`, `cli`, `coin`, `params`, `util`, `wallet`, `wallet_option`
 - Test suite working on `mono`, `dotnetcore` `netcoreapp2.1`
@@ -19,6 +19,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Release process documented in README.md
 - Add `make build` target to build solution based on SWIG-generated PInvoke wrappers
 - Add `make help`
+
+## Changelog 0.26.0 - 2019/6/26
+
+### Changed
+
+- Update Skyapi wrapper for Skycoin node REST API version 0.26.0
+
+## Changelog 0.25.1 - 2019/03/19
+
+### Added
+
+- Add SkyApi,Skycoin wrapper for Skycoin node REST API version 0.25.1
 
 ### Fixed
 

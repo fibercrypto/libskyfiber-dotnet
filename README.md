@@ -1,6 +1,6 @@
- # Libskycoin for .Net
+# Libskycoin for .Net
 
-[![Build Status](https://travis-ci.org/simelo/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
+[![Build Status](https://travis-ci.org/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
 
 .Net client library for Skycoin API. This library is a .Net composed assembly generated with SWIG and OPENAPI to access Skycoin API from .Net.
 
@@ -22,11 +22,6 @@
 - [SkyApi wrapper for Skycoin REST API](#skyapi-wrapper-for-skycoin-rest-api)
 - [Make rules](#make-rules)
 - [Development setup](#development-setup)
-  - [Running tests](#running-tests)
-  - [Releases](#releases)
-    - [Update the version](#update-the-version)
-    - [Pre-release testing](#pre-release-testing)
-    - [Creating release builds](#creating-release-builds)
   <!-- /MarkdownTOC -->
 
 
@@ -72,7 +67,7 @@ Execute (`nuget restore LibskycoinNet.sln`) to install the library. Although exe
 
 #### Naming
 
-The exported function in LibSkycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
+The exported function in Libskycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
 
 #### Parameters
 
@@ -89,7 +84,7 @@ Some of Skycoin types are too complex to be exported to a scripting language. So
   func (c Config) FullWalletPath() string
 ```
 
-Config is a struct type that is treated as a handle in LibSkycoin .Net . The usage in .Net will be:
+Config is a struct type that is treated as a handle in Libskycoin .Net . The usage in .Net will be:
 
 ```csharp
 
@@ -256,6 +251,16 @@ The following `make` rules are available after `git checkout` of this repository
 $ make help
 
 configure                      Setup build environment
+build-libc                     Build libskycoin static C client library
+build-swig                     Generate csharp source code from SWIG interface definitions
+build-libsky-shared            Build shared library including SWIG wrappers
+install-deps-libsky            Install development dependencies for LibSkycoinNet
+build-libsky                   Build LibSkycoinNet Assembly
+build-skyapi                   Build SkyApi Assembly
+test-libsky                    Run LibSkycoinNet test suite
+test-skyapi                    Run SkyApi test suite
+test                           Run all tests
+```
 
 ## Development setup
 
@@ -331,3 +336,5 @@ https://www.mono-project.com/download/stable/
     msbuild /p:Configuration=Release LibskycoinNet.sln
 
 Final results are placed in the LibskycoinNet/bin/Release/ folder.
+
+

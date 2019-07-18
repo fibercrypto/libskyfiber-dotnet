@@ -1,13 +1,13 @@
-# RestCSharp.Model.InlineResponse2004
+
+# Skyapi.Model.InlineResponse2004
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Announced** | **string** |  | [optional] 
-**IsValid** | **bool?** |  | [optional] 
-**Checked** | **string** |  | [optional] 
-**Received** | **string** |  | [optional] 
-**Transaction** | [**Apiv1pendingTxsTransaction**](Apiv1pendingTxsTransaction.md) |  | [optional] 
+**Connections** | [**List&lt;NetworkConnectionSchema&gt;**](NetworkConnectionSchema.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 
