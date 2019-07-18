@@ -528,3 +528,15 @@
 		return result;
 	}
 }
+
+%rename(SKY_coin_VerifyInputSignatures) CSharp_skycoin_SKY_coin_VerifyInputSignatures;
+%inline {
+	GoUint32 CSharp_skycoin_SKY_coin_VerifyInputSignatures(Transaction__Handle handle , coin_UxOutArray* __uxIn){
+		coin__UxArray dataIn;
+		dataIn.data = __uxIn->data;
+		dataIn.len = __uxIn->count;
+		dataIn.cap = __uxIn->count;
+		GoUint32 result = SKY_coin_VerifyInputSignatures(handle,&dataIn);
+		return result;
+	};
+}
