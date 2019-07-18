@@ -176,94 +176,20 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionVerifyInput()
         {
-
-            try
-            {
-                var handle = transutils.makeEmptyTransaction();
-                makeTransaction(handle);
-                var ux = new coin_UxOutArray();
-                var result = SKY_coin_VerifyInputSignatures(handle, ux);
-                Assert.AreEqual(result, SKY_ERROR);
-                // ux.allocate(3);
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_ERROR);
-
-                // var uxOut = new coin__UxOut();
-                // var seckey = new cipher_SecKey();
-                // var sig = new cipher_Sig();
-                // var hash = new cipher_SHA256();
-
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // result = SKY_coin_Transaction_ResetSignatures(handle, 0);
-                // Assert.AreEqual(result, SKY_OK);
-                // ux.allocate(0);
-                // ux.append(uxOut);
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_ERROR);
-
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // result = SKY_coin_Transaction_ResetSignatures(handle, 1);
-                // Assert.AreEqual(result, SKY_OK);
-
-
-                // // // Invalid Tx Inner Hash
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx.setInnerHash(new cipher_SHA256());
-
-                // ux.allocate(0);
-                // ux.append(uxOut);
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_ERROR);
-
-                // // // Ux hash mismatch
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // ux.allocate(0);
-                // ux.append(new coin__UxOut());
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_ERROR);
-
-                // // // Invalid signature
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // result = SKY_coin_Transaction_ResetSignatures(handle, 1);
-                // Assert.AreEqual(result, SKY_OK);
-                // ux.allocate(0);
-                // var tmpUx = new coin__UxOut();
-                // ux.append(tmpUx);
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_ERROR);
-
-                // // // Valid
-                // result = (uint)makeUxOutWithSecret(uxOut, seckey);
-                // Assert.AreEqual(result, SKY_OK);
-                // ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
-                // Assert.AreEqual(result, SKY_OK);
-                // ux.allocate(0);
-                // ux.append(uxOut);
-                // result = SKY_coin_VerifyInputSignatures(handle, ux);
-                // Assert.AreEqual(result, SKY_OK);
-                Thread.Sleep(100);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Thread - caught ThreadAbortException - resetting.");
-                Console.WriteLine("Exception message: {0}", e.Message);
-                Thread.ResetAbort();
-            }
+            // Valid
+            var uxOut = new coin__UxOut();
+            var seckey = new cipher_SecKey();
+            var result = (uint)makeUxOutWithSecret(uxOut, seckey);
+            Assert.AreEqual(result, SKY_OK);
+            var handle = new_Transaction__Handlep();
+            makeEmptyTransaction(handle);
+            var ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
+            Assert.AreEqual(result, SKY_OK);
+            var ux = new coin_UxOutArray();
+            ux.allocate(0);
+            ux.append(uxOut);
+            result = SKY_coin_VerifyInputSignatures(handle, ux);
+            Assert.AreEqual(result, SKY_OK);
         }
 
         [Test]
