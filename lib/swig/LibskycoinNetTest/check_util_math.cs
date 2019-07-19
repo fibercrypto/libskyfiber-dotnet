@@ -4,16 +4,16 @@ using skycoin;
 using utils;
 namespace LibskycoinNetTest {
     [TestFixture ()]
-    public class check_coin_math : skycoin.skycoin {
+    public class check_util_math : skycoin.skycoin {
 
         utils.transutils transutils = new utils.transutils ();
         [Test]
         public void TestAddUint64 () {
             var r = new_GoUint64p ();
-            var err = SKY_coin_AddUint64 (10, 11, r);
+            var err = SKY_util_AddUint64(10,11,r);
             Assert.AreEqual (err, SKY_OK);
             Assert.AreEqual (GoUint64p_value (r), 21);
-            err = SKY_coin_AddUint64 (ulong.MaxValue, 1, r);
+            err = SKY_util_AddUint64 (ulong.MaxValue, 1, r);
             Assert.AreEqual (err, SKY_ErrUint64AddOverflow);
         }
         struct math_test {
@@ -54,7 +54,7 @@ namespace LibskycoinNetTest {
         public void TestUint64ToInt64 () {
             for (int i = 0; i < cases.Length; i++) {
                 var r = new_Gointp ();
-                var err = SKY_coin_Uint64ToInt64 (cases[i].a, r);
+                var err = SKY_util_Uint64ToInt64 (cases[i].a, r);
                 Assert.AreEqual (err, cases[i].failure);
                 Assert.AreEqual (cases[i].b, Gointp_value (r));
             }
