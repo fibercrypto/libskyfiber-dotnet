@@ -8,5 +8,5 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 sudo apt install apt-transport-https gcc make cmake git -y
 echo "deb https://download.mono-project.com/repo/ubuntu vs-xenial main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
 sudo apt update
-sudo apt-get install monodevelop nuget 
+sudo apt-get install monodevelop nuget -y
 
