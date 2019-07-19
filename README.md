@@ -8,7 +8,7 @@
 
 <!-- MarkdownTOC levels="1,2,3,4,5" autolink="true" bracket="round" -->
 
-- [LibSkycoinNet wrappers for the Skycoin cipher](libskycoinnet-wrappers-for the skycoin cipher)
+- [LibSkycoinNet wrappers for the Skycoin cipher](#libskycoinnet-wrappers-for-the-skycoin-cipher)
   - [Installation](#installation)
   - [Using the API](#usage)
     - [Naming](#naming)
@@ -16,7 +16,7 @@
       - [Handles](#handles)
       - [Byte Slices](#byte-slices)
       - [Structures](#structures)
-      - [Fixed Size Arrays](#fixed-size-array)
+      - [Fixed Sized Arrays](#fixed-sized-arrays)
       - [Other Slices](#other-slices)
     - [Memory Managemanet](#memory-management)
 - [SkyApi wrapper for Skycoin REST API](#skyapi-wrapper-for-skycoin-rest-api)
@@ -257,6 +257,7 @@ build-libsky-shared            Build shared library including SWIG wrappers
 install-deps-libsky            Install development dependencies for LibSkycoinNet
 build-libsky                   Build LibSkycoinNet Assembly
 build-skyapi                   Build SkyApi Assembly
+build                          Build library
 test-libsky                    Run LibSkycoinNet test suite
 test-skyapi                    Run SkyApi test suite
 test                           Run all tests
