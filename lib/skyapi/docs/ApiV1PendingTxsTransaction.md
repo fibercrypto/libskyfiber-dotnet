@@ -5,14 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Outputs** | [**List&lt;ApiV1ExplorerAddressOutputs&gt;**](ApiV1ExplorerAddressOutputs.md) |  | [optional] 
-**InnerHash** | **string** |  | [optional] 
-**Inputs** | **List&lt;string&gt;** |  | [optional] 
-**Sigs** | **List&lt;string&gt;** |  | [optional] 
-**Length** | **int?** |  | [optional] 
+**Length** | **long?** |  | [optional] 
+**Type** | **long?** |  | [optional] 
 **Txid** | **string** |  | [optional] 
-**Type** | **int?** |  | [optional] 
-**Timestamp** | **int?** |  | [optional] 
+**InnerHash** | **string** |  | [optional] 
+**Sigs** | **List&lt;string&gt;** |  | [optional] 
+**Inputs** | **List&lt;string&gt;** |  | [optional] 
+**Outputs** | [**List&lt;ApiV1PendingTxsTransactionOutputs&gt;**](ApiV1PendingTxsTransactionOutputs.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -39,16 +39,15 @@
     <Compile Include="check_cipher_address.cs" />
     <Compile Include="check_cipher_crypto.cs" />
     <Compile Include="check_cipher_hash.cs" />
-    <Compile Include="check_cipher_bip39.cs" />
     <Compile Include="check_cipher_bitcoin.cs" />
-    <Compile Include="check_coin_math.cs" />
-    <Compile Include="check_coin_math64.cs" />
+    <Compile Include="check_util_math.cs" />
     <Compile Include="check_coin_transactions.cs" />
     <Compile Include="check_coin_outputs.cs" />
     <Compile Include="check_coin_block.cs" />
     <Compile Include="check_util_fee.cs" />
     <Compile Include="check_util_droplet.cs" />
     <Compile Include="check_util_param_distributions.cs" />
+    <Compile Include="check_cipher_secp256k1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibskycoinNet\LibskycoinNet.csproj">

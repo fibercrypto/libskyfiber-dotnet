@@ -36,8 +36,8 @@ namespace utils {
             Assert.AreEqual (skycoin.skycoin.SKY_cipher_SecKey_Verify (s), skycoin.skycoin.SKY_OK);
             var err = skycoin.skycoin.SKY_coin_UxOut_Hash (ux, h);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
-            var r = skycoin.skycoin.new_GoUint16p ();
-            skycoin.skycoin.SKY_coin_Transaction_PushInput (handle, h, r);
+            var r = new uint();
+            r = skycoin.skycoin.SKY_coin_Transaction_PushInput (handle, h);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);
             err = skycoin.skycoin.SKY_coin_Transaction_PushOutput (handle, makeAddress (), (ulong) 1e6, 50);
             Assert.AreEqual (err, skycoin.skycoin.SKY_OK);

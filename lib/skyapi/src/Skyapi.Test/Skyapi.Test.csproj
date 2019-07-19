@@ -4,7 +4,7 @@ Skycoin REST API.
 
 Skycoin is a next-generation cryptocurrency.
 
-The version of the OpenAPI document: 0.25.1
+The version of the OpenAPI document: 0.26.0
 Contact: contact@skycoin.net
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -81,7 +81,7 @@ Contact: contact@skycoin.net
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Skyapi\Skyapi.csproj">
-          <Project>{6D48C7D6-410E-42C4-A7F4-A8E8F958621E}</Project>
+          <Project>{A8482FE9-9B42-43BB-9972-802725DD6112}</Project>
           <Name>Skyapi</Name>
       </ProjectReference>
   </ItemGroup>
