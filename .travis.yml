@@ -1,5 +1,4 @@
 language: go
-dist: bionic
 sudo: required
 env:
   global:
@@ -7,6 +6,8 @@ env:
 
 install:
   - bash ./.travis/install_linux.sh
+  - wget -c https://dist.nuget.org/win-x86-commandline/v5.1.0/nuget.exe
+  - mono nuget.exe push -help
   - eval "$(gimme 1.11)"
   - go version
   - python --version
