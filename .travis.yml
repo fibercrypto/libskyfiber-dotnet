@@ -26,4 +26,3 @@ deploy:
   script: chmod +x ./.travis/deploy.sh && ./.travis/deploy.sh
   on:
     tags: true
-    repo: simelo/libskycoin_dotnet
