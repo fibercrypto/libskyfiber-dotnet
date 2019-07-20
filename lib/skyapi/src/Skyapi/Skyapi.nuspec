@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd" > 
+    <metadata>
+		<!-- The identifier that must be unique within the hosting gallery -->
+        <id>Skyapi.Skycoin</id>
+		
+		<title>Skyapi</title>
+
+        <!-- The package version number that is used when resolving dependencies -->
+        <version>0.25.1</version>
+
+        <!-- Authors contain text that appears directly on the gallery -->
+        <authors>Marcos Maceo Reyes</authors>
+
+        <!-- Owners are typically nuget.org identities that allow gallery
+             users to earily find other packages by the same owners.  -->
+        <owners>skycoin</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <developmentDependency>false</developmentDependency>
+
+        <!-- The description can be used in package manager UI. Note that the
+             nuget.org gallery uses information you add in the portal. -->
+        <description>Skyapi, a wrapper for Skycoin REST API</description>
+
+        <!-- Dependencies are automatically installed when the package is installed -->
+        <dependencies>
+
+            <dependency id="NewtonSoft.Json" version="10.0.3" />
+            <dependency id="JsonSubTypes" version="1.2.0" />
+            <dependency id="RestSharp" version="105.1.0" />
+
+        </dependencies>
+    </metadata>
+    <files>
+
+        <!-- A readme.txt will be displayed when the package is installed -->
+        <file src="..\..\README.md" target="" />
+        <file src="..\..\docs\**\*.*" target="docs" />
+
+    </files>
+</package>
