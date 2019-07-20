@@ -1,5 +1,4 @@
-nuget push ./lib/swig/LibskycoinNet/bin/Release/*.nupkg -Verbosity detailed -ApiKey $NUGET_API_KEY -Source $NUGET_SOURCE
-
+wget -c https://dist.nuget.org/win-x86-commandline/v5.1.0/nuget.exe
+mono nuget.exe push ./lib/swig/LibskycoinNet/bin/Release/*.nupkg -Verbosity detailed -ApiKey $NUGET_API_KEY -Source $NUGET_SOURCE -SkipDuplicate
 (cd ./lib/skyapi/src/Skyapi/ && nuget pack ./Skyapi.nuspec)
-
-nuget push ./lib/skyapi/src/Skyapi/*.nupkg -Verbosity detailed -ApiKey $NUGET_API_KEY -Source $NUGET_SOURCE
+mono nuget.exe push ./lib/skyapi/src/Skyapi/*.nupkg -Verbosity detailed -ApiKey $NUGET_API_KEY -Source $NUGET_SOURCE -SkipDuplicate
