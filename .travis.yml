@@ -15,7 +15,6 @@ install:
 
 script:
   - make test
-  - chmod +x ./.travis/deploy.sh && ./.travis/deploy.sh
 
 notifications:
   email: false
