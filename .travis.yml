@@ -1,6 +1,6 @@
 language: go
-dist: xenial
 sudo: required
+dist: xenial
 env:
   global:
     - CGO_ENABLED: 1
