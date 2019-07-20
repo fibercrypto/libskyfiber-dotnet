@@ -1,5 +1,5 @@
-language: csharp
-dist: xenial
+language: go
+dist: bionic
 sudo: required
 env:
   global:
@@ -9,7 +9,6 @@ install:
   - bash ./.travis/install_linux.sh
   - eval "$(gimme 1.11)"
   - go version
-  - nuget
   - python --version
   - go get github.com/gz-c/gox
   - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build
