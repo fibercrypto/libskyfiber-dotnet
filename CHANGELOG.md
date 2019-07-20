@@ -24,9 +24,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update Skyapi wrapper for Skycoin node REST API version 0.26.0
 - Submodule change skycoin/skycoin => skycoin/libskycoin@develop
 
-
-### Added
-
 ### Fixed
 
 ### Changed
