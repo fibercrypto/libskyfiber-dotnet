@@ -42,4 +42,8 @@ RUN apt update \
   
 WORKDIR $GOPATH/src/github.com/skycoin
 
+COPY ./lib/restsharp/src/RestCSharp/packages.config .
+
+RUN nuget install ./packages.config -o packages && rm -rf ./packages.config
+
 VOLUME $GOPATH/src/
