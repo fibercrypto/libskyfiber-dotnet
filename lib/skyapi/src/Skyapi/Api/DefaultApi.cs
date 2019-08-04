@@ -216,7 +216,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seq = null);
+        InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seqs = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -229,7 +229,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        ApiResponse<InlineResponse2001> BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seq = null);
+        ApiResponse<InlineResponse2001> BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1414,7 +1414,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seq = null);
+        System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seqs = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1427,7 +1427,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seq = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null);
         /// <summary>
         /// 
         /// </summary>
@@ -3698,9 +3698,9 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        public InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seq = null)
+        public InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seqs = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = BlocksWithHttpInfo(start, end, seq);
+             ApiResponse<InlineResponse2001> localVarResponse = BlocksWithHttpInfo(start, end, seqs);
              return localVarResponse.Data;
         }
 
@@ -3712,7 +3712,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        public ApiResponse< InlineResponse2001 > BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seq = null)
+        public ApiResponse< InlineResponse2001 > BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null)
         {
 
             var localVarPath = "/api/v1/blocks";
@@ -3739,7 +3739,7 @@ namespace Skyapi.Api
 
             if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
             if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seq != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seq", seq)); // query parameter
+            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seqs", seqs)); // query parameter
 
 
             // make the HTTP request
@@ -3768,9 +3768,9 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seq = null)
+        public async System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seqs = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = await BlocksAsyncWithHttpInfo(start, end, seq);
+             ApiResponse<InlineResponse2001> localVarResponse = await BlocksAsyncWithHttpInfo(start, end, seqs);
              return localVarResponse.Data;
 
         }
@@ -3783,7 +3783,7 @@ namespace Skyapi.Api
         /// <param name="end">end seq (optional)</param>
         /// <param name="seq">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seq = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null)
         {
 
             var localVarPath = "/api/v1/blocks";
@@ -3810,7 +3810,7 @@ namespace Skyapi.Api
 
             if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
             if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seq != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seq", seq)); // query parameter
+            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seqs", seqs)); // query parameter
 
 
             // make the HTTP request
@@ -9253,7 +9253,7 @@ namespace Skyapi.Api
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
-
+            
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -9315,7 +9315,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+            if (seed != null){ 
+		    var myseed=new Dictionary<string, string>();
+		    myseed["seed"]=seed;
+			    localVarPostBody=this.Configuration.ApiClient.Serialize(myseed); 
+	    }
+		    // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9385,7 +9390,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+	    if (seed != null) {
+		    var myseed=new Dictionary<string,string>();
+		    myseed["seed"]=seed;
+		    localVarPostBody=this.Configuration.ApiClient.Serialize(myseed);} // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
