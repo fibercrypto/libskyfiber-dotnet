@@ -33,7 +33,7 @@ install:
   
 script:
   - make test-libsky-$TYPE
-  - if [[ "$TYPE" == "mono" ]]; then make test-skyapi ; fi 
+  - make test-skyapi
   
 notifications:
   email: false
