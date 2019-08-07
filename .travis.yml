@@ -20,7 +20,7 @@ matrix:
       mono: 4.8.0
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./.travis/install_linux.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash .travis/install_linux.sh ; fi
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
