@@ -1,6 +1,10 @@
 sudo: required
 language: csharp
 
+env:
+  global:
+    - CGO_ENABLED: 1
+
 matrix:
   include:
     # - os: linux
@@ -23,6 +27,7 @@ before_install:
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
+  - go get github.com/gz-c/gox
 
 install:
   - eval "$(gimme 1.10)"
@@ -33,3 +38,11 @@ script:
 notifications:
   email: false
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: chmod +x ./.travis/deploy.sh && ./.travis/deploy.sh
+  on:
+    tags: true
+    repo: simelo/libskycoin_dotnet
