@@ -141,7 +141,7 @@ test-libsky-mono: build-mono ## Run LibSkycoinNet test suite mono
 	mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibSkycoinNetTest.dll -labels
 
 test-libsky-dotnet: build-dotnet
-	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
 
 build-skyapi: ## Build SkyApi Assembly
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
