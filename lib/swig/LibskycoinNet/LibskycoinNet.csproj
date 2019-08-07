@@ -8,12 +8,12 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LibskycoinNet</RootNamespace>
     <AssemblyName>LibskycoinNet</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>LibskycoinNet</PackageId>
-    <Version Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</Version>
+    <Version Condition=" '$(PackageVersion)' == '' ">0.26.0</Version>
     <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
-    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.25.0-dev</PackageVersion>
+    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.26.0</PackageVersion>
     <PackageVersion Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</PackageVersion>
     <Company>Skycoin</Company>
     <Authors>Maykel Arias - (stdevHan), Olemis Lang (olemis), Skycoin (skycoin)</Authors>
@@ -26,6 +26,7 @@
     <PackageTags>skycoin;client-library;rest-client;restapi;rest-api;swagger;openapi;swig;dotnet;dotnet-library;csharp;csharp-library;pinvoke;pinvoke-wrapper;vbnet;dotnet-assembly</PackageTags>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Skycoin</Owners>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,7 +144,7 @@
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

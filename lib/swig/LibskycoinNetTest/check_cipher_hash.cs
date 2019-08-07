@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using skycoin;
-namespace LibSkycoinNetTest {
+namespace LibskycoinNetTest {
     [TestFixture ()]
     public class check_cipher_hash : skycoin.skycoin {
         public void freshSumRipemd160 (skycoin.GoSlice bytes, cipher_Ripemd160 rp160) {

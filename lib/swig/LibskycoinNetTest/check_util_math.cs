@@ -28,25 +28,25 @@ namespace LibskycoinNetTest {
             var c = new math_test ();
             c.a = 0;
             c.b = 0;
-            c.failure = skycoin.skycoin.SKY_OK;
+            c.failure = SKY_OK;
             cases[0] = c;
 
             c = new math_test ();
             c.a = 1;
             c.b = 1;
-            c.failure = skycoin.skycoin.SKY_OK;
+            c.failure = SKY_OK;
             cases[1] = c;
 
             c = new math_test ();
             c.a = long.MaxValue;
             c.b = long.MaxValue;
-            c.failure = skycoin.skycoin.SKY_OK;
+            c.failure = SKY_OK;
             cases[2] = c;
 
             c = new math_test ();
             c.a = ulong.MaxValue;
             c.b = 0;
-            c.failure = skycoin.skycoin.SKY_ERROR;
+            c.failure = SKY_ERROR;
             cases[3] = c;
         }
 

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-
-    mkdir swig_build && \
+      mkdir swig_build && \
       cd swig_build && \
       wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && \
       tar -zxf swig-3.0.12.tar.gz && \
