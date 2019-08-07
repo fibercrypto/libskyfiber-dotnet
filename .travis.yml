@@ -6,20 +6,20 @@ env:
 
 matrix:
   include:
-    - os: linux
-      dist: xenial
-      env: TYPE=mono
-      language: go
+    # - os: linux
+      # dist: xenial
+      # env: TYPE=mono
+      # language: go
     # - os: linux
       # dist: xenial
       # env: TYPE=dotnet
       # language: go
-    # - os: osx
-      # language: csharp
-      # oxs_image: xcode8
-      # solution: lib/swig/LibSkycoinNet.sln
-      # env: TYPE=mono
-      # mono: 4.5.0
+    - os: osx
+      language: csharp
+      oxs_image: xcode8
+      solution: lib/swig/LibSkycoinNet.sln
+      env: TYPE=mono
+      mono: 4.5.0
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash .travis/install_linux.sh ; fi
