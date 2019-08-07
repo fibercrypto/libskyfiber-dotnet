@@ -7,11 +7,11 @@ env:
 matrix:
   include:
     - os: linux
-      dist: xenial
+      dist: bionic
       env: TYPE=mono
       language: go
     - os: linux
-      dist: xenial
+      dist: bionic
       env: TYPE=dotnet
       language: go
     - os: osx
