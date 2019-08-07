@@ -29,7 +29,7 @@ before_install:
   - go get github.com/gz-c/gox
 
 install:
-  - eval "$(gimme 1.10)"
+  - eval "$(gimme 1.11)"
   
 script:
   - make test-libsky-$TYPE
