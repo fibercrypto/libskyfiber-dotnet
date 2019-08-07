@@ -33,7 +33,8 @@ install:
   - eval "$(gimme 1.10)"
   
 script:
-  - make test-$TYPE
+  - make test-libsky-$TYPE
+  - make test-skyapi
   
 notifications:
   email: false

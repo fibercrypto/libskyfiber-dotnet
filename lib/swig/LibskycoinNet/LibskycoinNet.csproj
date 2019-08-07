@@ -26,7 +26,6 @@
     <PackageTags>skycoin;client-library;rest-client;restapi;rest-api;swagger;openapi;swig;dotnet;dotnet-library;csharp;csharp-library;pinvoke;pinvoke-wrapper;vbnet;dotnet-assembly</PackageTags>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Skycoin</Owners>
-    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,9 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
