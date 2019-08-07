@@ -19,7 +19,7 @@ matrix:
     #   env: TYPE=dotnet
     - os: osx
       oxs_image: xcode8
-      solution: LibSkycoinNet.sln
+      solution: lib/swig/LibSkycoinNet.sln
       env: TYPE=mono
       mono: 4.8.0
 

@@ -78,8 +78,6 @@ configure: configure-$(OS)
 	mkdir -p $(BUILD_DIR)/usr/tmp $(BUILD_DIR)/usr/lib $(BUILD_DIR)/usr/include
 	mkdir -p $(BUILDLIBC_DIR) $(BIN_DIR) $(INCLUDE_DIR)
 	rm -f $(BUILDLIBC_DIR)/libskycoin.a
-	GOPATH="$(GOPATH_DIR)" make -C $(SKYCOIN_DIR) build-libc-static
-	ls $(BUILDLIBC_DIR)
 
 build-libc: configure ## Build libskycoin C client library
 	GOPATH="$(REPO_ROOT)/$(GOPATH_DIR)" make -C $(SKYLIBC_DIR) clean-libc
