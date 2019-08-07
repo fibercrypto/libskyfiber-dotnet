@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-
-set -ex
 
 if [[ "$TYPE" == "mono" ]]; then
     # INstall mono
