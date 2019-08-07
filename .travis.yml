@@ -7,16 +7,16 @@ env:
 
 matrix:
   include:
-    # - os: linux
-    #   dist: xenial
-    #   mono: latest
-    #   solution: LibskycoinNet.sln
-    #   env: TYPE=mono
-    # - os: linux
-    #   dist: xenial
-    #   dotnet: 2.2.102
-    #   solution: LibSkycoinDotNet.sln
-    #   env: TYPE=dotnet
+    - os: linux
+      dist: xenial
+      mono: latest
+      solution: LibskycoinNet.sln
+      env: TYPE=mono
+    - os: linux
+      dist: xenial
+      dotnet: 2.2.102
+      solution: LibSkycoinDotNet.sln
+      env: TYPE=dotnet
     - os: osx
       oxs_image: xcode8
       solution: lib/swig/LibSkycoinNet.sln
