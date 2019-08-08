@@ -14,11 +14,11 @@ fi
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     # curl -o MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg https://download.mono-project.com/archive/4.8.0/macos-10-universal/MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg
-    curl -o dotnet-sdk-2.2.102-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/34608266-602a-4f3c-9608-48364b01ac9a/3b890a39949af4592189ca9a300cf651/dotnet-sdk-2.2.102-osx-x64.pkg
-    curl -o MonoFramework.pkg https://download.mono-project.com/archive/6.0.0/macos-10-universal/MonoFramework-MDK-6.0.0.319.macos10.xamarin.universal.pkg
-    sudo installer -pkg MonoFramework.pkg -target /
+    # curl -o dotnet-sdk-2.2.102-osx-gs-x64.pkg https://download.visualstudio.microsoft.com/download/pr/34608266-602a-4f3c-9608-48364b01ac9a/3b890a39949af4592189ca9a300cf651/dotnet-sdk-2.2.102-osx-x64.pkg
+    # curl -o MonoFramework.pkg https://download.mono-project.com/archive/6.0.0/macos-10-universal/MonoFramework-MDK-6.0.0.319.macos10.xamarin.universal.pkg
+    # sudo installer -pkg MonoFramework.pkg -target /
     # sudo installer -pkg MonoFramework-MDK-4.8.0.524.macos10.xamarin.universal.pkg -target /
-    sudo installer -pkg dotnet-sdk-2.2.102-osx-gs-x64.pkg -target /
+    # sudo installer -pkg dotnet-sdk-2.2.102-osx-gs-x64.pkg -target /
     brew update;
     echo 'Creating swig@3.0.12 formula';
     cd "$(brew --repository)/Library/Taps/homebrew/homebrew-core";

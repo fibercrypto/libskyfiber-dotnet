@@ -15,11 +15,11 @@ matrix:
       # env: TYPE=dotnet
       # language: go
     - os: osx
-      # language: csharp
+      language: csharp
       oxs_image: xcode8
-      # solution: lib/swig/LibSkycoinNet.sln
+      solution: lib/swig/LibSkycoinNet.sln
       env: TYPE=mono
-      # mono: 4.8.0
+      mono: 4.6.0
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash .travis/install_linux.sh ; fi
