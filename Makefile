@@ -52,7 +52,7 @@ endif
   LDPATH=$(shell printenv DYLD_LIBRARY_PATH)
   LDPATHVAR=DYLD_LIBRARY_PATH
   LDFLAGS=$(LIBC_FLAGS) -dynamiclib -flat_namespace -static -framework CoreFoundation -framework Security
-  LDCOPY=~/Library/Frameworks
+  LDCOPY= ~/lib
   LDNAME= libskycoin.dylib
   OS = darwin
 else
@@ -111,7 +111,6 @@ build-libskycoin-net: build-libc build-swig ## Build shared library including SW
 	$(CC) -c -fpic -I$(CSHARP_SWIG_DIR)/swig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	rm -rf build/usr/lib/$(LDNAME)
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o $(LDCOPY)/$(LDNAME) $(LDFLAGS)
-	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o ~/lib/$(LDNAME) $(LDFLAGS)
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin
 	mkdir -p $(CSHARP_SWIG_DIR)/LibSkycoinDotNetTest/bin
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
@@ -138,7 +137,7 @@ build-dotnet: build-libskycoin-net build-sln-dotnet ## Build LibSkycoinNet Assem
 build-mono: build-libskycoin-net build-sln-mono ## Build LibSkycoinNet Assembly by Mono
 
 test-libsky-mono: build-mono ## Run LibSkycoinNet test suite mono
-	$(LDPATHVAR)="$(LDCOPY):~/lib:$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 
 test-libsky-dotnet: build-dotnet
 	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
