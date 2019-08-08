@@ -6,14 +6,14 @@ env:
 
 matrix:
   include:
-    # - os: linux
-      # dist: xenial
-      # env: TYPE=mono
-      # language: go
-    # - os: linux
-      # dist: xenial
-      # env: TYPE=dotnet
-      # language: go
+    - os: linux
+      dist: xenial
+      env: TYPE=mono
+      language: go
+    - os: linux
+      dist: xenial
+      env: TYPE=dotnet
+      language: go
     - os: osx
       language: csharp
       oxs_image: xcode8

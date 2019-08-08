@@ -4,14 +4,14 @@
 #
 
 wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-cert-sync --import --sync
+cert-sync --sync
 
 echo "[INFO] remove bin/Debug/Skyapi.Test.dll"
 rm src/Skyapi.Test/bin/Debug/Skyapi.Test.dll 2> /dev/null
 
 echo "[INFO] install NUnit runners via NuGet"
 wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-cert-sync --import --sync
+cert-sync --sync
 mono nuget.exe install src/Skyapi.Test/packages.config -o packages
 
 echo "[INFO] Install NUnit runners via NuGet"
