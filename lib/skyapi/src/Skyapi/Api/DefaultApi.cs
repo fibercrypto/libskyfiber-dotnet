@@ -154,7 +154,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>List&lt;BlockSchema&gt;</returns>
-        List<BlockSchema> Block (string hash = null, int? seq = null);
+        BlockSchema Block (string hash = null, int? seq = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -166,7 +166,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>ApiResponse of List&lt;BlockSchema&gt;</returns>
-        ApiResponse<List<BlockSchema>> BlockWithHttpInfo (string hash = null, int? seq = null);
+        ApiResponse<BlockSchema> BlockWithHttpInfo (string hash = null, int? seq = null);
         /// <summary>
         /// Returns the blockchain metadata.
         /// </summary>
@@ -1352,7 +1352,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of List&lt;BlockSchema&gt;</returns>
-        System.Threading.Tasks.Task<List<BlockSchema>> BlockAsync (string hash = null, int? seq = null);
+        System.Threading.Tasks.Task<BlockSchema> BlockAsync (string hash = null, int? seq = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1364,7 +1364,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BlockSchema&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<BlockSchema>>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null);
+        System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null);
         /// <summary>
         /// Returns the blockchain metadata.
         /// </summary>
@@ -3315,10 +3315,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
-        /// <returns>List&lt;BlockSchema&gt;</returns>
-        public List<BlockSchema> Block (string hash = null, int? seq = null)
+        /// <returns>BlockSchema</returns>
+        public BlockSchema Block (string hash = null, int? seq = null)
         {
-             ApiResponse<List<BlockSchema>> localVarResponse = BlockWithHttpInfo(hash, seq);
+             ApiResponse<BlockSchema> localVarResponse = BlockWithHttpInfo(hash, seq);
              return localVarResponse.Data;
         }
 
@@ -3328,8 +3328,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
-        /// <returns>ApiResponse of List&lt;BlockSchema&gt;</returns>
-        public ApiResponse< List<BlockSchema> > BlockWithHttpInfo (string hash = null, int? seq = null)
+        /// <returns>ApiResponse of BlockSchema</returns>
+        public ApiResponse<BlockSchema> BlockWithHttpInfo (string hash = null, int? seq = null)
         {
 
             var localVarPath = "/api/v1/block";
@@ -3371,9 +3371,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<BlockSchema>>(localVarStatusCode,
+            return new ApiResponse<BlockSchema>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<BlockSchema>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BlockSchema>)));
+                (BlockSchema) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BlockSchema)));
         }
 
         /// <summary>
@@ -3382,10 +3382,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
-        /// <returns>Task of List&lt;BlockSchema&gt;</returns>
-        public async System.Threading.Tasks.Task<List<BlockSchema>> BlockAsync (string hash = null, int? seq = null)
+        /// <returns>Task of BlockSchema</returns>
+        public async System.Threading.Tasks.Task<BlockSchema> BlockAsync (string hash = null, int? seq = null)
         {
-             ApiResponse<List<BlockSchema>> localVarResponse = await BlockAsyncWithHttpInfo(hash, seq);
+             ApiResponse<BlockSchema> localVarResponse = await BlockAsyncWithHttpInfo(hash, seq);
              return localVarResponse.Data;
 
         }
@@ -3396,8 +3396,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;BlockSchema&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<BlockSchema>>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null)
+        /// <returns>Task of ApiResponse (BlockSchema)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null)
         {
 
             var localVarPath = "/api/v1/block";
@@ -3439,9 +3439,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<BlockSchema>>(localVarStatusCode,
+            return new ApiResponse<BlockSchema>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<BlockSchema>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BlockSchema>)));
+                (BlockSchema) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BlockSchema)));
         }
 
         /// <summary>
@@ -3739,7 +3739,7 @@ namespace Skyapi.Api
 
             if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
             if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seqs", seqs)); // query parameter
+            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs", string.Join(",",seqs))); // query parameter
 
 
             // make the HTTP request
@@ -3810,7 +3810,7 @@ namespace Skyapi.Api
 
             if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
             if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "seqs", seqs)); // query parameter
+            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs", string.Join(",",seqs))); // query parameter
 
 
             // make the HTTP request
@@ -7275,7 +7275,11 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (addrs != null){
+	    var mypost=new Dictionary<string, string>();
+		    mypost["addrs"]=addrs;
+			    localVarPostBody=this.Configuration.ApiClient.Serialize(mypost); 
+	    }// body parameter
             if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
 
             // authentication (csrfAuth) required
@@ -7348,7 +7352,11 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+             if (addrs != null){
+	    var mypost=new Dictionary<string, string>();
+		    mypost["addrs"]=addrs;
+			    localVarPostBody=this.Configuration.ApiClient.Serialize(mypost); 
+	    } // body parameter
             if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
 
             // authentication (csrfAuth) required

@@ -41,7 +41,7 @@ namespace Skyapi.Model
         /// <param name="previousBlockHash">previousBlockHash.</param>
         /// <param name="txBodyHash">txBodyHash.</param>
         /// <param name="uxHash">uxHash.</param>
-        public BlockVerboseSchemaHeader(int? seq = default(int?), int? timestamp = default(int?), int? fee = default(int?), int? version = default(int?), string blockHash = default(string), string previousBlockHash = default(string), string txBodyHash = default(string), string uxHash = default(string))
+        public BlockVerboseSchemaHeader(int? seq = default(int?), int? timestamp = default(int?), long? fee = default(long?), int? version = default(int?), string blockHash = default(string), string previousBlockHash = default(string), string txBodyHash = default(string), string uxHash = default(string))
         {
             this.Seq = seq;
             this.Timestamp = timestamp;
@@ -69,7 +69,7 @@ namespace Skyapi.Model
         /// Gets or Sets Fee
         /// </summary>
         [DataMember(Name="fee", EmitDefaultValue=false)]
-        public int? Fee { get; set; }
+        public long? Fee { get; set; }
 
         /// <summary>
         /// Gets or Sets Version
