@@ -100,24 +100,19 @@ build-swig: ## Generate C# C module from SWIG interfaces
 		fi \
 	}
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
-	mkdir -p $(CSHARP_SWIG_DIR)/LibSkycoinDotNet/skycoin
 	rm -f $(CSHARP_SWIG_DIR)/swig/include/swig.h
 	rm -f skycoinnet_wrap.o
 	rm -f skycoinnet_wrap.c
 	swig -csharp -oldvarnames -namespace  skycoin -I$(LIBSWIG_DIR)/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
-	swig -csharp -oldvarnames -namespace  skycoin -I$(LIBSWIG_DIR)/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibSkycoinDotNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -I$(CSHARP_SWIG_DIR)/swig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	rm -rf build/usr/lib/$(LDNAME)
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o $(LDCOPY)/$(LDNAME) $(LDFLAGS)
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin
-	mkdir -p $(CSHARP_SWIG_DIR)/LibSkycoinDotNetTest/bin
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
-	mkdir -p $(CSHARP_SWIG_DIR)/LibSkycoinDotNetTest/bin/Release
-	mkdir -p $(CSHARP_SWIG_DIR)/LibSkycoinDotNetTest/bin/Release/netcoreapp2.2
-	rm -rf  $(CSHARP_SWIG_DIR)/LibSkycoinNetTest/bin/Release/$(LDNAME)
-	rm -rf  $(CSHARP_SWIG_DIR)/LibSkycoinDotNetTest/bin/Release/$(LDNAME)
+	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/netcoreapp2.2
+	rm -rf  $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/$(LDNAME)
 
 install-deps-mono: ## Install development dependencies by mono
 	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
