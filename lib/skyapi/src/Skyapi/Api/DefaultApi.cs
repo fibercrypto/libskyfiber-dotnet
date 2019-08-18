@@ -24,6 +24,7 @@ namespace Skyapi.Api
     public interface IDefaultApi : IApiAccessor
     {
         #region Synchronous Operations
+
         /// <summary>
         /// Returns the total number of unique address that have coins.
         /// </summary>
@@ -32,7 +33,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse200</returns>
-        InlineResponse200 AddressCount ();
+        InlineResponse200 AddressCount();
 
         /// <summary>
         /// Returns the total number of unique address that have coins.
@@ -42,7 +43,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        ApiResponse<InlineResponse200> AddressCountWithHttpInfo ();
+        ApiResponse<InlineResponse200> AddressCountWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -52,7 +54,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>List&lt;Object&gt;</returns>
-        List<Object> AddressUxouts (string address);
+        List<Object> AddressUxouts(string address);
 
         /// <summary>
         /// 
@@ -63,7 +65,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        ApiResponse<List<Object>> AddressUxoutsWithHttpInfo (string address);
+        ApiResponse<List<Object>> AddressUxoutsWithHttpInfo(string address);
+
         /// <summary>
         /// 
         /// </summary>
@@ -72,7 +75,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        string ApiV1RawtxGet ();
+        string ApiV1RawtxGet();
 
         /// <summary>
         /// 
@@ -82,7 +85,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ApiV1RawtxGetWithHttpInfo ();
+        ApiResponse<string> ApiV1RawtxGetWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -91,7 +95,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        string ApiV2MetricsGet ();
+        string ApiV2MetricsGet();
 
         /// <summary>
         /// 
@@ -101,7 +105,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ApiV2MetricsGetWithHttpInfo ();
+        ApiResponse<string> ApiV2MetricsGetWithHttpInfo();
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -111,7 +116,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Object</returns>
-        Object BalanceGet (string addrs);
+        Object BalanceGet(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -122,7 +127,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BalanceGetWithHttpInfo (string addrs);
+        ApiResponse<Object> BalanceGetWithHttpInfo(string addrs);
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -132,7 +138,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Object</returns>
-        Object BalancePost (string addrs);
+        Object BalancePost(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -143,7 +149,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BalancePostWithHttpInfo (string addrs);
+        ApiResponse<Object> BalancePostWithHttpInfo(string addrs);
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -154,7 +161,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>List&lt;BlockSchema&gt;</returns>
-        BlockSchema Block (string hash = null, int? seq = null);
+        BlockSchema Block(string hash = null, int? seq = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -166,7 +173,8 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>ApiResponse of List&lt;BlockSchema&gt;</returns>
-        ApiResponse<BlockSchema> BlockWithHttpInfo (string hash = null, int? seq = null);
+        ApiResponse<BlockSchema> BlockWithHttpInfo(string hash = null, int? seq = null);
+
         /// <summary>
         /// Returns the blockchain metadata.
         /// </summary>
@@ -175,7 +183,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object BlockchainMetadata ();
+        Object BlockchainMetadata();
 
         /// <summary>
         /// Returns the blockchain metadata.
@@ -185,7 +193,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BlockchainMetadataWithHttpInfo ();
+        ApiResponse<Object> BlockchainMetadataWithHttpInfo();
+
         /// <summary>
         /// Returns the blockchain sync progress.
         /// </summary>
@@ -194,7 +203,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object BlockchainProgress ();
+        Object BlockchainProgress();
 
         /// <summary>
         /// Returns the blockchain sync progress.
@@ -204,7 +213,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BlockchainProgressWithHttpInfo ();
+        ApiResponse<Object> BlockchainProgressWithHttpInfo();
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -214,9 +224,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seqs = null);
+        InlineResponse2001 Blocks(int? start = null, int? end = null, List<int?> seqs = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -227,9 +237,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        ApiResponse<InlineResponse2001> BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null);
+        ApiResponse<InlineResponse2001> BlocksWithHttpInfo(int? start = null, int? end = null, List<int?> seqs = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -238,7 +249,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 CoinSupply ();
+        InlineResponse2002 CoinSupply();
 
         /// <summary>
         /// 
@@ -248,7 +259,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2002</returns>
-        ApiResponse<InlineResponse2002> CoinSupplyWithHttpInfo ();
+        ApiResponse<InlineResponse2002> CoinSupplyWithHttpInfo();
+
         /// <summary>
         /// Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
         /// </summary>
@@ -257,7 +269,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2003</returns>
-        InlineResponse2003 Csrf ();
+        InlineResponse2003 Csrf();
 
         /// <summary>
         /// Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
@@ -267,7 +279,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2003</returns>
-        ApiResponse<InlineResponse2003> CsrfWithHttpInfo ();
+        ApiResponse<InlineResponse2003> CsrfWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -278,7 +291,7 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns></returns>
-        void DataDELETE (string type = null, string key = null);
+        void DataDELETE(string type = null, string key = null);
 
         /// <summary>
         /// 
@@ -290,7 +303,8 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DataDELETEWithHttpInfo (string type = null, string key = null);
+        ApiResponse<Object> DataDELETEWithHttpInfo(string type = null, string key = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -301,7 +315,7 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Object</returns>
-        Object DataGET (string type = null, string key = null);
+        Object DataGET(string type = null, string key = null);
 
         /// <summary>
         /// 
@@ -313,7 +327,8 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DataGETWithHttpInfo (string type = null, string key = null);
+        ApiResponse<Object> DataGETWithHttpInfo(string type = null, string key = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -325,7 +340,7 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns></returns>
-        void DataPOST (string type = null, string key = null, string val = null);
+        void DataPOST(string type = null, string key = null, string val = null);
 
         /// <summary>
         /// 
@@ -338,7 +353,8 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DataPOSTWithHttpInfo (string type = null, string key = null, string val = null);
+        ApiResponse<Object> DataPOSTWithHttpInfo(string type = null, string key = null, string val = null);
+
         /// <summary>
         /// defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
         /// </summary>
@@ -347,7 +363,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> DefaultConnections ();
+        List<string> DefaultConnections();
 
         /// <summary>
         /// defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
@@ -357,7 +373,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> DefaultConnectionsWithHttpInfo ();
+        ApiResponse<List<string>> DefaultConnectionsWithHttpInfo();
+
         /// <summary>
         /// Returns node health data.
         /// </summary>
@@ -366,7 +383,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object Health ();
+        Object Health();
 
         /// <summary>
         /// Returns node health data.
@@ -376,7 +393,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> HealthWithHttpInfo ();
+        ApiResponse<Object> HealthWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -386,7 +404,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Object</returns>
-        Object LastBlocks (int? num);
+        Object LastBlocks(int? num);
 
         /// <summary>
         /// 
@@ -397,7 +415,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> LastBlocksWithHttpInfo (int? num);
+        ApiResponse<Object> LastBlocksWithHttpInfo(int? num);
+
         /// <summary>
         /// This endpoint returns a specific connection.
         /// </summary>
@@ -407,7 +426,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>NetworkConnectionSchema</returns>
-        NetworkConnectionSchema NetworkConnection (string addr);
+        NetworkConnectionSchema NetworkConnection(string addr);
 
         /// <summary>
         /// This endpoint returns a specific connection.
@@ -418,7 +437,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of NetworkConnectionSchema</returns>
-        ApiResponse<NetworkConnectionSchema> NetworkConnectionWithHttpInfo (string addr);
+        ApiResponse<NetworkConnectionSchema> NetworkConnectionWithHttpInfo(string addr);
+
         /// <summary>
         /// This endpoint returns all outgoings connections.
         /// </summary>
@@ -429,7 +449,7 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>InlineResponse2004</returns>
-        InlineResponse2004 NetworkConnections (string states = null, string direction = null);
+        InlineResponse2004 NetworkConnections(string states = null, string direction = null);
 
         /// <summary>
         /// This endpoint returns all outgoings connections.
@@ -441,7 +461,8 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2004</returns>
-        ApiResponse<InlineResponse2004> NetworkConnectionsWithHttpInfo (string states = null, string direction = null);
+        ApiResponse<InlineResponse2004> NetworkConnectionsWithHttpInfo(string states = null, string direction = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -451,7 +472,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns></returns>
-        void NetworkConnectionsDisconnect (string id);
+        void NetworkConnectionsDisconnect(string id);
 
         /// <summary>
         /// 
@@ -462,7 +483,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NetworkConnectionsDisconnectWithHttpInfo (string id);
+        ApiResponse<Object> NetworkConnectionsDisconnectWithHttpInfo(string id);
+
         /// <summary>
         /// 
         /// </summary>
@@ -471,7 +493,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> NetworkConnectionsExchange ();
+        List<string> NetworkConnectionsExchange();
 
         /// <summary>
         /// 
@@ -481,7 +503,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> NetworkConnectionsExchangeWithHttpInfo ();
+        ApiResponse<List<string>> NetworkConnectionsExchangeWithHttpInfo();
+
         /// <summary>
         /// trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
         /// </summary>
@@ -490,7 +513,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> NetworkConnectionsTrust ();
+        List<string> NetworkConnectionsTrust();
 
         /// <summary>
         /// trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
@@ -500,7 +523,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> NetworkConnectionsTrustWithHttpInfo ();
+        ApiResponse<List<string>> NetworkConnectionsTrustWithHttpInfo();
+
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
         /// </summary>
@@ -511,7 +535,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        Object OutputsGet (List<string> address = null, List<string> hash = null);
+        Object OutputsGet(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -523,7 +547,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> OutputsGetWithHttpInfo (List<string> address = null, List<string> hash = null);
+        ApiResponse<Object> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null);
+
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
         /// </summary>
@@ -534,7 +559,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        Object OutputsPost (string address = null, string hash = null);
+        Object OutputsPost(string address = null, string hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -546,7 +571,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> OutputsPostWithHttpInfo (string address = null, string hash = null);
+        ApiResponse<Object> OutputsPostWithHttpInfo(string address = null, string hash = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -555,7 +581,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;InlineResponse20010&gt;</returns>
-        List<InlineResponse20010> PendingTxs ();
+        List<InlineResponse20010> PendingTxs();
 
         /// <summary>
         /// 
@@ -565,7 +591,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;InlineResponse20010&gt;</returns>
-        ApiResponse<List<InlineResponse20010>> PendingTxsWithHttpInfo ();
+        ApiResponse<List<InlineResponse20010>> PendingTxsWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -574,7 +601,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object ResendUnconfirmedTxns ();
+        Object ResendUnconfirmedTxns();
 
         /// <summary>
         /// 
@@ -584,18 +611,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> ResendUnconfirmedTxnsWithHttpInfo ();
-        /// <summary>
-        /// Returns the top skycoin holders.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
-        /// <param name="n">include distribution addresses or not, default value false (optional)</param>
-        /// <returns>Object</returns>
-        Object Richlist (bool? includeDistribution = null, string n = null);
+        ApiResponse<Object> ResendUnconfirmedTxnsWithHttpInfo();
 
         /// <summary>
         /// Returns the top skycoin holders.
@@ -606,8 +622,21 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
+        /// <returns>Object</returns>
+        Object Richlist(bool? includeDistribution = null, string n = null);
+
+        /// <summary>
+        /// Returns the top skycoin holders.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
+        /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> RichlistWithHttpInfo (bool? includeDistribution = null, string n = null);
+        ApiResponse<Object> RichlistWithHttpInfo(bool? includeDistribution = null, string n = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -617,7 +646,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Transaction</returns>
-        Transaction Transaction (string txid);
+        Transaction Transaction(string txid);
 
         /// <summary>
         /// 
@@ -628,7 +657,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>ApiResponse of Transaction</returns>
-        ApiResponse<Transaction> TransactionWithHttpInfo (string txid);
+        ApiResponse<Transaction> TransactionWithHttpInfo(string txid);
+
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
         /// </summary>
@@ -638,7 +668,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>string</returns>
-        string TransactionInject (string rawtx);
+        string TransactionInject(string rawtx);
 
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
@@ -649,7 +679,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> TransactionInjectWithHttpInfo (string rawtx);
+        ApiResponse<string> TransactionInjectWithHttpInfo(string rawtx);
+
         /// <summary>
         /// 
         /// </summary>
@@ -659,7 +690,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>InlineResponse2008</returns>
-        InlineResponse2008 TransactionPost (TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+        InlineResponse2008 TransactionPost(TransactionV2ParamsAddress transactionV2ParamsAddress = null);
 
         /// <summary>
         /// 
@@ -670,7 +701,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>ApiResponse of InlineResponse2008</returns>
-        ApiResponse<InlineResponse2008> TransactionPostWithHttpInfo (TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+        ApiResponse<InlineResponse2008> TransactionPostWithHttpInfo(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -680,7 +713,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>InlineResponse2008</returns>
-        InlineResponse2008 TransactionPostUnspent (TransactionV2ParamsUnspent transactionV2ParamsUnspent);
+        InlineResponse2008 TransactionPostUnspent(TransactionV2ParamsUnspent transactionV2ParamsUnspent);
 
         /// <summary>
         /// 
@@ -691,17 +724,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>ApiResponse of InlineResponse2008</returns>
-        ApiResponse<InlineResponse2008> TransactionPostUnspentWithHttpInfo (TransactionV2ParamsUnspent transactionV2ParamsUnspent);
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Object</returns>
-        Object TransactionRaw (string txid = null);
+        ApiResponse<InlineResponse2008> TransactionPostUnspentWithHttpInfo(
+            TransactionV2ParamsUnspent transactionV2ParamsUnspent);
 
         /// <summary>
         /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
@@ -711,18 +735,19 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionRawWithHttpInfo (string txid = null);
+        /// <returns>Object</returns>
+        Object TransactionRaw(string txid = null);
+
         /// <summary>
-        /// 
+        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
         /// </summary>
         /// <remarks>
-        /// Decode and verify an encoded transaction
+        /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
-        /// <returns>Object</returns>
-        Object TransactionVerify (TransactionVerifyRequest transactionVerifyRequest);
+        /// <param name="txid">Transaction id hash (optional)</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> TransactionRawWithHttpInfo(string txid = null);
 
         /// <summary>
         /// 
@@ -732,8 +757,20 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
+        /// <returns>Object</returns>
+        Object TransactionVerify(TransactionVerifyRequest transactionVerifyRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Decode and verify an encoded transaction
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionVerifyRequest"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionVerifyWithHttpInfo (TransactionVerifyRequest transactionVerifyRequest);
+        ApiResponse<Object> TransactionVerifyWithHttpInfo(TransactionVerifyRequest transactionVerifyRequest);
+
         /// <summary>
         /// Returns transactions that match the filters.
         /// </summary>
@@ -744,7 +781,7 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Object</returns>
-        Object TransactionsGet (string addrs = null, string confirmed = null);
+        Object TransactionsGet(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -756,7 +793,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionsGetWithHttpInfo (string addrs = null, string confirmed = null);
+        ApiResponse<Object> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null);
+
         /// <summary>
         /// Returns transactions that match the filters.
         /// </summary>
@@ -767,7 +805,7 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Object</returns>
-        Object TransactionsPost (string addrs = null, string confirmed = null);
+        Object TransactionsPost(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -779,7 +817,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionsPostWithHttpInfo (string addrs = null, string confirmed = null);
+        ApiResponse<Object> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null);
+
         /// <summary>
         /// Returns an unspent output by ID.
         /// </summary>
@@ -789,7 +828,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Object</returns>
-        Object Uxout (string uxid = null);
+        Object Uxout(string uxid = null);
 
         /// <summary>
         /// Returns an unspent output by ID.
@@ -800,7 +839,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UxoutWithHttpInfo (string uxid = null);
+        ApiResponse<Object> UxoutWithHttpInfo(string uxid = null);
+
         /// <summary>
         /// Verifies a Skycoin address.
         /// </summary>
@@ -810,7 +850,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Object</returns>
-        Object VerifyAddress (Object address);
+        Object VerifyAddress(Object address);
 
         /// <summary>
         /// Verifies a Skycoin address.
@@ -821,7 +861,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> VerifyAddressWithHttpInfo (Object address);
+        ApiResponse<Object> VerifyAddressWithHttpInfo(Object address);
+
         /// <summary>
         /// 
         /// </summary>
@@ -830,7 +871,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2005</returns>
-        InlineResponse2005 Version ();
+        InlineResponse2005 Version();
 
         /// <summary>
         /// 
@@ -840,7 +881,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2005</returns>
-        ApiResponse<InlineResponse2005> VersionWithHttpInfo ();
+        ApiResponse<InlineResponse2005> VersionWithHttpInfo();
+
         /// <summary>
         /// Returns a wallet by id.
         /// </summary>
@@ -850,7 +892,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        Object Wallet (string id);
+        Object Wallet(string id);
 
         /// <summary>
         /// Returns a wallet by id.
@@ -861,7 +903,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletWithHttpInfo (string id);
+        ApiResponse<Object> WalletWithHttpInfo(string id);
+
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -871,7 +914,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        Object WalletBalance (string id);
+        Object WalletBalance(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -882,7 +925,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletBalanceWithHttpInfo (string id);
+        ApiResponse<Object> WalletBalanceWithHttpInfo(string id);
+
         /// <summary>
         /// 
         /// </summary>
@@ -896,7 +940,7 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        Object WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
+        Object WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
 
         /// <summary>
         /// 
@@ -911,7 +955,9 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletCreateWithHttpInfo (string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
+        ApiResponse<Object> WalletCreateWithHttpInfo(string seed, string label, int? scan = null, bool? encrypt = null,
+            string password = null);
+
         /// <summary>
         /// Decrypts wallet.
         /// </summary>
@@ -922,7 +968,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Object</returns>
-        Object WalletDecrypt (string id, string password);
+        Object WalletDecrypt(string id, string password);
 
         /// <summary>
         /// Decrypts wallet.
@@ -934,7 +980,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletDecryptWithHttpInfo (string id, string password);
+        ApiResponse<Object> WalletDecryptWithHttpInfo(string id, string password);
+
         /// <summary>
         /// Encrypt wallet.
         /// </summary>
@@ -945,7 +992,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Object</returns>
-        Object WalletEncrypt (string id, string password);
+        Object WalletEncrypt(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -957,7 +1004,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletEncryptWithHttpInfo (string id, string password);
+        ApiResponse<Object> WalletEncryptWithHttpInfo(string id, string password);
+
         /// <summary>
         /// 
         /// </summary>
@@ -967,7 +1015,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>InlineResponse2007</returns>
-        InlineResponse2007 WalletFolder (string addr);
+        InlineResponse2007 WalletFolder(string addr);
 
         /// <summary>
         /// 
@@ -978,19 +1026,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo (string addr);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Generates new addresses
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Wallet Id</param>
-        /// <param name="num">The number you want to generate (optional)</param>
-        /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Object</returns>
-        Object WalletNewAddress (string id, string num = null, string password = null);
+        ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo(string addr);
 
         /// <summary>
         /// 
@@ -1002,8 +1038,22 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id</param>
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
+        /// <returns>Object</returns>
+        Object WalletNewAddress(string id, string num = null, string password = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Generates new addresses
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Wallet Id</param>
+        /// <param name="num">The number you want to generate (optional)</param>
+        /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletNewAddressWithHttpInfo (string id, string num = null, string password = null);
+        ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, string num = null, string password = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1013,7 +1063,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Object</returns>
-        Object WalletNewSeed (string entropy = null);
+        Object WalletNewSeed(string entropy = null);
 
         /// <summary>
         /// 
@@ -1024,7 +1074,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletNewSeedWithHttpInfo (string entropy = null);
+        ApiResponse<Object> WalletNewSeedWithHttpInfo(string entropy = null);
+
         /// <summary>
         /// Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
         /// </summary>
@@ -1036,7 +1087,7 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Object</returns>
-        Object WalletRecover (string id, string seed, string password = null);
+        Object WalletRecover(string id, string seed, string password = null);
 
         /// <summary>
         /// Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
@@ -1049,18 +1100,7 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletRecoverWithHttpInfo (string id, string seed, string password = null);
-        /// <summary>
-        /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Wallet Id.</param>
-        /// <param name="password">Wallet password.</param>
-        /// <returns>Object</returns>
-        Object WalletSeed (string id, string password);
+        ApiResponse<Object> WalletRecoverWithHttpInfo(string id, string seed, string password = null);
 
         /// <summary>
         /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
@@ -1071,8 +1111,21 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
+        /// <returns>Object</returns>
+        Object WalletSeed(string id, string password);
+
+        /// <summary>
+        /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Wallet Id.</param>
+        /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletSeedWithHttpInfo (string id, string password);
+        ApiResponse<Object> WalletSeedWithHttpInfo(string id, string password);
+
         /// <summary>
         /// Verifies a wallet seed.
         /// </summary>
@@ -1082,7 +1135,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Object</returns>
-        Object WalletSeedVerify (string seed = null);
+        Object WalletSeedVerify(string seed = null);
 
         /// <summary>
         /// Verifies a wallet seed.
@@ -1093,7 +1146,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletSeedVerifyWithHttpInfo (string seed = null);
+        ApiResponse<Object> WalletSeedVerifyWithHttpInfo(string seed = null);
+
         /// <summary>
         /// Creates a signed transaction
         /// </summary>
@@ -1103,7 +1157,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Object</returns>
-        Object WalletTransaction (WalletTransactionRequest walletTransactionRequest);
+        Object WalletTransaction(WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -1114,7 +1168,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletTransactionWithHttpInfo (WalletTransactionRequest walletTransactionRequest);
+        ApiResponse<Object> WalletTransactionWithHttpInfo(WalletTransactionRequest walletTransactionRequest);
+
         /// <summary>
         /// Creates a signed transaction
         /// </summary>
@@ -1124,7 +1179,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>InlineResponse2009</returns>
-        InlineResponse2009 WalletTransactionSign (WalletTransactionSignRequest walletTransactionSignRequest);
+        InlineResponse2009 WalletTransactionSign(WalletTransactionSignRequest walletTransactionSignRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -1135,7 +1190,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>ApiResponse of InlineResponse2009</returns>
-        ApiResponse<InlineResponse2009> WalletTransactionSignWithHttpInfo (WalletTransactionSignRequest walletTransactionSignRequest);
+        ApiResponse<InlineResponse2009> WalletTransactionSignWithHttpInfo(
+            WalletTransactionSignRequest walletTransactionSignRequest);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1145,7 +1202,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>InlineResponse2006</returns>
-        InlineResponse2006 WalletTransactions (string id);
+        InlineResponse2006 WalletTransactions(string id);
 
         /// <summary>
         /// 
@@ -1156,7 +1213,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>ApiResponse of InlineResponse2006</returns>
-        ApiResponse<InlineResponse2006> WalletTransactionsWithHttpInfo (string id);
+        ApiResponse<InlineResponse2006> WalletTransactionsWithHttpInfo(string id);
+
         /// <summary>
         /// Unloads wallet from the wallet service.
         /// </summary>
@@ -1166,7 +1224,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns></returns>
-        void WalletUnload (string id);
+        void WalletUnload(string id);
 
         /// <summary>
         /// Unloads wallet from the wallet service.
@@ -1177,7 +1235,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> WalletUnloadWithHttpInfo (string id);
+        ApiResponse<Object> WalletUnloadWithHttpInfo(string id);
+
         /// <summary>
         /// Update the wallet.
         /// </summary>
@@ -1188,7 +1247,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>string</returns>
-        string WalletUpdate (string id, string label);
+        string WalletUpdate(string id, string label);
 
         /// <summary>
         /// Update the wallet.
@@ -1200,7 +1259,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> WalletUpdateWithHttpInfo (string id, string label);
+        ApiResponse<string> WalletUpdateWithHttpInfo(string id, string label);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1209,7 +1269,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Object&gt;</returns>
-        List<Object> Wallets ();
+        List<Object> Wallets();
 
         /// <summary>
         /// 
@@ -1219,9 +1279,12 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        ApiResponse<List<Object>> WalletsWithHttpInfo ();
+        ApiResponse<List<Object>> WalletsWithHttpInfo();
+
         #endregion Synchronous Operations
+
         #region Asynchronous Operations
+
         /// <summary>
         /// Returns the total number of unique address that have coins.
         /// </summary>
@@ -1230,7 +1293,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse200</returns>
-        System.Threading.Tasks.Task<InlineResponse200> AddressCountAsync ();
+        System.Threading.Tasks.Task<InlineResponse200> AddressCountAsync();
 
         /// <summary>
         /// Returns the total number of unique address that have coins.
@@ -1240,7 +1303,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> AddressCountAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> AddressCountAsyncWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -1250,7 +1314,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        System.Threading.Tasks.Task<List<Object>> AddressUxoutsAsync (string address);
+        System.Threading.Tasks.Task<List<Object>> AddressUxoutsAsync(string address);
 
         /// <summary>
         /// 
@@ -1261,7 +1325,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Object>>> AddressUxoutsAsyncWithHttpInfo (string address);
+        System.Threading.Tasks.Task<ApiResponse<List<Object>>> AddressUxoutsAsyncWithHttpInfo(string address);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1270,7 +1335,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync ();
+        System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync();
 
         /// <summary>
         /// 
@@ -1280,7 +1345,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -1289,7 +1355,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ApiV2MetricsGetAsync ();
+        System.Threading.Tasks.Task<string> ApiV2MetricsGetAsync();
 
         /// <summary>
         /// 
@@ -1299,7 +1365,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ApiV2MetricsGetAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<string>> ApiV2MetricsGetAsyncWithHttpInfo();
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -1309,7 +1376,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BalanceGetAsync (string addrs);
+        System.Threading.Tasks.Task<Object> BalanceGetAsync(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1320,7 +1387,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo (string addrs);
+        System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo(string addrs);
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -1330,7 +1398,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BalancePostAsync (string addrs);
+        System.Threading.Tasks.Task<Object> BalancePostAsync(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1341,7 +1409,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo (string addrs);
+        System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo(string addrs);
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -1352,7 +1421,7 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of List&lt;BlockSchema&gt;</returns>
-        System.Threading.Tasks.Task<BlockSchema> BlockAsync (string hash = null, int? seq = null);
+        System.Threading.Tasks.Task<BlockSchema> BlockAsync(string hash = null, int? seq = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1364,7 +1433,9 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BlockSchema&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null);
+        System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo(string hash = null,
+            int? seq = null);
+
         /// <summary>
         /// Returns the blockchain metadata.
         /// </summary>
@@ -1373,7 +1444,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BlockchainMetadataAsync ();
+        System.Threading.Tasks.Task<Object> BlockchainMetadataAsync();
 
         /// <summary>
         /// Returns the blockchain metadata.
@@ -1383,7 +1454,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainMetadataAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainMetadataAsyncWithHttpInfo();
+
         /// <summary>
         /// Returns the blockchain sync progress.
         /// </summary>
@@ -1392,7 +1464,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BlockchainProgressAsync ();
+        System.Threading.Tasks.Task<Object> BlockchainProgressAsync();
 
         /// <summary>
         /// Returns the blockchain sync progress.
@@ -1402,7 +1474,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo();
+
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -1412,9 +1485,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seqs = null);
+        System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync(int? start = null, int? end = null,
+            List<int?> seqs = null);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1425,9 +1499,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo(int? start = null,
+            int? end = null, List<int?> seqs = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1436,7 +1512,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2002</returns>
-        System.Threading.Tasks.Task<InlineResponse2002> CoinSupplyAsync ();
+        System.Threading.Tasks.Task<InlineResponse2002> CoinSupplyAsync();
 
         /// <summary>
         /// 
@@ -1446,7 +1522,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2002)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> CoinSupplyAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> CoinSupplyAsyncWithHttpInfo();
+
         /// <summary>
         /// Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
         /// </summary>
@@ -1455,7 +1532,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2003</returns>
-        System.Threading.Tasks.Task<InlineResponse2003> CsrfAsync ();
+        System.Threading.Tasks.Task<InlineResponse2003> CsrfAsync();
 
         /// <summary>
         /// Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
@@ -1465,7 +1542,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> CsrfAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> CsrfAsyncWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -1476,7 +1554,7 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DataDELETEAsync (string type = null, string key = null);
+        System.Threading.Tasks.Task DataDELETEAsync(string type = null, string key = null);
 
         /// <summary>
         /// 
@@ -1488,7 +1566,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo (string type = null, string key = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo(string type = null,
+            string key = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1499,7 +1579,7 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DataGETAsync (string type = null, string key = null);
+        System.Threading.Tasks.Task<Object> DataGETAsync(string type = null, string key = null);
 
         /// <summary>
         /// 
@@ -1511,7 +1591,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DataGETAsyncWithHttpInfo (string type = null, string key = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>>
+            DataGETAsyncWithHttpInfo(string type = null, string key = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1523,7 +1605,7 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DataPOSTAsync (string type = null, string key = null, string val = null);
+        System.Threading.Tasks.Task DataPOSTAsync(string type = null, string key = null, string val = null);
 
         /// <summary>
         /// 
@@ -1536,7 +1618,9 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo (string type = null, string key = null, string val = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo(string type = null,
+            string key = null, string val = null);
+
         /// <summary>
         /// defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
         /// </summary>
@@ -1545,7 +1629,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> DefaultConnectionsAsync ();
+        System.Threading.Tasks.Task<List<string>> DefaultConnectionsAsync();
 
         /// <summary>
         /// defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
@@ -1555,7 +1639,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> DefaultConnectionsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> DefaultConnectionsAsyncWithHttpInfo();
+
         /// <summary>
         /// Returns node health data.
         /// </summary>
@@ -1564,7 +1649,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> HealthAsync ();
+        System.Threading.Tasks.Task<Object> HealthAsync();
 
         /// <summary>
         /// Returns node health data.
@@ -1574,7 +1659,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> HealthAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> HealthAsyncWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -1584,7 +1670,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> LastBlocksAsync (int? num);
+        System.Threading.Tasks.Task<Object> LastBlocksAsync(int? num);
 
         /// <summary>
         /// 
@@ -1595,7 +1681,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> LastBlocksAsyncWithHttpInfo (int? num);
+        System.Threading.Tasks.Task<ApiResponse<Object>> LastBlocksAsyncWithHttpInfo(int? num);
+
         /// <summary>
         /// This endpoint returns a specific connection.
         /// </summary>
@@ -1605,7 +1692,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of NetworkConnectionSchema</returns>
-        System.Threading.Tasks.Task<NetworkConnectionSchema> NetworkConnectionAsync (string addr);
+        System.Threading.Tasks.Task<NetworkConnectionSchema> NetworkConnectionAsync(string addr);
 
         /// <summary>
         /// This endpoint returns a specific connection.
@@ -1616,7 +1703,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (NetworkConnectionSchema)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NetworkConnectionSchema>> NetworkConnectionAsyncWithHttpInfo (string addr);
+        System.Threading.Tasks.Task<ApiResponse<NetworkConnectionSchema>> NetworkConnectionAsyncWithHttpInfo(
+            string addr);
+
         /// <summary>
         /// This endpoint returns all outgoings connections.
         /// </summary>
@@ -1627,7 +1716,8 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>Task of InlineResponse2004</returns>
-        System.Threading.Tasks.Task<InlineResponse2004> NetworkConnectionsAsync (string states = null, string direction = null);
+        System.Threading.Tasks.Task<InlineResponse2004> NetworkConnectionsAsync(string states = null,
+            string direction = null);
 
         /// <summary>
         /// This endpoint returns all outgoings connections.
@@ -1639,7 +1729,9 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> NetworkConnectionsAsyncWithHttpInfo (string states = null, string direction = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> NetworkConnectionsAsyncWithHttpInfo(
+            string states = null, string direction = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1649,7 +1741,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NetworkConnectionsDisconnectAsync (string id);
+        System.Threading.Tasks.Task NetworkConnectionsDisconnectAsync(string id);
 
         /// <summary>
         /// 
@@ -1660,7 +1752,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NetworkConnectionsDisconnectAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> NetworkConnectionsDisconnectAsyncWithHttpInfo(string id);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1669,7 +1762,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> NetworkConnectionsExchangeAsync ();
+        System.Threading.Tasks.Task<List<string>> NetworkConnectionsExchangeAsync();
 
         /// <summary>
         /// 
@@ -1679,7 +1772,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsExchangeAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsExchangeAsyncWithHttpInfo();
+
         /// <summary>
         /// trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
         /// </summary>
@@ -1688,7 +1782,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> NetworkConnectionsTrustAsync ();
+        System.Threading.Tasks.Task<List<string>> NetworkConnectionsTrustAsync();
 
         /// <summary>
         /// trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
@@ -1698,7 +1792,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsTrustAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsTrustAsyncWithHttpInfo();
+
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
         /// </summary>
@@ -1709,7 +1804,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> OutputsGetAsync (List<string> address = null, List<string> hash = null);
+        System.Threading.Tasks.Task<Object> OutputsGetAsync(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -1721,7 +1816,9 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo (List<string> address = null, List<string> hash = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo(List<string> address = null,
+            List<string> hash = null);
+
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
         /// </summary>
@@ -1732,7 +1829,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> OutputsPostAsync (string address = null, string hash = null);
+        System.Threading.Tasks.Task<Object> OutputsPostAsync(string address = null, string hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -1744,7 +1841,9 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo (string address = null, string hash = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(string address = null,
+            string hash = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1753,7 +1852,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;InlineResponse20010&gt;</returns>
-        System.Threading.Tasks.Task<List<InlineResponse20010>> PendingTxsAsync ();
+        System.Threading.Tasks.Task<List<InlineResponse20010>> PendingTxsAsync();
 
         /// <summary>
         /// 
@@ -1763,7 +1862,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;InlineResponse20010&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<InlineResponse20010>>> PendingTxsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<InlineResponse20010>>> PendingTxsAsyncWithHttpInfo();
+
         /// <summary>
         /// 
         /// </summary>
@@ -1772,7 +1872,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> ResendUnconfirmedTxnsAsync ();
+        System.Threading.Tasks.Task<Object> ResendUnconfirmedTxnsAsync();
 
         /// <summary>
         /// 
@@ -1782,18 +1882,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResendUnconfirmedTxnsAsyncWithHttpInfo ();
-        /// <summary>
-        /// Returns the top skycoin holders.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
-        /// <param name="n">include distribution addresses or not, default value false (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> RichlistAsync (bool? includeDistribution = null, string n = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ResendUnconfirmedTxnsAsyncWithHttpInfo();
 
         /// <summary>
         /// Returns the top skycoin holders.
@@ -1804,8 +1893,22 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> RichlistAsync(bool? includeDistribution = null, string n = null);
+
+        /// <summary>
+        /// Returns the top skycoin holders.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
+        /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RichlistAsyncWithHttpInfo (bool? includeDistribution = null, string n = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RichlistAsyncWithHttpInfo(bool? includeDistribution = null,
+            string n = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1815,7 +1918,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Task of Transaction</returns>
-        System.Threading.Tasks.Task<Transaction> TransactionAsync (string txid);
+        System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid);
 
         /// <summary>
         /// 
@@ -1826,7 +1929,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo (string txid);
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid);
+
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
         /// </summary>
@@ -1836,7 +1940,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> TransactionInjectAsync (string rawtx);
+        System.Threading.Tasks.Task<string> TransactionInjectAsync(string rawtx);
 
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
@@ -1847,7 +1951,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> TransactionInjectAsyncWithHttpInfo (string rawtx);
+        System.Threading.Tasks.Task<ApiResponse<string>> TransactionInjectAsyncWithHttpInfo(string rawtx);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1857,7 +1962,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>Task of InlineResponse2008</returns>
-        System.Threading.Tasks.Task<InlineResponse2008> TransactionPostAsync (TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+        System.Threading.Tasks.Task<InlineResponse2008> TransactionPostAsync(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null);
 
         /// <summary>
         /// 
@@ -1868,7 +1974,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostAsyncWithHttpInfo (TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostAsyncWithHttpInfo(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -1878,7 +1986,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>Task of InlineResponse2008</returns>
-        System.Threading.Tasks.Task<InlineResponse2008> TransactionPostUnspentAsync (TransactionV2ParamsUnspent transactionV2ParamsUnspent);
+        System.Threading.Tasks.Task<InlineResponse2008> TransactionPostUnspentAsync(
+            TransactionV2ParamsUnspent transactionV2ParamsUnspent);
 
         /// <summary>
         /// 
@@ -1889,17 +1998,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostUnspentAsyncWithHttpInfo (TransactionV2ParamsUnspent transactionV2ParamsUnspent);
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionRawAsync (string txid = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostUnspentAsyncWithHttpInfo(
+            TransactionV2ParamsUnspent transactionV2ParamsUnspent);
 
         /// <summary>
         /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
@@ -1909,18 +2009,19 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo (string txid = null);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> TransactionRawAsync(string txid = null);
+
         /// <summary>
-        /// 
+        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
         /// </summary>
         /// <remarks>
-        /// Decode and verify an encoded transaction
+        /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionVerifyAsync (TransactionVerifyRequest transactionVerifyRequest);
+        /// <param name="txid">Transaction id hash (optional)</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo(string txid = null);
 
         /// <summary>
         /// 
@@ -1930,8 +2031,21 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> TransactionVerifyAsync(TransactionVerifyRequest transactionVerifyRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Decode and verify an encoded transaction
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionVerifyRequest"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo (TransactionVerifyRequest transactionVerifyRequest);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo(
+            TransactionVerifyRequest transactionVerifyRequest);
+
         /// <summary>
         /// Returns transactions that match the filters.
         /// </summary>
@@ -1942,7 +2056,7 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionsGetAsync (string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<Object> TransactionsGetAsync(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -1954,7 +2068,9 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo (string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo(string addrs = null,
+            string confirmed = null);
+
         /// <summary>
         /// Returns transactions that match the filters.
         /// </summary>
@@ -1965,7 +2081,7 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionsPostAsync (string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<Object> TransactionsPostAsync(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -1977,7 +2093,9 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo (string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo(string addrs = null,
+            string confirmed = null);
+
         /// <summary>
         /// Returns an unspent output by ID.
         /// </summary>
@@ -1987,7 +2105,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UxoutAsync (string uxid = null);
+        System.Threading.Tasks.Task<Object> UxoutAsync(string uxid = null);
 
         /// <summary>
         /// Returns an unspent output by ID.
@@ -1998,7 +2116,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UxoutAsyncWithHttpInfo (string uxid = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UxoutAsyncWithHttpInfo(string uxid = null);
+
         /// <summary>
         /// Verifies a Skycoin address.
         /// </summary>
@@ -2008,7 +2127,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> VerifyAddressAsync (Object address);
+        System.Threading.Tasks.Task<Object> VerifyAddressAsync(Object address);
 
         /// <summary>
         /// Verifies a Skycoin address.
@@ -2019,7 +2138,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> VerifyAddressAsyncWithHttpInfo (Object address);
+        System.Threading.Tasks.Task<ApiResponse<Object>> VerifyAddressAsyncWithHttpInfo(Object address);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2028,7 +2148,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2005</returns>
-        System.Threading.Tasks.Task<InlineResponse2005> VersionAsync ();
+        System.Threading.Tasks.Task<InlineResponse2005> VersionAsync();
 
         /// <summary>
         /// 
@@ -2038,7 +2158,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> VersionAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> VersionAsyncWithHttpInfo();
+
         /// <summary>
         /// Returns a wallet by id.
         /// </summary>
@@ -2048,7 +2169,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletAsync (string id);
+        System.Threading.Tasks.Task<Object> WalletAsync(string id);
 
         /// <summary>
         /// Returns a wallet by id.
@@ -2059,7 +2180,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo(string id);
+
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
         /// </summary>
@@ -2069,7 +2191,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletBalanceAsync (string id);
+        System.Threading.Tasks.Task<Object> WalletBalanceAsync(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -2080,7 +2202,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo(string id);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2094,7 +2217,8 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletCreateAsync (string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
+        System.Threading.Tasks.Task<Object> WalletCreateAsync(string seed, string label, int? scan = null,
+            bool? encrypt = null, string password = null);
 
         /// <summary>
         /// 
@@ -2109,7 +2233,9 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo (string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo(string seed, string label,
+            int? scan = null, bool? encrypt = null, string password = null);
+
         /// <summary>
         /// Decrypts wallet.
         /// </summary>
@@ -2120,7 +2246,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletDecryptAsync (string id, string password);
+        System.Threading.Tasks.Task<Object> WalletDecryptAsync(string id, string password);
 
         /// <summary>
         /// Decrypts wallet.
@@ -2132,7 +2258,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo (string id, string password);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo(string id, string password);
+
         /// <summary>
         /// Encrypt wallet.
         /// </summary>
@@ -2143,7 +2270,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletEncryptAsync (string id, string password);
+        System.Threading.Tasks.Task<Object> WalletEncryptAsync(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -2155,7 +2282,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo (string id, string password);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo(string id, string password);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2165,7 +2293,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of InlineResponse2007</returns>
-        System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync (string addr);
+        System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync(string addr);
 
         /// <summary>
         /// 
@@ -2176,19 +2304,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo (string addr);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Generates new addresses
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Wallet Id</param>
-        /// <param name="num">The number you want to generate (optional)</param>
-        /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletNewAddressAsync (string id, string num = null, string password = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo(string addr);
 
         /// <summary>
         /// 
@@ -2200,8 +2316,23 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id</param>
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, string num = null, string password = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Generates new addresses
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Wallet Id</param>
+        /// <param name="num">The number you want to generate (optional)</param>
+        /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo (string id, string num = null, string password = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo(string id, string num = null,
+            string password = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2211,7 +2342,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletNewSeedAsync (string entropy = null);
+        System.Threading.Tasks.Task<Object> WalletNewSeedAsync(string entropy = null);
 
         /// <summary>
         /// 
@@ -2222,7 +2353,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewSeedAsyncWithHttpInfo (string entropy = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewSeedAsyncWithHttpInfo(string entropy = null);
+
         /// <summary>
         /// Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
         /// </summary>
@@ -2234,7 +2366,7 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletRecoverAsync (string id, string seed, string password = null);
+        System.Threading.Tasks.Task<Object> WalletRecoverAsync(string id, string seed, string password = null);
 
         /// <summary>
         /// Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
@@ -2247,18 +2379,8 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletRecoverAsyncWithHttpInfo (string id, string seed, string password = null);
-        /// <summary>
-        /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Wallet Id.</param>
-        /// <param name="password">Wallet password.</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletSeedAsync (string id, string password);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletRecoverAsyncWithHttpInfo(string id, string seed,
+            string password = null);
 
         /// <summary>
         /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
@@ -2269,8 +2391,21 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> WalletSeedAsync(string id, string password);
+
+        /// <summary>
+        /// This endpoint only works for encrypted wallets. If the wallet is unencrypted, The seed will be not returned.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Wallet Id.</param>
+        /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedAsyncWithHttpInfo (string id, string password);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedAsyncWithHttpInfo(string id, string password);
+
         /// <summary>
         /// Verifies a wallet seed.
         /// </summary>
@@ -2280,7 +2415,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletSeedVerifyAsync (string seed = null);
+        System.Threading.Tasks.Task<Object> WalletSeedVerifyAsync(string seed = null);
 
         /// <summary>
         /// Verifies a wallet seed.
@@ -2291,7 +2426,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedVerifyAsyncWithHttpInfo (string seed = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedVerifyAsyncWithHttpInfo(string seed = null);
+
         /// <summary>
         /// Creates a signed transaction
         /// </summary>
@@ -2301,7 +2437,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletTransactionAsync (WalletTransactionRequest walletTransactionRequest);
+        System.Threading.Tasks.Task<Object> WalletTransactionAsync(WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -2312,7 +2448,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo (WalletTransactionRequest walletTransactionRequest);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo(
+            WalletTransactionRequest walletTransactionRequest);
+
         /// <summary>
         /// Creates a signed transaction
         /// </summary>
@@ -2322,7 +2460,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>Task of InlineResponse2009</returns>
-        System.Threading.Tasks.Task<InlineResponse2009> WalletTransactionSignAsync (WalletTransactionSignRequest walletTransactionSignRequest);
+        System.Threading.Tasks.Task<InlineResponse2009> WalletTransactionSignAsync(
+            WalletTransactionSignRequest walletTransactionSignRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -2333,7 +2472,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>Task of ApiResponse (InlineResponse2009)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2009>> WalletTransactionSignAsyncWithHttpInfo (WalletTransactionSignRequest walletTransactionSignRequest);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2009>> WalletTransactionSignAsyncWithHttpInfo(
+            WalletTransactionSignRequest walletTransactionSignRequest);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2343,7 +2484,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of InlineResponse2006</returns>
-        System.Threading.Tasks.Task<InlineResponse2006> WalletTransactionsAsync (string id);
+        System.Threading.Tasks.Task<InlineResponse2006> WalletTransactionsAsync(string id);
 
         /// <summary>
         /// 
@@ -2354,7 +2495,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of ApiResponse (InlineResponse2006)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> WalletTransactionsAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> WalletTransactionsAsyncWithHttpInfo(string id);
+
         /// <summary>
         /// Unloads wallet from the wallet service.
         /// </summary>
@@ -2364,7 +2506,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task WalletUnloadAsync (string id);
+        System.Threading.Tasks.Task WalletUnloadAsync(string id);
 
         /// <summary>
         /// Unloads wallet from the wallet service.
@@ -2375,7 +2517,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletUnloadAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletUnloadAsyncWithHttpInfo(string id);
+
         /// <summary>
         /// Update the wallet.
         /// </summary>
@@ -2386,7 +2529,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> WalletUpdateAsync (string id, string label);
+        System.Threading.Tasks.Task<string> WalletUpdateAsync(string id, string label);
 
         /// <summary>
         /// Update the wallet.
@@ -2398,7 +2541,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> WalletUpdateAsyncWithHttpInfo (string id, string label);
+        System.Threading.Tasks.Task<ApiResponse<string>> WalletUpdateAsyncWithHttpInfo(string id, string label);
+
         /// <summary>
         /// 
         /// </summary>
@@ -2407,7 +2551,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        System.Threading.Tasks.Task<List<Object>> WalletsAsync ();
+        System.Threading.Tasks.Task<List<Object>> WalletsAsync();
 
         /// <summary>
         /// 
@@ -2417,7 +2561,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo();
+
         #endregion Asynchronous Operations
     }
 
@@ -2434,7 +2579,7 @@ namespace Skyapi.Api
         /// <returns></returns>
         public DefaultApi(String basePath)
         {
-            this.Configuration = new Skyapi.Client.Configuration { BasePath = basePath };
+            this.Configuration = new Skyapi.Client.Configuration {BasePath = basePath};
 
             ExceptionFactory = Skyapi.Client.Configuration.DefaultExceptionFactory;
         }
@@ -2479,7 +2624,8 @@ namespace Skyapi.Api
         /// Sets the base path of the API client.
         /// </summary>
         /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
+        [Obsolete(
+            "SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
         public void SetBasePath(String basePath)
         {
             // do nothing
@@ -2489,7 +2635,7 @@ namespace Skyapi.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Skyapi.Client.Configuration Configuration {get; set;}
+        public Skyapi.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -2502,6 +2648,7 @@ namespace Skyapi.Api
                 {
                     throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
+
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
@@ -2534,10 +2681,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse200</returns>
-        public InlineResponse200 AddressCount ()
+        public InlineResponse200 AddressCount()
         {
-             ApiResponse<InlineResponse200> localVarResponse = AddressCountWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse200> localVarResponse = AddressCountWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2545,9 +2692,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        public ApiResponse< InlineResponse200 > AddressCountWithHttpInfo ()
+        public ApiResponse<InlineResponse200> AddressCountWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/addresscount";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2557,24 +2703,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2587,7 +2737,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -2595,11 +2746,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse200</returns>
-        public async System.Threading.Tasks.Task<InlineResponse200> AddressCountAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse200> AddressCountAsync()
         {
-             ApiResponse<InlineResponse200> localVarResponse = await AddressCountAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse200> localVarResponse = await AddressCountAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2607,9 +2757,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> AddressCountAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> AddressCountAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/addresscount";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2619,24 +2768,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2649,7 +2803,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -2658,10 +2813,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>List&lt;Object&gt;</returns>
-        public List<Object> AddressUxouts (string address)
+        public List<Object> AddressUxouts(string address)
         {
-             ApiResponse<List<Object>> localVarResponse = AddressUxoutsWithHttpInfo(address);
-             return localVarResponse.Data;
+            ApiResponse<List<Object>> localVarResponse = AddressUxoutsWithHttpInfo(address);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2670,11 +2825,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        public ApiResponse< List<Object> > AddressUxoutsWithHttpInfo (string address)
+        public ApiResponse<List<Object>> AddressUxoutsWithHttpInfo(string address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling DefaultApi->AddressUxouts");
+                throw new ApiException(400,
+                    "Missing required parameter 'address' when calling DefaultApi->AddressUxouts");
 
             var localVarPath = "/api/v1/address_uxouts";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2685,25 +2841,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2725,11 +2888,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Object>> AddressUxoutsAsync (string address)
+        public async System.Threading.Tasks.Task<List<Object>> AddressUxoutsAsync(string address)
         {
-             ApiResponse<List<Object>> localVarResponse = await AddressUxoutsAsyncWithHttpInfo(address);
-             return localVarResponse.Data;
-
+            ApiResponse<List<Object>> localVarResponse = await AddressUxoutsAsyncWithHttpInfo(address);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2738,11 +2900,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">address to filter by</param>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> AddressUxoutsAsyncWithHttpInfo (string address)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> AddressUxoutsAsyncWithHttpInfo(
+            string address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling DefaultApi->AddressUxouts");
+                throw new ApiException(400,
+                    "Missing required parameter 'address' when calling DefaultApi->AddressUxouts");
 
             var localVarPath = "/api/v1/address_uxouts";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2753,25 +2917,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2792,10 +2964,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        public string ApiV1RawtxGet ()
+        public string ApiV1RawtxGet()
         {
-             ApiResponse<string> localVarResponse = ApiV1RawtxGetWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = ApiV1RawtxGetWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2803,9 +2975,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ApiV1RawtxGetWithHttpInfo ()
+        public ApiResponse<string> ApiV1RawtxGetWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/rawtx";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2815,23 +2986,27 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2852,11 +3027,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync ()
+        public async System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync()
         {
-             ApiResponse<string> localVarResponse = await ApiV1RawtxGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<string> localVarResponse = await ApiV1RawtxGetAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2864,9 +3038,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/rawtx";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2876,23 +3049,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2913,10 +3091,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        public string ApiV2MetricsGet ()
+        public string ApiV2MetricsGet()
         {
-             ApiResponse<string> localVarResponse = ApiV2MetricsGetWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = ApiV2MetricsGetWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2924,9 +3102,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ApiV2MetricsGetWithHttpInfo ()
+        public ApiResponse<string> ApiV2MetricsGetWithHttpInfo()
         {
-
             var localVarPath = "/api/v2/metrics";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2936,23 +3113,27 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -2973,11 +3154,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ApiV2MetricsGetAsync ()
+        public async System.Threading.Tasks.Task<string> ApiV2MetricsGetAsync()
         {
-             ApiResponse<string> localVarResponse = await ApiV2MetricsGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<string> localVarResponse = await ApiV2MetricsGetAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2985,9 +3165,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV2MetricsGetAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV2MetricsGetAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v2/metrics";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -2997,23 +3176,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3035,10 +3219,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Object</returns>
-        public Object BalanceGet (string addrs)
+        public Object BalanceGet(string addrs)
         {
-             ApiResponse<Object> localVarResponse = BalanceGetWithHttpInfo(addrs);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = BalanceGetWithHttpInfo(addrs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3047,7 +3231,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > BalanceGetWithHttpInfo (string addrs)
+        public ApiResponse<Object> BalanceGetWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3062,25 +3246,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3102,11 +3293,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BalanceGetAsync (string addrs)
+        public async System.Threading.Tasks.Task<Object> BalanceGetAsync(string addrs)
         {
-             ApiResponse<Object> localVarResponse = await BalanceGetAsyncWithHttpInfo(addrs);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await BalanceGetAsyncWithHttpInfo(addrs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3115,7 +3305,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo (string addrs)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3130,25 +3320,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3170,10 +3368,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Object</returns>
-        public Object BalancePost (string addrs)
+        public Object BalancePost(string addrs)
         {
-             ApiResponse<Object> localVarResponse = BalancePostWithHttpInfo(addrs);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = BalancePostWithHttpInfo(addrs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3182,7 +3380,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > BalancePostWithHttpInfo (string addrs)
+        public ApiResponse<Object> BalancePostWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3197,20 +3395,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -3220,7 +3424,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3242,11 +3447,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BalancePostAsync (string addrs)
+        public async System.Threading.Tasks.Task<Object> BalancePostAsync(string addrs)
         {
-             ApiResponse<Object> localVarResponse = await BalancePostAsyncWithHttpInfo(addrs);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await BalancePostAsyncWithHttpInfo(addrs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3255,7 +3459,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo (string addrs)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3270,20 +3474,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -3292,8 +3502,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3316,10 +3528,10 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>BlockSchema</returns>
-        public BlockSchema Block (string hash = null, int? seq = null)
+        public BlockSchema Block(string hash = null, int? seq = null)
         {
-             ApiResponse<BlockSchema> localVarResponse = BlockWithHttpInfo(hash, seq);
-             return localVarResponse.Data;
+            ApiResponse<BlockSchema> localVarResponse = BlockWithHttpInfo(hash, seq);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3329,9 +3541,8 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>ApiResponse of BlockSchema</returns>
-        public ApiResponse<BlockSchema> BlockWithHttpInfo (string hash = null, int? seq = null)
+        public ApiResponse<BlockSchema> BlockWithHttpInfo(string hash = null, int? seq = null)
         {
-
             var localVarPath = "/api/v1/block";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3341,26 +3552,35 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
-            if (seq != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seq", seq)); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
+            if (seq != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seq", seq)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3383,11 +3603,10 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of BlockSchema</returns>
-        public async System.Threading.Tasks.Task<BlockSchema> BlockAsync (string hash = null, int? seq = null)
+        public async System.Threading.Tasks.Task<BlockSchema> BlockAsync(string hash = null, int? seq = null)
         {
-             ApiResponse<BlockSchema> localVarResponse = await BlockAsyncWithHttpInfo(hash, seq);
-             return localVarResponse.Data;
-
+            ApiResponse<BlockSchema> localVarResponse = await BlockAsyncWithHttpInfo(hash, seq);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3397,9 +3616,9 @@ namespace Skyapi.Api
         /// <param name="hash">get block by hash (optional)</param>
         /// <param name="seq">get block by sequence number (optional)</param>
         /// <returns>Task of ApiResponse (BlockSchema)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo (string hash = null, int? seq = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BlockSchema>> BlockAsyncWithHttpInfo(string hash = null,
+            int? seq = null)
         {
-
             var localVarPath = "/api/v1/block";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3409,26 +3628,36 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
-            if (seq != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seq", seq)); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
+            if (seq != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seq", seq)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3449,10 +3678,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object BlockchainMetadata ()
+        public Object BlockchainMetadata()
         {
-             ApiResponse<Object> localVarResponse = BlockchainMetadataWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = BlockchainMetadataWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3460,9 +3689,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > BlockchainMetadataWithHttpInfo ()
+        public ApiResponse<Object> BlockchainMetadataWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/blockchain/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3472,24 +3700,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3510,11 +3742,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BlockchainMetadataAsync ()
+        public async System.Threading.Tasks.Task<Object> BlockchainMetadataAsync()
         {
-             ApiResponse<Object> localVarResponse = await BlockchainMetadataAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await BlockchainMetadataAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3522,9 +3753,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainMetadataAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainMetadataAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/blockchain/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3534,24 +3764,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3572,10 +3807,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object BlockchainProgress ()
+        public Object BlockchainProgress()
         {
-             ApiResponse<Object> localVarResponse = BlockchainProgressWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = BlockchainProgressWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3583,9 +3818,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > BlockchainProgressWithHttpInfo ()
+        public ApiResponse<Object> BlockchainProgressWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/blockchain/progress";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3595,24 +3829,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3633,11 +3871,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BlockchainProgressAsync ()
+        public async System.Threading.Tasks.Task<Object> BlockchainProgressAsync()
         {
-             ApiResponse<Object> localVarResponse = await BlockchainProgressAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await BlockchainProgressAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3645,9 +3882,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/blockchain/progress";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3657,24 +3893,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3696,12 +3937,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>InlineResponse2001</returns>
-        public InlineResponse2001 Blocks (int? start = null, int? end = null, List<int?> seqs = null)
+        public InlineResponse2001 Blocks(int? start = null, int? end = null, List<int?> seqs = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = BlocksWithHttpInfo(start, end, seqs);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2001> localVarResponse = BlocksWithHttpInfo(start, end, seqs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3710,11 +3951,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>ApiResponse of InlineResponse2001</returns>
-        public ApiResponse< InlineResponse2001 > BlocksWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null)
+        public ApiResponse<InlineResponse2001> BlocksWithHttpInfo(int? start = null, int? end = null,
+            List<int?> seqs = null)
         {
-
             var localVarPath = "/api/v1/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3724,27 +3965,39 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
-            if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs", string.Join(",",seqs))); // query parameter
+            if (start != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
+            if (end != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
+            if (seqs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs",
+                        string.Join(",", seqs))); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3757,7 +4010,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2001>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
+                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2001)));
         }
 
         /// <summary>
@@ -3766,13 +4020,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of InlineResponse2001</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync (int? start = null, int? end = null, List<int?> seqs = null)
+        public async System.Threading.Tasks.Task<InlineResponse2001> BlocksAsync(int? start = null, int? end = null,
+            List<int?> seqs = null)
         {
-             ApiResponse<InlineResponse2001> localVarResponse = await BlocksAsyncWithHttpInfo(start, end, seqs);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2001> localVarResponse = await BlocksAsyncWithHttpInfo(start, end, seqs);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3781,11 +4035,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start">start seq (optional)</param>
         /// <param name="end">end seq (optional)</param>
-        /// <param name="seq">comma-separated list of block seqs (optional)</param>
+        /// <param name="seqs">comma-separated list of block seqs (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo (int? start = null, int? end = null, List<int?> seqs = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> BlocksAsyncWithHttpInfo(
+            int? start = null, int? end = null, List<int?> seqs = null)
         {
-
             var localVarPath = "/api/v1/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3795,27 +4049,40 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
-            if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
-            if (seqs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs", string.Join(",",seqs))); // query parameter
+            if (start != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
+            if (end != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
+            if (seqs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "seqs",
+                        string.Join(",", seqs))); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3828,7 +4095,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2001>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
+                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2001)));
         }
 
         /// <summary>
@@ -3836,10 +4104,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2002</returns>
-        public InlineResponse2002 CoinSupply ()
+        public InlineResponse2002 CoinSupply()
         {
-             ApiResponse<InlineResponse2002> localVarResponse = CoinSupplyWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2002> localVarResponse = CoinSupplyWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3847,9 +4115,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2002</returns>
-        public ApiResponse< InlineResponse2002 > CoinSupplyWithHttpInfo ()
+        public ApiResponse<InlineResponse2002> CoinSupplyWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/coinSupply";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3859,24 +4126,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3889,7 +4160,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2002>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
+                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2002)));
         }
 
         /// <summary>
@@ -3897,11 +4169,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2002</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2002> CoinSupplyAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2002> CoinSupplyAsync()
         {
-             ApiResponse<InlineResponse2002> localVarResponse = await CoinSupplyAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2002> localVarResponse = await CoinSupplyAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3909,9 +4180,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2002)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> CoinSupplyAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> CoinSupplyAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/coinSupply";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3921,24 +4191,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -3951,7 +4226,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2002>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
+                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2002)));
         }
 
         /// <summary>
@@ -3959,10 +4235,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2003</returns>
-        public InlineResponse2003 Csrf ()
+        public InlineResponse2003 Csrf()
         {
-             ApiResponse<InlineResponse2003> localVarResponse = CsrfWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2003> localVarResponse = CsrfWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3970,9 +4246,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2003</returns>
-        public ApiResponse< InlineResponse2003 > CsrfWithHttpInfo ()
+        public ApiResponse<InlineResponse2003> CsrfWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/csrf";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -3982,24 +4257,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4012,7 +4291,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2003>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
+                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2003)));
         }
 
         /// <summary>
@@ -4020,11 +4300,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2003</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2003> CsrfAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2003> CsrfAsync()
         {
-             ApiResponse<InlineResponse2003> localVarResponse = await CsrfAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2003> localVarResponse = await CsrfAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4032,9 +4311,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> CsrfAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> CsrfAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/csrf";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4044,24 +4322,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4074,7 +4357,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2003>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
+                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2003)));
         }
 
         /// <summary>
@@ -4084,9 +4368,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns></returns>
-        public void DataDELETE (string type = null, string key = null)
+        public void DataDELETE(string type = null, string key = null)
         {
-             DataDELETEWithHttpInfo(type, key);
+            DataDELETEWithHttpInfo(type, key);
         }
 
         /// <summary>
@@ -4096,9 +4380,8 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DataDELETEWithHttpInfo (string type = null, string key = null)
+        public ApiResponse<Object> DataDELETEWithHttpInfo(string type = null, string key = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4108,26 +4391,35 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4150,10 +4442,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DataDELETEAsync (string type = null, string key = null)
+        public async System.Threading.Tasks.Task DataDELETEAsync(string type = null, string key = null)
         {
-             await DataDELETEAsyncWithHttpInfo(type, key);
-
+            await DataDELETEAsyncWithHttpInfo(type, key);
         }
 
         /// <summary>
@@ -4163,9 +4454,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo (string type = null, string key = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo(string type = null,
+            string key = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4175,26 +4466,36 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4217,10 +4518,10 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Object</returns>
-        public Object DataGET (string type = null, string key = null)
+        public Object DataGET(string type = null, string key = null)
         {
-             ApiResponse<Object> localVarResponse = DataGETWithHttpInfo(type, key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DataGETWithHttpInfo(type, key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4230,9 +4531,8 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DataGETWithHttpInfo (string type = null, string key = null)
+        public ApiResponse<Object> DataGETWithHttpInfo(string type = null, string key = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4242,26 +4542,35 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4284,11 +4593,10 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DataGETAsync (string type = null, string key = null)
+        public async System.Threading.Tasks.Task<Object> DataGETAsync(string type = null, string key = null)
         {
-             ApiResponse<Object> localVarResponse = await DataGETAsyncWithHttpInfo(type, key);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await DataGETAsyncWithHttpInfo(type, key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4298,9 +4606,9 @@ namespace Skyapi.Api
         /// <param name="type">storage type. (optional)</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataGETAsyncWithHttpInfo (string type = null, string key = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataGETAsyncWithHttpInfo(string type = null,
+            string key = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4310,26 +4618,36 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4353,9 +4671,9 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns></returns>
-        public void DataPOST (string type = null, string key = null, string val = null)
+        public void DataPOST(string type = null, string key = null, string val = null)
         {
-             DataPOSTWithHttpInfo(type, key, val);
+            DataPOSTWithHttpInfo(type, key, val);
         }
 
         /// <summary>
@@ -4366,9 +4684,8 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DataPOSTWithHttpInfo (string type = null, string key = null, string val = null)
+        public ApiResponse<Object> DataPOSTWithHttpInfo(string type = null, string key = null, string val = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4378,27 +4695,38 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
-            if (val != null) localVarHeaderParams.Add("val", this.Configuration.ApiClient.ParameterToString(val)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (val != null)
+                localVarHeaderParams.Add("val",
+                    this.Configuration.ApiClient.ParameterToString(val)); // header parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4422,10 +4750,9 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DataPOSTAsync (string type = null, string key = null, string val = null)
+        public async System.Threading.Tasks.Task DataPOSTAsync(string type = null, string key = null, string val = null)
         {
-             await DataPOSTAsyncWithHttpInfo(type, key, val);
-
+            await DataPOSTAsyncWithHttpInfo(type, key, val);
         }
 
         /// <summary>
@@ -4436,9 +4763,9 @@ namespace Skyapi.Api
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo (string type = null, string key = null, string val = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo(string type = null,
+            string key = null, string val = null)
         {
-
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4448,27 +4775,39 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null) localVarHeaderParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null) localVarHeaderParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // header parameter
-            if (val != null) localVarHeaderParams.Add("val", this.Configuration.ApiClient.ParameterToString(val)); // header parameter
+            if (type != null)
+                localVarHeaderParams.Add("type",
+                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            if (key != null)
+                localVarHeaderParams.Add("key",
+                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+            if (val != null)
+                localVarHeaderParams.Add("val",
+                    this.Configuration.ApiClient.ParameterToString(val)); // header parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4489,10 +4828,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> DefaultConnections ()
+        public List<string> DefaultConnections()
         {
-             ApiResponse<List<string>> localVarResponse = DefaultConnectionsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = DefaultConnectionsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4500,9 +4839,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > DefaultConnectionsWithHttpInfo ()
+        public ApiResponse<List<string>> DefaultConnectionsWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/defaultConnections";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4512,24 +4850,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4550,11 +4892,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> DefaultConnectionsAsync ()
+        public async System.Threading.Tasks.Task<List<string>> DefaultConnectionsAsync()
         {
-             ApiResponse<List<string>> localVarResponse = await DefaultConnectionsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<List<string>> localVarResponse = await DefaultConnectionsAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4562,9 +4903,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> DefaultConnectionsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> DefaultConnectionsAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/defaultConnections";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4574,24 +4914,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4612,10 +4957,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object Health ()
+        public Object Health()
         {
-             ApiResponse<Object> localVarResponse = HealthWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = HealthWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4623,9 +4968,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > HealthWithHttpInfo ()
+        public ApiResponse<Object> HealthWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/health";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4635,24 +4979,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4673,11 +5021,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> HealthAsync ()
+        public async System.Threading.Tasks.Task<Object> HealthAsync()
         {
-             ApiResponse<Object> localVarResponse = await HealthAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await HealthAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4685,9 +5032,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> HealthAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> HealthAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/health";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -4697,24 +5043,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4736,10 +5087,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Object</returns>
-        public Object LastBlocks (int? num)
+        public Object LastBlocks(int? num)
         {
-             ApiResponse<Object> localVarResponse = LastBlocksWithHttpInfo(num);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = LastBlocksWithHttpInfo(num);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4748,7 +5099,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > LastBlocksWithHttpInfo (int? num)
+        public ApiResponse<Object> LastBlocksWithHttpInfo(int? num)
         {
             // verify the required parameter 'num' is set
             if (num == null)
@@ -4763,25 +5114,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (num != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
+            if (num != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4803,11 +5161,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> LastBlocksAsync (int? num)
+        public async System.Threading.Tasks.Task<Object> LastBlocksAsync(int? num)
         {
-             ApiResponse<Object> localVarResponse = await LastBlocksAsyncWithHttpInfo(num);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await LastBlocksAsyncWithHttpInfo(num);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4816,7 +5173,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="num">Num of blockss</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> LastBlocksAsyncWithHttpInfo (int? num)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> LastBlocksAsyncWithHttpInfo(int? num)
         {
             // verify the required parameter 'num' is set
             if (num == null)
@@ -4831,25 +5188,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (num != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
+            if (num != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4871,10 +5236,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>NetworkConnectionSchema</returns>
-        public NetworkConnectionSchema NetworkConnection (string addr)
+        public NetworkConnectionSchema NetworkConnection(string addr)
         {
-             ApiResponse<NetworkConnectionSchema> localVarResponse = NetworkConnectionWithHttpInfo(addr);
-             return localVarResponse.Data;
+            ApiResponse<NetworkConnectionSchema> localVarResponse = NetworkConnectionWithHttpInfo(addr);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4883,11 +5248,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of NetworkConnectionSchema</returns>
-        public ApiResponse< NetworkConnectionSchema > NetworkConnectionWithHttpInfo (string addr)
+        public ApiResponse<NetworkConnectionSchema> NetworkConnectionWithHttpInfo(string addr)
         {
             // verify the required parameter 'addr' is set
             if (addr == null)
-                throw new ApiException(400, "Missing required parameter 'addr' when calling DefaultApi->NetworkConnection");
+                throw new ApiException(400,
+                    "Missing required parameter 'addr' when calling DefaultApi->NetworkConnection");
 
             var localVarPath = "/api/v1/network/connection";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4898,25 +5264,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addr != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
+            if (addr != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4929,7 +5302,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<NetworkConnectionSchema>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (NetworkConnectionSchema) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NetworkConnectionSchema)));
+                (NetworkConnectionSchema) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(NetworkConnectionSchema)));
         }
 
         /// <summary>
@@ -4938,11 +5312,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of NetworkConnectionSchema</returns>
-        public async System.Threading.Tasks.Task<NetworkConnectionSchema> NetworkConnectionAsync (string addr)
+        public async System.Threading.Tasks.Task<NetworkConnectionSchema> NetworkConnectionAsync(string addr)
         {
-             ApiResponse<NetworkConnectionSchema> localVarResponse = await NetworkConnectionAsyncWithHttpInfo(addr);
-             return localVarResponse.Data;
-
+            ApiResponse<NetworkConnectionSchema> localVarResponse = await NetworkConnectionAsyncWithHttpInfo(addr);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4951,11 +5324,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (NetworkConnectionSchema)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NetworkConnectionSchema>> NetworkConnectionAsyncWithHttpInfo (string addr)
+        public async System.Threading.Tasks.Task<ApiResponse<NetworkConnectionSchema>>
+            NetworkConnectionAsyncWithHttpInfo(string addr)
         {
             // verify the required parameter 'addr' is set
             if (addr == null)
-                throw new ApiException(400, "Missing required parameter 'addr' when calling DefaultApi->NetworkConnection");
+                throw new ApiException(400,
+                    "Missing required parameter 'addr' when calling DefaultApi->NetworkConnection");
 
             var localVarPath = "/api/v1/network/connection";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4966,25 +5341,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addr != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
+            if (addr != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -4997,7 +5380,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<NetworkConnectionSchema>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (NetworkConnectionSchema) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NetworkConnectionSchema)));
+                (NetworkConnectionSchema) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(NetworkConnectionSchema)));
         }
 
         /// <summary>
@@ -5007,10 +5391,10 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>InlineResponse2004</returns>
-        public InlineResponse2004 NetworkConnections (string states = null, string direction = null)
+        public InlineResponse2004 NetworkConnections(string states = null, string direction = null)
         {
-             ApiResponse<InlineResponse2004> localVarResponse = NetworkConnectionsWithHttpInfo(states, direction);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2004> localVarResponse = NetworkConnectionsWithHttpInfo(states, direction);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5020,9 +5404,9 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2004</returns>
-        public ApiResponse< InlineResponse2004 > NetworkConnectionsWithHttpInfo (string states = null, string direction = null)
+        public ApiResponse<InlineResponse2004> NetworkConnectionsWithHttpInfo(string states = null,
+            string direction = null)
         {
-
             var localVarPath = "/api/v1/network/connections";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5032,21 +5416,30 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (states != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "states", states)); // query parameter
-            if (direction != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "direction", direction)); // query parameter
+            if (states != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "states", states)); // query parameter
+            if (direction != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "direction",
+                        direction)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5056,7 +5449,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5069,7 +5463,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -5079,11 +5474,12 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>Task of InlineResponse2004</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2004> NetworkConnectionsAsync (string states = null, string direction = null)
+        public async System.Threading.Tasks.Task<InlineResponse2004> NetworkConnectionsAsync(string states = null,
+            string direction = null)
         {
-             ApiResponse<InlineResponse2004> localVarResponse = await NetworkConnectionsAsyncWithHttpInfo(states, direction);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2004> localVarResponse =
+                await NetworkConnectionsAsyncWithHttpInfo(states, direction);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5093,9 +5489,9 @@ namespace Skyapi.Api
         /// <param name="states">Connection status. (optional)</param>
         /// <param name="direction">Direction of the connection. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> NetworkConnectionsAsyncWithHttpInfo (string states = null, string direction = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> NetworkConnectionsAsyncWithHttpInfo(
+            string states = null, string direction = null)
         {
-
             var localVarPath = "/api/v1/network/connections";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5105,21 +5501,30 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (states != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "states", states)); // query parameter
-            if (direction != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "direction", direction)); // query parameter
+            if (states != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "states", states)); // query parameter
+            if (direction != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "direction",
+                        direction)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5128,8 +5533,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5142,7 +5549,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -5151,9 +5559,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns></returns>
-        public void NetworkConnectionsDisconnect (string id)
+        public void NetworkConnectionsDisconnect(string id)
         {
-             NetworkConnectionsDisconnectWithHttpInfo(id);
+            NetworkConnectionsDisconnectWithHttpInfo(id);
         }
 
         /// <summary>
@@ -5162,11 +5570,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> NetworkConnectionsDisconnectWithHttpInfo (string id)
+        public ApiResponse<Object> NetworkConnectionsDisconnectWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->NetworkConnectionsDisconnect");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->NetworkConnectionsDisconnect");
 
             var localVarPath = "/api/v1/network/connection/disconnect";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5177,20 +5586,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5200,7 +5615,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5222,10 +5638,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NetworkConnectionsDisconnectAsync (string id)
+        public async System.Threading.Tasks.Task NetworkConnectionsDisconnectAsync(string id)
         {
-             await NetworkConnectionsDisconnectAsyncWithHttpInfo(id);
-
+            await NetworkConnectionsDisconnectAsyncWithHttpInfo(id);
         }
 
         /// <summary>
@@ -5234,11 +5649,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Address id.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> NetworkConnectionsDisconnectAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>>
+            NetworkConnectionsDisconnectAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->NetworkConnectionsDisconnect");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->NetworkConnectionsDisconnect");
 
             var localVarPath = "/api/v1/network/connection/disconnect";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5249,20 +5666,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5271,8 +5694,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5293,10 +5718,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> NetworkConnectionsExchange ()
+        public List<string> NetworkConnectionsExchange()
         {
-             ApiResponse<List<string>> localVarResponse = NetworkConnectionsExchangeWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = NetworkConnectionsExchangeWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5304,9 +5729,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > NetworkConnectionsExchangeWithHttpInfo ()
+        public ApiResponse<List<string>> NetworkConnectionsExchangeWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/connections/exchange";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5316,24 +5740,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5354,11 +5782,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> NetworkConnectionsExchangeAsync ()
+        public async System.Threading.Tasks.Task<List<string>> NetworkConnectionsExchangeAsync()
         {
-             ApiResponse<List<string>> localVarResponse = await NetworkConnectionsExchangeAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<List<string>> localVarResponse = await NetworkConnectionsExchangeAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5366,9 +5793,9 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsExchangeAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>>
+            NetworkConnectionsExchangeAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/connections/exchange";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5378,24 +5805,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5416,10 +5848,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> NetworkConnectionsTrust ()
+        public List<string> NetworkConnectionsTrust()
         {
-             ApiResponse<List<string>> localVarResponse = NetworkConnectionsTrustWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = NetworkConnectionsTrustWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5427,9 +5859,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > NetworkConnectionsTrustWithHttpInfo ()
+        public ApiResponse<List<string>> NetworkConnectionsTrustWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/connections/trust";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5439,24 +5870,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5477,11 +5912,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> NetworkConnectionsTrustAsync ()
+        public async System.Threading.Tasks.Task<List<string>> NetworkConnectionsTrustAsync()
         {
-             ApiResponse<List<string>> localVarResponse = await NetworkConnectionsTrustAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<List<string>> localVarResponse = await NetworkConnectionsTrustAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5489,9 +5923,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsTrustAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> NetworkConnectionsTrustAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/network/connections/trust";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5501,24 +5934,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5541,10 +5979,10 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        public Object OutputsGet (List<string> address = null, List<string> hash = null)
+        public Object OutputsGet(List<string> address = null, List<string> hash = null)
         {
-             ApiResponse<Object> localVarResponse = OutputsGetWithHttpInfo(address, hash);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = OutputsGetWithHttpInfo(address, hash);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5554,9 +5992,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > OutputsGetWithHttpInfo (List<string> address = null, List<string> hash = null)
+        public ApiResponse<Object> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null)
         {
-
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5566,26 +6003,37 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "address", address)); // query parameter
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "hash", hash)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs",
+                        string.Join(",", address))); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes",
+                        string.Join(",", hash))); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5608,11 +6056,11 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> OutputsGetAsync (List<string> address = null, List<string> hash = null)
+        public async System.Threading.Tasks.Task<Object> OutputsGetAsync(List<string> address = null,
+            List<string> hash = null)
         {
-             ApiResponse<Object> localVarResponse = await OutputsGetAsyncWithHttpInfo(address, hash);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await OutputsGetAsyncWithHttpInfo(address, hash);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5622,9 +6070,9 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo (List<string> address = null, List<string> hash = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo(
+            List<string> address = null, List<string> hash = null)
         {
-
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5634,26 +6082,38 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "address", address)); // query parameter
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "hash", hash)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs",
+                        string.Join(",", address))); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes",
+                        string.Join(",", hash))); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5676,10 +6136,10 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        public Object OutputsPost (string address = null, string hash = null)
+        public Object OutputsPost(string address = null, string hash = null)
         {
-             ApiResponse<Object> localVarResponse = OutputsPostWithHttpInfo(address, hash);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = OutputsPostWithHttpInfo(address, hash);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5689,9 +6149,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > OutputsPostWithHttpInfo (string address = null, string hash = null)
+        public ApiResponse<Object> OutputsPostWithHttpInfo(string address = null, string hash = null)
         {
-
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5701,21 +6160,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", address)); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes", hash)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5725,7 +6192,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5748,11 +6216,10 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> OutputsPostAsync (string address = null, string hash = null)
+        public async System.Threading.Tasks.Task<Object> OutputsPostAsync(string address = null, string hash = null)
         {
-             ApiResponse<Object> localVarResponse = await OutputsPostAsyncWithHttpInfo(address, hash);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await OutputsPostAsyncWithHttpInfo(address, hash);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5762,9 +6229,9 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo (string address = null, string hash = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(
+            string address = null, string hash = null)
         {
-
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5774,21 +6241,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
-            if (hash != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hash", hash)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", address)); // query parameter
+            if (hash != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes", hash)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -5797,8 +6272,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5819,10 +6296,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;InlineResponse20010&gt;</returns>
-        public List<InlineResponse20010> PendingTxs ()
+        public List<InlineResponse20010> PendingTxs()
         {
-             ApiResponse<List<InlineResponse20010>> localVarResponse = PendingTxsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<InlineResponse20010>> localVarResponse = PendingTxsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5830,9 +6307,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;InlineResponse20010&gt;</returns>
-        public ApiResponse< List<InlineResponse20010> > PendingTxsWithHttpInfo ()
+        public ApiResponse<List<InlineResponse20010>> PendingTxsWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/pendingTxs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5842,24 +6318,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5872,7 +6352,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<List<InlineResponse20010>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<InlineResponse20010>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse20010>)));
+                (List<InlineResponse20010>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<InlineResponse20010>)));
         }
 
         /// <summary>
@@ -5880,11 +6361,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;InlineResponse20010&gt;</returns>
-        public async System.Threading.Tasks.Task<List<InlineResponse20010>> PendingTxsAsync ()
+        public async System.Threading.Tasks.Task<List<InlineResponse20010>> PendingTxsAsync()
         {
-             ApiResponse<List<InlineResponse20010>> localVarResponse = await PendingTxsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<List<InlineResponse20010>> localVarResponse = await PendingTxsAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5892,9 +6372,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;InlineResponse20010&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<InlineResponse20010>>> PendingTxsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<InlineResponse20010>>> PendingTxsAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/pendingTxs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5904,24 +6383,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -5934,7 +6418,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<List<InlineResponse20010>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<InlineResponse20010>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse20010>)));
+                (List<InlineResponse20010>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<InlineResponse20010>)));
         }
 
         /// <summary>
@@ -5942,10 +6427,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object ResendUnconfirmedTxns ()
+        public Object ResendUnconfirmedTxns()
         {
-             ApiResponse<Object> localVarResponse = ResendUnconfirmedTxnsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = ResendUnconfirmedTxnsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5953,9 +6438,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > ResendUnconfirmedTxnsWithHttpInfo ()
+        public ApiResponse<Object> ResendUnconfirmedTxnsWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/resendUnconfirmedTxns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -5965,17 +6449,21 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application-json",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
@@ -5988,7 +6476,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6009,11 +6498,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> ResendUnconfirmedTxnsAsync ()
+        public async System.Threading.Tasks.Task<Object> ResendUnconfirmedTxnsAsync()
         {
-             ApiResponse<Object> localVarResponse = await ResendUnconfirmedTxnsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await ResendUnconfirmedTxnsAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6021,9 +6509,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResendUnconfirmedTxnsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResendUnconfirmedTxnsAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/resendUnconfirmedTxns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6033,17 +6520,21 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application-json",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
@@ -6055,8 +6546,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6079,10 +6572,10 @@ namespace Skyapi.Api
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>Object</returns>
-        public Object Richlist (bool? includeDistribution = null, string n = null)
+        public Object Richlist(bool? includeDistribution = null, string n = null)
         {
-             ApiResponse<Object> localVarResponse = RichlistWithHttpInfo(includeDistribution, n);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = RichlistWithHttpInfo(includeDistribution, n);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6092,9 +6585,8 @@ namespace Skyapi.Api
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > RichlistWithHttpInfo (bool? includeDistribution = null, string n = null)
+        public ApiResponse<Object> RichlistWithHttpInfo(bool? includeDistribution = null, string n = null)
         {
-
             var localVarPath = "/api/v1/richlist";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6104,26 +6596,36 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeDistribution != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "include-distribution", includeDistribution)); // query parameter
-            if (n != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "n", n)); // query parameter
+            if (includeDistribution != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "include-distribution",
+                        includeDistribution)); // query parameter
+            if (n != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "n", n)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6146,11 +6648,11 @@ namespace Skyapi.Api
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> RichlistAsync (bool? includeDistribution = null, string n = null)
+        public async System.Threading.Tasks.Task<Object> RichlistAsync(bool? includeDistribution = null,
+            string n = null)
         {
-             ApiResponse<Object> localVarResponse = await RichlistAsyncWithHttpInfo(includeDistribution, n);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await RichlistAsyncWithHttpInfo(includeDistribution, n);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6160,9 +6662,9 @@ namespace Skyapi.Api
         /// <param name="includeDistribution">include distribution addresses or not, default value false (optional)</param>
         /// <param name="n">include distribution addresses or not, default value false (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RichlistAsyncWithHttpInfo (bool? includeDistribution = null, string n = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RichlistAsyncWithHttpInfo(
+            bool? includeDistribution = null, string n = null)
         {
-
             var localVarPath = "/api/v1/richlist";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6172,26 +6674,37 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeDistribution != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "include-distribution", includeDistribution)); // query parameter
-            if (n != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "n", n)); // query parameter
+            if (includeDistribution != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "include-distribution",
+                        includeDistribution)); // query parameter
+            if (n != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "n", n)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6213,10 +6726,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Transaction</returns>
-        public Transaction Transaction (string txid)
+        public Transaction Transaction(string txid)
         {
-             ApiResponse<Transaction> localVarResponse = TransactionWithHttpInfo(txid);
-             return localVarResponse.Data;
+            ApiResponse<Transaction> localVarResponse = TransactionWithHttpInfo(txid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6225,7 +6738,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>ApiResponse of Transaction</returns>
-        public ApiResponse< Transaction > TransactionWithHttpInfo (string txid)
+        public ApiResponse<Transaction> TransactionWithHttpInfo(string txid)
         {
             // verify the required parameter 'txid' is set
             if (txid == null)
@@ -6240,25 +6753,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            if (txid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6280,11 +6800,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Task of Transaction</returns>
-        public async System.Threading.Tasks.Task<Transaction> TransactionAsync (string txid)
+        public async System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid)
         {
-             ApiResponse<Transaction> localVarResponse = await TransactionAsyncWithHttpInfo(txid);
-             return localVarResponse.Data;
-
+            ApiResponse<Transaction> localVarResponse = await TransactionAsyncWithHttpInfo(txid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6293,7 +6812,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo (string txid)
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid)
         {
             // verify the required parameter 'txid' is set
             if (txid == null)
@@ -6308,25 +6827,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            if (txid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6348,10 +6875,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>string</returns>
-        public string TransactionInject (string rawtx)
+        public string TransactionInject(string rawtx)
         {
-             ApiResponse<string> localVarResponse = TransactionInjectWithHttpInfo(rawtx);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = TransactionInjectWithHttpInfo(rawtx);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6360,11 +6887,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > TransactionInjectWithHttpInfo (string rawtx)
+        public ApiResponse<string> TransactionInjectWithHttpInfo(string rawtx)
         {
             // verify the required parameter 'rawtx' is set
             if (rawtx == null)
-                throw new ApiException(400, "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
+                throw new ApiException(400,
+                    "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
 
             var localVarPath = "/api/v1/injectTransaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6375,21 +6903,27 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (rawtx != null) localVarHeaderParams.Add("rawtx", this.Configuration.ApiClient.ParameterToString(rawtx)); // header parameter
+            if (rawtx != null)
+                localVarHeaderParams.Add("rawtx",
+                    this.Configuration.ApiClient.ParameterToString(rawtx)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -6399,7 +6933,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6421,11 +6956,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> TransactionInjectAsync (string rawtx)
+        public async System.Threading.Tasks.Task<string> TransactionInjectAsync(string rawtx)
         {
-             ApiResponse<string> localVarResponse = await TransactionInjectAsyncWithHttpInfo(rawtx);
-             return localVarResponse.Data;
-
+            ApiResponse<string> localVarResponse = await TransactionInjectAsyncWithHttpInfo(rawtx);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6434,11 +6968,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rawtx">hex-encoded serialized transaction string.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> TransactionInjectAsyncWithHttpInfo (string rawtx)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> TransactionInjectAsyncWithHttpInfo(string rawtx)
         {
             // verify the required parameter 'rawtx' is set
             if (rawtx == null)
-                throw new ApiException(400, "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
+                throw new ApiException(400,
+                    "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
 
             var localVarPath = "/api/v1/injectTransaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6449,21 +6984,27 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (rawtx != null) localVarHeaderParams.Add("rawtx", this.Configuration.ApiClient.ParameterToString(rawtx)); // header parameter
+            if (rawtx != null)
+                localVarHeaderParams.Add("rawtx",
+                    this.Configuration.ApiClient.ParameterToString(rawtx)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -6472,8 +7013,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6495,10 +7038,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>InlineResponse2008</returns>
-        public InlineResponse2008 TransactionPost (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+        public InlineResponse2008 TransactionPost(TransactionV2ParamsAddress transactionV2ParamsAddress = null)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = TransactionPostWithHttpInfo(transactionV2ParamsAddress);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2008> localVarResponse = TransactionPostWithHttpInfo(transactionV2ParamsAddress);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6507,9 +7050,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>ApiResponse of InlineResponse2008</returns>
-        public ApiResponse< InlineResponse2008 > TransactionPostWithHttpInfo (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+        public ApiResponse<InlineResponse2008> TransactionPostWithHttpInfo(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null)
         {
-
             var localVarPath = "/api/v2/transaction";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6519,23 +7062,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionV2ParamsAddress != null && transactionV2ParamsAddress.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionV2ParamsAddress); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionV2ParamsAddress); // http body (model) parameter
             }
             else
             {
@@ -6550,7 +7098,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6563,7 +7112,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008)));
         }
 
         /// <summary>
@@ -6572,11 +7122,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>Task of InlineResponse2008</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2008> TransactionPostAsync (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+        public async System.Threading.Tasks.Task<InlineResponse2008> TransactionPostAsync(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = await TransactionPostAsyncWithHttpInfo(transactionV2ParamsAddress);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2008> localVarResponse =
+                await TransactionPostAsyncWithHttpInfo(transactionV2ParamsAddress);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6585,9 +7136,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostAsyncWithHttpInfo (TransactionV2ParamsAddress transactionV2ParamsAddress = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostAsyncWithHttpInfo(
+            TransactionV2ParamsAddress transactionV2ParamsAddress = null)
         {
-
             var localVarPath = "/api/v2/transaction";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6597,23 +7148,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionV2ParamsAddress != null && transactionV2ParamsAddress.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionV2ParamsAddress); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionV2ParamsAddress); // http body (model) parameter
             }
             else
             {
@@ -6627,8 +7183,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6641,7 +7199,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008)));
         }
 
         /// <summary>
@@ -6650,10 +7209,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>InlineResponse2008</returns>
-        public InlineResponse2008 TransactionPostUnspent (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+        public InlineResponse2008 TransactionPostUnspent(TransactionV2ParamsUnspent transactionV2ParamsUnspent)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = TransactionPostUnspentWithHttpInfo(transactionV2ParamsUnspent);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2008> localVarResponse =
+                TransactionPostUnspentWithHttpInfo(transactionV2ParamsUnspent);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6662,11 +7222,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>ApiResponse of InlineResponse2008</returns>
-        public ApiResponse< InlineResponse2008 > TransactionPostUnspentWithHttpInfo (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+        public ApiResponse<InlineResponse2008> TransactionPostUnspentWithHttpInfo(
+            TransactionV2ParamsUnspent transactionV2ParamsUnspent)
         {
             // verify the required parameter 'transactionV2ParamsUnspent' is set
             if (transactionV2ParamsUnspent == null)
-                throw new ApiException(400, "Missing required parameter 'transactionV2ParamsUnspent' when calling DefaultApi->TransactionPostUnspent");
+                throw new ApiException(400,
+                    "Missing required parameter 'transactionV2ParamsUnspent' when calling DefaultApi->TransactionPostUnspent");
 
             var localVarPath = "/api/v2/transaction/unspent";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6677,23 +7239,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionV2ParamsUnspent != null && transactionV2ParamsUnspent.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionV2ParamsUnspent); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionV2ParamsUnspent); // http body (model) parameter
             }
             else
             {
@@ -6708,7 +7275,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6721,7 +7289,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008)));
         }
 
         /// <summary>
@@ -6730,11 +7299,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>Task of InlineResponse2008</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2008> TransactionPostUnspentAsync (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+        public async System.Threading.Tasks.Task<InlineResponse2008> TransactionPostUnspentAsync(
+            TransactionV2ParamsUnspent transactionV2ParamsUnspent)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = await TransactionPostUnspentAsyncWithHttpInfo(transactionV2ParamsUnspent);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2008> localVarResponse =
+                await TransactionPostUnspentAsyncWithHttpInfo(transactionV2ParamsUnspent);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6743,11 +7313,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsUnspent">Unspent parameters</param>
         /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostUnspentAsyncWithHttpInfo (TransactionV2ParamsUnspent transactionV2ParamsUnspent)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>>
+            TransactionPostUnspentAsyncWithHttpInfo(TransactionV2ParamsUnspent transactionV2ParamsUnspent)
         {
             // verify the required parameter 'transactionV2ParamsUnspent' is set
             if (transactionV2ParamsUnspent == null)
-                throw new ApiException(400, "Missing required parameter 'transactionV2ParamsUnspent' when calling DefaultApi->TransactionPostUnspent");
+                throw new ApiException(400,
+                    "Missing required parameter 'transactionV2ParamsUnspent' when calling DefaultApi->TransactionPostUnspent");
 
             var localVarPath = "/api/v2/transaction/unspent";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6758,23 +7330,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionV2ParamsUnspent != null && transactionV2ParamsUnspent.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionV2ParamsUnspent); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionV2ParamsUnspent); // http body (model) parameter
             }
             else
             {
@@ -6788,8 +7365,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6802,7 +7381,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008)));
         }
 
         /// <summary>
@@ -6811,10 +7391,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
         /// <returns>Object</returns>
-        public Object TransactionRaw (string txid = null)
+        public Object TransactionRaw(string txid = null)
         {
-             ApiResponse<Object> localVarResponse = TransactionRawWithHttpInfo(txid);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = TransactionRawWithHttpInfo(txid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6823,9 +7403,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > TransactionRawWithHttpInfo (string txid = null)
+        public ApiResponse<Object> TransactionRawWithHttpInfo(string txid = null)
         {
-
             var localVarPath = "/api/v2/transaction/raw";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6835,25 +7414,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            if (txid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6875,11 +7461,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionRawAsync (string txid = null)
+        public async System.Threading.Tasks.Task<Object> TransactionRawAsync(string txid = null)
         {
-             ApiResponse<Object> localVarResponse = await TransactionRawAsyncWithHttpInfo(txid);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await TransactionRawAsyncWithHttpInfo(txid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6888,9 +7473,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">Transaction id hash (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo (string txid = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo(
+            string txid = null)
         {
-
             var localVarPath = "/api/v2/transaction/raw";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -6900,25 +7485,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            if (txid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -6940,10 +7533,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
         /// <returns>Object</returns>
-        public Object TransactionVerify (TransactionVerifyRequest transactionVerifyRequest)
+        public Object TransactionVerify(TransactionVerifyRequest transactionVerifyRequest)
         {
-             ApiResponse<Object> localVarResponse = TransactionVerifyWithHttpInfo(transactionVerifyRequest);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = TransactionVerifyWithHttpInfo(transactionVerifyRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6952,11 +7545,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > TransactionVerifyWithHttpInfo (TransactionVerifyRequest transactionVerifyRequest)
+        public ApiResponse<Object> TransactionVerifyWithHttpInfo(TransactionVerifyRequest transactionVerifyRequest)
         {
             // verify the required parameter 'transactionVerifyRequest' is set
             if (transactionVerifyRequest == null)
-                throw new ApiException(400, "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
+                throw new ApiException(400,
+                    "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
 
             var localVarPath = "/api/v2/transaction/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6967,23 +7561,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionVerifyRequest != null && transactionVerifyRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
             }
             else
             {
@@ -6998,7 +7597,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7020,11 +7620,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionVerifyAsync (TransactionVerifyRequest transactionVerifyRequest)
+        public async System.Threading.Tasks.Task<Object> TransactionVerifyAsync(
+            TransactionVerifyRequest transactionVerifyRequest)
         {
-             ApiResponse<Object> localVarResponse = await TransactionVerifyAsyncWithHttpInfo(transactionVerifyRequest);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await TransactionVerifyAsyncWithHttpInfo(transactionVerifyRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7033,11 +7633,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionVerifyRequest"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo (TransactionVerifyRequest transactionVerifyRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo(
+            TransactionVerifyRequest transactionVerifyRequest)
         {
             // verify the required parameter 'transactionVerifyRequest' is set
             if (transactionVerifyRequest == null)
-                throw new ApiException(400, "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
+                throw new ApiException(400,
+                    "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
 
             var localVarPath = "/api/v2/transaction/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7048,23 +7650,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (transactionVerifyRequest != null && transactionVerifyRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
             }
             else
             {
@@ -7078,8 +7685,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7102,10 +7711,10 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Object</returns>
-        public Object TransactionsGet (string addrs = null, string confirmed = null)
+        public Object TransactionsGet(string addrs = null, string confirmed = null)
         {
-             ApiResponse<Object> localVarResponse = TransactionsGetWithHttpInfo(addrs, confirmed);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = TransactionsGetWithHttpInfo(addrs, confirmed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7115,9 +7724,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > TransactionsGetWithHttpInfo (string addrs = null, string confirmed = null)
+        public ApiResponse<Object> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null)
         {
-
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7127,26 +7735,36 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
-            if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (confirmed != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed",
+                        confirmed)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7169,11 +7787,11 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionsGetAsync (string addrs = null, string confirmed = null)
+        public async System.Threading.Tasks.Task<Object> TransactionsGetAsync(string addrs = null,
+            string confirmed = null)
         {
-             ApiResponse<Object> localVarResponse = await TransactionsGetAsyncWithHttpInfo(addrs, confirmed);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await TransactionsGetAsyncWithHttpInfo(addrs, confirmed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7183,9 +7801,9 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo (string addrs = null, string confirmed = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo(
+            string addrs = null, string confirmed = null)
         {
-
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7195,26 +7813,37 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
-            if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
+            if (addrs != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            if (confirmed != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed",
+                        confirmed)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7237,10 +7866,10 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Object</returns>
-        public Object TransactionsPost (string addrs = null, string confirmed = null)
+        public Object TransactionsPost(string addrs = null, string confirmed = null)
         {
-             ApiResponse<Object> localVarResponse = TransactionsPostWithHttpInfo(addrs, confirmed);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = TransactionsPostWithHttpInfo(addrs, confirmed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7250,9 +7879,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > TransactionsPostWithHttpInfo (string addrs = null, string confirmed = null)
+        public ApiResponse<Object> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null)
         {
-
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7262,25 +7890,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null){
-	    var mypost=new Dictionary<string, string>();
-		    mypost["addrs"]=addrs;
-			    localVarPostBody=this.Configuration.ApiClient.Serialize(mypost); 
-	    }// body parameter
-            if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
+            if (addrs != null)
+            {
+                localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs));
+            } // query parameter
+
+            if (confirmed != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed",
+                        confirmed)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7290,7 +7925,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7313,11 +7949,11 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionsPostAsync (string addrs = null, string confirmed = null)
+        public async System.Threading.Tasks.Task<Object> TransactionsPostAsync(string addrs = null,
+            string confirmed = null)
         {
-             ApiResponse<Object> localVarResponse = await TransactionsPostAsyncWithHttpInfo(addrs, confirmed);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await TransactionsPostAsyncWithHttpInfo(addrs, confirmed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7327,9 +7963,9 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo (string addrs = null, string confirmed = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo(
+            string addrs = null, string confirmed = null)
         {
-
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7339,25 +7975,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-             if (addrs != null){
-	    var mypost=new Dictionary<string, string>();
-		    mypost["addrs"]=addrs;
-			    localVarPostBody=this.Configuration.ApiClient.Serialize(mypost); 
-	    } // body parameter
-            if (confirmed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed", confirmed)); // query parameter
+            if (addrs != null)
+            {
+                localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("","addrs",addrs));
+            } // query parameter
+
+            if (confirmed != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "confirmed",
+                        confirmed)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7366,8 +8009,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7389,10 +8034,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Object</returns>
-        public Object Uxout (string uxid = null)
+        public Object Uxout(string uxid = null)
         {
-             ApiResponse<Object> localVarResponse = UxoutWithHttpInfo(uxid);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UxoutWithHttpInfo(uxid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7401,9 +8046,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UxoutWithHttpInfo (string uxid = null)
+        public ApiResponse<Object> UxoutWithHttpInfo(string uxid = null)
         {
-
             var localVarPath = "/api/v1/uxout";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7413,25 +8057,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (uxid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "uxid", uxid)); // query parameter
+            if (uxid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "uxid", uxid)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7453,11 +8104,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UxoutAsync (string uxid = null)
+        public async System.Threading.Tasks.Task<Object> UxoutAsync(string uxid = null)
         {
-             ApiResponse<Object> localVarResponse = await UxoutAsyncWithHttpInfo(uxid);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await UxoutAsyncWithHttpInfo(uxid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7466,9 +8116,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uxid">uxid to filter by (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UxoutAsyncWithHttpInfo (string uxid = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UxoutAsyncWithHttpInfo(string uxid = null)
         {
-
             var localVarPath = "/api/v1/uxout";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7478,25 +8127,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (uxid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "uxid", uxid)); // query parameter
+            if (uxid != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "uxid", uxid)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7518,10 +8175,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Object</returns>
-        public Object VerifyAddress (Object address)
+        public Object VerifyAddress(Object address)
         {
-             ApiResponse<Object> localVarResponse = VerifyAddressWithHttpInfo(address);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = VerifyAddressWithHttpInfo(address);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7530,11 +8187,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > VerifyAddressWithHttpInfo (Object address)
+        public ApiResponse<Object> VerifyAddressWithHttpInfo(Object address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling DefaultApi->VerifyAddress");
+                throw new ApiException(400,
+                    "Missing required parameter 'address' when calling DefaultApi->VerifyAddress");
 
             var localVarPath = "/api/v2/address/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7545,20 +8203,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7568,7 +8232,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7590,11 +8255,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> VerifyAddressAsync (Object address)
+        public async System.Threading.Tasks.Task<Object> VerifyAddressAsync(Object address)
         {
-             ApiResponse<Object> localVarResponse = await VerifyAddressAsyncWithHttpInfo(address);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await VerifyAddressAsyncWithHttpInfo(address);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7603,11 +8267,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address">Address id.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> VerifyAddressAsyncWithHttpInfo (Object address)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> VerifyAddressAsyncWithHttpInfo(Object address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling DefaultApi->VerifyAddress");
+                throw new ApiException(400,
+                    "Missing required parameter 'address' when calling DefaultApi->VerifyAddress");
 
             var localVarPath = "/api/v2/address/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7618,20 +8283,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            if (address != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7640,8 +8311,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7662,10 +8335,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>InlineResponse2005</returns>
-        public InlineResponse2005 Version ()
+        public InlineResponse2005 Version()
         {
-             ApiResponse<InlineResponse2005> localVarResponse = VersionWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2005> localVarResponse = VersionWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7673,9 +8346,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of InlineResponse2005</returns>
-        public ApiResponse< InlineResponse2005 > VersionWithHttpInfo ()
+        public ApiResponse<InlineResponse2005> VersionWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/version";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7685,24 +8357,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7715,7 +8391,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2005>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2005)));
         }
 
         /// <summary>
@@ -7723,11 +8400,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of InlineResponse2005</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2005> VersionAsync ()
+        public async System.Threading.Tasks.Task<InlineResponse2005> VersionAsync()
         {
-             ApiResponse<InlineResponse2005> localVarResponse = await VersionAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2005> localVarResponse = await VersionAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7735,9 +8411,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> VersionAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> VersionAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/version";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -7747,24 +8422,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7777,7 +8457,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2005>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2005)));
         }
 
         /// <summary>
@@ -7786,10 +8467,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        public Object Wallet (string id)
+        public Object Wallet(string id)
         {
-             ApiResponse<Object> localVarResponse = WalletWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7798,7 +8479,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletWithHttpInfo (string id)
+        public ApiResponse<Object> WalletWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7813,25 +8494,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7853,11 +8541,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletAsync (string id)
+        public async System.Threading.Tasks.Task<Object> WalletAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await WalletAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7866,7 +8553,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7881,25 +8568,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7921,10 +8616,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        public Object WalletBalance (string id)
+        public Object WalletBalance(string id)
         {
-             ApiResponse<Object> localVarResponse = WalletBalanceWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletBalanceWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -7933,7 +8628,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletBalanceWithHttpInfo (string id)
+        public ApiResponse<Object> WalletBalanceWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7948,25 +8643,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -7988,11 +8690,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletBalanceAsync (string id)
+        public async System.Threading.Tasks.Task<Object> WalletBalanceAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await WalletBalanceAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletBalanceAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8001,7 +8702,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8016,25 +8717,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8060,10 +8769,11 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+        public Object WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null,
+            string password = null)
         {
-             ApiResponse<Object> localVarResponse = WalletCreateWithHttpInfo(seed, label, scan, encrypt, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletCreateWithHttpInfo(seed, label, scan, encrypt, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8076,7 +8786,8 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletCreateWithHttpInfo (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+        public ApiResponse<Object> WalletCreateWithHttpInfo(string seed, string label, int? scan = null,
+            bool? encrypt = null, string password = null)
         {
             // verify the required parameter 'seed' is set
             if (seed == null)
@@ -8094,24 +8805,38 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (label != null) localVarHeaderParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // header parameter
-            if (scan != null) localVarHeaderParams.Add("scan", this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
-            if (encrypt != null) localVarHeaderParams.Add("encrypt", this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (seed != null)
+                localVarHeaderParams.Add("seed",
+                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+            if (label != null)
+                localVarHeaderParams.Add("label",
+                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            if (scan != null)
+                localVarHeaderParams.Add("scan",
+                    this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
+            if (encrypt != null)
+                localVarHeaderParams.Add("encrypt",
+                    this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8121,7 +8846,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8147,11 +8873,12 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletCreateAsync (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+        public async System.Threading.Tasks.Task<Object> WalletCreateAsync(string seed, string label, int? scan = null,
+            bool? encrypt = null, string password = null)
         {
-             ApiResponse<Object> localVarResponse = await WalletCreateAsyncWithHttpInfo(seed, label, scan, encrypt, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse =
+                await WalletCreateAsyncWithHttpInfo(seed, label, scan, encrypt, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8164,7 +8891,8 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo(string seed,
+            string label, int? scan = null, bool? encrypt = null, string password = null)
         {
             // verify the required parameter 'seed' is set
             if (seed == null)
@@ -8182,24 +8910,38 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (label != null) localVarHeaderParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // header parameter
-            if (scan != null) localVarHeaderParams.Add("scan", this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
-            if (encrypt != null) localVarHeaderParams.Add("encrypt", this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (seed != null)
+                localVarHeaderParams.Add("seed",
+                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+            if (label != null)
+                localVarHeaderParams.Add("label",
+                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            if (scan != null)
+                localVarHeaderParams.Add("scan",
+                    this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
+            if (encrypt != null)
+                localVarHeaderParams.Add("encrypt",
+                    this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8208,8 +8950,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8232,10 +8976,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Object</returns>
-        public Object WalletDecrypt (string id, string password)
+        public Object WalletDecrypt(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = WalletDecryptWithHttpInfo(id, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletDecryptWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8245,14 +8989,15 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletDecryptWithHttpInfo (string id, string password)
+        public ApiResponse<Object> WalletDecryptWithHttpInfo(string id, string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletDecrypt");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletDecrypt");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletDecrypt");
 
             var localVarPath = "/api/v1/wallet/decrypt";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8263,21 +9008,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8287,7 +9039,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8310,11 +9063,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletDecryptAsync (string id, string password)
+        public async System.Threading.Tasks.Task<Object> WalletDecryptAsync(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = await WalletDecryptAsyncWithHttpInfo(id, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletDecryptAsyncWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8324,14 +9076,16 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo (string id, string password)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo(string id,
+            string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletDecrypt");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletDecrypt");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletDecrypt");
 
             var localVarPath = "/api/v1/wallet/decrypt";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8342,21 +9096,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8365,8 +9126,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8389,10 +9152,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Object</returns>
-        public Object WalletEncrypt (string id, string password)
+        public Object WalletEncrypt(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = WalletEncryptWithHttpInfo(id, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletEncryptWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8402,14 +9165,15 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletEncryptWithHttpInfo (string id, string password)
+        public ApiResponse<Object> WalletEncryptWithHttpInfo(string id, string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletEncrypt");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletEncrypt");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletEncrypt");
 
             var localVarPath = "/api/v1/wallet/encrypt";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8420,21 +9184,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8444,7 +9215,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8467,11 +9239,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletEncryptAsync (string id, string password)
+        public async System.Threading.Tasks.Task<Object> WalletEncryptAsync(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = await WalletEncryptAsyncWithHttpInfo(id, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletEncryptAsyncWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8481,14 +9252,16 @@ namespace Skyapi.Api
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo (string id, string password)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo(string id,
+            string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletEncrypt");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletEncrypt");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletEncrypt");
 
             var localVarPath = "/api/v1/wallet/encrypt";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8499,21 +9272,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8522,8 +9302,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8545,10 +9327,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>InlineResponse2007</returns>
-        public InlineResponse2007 WalletFolder (string addr)
+        public InlineResponse2007 WalletFolder(string addr)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = WalletFolderWithHttpInfo(addr);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2007> localVarResponse = WalletFolderWithHttpInfo(addr);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8557,7 +9339,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        public ApiResponse< InlineResponse2007 > WalletFolderWithHttpInfo (string addr)
+        public ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo(string addr)
         {
             // verify the required parameter 'addr' is set
             if (addr == null)
@@ -8572,25 +9354,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addr != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
+            if (addr != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8603,7 +9392,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2007)));
         }
 
         /// <summary>
@@ -8612,11 +9402,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of InlineResponse2007</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync (string addr)
+        public async System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync(string addr)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = await WalletFolderAsyncWithHttpInfo(addr);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2007> localVarResponse = await WalletFolderAsyncWithHttpInfo(addr);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8625,7 +9414,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo (string addr)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo(
+            string addr)
         {
             // verify the required parameter 'addr' is set
             if (addr == null)
@@ -8640,25 +9430,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addr != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
+            if (addr != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8671,7 +9469,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2007)));
         }
 
         /// <summary>
@@ -8682,10 +9481,10 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletNewAddress (string id, string num = null, string password = null)
+        public Object WalletNewAddress(string id, string num = null, string password = null)
         {
-             ApiResponse<Object> localVarResponse = WalletNewAddressWithHttpInfo(id, num, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletNewAddressWithHttpInfo(id, num, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8696,11 +9495,12 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletNewAddressWithHttpInfo (string id, string num = null, string password = null)
+        public ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, string num = null, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletNewAddress");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->WalletNewAddress");
 
             var localVarPath = "/api/v1/wallet/newAddress";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8711,22 +9511,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (num != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
-            if (password != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (num != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
+            if (password != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8736,7 +9546,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8760,11 +9571,11 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletNewAddressAsync (string id, string num = null, string password = null)
+        public async System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, string num = null,
+            string password = null)
         {
-             ApiResponse<Object> localVarResponse = await WalletNewAddressAsyncWithHttpInfo(id, num, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletNewAddressAsyncWithHttpInfo(id, num, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8775,11 +9586,13 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo (string id, string num = null, string password = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo(string id,
+            string num = null, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletNewAddress");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->WalletNewAddress");
 
             var localVarPath = "/api/v1/wallet/newAddress";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8790,22 +9603,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (num != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
-            if (password != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (num != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "num", num)); // query parameter
+            if (password != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8814,8 +9637,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8837,10 +9662,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletNewSeed (string entropy = null)
+        public Object WalletNewSeed(string entropy = null)
         {
-             ApiResponse<Object> localVarResponse = WalletNewSeedWithHttpInfo(entropy);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletNewSeedWithHttpInfo(entropy);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8849,9 +9674,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletNewSeedWithHttpInfo (string entropy = null)
+        public ApiResponse<Object> WalletNewSeedWithHttpInfo(string entropy = null)
         {
-
             var localVarPath = "/api/v1/wallet/newSeed";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -8861,25 +9685,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (entropy != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entropy", entropy)); // query parameter
+            if (entropy != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entropy", entropy)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8901,11 +9732,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletNewSeedAsync (string entropy = null)
+        public async System.Threading.Tasks.Task<Object> WalletNewSeedAsync(string entropy = null)
         {
-             ApiResponse<Object> localVarResponse = await WalletNewSeedAsyncWithHttpInfo(entropy);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletNewSeedAsyncWithHttpInfo(entropy);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8914,9 +9744,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entropy">Entropy bitSize. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewSeedAsyncWithHttpInfo (string entropy = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewSeedAsyncWithHttpInfo(
+            string entropy = null)
         {
-
             var localVarPath = "/api/v1/wallet/newSeed";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -8926,25 +9756,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (entropy != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entropy", entropy)); // query parameter
+            if (entropy != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entropy", entropy)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -8968,10 +9806,10 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletRecover (string id, string seed, string password = null)
+        public Object WalletRecover(string id, string seed, string password = null)
         {
-             ApiResponse<Object> localVarResponse = WalletRecoverWithHttpInfo(id, seed, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletRecoverWithHttpInfo(id, seed, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -8982,7 +9820,7 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletRecoverWithHttpInfo (string id, string seed, string password = null)
+        public ApiResponse<Object> WalletRecoverWithHttpInfo(string id, string seed, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9000,22 +9838,31 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (seed != null)
+                localVarHeaderParams.Add("seed",
+                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9025,7 +9872,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9049,11 +9897,11 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletRecoverAsync (string id, string seed, string password = null)
+        public async System.Threading.Tasks.Task<Object> WalletRecoverAsync(string id, string seed,
+            string password = null)
         {
-             ApiResponse<Object> localVarResponse = await WalletRecoverAsyncWithHttpInfo(id, seed, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletRecoverAsyncWithHttpInfo(id, seed, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9064,7 +9912,8 @@ namespace Skyapi.Api
         /// <param name="seed">Wallet seed.</param>
         /// <param name="password">Wallet password. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletRecoverAsyncWithHttpInfo (string id, string seed, string password = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletRecoverAsyncWithHttpInfo(string id,
+            string seed, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9082,22 +9931,31 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null) localVarHeaderParams.Add("seed", this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null) localVarHeaderParams.Add("password", this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (seed != null)
+                localVarHeaderParams.Add("seed",
+                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
+            if (password != null)
+                localVarHeaderParams.Add("password",
+                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9106,8 +9964,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9130,10 +9990,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Object</returns>
-        public Object WalletSeed (string id, string password)
+        public Object WalletSeed(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = WalletSeedWithHttpInfo(id, password);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletSeedWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9143,14 +10003,15 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletSeedWithHttpInfo (string id, string password)
+        public ApiResponse<Object> WalletSeedWithHttpInfo(string id, string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletSeed");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletSeed");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletSeed");
 
             var localVarPath = "/api/v1/wallet/seed";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9161,21 +10022,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (password != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (password != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9185,7 +10054,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9208,11 +10078,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletSeedAsync (string id, string password)
+        public async System.Threading.Tasks.Task<Object> WalletSeedAsync(string id, string password)
         {
-             ApiResponse<Object> localVarResponse = await WalletSeedAsyncWithHttpInfo(id, password);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletSeedAsyncWithHttpInfo(id, password);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9222,14 +10091,16 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="password">Wallet password.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedAsyncWithHttpInfo (string id, string password)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedAsyncWithHttpInfo(string id,
+            string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletSeed");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling DefaultApi->WalletSeed");
+                throw new ApiException(400,
+                    "Missing required parameter 'password' when calling DefaultApi->WalletSeed");
 
             var localVarPath = "/api/v1/wallet/seed";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9240,31 +10111,41 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (password != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (password != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
-            
+
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9286,10 +10167,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletSeedVerify (string seed = null)
+        public Object WalletSeedVerify(string seed = null)
         {
-             ApiResponse<Object> localVarResponse = WalletSeedVerifyWithHttpInfo(seed);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletSeedVerifyWithHttpInfo(seed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9298,9 +10179,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletSeedVerifyWithHttpInfo (string seed = null)
+        public ApiResponse<Object> WalletSeedVerifyWithHttpInfo(string seed = null)
         {
-
             var localVarPath = "/api/v2/wallet/seed/verify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -9310,25 +10190,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null){ 
-		    var myseed=new Dictionary<string, string>();
-		    myseed["seed"]=seed;
-			    localVarPostBody=this.Configuration.ApiClient.Serialize(myseed); 
-	    }
-		    // header parameter
+            if (seed != null)
+            {
+                localVarPostBody =
+                    Configuration.ApiClient.Serialize(new Dictionary<string, string> {{"seed", seed}});
+            }
+            // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9338,7 +10222,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9360,11 +10245,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletSeedVerifyAsync (string seed = null)
+        public async System.Threading.Tasks.Task<Object> WalletSeedVerifyAsync(string seed = null)
         {
-             ApiResponse<Object> localVarResponse = await WalletSeedVerifyAsyncWithHttpInfo(seed);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletSeedVerifyAsyncWithHttpInfo(seed);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9373,9 +10257,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedVerifyAsyncWithHttpInfo (string seed = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletSeedVerifyAsyncWithHttpInfo(
+            string seed = null)
         {
-
             var localVarPath = "/api/v2/wallet/seed/verify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -9385,23 +10269,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-	    if (seed != null) {
-		    var myseed=new Dictionary<string,string>();
-		    myseed["seed"]=seed;
-		    localVarPostBody=this.Configuration.ApiClient.Serialize(myseed);} // header parameter
+            if (seed != null)
+            {
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(new Dictionary<string, string> {{"seed", seed}});
+            } // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9410,8 +10299,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9433,10 +10324,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Object</returns>
-        public Object WalletTransaction (WalletTransactionRequest walletTransactionRequest)
+        public Object WalletTransaction(WalletTransactionRequest walletTransactionRequest)
         {
-             ApiResponse<Object> localVarResponse = WalletTransactionWithHttpInfo(walletTransactionRequest);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = WalletTransactionWithHttpInfo(walletTransactionRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9445,11 +10336,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > WalletTransactionWithHttpInfo (WalletTransactionRequest walletTransactionRequest)
+        public ApiResponse<Object> WalletTransactionWithHttpInfo(WalletTransactionRequest walletTransactionRequest)
         {
             // verify the required parameter 'walletTransactionRequest' is set
             if (walletTransactionRequest == null)
-                throw new ApiException(400, "Missing required parameter 'walletTransactionRequest' when calling DefaultApi->WalletTransaction");
+                throw new ApiException(400,
+                    "Missing required parameter 'walletTransactionRequest' when calling DefaultApi->WalletTransaction");
 
             var localVarPath = "/api/v1/wallet/transaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9460,23 +10352,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (walletTransactionRequest != null && walletTransactionRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
             }
             else
             {
@@ -9491,7 +10388,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9513,11 +10411,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletTransactionAsync (WalletTransactionRequest walletTransactionRequest)
+        public async System.Threading.Tasks.Task<Object> WalletTransactionAsync(
+            WalletTransactionRequest walletTransactionRequest)
         {
-             ApiResponse<Object> localVarResponse = await WalletTransactionAsyncWithHttpInfo(walletTransactionRequest);
-             return localVarResponse.Data;
-
+            ApiResponse<Object> localVarResponse = await WalletTransactionAsyncWithHttpInfo(walletTransactionRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9526,11 +10424,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo (WalletTransactionRequest walletTransactionRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo(
+            WalletTransactionRequest walletTransactionRequest)
         {
             // verify the required parameter 'walletTransactionRequest' is set
             if (walletTransactionRequest == null)
-                throw new ApiException(400, "Missing required parameter 'walletTransactionRequest' when calling DefaultApi->WalletTransaction");
+                throw new ApiException(400,
+                    "Missing required parameter 'walletTransactionRequest' when calling DefaultApi->WalletTransaction");
 
             var localVarPath = "/api/v1/wallet/transaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9541,23 +10441,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (walletTransactionRequest != null && walletTransactionRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
             }
             else
             {
@@ -9571,8 +10476,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9594,10 +10501,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>InlineResponse2009</returns>
-        public InlineResponse2009 WalletTransactionSign (WalletTransactionSignRequest walletTransactionSignRequest)
+        public InlineResponse2009 WalletTransactionSign(WalletTransactionSignRequest walletTransactionSignRequest)
         {
-             ApiResponse<InlineResponse2009> localVarResponse = WalletTransactionSignWithHttpInfo(walletTransactionSignRequest);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2009> localVarResponse =
+                WalletTransactionSignWithHttpInfo(walletTransactionSignRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9606,11 +10514,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>ApiResponse of InlineResponse2009</returns>
-        public ApiResponse< InlineResponse2009 > WalletTransactionSignWithHttpInfo (WalletTransactionSignRequest walletTransactionSignRequest)
+        public ApiResponse<InlineResponse2009> WalletTransactionSignWithHttpInfo(
+            WalletTransactionSignRequest walletTransactionSignRequest)
         {
             // verify the required parameter 'walletTransactionSignRequest' is set
             if (walletTransactionSignRequest == null)
-                throw new ApiException(400, "Missing required parameter 'walletTransactionSignRequest' when calling DefaultApi->WalletTransactionSign");
+                throw new ApiException(400,
+                    "Missing required parameter 'walletTransactionSignRequest' when calling DefaultApi->WalletTransactionSign");
 
             var localVarPath = "/api/v2/wallet/transaction/sign";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9621,23 +10531,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (walletTransactionSignRequest != null && walletTransactionSignRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(walletTransactionSignRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(walletTransactionSignRequest); // http body (model) parameter
             }
             else
             {
@@ -9652,7 +10567,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9665,7 +10581,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2009>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2009)));
+                (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2009)));
         }
 
         /// <summary>
@@ -9674,11 +10591,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>Task of InlineResponse2009</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2009> WalletTransactionSignAsync (WalletTransactionSignRequest walletTransactionSignRequest)
+        public async System.Threading.Tasks.Task<InlineResponse2009> WalletTransactionSignAsync(
+            WalletTransactionSignRequest walletTransactionSignRequest)
         {
-             ApiResponse<InlineResponse2009> localVarResponse = await WalletTransactionSignAsyncWithHttpInfo(walletTransactionSignRequest);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2009> localVarResponse =
+                await WalletTransactionSignAsyncWithHttpInfo(walletTransactionSignRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9687,11 +10605,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionSignRequest"></param>
         /// <returns>Task of ApiResponse (InlineResponse2009)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2009>> WalletTransactionSignAsyncWithHttpInfo (WalletTransactionSignRequest walletTransactionSignRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2009>>
+            WalletTransactionSignAsyncWithHttpInfo(WalletTransactionSignRequest walletTransactionSignRequest)
         {
             // verify the required parameter 'walletTransactionSignRequest' is set
             if (walletTransactionSignRequest == null)
-                throw new ApiException(400, "Missing required parameter 'walletTransactionSignRequest' when calling DefaultApi->WalletTransactionSign");
+                throw new ApiException(400,
+                    "Missing required parameter 'walletTransactionSignRequest' when calling DefaultApi->WalletTransactionSign");
 
             var localVarPath = "/api/v2/wallet/transaction/sign";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9702,23 +10622,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
                 "application/json"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (walletTransactionSignRequest != null && walletTransactionSignRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(walletTransactionSignRequest); // http body (model) parameter
+                localVarPostBody =
+                    this.Configuration.ApiClient.Serialize(walletTransactionSignRequest); // http body (model) parameter
             }
             else
             {
@@ -9732,8 +10657,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9746,7 +10673,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2009>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2009)));
+                (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2009)));
         }
 
         /// <summary>
@@ -9755,10 +10683,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>InlineResponse2006</returns>
-        public InlineResponse2006 WalletTransactions (string id)
+        public InlineResponse2006 WalletTransactions(string id)
         {
-             ApiResponse<InlineResponse2006> localVarResponse = WalletTransactionsWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2006> localVarResponse = WalletTransactionsWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9767,11 +10695,12 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>ApiResponse of InlineResponse2006</returns>
-        public ApiResponse< InlineResponse2006 > WalletTransactionsWithHttpInfo (string id)
+        public ApiResponse<InlineResponse2006> WalletTransactionsWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletTransactions");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->WalletTransactions");
 
             var localVarPath = "/api/v1/wallet/transactions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9782,25 +10711,32 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9813,7 +10749,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
+                (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2006)));
         }
 
         /// <summary>
@@ -9822,11 +10759,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of InlineResponse2006</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2006> WalletTransactionsAsync (string id)
+        public async System.Threading.Tasks.Task<InlineResponse2006> WalletTransactionsAsync(string id)
         {
-             ApiResponse<InlineResponse2006> localVarResponse = await WalletTransactionsAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
-
+            ApiResponse<InlineResponse2006> localVarResponse = await WalletTransactionsAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -9835,11 +10771,13 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of ApiResponse (InlineResponse2006)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> WalletTransactionsAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>>
+            WalletTransactionsAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->WalletTransactions");
+                throw new ApiException(400,
+                    "Missing required parameter 'id' when calling DefaultApi->WalletTransactions");
 
             var localVarPath = "/api/v1/wallet/transactions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -9850,25 +10788,33 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9881,7 +10827,8 @@ namespace Skyapi.Api
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
+                (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2006)));
         }
 
         /// <summary>
@@ -9890,9 +10837,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns></returns>
-        public void WalletUnload (string id)
+        public void WalletUnload(string id)
         {
-             WalletUnloadWithHttpInfo(id);
+            WalletUnloadWithHttpInfo(id);
         }
 
         /// <summary>
@@ -9901,7 +10848,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> WalletUnloadWithHttpInfo (string id)
+        public ApiResponse<Object> WalletUnloadWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9916,20 +10863,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9939,7 +10892,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -9961,10 +10915,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task WalletUnloadAsync (string id)
+        public async System.Threading.Tasks.Task WalletUnloadAsync(string id)
         {
-             await WalletUnloadAsyncWithHttpInfo(id);
-
+            await WalletUnloadAsyncWithHttpInfo(id);
         }
 
         /// <summary>
@@ -9973,7 +10926,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet Id.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletUnloadAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletUnloadAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9988,20 +10941,26 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null)
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -10010,8 +10969,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -10034,10 +10995,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>string</returns>
-        public string WalletUpdate (string id, string label)
+        public string WalletUpdate(string id, string label)
         {
-             ApiResponse<string> localVarResponse = WalletUpdateWithHttpInfo(id, label);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = WalletUpdateWithHttpInfo(id, label);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -10047,7 +11008,7 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > WalletUpdateWithHttpInfo (string id, string label)
+        public ApiResponse<string> WalletUpdateWithHttpInfo(string id, string label)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -10065,22 +11026,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (label != null) localVarHeaderParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (label != null)
+                localVarHeaderParams.Add("label",
+                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -10090,7 +11058,8 @@ namespace Skyapi.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -10113,11 +11082,10 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> WalletUpdateAsync (string id, string label)
+        public async System.Threading.Tasks.Task<string> WalletUpdateAsync(string id, string label)
         {
-             ApiResponse<string> localVarResponse = await WalletUpdateAsyncWithHttpInfo(id, label);
-             return localVarResponse.Data;
-
+            ApiResponse<string> localVarResponse = await WalletUpdateAsyncWithHttpInfo(id, label);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -10127,7 +11095,8 @@ namespace Skyapi.Api
         /// <param name="id">Wallet Id.</param>
         /// <param name="label">The label the wallet will be updated to.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> WalletUpdateAsyncWithHttpInfo (string id, string label)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> WalletUpdateAsyncWithHttpInfo(string id,
+            string label)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -10145,22 +11114,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "text/plain",
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (label != null) localVarHeaderParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            if (id != null)
+                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
+            if (label != null)
+                localVarHeaderParams.Add("label",
+                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -10169,8 +11145,10 @@ namespace Skyapi.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -10191,10 +11169,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Object&gt;</returns>
-        public List<Object> Wallets ()
+        public List<Object> Wallets()
         {
-             ApiResponse<List<Object>> localVarResponse = WalletsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<Object>> localVarResponse = WalletsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -10202,9 +11180,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        public ApiResponse< List<Object> > WalletsWithHttpInfo ()
+        public ApiResponse<List<Object>> WalletsWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/wallets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -10214,24 +11191,28 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -10252,11 +11233,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Object>> WalletsAsync ()
+        public async System.Threading.Tasks.Task<List<Object>> WalletsAsync()
         {
-             ApiResponse<List<Object>> localVarResponse = await WalletsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
+            ApiResponse<List<Object>> localVarResponse = await WalletsAsyncWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -10264,9 +11244,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1/wallets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -10276,24 +11255,29 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            String[] localVarHttpContentTypes = new String[]
+            {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType =
+                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            String[] localVarHttpHeaderAccepts = new String[]
+            {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept =
+                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+                localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -10308,6 +11292,5 @@ namespace Skyapi.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (List<Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Object>)));
         }
-
     }
 }

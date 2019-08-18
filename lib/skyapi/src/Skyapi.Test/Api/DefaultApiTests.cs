@@ -16,7 +16,6 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using NUnit.Framework;
-
 using Skyapi.Client;
 using Skyapi.Api;
 using Skyapi.Model;
@@ -42,6 +41,7 @@ namespace Skyapi.Test
         public void Init()
         {
             instance = new DefaultApi();
+            
         }
 
         /// <summary>
