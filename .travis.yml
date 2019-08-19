@@ -20,6 +20,7 @@ matrix:
       solution: lib/swig/LibSkycoinNet.sln
       env: TYPE=mono
       mono: 5.18.1
+      dotnet: 2.2.401
     - os: osx
       language: csharp
       oxs_image: xcode8
