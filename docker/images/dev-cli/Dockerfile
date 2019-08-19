@@ -36,7 +36,9 @@ RUN apt update \
            fsharp \
            mono-vbnc \
            nuget \
+           mono-complete \
            referenceassemblies-pcl \
+           msbuild \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/*
   
