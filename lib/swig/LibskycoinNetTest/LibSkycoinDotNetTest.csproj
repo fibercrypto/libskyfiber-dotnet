@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibskycoinNet\LibSkycoinDotNet.csproj">
+      <Project>{9A1DE0D2-E9C3-415D-A551-640C279EC8E1}</Project>
+      <Name>LibSkycoinDotNet</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>
