@@ -262,6 +262,7 @@ testrunner/
 *.swp
 *.swo
 *.orig
+*.golden
 
 .directory
 

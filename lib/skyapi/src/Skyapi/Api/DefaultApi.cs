@@ -559,7 +559,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        Object OutputsPost(string address = null, string hash = null);
+        Object OutputsPost(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -571,7 +571,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> OutputsPostWithHttpInfo(string address = null, string hash = null);
+        ApiResponse<Object> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// 
@@ -1829,7 +1829,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> OutputsPostAsync(string address = null, string hash = null);
+        System.Threading.Tasks.Task<Object> OutputsPostAsync(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -1841,8 +1841,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(string address = null,
-            string hash = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(List<string> address = null,
+            List<string> hash = null);
 
         /// <summary>
         /// 
@@ -6136,7 +6136,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        public Object OutputsPost(string address = null, string hash = null)
+        public Object OutputsPost(List<string> address = null, List<string> hash = null)
         {
             ApiResponse<Object> localVarResponse = OutputsPostWithHttpInfo(address, hash);
             return localVarResponse.Data;
@@ -6149,7 +6149,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> OutputsPostWithHttpInfo(string address = null, string hash = null)
+        public ApiResponse<Object> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6179,13 +6179,15 @@ namespace Skyapi.Api
 
             if (address != null)
                 localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", address)); // query parameter
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs",
+                        string.Join(",", address))); // query parameter
             if (hash != null)
                 localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes", hash)); // query parameter
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes",
+                        string.Join(",", hash))); // query parameter
 
             // authentication (csrfAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
@@ -6216,7 +6218,8 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> OutputsPostAsync(string address = null, string hash = null)
+        public async System.Threading.Tasks.Task<Object> OutputsPostAsync(List<string> address = null,
+            List<string> hash = null)
         {
             ApiResponse<Object> localVarResponse = await OutputsPostAsyncWithHttpInfo(address, hash);
             return localVarResponse.Data;
@@ -6230,12 +6233,12 @@ namespace Skyapi.Api
         /// <param name="hash"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(
-            string address = null, string hash = null)
+            List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6260,10 +6263,12 @@ namespace Skyapi.Api
 
             if (address != null)
                 localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", address)); // query parameter
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs",
+                        string.Join(",", address))); // query parameter
             if (hash != null)
                 localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes", hash)); // query parameter
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hashes",
+                        string.Join(",", hash))); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7994,7 +7999,7 @@ namespace Skyapi.Api
 
             if (addrs != null)
             {
-                localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("","addrs",addrs));
+                localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs));
             } // query parameter
 
             if (confirmed != null)
