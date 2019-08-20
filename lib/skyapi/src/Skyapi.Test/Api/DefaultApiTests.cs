@@ -2482,12 +2482,12 @@ namespace Skyapi.Test.Api
 
         private static void CheckGoldenFile(string file, object obj, Type type)
         {
-            var path = "../../../../TestFile/" + file;
-            if (!File.Exists(path))
-            {
-                File.WriteAllText(path, JsonConvert.SerializeObject(obj, Formatting.Indented));
-            }
-
+            var path = "../../../../TestFile/";
+            //Verify directory
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            path = path + file;
+            //Verify file
+            if (!File.Exists(path)) File.WriteAllText(path, JsonConvert.SerializeObject(obj, Formatting.Indented));
             using (var sr = File.OpenText(path))
             {
                 var p = JsonConvert.DeserializeObject(sr.ReadToEnd(), type);
