@@ -19,4 +19,4 @@ mono nuget.exe install NUnit.ConsoleRunner -Version 3.10.0 -OutputDirectory pack
 
 echo "[INFO] Build the solution and run the unit test"
 msbuild Skyapi.sln && \
-    mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+    mono ./packages/NUnit.Runners.3.10.0/tools/nunit-console.exe src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
