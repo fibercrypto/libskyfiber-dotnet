@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LibskycoinNetTest</RootNamespace>
     <AssemblyName>LibskycoinNetTest</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,8 +28,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework, Version=2.6.4.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Package>nunit</Package>
+    <Reference Include="System.Core" />
+    <Reference Include="nunit.framework">
+        <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\packages')">..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\..\packages')">..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +52,9 @@
     <Compile Include="check_util_droplet.cs" />
     <Compile Include="check_util_param_distributions.cs" />
     <Compile Include="check_cipher_secp256k1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibskycoinNet\LibskycoinNet.csproj">

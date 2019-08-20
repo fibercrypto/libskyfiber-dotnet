@@ -1,21 +1,48 @@
-language: go
-dist: xenial
 sudo: required
+
 env:
   global:
     - CGO_ENABLED: 1
 
-install:
-  - bash ./.travis/install_linux.sh
-  - eval "$(gimme 1.11)"
-  - go version
-  - python --version
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      env: TYPE=mono
+      language: go
+    - os: linux
+      dist: xenial
+      env: TYPE=dotnet
+      language: go
+    - os: osx
+      language: csharp
+      oxs_image: xcode8
+      solution: lib/swig/LibSkycoinNet.sln
+      env: TYPE=mono
+      mono: 5.18.1
+      dotnet: 2.2.401
+    - os: osx
+      language: csharp
+      oxs_image: xcode8
+      solution: lib/swig/LibSkycoinDotNet.sln
+      env: TYPE=dotnet
+      mono: 5.18.1
+      dotnet: 2.2.401
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash .travis/install_linux.sh ; fi
+  - ./.travis/install-deps.sh
+  - ./.travis/install-travis-gcc.sh
+  - eval "CC=gcc && CXX=g++"
   - go get github.com/gz-c/gox
-  - mkdir swig_build && cd swig_build && wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz && tar -zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && sudo ./configure --prefix=/usr && sudo make && sudo make install && cd ../../ && sudo rm -rf swig_build
 
+install:
+  - eval "$(gimme 1.11)"
+  
 script:
-  - make test
-
+  - make test-libsky-$TYPE
+  - make test-skyapi
+  
 notifications:
   email: false
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
