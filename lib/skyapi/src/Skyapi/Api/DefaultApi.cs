@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Newtonsoft.Json;
 using RestSharp;
 using Skyapi.Client;
 using Skyapi.Model;
@@ -68,27 +69,29 @@ namespace Skyapi.Api
         ApiResponse<List<Object>> AddressUxoutsWithHttpInfo(string address);
 
         /// <summary>
-        /// 
+        /// Get raw transaction by id
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>string</returns>
-        string ApiV1RawtxGet();
+        string ApiV1RawtxGet(string txid);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get raw transaction by id
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ApiV1RawtxGetWithHttpInfo();
+        /// <param name="txid">Transaction id</param>
+        /// <returns>ApiResponse of object</returns>
+        ApiResponse<object> ApiV1RawtxGetWithHttpInfo(string txid);
 
         /// <summary>
-        /// 
+        /// Prometheus metrics
         /// </summary>
         /// <remarks>
         /// 
@@ -101,7 +104,7 @@ namespace Skyapi.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// 
+        /// Prometheus metrics
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -1328,27 +1331,29 @@ namespace Skyapi.Api
         System.Threading.Tasks.Task<ApiResponse<List<Object>>> AddressUxoutsAsyncWithHttpInfo(string address);
 
         /// <summary>
-        /// 
+        /// Get raw transaction by id
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync();
+        System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync(string txid);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get raw transaction by id
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo();
+        /// <param name="txid">Transaction id</param>
+        /// <returns>Task of ApiResponse (object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo(string txid);
 
         /// <summary>
-        /// 
+        /// Prometheus metrics
         /// </summary>
         /// <remarks>
         /// 
@@ -1361,7 +1366,7 @@ namespace Skyapi.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// 
+        /// Prometheus metrics
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -2960,22 +2965,24 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        /// Get raw transaction by id
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>string</returns>
-        public string ApiV1RawtxGet()
+        public string ApiV1RawtxGet(string txid)
         {
-            ApiResponse<string> localVarResponse = ApiV1RawtxGetWithHttpInfo();
-            return localVarResponse.Data;
+            ApiResponse<object> localVarResponse = ApiV1RawtxGetWithHttpInfo(txid);
+            return localVarResponse.Data.ToString();
         }
 
         /// <summary>
-        ///  
+        ///  Get raw transaction by id
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> ApiV1RawtxGetWithHttpInfo()
+        public ApiResponse<object> ApiV1RawtxGetWithHttpInfo(string txid)
         {
             var localVarPath = "/api/v1/rawtx";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3002,6 +3009,8 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -3017,28 +3026,30 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(object)));
         }
 
         /// <summary>
-        ///  
+        /// Get raw transaction by id
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync()
+        public async System.Threading.Tasks.Task<string> ApiV1RawtxGetAsync(string txid)
         {
-            ApiResponse<string> localVarResponse = await ApiV1RawtxGetAsyncWithHttpInfo();
+            ApiResponse<string> localVarResponse = await ApiV1RawtxGetAsyncWithHttpInfo(txid);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  
+        ///  Get raw transaction by id
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="txid">Transaction id</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo()
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ApiV1RawtxGetAsyncWithHttpInfo(string txid)
         {
             var localVarPath = "/api/v1/rawtx";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3065,6 +3076,8 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
@@ -3087,7 +3100,7 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        ///  Prometheus metrics
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
@@ -3098,7 +3111,7 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        ///  Prometheus metrics
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -3150,7 +3163,7 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        ///  Prometheus metrics
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
@@ -3161,7 +3174,7 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        ///  Prometheus metrics
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -3263,9 +3276,8 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (addrs != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "addrs", addrs)); // query parameter
 
 
             // make the HTTP request

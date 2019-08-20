@@ -20,6 +20,7 @@ using Skyapi.Client;
 using Skyapi.Api;
 using System.Text.RegularExpressions;
 using RestSharp;
+using RestSharp.Deserializers;
 using Skyapi.Model;
 
 namespace Skyapi.Test.Api
@@ -193,9 +194,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void ApiV1RawtxGetTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ApiV1RawtxGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            if (_testMode.Equals("stable"))
+            {
+                ApiRawTxGetStable();
+            }
+            else if (_testMode.Equals("live"))
+            {
+                ApiRawTxGetLive();
+            }
         }
 
         /// <summary>
@@ -204,9 +210,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void ApiV2MetricsGetTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ApiV2MetricsGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //Only with API-SETS PROMETHEUS is active.
+            try
+            {
+                var response = instance.ApiV2MetricsGet();
+                Assert.IsInstanceOf<string>(response, "response is string");
+                Assert.IsNotNull(response);
+                if (_testMode == "stable") Assert.True(response.Contains("last_block_seq 180"));
+            }
+            catch (ApiException err)
+            {
+                Assert.AreEqual(403, err.ErrorCode,
+                    "Endpoint Not tested. Endpoint are disable : Api-sets PROMETHEUS could be disabled." +
+                    " Try to enable it.");
+            }
         }
 
         /// <summary>
@@ -327,9 +344,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void CsrfTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.Csrf();
-            //Assert.IsInstanceOf<InlineResponse2003> (response, "response is InlineResponse2003");
+            //Only with _useCsrf==true
+            if (_useCsrf)
+            {
+                var response = instance.Csrf();
+                Assert.IsNotNull(response.CsrfToken);
+                Console.WriteLine(response.CsrfToken.Length);
+                Assert.True(response.CsrfToken.Length >= 235);
+            }
         }
 
         /// <summary>
@@ -1740,13 +1762,13 @@ namespace Skyapi.Test.Api
                         method: method, addrs: string.Join(",", tc.addrs)));
                     if (method == Method.POST)
                     {
-                        Assert.AreEqual(tc.errorCode, err.ErrorCode);
-                        Assert.AreEqual(tc.errMsg.Replace("Get", "Post"), err.Message);
+                        Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
+                        Assert.AreEqual(tc.errMsg.Replace("Get", "Post"), err.Message, tc.name);
                     }
                     else
                     {
-                        Assert.AreEqual(tc.errorCode, err.ErrorCode);
-                        Assert.AreEqual(tc.errMsg, err.Message);
+                        Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
+                        Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                     }
                 }
                 else
@@ -2296,6 +2318,141 @@ namespace Skyapi.Test.Api
             Assert.AreEqual(150, richlist.richlist.Count);
         }
 
+        private void ApiRawTxGetStable()
+        {
+            var apiInstance = new DefaultApi(_nodeAddress);
+            var testcases = new List<dynamic>
+            {
+                new
+                {
+                    name = "invalid hex length",
+                    txid = "abcd",
+                    errCode = 400,
+                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - Invalid hex length\n",
+                    rawtxid = ""
+                },
+                new
+                {
+                    name = "not found",
+                    txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
+                    errCode = 404,
+                    errMsg = "Error calling ApiV1RawtxGet: 404 Not Found\n",
+                    rawtxid = ""
+                },
+                new
+                {
+                    name = "odd length hex string",
+                    txid = "abcdeffedca",
+                    errCode = 400,
+                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - encoding/hex: odd length hex string\n",
+                    rawtxid = ""
+                },
+                new
+                {
+                    name = "OK",
+                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
+                    errCode = 200,
+                    errMsg = "",
+                    rawtxid =
+                        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
+                        "000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000"
+                }
+            };
+            if (!_dbNoUnconfirmed)
+            {
+                testcases.Add(new
+                {
+                    name = "unconfirmed",
+                    txid = "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
+                    errCode = 200,
+                    errMsg = "",
+                    rawtxid = "dc00000000f8293dbfdddcc56a97664655ceee650715d35a0dda32a9f0ce0e2e99d48991240100000" +
+                              "03981061c7275ae9cc936e902a5367fdd87ef779bbdb31e1e10d325d17a129abb34f6e597ceeaf67b" +
+                              "b051774b41c58276004f6a63cb81de61d4693bc7a5536f320001000000fe6762d753d626115c8dd3a" +
+                              "053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f2002000000003be2537f8c0893fddcddc878518f38" +
+                              "ea493d949e008988068d0000002739570000000000009037ff169fbec6db95e2537e4ff79396c050a" +
+                              "eeb00e40b54020000002739570000000000"
+                });
+            }
+
+            testcases.ForEach(tc =>
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(() => apiInstance.ApiV1RawtxGet(tc.txid));
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
+                }
+                else
+                {
+                    var result = apiInstance.ApiV1RawtxGet(tc.txid);
+                    Assert.AreEqual(tc.rawtxid, result, tc.name);
+                }
+            });
+        }
+
+        private void ApiRawTxGetLive()
+        {
+            var apiInstance = new DefaultApi(_nodeAddress);
+            var testcases = new List<dynamic>
+            {
+                new
+                {
+                    name = "invalid hex length",
+                    txid = "abcd",
+                    errCode = 400,
+                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - Invalid hex length\n",
+                    rawtxid = ""
+                },
+                new
+                {
+                    name = "odd length hex string",
+                    txid = "abcdeffedca",
+                    errCode = 400,
+                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - encoding/hex: odd length hex string\n",
+                    rawtxid = ""
+                },
+                new
+                {
+                    name = "OK - genesis tx",
+                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
+                    errCode = 200,
+                    errMsg = "",
+                    rawtxid =
+                        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
+                        "000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000"
+                },
+                new
+                {
+                    name = "OK",
+                    txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
+                    errCode = 200,
+                    errMsg = "",
+                    rawtxid = "3d0100000088b4e967d77a8b7155c5378a85c199fabf94048aa84833ef5eab7818545bcda80200000071" +
+                              "985c70041fe5a6408a2dfac2ea4963820bc603059521259debb114b2f6630b5658e7ff665b2db7878ce9" +
+                              "b0d1d051ec66b5dea23274e52642bc7e451b273a90008afb06133958b03c4795d5a7acd001f3942cc6d3" +
+                              "b19e93d357d2675fe9ba8bbf3db30b3cda779e441fced581aee88f48c8af017b30dc276b15be25d4bb44" +
+                              "260c000200000050386f195b367f8261e66e3fdfbc942fbacfe25e117e554ca1c1caf8993454767afab0" +
+                              "3c823346ff8b00c29df6acc05841583d90dfd451ba09e66884a48e83f70200000000ef3b60779f014b3c" +
+                              "7acf27c16c9acc3ff3bea61600a8b54b06000000c2ba2400000000000037274869aaa4c2e2e5c9159502" +
+                              "4c65f8f9458102404b4c0000000000c2ba240000000000"
+                }
+            };
+            testcases.ForEach(tc =>
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(() => apiInstance.ApiV1RawtxGet(tc.txid));
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
+                }
+                else
+                {
+                    var result = apiInstance.ApiV1RawtxGet(tc.txid);
+                    Assert.AreEqual(tc.rawtxid, result, tc.name);
+                }
+            });
+        }
 
         private static void CompareTime(string time)
         {
