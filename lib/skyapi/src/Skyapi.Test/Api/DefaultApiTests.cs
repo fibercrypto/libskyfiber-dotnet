@@ -360,10 +360,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataDELETETest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string type = null;
-            //string key = null;
-            //instance.DataDELETE(type, key);
+            if (!_testMode.Equals("stable"))
+            {
+                return;
+            }
+
+            instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            var result = instance.DataGET(type: "txid");
+            instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
+            instance.DataDELETE(type: "txid", key: "keytodel");
+            Assert.AreEqual(result, instance.DataGET("txid"));
         }
 
         /// <summary>
@@ -372,11 +378,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataGETTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string type = null;
-            //string key = null;
-            //var response = instance.DataGET(type, key);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
+            var singleresult = new {data = "val1"};
+            instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            instance.DataPOST(type: "txid", key: "key2", val: "val2");
+            //Varify all results.
+            Assert.AreEqual(JsonConvert.SerializeObject(allresult),
+                JsonConvert.SerializeObject(instance.DataGET(type: "txid")));
+            //Verify a single result.
+            Assert.AreEqual(JsonConvert.SerializeObject(singleresult),
+                JsonConvert.SerializeObject(instance.DataGET(type: "txid", key: "key1")));
         }
 
         /// <summary>
@@ -385,11 +396,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataPOSTTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string type = null;
-            //string key = null;
-            //string val = null;
-            //instance.DataPOST(type, key, val);
+            instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
         /// <summary>
@@ -473,9 +480,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsDisconnectTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //instance.NetworkConnectionsDisconnect(id);
+            if (_testMode.Equals("stable"))
+            {
+                NetworkConnectionDisconnectStable();
+            }
+            else if (_testMode.Equals("live"))
+            {
+                NetworkConnectionDisconnectLive();
+            }
         }
 
         /// <summary>
@@ -2012,6 +2024,7 @@ namespace Skyapi.Test.Api
                 }
                 catch (ApiException err)
                 {
+                    // The connection may have disconnected by now
                     if (err.ErrorCode == 404 || err.Message == "Error calling NetworkConnection: 404 Not Found\n")
                     {
                         return;
@@ -2454,6 +2467,46 @@ namespace Skyapi.Test.Api
             });
         }
 
+        private void NetworkConnectionDisconnectStable()
+        {
+            var err404 =
+                Assert.Throws<ApiException>(() => instance.NetworkConnectionsDisconnect("999"));
+            Assert.AreEqual(404, err404.ErrorCode);
+            Assert.AreEqual("Error calling NetworkConnectionsDisconnect: 404 Not Found\n", err404.Message);
+        }
+
+        private void NetworkConnectionDisconnectLive()
+        {
+            var connections = instance.NetworkConnections();
+            if (_liveDisableNetworking)
+            {
+                Assert.IsEmpty(connections.Connections);
+                return;
+            }
+
+            Assert.IsNotEmpty(connections.Connections);
+            connections.Connections.ForEach(cc =>
+            {
+                NetworkConnectionSchema connection = null;
+                try
+                {
+                    connection = instance.NetworkConnection(cc.Address);
+                }
+                catch (ApiException err)
+                {
+                    // The connection may have disconnected by now
+                    if (err.ErrorCode == 404 || err.Message == "Error calling NetworkConnection: 404 Not Found\n")
+                    {
+                        return;
+                    }
+                }
+
+                Assert.AreEqual(cc.Id, connection?.Id);
+                instance.NetworkConnectionsDisconnect(cc.Id.ToString());
+            });
+        }
+
+
         private static void CompareTime(string time)
         {
             var x = Regex.Split(time.Replace(".", ","), @"h|s|m").Reverse().ToArray();
@@ -2467,7 +2520,6 @@ namespace Skyapi.Test.Api
         {
             string token;
             try
-
             {
                 var api = new DefaultApi(_nodeAddress);
                 token = api.Csrf().CsrfToken;

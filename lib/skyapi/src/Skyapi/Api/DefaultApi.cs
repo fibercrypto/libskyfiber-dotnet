@@ -4377,10 +4377,10 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <returns></returns>
-        public void DataDELETE(string type = null, string key = null)
+        public void DataDELETE(string type, string key)
         {
             DataDELETEWithHttpInfo(type, key);
         }
@@ -4389,47 +4389,46 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DataDELETEWithHttpInfo(string type = null, string key = null)
+        public ApiResponse<Object> DataDELETEWithHttpInfo(string type, string key)
         {
             var localVarPath = "/api/v2/data";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
+            var localVarHttpContentTypes = new string[]
             {
             };
-            String localVarHttpContentType =
+            var localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[]
+            var localVarHttpHeaderAccepts = new String[]
             {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept =
-                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            var localVarHttpHeaderAccept =
+                Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
                 localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
@@ -4451,10 +4450,10 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DataDELETEAsync(string type = null, string key = null)
+        public async System.Threading.Tasks.Task DataDELETEAsync(string type, string key)
         {
             await DataDELETEAsyncWithHttpInfo(type, key);
         }
@@ -4463,11 +4462,11 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo(string type = null,
-            string key = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataDELETEAsyncWithHttpInfo(string type,
+            string key)
         {
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4475,36 +4474,35 @@ namespace Skyapi.Api
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
+            var localVarHttpContentTypes = new String[]
             {
             };
-            String localVarHttpContentType =
+            var localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[]
+            var localVarHttpHeaderAccepts = new []
             {
                 "application/json",
                 "application/xml"
             };
-            String localVarHttpHeaderAccept =
-                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            var localVarHttpHeaderAccept =
+                Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(
                 localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
                 localVarFileParams,
@@ -4527,10 +4525,10 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get.(optional)</param>
         /// <returns>Object</returns>
-        public Object DataGET(string type = null, string key = null)
+        public Object DataGET(string type, string key = null)
         {
             ApiResponse<Object> localVarResponse = DataGETWithHttpInfo(type, key);
             return localVarResponse.Data;
@@ -4540,10 +4538,10 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get.(optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> DataGETWithHttpInfo(string type = null, string key = null)
+        public ApiResponse<Object> DataGETWithHttpInfo(string type, string key = null)
         {
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4551,33 +4549,31 @@ namespace Skyapi.Api
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
+            var localVarHttpContentTypes = new String[]
             {
             };
-            String localVarHttpContentType =
-                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            var localVarHttpContentType =
+                Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[]
+            var localVarHttpHeaderAccepts = new[]
             {
                 "application/json",
                 "application/xml",
             };
-            String localVarHttpHeaderAccept =
-                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            var localVarHttpHeaderAccept =
+                Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
-
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -4602,10 +4598,10 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
+        /// <param name="type">storage type. </param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DataGETAsync(string type = null, string key = null)
+        public async System.Threading.Tasks.Task<Object> DataGETAsync(string type, string key = null)
         {
             ApiResponse<Object> localVarResponse = await DataGETAsyncWithHttpInfo(type, key);
             return localVarResponse.Data;
@@ -4615,7 +4611,7 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
+        /// <param name="type">storage type.</param>
         /// <param name="key">key of the specific value to get. (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DataGETAsyncWithHttpInfo(string type = null,
@@ -4647,12 +4643,11 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
+                localVarQueryParams.AddRange(
+                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
 
             // make the HTTP request
@@ -4679,11 +4674,11 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns></returns>
-        public void DataPOST(string type = null, string key = null, string val = null)
+        public void DataPOST(string type, string key, string val = null)
         {
             DataPOSTWithHttpInfo(type, key, val);
         }
@@ -4692,11 +4687,11 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type.</param>
+        /// <param name="key">key of the specific value to get.</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DataPOSTWithHttpInfo(string type = null, string key = null, string val = null)
+        public ApiResponse<Object> DataPOSTWithHttpInfo(string type, string key, string val = null)
         {
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4724,17 +4719,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
-            if (val != null)
-                localVarHeaderParams.Add("val",
-                    this.Configuration.ApiClient.ParameterToString(val)); // header parameter
-
-
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                type = type,
+                key = key,
+                val = val
+            });
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
@@ -4758,11 +4748,11 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get. </param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DataPOSTAsync(string type = null, string key = null, string val = null)
+        public async System.Threading.Tasks.Task DataPOSTAsync(string type, string key, string val = null)
         {
             await DataPOSTAsyncWithHttpInfo(type, key, val);
         }
@@ -4771,12 +4761,12 @@ namespace Skyapi.Api
         ///  
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type">storage type. (optional)</param>
-        /// <param name="key">key of the specific value to get. (optional)</param>
+        /// <param name="type">storage type. </param>
+        /// <param name="key">key of the specific value to get.</param>
         /// <param name="val">additional value. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo(string type = null,
-            string key = null, string val = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DataPOSTAsyncWithHttpInfo(string type,
+            string key, string val = null)
         {
             var localVarPath = "/api/v2/data";
             var localVarPathParams = new Dictionary<String, String>();
@@ -4804,16 +4794,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (type != null)
-                localVarHeaderParams.Add("type",
-                    this.Configuration.ApiClient.ParameterToString(type)); // header parameter
-            if (key != null)
-                localVarHeaderParams.Add("key",
-                    this.Configuration.ApiClient.ParameterToString(key)); // header parameter
-            if (val != null)
-                localVarHeaderParams.Add("val",
-                    this.Configuration.ApiClient.ParameterToString(val)); // header parameter
-
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                type = type,
+                key = key,
+                val = val
+            });
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
