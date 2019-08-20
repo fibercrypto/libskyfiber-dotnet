@@ -378,6 +378,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataGETTest()
         {
+            if (!_testMode.Equals("stable"))
+            {
+                return;
+            }
             var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
             var singleresult = new {data = "val1"};
             instance.DataPOST(type: "txid", key: "key1", val: "val1");
@@ -396,6 +400,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataPOSTTest()
         {
+            if (!_testMode.Equals("stable"))
+            {
+                return;
+            }
             instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
