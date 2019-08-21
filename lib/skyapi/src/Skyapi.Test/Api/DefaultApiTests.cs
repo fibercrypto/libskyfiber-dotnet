@@ -9,19 +9,11 @@
  */
 
 using System;
-using System.IO;
-using System.Linq;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net.Sockets;
 using NUnit.Framework;
 using Skyapi.Client;
 using Skyapi.Api;
-using System.Text.RegularExpressions;
 using RestSharp;
-using RestSharp.Deserializers;
-using Skyapi.Model;
 
 namespace Skyapi.Test.Api
 {
@@ -35,85 +27,13 @@ namespace Skyapi.Test.Api
     [TestFixture]
     public class DefaultApiTests
     {
-        private DefaultApi instance;
+        private DefaultApi _instance;
         private string _testMode;
         private string _coin;
         private bool _useCsrf;
         private string _nodeAddress;
         private bool _dbNoUnconfirmed;
         private bool _liveDisableNetworking;
-
-        private struct Balance
-        {
-            public Dictionary<string, BalancePair> Addresses { get; set; }
-            public Confirm Confirmed { get; set; }
-            public Predict Predicted { get; set; }
-        }
-
-        private struct BalancePair
-        {
-            public Confirm Confirmed { get; set; }
-            public Predict Predicted { get; set; }
-        }
-
-        private struct Confirm
-        {
-            public long coins { get; set; }
-            public long hours { get; set; }
-        }
-
-        private struct Predict
-        {
-            public long coins { get; set; }
-            public long hours { get; set; }
-        }
-
-        private struct Progress
-        {
-            public int Current { get; set; }
-            public int Highest { get; set; }
-            public string[] Peer { get; set; }
-        }
-
-        private struct Head
-        {
-            public int Seq { get; set; }
-            public string Block_Hash { get; set; }
-            public string Previous_Block_Hash { get; set; }
-            public long Timestamp { get; set; }
-            public long Fee { get; set; }
-            public int Version { get; set; }
-            public string Tx_Body_Hash { get; set; }
-            public string Ux_Hash { get; set; }
-        }
-
-        private struct BlockchainMetadata
-        {
-            public Head Head { get; set; }
-            public int Unspents { get; set; }
-            public int Unconfirmed { get; set; }
-            public string Time_Since_Last_Block { get; set; }
-        }
-
-        private struct Health
-        {
-            public BlockchainMetadata Blockchain { get; set; }
-            public InlineResponse2005 Version { get; set; }
-            public string Coin { get; set; }
-            public string User_Agent { get; set; }
-            public int Open_Connections { get; set; }
-            public int Outgoing_Connections { get; set; }
-            public int Incoming_Connections { get; set; }
-            public string Uptime { get; set; }
-            public bool CSRF_Enabled { get; set; }
-            public bool Header_Check_Enabled { get; set; }
-            public bool Csp_Enabled { get; set; }
-            public bool Wallet_API_Enabled { get; set; }
-            public bool GUI_Enabled { get; set; }
-            public object User_Verify_Transaction { get; set; }
-            public object Unconfirmed_Verify_Transaction { get; set; }
-            public long Started_At { get; set; }
-        }
 
         /// <summary>
         /// Setup before each unit test
@@ -128,7 +48,7 @@ namespace Skyapi.Test.Api
             _dbNoUnconfirmed = Convert.ToBoolean(Environment.GetEnvironmentVariable("DB_NO_UNCONFIRMED") ?? "false");
             _liveDisableNetworking =
                 Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "false");
-            instance = new DefaultApi(_nodeAddress);
+            _instance = new DefaultApi(_nodeAddress);
         }
 
         /// <summary>
@@ -145,7 +65,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void InstanceTest()
         {
-            Assert.IsInstanceOfType(typeof(DefaultApi), instance, "instance is a DefaultApi");
+            Assert.IsInstanceOfType(typeof(DefaultApi), _instance, "instance is a DefaultApi");
         }
 
 
@@ -157,11 +77,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                AddressCountStable();
+                StableTest.AddressCount(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                AddressCountLive();
+                LiveTest.AddressCount(_instance);
             }
         }
 
@@ -173,13 +93,13 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                AddressUxoutsStable();
+                StableTest.AddressUxouts(_instance);
             }
             else if (_testMode.Equals("live"))
             {
                 if (_liveDisableNetworking)
                 {
-                    AddressUxoutsLive();
+                    LiveTest.AddressUxouts(_instance);
                 }
                 else
                 {
@@ -196,11 +116,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                ApiRawTxGetStable();
+                StableTest.ApiRawTxGet(_instance, _dbNoUnconfirmed);
             }
             else if (_testMode.Equals("live"))
             {
-                ApiRawTxGetLive();
+                LiveTest.ApiRawTxGet(instance: _instance);
             }
         }
 
@@ -213,7 +133,7 @@ namespace Skyapi.Test.Api
             //Only with API-SETS PROMETHEUS is active.
             try
             {
-                var response = instance.ApiV2MetricsGet();
+                var response = _instance.ApiV2MetricsGet();
                 Assert.IsInstanceOf<string>(response, "response is string");
                 Assert.IsNotNull(response);
                 if (_testMode == "stable") Assert.True(response.Contains("last_block_seq 180"));
@@ -234,11 +154,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BalanceStable(Method.GET);
+                StableTest.Balance(_instance, Method.GET, _dbNoUnconfirmed, _useCsrf);
             }
             else if (_testMode.Equals("live"))
             {
-                BalanceLive(Method.GET);
+                LiveTest.Balance(Method.GET, _instance, _useCsrf);
             }
         }
 
@@ -250,11 +170,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BalanceStable(Method.POST);
+                StableTest.Balance(_instance, Method.POST, _dbNoUnconfirmed, _useCsrf);
             }
             else if (_testMode.Equals("live"))
             {
-                BalanceLive(Method.POST);
+                LiveTest.Balance(Method.POST, _instance, _useCsrf);
             }
         }
 
@@ -266,11 +186,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BlockStable();
+                StableTest.Block(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                BlockLive();
+                LiveTest.Block(_instance);
             }
         }
 
@@ -282,11 +202,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BlockchainMetadataStable();
+                StableTest.BlockchainMetadata(_instance, _dbNoUnconfirmed);
             }
             else if (_testMode.Equals("live"))
             {
-                BlockchainMetadataLive();
+                LiveTest.BlockchainMetadata(_instance);
             }
         }
 
@@ -298,11 +218,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BlockChainProgressStable();
+                StableTest.BlockChainProgress(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                BlockChainProgressLive();
+                LiveTest.BlockChainProgress(_instance, _liveDisableNetworking);
             }
         }
 
@@ -314,11 +234,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                BlocksStable();
+                StableTest.Blocks(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                BlocksLive();
+                LiveTest.Blocks(_instance);
             }
         }
 
@@ -330,11 +250,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                CoinSupplyStable();
+                StableTest.CoinSupply(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                CoinSupplyLive();
+                LiveTest.CoinSupply(_instance);
             }
         }
 
@@ -347,9 +267,8 @@ namespace Skyapi.Test.Api
             //Only with _useCsrf==true
             if (_useCsrf)
             {
-                var response = instance.Csrf();
+                var response = _instance.Csrf();
                 Assert.IsNotNull(response.CsrfToken);
-                Console.WriteLine(response.CsrfToken.Length);
                 Assert.True(response.CsrfToken.Length >= 235);
             }
         }
@@ -358,53 +277,58 @@ namespace Skyapi.Test.Api
         /// Test DataDELETE
         /// </summary>
         [Test]
-        public void DataDELETETest()
+        public void DataDeleteTest()
         {
             if (!_testMode.Equals("stable"))
             {
                 return;
             }
 
-            instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            var result = instance.DataGET(type: "txid");
-            instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
-            instance.DataDELETE(type: "txid", key: "keytodel");
-            Assert.AreEqual(result, instance.DataGET("txid"));
+            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            var result = _instance.DataGET(type: "txid");
+            _instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
+            _instance.DataDELETE(type: "txid", key: "keytodel");
+            Assert.AreEqual(result, _instance.DataGET("txid"));
         }
 
         /// <summary>
         /// Test DataGET
         /// </summary>
         [Test]
-        public void DataGETTest()
+        public void DataGetTest()
         {
             if (!_testMode.Equals("stable"))
             {
                 return;
             }
+
             var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
             var singleresult = new {data = "val1"};
-            instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            instance.DataPOST(type: "txid", key: "key2", val: "val2");
+            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            _instance.DataPOST(type: "txid", key: "key2", val: "val2");
             //Varify all results.
             Assert.AreEqual(JsonConvert.SerializeObject(allresult),
-                JsonConvert.SerializeObject(instance.DataGET(type: "txid")));
+                JsonConvert.SerializeObject(_instance.DataGET(type: "txid")));
             //Verify a single result.
             Assert.AreEqual(JsonConvert.SerializeObject(singleresult),
-                JsonConvert.SerializeObject(instance.DataGET(type: "txid", key: "key1")));
+                JsonConvert.SerializeObject(_instance.DataGET(type: "txid", key: "key1")));
         }
 
         /// <summary>
         /// Test DataPOST
         /// </summary>
         [Test]
-        public void DataPOSTTest()
+        public void DataPostTest()
         {
             if (!_testMode.Equals("stable"))
             {
                 return;
             }
-            instance.DataPOST(type: "client", key: "key1", val: "val1");
+
+            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            _instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
         /// <summary>
@@ -417,7 +341,7 @@ namespace Skyapi.Test.Api
             var connections = apiInstance.DefaultConnections();
             Assert.IsNotEmpty(connections);
             connections.Sort();
-            CheckGoldenFile("network-default-peers.golden", connections, connections.GetType());
+            Utils.CheckGoldenFile("network-default-peers.golden", connections, connections.GetType());
         }
 
         /// <summary>
@@ -428,12 +352,12 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                HealthStable();
+                StableTest.Health(instance: _instance, coin: _coin, useCsrf: _useCsrf);
             }
             else if (_testMode.Equals("live"))
 
             {
-                HealthLive();
+                LiveTest.Health(_instance, _liveDisableNetworking);
             }
         }
 
@@ -445,11 +369,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                LastBlocksStable();
+                StableTest.LastBlocks(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                LastBlockLive();
+                LiveTest.LastBlock(_instance);
             }
         }
 
@@ -461,26 +385,13 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                NetworkConnectionStable();
+                StableTest.NetworkConnection(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                NetworkConnectionLive();
+                LiveTest.NetworkConnection(instance: _instance, liveDisableNetworking: _liveDisableNetworking);
             }
         }
-
-//        /// <summary>
-//        /// Test NetworkConnections
-//        /// </summary>
-//        [Test]
-//        public void NetworkConnectionsTest()
-//        {
-//            // TODO uncomment below to test the method and replace null with proper value
-//            //string states = null;
-//            //string direction = null;
-//            //var response = instance.NetworkConnections(states, direction);
-//            //Assert.IsInstanceOf<InlineResponse2004> (response, "response is InlineResponse2004");
-//        }
 
         /// <summary>
         /// Test NetworkConnectionsDisconnect
@@ -490,11 +401,12 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                NetworkConnectionDisconnectStable();
+                StableTest.NetworkConnectionDisconnect(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                NetworkConnectionDisconnectLive();
+                LiveTest.NetworkConnectionDisconnect(instance: _instance,
+                    liveDisableNetworking: _liveDisableNetworking);
             }
         }
 
@@ -506,11 +418,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                NetworkConnectionExchangeStable();
+                StableTest.NetworkConnectionExchange(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                NetworkConnectionExchangeLive();
+                LiveTest.NetworkConnectionExchange(_instance);
             }
         }
 
@@ -524,7 +436,7 @@ namespace Skyapi.Test.Api
             var connections = apiInstance.NetworkConnectionsTrust();
             Assert.IsNotEmpty(connections);
             connections.Sort();
-            CheckGoldenFile("network-trusted-peers.golden", connections, connections.GetType());
+            Utils.CheckGoldenFile("network-trusted-peers.golden", connections, connections.GetType());
         }
 
         /// <summary>
@@ -537,16 +449,16 @@ namespace Skyapi.Test.Api
             {
                 if (_dbNoUnconfirmed)
                 {
-                    StableNoUnconfirmedOutputs(Method.GET);
+                    StableTest.NoUnconfirmedOutputs(Method.GET, _instance, _useCsrf);
                 }
                 else
                 {
-                    StableOutputs(Method.GET);
+                    StableTest.Outputs(Method.GET, _instance, _useCsrf);
                 }
             }
             else if (_testMode.Equals("live"))
             {
-                LiveOutputs(Method.GET);
+                LiveTest.Outputs(Method.GET, _instance, _useCsrf);
             }
         }
 
@@ -560,16 +472,16 @@ namespace Skyapi.Test.Api
             {
                 if (_dbNoUnconfirmed)
                 {
-                    StableNoUnconfirmedOutputs(Method.POST);
+                    StableTest.NoUnconfirmedOutputs(Method.POST, _instance, _useCsrf);
                 }
                 else
                 {
-                    StableOutputs(Method.POST);
+                    StableTest.Outputs(Method.POST, _instance, _useCsrf);
                 }
             }
             else if (_testMode.Equals("live"))
             {
-                LiveOutputs(Method.POST);
+                LiveTest.Outputs(Method.POST, _instance, _useCsrf);
             }
         }
 
@@ -583,16 +495,16 @@ namespace Skyapi.Test.Api
             {
                 if (_dbNoUnconfirmed)
                 {
-                    StableNoUnconfirmedPendingTxs();
+                    StableTest.NoUnconfirmedPendingTxs(_instance);
                 }
                 else
                 {
-                    StablePendingTxs();
+                    StableTest.PendingTxs(_instance);
                 }
             }
             else if (_testMode.Equals("live"))
             {
-                LivePendingTxs();
+                LiveTest.PendingTxs(_instance);
             }
         }
 
@@ -604,12 +516,12 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                StableResendUnconfirmedTxns();
+                StableTest.ResendUnconfirmedTxns(instance: _instance, useCsrf: _useCsrf);
             }
             else if (_testMode.Equals("live"))
 
             {
-                LiveResendUnconfirmedTxns();
+                LiveTest.ResendUnconfirmedTxns(_instance, _liveDisableNetworking, _useCsrf);
             }
         }
 
@@ -621,11 +533,11 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                StableRichList();
+                StableTest.RichList(_instance);
             }
             else if (_testMode.Equals("live"))
             {
-                LiveRichList();
+                LiveTest.RichList(_instance);
             }
         }
 
@@ -709,11 +621,12 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                TransactionsStable(Method.GET);
+                StableTest.Transactions(method: Method.GET, instance: _instance, useCsrf: _useCsrf,
+                    dbNoUnconfirmed: _dbNoUnconfirmed);
             }
             else if (_testMode.Equals("live"))
             {
-                TransactionsLive(Method.GET);
+                LiveTest.Transactions(Method.GET, _instance, _useCsrf);
             }
         }
 
@@ -725,11 +638,12 @@ namespace Skyapi.Test.Api
         {
             if (_testMode.Equals("stable"))
             {
-                TransactionsStable(Method.POST);
+                StableTest.Transactions(method: Method.POST, instance: _instance, useCsrf: _useCsrf,
+                    dbNoUnconfirmed: _dbNoUnconfirmed);
             }
             else if (_testMode.Equals("live"))
             {
-                TransactionsLive(Method.POST);
+                LiveTest.Transactions(Method.POST, _instance, _useCsrf);
             }
         }
 
@@ -908,20 +822,19 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletSeedVerifyTest()
         {
-            var apiInstance = new DefaultApi(Configuration.Default);
             if (_useCsrf)
             {
-                apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             }
 
-            apiInstance.Configuration.AddDefaultHeader("Content-Type", "application/json");
+            _instance.Configuration.AddDefaultHeader("Content-Type", "application/json");
             //Test with correct seed
             var result =
-                apiInstance.WalletSeedVerify(
+                _instance.WalletSeedVerify(
                     "nut wife logic sample addict shop before tobacco crisp bleak lawsuit affair");
             Assert.NotNull(result);
             //test with incorrect seed
-            Assert.Throws<ApiException>(() => apiInstance.WalletSeedVerify("nut"));
+            Assert.Throws<ApiException>(() => _instance.WalletSeedVerify("nut"));
         }
 
         /// <summary>
@@ -993,1567 +906,6 @@ namespace Skyapi.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.Wallets();
             //Assert.IsInstanceOf<List<Object>> (response, "response is List<Object>");
-        }
-
-        private void AddressCountStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.AddressCount();
-            Assert.AreEqual(155, result.Count);
-        }
-
-        private void AddressCountLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.AddressCount();
-            // 5296 addresses as of 2018-03-06, the count could decrease but is unlikely to
-            Assert.True(result.Count > 5000);
-        }
-
-        private void AddressUxoutsStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "no addresses",
-                    errCode = 400,
-                    errMsg = "Error calling AddressUxouts: 400 Bad Request - address is empty\n",
-                    golden = "",
-                    address = ""
-                },
-                new
-                {
-                    name = "unknown address",
-                    errCode = 200,
-                    errMsg = "",
-                    golden = "uxout-noaddr.golden",
-                    address = "prRXwTcDK24hs6AFxj69UuWae3LzhrsPW9"
-                },
-                new
-                {
-                    name = "one address",
-                    errCode = 200,
-                    errMsg = "",
-                    golden = "uxout-addr.golden",
-                    address = "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf"
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                if (tc.errCode != 200 && tc.errCode != 0)
-                {
-                    var err = Assert.Throws<ApiException>(() => apiInstance.AddressUxouts(tc.address));
-                    Assert.AreEqual(err.ErrorCode, tc.errCode);
-                    Assert.AreEqual(err.Message, tc.errMsg);
-                }
-                else
-                {
-                    var result = apiInstance.AddressUxouts(tc.address);
-                    CheckGoldenFile(tc.golden, result, result.GetType());
-                }
-            }
-        }
-
-        private void AddressUxoutsLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "no addresses",
-                    errCode = 400,
-                    errMsg = "Error calling AddressUxouts: 400 Bad Request - address is empty\n",
-                    address = ""
-                },
-                new
-                {
-                    name = "invalid address length",
-                    errCode = 400,
-                    errMsg = "Error calling AddressUxouts: 400 Bad Request - Invalid address length\n",
-                    address = "prRXwTcDK24hs6AFxj"
-                },
-                new
-                {
-                    name = "unknown address",
-                    errCode = 200,
-                    errMsg = "",
-                    address = "prRXwTcDK24hs6AFxj69UuWae3LzhrsPW9"
-                },
-                new
-                {
-                    name = "one address",
-                    errCode = 200,
-                    errMsg = "",
-                    address = "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf"
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                if (tc.errCode != 0 && tc.errCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() => apiInstance.AddressUxouts(tc.address));
-                    Assert.AreEqual(err.ErrorCode, tc.errCode);
-                    Assert.AreEqual(err.Message, tc.errMsg);
-                }
-                else
-                {
-                    var result = apiInstance.AddressUxouts(tc.address);
-                    Assert.IsEmpty(result);
-                }
-            }
-        }
-
-        private void BalanceStable(Method method)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testCase = new List<dynamic>
-            {
-                new
-                {
-                    name = "unknown address",
-                    addrs = new[] {"prRXwTcDK24hs6AFxj69UuWae3LzhrsPW9"},
-                    file = "balance-noaddrs.golden"
-                },
-                new
-                {
-                    name = "one address",
-                    addrs = new[] {"2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf"},
-                    file = "balance-2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf.golden"
-                },
-                new
-                {
-                    name = "duplicate address",
-                    addrs = new[] {"2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf", "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf"},
-                    file = "balance-2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf.golden"
-                },
-                new
-                {
-                    name = "two address",
-                    addrs = new[] {"2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf", "212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                    file = "balance-two-addrs.golden"
-                }
-            };
-            if (!_dbNoUnconfirmed)
-            {
-// Trying to append any value of the same type
-                testCase.Add(new
-                {
-                    name = "balance affected by unconfirmed transaction",
-                    addrs = new[] {"R6aHqKWSQfvpdo2fGSrq4F1RYXkBWR9HHJ", "212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                    file = "balance-affected-by-unconfirmed-txns.golden"
-                });
-            }
-
-            foreach (var tc in testCase)
-            {
-                Balance result;
-                switch (method)
-                {
-                    case Method.GET:
-                        result = JsonConvert.DeserializeObject<Balance>(
-                            apiInstance.BalanceGet(string.Join(",", tc.addrs)).ToString());
-                        CheckGoldenFile(tc.file, result, result.GetType());
-                        break;
-                    case Method.POST:
-                        if (_useCsrf)
-                        {
-                            apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-                        }
-
-                        result = JsonConvert.DeserializeObject<Balance>(
-                            apiInstance.BalancePost(string.Join(",", tc.addrs)).ToString());
-                        CheckGoldenFile(tc.file, result, result.GetType());
-                        break;
-                }
-            }
-        }
-
-        private void BalanceLive(Method method)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            if (method == Method.POST && _useCsrf)
-            {
-                apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-            }
-
-// Genesis address check, should not have a balance
-            var result = new Balance();
-            switch (method)
-            {
-                case Method.GET:
-                    result = JsonConvert.DeserializeObject<Balance>(apiInstance
-                        .BalanceGet("2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6").ToString());
-                    break;
-                case Method.POST:
-                    result = JsonConvert.DeserializeObject<Balance>(apiInstance
-                        .BalancePost("2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6").ToString());
-                    break;
-            }
-
-            Assert.AreEqual(result, new Balance
-            {
-                Addresses = new Dictionary<string, BalancePair>
-                {
-                    ["2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"] = new BalancePair()
-                }
-            });
-            // Balance of final distribution address. Should have the same coins balance
-            // for the next 15-20 years.
-
-            switch (method)
-            {
-                case Method.GET:
-                    result = JsonConvert.DeserializeObject<Balance>(apiInstance
-                        .BalanceGet("ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
-                    break;
-                case Method.POST:
-                    result = JsonConvert.DeserializeObject<Balance>(apiInstance
-                        .BalancePost("ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
-                    break;
-            }
-
-            Assert.AreEqual(result.Confirmed.coins, result.Predicted.coins);
-            Assert.AreEqual(result.Confirmed.hours, result.Predicted.hours);
-            Assert.AreNotEqual(0, result.Confirmed.hours);
-
-            // Add 1e4 because someone sent 0.01 coins to it
-            var expectedBalance = decimal.Parse("1E6", NumberStyles.Any) * decimal.Parse("1E6", NumberStyles.Any) +
-                                  decimal.Parse("1E4", NumberStyles.Any);
-            Assert.AreEqual(expectedBalance, result.Confirmed.coins);
-            // Check that the balance is queryable for addresses known to be affected
-            // by the coinhour overflow problem
-            var address = new[]
-            {
-                "n7AR1VMW1pK7F9TxhYdnr3HoXEQ3g9iTNP",
-                "2aTzmXi9jyiq45oTRFCP9Y7dcvnT6Rsp7u",
-                "FjFLnus2ePxuaPTXFXfpw6cVAE5owT1t3P",
-                "KT9vosieyWhn9yWdY8w7UZ6tk31KH4NAQK"
-            };
-            switch (method)
-            {
-                case Method.GET:
-                    foreach (var s in address)
-                    {
-                        Assert.DoesNotThrow(() => apiInstance.BalanceGet(s), $"Failed to get balance of address {s}");
-                    }
-
-                    apiInstance.BalanceGet(string.Join(",", address));
-                    break;
-                case Method.POST:
-                    foreach (var s in address)
-                    {
-                        Assert.DoesNotThrow(() => apiInstance.BalancePost(s), $"Failed to get balance of address {s}");
-                    }
-
-                    apiInstance.BalancePost(string.Join(",", address));
-                    break;
-            }
-        }
-
-        private void BlockchainMetadataStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.BlockchainMetadata();
-            var goldenfile = "blockchain-metadata.golden";
-            if (_dbNoUnconfirmed)
-            {
-                goldenfile = "blockchain-metadata-no-unconfirmed.golden";
-            }
-
-            CheckGoldenFile(goldenfile, result, result.GetType());
-        }
-
-        private void BlockchainMetadataLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = JsonConvert.DeserializeObject<BlockchainMetadata>(apiInstance.BlockchainMetadata().ToString());
-            Assert.AreNotEqual(0, result.Head.Seq);
-        }
-
-        private void BlockChainProgressStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.BlockchainProgress();
-            CheckGoldenFile("blockchain-progress.golden", result, result.GetType());
-        }
-
-        private void BlockChainProgressLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = JsonConvert.DeserializeObject<Progress>(apiInstance.BlockchainProgress().ToString());
-            Assert.AreNotEqual(0, result.Current);
-
-            if (_liveDisableNetworking)
-            {
-                Assert.IsEmpty(result.Peer);
-                Assert.AreEqual(result.Current, result.Highest);
-            }
-            else
-            {
-                Assert.IsNotEmpty(result.Peer);
-                Assert.True(result.Highest >= result.Current);
-            }
-        }
-
-        private void BlockStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "unknown hash",
-                    golden = "",
-                    hash = "80744ec25e6233f40074d35bf0bfdbddfac777869b954a96833cb89f44204444",
-                    seq = -1,
-                    errCode = 404,
-                    errMsg = "Error calling Block: 404 Not Found\n"
-                },
-                new
-                {
-                    name = "valid hash",
-                    golden = "block-hash.golden",
-                    hash = "70584db7fb8ab88b8dbcfed72ddc42a1aeb8c4882266dbb78439ba3efcd0458d",
-                    seq = -1,
-                    errCode = 200,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "genesis hash",
-                    golden = "block-hash-genesis.golden",
-                    hash = "0551a1e5af999fe8fff529f6f2ab341e1e33db95135eef1b2be44fe6981349f3",
-                    seq = -1,
-                    errCode = 200,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "genesis seq",
-                    golden = "block-seq-0.golden",
-                    hash = "",
-                    seq = 0,
-                    errCode = 200,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "seq 1",
-                    golden = "block-seq-1.golden",
-                    hash = "",
-                    seq = 1,
-                    errCode = 200,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "seq 100",
-                    golden = "block-seq-100.golden",
-                    hash = "",
-                    seq = 100,
-                    errCode = 200,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "unknown seq",
-                    golden = "",
-                    hash = "",
-                    seq = 999999999,
-                    errCode = 404,
-                    errMsg = "Error calling Block: 404 Not Found\n"
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                if (tc.errCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() =>
-                    {
-                        if (tc.seq >= 0)
-                        {
-                            apiInstance.Block(seq: tc.seq);
-                        }
-                        else
-                        {
-                            apiInstance.Block(hash: tc.hash);
-                        }
-                    });
-                    Assert.AreEqual(err.ErrorCode, tc.errCode);
-                    Assert.AreEqual(err.Message, tc.errMsg);
-                }
-                else
-                {
-                    if (tc.seq >= 0)
-                    {
-                        var result = apiInstance.Block(seq: tc.seq);
-                        CheckGoldenFile(tc.golden, result, result.GetType());
-                    }
-                    else
-                    {
-                        var result = apiInstance.Block(hash: tc.hash);
-                        CheckGoldenFile(tc.golden, result, result.GetType());
-                    }
-                }
-            }
-        }
-
-        private void BlockLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            BlockStable();
-            var knownBadBlockSeqs = new[]
-            {
-                // coinhour fee calculation mistake, related to distribution addresses:
-                297,
-                741,
-                743,
-                749,
-                796,
-                4956,
-                10125,
-                // coinhour overflow related:
-                11685,
-                11707,
-                11710,
-                11709,
-                11705,
-                11708,
-                11711,
-                11706,
-                11699,
-                13277
-            };
-
-            foreach (var seq in knownBadBlockSeqs)
-            {
-                var b = apiInstance.Block(seq: seq);
-                Assert.AreEqual(seq, b.Header.Seq);
-            }
-        }
-
-        private void BlocksStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            Progress p = JsonConvert.DeserializeObject<Progress>(
-                apiInstance.BlockchainProgress().ToString());
-
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "multiple sequences",
-                    golden = "blocks-3-5-7.golden",
-                    start = 0,
-                    end = 0,
-                    seqs = new List<int?> {3, 5, 7},
-                    errCode = 200,
-                    isRange = false,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "block seq not found",
-                    golden = "",
-                    start = 0,
-                    end = 0,
-                    seqs = new List<int?> {3, 5, 7, 99999},
-                    errCode = 404,
-                    isRange = false,
-                    errMsg = "Error calling Blocks: 404 Not Found - block does not exist seq=99999\n"
-                },
-                new
-                {
-                    name = "first 10",
-                    golden = "blocks-first-10.golden",
-                    start = 1,
-                    end = 10,
-                    seqs = new List<int?>(),
-                    errCode = 200,
-                    isRange = true,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "last 10",
-                    golden = "blocks-last-10.golden",
-                    start = p.Current - 10,
-                    end = p.Current,
-                    seqs = new List<int?>(),
-                    errCode = 200,
-                    isRange = true,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "first block",
-                    golden = "blocks-first-1.golden",
-                    start = 1,
-                    end = 1,
-                    seqs = new List<int?>(),
-                    errCode = 200,
-                    isRange = true,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "all blocks",
-                    golden = "blocks-all.golden",
-                    start = 0,
-                    end = p.Current,
-                    seqs = new List<int?>(),
-                    errCode = 200,
-                    isRange = true,
-                    errMsg = ""
-                },
-                new
-                {
-                    name = "start > end",
-                    golden = "blocks-end-less-than-start.golden",
-                    start = 10,
-                    end = 9,
-                    seqs = new List<int?>(),
-                    errCode = 200,
-                    isRange = true,
-                    errMsg = ""
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                if (tc.errCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() => apiInstance.Blocks(seqs: tc.seqs));
-                    Assert.AreEqual(err.ErrorCode, tc.errCode);
-                    Assert.AreEqual(err.Message, tc.errMsg);
-                }
-                else
-                {
-                    if (tc.isRange)
-                    {
-                        BlockInRangeTest(start: tc.start, end: tc.end);
-                        var result = apiInstance.Blocks(start: tc.start, end: tc.end);
-                        CheckGoldenFile(tc.golden, result, result.GetType());
-                    }
-                    else
-                    {
-                        BlocksTest(tc.seqs);
-                        var result = apiInstance.Blocks(seqs: tc.seqs);
-                        CheckGoldenFile(tc.golden, result, result.GetType());
-                    }
-                }
-            }
-        }
-
-        private void BlocksLive()
-        {
-            BlocksTest(new List<int?> {3, 5, 7});
-            BlockInRangeTest(1, 10);
-        }
-
-        private void BlockInRangeTest(int? start = null, int? end = null)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.Blocks(start: start, end: end);
-            if (start > end)
-            {
-                Assert.IsEmpty(result.Blocks);
-            }
-            else
-            {
-                Assert.AreEqual(end - start + 1, result.Blocks.Count);
-            }
-
-            BlockSchema prevblock = null;
-            result.Blocks.ForEach(b =>
-            {
-                if (prevblock != null)
-                {
-                    Assert.AreEqual(prevblock.Header.BlockHash, b.Header.PreviousBlockHash);
-                }
-
-                var bh = apiInstance.Block(hash: b.Header.BlockHash);
-                Assert.AreEqual(result.Blocks.FindIndex(block => Equals(block, b)) + start, b.Header.Seq);
-                Assert.NotNull(bh);
-                Assert.AreEqual(bh.ToJson(), b.ToJson());
-                prevblock = b;
-            });
-        }
-
-        private void BlocksTest(List<int?> seqs)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.Blocks(seqs: seqs);
-            Assert.AreEqual(seqs.Count, result.Blocks.Count);
-            var seqsMap = new Dictionary<int?, BlockVerboseSchemaHeader>();
-            seqs.ForEach(s =>
-            {
-                if (s != null) seqsMap[s] = null;
-            });
-            result.Blocks.ForEach(b =>
-            {
-                if (b.Header.Seq != null)
-                {
-                    Assert.True(seqsMap.ContainsKey(b.Header.Seq));
-                    seqsMap.Remove(b.Header.Seq);
-                }
-
-                var bh = apiInstance.Block(b.Header.BlockHash);
-                Assert.NotNull(bh);
-                Assert.AreEqual(b.ToJson(), bh.ToJson());
-            });
-            Assert.IsEmpty(seqsMap);
-        }
-
-        private void CoinSupplyStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = apiInstance.CoinSupply();
-            CheckGoldenFile("coinsupply.golden", result, result.GetType());
-        }
-
-        private void CoinSupplyLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var cs = apiInstance.CoinSupply();
-            Assert.IsNotEmpty(cs.CurrentSupply);
-            Assert.IsNotEmpty(cs.TotalSupply);
-            Assert.IsNotEmpty(cs.MaxSupply);
-            Assert.AreEqual("100000000.000000", cs.MaxSupply);
-            Assert.IsNotEmpty(cs.CurrentCoinhourSupply);
-            Assert.IsNotEmpty(cs.TotalCoinhourSupply);
-            Assert.AreEqual(100, cs.UnlockedDistributionAddresses.Count + cs.LockedDistributionAddresses.Count);
-        }
-
-        private void TransactionsStable(Method method)
-        {
-            var testCases = new List<dynamic>
-                {
-                    //Simple
-                    new
-                    {
-                        name = "invalid addr length",
-                        addrs = new[] {"abcd"},
-                        errorCode = 400,
-                        errMsg = "Error calling TransactionsGet: 400 Bad Request - parse parameter: 'addrs'" +
-                                 " failed: address \"abcd\" is invalid: Invalid address length\n",
-                        goldenFile = "",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "invalid addr character",
-                        addrs = new[] {"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947"},
-                        errorCode = 400,
-                        errMsg = "Error calling TransactionsGet: 400 Bad Request - parse parameter: 'addrs'" +
-                                 " failed: address \"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947\"" +
-                                 " is invalid: Invalid base58 character\n",
-                        goldenFile = "",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "invalid checksum",
-                        addrs = new[] {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk"},
-                        errorCode = 400,
-                        errMsg = "Error calling TransactionsGet: 400 Bad Request - parse parameter: 'addrs'" +
-                                 " failed: address \"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk\" is invalid: Invalid checksum\n",
-                        goldenFile = "",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "empty addrs",
-                        addrs = new[] {""},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "empty-addrs-transactions.golden",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "single addr",
-                        addrs = new[] {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "single-addr-transactions.golden",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "genesis",
-                        addrs = new[] {"2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "genesis-addr-transactions.golden",
-                        confirmed = ""
-                    },
-                    new
-                    {
-                        name = "multiple addrs",
-                        addrs = new[] {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt", "2JJ8pgq8EDAnrzf9xxBJapE2qkYLefW4uF8"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "multiple-addr-transactions.golden",
-                        confirmed = ""
-                    },
-                    //Confirmed=true
-                    new
-                    {
-                        name = "all confirmed",
-                        addrs = new[] {""},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "all-confirmed-transactions.golden",
-                        confirmed = "true"
-                    },
-                    new
-                    {
-                        name = "unconfirmed should be excluded",
-                        addrs = new[] {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "unconfirmed-excluded-from-transactions.golden",
-                        confirmed = "true"
-                    },
-                    //Confirmed=false
-                    new
-                    {
-                        name = "all unconfirmed",
-                        addrs = new[] {""},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "all-unconfirmed-transactions.golden",
-                        confirmed = "false"
-                    },
-                    new
-                    {
-                        name = "confirmed should be excluded",
-                        addrs = new[] {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "confirmed-excluded-from-transactions.golden",
-                        confirmed = "false"
-                    }
-                }
-                ;
-
-            if (!_dbNoUnconfirmed)
-            {
-                testCases.Add(new
-                {
-                    name = "confirmed and unconfirmed transactions",
-                    addrs = new[] {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                    errorCode = 200,
-                    errMsg = "",
-                    goldenFile = "confirmed-and-unconfirmed-transactions.golden",
-                    confirmed = ""
-                });
-                testCases.Add(new
-                {
-                    name = "empty addrs (all unconfirmed txns)",
-                    addrs = new[] {""},
-                    errorCode = 200,
-                    errMsg = "",
-                    goldenFile = "all-unconfirmed-txns.golden",
-                    confirmed = "false"
-                });
-            }
-            else
-            {
-                testCases.Add(new
-                {
-                    name = "empty addrs",
-                    addrs = new[] {""},
-                    errorCode = 200,
-                    errMsg = "",
-                    goldenFile = "no-unconfirmed-txns.golden",
-                    confirmed = "false"
-                });
-            }
-
-            foreach (var tc in testCases)
-            {
-                if (tc.errorCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() => TransactionsWithMethod(
-                        method: method, addrs: string.Join(",", tc.addrs)));
-                    if (method == Method.POST)
-                    {
-                        Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
-                        Assert.AreEqual(tc.errMsg.Replace("Get", "Post"), err.Message, tc.name);
-                    }
-                    else
-                    {
-                        Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
-                        Assert.AreEqual(tc.errMsg, err.Message, tc.name);
-                    }
-                }
-                else
-                {
-                    if (!tc.confirmed.Equals(""))
-                    {
-                        TransactionsWithMethod(method: method, addrs: string.Join(",", tc.addrs),
-                            confirmed: tc.confirmed, golden: tc.goldenFile);
-                    }
-                    else
-                    {
-                        TransactionsWithMethod(method: method, addrs: string.Join(",", tc.addrs),
-                            confirmed: null, golden: tc.goldenFile);
-                    }
-                }
-            }
-        }
-
-        private object TransactionsWithMethod(Method method, string addrs = null, string confirmed = null,
-            string golden = null)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            if (method == Method.GET)
-            {
-                var result = apiInstance.TransactionsGet(addrs: addrs, confirmed: confirmed);
-                if (golden != null)
-                {
-                    CheckGoldenFile(golden, result, result.GetType());
-                }
-                else
-                {
-                    return result;
-                }
-            }
-
-            if (method == Method.POST)
-            {
-                if (_useCsrf)
-                {
-                    apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-                }
-
-                var result = apiInstance.TransactionsPost(addrs: addrs, confirmed: confirmed);
-                if (golden != null)
-                {
-                    CheckGoldenFile($"post-{golden}", result, result.GetType());
-                }
-                else
-                {
-                    return result;
-                }
-            }
-
-            return null;
-        }
-
-        private void TransactionsLive(Method method)
-        {
-            var simpleaddrs = new[]
-            {
-                "2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt"
-            };
-            var sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method, addrs: string.Join(",", simpleaddrs))
-                        .ToString());
-            Assert.True(sresult.Count >= 0);
-            AssertNoTransactionsDupes(sresult);
-            var multiaddrs = new[]
-            {
-                "7cpQ7t3PZZXvjTst8G7Uvs7XH4LeM8fBPD",
-                "2K6NuLBBapWndAssUtkxKfCtyjDQDHrEhhT"
-            };
-            var mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method: method, addrs: string.Join(",", multiaddrs)).ToString());
-            Assert.True(mresult.Count >= 4);
-            AssertNoTransactionsDupes(mresult);
-            //Unconfirmedtransactions
-            sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method: method, addrs: string.Join(",", simpleaddrs), confirmed: "false")
-                        .ToString());
-            Assert.True(sresult.Count >= 0);
-            AssertNoTransactionsDupes(sresult);
-            mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method: method, addrs: string.Join(",", multiaddrs), confirmed: "false")
-                        .ToString());
-            Assert.True(mresult.Count >= 0);
-            Assert.True(mresult.Count >= sresult.Count);
-            AssertNoTransactionsDupes(mresult);
-            //ConfirmedTransactions
-            sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method: method, addrs: string.Join(",", simpleaddrs), confirmed: "true")
-                        .ToString());
-            Assert.True(sresult.Count >= 0);
-            AssertNoTransactionsDupes(sresult);
-            mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    TransactionsWithMethod(method: method, addrs: string.Join(",", multiaddrs), confirmed: "true")
-                        .ToString());
-            Assert.True(mresult.Count >= 0);
-            Assert.True(mresult.Count >= sresult.Count);
-            AssertNoTransactionsDupes(mresult);
-        }
-
-        private static void AssertNoTransactionsDupes(IEnumerable<Transaction> list)
-        {
-            var txids = new Dictionary<string, object>();
-            foreach (var transaction in list)
-            {
-                Assert.False(txids.ContainsKey(transaction.Txn.InnerHash));
-                txids[transaction.Txn.InnerHash] = new object();
-            }
-        }
-
-        private void HealthStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = JsonConvert.DeserializeObject<Health>(apiInstance.Health().ToString());
-            CheckHealthResponse(result);
-            Assert.AreEqual(0, result.Open_Connections);
-            Assert.AreEqual(0, result.Incoming_Connections);
-            Assert.AreEqual(0, result.Outgoing_Connections);
-            CompareTime(result.Blockchain.Time_Since_Last_Block);
-            Assert.NotNull(result.Version.Commit);
-            Assert.NotNull(result.Version.Branch);
-            Assert.AreEqual(_coin, result.Coin);
-            Assert.AreEqual($"{result.Coin}:{result.Version.Version}", result.User_Agent);
-            Assert.AreEqual(_useCsrf, result.CSRF_Enabled);
-            Assert.True(result.Csp_Enabled);
-            Assert.True(result.Wallet_API_Enabled);
-            Assert.False(result.GUI_Enabled);
-        }
-
-        private void HealthLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result = JsonConvert.DeserializeObject<Health>(apiInstance.Health().ToString());
-            CheckHealthResponse(result);
-            if (_liveDisableNetworking)
-            {
-                Assert.AreEqual(0, result.Open_Connections);
-                Assert.AreEqual(0, result.Outgoing_Connections);
-                Assert.AreEqual(0, result.Incoming_Connections);
-            }
-            else
-            {
-                Assert.AreNotEqual(0, result.Open_Connections);
-            }
-
-            Assert.AreEqual(result.Outgoing_Connections + result.Incoming_Connections, result.Open_Connections);
-        }
-
-        private static void CheckHealthResponse(Health h)
-        {
-            Assert.AreNotEqual(0, h.Blockchain.Unspents);
-            Assert.AreNotEqual(0, h.Blockchain.Head.Seq);
-            Assert.AreNotEqual(0, h.Blockchain.Head.Timestamp);
-            Assert.NotNull(h.Version.Version);
-            CompareTime(h.Uptime);
-            Assert.NotNull(h.Coin);
-            Assert.NotNull(h.User_Agent);
-        }
-
-        private void LastBlocksStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var result1 = JsonConvert.DeserializeObject<InlineResponse2001>(apiInstance.LastBlocks(1).ToString());
-            CheckGoldenFile("block-last.golden", result1, result1.GetType());
-            var result2 = JsonConvert.DeserializeObject<InlineResponse2001>(apiInstance.LastBlocks(10).ToString());
-            Assert.AreEqual(10, result2.Blocks.Count);
-            BlockSchema prevBlock = null;
-            result2.Blocks.ForEach(block =>
-            {
-                if (prevBlock != null)
-                {
-                    Assert.AreNotEqual(prevBlock.Header.BlockHash, block.Header.BlockHash);
-                }
-
-                var bh = apiInstance.Block(hash: block.Header.BlockHash);
-                Assert.NotNull(bh);
-                Assert.AreEqual(block.ToJson(), bh.ToJson());
-                prevBlock = block;
-            });
-        }
-
-        private void LastBlockLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            BlockSchema prevBlock = null;
-            var results = JsonConvert.DeserializeObject<InlineResponse2001>(apiInstance.LastBlocks(10).ToString());
-            Assert.AreEqual(10, results.Blocks.Count);
-            results.Blocks.ForEach(b =>
-            {
-                if (prevBlock != null)
-                {
-                    Assert.AreEqual(prevBlock.Header.BlockHash, b.Header.PreviousBlockHash);
-                }
-
-                var bh = apiInstance.Block(hash: b.Header.BlockHash);
-                Assert.NotNull(bh);
-                Assert.AreEqual(b.ToJson(), bh.ToJson());
-                prevBlock = b;
-            });
-        }
-
-        private void NetworkConnectionStable()
-        {
-            NetworkConnectionSchema connectionSchema = null;
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var connections = apiInstance.NetworkConnections();
-            Assert.IsEmpty(connections.Connections);
-            var err404 =
-                Assert.Throws<ApiException>(() => connectionSchema = apiInstance.NetworkConnection("127.0.0.1:4444"));
-            Assert.AreEqual(404, err404.ErrorCode);
-            Assert.AreEqual("Error calling NetworkConnection: 404 Not Found\n", err404.Message);
-            Assert.Null(connectionSchema);
-        }
-
-        private void NetworkConnectionLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var connections = apiInstance.NetworkConnections();
-            if (_liveDisableNetworking)
-            {
-                Assert.IsEmpty(connections.Connections);
-                return;
-            }
-
-            Assert.IsNotEmpty(connections.Connections);
-            var check = false;
-            connections.Connections.ForEach(cc =>
-            {
-                NetworkConnectionSchema connection = null;
-                try
-                {
-                    connection = apiInstance.NetworkConnection(cc.Address);
-                }
-                catch (ApiException err)
-                {
-                    // The connection may have disconnected by now
-                    if (err.ErrorCode == 404 || err.Message == "Error calling NetworkConnection: 404 Not Found\n")
-                    {
-                        return;
-                    }
-                }
-
-                Assert.NotNull(cc.Address);
-                Assert.AreEqual(cc.Address, connection?.Address);
-                Assert.AreEqual(cc.Id, connection?.Id);
-                Assert.AreEqual(cc.ListenPort, connection?.ListenPort);
-                Assert.AreEqual(cc.Mirror, connection?.Mirror);
-                switch (cc.State)
-                {
-                    case NetworkConnectionSchema.StateEnum.Introduced:
-                        Assert.AreEqual(NetworkConnectionSchema.StateEnum.Introduced, connection?.State);
-                        break;
-                    case NetworkConnectionSchema.StateEnum.Connected:
-                        Assert.AreNotEqual(NetworkConnectionSchema.StateEnum.Pending, connection?.State);
-                        break;
-                }
-
-                if (cc.State == NetworkConnectionSchema.StateEnum.Pending)
-                {
-                    Assert.AreEqual(0, cc.Id);
-                }
-                else
-                {
-                    Assert.AreNotEqual(0, cc.Id);
-                }
-
-                Assert.AreEqual(cc.Outgoing, connection?.Outgoing);
-                Assert.True(cc.LastReceived <= connection?.LastReceived);
-                Assert.True(cc.LastSent <= connection.LastSent);
-                Assert.AreEqual(cc.ConnectedAt, connection.ConnectedAt);
-                check = true;
-            });
-            Assert.True(check,
-                "Was not able to find any connection by address, despite finding connections when querying all");
-            connections = apiInstance.NetworkConnections(states: "pending");
-            connections.Connections.ForEach(
-                cc => { Assert.AreEqual(NetworkConnectionSchema.StateEnum.Pending, cc.State); });
-            connections = apiInstance.NetworkConnections(direction: "incoming");
-            connections.Connections.ForEach(cc => Assert.False(cc.Outgoing ?? true, "Outgoing is true or empty."));
-        }
-
-        private void NetworkConnectionExchangeStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var conenctions = apiInstance.NetworkConnectionsExchange();
-            CheckGoldenFile("network-exchanged-peers.golden", conenctions, conenctions.GetType());
-        }
-
-        private void NetworkConnectionExchangeLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            apiInstance.NetworkConnectionsExchange();
-        }
-
-        private void StableOutputs(Method method)
-        {
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "no addrs or hashes",
-                    golden = "outputs-noargs.golden",
-                    addrs = new List<string>(),
-                    hashes = new List<string>(),
-                },
-                new
-                {
-                    name = "only addrs",
-                    golden = "outputs-addrs.golden",
-                    addrs = new List<string>
-                    {
-                        "ALJVNKYL7WGxFBSriiZuwZKWD4b7fbV1od",
-                        "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf",
-                        "qxmeHkwgAMfwXyaQrwv9jq3qt228xMuoT5",
-                        "212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"
-                    },
-                    hashes = new List<string>(),
-                },
-                new
-                {
-                    name = "only hashes",
-                    golden = "outputs-hashes.golden",
-                    addrs = new List<string>(),
-                    hashes = new List<string>
-                    {
-                        "9e53268a18f8d32a44b4fb183033b49bebfe9d0da3bf3ef2ad1d560500aa54c6",
-                        "d91e07318227651129b715d2db448ae245b442acd08c8b4525a934f0e87efce9",
-                        "01f9c1d6c83dbc1c993357436cdf7f214acd0bfa107ff7f1466d1b18ec03563e",
-                        "fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20",
-                        "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
-                        "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759"
-                    }
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
-                if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
-                {
-                    OutputsWithMethod(method: method, golden: tc.golden);
-                }
-                else if (tc.addrs.Count > 0)
-                {
-                    OutputsWithMethod(method: method, addrs: tc.addrs, golden: tc.golden);
-                }
-                else if (tc.hashes.Count > 0)
-                {
-                    OutputsWithMethod(method: method, hashes: tc.hashes, golden: tc.golden);
-                }
-            }
-        }
-
-        private void StableNoUnconfirmedOutputs(Method method)
-        {
-            var testCases = new[]
-            {
-                new
-                {
-                    name = "no addrs or hashes",
-                    golden = "no-unconfirmed-outputs-noargs.golden",
-                    addrs = new List<string>(),
-                    hashes = new List<string>(),
-                },
-                new
-                {
-                    name = "only addrs",
-                    golden = "no-unconfirmed-outputs-addrs.golden",
-                    addrs = new List<string>
-                    {
-                        "ALJVNKYL7WGxFBSriiZuwZKWD4b7fbV1od",
-                        "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf",
-                        "qxmeHkwgAMfwXyaQrwv9jq3qt228xMuoT5",
-                        "212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"
-                    },
-                    hashes = new List<string>(),
-                },
-                new
-                {
-                    name = "only hashes",
-                    golden = "no-unconfirmed-outputs-hashes.golden",
-                    addrs = new List<string>(),
-                    hashes = new List<string>
-                    {
-                        "9e53268a18f8d32a44b4fb183033b49bebfe9d0da3bf3ef2ad1d560500aa54c6",
-                        "d91e07318227651129b715d2db448ae245b442acd08c8b4525a934f0e87efce9",
-                        "01f9c1d6c83dbc1c993357436cdf7f214acd0bfa107ff7f1466d1b18ec03563e",
-                        "fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20",
-                        "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
-                        "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759"
-                    }
-                }
-            };
-            foreach (var tc in testCases)
-            {
-                Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
-                if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
-                {
-                    OutputsWithMethod(method: method, golden: tc.golden);
-                }
-                else if (tc.addrs.Count > 0)
-                {
-                    OutputsWithMethod(method: method, addrs: tc.addrs, golden: tc.golden);
-                }
-                else if (tc.hashes.Count > 0)
-                {
-                    OutputsWithMethod(method: method, hashes: tc.hashes, golden: tc.golden);
-                }
-            }
-        }
-
-        private void LiveOutputs(Method method)
-        {
-            dynamic outputs = OutputsWithMethod(method: method);
-            Assert.IsNotEmpty(outputs.head_outputs);
-        }
-
-        private object OutputsWithMethod(Method method, List<string> addrs = null, List<string> hashes = null,
-            string golden = null)
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            if (method == Method.GET)
-            {
-                var result = apiInstance.OutputsGet(address: addrs, hash: hashes);
-                if (golden != null)
-                {
-                    CheckGoldenFile(golden, result, result.GetType());
-                }
-                else
-                {
-                    return result;
-                }
-            }
-
-            if (method == Method.POST)
-            {
-                if (_useCsrf)
-                {
-                    apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-                }
-
-                var result = apiInstance.OutputsPost(address: addrs, hash: hashes);
-                if (golden != null)
-                {
-                    CheckGoldenFile($"post-{golden}", result, result.GetType());
-                }
-                else
-                {
-                    return result;
-                }
-            }
-
-            return null;
-        }
-
-
-        private void StableNoUnconfirmedPendingTxs()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var txns = apiInstance.PendingTxs();
-            Assert.IsEmpty(txns);
-        }
-
-        private void StablePendingTxs()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var txns = apiInstance.PendingTxs();
-            DateTime txnRecive;
-            DateTime txnChecked;
-            txns.ForEach(txn =>
-            {
-                txnRecive = DateTime.Parse(txn.Received);
-                txnChecked = DateTime.Parse(txn.Received);
-                Assert.AreNotEqual(txnRecive, new DateTime());
-                Assert.AreNotEqual(txnChecked, new DateTime());
-            });
-            CheckGoldenFile("pending-transactions.golden", txns, txns.GetType());
-        }
-
-        private void LivePendingTxs()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            apiInstance.PendingTxs();
-        }
-
-        private void StableResendUnconfirmedTxns()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            try
-            {
-                if (_useCsrf) apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-                apiInstance.ResendUnconfirmedTxns();
-            }
-            catch (ApiException err)
-            {
-                Assert.AreEqual(503, err.ErrorCode);
-                Assert.AreEqual("Error calling ResendUnconfirmedTxns: 503 Service Unavailable - Networking " +
-                                "is disabled\n", err.Message);
-            }
-        }
-
-        private void LiveResendUnconfirmedTxns()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            if (!_liveDisableNetworking) return;
-            try
-            {
-                if (_useCsrf) apiInstance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf());
-                apiInstance.ResendUnconfirmedTxns();
-            }
-            catch (ApiException err)
-            {
-                Assert.AreEqual(503, err.ErrorCode);
-                Assert.AreEqual("Error calling ResendUnconfirmedTxns: 503 Service Unavailable - Networking " +
-                                "is disabled\n", err.Message);
-            }
-        }
-
-        private void StableRichList()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var richlist = apiInstance.Richlist();
-            CheckGoldenFile("richlist-default.golden", richlist, richlist.GetType());
-            richlist = apiInstance.Richlist(includeDistribution: false, n: "0");
-            CheckGoldenFile("richlist-all.golden", richlist, richlist.GetType());
-            richlist = apiInstance.Richlist(includeDistribution: true, n: "0");
-            CheckGoldenFile("richlist-all-include-distribution.golden", richlist, richlist.GetType());
-            richlist = apiInstance.Richlist(includeDistribution: false, n: "8");
-            CheckGoldenFile("richlist-8.golden", richlist, richlist.GetType());
-            richlist = apiInstance.Richlist(includeDistribution: true, n: "150");
-            CheckGoldenFile("richlist-150-include-distribution.golden", richlist, richlist.GetType());
-        }
-
-        private void LiveRichList()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            dynamic richlist = apiInstance.Richlist();
-            Assert.IsNotEmpty(richlist.richlist);
-            Assert.AreEqual(20, richlist.richlist.Count);
-            richlist = apiInstance.Richlist(includeDistribution: true, n: "150");
-            Assert.AreEqual(150, richlist.richlist.Count);
-        }
-
-        private void ApiRawTxGetStable()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testcases = new List<dynamic>
-            {
-                new
-                {
-                    name = "invalid hex length",
-                    txid = "abcd",
-                    errCode = 400,
-                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - Invalid hex length\n",
-                    rawtxid = ""
-                },
-                new
-                {
-                    name = "not found",
-                    txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
-                    errCode = 404,
-                    errMsg = "Error calling ApiV1RawtxGet: 404 Not Found\n",
-                    rawtxid = ""
-                },
-                new
-                {
-                    name = "odd length hex string",
-                    txid = "abcdeffedca",
-                    errCode = 400,
-                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - encoding/hex: odd length hex string\n",
-                    rawtxid = ""
-                },
-                new
-                {
-                    name = "OK",
-                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
-                    errCode = 200,
-                    errMsg = "",
-                    rawtxid =
-                        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
-                        "000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000"
-                }
-            };
-            if (!_dbNoUnconfirmed)
-            {
-                testcases.Add(new
-                {
-                    name = "unconfirmed",
-                    txid = "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
-                    errCode = 200,
-                    errMsg = "",
-                    rawtxid = "dc00000000f8293dbfdddcc56a97664655ceee650715d35a0dda32a9f0ce0e2e99d48991240100000" +
-                              "03981061c7275ae9cc936e902a5367fdd87ef779bbdb31e1e10d325d17a129abb34f6e597ceeaf67b" +
-                              "b051774b41c58276004f6a63cb81de61d4693bc7a5536f320001000000fe6762d753d626115c8dd3a" +
-                              "053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f2002000000003be2537f8c0893fddcddc878518f38" +
-                              "ea493d949e008988068d0000002739570000000000009037ff169fbec6db95e2537e4ff79396c050a" +
-                              "eeb00e40b54020000002739570000000000"
-                });
-            }
-
-            testcases.ForEach(tc =>
-            {
-                if (tc.errCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() => apiInstance.ApiV1RawtxGet(tc.txid));
-                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
-                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
-                }
-                else
-                {
-                    var result = apiInstance.ApiV1RawtxGet(tc.txid);
-                    Assert.AreEqual(tc.rawtxid, result, tc.name);
-                }
-            });
-        }
-
-        private void ApiRawTxGetLive()
-        {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var testcases = new List<dynamic>
-            {
-                new
-                {
-                    name = "invalid hex length",
-                    txid = "abcd",
-                    errCode = 400,
-                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - Invalid hex length\n",
-                    rawtxid = ""
-                },
-                new
-                {
-                    name = "odd length hex string",
-                    txid = "abcdeffedca",
-                    errCode = 400,
-                    errMsg = "Error calling ApiV1RawtxGet: 400 Bad Request - encoding/hex: odd length hex string\n",
-                    rawtxid = ""
-                },
-                new
-                {
-                    name = "OK - genesis tx",
-                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
-                    errCode = 200,
-                    errMsg = "",
-                    rawtxid =
-                        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
-                        "000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000"
-                },
-                new
-                {
-                    name = "OK",
-                    txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
-                    errCode = 200,
-                    errMsg = "",
-                    rawtxid = "3d0100000088b4e967d77a8b7155c5378a85c199fabf94048aa84833ef5eab7818545bcda80200000071" +
-                              "985c70041fe5a6408a2dfac2ea4963820bc603059521259debb114b2f6630b5658e7ff665b2db7878ce9" +
-                              "b0d1d051ec66b5dea23274e52642bc7e451b273a90008afb06133958b03c4795d5a7acd001f3942cc6d3" +
-                              "b19e93d357d2675fe9ba8bbf3db30b3cda779e441fced581aee88f48c8af017b30dc276b15be25d4bb44" +
-                              "260c000200000050386f195b367f8261e66e3fdfbc942fbacfe25e117e554ca1c1caf8993454767afab0" +
-                              "3c823346ff8b00c29df6acc05841583d90dfd451ba09e66884a48e83f70200000000ef3b60779f014b3c" +
-                              "7acf27c16c9acc3ff3bea61600a8b54b06000000c2ba2400000000000037274869aaa4c2e2e5c9159502" +
-                              "4c65f8f9458102404b4c0000000000c2ba240000000000"
-                }
-            };
-            testcases.ForEach(tc =>
-            {
-                if (tc.errCode != 200)
-                {
-                    var err = Assert.Throws<ApiException>(() => apiInstance.ApiV1RawtxGet(tc.txid));
-                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
-                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
-                }
-                else
-                {
-                    var result = apiInstance.ApiV1RawtxGet(tc.txid);
-                    Assert.AreEqual(tc.rawtxid, result, tc.name);
-                }
-            });
-        }
-
-        private void NetworkConnectionDisconnectStable()
-        {
-            var err404 =
-                Assert.Throws<ApiException>(() => instance.NetworkConnectionsDisconnect("999"));
-            Assert.AreEqual(404, err404.ErrorCode);
-            Assert.AreEqual("Error calling NetworkConnectionsDisconnect: 404 Not Found\n", err404.Message);
-        }
-
-        private void NetworkConnectionDisconnectLive()
-        {
-            var connections = instance.NetworkConnections();
-            if (_liveDisableNetworking)
-            {
-                Assert.IsEmpty(connections.Connections);
-                return;
-            }
-
-            Assert.IsNotEmpty(connections.Connections);
-            connections.Connections.ForEach(cc =>
-            {
-                NetworkConnectionSchema connection = null;
-                try
-                {
-                    connection = instance.NetworkConnection(cc.Address);
-                }
-                catch (ApiException err)
-                {
-                    // The connection may have disconnected by now
-                    if (err.ErrorCode == 404 || err.Message == "Error calling NetworkConnection: 404 Not Found\n")
-                    {
-                        return;
-                    }
-                }
-
-                Assert.AreEqual(cc.Id, connection?.Id);
-                instance.NetworkConnectionsDisconnect(cc.Id.ToString());
-            });
-        }
-
-
-        private static void CompareTime(string time)
-        {
-            var x = Regex.Split(time.Replace(".", ","), @"h|s|m").Reverse().ToArray();
-            int s = (int) double.Parse(x.Length >= 2 ? (x[1] != "" ? x[1] : "0") : "0"),
-                m = (int) double.Parse(x.Length >= 3 ? (x[2] != "" ? x[2] : "0") : "0"),
-                h = (int) double.Parse(x.Length >= 4 ? (x[3] != "" ? x[3] : "0") : "0");
-            Assert.True(new TimeSpan(h, m, s) > TimeSpan.Zero);
-        }
-
-        private string GetCsrf()
-        {
-            string token;
-            try
-            {
-                var api = new DefaultApi(_nodeAddress);
-                token = api.Csrf().CsrfToken;
-            }
-            catch (Exception)
-            {
-                return "";
-            }
-
-            return token;
-        }
-
-        private static void CheckGoldenFile(string file, object obj, Type type)
-        {
-            var path = "../../../../TestFile/";
-            //Verify directory
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            path = path + file;
-            //Verify file
-            if (!File.Exists(path)) File.WriteAllText(path, JsonConvert.SerializeObject(obj, Formatting.Indented));
-            using (var sr = File.OpenText(path))
-            {
-                var p = JsonConvert.DeserializeObject(sr.ReadToEnd(), type);
-                sr.Close();
-                Assert.AreEqual(JsonConvert.SerializeObject(p), JsonConvert.SerializeObject(obj));
-            }
         }
     }
 }

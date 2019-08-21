@@ -28,7 +28,7 @@ namespace Skyapi.Model
     /// InlineResponse200
     /// </summary>
     [DataContract]
-    public partial class InlineResponse200 :  IEquatable<InlineResponse200>, IValidatableObject
+    public class InlineResponse200 : IEquatable<InlineResponse200>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
@@ -36,13 +36,13 @@ namespace Skyapi.Model
         /// <param name="count">count.</param>
         public InlineResponse200(long? count = default(long?))
         {
-            this.Count = count;
+            Count = count;
         }
-        
+
         /// <summary>
         /// Gets or Sets Count
         /// </summary>
-        [DataMember(Name="count", EmitDefaultValue=false)]
+        [DataMember(Name = "count", EmitDefaultValue = false)]
         public long? Count { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Skyapi.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.Count == input.Count ||
-                    (this.Count != null &&
-                    this.Count.Equals(input.Count))
-                );
+            return
+            (
+                this.Count == input.Count ||
+                (this.Count != null &&
+                 this.Count.Equals(input.Count))
+            );
         }
 
         /// <summary>
@@ -115,10 +115,10 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(
+            ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }
