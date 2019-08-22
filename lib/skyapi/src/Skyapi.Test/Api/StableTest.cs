@@ -830,5 +830,117 @@ namespace Skyapi.Test.Api
             richlist = instance.Richlist(includeDistribution: true, n: "150");
             Utils.CheckGoldenFile("richlist-150-include-distribution.golden", richlist, richlist.GetType());
         }
+
+        internal static void Transaction(DefaultApi instance, bool dbNoUnconfirmed)
+        {
+            var testCases = new List<dynamic>
+            {
+                new
+                {
+                    name = "invalid TxID",
+                    txid = "abcd",
+                    errCode = 400,
+                    errMsg = "Error calling Transaction: 400 Bad Request - Invalid hex length\n",
+                    golden = ""
+                },
+                new
+                {
+                    name = "empty txID",
+                    txid = "",
+                    errCode = 400,
+                    errMsg = "Error calling Transaction: 400 Bad Request - txid is empty\n",
+                    golden = ""
+                },
+                new
+                {
+                    name = "not exist",
+                    txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
+                    errCode = 404,
+                    errMsg = "Error calling Transaction: 404 Not Found\n",
+                    golden = ""
+                },
+                new
+                {
+                    name = "genesis transaction",
+                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "genesis-transaction.golden"
+                },
+                new
+                {
+                    name = "transaction in block 101",
+                    txid = "e8fe5290afba3933389fd5860dca2cbcc81821028be9c65d0bb7cf4e8d2c4c18",
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "transaction-block-101.golden"
+                }
+            };
+            if (!dbNoUnconfirmed)
+            {
+                testCases.Add(new
+                {
+                    name = "unconfirmed",
+                    txid = "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "transaction-unconfirmed.golden"
+                });
+            }
+
+            testCases.ForEach(tc =>
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid));
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
+                }
+                else
+                {
+                    var result = (Transaction) instance.Transaction(tc.txid);
+                    Utils.CheckGoldenFile(tc.golden, result, result.GetType());
+                }
+            });
+        }
+
+        internal static void TransactionInject(DefaultApi instance)
+        {
+            var testCases = new List<dynamic>
+            {
+                new
+                {
+                    name = "database is read only",
+                    txn = "00000000000000000000000000000000000000000000000000000000000000000000000000000" +
+                          "00000000000000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a00" +
+                          "0000407a10f35a0000",
+                    errCode = 500,
+                    errMsg = "Error calling TransactionInject: 500 Internal Server Error - database is in " +
+                             "read-only mode\n"
+                },
+                new
+                {
+                    name = "empty txn",
+                    txn = "",
+                    errCode = 400,
+                    errMsg = "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject"
+                },
+                new
+                {
+                    name = "invalid txn",
+                    txn = "abcd",
+                    errCode = 400,
+                    errMsg = "Error calling TransactionInject: 400 Bad Request - Invalid transaction: Not enough " +
+                             "buffer data to deserialize\n"
+                },
+            };
+
+            testCases.ForEach(tc =>
+            {
+                var err = Assert.Throws<ApiException>(() => instance.TransactionInject(tc.txn));
+                Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                Assert.AreEqual(tc.errMsg, err.Message, tc.name);
+            });
+        }
     }
 }

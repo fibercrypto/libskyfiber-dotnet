@@ -1016,9 +1016,8 @@ namespace Skyapi.Api
         /// Returns the wallet directory path
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>InlineResponse2007</returns>
-        InlineResponse2007 WalletFolder(string addr);
+        InlineResponse2007 WalletFolder();
 
         /// <summary>
         /// 
@@ -1027,9 +1026,8 @@ namespace Skyapi.Api
         /// Returns the wallet directory path
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo(string addr);
+        ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo();
 
         /// <summary>
         /// 
@@ -2296,9 +2294,8 @@ namespace Skyapi.Api
         /// Returns the wallet directory path
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>Task of InlineResponse2007</returns>
-        System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync(string addr);
+        System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync();
 
         /// <summary>
         /// 
@@ -2307,9 +2304,8 @@ namespace Skyapi.Api
         /// Returns the wallet directory path
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo(string addr);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo();
 
         /// <summary>
         /// 
@@ -4484,7 +4480,7 @@ namespace Skyapi.Api
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            var localVarHttpHeaderAccepts = new []
+            var localVarHttpHeaderAccepts = new[]
             {
                 "application/json",
                 "application/xml"
@@ -6893,9 +6889,11 @@ namespace Skyapi.Api
         public ApiResponse<string> TransactionInjectWithHttpInfo(string rawtx)
         {
             // verify the required parameter 'rawtx' is set
-            if (rawtx == null)
+            if (rawtx == "")
                 throw new ApiException(400,
                     "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
+             
+            
 
             var localVarPath = "/api/v1/injectTransaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6924,9 +6922,7 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (rawtx != null)
-                localVarHeaderParams.Add("rawtx",
-                    this.Configuration.ApiClient.ParameterToString(rawtx)); // header parameter
+            localVarPostBody = JsonConvert.SerializeObject(new {rawtx = rawtx});
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9328,11 +9324,10 @@ namespace Skyapi.Api
         ///  Returns the wallet directory path
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>InlineResponse2007</returns>
-        public InlineResponse2007 WalletFolder(string addr)
+        public InlineResponse2007 WalletFolder()
         {
-            ApiResponse<InlineResponse2007> localVarResponse = WalletFolderWithHttpInfo(addr);
+            ApiResponse<InlineResponse2007> localVarResponse = WalletFolderWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -9340,14 +9335,10 @@ namespace Skyapi.Api
         ///  Returns the wallet directory path
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>ApiResponse of InlineResponse2007</returns>
-        public ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo(string addr)
+        public ApiResponse<InlineResponse2007> WalletFolderWithHttpInfo()
         {
             // verify the required parameter 'addr' is set
-            if (addr == null)
-                throw new ApiException(400, "Missing required parameter 'addr' when calling DefaultApi->WalletFolder");
-
             var localVarPath = "/api/v1/wallets/folderName";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -9373,11 +9364,6 @@ namespace Skyapi.Api
                 this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (addr != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
-
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -9403,11 +9389,10 @@ namespace Skyapi.Api
         ///  Returns the wallet directory path
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>Task of InlineResponse2007</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync(string addr)
+        public async System.Threading.Tasks.Task<InlineResponse2007> WalletFolderAsync()
         {
-            ApiResponse<InlineResponse2007> localVarResponse = await WalletFolderAsyncWithHttpInfo(addr);
+            ApiResponse<InlineResponse2007> localVarResponse = await WalletFolderAsyncWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -9415,15 +9400,10 @@ namespace Skyapi.Api
         ///  Returns the wallet directory path
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addr">Address port</param>
         /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo(
-            string addr)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> WalletFolderAsyncWithHttpInfo()
         {
             // verify the required parameter 'addr' is set
-            if (addr == null)
-                throw new ApiException(400, "Missing required parameter 'addr' when calling DefaultApi->WalletFolder");
-
             var localVarPath = "/api/v1/wallets/folderName";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -9449,11 +9429,6 @@ namespace Skyapi.Api
                 this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (addr != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "addr", addr)); // query parameter
-
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(

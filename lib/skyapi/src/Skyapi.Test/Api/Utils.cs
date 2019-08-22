@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -153,10 +154,10 @@ namespace Skyapi.Test.Api
             return null;
         }
 
-/// <summary>
-/// Compare the time of Health.
-/// </summary>
-/// <param name="time"></param>
+        /// <summary>
+        /// Compare the time of Health.
+        /// </summary>
+        /// <param name="time"></param>
         internal static void CompareTime(string time)
         {
             var x = Regex.Split(time.Replace(".", ","), @"h|s|m").Reverse().ToArray();
@@ -285,7 +286,7 @@ namespace Skyapi.Test.Api
             Assert.NotNull(h.Coin);
             Assert.NotNull(h.User_Agent);
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -299,6 +300,5 @@ namespace Skyapi.Test.Api
                 txids[transaction.Txn.InnerHash] = new object();
             }
         }
-
     }
 }

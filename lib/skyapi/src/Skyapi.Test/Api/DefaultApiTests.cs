@@ -41,7 +41,7 @@ namespace Skyapi.Test.Api
         [SetUp]
         public void Init()
         {
-            _testMode = Environment.GetEnvironmentVariable("TESTMODE") ?? "stable";
+            _testMode = Environment.GetEnvironmentVariable("TESTMODE") ?? "live";
             _coin = Environment.GetEnvironmentVariable("COIN") ?? "skycoin";
             _useCsrf = Convert.ToBoolean(Environment.GetEnvironmentVariable("USE_CSRF") ?? "false");
             _nodeAddress = Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://localhost:6420";
@@ -158,7 +158,7 @@ namespace Skyapi.Test.Api
             }
             else if (_testMode.Equals("live"))
             {
-                LiveTest.Balance(Method.GET, _instance, _useCsrf);
+                LiveTest.Balance(Method.GET, instance: _instance, useCsrf: _useCsrf);
             }
         }
 
@@ -190,7 +190,7 @@ namespace Skyapi.Test.Api
             }
             else if (_testMode.Equals("live"))
             {
-                LiveTest.Block(_instance);
+                LiveTest.Block(_instance, _liveDisableNetworking);
             }
         }
 
@@ -547,10 +547,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string txid = null;
-            //var response = instance.Transaction(txid);
-            //Assert.IsInstanceOf<Transaction> (response, "response is Transaction");
+            if (_testMode.Equals("stable"))
+            {
+                StableTest.Transaction(_instance, _dbNoUnconfirmed);
+            }
+            else if (_testMode.Equals("live"))
+            {
+                LiveTest.Transaction(_instance);
+            }
         }
 
         /// <summary>
@@ -559,10 +563,21 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionInjectTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string rawtx = null;
-            //var response = instance.TransactionInject(rawtx);
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            if (_testMode.Equals("stable"))
+            {
+                StableTest.TransactionInject(_instance);
+            }
+            else if (_testMode.Equals("live"))
+            {
+                if (_liveDisableNetworking)
+                {
+                    LiveTest.TransactionInjectDisableNetworking(_instance);
+                }
+                else
+                {
+                    LiveTest.TransactionInjectEnableNetworking(_instance);
+                }
+            }
         }
 
         /// <summary>

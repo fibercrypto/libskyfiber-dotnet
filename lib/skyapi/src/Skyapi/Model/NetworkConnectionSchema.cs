@@ -77,7 +77,7 @@ namespace Skyapi.Model
         /// <param name="state">state.</param>
         /// <param name="unconfirmedVerifyTransaction">unconfirmedVerifyTransaction.</param>
         /// <param name="userAgent">userAgent.</param>
-        public NetworkConnectionSchema(string address = default(string), long? connectedAt = default(long?), long? height = default(long?), long? id = default(long?), bool? isTrustedPeer = default(bool?), long? lastReceived = default(long?), long? lastSent = default(long?), int? listenPort = default(int?), int? mirror = default(int?), bool? outgoing = default(bool?), StateEnum? state = default(StateEnum?), NetworkConnectionSchemaUnconfirmedVerifyTransaction unconfirmedVerifyTransaction = default(NetworkConnectionSchemaUnconfirmedVerifyTransaction), string userAgent = default(string))
+        public NetworkConnectionSchema(string address = default(string), long? connectedAt = default(long?), long? height = default(long?), long? id = default(long?), bool? isTrustedPeer = default(bool?), long? lastReceived = default(long?), long? lastSent = default(long?), int? listenPort = default(int?), long? mirror = default(long?), bool? outgoing = default(bool?), StateEnum? state = default(StateEnum?), NetworkConnectionSchemaUnconfirmedVerifyTransaction unconfirmedVerifyTransaction = default(NetworkConnectionSchemaUnconfirmedVerifyTransaction), string userAgent = default(string))
         {
             this.Address = address;
             this.ConnectedAt = connectedAt;
@@ -146,7 +146,7 @@ namespace Skyapi.Model
         /// Gets or Sets Mirror
         /// </summary>
         [DataMember(Name="mirror", EmitDefaultValue=false)]
-        public int? Mirror { get; set; }
+        public long? Mirror { get; set; }
 
         /// <summary>
         /// Gets or Sets Outgoing

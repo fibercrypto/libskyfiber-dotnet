@@ -4,8 +4,9 @@ namespace Skyapi.Model
 {
     public class Balance
     {
-        public Dictionary<string, BalancePair> Addresses { get; set; }
+        //Buscar forma de poner un valor por defecto a esta clase.
         public Confirm Confirmed { get; set; }
         public Predict Predicted { get; set; }
+        public Dictionary<string, BalancePair> Addresses { get; set; }
     }
 }
