@@ -25,33 +25,41 @@ using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
 namespace Skyapi.Model
 {
     /// <summary>
-    /// TransactionV2ParamsUnspentTo
+    /// TransactionV2ParamsUnspentHoursSelection
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsUnspentTo :  IEquatable<TransactionV2ParamsUnspentTo>, IValidatableObject
+    public partial class TransactionV2ParamsHoursSelection :  IEquatable<TransactionV2ParamsHoursSelection>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionV2ParamsUnspentTo" /> class.
+        /// Initializes a new instance of the <see cref="TransactionV2ParamsHoursSelection" /> class.
         /// </summary>
-        /// <param name="address">address.</param>
-        /// <param name="coins">coins.</param>
-        public TransactionV2ParamsUnspentTo(string address = default(string), string coins = default(string))
+        /// <param name="type">type.</param>
+        /// <param name="mode">mode.</param>
+        /// <param name="shareFactor">shareFactor.</param>
+        public TransactionV2ParamsHoursSelection(string type = default(string), string mode = default(string), string shareFactor = default(string))
         {
-            this.Address = address;
-            this.Coins = coins;
+            this.Type = type;
+            this.Mode = mode;
+            this.ShareFactor = shareFactor;
         }
         
         /// <summary>
-        /// Gets or Sets Address
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=false)]
-        public string Address { get; set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets Coins
+        /// Gets or Sets Mode
         /// </summary>
-        [DataMember(Name="coins", EmitDefaultValue=false)]
-        public string Coins { get; set; }
+        [DataMember(Name="mode", EmitDefaultValue=false)]
+        public string Mode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShareFactor
+        /// </summary>
+        [DataMember(Name="share_factor", EmitDefaultValue=false)]
+        public string ShareFactor { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +68,10 @@ namespace Skyapi.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TransactionV2ParamsUnspentTo {\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  Coins: ").Append(Coins).Append("\n");
+            sb.Append("class TransactionV2ParamsUnspentHoursSelection {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Mode: ").Append(Mode).Append("\n");
+            sb.Append("  ShareFactor: ").Append(ShareFactor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +92,34 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsUnspentTo);
+            return this.Equals(input as TransactionV2ParamsHoursSelection);
         }
 
         /// <summary>
-        /// Returns true if TransactionV2ParamsUnspentTo instances are equal
+        /// Returns true if TransactionV2ParamsUnspentHoursSelection instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransactionV2ParamsUnspentTo to be compared</param>
+        /// <param name="input">Instance of TransactionV2ParamsUnspentHoursSelection to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransactionV2ParamsUnspentTo input)
+        public bool Equals(TransactionV2ParamsHoursSelection input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Address == input.Address ||
-                    (this.Address != null &&
-                    this.Address.Equals(input.Address))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Coins == input.Coins ||
-                    (this.Coins != null &&
-                    this.Coins.Equals(input.Coins))
+                    this.Mode == input.Mode ||
+                    (this.Mode != null &&
+                    this.Mode.Equals(input.Mode))
+                ) && 
+                (
+                    this.ShareFactor == input.ShareFactor ||
+                    (this.ShareFactor != null &&
+                    this.ShareFactor.Equals(input.ShareFactor))
                 );
         }
 
@@ -118,10 +132,12 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Address != null)
-                    hashCode = hashCode * 59 + this.Address.GetHashCode();
-                if (this.Coins != null)
-                    hashCode = hashCode * 59 + this.Coins.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Mode != null)
+                    hashCode = hashCode * 59 + this.Mode.GetHashCode();
+                if (this.ShareFactor != null)
+                    hashCode = hashCode * 59 + this.ShareFactor.GetHashCode();
                 return hashCode;
             }
         }

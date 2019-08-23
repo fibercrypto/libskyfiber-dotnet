@@ -570,10 +570,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPostTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //TransactionV2ParamsAddress transactionV2ParamsAddress = null;
-            //var response = instance.TransactionPost(transactionV2ParamsAddress);
-            //Assert.IsInstanceOf<InlineResponse2008> (response, "response is InlineResponse2008");
+            if (Utils.GetTestMode().Equals("stable"))
+            {
+                StableTest.TransactionPost(_instance);
+            }
+            else if (Utils.GetTestMode().Equals("live"))
+            {
+                ///////
+            }
         }
 
         /// <summary>

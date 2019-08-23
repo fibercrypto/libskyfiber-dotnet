@@ -943,8 +943,37 @@ namespace Skyapi.Test.Api
             });
         }
 
-        internal static void  UxoutT()
+        internal static void TransactionPost(DefaultApi instance)
         {
+            var testCases = new[]
+            {
+                new
+                {
+                    name="invalid no uxouts for addresses",
+                    req=new TransactionV2ParamsAddress
+                    {
+                        HoursSelection = new TransactionV2ParamsHoursSelection
+                        {
+                            Type = "manual"
+                        }
+                        
+                    },
+                    errCode=200,
+                    errMsg=""
+                },new
+                {
+                    name="",
+                    req=new TransactionV2ParamsAddress(),
+                    errCode=200,
+                    errMsg=""
+                },new
+                {
+                    name="",
+                    req=new TransactionV2ParamsAddress(),
+                    errCode=200,
+                    errMsg=""
+                },
+            };
         }
     }
 }

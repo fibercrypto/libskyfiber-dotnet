@@ -20,6 +20,7 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
+using Skyapi.Model;
 
 namespace Skyapi.Client
 {

@@ -9,18 +9,12 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,7 +22,7 @@ namespace Skyapi.Model
     /// TransactionV2ParamsUnspent
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsUnspent :  IEquatable<TransactionV2ParamsUnspent>, IValidatableObject
+    public class TransactionV2ParamsUnspent : IEquatable<TransactionV2ParamsUnspent>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionV2ParamsUnspent" /> class.
@@ -37,37 +31,40 @@ namespace Skyapi.Model
         /// <param name="unspents">unspents.</param>
         /// <param name="changeAddress">changeAddress.</param>
         /// <param name="to">to.</param>
-        public TransactionV2ParamsUnspent(TransactionV2ParamsUnspentHoursSelection hoursSelection = default(TransactionV2ParamsUnspentHoursSelection), List<string> unspents = default(List<string>), string changeAddress = default(string), List<TransactionV2ParamsUnspentTo> to = default(List<TransactionV2ParamsUnspentTo>))
+        public TransactionV2ParamsUnspent(
+            TransactionV2ParamsHoursSelection hoursSelection = default(TransactionV2ParamsHoursSelection),
+            List<string> unspents = default(List<string>), string changeAddress = default(string),
+            List<TransactionV2ParamsTo> to = default(List<TransactionV2ParamsTo>))
         {
-            this.HoursSelection = hoursSelection;
-            this.Unspents = unspents;
-            this.ChangeAddress = changeAddress;
-            this.To = to;
+            HoursSelection = hoursSelection;
+            Unspents = unspents;
+            ChangeAddress = changeAddress;
+            To = to;
         }
-        
+
         /// <summary>
         /// Gets or Sets HoursSelection
         /// </summary>
-        [DataMember(Name="hours_selection", EmitDefaultValue=false)]
-        public TransactionV2ParamsUnspentHoursSelection HoursSelection { get; set; }
+        [DataMember(Name = "hours_selection", EmitDefaultValue = false)]
+        public TransactionV2ParamsHoursSelection HoursSelection { get; set; }
 
         /// <summary>
         /// Gets or Sets Unspents
         /// </summary>
-        [DataMember(Name="unspents", EmitDefaultValue=false)]
+        [DataMember(Name = "unspents", EmitDefaultValue = false)]
         public List<string> Unspents { get; set; }
 
         /// <summary>
         /// Gets or Sets ChangeAddress
         /// </summary>
-        [DataMember(Name="change_address", EmitDefaultValue=false)]
+        [DataMember(Name = "change_address", EmitDefaultValue = false)]
         public string ChangeAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name="to", EmitDefaultValue=false)]
-        public List<TransactionV2ParamsUnspentTo> To { get; set; }
+        [DataMember(Name = "to", EmitDefaultValue = false)]
+        public List<TransactionV2ParamsTo> To { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,7 +81,7 @@ namespace Skyapi.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -101,7 +98,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsUnspent);
+            return Equals(input as TransactionV2ParamsUnspent);
         }
 
         /// <summary>
@@ -114,28 +111,28 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
-                    this.HoursSelection == input.HoursSelection ||
-                    (this.HoursSelection != null &&
-                    this.HoursSelection.Equals(input.HoursSelection))
-                ) && 
+                    Equals(HoursSelection, input.HoursSelection) ||
+                    (HoursSelection != null &&
+                     HoursSelection.Equals(input.HoursSelection))
+                ) &&
                 (
-                    this.Unspents == input.Unspents ||
-                    this.Unspents != null &&
+                    Unspents == input.Unspents ||
+                    Unspents != null &&
                     input.Unspents != null &&
-                    this.Unspents.SequenceEqual(input.Unspents)
-                ) && 
+                    Unspents.SequenceEqual(input.Unspents)
+                ) &&
                 (
-                    this.ChangeAddress == input.ChangeAddress ||
-                    (this.ChangeAddress != null &&
-                    this.ChangeAddress.Equals(input.ChangeAddress))
-                ) && 
+                    ChangeAddress == input.ChangeAddress ||
+                    (ChangeAddress != null &&
+                     ChangeAddress.Equals(input.ChangeAddress))
+                ) &&
                 (
-                    this.To == input.To ||
-                    this.To != null &&
+                    To == input.To ||
+                    To != null &&
                     input.To != null &&
-                    this.To.SequenceEqual(input.To)
+                    To.SequenceEqual(input.To)
                 );
         }
 
@@ -148,14 +145,14 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HoursSelection != null)
-                    hashCode = hashCode * 59 + this.HoursSelection.GetHashCode();
-                if (this.Unspents != null)
-                    hashCode = hashCode * 59 + this.Unspents.GetHashCode();
-                if (this.ChangeAddress != null)
-                    hashCode = hashCode * 59 + this.ChangeAddress.GetHashCode();
-                if (this.To != null)
-                    hashCode = hashCode * 59 + this.To.GetHashCode();
+                if (HoursSelection != null)
+                    hashCode = hashCode * 59 + HoursSelection.GetHashCode();
+                if (Unspents != null)
+                    hashCode = hashCode * 59 + Unspents.GetHashCode();
+                if (ChangeAddress != null)
+                    hashCode = hashCode * 59 + ChangeAddress.GetHashCode();
+                if (To != null)
+                    hashCode = hashCode * 59 + To.GetHashCode();
                 return hashCode;
             }
         }
@@ -165,10 +162,9 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }

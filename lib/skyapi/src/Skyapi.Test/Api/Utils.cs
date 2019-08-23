@@ -342,7 +342,7 @@ namespace Skyapi.Test.Api
 
         internal static object PrepareAndCheckWallet(DefaultApi instance, long minicoins, long minihours)
         {
-            var wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
+            var wallet = instance.Wallet(GetWalletName());
             if (wallet.Meta.encrypted && GetWalletPassword() == "")
             {
                 Assert.Fail("Wallet is encrypted, must set WALLET_PASSWORD env var");
@@ -375,7 +375,7 @@ namespace Skyapi.Test.Api
             };
         }
 
-        internal static string ToDropletString(decimal totalcoin)
+        internal static string toDropletString(decimal totalcoin)
         {
             var d = decimal.Parse("1E-6", NumberStyles.Any);
             var stotalcoin = (totalcoin * d).ToString(CultureInfo.InvariantCulture);

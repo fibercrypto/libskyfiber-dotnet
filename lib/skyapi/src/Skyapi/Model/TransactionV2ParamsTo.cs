@@ -25,25 +25,33 @@ using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
 namespace Skyapi.Model
 {
     /// <summary>
-    /// TransactionV2ParamsAddressHoursSelection
+    /// TransactionV2ParamsUnspentTo
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsAddressHoursSelection :  IEquatable<TransactionV2ParamsAddressHoursSelection>, IValidatableObject
+    public partial class TransactionV2ParamsTo :  IEquatable<TransactionV2ParamsTo>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionV2ParamsAddressHoursSelection" /> class.
+        /// Initializes a new instance of the <see cref="TransactionV2ParamsTo" /> class.
         /// </summary>
-        /// <param name="type">type.</param>
-        public TransactionV2ParamsAddressHoursSelection(string type = default(string))
+        /// <param name="address">address.</param>
+        /// <param name="coins">coins.</param>
+        public TransactionV2ParamsTo(string address = default(string), string coins = default(string))
         {
-            this.Type = type;
+            this.Address = address;
+            this.Coins = coins;
         }
         
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
+        [DataMember(Name="address", EmitDefaultValue=false)]
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Coins
+        /// </summary>
+        [DataMember(Name="coins", EmitDefaultValue=false)]
+        public string Coins { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +60,9 @@ namespace Skyapi.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TransactionV2ParamsAddressHoursSelection {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class TransactionV2ParamsUnspentTo {\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Coins: ").Append(Coins).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,24 +83,29 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsAddressHoursSelection);
+            return this.Equals(input as TransactionV2ParamsTo);
         }
 
         /// <summary>
-        /// Returns true if TransactionV2ParamsAddressHoursSelection instances are equal
+        /// Returns true if TransactionV2ParamsUnspentTo instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransactionV2ParamsAddressHoursSelection to be compared</param>
+        /// <param name="input">Instance of TransactionV2ParamsUnspentTo to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransactionV2ParamsAddressHoursSelection input)
+        public bool Equals(TransactionV2ParamsTo input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Address == input.Address ||
+                    (this.Address != null &&
+                    this.Address.Equals(input.Address))
+                ) && 
+                (
+                    this.Coins == input.Coins ||
+                    (this.Coins != null &&
+                    this.Coins.Equals(input.Coins))
                 );
         }
 
@@ -104,8 +118,10 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Address != null)
+                    hashCode = hashCode * 59 + this.Address.GetHashCode();
+                if (this.Coins != null)
+                    hashCode = hashCode * 59 + this.Coins.GetHashCode();
                 return hashCode;
             }
         }

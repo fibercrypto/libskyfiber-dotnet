@@ -895,7 +895,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        Object Wallet(string id);
+        Wallet Wallet(string id);
 
         /// <summary>
         /// Returns a wallet by id.
@@ -906,7 +906,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletWithHttpInfo(string id);
+        ApiResponse<Wallet> WalletWithHttpInfo(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -1270,7 +1270,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Object&gt;</returns>
-        List<Object> Wallets();
+        List<Wallet> Wallets();
 
         /// <summary>
         /// 
@@ -1280,7 +1280,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        ApiResponse<List<Object>> WalletsWithHttpInfo();
+        ApiResponse<List<Wallet>> WalletsWithHttpInfo();
 
         #endregion Synchronous Operations
 
@@ -2172,7 +2172,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletAsync(string id);
+        System.Threading.Tasks.Task<Wallet> WalletAsync(string id);
 
         /// <summary>
         /// Returns a wallet by id.
@@ -2183,7 +2183,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo(string id);
+        System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletAsyncWithHttpInfo(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -2552,7 +2552,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        System.Threading.Tasks.Task<List<Object>> WalletsAsync();
+        System.Threading.Tasks.Task<List<Wallet>> WalletsAsync();
 
         /// <summary>
         /// 
@@ -2562,7 +2562,7 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo();
+        System.Threading.Tasks.Task<ApiResponse<List<Wallet>>> WalletsAsyncWithHttpInfo();
 
         #endregion Asynchronous Operations
     }
@@ -6892,8 +6892,7 @@ namespace Skyapi.Api
             if (rawtx == "")
                 throw new ApiException(400,
                     "Missing required parameter 'rawtx' when calling DefaultApi->TransactionInject");
-             
-            
+
 
             var localVarPath = "/api/v1/injectTransaction";
             var localVarPathParams = new Dictionary<String, String>();
@@ -8466,9 +8465,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Object</returns>
-        public Object Wallet(string id)
+        public Wallet Wallet(string id)
         {
-            ApiResponse<Object> localVarResponse = WalletWithHttpInfo(id);
+            ApiResponse<Wallet> localVarResponse = WalletWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -8478,7 +8477,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletWithHttpInfo(string id)
+        public ApiResponse<Wallet> WalletWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8529,9 +8528,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -8540,9 +8539,9 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletAsync(string id)
+        public async System.Threading.Tasks.Task<Wallet> WalletAsync(string id)
         {
-            ApiResponse<Object> localVarResponse = await WalletAsyncWithHttpInfo(id);
+            ApiResponse<Wallet> localVarResponse = await WalletAsyncWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -8552,7 +8551,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletAsyncWithHttpInfo(string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8604,9 +8603,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -11147,9 +11146,9 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Object&gt;</returns>
-        public List<Object> Wallets()
+        public List<Wallet> Wallets()
         {
-            ApiResponse<List<Object>> localVarResponse = WalletsWithHttpInfo();
+            ApiResponse<List<Wallet>> localVarResponse = WalletsWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -11158,7 +11157,7 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Object&gt;</returns>
-        public ApiResponse<List<Object>> WalletsWithHttpInfo()
+        public ApiResponse<List<Wallet>> WalletsWithHttpInfo()
         {
             var localVarPath = "/api/v1/wallets";
             var localVarPathParams = new Dictionary<String, String>();
@@ -11201,9 +11200,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Object>>(localVarStatusCode,
+            return new ApiResponse<List<Wallet>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Object>)));
+                (List<Wallet>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Wallet>)));
         }
 
         /// <summary>
@@ -11211,9 +11210,9 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Object&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Object>> WalletsAsync()
+        public async System.Threading.Tasks.Task<List<Wallet>> WalletsAsync()
         {
-            ApiResponse<List<Object>> localVarResponse = await WalletsAsyncWithHttpInfo();
+            ApiResponse<List<Wallet>> localVarResponse = await WalletsAsyncWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -11222,7 +11221,7 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> WalletsAsyncWithHttpInfo()
+        public async System.Threading.Tasks.Task<ApiResponse<List<Wallet>>> WalletsAsyncWithHttpInfo()
         {
             var localVarPath = "/api/v1/wallets";
             var localVarPathParams = new Dictionary<String, String>();
@@ -11266,9 +11265,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Object>>(localVarStatusCode,
+            return new ApiResponse<List<Wallet>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Object>)));
+                (List<Wallet>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Wallet>)));
         }
     }
 }

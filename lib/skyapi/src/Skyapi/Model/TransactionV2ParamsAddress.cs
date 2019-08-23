@@ -9,18 +9,12 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,22 +22,50 @@ namespace Skyapi.Model
     /// TransactionV2ParamsAddress
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsAddress :  IEquatable<TransactionV2ParamsAddress>, IValidatableObject
+    public class TransactionV2ParamsAddress : IEquatable<TransactionV2ParamsAddress>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionV2ParamsAddress" /> class.
         /// </summary>
         /// <param name="hoursSelection">hoursSelection.</param>
-        public TransactionV2ParamsAddress(TransactionV2ParamsAddressHoursSelection hoursSelection = default(TransactionV2ParamsAddressHoursSelection))
+        /// <param name="address">address.</param>
+        /// <param name="changeAddress">changeAddress.</param>
+        ///    /// <param name="to">to.</param>
+        public TransactionV2ParamsAddress(
+            TransactionV2ParamsHoursSelection hoursSelection = default(TransactionV2ParamsHoursSelection),
+            List<string> address = default(List<string>),
+            string changeAddress = default(string),
+            List<TransactionV2ParamsTo> to = default(List<TransactionV2ParamsTo>))
         {
-            this.HoursSelection = hoursSelection;
+            HoursSelection = hoursSelection;
+            Address = address;
+            ChangeAddress = changeAddress;
+            To = to;
         }
-        
+
         /// <summary>
         /// Gets or Sets HoursSelection
         /// </summary>
-        [DataMember(Name="hours_selection", EmitDefaultValue=false)]
-        public TransactionV2ParamsAddressHoursSelection HoursSelection { get; set; }
+        [DataMember(Name = "hours_selection", EmitDefaultValue = false)]
+        public TransactionV2ParamsHoursSelection HoursSelection { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Addresses
+        /// </summary>
+        [DataMember(Name = "addresses", EmitDefaultValue = false)]
+        public List<string> Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ChangeAddress
+        /// </summary>
+        [DataMember(Name = "change_address", EmitDefaultValue = false)]
+        public string ChangeAddress { get; set; }
+
+        /// <summary>
+        /// Gets or Sets To
+        /// </summary>
+        [DataMember(Name = "to", EmitDefaultValue = false)]
+        public List<TransactionV2ParamsTo> To { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,10 +76,13 @@ namespace Skyapi.Model
             var sb = new StringBuilder();
             sb.Append("class TransactionV2ParamsAddress {\n");
             sb.Append("  HoursSelection: ").Append(HoursSelection).Append("\n");
+            sb.Append("  Unspents: ").Append(Address).Append("\n");
+            sb.Append("  ChangeAddress: ").Append(ChangeAddress).Append("\n");
+            sb.Append("  To: ").Append(To).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -74,7 +99,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsAddress);
+            return Equals(input as TransactionV2ParamsAddress);
         }
 
         /// <summary>
@@ -87,11 +112,28 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
-                    this.HoursSelection == input.HoursSelection ||
-                    (this.HoursSelection != null &&
-                    this.HoursSelection.Equals(input.HoursSelection))
+                    Equals(HoursSelection, input.HoursSelection) ||
+                    (HoursSelection != null &&
+                     HoursSelection.Equals(input.HoursSelection))
+                ) &&
+                (
+                    Address == input.Address ||
+                    Address != null &&
+                    input.Address != null &&
+                    Address.SequenceEqual(input.Address)
+                ) &&
+                (
+                    ChangeAddress == input.ChangeAddress ||
+                    (ChangeAddress != null &&
+                     ChangeAddress.Equals(input.ChangeAddress))
+                ) &&
+                (
+                    To == input.To ||
+                    To != null &&
+                    input.To != null &&
+                    To.SequenceEqual(input.To)
                 );
         }
 
@@ -104,8 +146,14 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.HoursSelection != null)
-                    hashCode = hashCode * 59 + this.HoursSelection.GetHashCode();
+                if (HoursSelection != null)
+                    hashCode = hashCode * 59 + HoursSelection.GetHashCode();
+                if (Address != null)
+                    hashCode = hashCode * 59 + Address.GetHashCode();
+                if (ChangeAddress != null)
+                    hashCode = hashCode * 59 + ChangeAddress.GetHashCode();
+                if (To != null)
+                    hashCode = hashCode * 59 + To.GetHashCode();
                 return hashCode;
             }
         }
@@ -115,10 +163,9 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }
