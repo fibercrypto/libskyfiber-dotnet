@@ -9,18 +9,11 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,30 +21,38 @@ namespace Skyapi.Model
     /// TransactionV2ParamsUnspentTo
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsTo :  IEquatable<TransactionV2ParamsTo>, IValidatableObject
+    public class TransactionV2ParamsTo : IEquatable<TransactionV2ParamsTo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionV2ParamsTo" /> class.
         /// </summary>
         /// <param name="address">address.</param>
         /// <param name="coins">coins.</param>
-        public TransactionV2ParamsTo(string address = default(string), string coins = default(string))
+        public TransactionV2ParamsTo(string address = default(string), string coins = default(string),
+            string hours = default(string))
         {
-            this.Address = address;
-            this.Coins = coins;
+            Address = address;
+            Coins = coins;
+            Hours = hours;
         }
-        
+
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=false)]
+        [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
 
         /// <summary>
         /// Gets or Sets Coins
         /// </summary>
-        [DataMember(Name="coins", EmitDefaultValue=false)]
+        [DataMember(Name = "coins", EmitDefaultValue = false)]
         public string Coins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Hours
+        /// </summary>
+        [DataMember(Name = "hours", EmitDefaultValue = false)]
+        public string Hours { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,10 +64,11 @@ namespace Skyapi.Model
             sb.Append("class TransactionV2ParamsUnspentTo {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Coins: ").Append(Coins).Append("\n");
+            sb.Append("  Hours: ").Append(Hours).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -83,7 +85,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsTo);
+            return Equals(input as TransactionV2ParamsTo);
         }
 
         /// <summary>
@@ -96,16 +98,21 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
-                    this.Address == input.Address ||
-                    (this.Address != null &&
-                    this.Address.Equals(input.Address))
-                ) && 
+                    Address == input.Address ||
+                    (Address != null &&
+                     Address.Equals(input.Address))
+                ) &&
                 (
-                    this.Coins == input.Coins ||
-                    (this.Coins != null &&
-                    this.Coins.Equals(input.Coins))
+                    Coins == input.Coins ||
+                    (Coins != null &&
+                     Coins.Equals(input.Coins))
+                ) &&
+                (
+                    Hours == input.Hours ||
+                    (Hours != null &&
+                     Hours.Equals(input.Hours))
                 );
         }
 
@@ -118,10 +125,12 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Address != null)
-                    hashCode = hashCode * 59 + this.Address.GetHashCode();
-                if (this.Coins != null)
-                    hashCode = hashCode * 59 + this.Coins.GetHashCode();
+                if (Address != null)
+                    hashCode = hashCode * 59 + Address.GetHashCode();
+                if (Coins != null)
+                    hashCode = hashCode * 59 + Coins.GetHashCode();
+                if (Hours != null)
+                    hashCode = hashCode * 59 + Hours.GetHashCode();
                 return hashCode;
             }
         }
@@ -131,10 +140,9 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }

@@ -731,28 +731,6 @@ namespace Skyapi.Api
             TransactionV2ParamsUnspent transactionV2ParamsUnspent);
 
         /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Object</returns>
-        Object TransactionRaw(string txid = null);
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionRawWithHttpInfo(string txid = null);
-
-        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
@@ -2003,28 +1981,6 @@ namespace Skyapi.Api
         /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
         System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TransactionPostUnspentAsyncWithHttpInfo(
             TransactionV2ParamsUnspent transactionV2ParamsUnspent);
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionRawAsync(string txid = null);
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo(string txid = null);
 
         /// <summary>
         /// 
@@ -7043,7 +6999,7 @@ namespace Skyapi.Api
         }
 
         /// <summary>
-        ///  
+        ///  Create a unsigned transaction.
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionV2ParamsAddress"> (optional)</param>
@@ -7228,7 +7184,7 @@ namespace Skyapi.Api
                 throw new ApiException(400,
                     "Missing required parameter 'transactionV2ParamsUnspent' when calling DefaultApi->TransactionPostUnspent");
 
-            var localVarPath = "/api/v2/transaction/unspent";
+            var localVarPath = "/api/v2/transaction";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7381,148 +7337,6 @@ namespace Skyapi.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse,
                     typeof(InlineResponse2008)));
-        }
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed. 
-        /// </summary>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Object</returns>
-        public Object TransactionRaw(string txid = null)
-        {
-            ApiResponse<Object> localVarResponse = TransactionRawWithHttpInfo(txid);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed. 
-        /// </summary>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> TransactionRawWithHttpInfo(string txid = null)
-        {
-            var localVarPath = "/api/v2/transaction/raw";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
-            {
-            };
-            String localVarHttpContentType =
-                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[]
-            {
-                "application/json",
-                "application/xml",
-            };
-            String localVarHttpHeaderAccept =
-                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (txid != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
-                localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransactionRaw", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
-        }
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed. 
-        /// </summary>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionRawAsync(string txid = null)
-        {
-            ApiResponse<Object> localVarResponse = await TransactionRawAsyncWithHttpInfo(txid);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Returns the hex-encoded byte serialization of a transaction. The transaction may be confirmed or unconfirmed. 
-        /// </summary>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="txid">Transaction id hash (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionRawAsyncWithHttpInfo(
-            string txid = null)
-        {
-            var localVarPath = "/api/v2/transaction/raw";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
-            {
-            };
-            String localVarHttpContentType =
-                this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[]
-            {
-                "application/json",
-                "application/xml",
-            };
-            String localVarHttpHeaderAccept =
-                this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (txid != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
-                localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
-                localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransactionRaw", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>

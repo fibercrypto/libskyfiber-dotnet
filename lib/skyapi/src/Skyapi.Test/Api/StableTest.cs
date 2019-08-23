@@ -945,35 +945,75 @@ namespace Skyapi.Test.Api
 
         internal static void TransactionPost(DefaultApi instance)
         {
-            var testCases = new[]
+            var withaddress = new
             {
-                new
+                name = "invalid no uxouts for addresses",
+                req = new TransactionV2ParamsAddress
                 {
-                    name="invalid no uxouts for addresses",
-                    req=new TransactionV2ParamsAddress
+                    HoursSelection = new TransactionV2ParamsHoursSelection
                     {
-                        HoursSelection = new TransactionV2ParamsHoursSelection
-                        {
-                            Type = "manual"
-                        }
-                        
+                        Type = "manual"
                     },
-                    errCode=200,
-                    errMsg=""
-                },new
-                {
-                    name="",
-                    req=new TransactionV2ParamsAddress(),
-                    errCode=200,
-                    errMsg=""
-                },new
-                {
-                    name="",
-                    req=new TransactionV2ParamsAddress(),
-                    errCode=200,
-                    errMsg=""
+                    Address = new List<string>
+                    {
+                        "2M755W9o7933roLASK9PZTmqRsjQUsVen9y"
+                    },
+                    To = new List<TransactionV2ParamsTo>
+                    {
+                        new TransactionV2ParamsTo
+                        {
+                            Address = "2M755W9o7933roLASK9PZTmqRsjQUsVen9y",
+                            Coins = "1.000000",
+                            Hours = "100"
+                        }
+                    }
                 },
+                errCode = 400,
+                errMsg = "no unspents to spend"
             };
+            var err = Assert.Throws<ApiException>(() => instance.TransactionPost(withaddress.req));
+            Assert.AreEqual(withaddress.errCode, err.ErrorCode, withaddress.name);
+            Assert.True(err.Message.Contains(withaddress.errMsg), withaddress.name);
+        }
+
+        internal static void TransactionPostUnspents(DefaultApi instance)
+        {
+            var withunspent = new
+            {
+                name = "invalid uxouts do not exist",
+                req = new TransactionV2ParamsUnspent
+                {
+                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    {
+                        Type = "manual"
+                    },
+                    Unspents = new List<string>
+                    {
+                        "519c069a0593e179f226e87b528f60aea72826ec7f99d51279dd8854889ed7e2"
+                    },
+                    To = new List<TransactionV2ParamsTo>
+                    {
+                        new TransactionV2ParamsTo
+                        {
+                            Address = "2M755W9o7933roLASK9PZTmqRsjQUsVen9y",
+                            Coins = "1.000000",
+                            Hours = "100"
+                        }
+                    }
+                },
+                errCode = 400,
+                errMsg =
+                    "unspent output of 519c069a0593e179f226e87b528f60aea72826ec7f99d51279dd8854889ed7e2 does not exist"
+            };
+
+            var err = Assert.Throws<ApiException>(() => instance.TransactionPostUnspent(withunspent.req));
+            Assert.AreEqual(withunspent.errCode, err.ErrorCode, withunspent.name);
+            Assert.True(err.Message.Contains(withunspent.errMsg), withunspent.name);
+        }
+
+        internal static void TransactionVerify(DefaultApi instance)
+        {
+            
         }
     }
 }

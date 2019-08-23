@@ -586,22 +586,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPostUnspentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //TransactionV2ParamsUnspent transactionV2ParamsUnspent = null;
-            //var response = instance.TransactionPostUnspent(transactionV2ParamsUnspent);
-            //Assert.IsInstanceOf<InlineResponse2008> (response, "response is InlineResponse2008");
-        }
-
-        /// <summary>
-        /// Test TransactionRaw
-        /// </summary>
-        [Test]
-        public void TransactionRawTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string txid = null;
-            //var response = instance.TransactionRaw(txid);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.GetTestMode().Equals("stable"))
+            {
+                StableTest.TransactionPostUnspents(_instance);
+            }
+            else if (Utils.GetTestMode().Equals("live"))
+            {
+                ///////
+            }
         }
 
         /// <summary>
