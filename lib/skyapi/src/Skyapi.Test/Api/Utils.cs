@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -19,11 +19,10 @@ namespace Skyapi.Test.Api
         /// </summary>
         /// <param name="method"></param>
         /// <param name="instance"></param>
-        /// <param name="useCsrf"></param>
         /// <param name="addrs"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object BalanceWithMethod(Method method, DefaultApi instance, bool useCsrf, string addrs = null,
+        internal static object BalanceWithMethod(Method method, DefaultApi instance, string addrs = null,
             string golden = null)
         {
             if (method == Method.GET)
@@ -41,7 +40,7 @@ namespace Skyapi.Test.Api
 
             if (method == Method.POST)
             {
-                if (useCsrf)
+                if (UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance: instance));
                 }
@@ -65,12 +64,11 @@ namespace Skyapi.Test.Api
         /// </summary>
         /// <param name="method"></param>
         /// <param name="instance"></param>
-        /// <param name="useCsrf"></param>
         /// <param name="addrs"></param>
         /// <param name="confirmed"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object TransactionsWithMethod(Method method, DefaultApi instance, bool useCsrf,
+        internal static object TransactionsWithMethod(Method method, DefaultApi instance,
             string addrs = null, string confirmed = null, string golden = null)
         {
             if (method == Method.GET)
@@ -88,7 +86,7 @@ namespace Skyapi.Test.Api
 
             if (method == Method.POST)
             {
-                if (useCsrf)
+                if (UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance));
                 }
@@ -112,12 +110,11 @@ namespace Skyapi.Test.Api
         /// </summary>
         /// <param name="method"></param>
         /// <param name="instance"></param>
-        /// <param name="useCsrf"></param>
         /// <param name="addrs"></param>
         /// <param name="hashes"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object OutputsWithMethod(Method method, DefaultApi instance, bool useCsrf,
+        internal static object OutputsWithMethod(Method method, DefaultApi instance,
             List<string> addrs = null, List<string> hashes = null, string golden = null)
         {
             if (method == Method.GET)
@@ -135,7 +132,7 @@ namespace Skyapi.Test.Api
 
             if (method == Method.POST)
             {
-                if (useCsrf)
+                if (UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance));
                 }
@@ -299,6 +296,115 @@ namespace Skyapi.Test.Api
                 Assert.False(txids.ContainsKey(transaction.Txn.InnerHash));
                 txids[transaction.Txn.InnerHash] = new object();
             }
+        }
+
+        internal static string GetWalletName()
+        {
+            var walletname = Environment.GetEnvironmentVariable("WALLET_NAME");
+            Assert.NotNull(walletname, "Missing WALLET_NAME environment value");
+            return walletname;
+        }
+
+        internal static string GetWalletPassword()
+        {
+            return Environment.GetEnvironmentVariable("WALLET_PASSWORD");
+        }
+
+        internal static string GetTestMode()
+        {
+            return Environment.GetEnvironmentVariable("TESTMODE") ?? "stable";
+        }
+
+        internal static string GetCoin()
+        {
+            return Environment.GetEnvironmentVariable("COIN") ?? "skycoin";
+        }
+
+        internal static bool UseCsrf()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("USE_CSRF") ?? "false");
+        }
+
+        internal static string GetNodeHost()
+        {
+            return Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://localhost:6420";
+        }
+
+        internal static bool DbNoUnconfirmed()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("DB_NO_UNCONFIRMED") ?? "false");
+        }
+
+        internal static bool LiveDisableNetworking()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "true");
+        }
+
+        internal static object PrepareAndCheckWallet(DefaultApi instance, long minicoins, long minihours)
+        {
+            var wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
+            if (wallet.Meta.encrypted && GetWalletPassword() == "")
+            {
+                Assert.Fail("Wallet is encrypted, must set WALLET_PASSWORD env var");
+            }
+
+            if (wallet.Entries.Count < 2)
+            {
+                instance.WalletNewAddress(wallet.Meta.filename, "2", GetWalletPassword());
+                wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
+            }
+
+            var walletBalance =
+                JsonConvert.DeserializeObject<Balance>(instance.WalletBalance(wallet.Meta.filename).ToString());
+            if (walletBalance.Confirmed.coins < minicoins)
+            {
+                Assert.Fail($"Wallet must have at least {minicoins} coins");
+            }
+
+            if (walletBalance.Confirmed.hours < minihours)
+            {
+                Assert.Fail($"Wallet must have at least {minihours} coins hours");
+            }
+
+            return new
+            {
+                wallet,
+                walletBalance.Confirmed.coins,
+                walletBalance.Confirmed.hours,
+                password = GetWalletPassword()
+            };
+        }
+
+        internal static string ToDropletString(decimal totalcoin)
+        {
+            var d = decimal.Parse("1E-6", NumberStyles.Any);
+            var stotalcoin = (totalcoin * d).ToString(CultureInfo.InvariantCulture);
+            return stotalcoin.Replace(",", ".");
+        }
+
+        internal static decimal FromDropletString(string stotalcoin)
+        {
+            return decimal.Parse(stotalcoin.Replace(".", ",")) * 1000000;
+        }
+
+        internal static WalletTransactionRequest CreateTxnReq(DefaultApi instance, Wallet wallet, string sharefactor,
+            List<object> to)
+        {
+            return new WalletTransactionRequest
+            {
+                HoursSelection = new WalletTransactionRequestHoursSelection
+                {
+                    Type = "auto",
+                    Mode = "share",
+                    ShareFactor = sharefactor
+                },
+                Wallet = new WalletTransactionRequestWallet
+                {
+                    Id = wallet.Meta.filename,
+                    Password = GetWalletPassword()
+                },
+                To = to
+            };
         }
     }
 }

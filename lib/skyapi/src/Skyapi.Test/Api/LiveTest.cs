@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
@@ -69,14 +69,14 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void Balance(Method method, DefaultApi instance, bool useCsrf)
+        internal static void Balance(Method method, DefaultApi instance)
         {
 // Genesis address check, should not have a balance
             var result = new Balance();
             Assert.DoesNotThrow(() =>
             {
                 result = JsonConvert.DeserializeObject<Balance>(Utils.BalanceWithMethod(method: method,
-                    instance: instance, useCsrf: useCsrf, addrs: "2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6").ToString());
+                    instance: instance, addrs: "2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6").ToString());
             });
 
             Assert.AreEqual(JsonConvert.SerializeObject(result), JsonConvert.SerializeObject(new Balance
@@ -114,7 +114,7 @@ namespace Skyapi.Test.Api
             Assert.DoesNotThrow(() =>
             {
                 result = JsonConvert.DeserializeObject<Balance>(Utils.BalanceWithMethod(method: method,
-                    instance: instance, useCsrf: useCsrf, addrs: "ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
+                    instance: instance, addrs: "ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
             });
             Assert.AreEqual(result.Confirmed.coins, result.Predicted.coins);
             Assert.AreEqual(result.Confirmed.hours, result.Predicted.hours);
@@ -136,11 +136,11 @@ namespace Skyapi.Test.Api
             foreach (var s in address)
             {
                 Assert.DoesNotThrow(
-                    () => Utils.BalanceWithMethod(method: method, instance: instance, useCsrf: useCsrf, addrs: s),
+                    () => Utils.BalanceWithMethod(method: method, instance: instance, addrs: s),
                     $"Failed to get balance of address {s}");
             }
 
-            Assert.DoesNotThrow(() => Utils.BalanceWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+            Assert.DoesNotThrow(() => Utils.BalanceWithMethod(method: method, instance: instance,
                 addrs: string.Join(",", address)));
         }
 
@@ -150,11 +150,11 @@ namespace Skyapi.Test.Api
             Assert.AreNotEqual(0, result.Head.Seq);
         }
 
-        internal static void BlockChainProgress(DefaultApi instance, bool liveDisableNetworking)
+        internal static void BlockChainProgress(DefaultApi instance)
         {
             var result = JsonConvert.DeserializeObject<Progress>(instance.BlockchainProgress().ToString());
             Assert.AreNotEqual(0, result.Current);
-            if (liveDisableNetworking)
+            if (Utils.LiveDisableNetworking())
             {
                 Assert.IsEmpty(result.Peer);
                 Assert.AreEqual(result.Current, result.Highest);
@@ -166,7 +166,7 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void Block(DefaultApi instance, bool liveDisableNetworking)
+        internal static void Block(DefaultApi instance)
         {
             var knownBadBlockSeqs = new[]
             {
@@ -190,7 +190,7 @@ namespace Skyapi.Test.Api
                 11699,
                 13277
             };
-            if (liveDisableNetworking)
+            if (Utils.LiveDisableNetworking())
             {
                 Assert.Ignore("Skipping slow block tests when networking disabled");
             }
@@ -222,7 +222,7 @@ namespace Skyapi.Test.Api
             Assert.AreEqual(100, cs.UnlockedDistributionAddresses.Count + cs.LockedDistributionAddresses.Count);
         }
 
-        internal static void Transactions(Method method, DefaultApi instance, bool useCsrf)
+        internal static void Transactions(Method method, DefaultApi instance)
         {
             var simpleaddrs = new[]
             {
@@ -230,7 +230,7 @@ namespace Skyapi.Test.Api
             };
             var sresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(Utils.TransactionsWithMethod(method: method,
-                    instance: instance, useCsrf: useCsrf, addrs: string.Join(",", simpleaddrs)).ToString());
+                    instance: instance, addrs: string.Join(",", simpleaddrs)).ToString());
             Assert.True(sresult.Count >= 0, "simpleaddress");
             Utils.AssertNoTransactionsDupes(sresult);
             var multiaddrs = new[]
@@ -240,21 +240,21 @@ namespace Skyapi.Test.Api
             };
             var mresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                    Utils.TransactionsWithMethod(method: method, instance: instance,
                         addrs: string.Join(",", multiaddrs)).ToString());
             Assert.True(mresult.Count >= 4, "multiaddress");
             Utils.AssertNoTransactionsDupes(mresult);
             //Unconfirmedtransactions
             sresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                    Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", simpleaddrs), confirmed: "false")
                         .ToString());
             Assert.True(sresult.Count >= 0, "simpleaddress, confirm=false");
             Utils.AssertNoTransactionsDupes(sresult);
             mresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                    Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", ""), confirmed: "false")
                         .ToString());
             Assert.True(mresult.Count >= 0, "multiaddress, confirm=false");
@@ -263,14 +263,14 @@ namespace Skyapi.Test.Api
             //ConfirmedTransactions
             sresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                    Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", simpleaddrs), confirmed: "true")
                         .ToString());
             Assert.True(sresult.Count >= 0, "simpleaddress, confirm=true");
             Utils.AssertNoTransactionsDupes(sresult);
             mresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                    Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", ""), confirmed: "true")
                         .ToString());
             Assert.True(mresult.Count >= 0, "simpleaddress, confirm=true");
@@ -278,11 +278,11 @@ namespace Skyapi.Test.Api
             Utils.AssertNoTransactionsDupes(mresult);
         }
 
-        internal static void Health(DefaultApi instance, bool liveDisableNetworking)
+        internal static void Health(DefaultApi instance)
         {
             var result = JsonConvert.DeserializeObject<Health>(instance.Health().ToString());
             Utils.CheckHealthResponse(result);
-            if (liveDisableNetworking)
+            if (Utils.LiveDisableNetworking())
             {
                 Assert.AreEqual(0, result.Open_Connections);
                 Assert.AreEqual(0, result.Outgoing_Connections);
@@ -315,10 +315,10 @@ namespace Skyapi.Test.Api
             });
         }
 
-        internal static void NetworkConnection(DefaultApi instance, bool liveDisableNetworking)
+        internal static void NetworkConnection(DefaultApi instance)
         {
             var connections = instance.NetworkConnections();
-            if (liveDisableNetworking)
+            if (Utils.LiveDisableNetworking())
             {
                 Assert.IsEmpty(connections.Connections);
                 return;
@@ -386,9 +386,9 @@ namespace Skyapi.Test.Api
             Assert.DoesNotThrow(() => instance.NetworkConnectionsExchange());
         }
 
-        internal static void Outputs(Method method, DefaultApi instance, bool useCsrf)
+        internal static void Outputs(Method method, DefaultApi instance)
         {
-            dynamic outputs = Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf);
+            dynamic outputs = Utils.OutputsWithMethod(method: method, instance: instance);
             Assert.IsNotEmpty(outputs.head_outputs);
         }
 
@@ -398,12 +398,12 @@ namespace Skyapi.Test.Api
             Assert.DoesNotThrow(() => instance.PendingTxs());
         }
 
-        internal static void ResendUnconfirmedTxns(DefaultApi instance, bool liveDisableNetworking, bool useCsrf)
+        internal static void ResendUnconfirmedTxns(DefaultApi instance)
         {
-            if (!liveDisableNetworking) return;
+            if (!Utils.LiveDisableNetworking()) return;
             try
             {
-                if (useCsrf) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                if (Utils.UseCsrf()) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 instance.ResendUnconfirmedTxns();
             }
             catch (ApiException err)
@@ -487,10 +487,10 @@ namespace Skyapi.Test.Api
             });
         }
 
-        internal static void NetworkConnectionDisconnect(DefaultApi instance, bool liveDisableNetworking)
+        internal static void NetworkConnectionDisconnect(DefaultApi instance)
         {
             var connections = instance.NetworkConnections();
-            if (liveDisableNetworking)
+            if (Utils.LiveDisableNetworking())
             {
                 Assert.IsEmpty(connections.Connections);
                 return;
@@ -584,6 +584,120 @@ namespace Skyapi.Test.Api
 
         public static void TransactionInjectEnableNetworking(DefaultApi instance)
         {
+            dynamic walletTxnDat =
+                Utils.PrepareAndCheckWallet(instance, (long) decimal.Parse("2E6", NumberStyles.Any), 2);
+
+            var testcases = new[]
+            {
+                new
+                {
+                    name = "send all coins to the first address",
+                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "1", new List<object>
+                    {
+                        new
+                        {
+                            address = walletTxnDat.wallet.Entries[0].Address,
+                            coins = Utils.ToDropletString(walletTxnDat.coins)
+                        }
+                    }),
+                    errCode = 200,
+                    errMsg = "",
+                    checkt = new Action<Transaction>(transaction =>
+                    {
+                        decimal coin = 0M;
+                        transaction.Txn.Outputs.ForEach(o =>
+                        {
+                            var output = JsonConvert.DeserializeObject<dynamic>(o.ToString());
+                            coin += Utils.FromDropletString(output.coins);
+                        });
+                        Assert.AreEqual(walletTxnDat.coins, coin);
+                        var coinbalance =
+                            JsonConvert.DeserializeObject<Balance>(
+                                instance.BalanceGet(walletTxnDat.wallet.Entries[0].Address).ToString()).Confirmed.coins;
+                        Assert.AreEqual(walletTxnDat.coins, coinbalance);
+                    })
+                },
+                new
+                {
+                    name = "send 0.003 coin to second address",
+                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "0.5", new List<object>
+                    {
+                        new
+                        {
+                            address = walletTxnDat.wallet.Entries[1].Address,
+                            coins = Utils.ToDropletString(decimal.Parse("3E3", NumberStyles.Any))
+                        }
+                    }),
+                    errCode = 200,
+                    errMsg = "",
+                    checkt = new Action<Transaction>(transaction =>
+                    {
+                        Assert.AreEqual(2, transaction.Txn.Outputs.Count);
+                        var addrsOutputInTxn = new Func<string, dynamic>(addrs =>
+                        {
+                            dynamic tOut = null;
+                            transaction.Txn.Outputs.ForEach(o =>
+                            {
+                                var output = JsonConvert.DeserializeObject<dynamic>(o.ToString());
+                                if (output.dst == addrs)
+                                {
+                                    tOut = output;
+                                }
+                            });
+                            return tOut;
+                        });
+
+                        // Confirms the second address has 0.003 coin
+                        var outp = addrsOutputInTxn(walletTxnDat.wallet.Entries[1].Address);
+                        Assert.AreEqual("0.003000", outp.coins);
+                        var coin = Utils.FromDropletString(outp.coins);
+
+                        // Gets the expected change coins
+                        var expectedExchange = walletTxnDat.coins - coin;
+
+                        var changeout = addrsOutputInTxn(walletTxnDat.wallet.Entries[0].Address);
+                        var changecoins = Utils.ToDropletString(changeout.coins);
+                        Assert.AreEqual(expectedExchange, changecoins);
+                    })
+                },
+                new
+                {
+                    name = "send to null address",
+                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "1", new List<object>
+                    {
+                        new
+                        {
+                            address = walletTxnDat.wallet.Entries[0].Address,
+                            coins = Utils.ToDropletString(walletTxnDat.coins)
+                        }
+                    }),
+                    errCode = 200,
+                    errMsg = "",
+                    checkt = new Action<Transaction>(transaction => { })
+                }
+            };
+
+            foreach (var tc in testcases)
+            {
+                Transaction txn = null;
+                Assert.DoesNotThrow(() =>
+                {
+                    var transaction = instance.WalletTransaction(tc.txnReq);
+                    var txid = instance.TransactionInject(transaction.encoded_transaction);
+                    Assert.Equals(transaction.transaction.txid, txid);
+                    var t = Task.Run(async delegate
+                    {
+                        await Task.Delay(45000);
+                        txn = instance.Transaction(txid);
+                        if (!(txn.Status.Confirmed ?? true))
+                        {
+                            Assert.Fail("Waiting for transaction to be confirmed timeout");
+                        }
+                    });
+                    t.Wait();
+                    tc.checkt(txn);
+                }, tc.name);
+            }
         }
     }
 }

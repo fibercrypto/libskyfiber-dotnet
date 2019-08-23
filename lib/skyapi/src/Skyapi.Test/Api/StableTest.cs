@@ -62,7 +62,7 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void ApiRawTxGet(DefaultApi instance, bool dbNoUnconfirmed)
+        internal static void ApiRawTxGet(DefaultApi instance)
         {
             var testcases = new List<dynamic>
             {
@@ -101,7 +101,7 @@ namespace Skyapi.Test.Api
                         "000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000"
                 }
             };
-            if (!dbNoUnconfirmed)
+            if (!Utils.DbNoUnconfirmed())
             {
                 testcases.Add(new
                 {
@@ -134,7 +134,7 @@ namespace Skyapi.Test.Api
             });
         }
 
-        internal static void Balance(DefaultApi instance, Method method, bool dbNoUnconfirmed, bool useCsrf)
+        internal static void Balance(DefaultApi instance, Method method)
         {
             var testCase = new List<dynamic>
             {
@@ -163,7 +163,7 @@ namespace Skyapi.Test.Api
                     file = "balance-two-addrs.golden"
                 }
             };
-            if (!dbNoUnconfirmed)
+            if (!Utils.DbNoUnconfirmed())
             {
 // Trying to append any value of the same type
                 testCase.Add(new
@@ -175,7 +175,7 @@ namespace Skyapi.Test.Api
             }
 
             testCase.ForEach(
-                tc => Utils.BalanceWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                tc => Utils.BalanceWithMethod(method: method, instance: instance,
                     addrs: string.Join(",", tc.addrs), golden: tc.file));
         }
 
@@ -281,11 +281,11 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void BlockchainMetadata(DefaultApi instance, bool dbNoUnconfirmed)
+        internal static void BlockchainMetadata(DefaultApi instance)
         {
             var result = instance.BlockchainMetadata();
             var goldenfile = "blockchain-metadata.golden";
-            if (dbNoUnconfirmed)
+            if (Utils.DbNoUnconfirmed())
             {
                 goldenfile = "blockchain-metadata-no-unconfirmed.golden";
             }
@@ -416,7 +416,7 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("coinsupply.golden", result, result.GetType());
         }
 
-        internal static void Transactions(DefaultApi instance, Method method, bool useCsrf, bool dbNoUnconfirmed)
+        internal static void Transactions(DefaultApi instance, Method method)
         {
             var testCases = new List<dynamic>
                 {
@@ -529,7 +529,7 @@ namespace Skyapi.Test.Api
                 }
                 ;
 
-            if (!dbNoUnconfirmed)
+            if (!Utils.DbNoUnconfirmed())
             {
                 testCases.Add(new
                 {
@@ -568,7 +568,7 @@ namespace Skyapi.Test.Api
                 if (tc.errorCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(() => Utils.TransactionsWithMethod(
-                        method: method, instance: instance, useCsrf: useCsrf, addrs: string.Join(",", tc.addrs)));
+                        method: method, instance: instance, addrs: string.Join(",", tc.addrs)));
                     if (method == Method.POST)
                     {
                         Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
@@ -584,13 +584,13 @@ namespace Skyapi.Test.Api
                 {
                     if (!tc.confirmed.Equals(""))
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                        Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", tc.addrs),
                             confirmed: tc.confirmed, golden: tc.goldenFile);
                     }
                     else
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: instance, useCsrf: useCsrf,
+                        Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", tc.addrs),
                             confirmed: null, golden: tc.goldenFile);
                     }
@@ -598,7 +598,7 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void Health(DefaultApi instance, string coin, bool useCsrf)
+        internal static void Health(DefaultApi instance)
         {
             var result = JsonConvert.DeserializeObject<Health>(instance.Health().ToString());
             Utils.CheckHealthResponse(result);
@@ -608,9 +608,9 @@ namespace Skyapi.Test.Api
             Utils.CompareTime(result.Blockchain.Time_Since_Last_Block);
             Assert.NotNull(result.Version.Commit);
             Assert.NotNull(result.Version.Branch);
-            Assert.AreEqual(coin, result.Coin);
+            Assert.AreEqual(Utils.GetCoin(), result.Coin);
             Assert.AreEqual($"{result.Coin}:{result.Version.Version}", result.User_Agent);
-            Assert.AreEqual(useCsrf, result.CSRF_Enabled);
+            Assert.AreEqual(Utils.UseCsrf(), result.CSRF_Enabled);
             Assert.True(result.Csp_Enabled);
             Assert.True(result.Wallet_API_Enabled);
             Assert.False(result.GUI_Enabled);
@@ -664,7 +664,7 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("network-exchanged-peers.golden", conenctions, conenctions.GetType());
         }
 
-        internal static void NoUnconfirmedOutputs(Method method, DefaultApi instance, bool useCsrf)
+        internal static void NoUnconfirmedOutputs(Method method, DefaultApi instance)
         {
             var testCases = new[]
             {
@@ -709,22 +709,22 @@ namespace Skyapi.Test.Api
                 Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
                 if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, golden: tc.golden);
+                    Utils.OutputsWithMethod(method: method, instance: instance, golden: tc.golden);
                 }
                 else if (tc.addrs.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, addrs: tc.addrs,
+                    Utils.OutputsWithMethod(method: method, instance: instance, addrs: tc.addrs,
                         golden: tc.golden);
                 }
                 else if (tc.hashes.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, hashes: tc.hashes,
+                    Utils.OutputsWithMethod(method: method, instance: instance, hashes: tc.hashes,
                         golden: tc.golden);
                 }
             }
         }
 
-        internal static void Outputs(Method method, DefaultApi instance, bool useCsrf)
+        internal static void Outputs(Method method, DefaultApi instance)
         {
             var testCases = new[]
             {
@@ -769,16 +769,16 @@ namespace Skyapi.Test.Api
                 Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
                 if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, golden: tc.golden);
+                    Utils.OutputsWithMethod(method: method, instance: instance, golden: tc.golden);
                 }
                 else if (tc.addrs.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, addrs: tc.addrs,
+                    Utils.OutputsWithMethod(method: method, instance: instance, addrs: tc.addrs,
                         golden: tc.golden);
                 }
                 else if (tc.hashes.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, useCsrf: useCsrf, hashes: tc.hashes,
+                    Utils.OutputsWithMethod(method: method, instance: instance, hashes: tc.hashes,
                         golden: tc.golden);
                 }
             }
@@ -805,11 +805,11 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("pending-transactions.golden", txns, txns.GetType());
         }
 
-        internal static void ResendUnconfirmedTxns(DefaultApi instance, bool useCsrf)
+        internal static void ResendUnconfirmedTxns(DefaultApi instance)
         {
             var err = Assert.Throws<ApiException>(() =>
             {
-                if (useCsrf) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                if (Utils.UseCsrf()) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 instance.ResendUnconfirmedTxns();
             });
             Assert.AreEqual(503, err.ErrorCode);
@@ -831,7 +831,7 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("richlist-150-include-distribution.golden", richlist, richlist.GetType());
         }
 
-        internal static void Transaction(DefaultApi instance, bool dbNoUnconfirmed)
+        internal static void Transaction(DefaultApi instance)
         {
             var testCases = new List<dynamic>
             {
@@ -876,7 +876,7 @@ namespace Skyapi.Test.Api
                     golden = "transaction-block-101.golden"
                 }
             };
-            if (!dbNoUnconfirmed)
+            if (!Utils.DbNoUnconfirmed())
             {
                 testCases.Add(new
                 {
@@ -941,6 +941,10 @@ namespace Skyapi.Test.Api
                 Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                 Assert.AreEqual(tc.errMsg, err.Message, tc.name);
             });
+        }
+
+        internal static void  UxoutT()
+        {
         }
     }
 }

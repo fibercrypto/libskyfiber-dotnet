@@ -28,12 +28,6 @@ namespace Skyapi.Test.Api
     public class DefaultApiTests
     {
         private DefaultApi _instance;
-        private string _testMode;
-        private string _coin;
-        private bool _useCsrf;
-        private string _nodeAddress;
-        private bool _dbNoUnconfirmed;
-        private bool _liveDisableNetworking;
 
         /// <summary>
         /// Setup before each unit test
@@ -41,14 +35,7 @@ namespace Skyapi.Test.Api
         [SetUp]
         public void Init()
         {
-            _testMode = Environment.GetEnvironmentVariable("TESTMODE") ?? "live";
-            _coin = Environment.GetEnvironmentVariable("COIN") ?? "skycoin";
-            _useCsrf = Convert.ToBoolean(Environment.GetEnvironmentVariable("USE_CSRF") ?? "false");
-            _nodeAddress = Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://localhost:6420";
-            _dbNoUnconfirmed = Convert.ToBoolean(Environment.GetEnvironmentVariable("DB_NO_UNCONFIRMED") ?? "false");
-            _liveDisableNetworking =
-                Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "false");
-            _instance = new DefaultApi(_nodeAddress);
+            _instance = new DefaultApi(Utils.GetNodeHost());
         }
 
         /// <summary>
@@ -75,11 +62,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void AddressCountTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.AddressCount(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.AddressCount(_instance);
             }
@@ -91,13 +78,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void AddressUxoutsTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.AddressUxouts(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                if (_liveDisableNetworking)
+                if (Utils.LiveDisableNetworking())
                 {
                     LiveTest.AddressUxouts(_instance);
                 }
@@ -114,11 +101,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void ApiV1RawtxGetTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.ApiRawTxGet(_instance, _dbNoUnconfirmed);
+                StableTest.ApiRawTxGet(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.ApiRawTxGet(instance: _instance);
             }
@@ -136,7 +123,7 @@ namespace Skyapi.Test.Api
                 var response = _instance.ApiV2MetricsGet();
                 Assert.IsInstanceOf<string>(response, "response is string");
                 Assert.IsNotNull(response);
-                if (_testMode == "stable") Assert.True(response.Contains("last_block_seq 180"));
+                if (Utils.GetTestMode() == "stable") Assert.True(response.Contains("last_block_seq 180"));
             }
             catch (ApiException err)
             {
@@ -152,13 +139,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void BalanceGetTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Balance(_instance, Method.GET, _dbNoUnconfirmed, _useCsrf);
+                StableTest.Balance(_instance, Method.GET);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Balance(Method.GET, instance: _instance, useCsrf: _useCsrf);
+                LiveTest.Balance(Method.GET, instance: _instance);
             }
         }
 
@@ -168,13 +155,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void BalancePostTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Balance(_instance, Method.POST, _dbNoUnconfirmed, _useCsrf);
+                StableTest.Balance(_instance, Method.POST);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Balance(Method.POST, _instance, _useCsrf);
+                LiveTest.Balance(Method.POST, _instance);
             }
         }
 
@@ -184,13 +171,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.Block(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Block(_instance, _liveDisableNetworking);
+                LiveTest.Block(_instance);
             }
         }
 
@@ -200,11 +187,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockchainMetadataTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.BlockchainMetadata(_instance, _dbNoUnconfirmed);
+                StableTest.BlockchainMetadata(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.BlockchainMetadata(_instance);
             }
@@ -216,13 +203,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockchainProgressTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.BlockChainProgress(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.BlockChainProgress(_instance, _liveDisableNetworking);
+                LiveTest.BlockChainProgress(_instance);
             }
         }
 
@@ -232,11 +219,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlocksTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.Blocks(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.Blocks(_instance);
             }
@@ -248,11 +235,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void CoinSupplyTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.CoinSupply(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.CoinSupply(_instance);
             }
@@ -265,7 +252,7 @@ namespace Skyapi.Test.Api
         public void CsrfTest()
         {
             //Only with _useCsrf==true
-            if (_useCsrf)
+            if (Utils.UseCsrf())
             {
                 var response = _instance.Csrf();
                 Assert.IsNotNull(response.CsrfToken);
@@ -279,12 +266,12 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataDeleteTest()
         {
-            if (!_testMode.Equals("stable"))
+            if (!Utils.GetTestMode().Equals("stable"))
             {
                 return;
             }
 
-            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             _instance.DataPOST(type: "txid", key: "key1", val: "val1");
             var result = _instance.DataGET(type: "txid");
             _instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
@@ -298,14 +285,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataGetTest()
         {
-            if (!_testMode.Equals("stable"))
+            if (!Utils.GetTestMode().Equals("stable"))
             {
                 return;
             }
 
             var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
             var singleresult = new {data = "val1"};
-            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             _instance.DataPOST(type: "txid", key: "key1", val: "val1");
             _instance.DataPOST(type: "txid", key: "key2", val: "val2");
             //Varify all results.
@@ -322,12 +309,12 @@ namespace Skyapi.Test.Api
         [Test]
         public void DataPostTest()
         {
-            if (!_testMode.Equals("stable"))
+            if (!Utils.GetTestMode().Equals("stable"))
             {
                 return;
             }
 
-            if (_useCsrf) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             _instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
@@ -337,8 +324,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void DefaultConnectionsTest()
         {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var connections = apiInstance.DefaultConnections();
+            var connections = _instance.DefaultConnections();
             Assert.IsNotEmpty(connections);
             connections.Sort();
             Utils.CheckGoldenFile("network-default-peers.golden", connections, connections.GetType());
@@ -350,14 +336,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void HealthTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Health(instance: _instance, coin: _coin, useCsrf: _useCsrf);
+                StableTest.Health(instance: _instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
 
             {
-                LiveTest.Health(_instance, _liveDisableNetworking);
+                LiveTest.Health(_instance);
             }
         }
 
@@ -367,11 +353,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void LastBlocksTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.LastBlocks(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.LastBlock(_instance);
             }
@@ -383,13 +369,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.NetworkConnection(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.NetworkConnection(instance: _instance, liveDisableNetworking: _liveDisableNetworking);
+                LiveTest.NetworkConnection(instance: _instance);
             }
         }
 
@@ -399,14 +385,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsDisconnectTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.NetworkConnectionDisconnect(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.NetworkConnectionDisconnect(instance: _instance,
-                    liveDisableNetworking: _liveDisableNetworking);
+                LiveTest.NetworkConnectionDisconnect(instance: _instance);
             }
         }
 
@@ -416,11 +401,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsExchangeTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.NetworkConnectionExchange(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.NetworkConnectionExchange(_instance);
             }
@@ -432,8 +417,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsTrustTest()
         {
-            var apiInstance = new DefaultApi(_nodeAddress);
-            var connections = apiInstance.NetworkConnectionsTrust();
+            var connections = _instance.NetworkConnectionsTrust();
             Assert.IsNotEmpty(connections);
             connections.Sort();
             Utils.CheckGoldenFile("network-trusted-peers.golden", connections, connections.GetType());
@@ -445,20 +429,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void OutputsGetTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                if (_dbNoUnconfirmed)
+                if (Utils.DbNoUnconfirmed())
                 {
-                    StableTest.NoUnconfirmedOutputs(Method.GET, _instance, _useCsrf);
+                    StableTest.NoUnconfirmedOutputs(Method.GET, _instance);
                 }
                 else
                 {
-                    StableTest.Outputs(Method.GET, _instance, _useCsrf);
+                    StableTest.Outputs(Method.GET, _instance);
                 }
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Outputs(Method.GET, _instance, _useCsrf);
+                LiveTest.Outputs(Method.GET, _instance);
             }
         }
 
@@ -468,20 +452,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void OutputsPostTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                if (_dbNoUnconfirmed)
+                if (Utils.DbNoUnconfirmed())
                 {
-                    StableTest.NoUnconfirmedOutputs(Method.POST, _instance, _useCsrf);
+                    StableTest.NoUnconfirmedOutputs(Method.POST, _instance);
                 }
                 else
                 {
-                    StableTest.Outputs(Method.POST, _instance, _useCsrf);
+                    StableTest.Outputs(Method.POST, _instance);
                 }
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Outputs(Method.POST, _instance, _useCsrf);
+                LiveTest.Outputs(Method.POST, _instance);
             }
         }
 
@@ -491,9 +475,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void PendingTxsTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                if (_dbNoUnconfirmed)
+                if (Utils.DbNoUnconfirmed())
                 {
                     StableTest.NoUnconfirmedPendingTxs(_instance);
                 }
@@ -502,7 +486,7 @@ namespace Skyapi.Test.Api
                     StableTest.PendingTxs(_instance);
                 }
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.PendingTxs(_instance);
             }
@@ -514,14 +498,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void ResendUnconfirmedTxnsTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.ResendUnconfirmedTxns(instance: _instance, useCsrf: _useCsrf);
+                StableTest.ResendUnconfirmedTxns(instance: _instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
 
             {
-                LiveTest.ResendUnconfirmedTxns(_instance, _liveDisableNetworking, _useCsrf);
+                LiveTest.ResendUnconfirmedTxns(_instance);
             }
         }
 
@@ -531,11 +515,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void RichlistTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.RichList(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.RichList(_instance);
             }
@@ -547,11 +531,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Transaction(_instance, _dbNoUnconfirmed);
+                StableTest.Transaction(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
                 LiveTest.Transaction(_instance);
             }
@@ -563,13 +547,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionInjectTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
                 StableTest.TransactionInject(_instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                if (_liveDisableNetworking)
+                if (Utils.LiveDisableNetworking())
                 {
                     LiveTest.TransactionInjectDisableNetworking(_instance);
                 }
@@ -634,14 +618,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionsGetTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Transactions(method: Method.GET, instance: _instance, useCsrf: _useCsrf,
-                    dbNoUnconfirmed: _dbNoUnconfirmed);
+                StableTest.Transactions(method: Method.GET, instance: _instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Transactions(Method.GET, _instance, _useCsrf);
+                LiveTest.Transactions(Method.GET, _instance);
             }
         }
 
@@ -651,14 +634,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionsPostTest()
         {
-            if (_testMode.Equals("stable"))
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                StableTest.Transactions(method: Method.POST, instance: _instance, useCsrf: _useCsrf,
-                    dbNoUnconfirmed: _dbNoUnconfirmed);
+                StableTest.Transactions(method: Method.POST, instance: _instance);
             }
-            else if (_testMode.Equals("live"))
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                LiveTest.Transactions(Method.POST, _instance, _useCsrf);
+                LiveTest.Transactions(Method.POST, _instance);
             }
         }
 
@@ -692,9 +674,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void VersionTest()
         {
-            Configuration.Default.BasePath = _nodeAddress;
-            var apiInstance = new DefaultApi(Configuration.Default);
-            var result = apiInstance.Version();
+            var result = _instance.Version();
             Assert.AreEqual("v0.26.0", result.Branch);
             Assert.AreEqual("ff754084df0912bc0d151529e2893ca86618fb3f", result.Commit);
             Assert.AreEqual("0.26.0", result.Version);
@@ -837,7 +817,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletSeedVerifyTest()
         {
-            if (_useCsrf)
+            if (Utils.UseCsrf())
             {
                 _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             }
