@@ -9,18 +9,12 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,12 +22,12 @@ namespace Skyapi.Model
     /// Address
     /// </summary>
     [DataContract]
-    public partial class Address :  IEquatable<Address>, IValidatableObject
+    public class Address :  IEquatable<Address>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected Address() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
@@ -46,11 +40,9 @@ namespace Skyapi.Model
             {
                 throw new InvalidDataException("address is a required property for Address and cannot be null");
             }
-            else
-            {
-                this._Address = address;
-            }
-            
+
+            _Address = address;
+
         }
         
         /// <summary>
@@ -88,7 +80,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Address);
+            return Equals(input as Address);
         }
 
         /// <summary>
@@ -103,9 +95,9 @@ namespace Skyapi.Model
 
             return 
                 (
-                    this._Address == input._Address ||
-                    (this._Address != null &&
-                    this._Address.Equals(input._Address))
+                    _Address == input._Address ||
+                    (_Address != null &&
+                    _Address.Equals(input._Address))
                 );
         }
 
@@ -118,8 +110,8 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Address != null)
-                    hashCode = hashCode * 59 + this._Address.GetHashCode();
+                if (_Address != null)
+                    hashCode = hashCode * 59 + _Address.GetHashCode();
                 return hashCode;
             }
         }
@@ -129,7 +121,7 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

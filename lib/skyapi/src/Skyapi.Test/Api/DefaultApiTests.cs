@@ -602,10 +602,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionVerifyTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //TransactionVerifyRequest transactionVerifyRequest = null;
-            //var response = instance.TransactionVerify(transactionVerifyRequest);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.GetTestMode().Equals("stable"))
+            {
+                StableTest.TransactionVerify(_instance);
+            }
+            else if (Utils.GetTestMode().Equals("live"))
+            {
+                ///////
+            }
         }
 
         /// <summary>
@@ -646,10 +650,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void UxoutTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string uxid = null;
-            //var response = instance.Uxout(uxid);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.GetTestMode().Equals("stable"))
+            {
+                StableTest.Uxouts(_instance);
+            }
+            else if (Utils.GetTestMode().Equals("live"))
+            {
+                /////////
+            }
         }
 
         /// <summary>

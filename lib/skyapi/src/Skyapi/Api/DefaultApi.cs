@@ -538,7 +538,7 @@ namespace Skyapi.Api
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
         /// <returns>Object</returns>
-        Object OutputsGet(List<string> address = null, List<string> hash = null);
+        Outputs OutputsGet(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -549,8 +549,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null);
+        /// <returns>ApiResponse of Outputs</returns>
+        ApiResponse<Outputs> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -561,8 +561,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Object</returns>
-        Object OutputsPost(List<string> address = null, List<string> hash = null);
+        /// <returns>Outputs</returns>
+        Outputs OutputsPost(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -573,8 +573,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null);
+        /// <returns>ApiResponse of Outputs</returns>
+        ApiResponse<Outputs> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// 
@@ -737,9 +737,10 @@ namespace Skyapi.Api
         /// Decode and verify an encoded transaction
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Object</returns>
-        Object TransactionVerify(TransactionVerifyRequest transactionVerifyRequest);
+        Object TransactionVerify(string encodedtransaction, bool unsigned = false);
 
         /// <summary>
         /// 
@@ -748,9 +749,10 @@ namespace Skyapi.Api
         /// Decode and verify an encoded transaction
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionVerifyWithHttpInfo(TransactionVerifyRequest transactionVerifyRequest);
+        ApiResponse<Object> TransactionVerifyWithHttpInfo(string encodedtransaction, bool unsigned = false);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -1784,8 +1786,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> OutputsGetAsync(List<string> address = null, List<string> hash = null);
+        /// <returns>Task of Outputs</returns>
+        System.Threading.Tasks.Task<Outputs> OutputsGetAsync(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -1796,8 +1798,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo(List<string> address = null,
+        /// <returns>Task of ApiResponse (Outputs)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Outputs>> OutputsGetAsyncWithHttpInfo(List<string> address = null,
             List<string> hash = null);
 
         /// <summary>
@@ -1809,8 +1811,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> OutputsPostAsync(List<string> address = null, List<string> hash = null);
+        /// <returns>Task of Outputs</returns>
+        System.Threading.Tasks.Task<Outputs> OutputsPostAsync(List<string> address = null, List<string> hash = null);
 
         /// <summary>
         /// If neither addrs nor hashes are specificed, return all unspent outputs. If only one filter is specified, then return outputs match the filter. Both filters cannot be specified.
@@ -1821,8 +1823,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(List<string> address = null,
+        /// <returns>Task of ApiResponse (Outputs)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Outputs>> OutputsPostAsyncWithHttpInfo(List<string> address = null,
             List<string> hash = null);
 
         /// <summary>
@@ -1989,9 +1991,10 @@ namespace Skyapi.Api
         /// Decode and verify an encoded transaction
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionVerifyAsync(TransactionVerifyRequest transactionVerifyRequest);
+        System.Threading.Tasks.Task<Object> TransactionVerifyAsync(string encodedtransaction, bool unsigned = false);
 
         /// <summary>
         /// 
@@ -2000,10 +2003,11 @@ namespace Skyapi.Api
         /// Decode and verify an encoded transaction
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo(
-            TransactionVerifyRequest transactionVerifyRequest);
+            string encodedtransaction, bool unsigned = false);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -5928,10 +5932,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Object</returns>
-        public Object OutputsGet(List<string> address = null, List<string> hash = null)
+        /// <returns>Outputs</returns>
+        public Outputs OutputsGet(List<string> address = null, List<string> hash = null)
         {
-            ApiResponse<Object> localVarResponse = OutputsGetWithHttpInfo(address, hash);
+            ApiResponse<Outputs> localVarResponse = OutputsGetWithHttpInfo(address, hash);
             return localVarResponse.Data;
         }
 
@@ -5941,8 +5945,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null)
+        /// <returns>ApiResponse of Outputs</returns>
+        public ApiResponse<Outputs> OutputsGetWithHttpInfo(List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5994,9 +5998,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Outputs>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Outputs) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Outputs)));
         }
 
         /// <summary>
@@ -6005,11 +6009,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> OutputsGetAsync(List<string> address = null,
+        /// <returns>Task of Outputs</returns>
+        public async System.Threading.Tasks.Task<Outputs> OutputsGetAsync(List<string> address = null,
             List<string> hash = null)
         {
-            ApiResponse<Object> localVarResponse = await OutputsGetAsyncWithHttpInfo(address, hash);
+            ApiResponse<Outputs> localVarResponse = await OutputsGetAsyncWithHttpInfo(address, hash);
             return localVarResponse.Data;
         }
 
@@ -6019,8 +6023,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsGetAsyncWithHttpInfo(
+        /// <returns>Task of ApiResponse (Outputs)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Outputs>> OutputsGetAsyncWithHttpInfo(
             List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
@@ -6074,9 +6078,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Outputs>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Outputs) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Outputs)));
         }
 
         /// <summary>
@@ -6085,10 +6089,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Object</returns>
-        public Object OutputsPost(List<string> address = null, List<string> hash = null)
+        /// <returns>Outputs</returns>
+        public Outputs OutputsPost(List<string> address = null, List<string> hash = null)
         {
-            ApiResponse<Object> localVarResponse = OutputsPostWithHttpInfo(address, hash);
+            ApiResponse<Outputs> localVarResponse = OutputsPostWithHttpInfo(address, hash);
             return localVarResponse.Data;
         }
 
@@ -6098,8 +6102,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null)
+        /// <returns>ApiResponse of Outputs</returns>
+        public ApiResponse<Outputs> OutputsPostWithHttpInfo(List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
             var localVarPathParams = new Dictionary<String, String>();
@@ -6156,9 +6160,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Outputs>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Outputs) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Outputs)));
         }
 
         /// <summary>
@@ -6167,11 +6171,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> OutputsPostAsync(List<string> address = null,
+        /// <returns>Task of Outputs</returns>
+        public async System.Threading.Tasks.Task<Outputs> OutputsPostAsync(List<string> address = null,
             List<string> hash = null)
         {
-            ApiResponse<Object> localVarResponse = await OutputsPostAsyncWithHttpInfo(address, hash);
+            ApiResponse<Outputs> localVarResponse = await OutputsPostAsyncWithHttpInfo(address, hash);
             return localVarResponse.Data;
         }
 
@@ -6181,8 +6185,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="address"> (optional)</param>
         /// <param name="hash"> (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> OutputsPostAsyncWithHttpInfo(
+        /// <returns>Task of ApiResponse (Outputs)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Outputs>> OutputsPostAsyncWithHttpInfo(
             List<string> address = null, List<string> hash = null)
         {
             var localVarPath = "/api/v1/outputs";
@@ -6241,9 +6245,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Outputs>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Outputs) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Outputs)));
         }
 
         /// <summary>
@@ -7343,11 +7347,12 @@ namespace Skyapi.Api
         ///  Decode and verify an encoded transaction
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Object</returns>
-        public Object TransactionVerify(TransactionVerifyRequest transactionVerifyRequest)
+        public object TransactionVerify(string encodedtransaction, bool unsigned = false)
         {
-            ApiResponse<Object> localVarResponse = TransactionVerifyWithHttpInfo(transactionVerifyRequest);
+            ApiResponse<Object> localVarResponse = TransactionVerifyWithHttpInfo(encodedtransaction, unsigned);
             return localVarResponse.Data;
         }
 
@@ -7355,14 +7360,15 @@ namespace Skyapi.Api
         ///  Decode and verify an encoded transaction
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> TransactionVerifyWithHttpInfo(TransactionVerifyRequest transactionVerifyRequest)
+        public ApiResponse<Object> TransactionVerifyWithHttpInfo(string encodedtransaction, bool unsigned = false)
         {
-            // verify the required parameter 'transactionVerifyRequest' is set
-            if (transactionVerifyRequest == null)
+            // verify the required parameter 'encodedtransaction' is set
+            if (encodedtransaction == null)
                 throw new ApiException(400,
-                    "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
+                    "Missing required parameter 'encodedtransaction' when calling DefaultApi->TransactionVerify");
 
             var localVarPath = "/api/v2/transaction/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7391,15 +7397,13 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (transactionVerifyRequest != null && transactionVerifyRequest.GetType() != typeof(byte[]))
-            {
-                localVarPostBody =
-                    this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = transactionVerifyRequest; // byte array
-            }
+            localVarPostBody =
+                Configuration.ApiClient.Serialize(
+                    new
+                    {
+                        unsigned = unsigned,
+                        encoded_transaction = encodedtransaction
+                    }); // http body (model) parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -7430,12 +7434,14 @@ namespace Skyapi.Api
         ///  Decode and verify an encoded transaction
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionVerifyAsync(
-            TransactionVerifyRequest transactionVerifyRequest)
+        public async System.Threading.Tasks.Task<object> TransactionVerifyAsync(
+            string encodedtransaction, bool unsigned = false)
         {
-            ApiResponse<Object> localVarResponse = await TransactionVerifyAsyncWithHttpInfo(transactionVerifyRequest);
+            ApiResponse<object> localVarResponse =
+                await TransactionVerifyAsyncWithHttpInfo(encodedtransaction, unsigned);
             return localVarResponse.Data;
         }
 
@@ -7443,15 +7449,16 @@ namespace Skyapi.Api
         ///  Decode and verify an encoded transaction
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionVerifyRequest"></param>
+        /// <param name="encodedtransaction"></param>
+        /// <param name="unsigned"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionVerifyAsyncWithHttpInfo(
-            TransactionVerifyRequest transactionVerifyRequest)
+            string encodedtransaction, bool unsigned = false)
         {
-            // verify the required parameter 'transactionVerifyRequest' is set
-            if (transactionVerifyRequest == null)
+            // verify the required parameter 'encodedtransaction' is set
+            if (encodedtransaction == null)
                 throw new ApiException(400,
-                    "Missing required parameter 'transactionVerifyRequest' when calling DefaultApi->TransactionVerify");
+                    "Missing required parameter 'encodedtransaction' when calling DefaultApi->TransactionVerify");
 
             var localVarPath = "/api/v2/transaction/verify";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7480,15 +7487,13 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (transactionVerifyRequest != null && transactionVerifyRequest.GetType() != typeof(byte[]))
-            {
-                localVarPostBody =
-                    this.Configuration.ApiClient.Serialize(transactionVerifyRequest); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = transactionVerifyRequest; // byte array
-            }
+            localVarPostBody =
+                Configuration.ApiClient.Serialize(
+                    new
+                    {
+                        unsigned = unsigned,
+                        encoded_transaction = encodedtransaction
+                    }); // http body (model) parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))

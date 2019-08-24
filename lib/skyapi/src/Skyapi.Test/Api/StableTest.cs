@@ -945,35 +945,77 @@ namespace Skyapi.Test.Api
 
         internal static void TransactionPost(DefaultApi instance)
         {
-            var withaddress = new
+            var testCases = new[]
             {
-                name = "invalid no uxouts for addresses",
-                req = new TransactionV2ParamsAddress
+                new
                 {
-                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    name = "invalid no uxouts for addresses",
+                    req = new TransactionV2ParamsAddress
                     {
-                        Type = "manual"
-                    },
-                    Address = new List<string>
-                    {
-                        "2M755W9o7933roLASK9PZTmqRsjQUsVen9y"
-                    },
-                    To = new List<TransactionV2ParamsTo>
-                    {
-                        new TransactionV2ParamsTo
+                        HoursSelection = new TransactionV2ParamsHoursSelection
                         {
-                            Address = "2M755W9o7933roLASK9PZTmqRsjQUsVen9y",
-                            Coins = "1.000000",
-                            Hours = "100"
+                            Type = "manual"
+                        },
+                        Address = new List<string>
+                        {
+                            "2M755W9o7933roLASK9PZTmqRsjQUsVen9y"
+                        },
+                        To = new List<TransactionV2ParamsTo>
+                        {
+                            new TransactionV2ParamsTo
+                            {
+                                Address = "2M755W9o7933roLASK9PZTmqRsjQUsVen9y",
+                                Coins = "1.000000",
+                                Hours = "100"
+                            }
                         }
-                    }
+                    },
+                    errCode = 400,
+                    errMsg = "no unspents to spend"
                 },
-                errCode = 400,
-                errMsg = "no unspents to spend"
+                new
+                {
+                    name = "OK",
+                    req = new TransactionV2ParamsAddress
+                    {
+                        HoursSelection = new TransactionV2ParamsHoursSelection
+                        {
+                            Type = "manual"
+                        },
+                        Address = new List<string>
+                        {
+                            "qxmeHkwgAMfwXyaQrwv9jq3qt228xMuoT5"
+                        },
+                        To = new List<TransactionV2ParamsTo>
+                        {
+                            new TransactionV2ParamsTo
+                            {
+                                Address = "7cpQ7t3PZZXvjTst8G7Uvs7XH4LeM8fBPD",
+                                Coins = "0.003000",
+                                Hours = "10"
+                            }
+                        }
+                    },
+                    errCode = 200,
+                    errMsg = ""
+                }
             };
-            var err = Assert.Throws<ApiException>(() => instance.TransactionPost(withaddress.req));
-            Assert.AreEqual(withaddress.errCode, err.ErrorCode, withaddress.name);
-            Assert.True(err.Message.Contains(withaddress.errMsg), withaddress.name);
+            foreach (var tc in testCases)
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(
+                        () => { Console.WriteLine(instance.TransactionPost(tc.req)); });
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.True(err.Message.Contains(tc.errMsg), tc.name);
+                }
+                else
+                {
+                    var result = instance.TransactionPost(tc.req);
+                    Utils.CheckGoldenFile("Created-Transaction.golden", result.Data.Transaction,
+                        result.Data.Transaction.GetType());
+                }
+            }
         }
 
         internal static void TransactionPostUnspents(DefaultApi instance)
@@ -1013,7 +1055,75 @@ namespace Skyapi.Test.Api
 
         internal static void TransactionVerify(DefaultApi instance)
         {
-            
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "unsigned transaction",
+                    txn =
+                        "dc0000000039c88c7a944ac5f8b191fcbfce621a2ba173a59660590256c798f554d16ba0bc010000000000000" +
+                        "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
+                        "00000000000000000000000000000000000100000075692aeff988ce0da734c474dbef3a1ce19a5a6823bbcd3" +
+                        "6acb856c83262261e020000000010722f061aa262381dce35193d43eceb112373c3b80b0000000000000a0000" +
+                        "00000000000079ae1e8799c65b4c01e18b3b4135410c5b711f364831432505000000422f050000000000",
+                    unsigned = true,
+                    golden = "verify-transaction-unsigned.golden",
+                    errCode = 200,
+                    errMsg = ""
+                },
+                new
+                {
+                    name = "violates soft constraint",
+                    txn = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" +
+                          "00100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a000000407a10f35a0000",
+                    unsigned = false,
+                    golden = "verify-genesis-transaction.golden",
+                    errCode = 422,
+                    errMsg = "Transaction violates soft constraint: Insufficient coinhours for transaction outputs"
+                }
+            };
+            foreach (var tc in testCases)
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(() =>
+                        instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned));
+                    var msg = JsonConvert.DeserializeObject<dynamic>(err.Message.Substring(33)).error.message;
+                    var data = JsonConvert.DeserializeObject<dynamic>(err.Message.Substring(33)).data;
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.AreEqual(tc.errMsg, msg.ToString(), tc.name);
+                    Utils.CheckGoldenFile(tc.golden, data, data.GetType());
+                }
+                else
+                {
+                    var result = instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned);
+                    Utils.CheckGoldenFile(tc.golden, result, result.GetType());
+                }
+            }
+        }
+
+        internal static void Uxouts(DefaultApi instance)
+        {
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "valid uxID",
+                    golden = "uxout.golden",
+                    uxID = "fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20",
+                }
+            };
+
+            foreach (var tc in testCases)
+            {
+                Assert.DoesNotThrow(() =>
+                {
+                    var result = instance.Uxout(tc.uxID);
+                    Utils.CheckGoldenFile(tc.golden, result, result.GetType());
+                });
+            }
+
+            Utils.ScanUxouts(instance);
         }
     }
 }

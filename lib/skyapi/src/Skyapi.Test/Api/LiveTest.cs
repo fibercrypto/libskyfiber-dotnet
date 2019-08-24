@@ -597,7 +597,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[0].Address,
-                            coins = Utils.toDropletString(walletTxnDat.coins)
+                            coins = Utils.ToDropletString(walletTxnDat.coins)
                         }
                     }),
                     errCode = 200,
@@ -625,7 +625,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[1].Address,
-                            coins = Utils.toDropletString(decimal.Parse("3E3", NumberStyles.Any))
+                            coins = Utils.ToDropletString(decimal.Parse("3E3", NumberStyles.Any))
                         }
                     }),
                     errCode = 200,
@@ -656,7 +656,7 @@ namespace Skyapi.Test.Api
                         var expectedExchange = walletTxnDat.coins - coin;
 
                         var changeout = addrsOutputInTxn(walletTxnDat.wallet.Entries[0].Address);
-                        var changecoins = Utils.toDropletString(changeout.coins);
+                        var changecoins = Utils.ToDropletString(changeout.coins);
                         Assert.AreEqual(expectedExchange, changecoins);
                     })
                 },
@@ -668,7 +668,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[0].Address,
-                            coins = Utils.toDropletString(walletTxnDat.coins)
+                            coins = Utils.ToDropletString(walletTxnDat.coins)
                         }
                     }),
                     errCode = 200,

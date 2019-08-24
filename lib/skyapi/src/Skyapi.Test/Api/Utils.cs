@@ -375,7 +375,7 @@ namespace Skyapi.Test.Api
             };
         }
 
-        internal static string toDropletString(decimal totalcoin)
+        internal static string ToDropletString(decimal totalcoin)
         {
             var d = decimal.Parse("1E-6", NumberStyles.Any);
             var stotalcoin = (totalcoin * d).ToString(CultureInfo.InvariantCulture);
@@ -405,6 +405,33 @@ namespace Skyapi.Test.Api
                 },
                 To = to
             };
+        }
+
+        internal static void ScanUxouts(DefaultApi instance)
+        {
+            var outputs = instance.OutputsGet();
+
+            foreach (dynamic oh in outputs.HeaderOutputs)
+            {
+                dynamic foundUx = instance.Uxout(oh.hash.ToString());
+
+                Assert.AreEqual(oh.hash, foundUx.uxid);
+                Assert.AreEqual(oh.time, foundUx.time);
+                Assert.AreEqual(oh.block_seq, foundUx.src_block_seq);
+                Assert.AreEqual(oh.src_tx, foundUx.src_tx);
+                Assert.AreEqual(oh.address, foundUx.owner_address);
+
+                if (foundUx.spent_block_seq == 0)
+                {
+                    Assert.AreEqual("0000000000000000000000000000000000000000000000000000000000000000",
+                        foundUx.spent_tx.ToString());
+                }
+                else
+                {
+                    Assert.AreNotEqual("0000000000000000000000000000000000000000000000000000000000000000",
+                        foundUx.spent_tx.ToString());
+                }
+            }
         }
     }
 }
