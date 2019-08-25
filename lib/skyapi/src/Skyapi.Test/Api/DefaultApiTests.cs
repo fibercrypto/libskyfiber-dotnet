@@ -9,11 +9,13 @@
  */
 
 using System;
+using System.CodeDom.Compiler;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Skyapi.Client;
 using Skyapi.Api;
 using RestSharp;
+using Skyapi.Model;
 
 namespace Skyapi.Test.Api
 {
@@ -666,10 +668,56 @@ namespace Skyapi.Test.Api
         [Test]
         public void VerifyAddressTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //Object address = null;
-            //var response = instance.VerifyAddress(address);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live"))
+            {
+                var testCases = new[]
+                {
+                    new
+                    {
+                        name = "valid address",
+                        golden = "verify-address.golden",
+                        adds = "7cpQ7t3PZZXvjTst8G7Uvs7XH4LeM8fBPD",
+                        errCode = 200,
+                        errMsg = ""
+                    },
+                    new
+                    {
+                        name = "invalid address",
+                        golden = "",
+                        adds = "7apQ7t3PZZXvjTst8G7Uvs7XH4LeM8fBPD",
+                        errCode = 422,
+                        errMsg = "Invalid checksum"
+                    },
+                    new
+                    {
+                        name = "missing address",
+                        golden = "",
+                        adds = "",
+                        errCode = 400,
+                        errMsg = "address is required"
+                    }
+                };
+
+                foreach (var tc in testCases)
+                {
+                    if (tc.errCode != 200)
+                    {
+                        var errRaw = Assert.Throws<ApiException>(() => _instance.VerifyAddress(tc.adds));
+                        dynamic err = JsonConvert.DeserializeObject(errRaw.Message.Substring(28));
+                        Assert.AreEqual(tc.errCode, errRaw.ErrorCode, tc.name);
+                        Assert.AreEqual(tc.errMsg, err.error.message.ToString(), tc.name);
+                    }
+                    else
+                    {
+                        Assert.DoesNotThrow(() =>
+                            {
+                                var result = _instance.VerifyAddress(tc.adds);
+                                Utils.CheckGoldenFile(tc.golden, result, result.GetType());
+                            }
+                            , tc.name);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -690,10 +738,13 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //var response = instance.Wallet(id);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            Assert.DoesNotThrow(() =>
+            {
+                var randSeed = Utils.GenString();
+                var cwallet = _instance.WalletCreate(seed: randSeed, label: "the label of my wallet");
+                var wallet = _instance.Wallet(cwallet.Meta.Id);
+                Assert.AreEqual(cwallet, wallet);
+            });
         }
 
         /// <summary>
@@ -794,12 +845,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string seed = null;
-            //string password = null;
-            //var response = instance.WalletRecover(id, seed, password);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            var randSeed = Utils.GenString();
+
+            Assert.DoesNotThrow(() =>
+            {
+                var pass = "1234";
+                var wallet
+                    = _instance.WalletCreate(label: "recover wallet", seed: randSeed, encrypt: true, password: pass);
+                Assert.True(wallet.Meta.Encrypted);
+                dynamic recoverData = _instance.WalletRecover(id: wallet.Meta.Id, seed: randSeed);
+                var recoverWallet = JsonConvert.DeserializeObject<Wallet>(recoverData.data.ToString());
+                wallet.Meta.Encrypted = false;
+                wallet.Meta.CryptoType = "";
+                Assert.AreEqual(wallet, recoverWallet);
+            });
         }
 
         /// <summary>
@@ -902,9 +961,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.Wallets();
-            //Assert.IsInstanceOf<List<Object>> (response, "response is List<Object>");
+            var result = _instance.Wallets();
+
+            result.ForEach(wlt =>
+            {
+                Assert.DoesNotThrow(() =>
+                {
+                    var walletById = _instance.Wallet(wlt.Meta.Id);
+                    Assert.AreEqual(wlt, walletById);
+                });
+            });
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -9,30 +9,25 @@ using Newtonsoft.Json;
 namespace Skyapi.Model
 {
     [DataContract]
-    public class Wallet : IEquatable<Wallet>, IValidatableObject
+    public class WalletEntry : IEquatable<WalletEntry>, IValidatableObject
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="meta"></param>
-        /// <param name="entries"></param>
-        public Wallet(WalletMeta meta, List<WalletEntry> entries = default(List<WalletEntry>))
+        public WalletEntry(string address = default(string), string publicKey = default(string))
         {
-            Meta = meta;
-            Entries = entries;
+            Address = address;
+            PublicKey = publicKey;
         }
 
         /// <summary>
-        /// Gets or Sets Meta
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name = "meta", EmitDefaultValue = false)]
-        public WalletMeta Meta { get; set; }
+        [DataMember(Name = "Address", EmitDefaultValue = true)]
+        public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets Entries
+        /// Gets or Sets PublicKey
         /// </summary>
-        [DataMember(Name = "entries", EmitDefaultValue = false)]
-        public List<WalletEntry> Entries { get; set; }
+        [DataMember(Name = "public_key", EmitDefaultValue = false)]
+        public string PublicKey { get; set; }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
@@ -50,9 +45,9 @@ namespace Skyapi.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Wallet {\n");
-            sb.Append("  meta: ").Append(Meta).Append("\n");
-            sb.Append("  entries: ").Append(Entries).Append("\n");
+            sb.Append("class WalletMeta {\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  public_key: ").Append(PublicKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -64,25 +59,31 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return Equals(input as Wallet);
+            return Equals(input as WalletEntry);
         }
 
         /// <summary>
-        /// Returns true if Wallet instances are equal
+        /// Returns true if WalletMeta instances are equal
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public bool Equals(Wallet input)
+        public bool Equals(WalletEntry input)
         {
             if (input == null)
             {
                 return false;
             }
 
-            return Meta != null && Meta.Equals(input.Meta) &&
-                   (Entries == input.Entries || Entries != null) &&
-                   Entries.SequenceEqual(input.Entries);
+            return (
+                       Address == input.Address ||
+                       Address != null &&
+                       Address.Equals(input.Address)
+                   ) &&
+                   (
+                       PublicKey == input.PublicKey ||
+                       PublicKey != null &&
+                       PublicKey.Equals(input.PublicKey)
+                   );
         }
 
         /// <summary>
@@ -94,10 +95,10 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Meta != null)
-                    hashCode = hashCode * 59 + Meta.GetHashCode();
-                if (Entries != null)
-                    hashCode = hashCode * 59 + Entries.GetHashCode();
+                if (Address != null)
+                    hashCode = hashCode * 59 + Address.GetHashCode();
+                if (PublicKey != null)
+                    hashCode = hashCode * 59 + PublicKey.GetHashCode();
                 return hashCode;
             }
         }

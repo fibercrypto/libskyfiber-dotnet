@@ -922,8 +922,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Object</returns>
-        Object WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
+        /// <returns>Wallet</returns>
+        Wallet WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null, string password = null);
 
         /// <summary>
         /// 
@@ -937,8 +937,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletCreateWithHttpInfo(string seed, string label, int? scan = null, bool? encrypt = null,
+        /// <returns>ApiResponse of Wallet</returns>
+        ApiResponse<Wallet> WalletCreateWithHttpInfo(string seed, string label, int? scan = null, bool? encrypt = null,
             string password = null);
 
         /// <summary>
@@ -2179,8 +2179,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletCreateAsync(string seed, string label, int? scan = null,
+        /// <returns>Task of Wallet</returns>
+        System.Threading.Tasks.Task<Wallet> WalletCreateAsync(string seed, string label, int? scan = null,
             bool? encrypt = null, string password = null);
 
         /// <summary>
@@ -2195,8 +2195,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo(string seed, string label,
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletCreateAsyncWithHttpInfo(string seed, string label,
             int? scan = null, bool? encrypt = null, string password = null);
 
         /// <summary>
@@ -8037,9 +8037,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                address = address
+            });
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8117,9 +8118,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (address != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "address", address)); // query parameter
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                address = address
+            });
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8585,11 +8587,11 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Object</returns>
-        public Object WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null,
+        /// <returns>Wallet</returns>
+        public Wallet WalletCreate(string seed, string label, int? scan = null, bool? encrypt = null,
             string password = null)
         {
-            ApiResponse<Object> localVarResponse = WalletCreateWithHttpInfo(seed, label, scan, encrypt, password);
+            ApiResponse<Wallet> localVarResponse = WalletCreateWithHttpInfo(seed, label, scan, encrypt, password);
             return localVarResponse.Data;
         }
 
@@ -8602,8 +8604,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletCreateWithHttpInfo(string seed, string label, int? scan = null,
+        /// <returns>ApiResponse of Wallet</returns>
+        public ApiResponse<Wallet> WalletCreateWithHttpInfo(string seed, string label, int? scan = null,
             bool? encrypt = null, string password = null)
         {
             // verify the required parameter 'seed' is set
@@ -8639,21 +8641,21 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (label != null)
-                localVarHeaderParams.Add("label",
-                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "seed", seed)); // query parameter
+
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "label", label)); // query parameter
             if (scan != null)
-                localVarHeaderParams.Add("scan",
-                    this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "scan", scan)); // query parameter
             if (encrypt != null)
-                localVarHeaderParams.Add("encrypt",
-                    this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "encrypt", encrypt)); // query parameter
             if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8675,9 +8677,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -8689,11 +8691,11 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletCreateAsync(string seed, string label, int? scan = null,
+        /// <returns>Task of Wallet</returns>
+        public async System.Threading.Tasks.Task<Wallet> WalletCreateAsync(string seed, string label, int? scan = null,
             bool? encrypt = null, string password = null)
         {
-            ApiResponse<Object> localVarResponse =
+            ApiResponse<Wallet> localVarResponse =
                 await WalletCreateAsyncWithHttpInfo(seed, label, scan, encrypt, password);
             return localVarResponse.Data;
         }
@@ -8707,8 +8709,8 @@ namespace Skyapi.Api
         /// <param name="scan">The number of addresses to scan ahead for balances. (optional)</param>
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletCreateAsyncWithHttpInfo(string seed,
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletCreateAsyncWithHttpInfo(string seed,
             string label, int? scan = null, bool? encrypt = null, string password = null)
         {
             // verify the required parameter 'seed' is set
@@ -8744,21 +8746,20 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (label != null)
-                localVarHeaderParams.Add("label",
-                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "seed", seed)); // query parameter
+
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "label", label)); // query parameter
             if (scan != null)
-                localVarHeaderParams.Add("scan",
-                    this.Configuration.ApiClient.ParameterToString(scan)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "scan", scan)); // query parameter
             if (encrypt != null)
-                localVarHeaderParams.Add("encrypt",
-                    this.Configuration.ApiClient.ParameterToString(encrypt)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "encrypt", encrypt)); // query parameter
             if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+                localVarQueryParams.AddRange(
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8781,9 +8782,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -9651,14 +9652,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                id = id,
+                seed = seed,
+                password = password
+            });
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9744,15 +9743,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
-
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                id = id,
+                seed = seed,
+                password = password
+            });
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
             {

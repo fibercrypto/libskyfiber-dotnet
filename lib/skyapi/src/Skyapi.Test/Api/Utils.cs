@@ -343,19 +343,19 @@ namespace Skyapi.Test.Api
         internal static object PrepareAndCheckWallet(DefaultApi instance, long minicoins, long minihours)
         {
             var wallet = instance.Wallet(GetWalletName());
-            if (wallet.Meta.encrypted && GetWalletPassword() == "")
+            if (wallet.Meta.Encrypted && GetWalletPassword() == "")
             {
                 Assert.Fail("Wallet is encrypted, must set WALLET_PASSWORD env var");
             }
 
             if (wallet.Entries.Count < 2)
             {
-                instance.WalletNewAddress(wallet.Meta.filename, "2", GetWalletPassword());
+                instance.WalletNewAddress(wallet.Meta.Id, "2", GetWalletPassword());
                 wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
             }
 
             var walletBalance =
-                JsonConvert.DeserializeObject<Balance>(instance.WalletBalance(wallet.Meta.filename).ToString());
+                JsonConvert.DeserializeObject<Balance>(instance.WalletBalance(wallet.Meta.Id).ToString());
             if (walletBalance.Confirmed.coins < minicoins)
             {
                 Assert.Fail($"Wallet must have at least {minicoins} coins");
@@ -400,7 +400,7 @@ namespace Skyapi.Test.Api
                 },
                 Wallet = new WalletTransactionRequestWallet
                 {
-                    Id = wallet.Meta.filename,
+                    Id = wallet.Meta.Id,
                     Password = GetWalletPassword()
                 },
                 To = to
@@ -432,6 +432,15 @@ namespace Skyapi.Test.Api
                         foundUx.spent_tx.ToString());
                 }
             }
+        }
+
+        internal static string GenString()
+        {
+            var lon = 15;
+            var miGuid = Guid.NewGuid();
+            var token = Convert.ToBase64String(miGuid.ToByteArray());
+            token = token.Replace("=", "").Replace("+", "");
+            return token.Substring(0, lon);
         }
     }
 }
