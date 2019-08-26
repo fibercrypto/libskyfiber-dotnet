@@ -168,7 +168,7 @@ namespace Skyapi.Test.Api
         /// Obtains a CSRF token.
         /// </summary>
         /// <param name="instance"></param>
-        /// <returns></returns>
+        /// <returns>token</returns>
         internal static string GetCsrf(DefaultApi instance)
         {
             string token;
@@ -322,7 +322,7 @@ namespace Skyapi.Test.Api
 
         internal static bool UseCsrf()
         {
-            return Convert.ToBoolean(Environment.GetEnvironmentVariable("USE_CSRF") ?? "false");
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("USE_CSRF") ?? "true");
         }
 
         internal static string GetNodeHost()
