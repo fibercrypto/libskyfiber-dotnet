@@ -161,7 +161,7 @@ namespace Skyapi.Test.Api
             int s = (int) double.Parse(x.Length >= 2 ? (x[1] != "" ? x[1] : "0") : "0"),
                 m = (int) double.Parse(x.Length >= 3 ? (x[2] != "" ? x[2] : "0") : "0"),
                 h = (int) double.Parse(x.Length >= 4 ? (x[3] != "" ? x[3] : "0") : "0");
-            Assert.True(new TimeSpan(h, m, s) > TimeSpan.Zero);
+            Assert.True(new TimeSpan(h, m, s) > TimeSpan.Zero,"CompareTime");
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Skyapi.Test.Api
 
         internal static string GetNodeHost()
         {
-            return Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://localhost:6420";
+            return Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://178.157.90.129:6420";
         }
 
         internal static bool DbNoUnconfirmed()

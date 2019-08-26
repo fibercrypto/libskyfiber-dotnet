@@ -3,6 +3,8 @@ sudo: required
 env:
   global:
     - CGO_ENABLED: 1
+    - USE_CSRF: true
+    - COIN: skycoin
 
 matrix:
   include:

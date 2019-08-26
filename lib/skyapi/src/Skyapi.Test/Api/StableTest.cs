@@ -602,18 +602,18 @@ namespace Skyapi.Test.Api
         {
             var result = JsonConvert.DeserializeObject<Health>(instance.Health().ToString());
             Utils.CheckHealthResponse(result);
-            Assert.AreEqual(0, result.Open_Connections);
-            Assert.AreEqual(0, result.Incoming_Connections);
-            Assert.AreEqual(0, result.Outgoing_Connections);
+            Assert.AreEqual(0, result.Open_Connections, "Open Connections");
+            Assert.AreEqual(0, result.Incoming_Connections, "Incoming Connections");
+            Assert.AreEqual(0, result.Outgoing_Connections, "Outgoing Connections");
             Utils.CompareTime(result.Blockchain.Time_Since_Last_Block);
-            Assert.NotNull(result.Version.Commit);
-            Assert.NotNull(result.Version.Branch);
-            Assert.AreEqual(Utils.GetCoin(), result.Coin);
-            Assert.AreEqual($"{result.Coin}:{result.Version.Version}", result.User_Agent);
-            Assert.AreEqual(Utils.UseCsrf(), result.CSRF_Enabled);
-            Assert.True(result.Csp_Enabled);
-            Assert.True(result.Wallet_API_Enabled);
-            Assert.False(result.GUI_Enabled);
+            Assert.NotNull(result.Version.Commit, "version.Commit");
+            Assert.NotNull(result.Version.Branch, "Version.Bransch");
+            Assert.AreEqual(Utils.GetCoin(), result.Coin, "Coin");
+            Assert.AreEqual($"{result.Coin}:{result.Version.Version}", result.User_Agent, "User Agent");
+            Assert.AreEqual(Utils.UseCsrf(), result.CSRF_Enabled, "CSRF_Enabled");
+            Assert.True(result.Csp_Enabled, "Csp_Enabled");
+            Assert.True(result.Wallet_API_Enabled, "Wallet_API_Enabled");
+            Assert.False(result.GUI_Enabled, "GUI_Enabled");
         }
 
         internal static void LastBlocks(DefaultApi instance)
@@ -652,6 +652,11 @@ namespace Skyapi.Test.Api
 
         internal static void NetworkConnectionDisconnect(DefaultApi instance)
         {
+            if (Utils.UseCsrf())
+            {
+                instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+            }
+
             var err404 =
                 Assert.Throws<ApiException>(() => instance.NetworkConnectionsDisconnect("999"));
             Assert.AreEqual(404, err404.ErrorCode);
@@ -937,6 +942,11 @@ namespace Skyapi.Test.Api
 
             testCases.ForEach(tc =>
             {
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                }
+
                 var err = Assert.Throws<ApiException>(() => instance.TransactionInject(tc.txn));
                 Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                 Assert.AreEqual(tc.errMsg, err.Message, tc.name);
@@ -1002,6 +1012,11 @@ namespace Skyapi.Test.Api
             };
             foreach (var tc in testCases)
             {
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                }
+
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(
@@ -1047,6 +1062,10 @@ namespace Skyapi.Test.Api
                 errMsg =
                     "unspent output of 519c069a0593e179f226e87b528f60aea72826ec7f99d51279dd8854889ed7e2 does not exist"
             };
+            if (Utils.UseCsrf())
+            {
+                instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+            }
 
             var err = Assert.Throws<ApiException>(() => instance.TransactionPostUnspent(withunspent.req));
             Assert.AreEqual(withunspent.errCode, err.ErrorCode, withunspent.name);
@@ -1084,6 +1103,11 @@ namespace Skyapi.Test.Api
             };
             foreach (var tc in testCases)
             {
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(() =>

@@ -274,7 +274,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
             _instance.DataPOST(type: "txid", key: "key1", val: "val1");
             var result = _instance.DataGET(type: "txid");
             _instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
@@ -317,7 +321,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
             _instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
@@ -701,6 +709,11 @@ namespace Skyapi.Test.Api
 
                 foreach (var tc in testCases)
                 {
+                    if (Utils.UseCsrf())
+                    {
+                        _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                    }
+
                     if (tc.errCode != 200)
                     {
                         var errRaw = Assert.Throws<ApiException>(() => _instance.VerifyAddress(tc.adds));
@@ -864,15 +877,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletDecryptTest()
         {
+            var seed = Utils.GenString();
+            var pass = "1234";
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
+            var walletEncrypt =
+                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: true, password: pass);
             if (Utils.UseCsrf())
             {
                 _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             }
 
-            var seed = Utils.GenString();
-            var pass = "1234";
-            var walletEncrypt =
-                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: true, password: pass);
             var walletDecrypt = _instance.WalletDecrypt(id: walletEncrypt.Meta.Id, password: pass);
             walletEncrypt.Meta.Encrypted = false;
             walletEncrypt.Meta.CryptoType = "";
@@ -885,15 +903,20 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletEncryptTest()
         {
+            var seed = Utils.GenString();
+            var pass = "1234";
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
+            var walletDecrypt =
+                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: false);
             if (Utils.UseCsrf())
             {
                 _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             }
 
-            var seed = Utils.GenString();
-            var pass = "1234";
-            var walletDecrypt =
-                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: false);
             var walletEncrypt = _instance.WalletEncrypt(id: walletDecrypt.Meta.Id, password: pass);
             walletEncrypt.Meta.Encrypted = false;
             walletEncrypt.Meta.CryptoType = "";
@@ -946,19 +969,22 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
-            if (Utils.UseCsrf())
-            {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-            }
-
             var randSeed = Utils.GenString();
 
             Assert.DoesNotThrow(() =>
             {
                 var pass = "1234";
+                if (Utils.UseCsrf())
+                {
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                }
                 var wallet
                     = _instance.WalletCreate(label: "recover wallet", seed: randSeed, encrypt: true, password: pass);
                 Assert.True(wallet.Meta.Encrypted);
+                if (Utils.UseCsrf())
+                {
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                }
                 dynamic recoverData = _instance.WalletRecover(id: wallet.Meta.Id, seed: randSeed);
                 var recoverWallet = JsonConvert.DeserializeObject<Wallet>(recoverData.data.ToString());
                 wallet.Meta.Encrypted = false;
