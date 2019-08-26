@@ -266,3 +266,6 @@ testrunner/
 LibskycoinNet/skycoin
 
 .directory
+
+#Code generate SWIG
+lib/swig/LibskycoinNet/skycoin
