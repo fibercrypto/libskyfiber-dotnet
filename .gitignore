@@ -257,6 +257,7 @@ testrunner/
 
 # VSCODE
 .angulardoc.json
+.vscode
 
 #Temporary files
 *.swp

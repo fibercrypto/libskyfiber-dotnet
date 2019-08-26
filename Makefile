@@ -143,6 +143,11 @@ build-skyapi: ## Build SkyApi Assembly
 test-skyapi: ## Run SkyApi test suite
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh mono_nunit_test.sh)
 
+lint: 
+	gendarme --v --config rules.xml lib/skyapi/src/Skyapi/bin/Debug/Skyapi.dll
+	gendarme --v --config rules.xml lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll
+	gendarme --v --config rules.xml lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll
+
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
