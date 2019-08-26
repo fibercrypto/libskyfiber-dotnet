@@ -270,3 +270,4 @@ LibskycoinNet/skycoin
 
 #Code generate SWIG
 lib/swig/LibskycoinNet/skycoin
+lib/swig/swig/include/libskycoin.h
