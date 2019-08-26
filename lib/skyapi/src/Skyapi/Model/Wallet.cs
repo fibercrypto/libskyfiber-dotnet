@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DataContract]
     public class Wallet : IEquatable<Wallet>, IValidatableObject
     {
@@ -16,7 +19,7 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="meta"></param>
         /// <param name="entries"></param>
-        public Wallet(WalletMeta meta, List<WalletEntry> entries = default(List<WalletEntry>))
+        public Wallet(WalletMeta meta = default(WalletMeta), List<WalletEntry> entries = default(List<WalletEntry>))
         {
             Meta = meta;
             Entries = entries;

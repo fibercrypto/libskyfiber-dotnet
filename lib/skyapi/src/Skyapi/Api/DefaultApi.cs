@@ -118,8 +118,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Object</returns>
-        Object BalanceGet(string addrs);
+        /// <returns>Balance</returns>
+        Balance BalanceGet(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -129,8 +129,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BalanceGetWithHttpInfo(string addrs);
+        /// <returns>ApiResponse of Balance</returns>
+        ApiResponse<Balance> BalanceGetWithHttpInfo(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -140,8 +140,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Object</returns>
-        Object BalancePost(string addrs);
+        /// <returns>Balance</returns>
+        Balance BalancePost(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -151,8 +151,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BalancePostWithHttpInfo(string addrs);
+        /// <returns>ApiResponse of Balance</returns>
+        ApiResponse<Balance> BalancePostWithHttpInfo(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -896,8 +896,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>Object</returns>
-        Object WalletBalance(string id);
+        /// <returns>Balance</returns>
+        Balance WalletBalance(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -907,8 +907,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletBalanceWithHttpInfo(string id);
+        /// <returns>ApiResponse of Balance</returns>
+        ApiResponse<Balance> WalletBalanceWithHttpInfo(string id);
 
         /// <summary>
         /// 
@@ -950,8 +950,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Object</returns>
-        Object WalletDecrypt(string id, string password);
+        /// <returns>Wallet</returns>
+        Wallet WalletDecrypt(string id, string password);
 
         /// <summary>
         /// Decrypts wallet.
@@ -962,8 +962,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletDecryptWithHttpInfo(string id, string password);
+        /// <returns>ApiResponse of Wallet</returns>
+        ApiResponse<Wallet> WalletDecryptWithHttpInfo(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -974,8 +974,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Object</returns>
-        Object WalletEncrypt(string id, string password);
+        /// <returns>Wallet</returns>
+        Wallet WalletEncrypt(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -986,8 +986,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletEncryptWithHttpInfo(string id, string password);
+        /// <returns>ApiResponse of Wallet</returns>
+        ApiResponse<Wallet> WalletEncryptWithHttpInfo(string id, string password);
 
         /// <summary>
         /// 
@@ -1358,8 +1358,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BalanceGetAsync(string addrs);
+        /// <returns>Task of Balance</returns>
+        System.Threading.Tasks.Task<Balance> BalanceGetAsync(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1369,8 +1369,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo(string addrs);
+        /// <returns>Task of ApiResponse (Balance)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Balance>> BalanceGetAsyncWithHttpInfo(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1380,8 +1380,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BalancePostAsync(string addrs);
+        /// <returns>Task of Balance</returns>
+        System.Threading.Tasks.Task<Balance> BalancePostAsync(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1391,8 +1391,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo(string addrs);
+        /// <returns>Task of ApiResponse (Balance)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Balance>> BalancePostAsyncWithHttpInfo(string addrs);
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -2153,8 +2153,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletBalanceAsync(string id);
+        /// <returns>Task of Balance</returns>
+        System.Threading.Tasks.Task<Balance> WalletBalanceAsync(string id);
 
         /// <summary>
         /// Returns the wallet&#39;s balance, both confirmed and predicted.  The predicted balance is the confirmed balance minus the pending spends.
@@ -2164,8 +2164,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo(string id);
+        /// <returns>Task of ApiResponse (Balance)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Balance>> WalletBalanceAsyncWithHttpInfo(string id);
 
         /// <summary>
         /// 
@@ -2208,8 +2208,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletDecryptAsync(string id, string password);
+        /// <returns>Task of Wallet</returns>
+        System.Threading.Tasks.Task<Wallet> WalletDecryptAsync(string id, string password);
 
         /// <summary>
         /// Decrypts wallet.
@@ -2220,8 +2220,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo(string id, string password);
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletDecryptAsyncWithHttpInfo(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -2232,8 +2232,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletEncryptAsync(string id, string password);
+        /// <returns>Task of Wallet</returns>
+        System.Threading.Tasks.Task<Wallet> WalletEncryptAsync(string id, string password);
 
         /// <summary>
         /// Encrypt wallet.
@@ -2244,8 +2244,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo(string id, string password);
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletEncryptAsyncWithHttpInfo(string id, string password);
 
         /// <summary>
         /// 
@@ -3187,10 +3187,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Object</returns>
-        public Object BalanceGet(string addrs)
+        /// <returns>Balance</returns>
+        public Balance BalanceGet(string addrs)
         {
-            ApiResponse<Object> localVarResponse = BalanceGetWithHttpInfo(addrs);
+            ApiResponse<Balance> localVarResponse = BalanceGetWithHttpInfo(addrs);
             return localVarResponse.Data;
         }
 
@@ -3199,8 +3199,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> BalanceGetWithHttpInfo(string addrs)
+        /// <returns>ApiResponse of Balance</returns>
+        public ApiResponse<Balance> BalanceGetWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3250,9 +3250,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -3260,10 +3260,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BalanceGetAsync(string addrs)
+        /// <returns>Task of Balance</returns>
+        public async System.Threading.Tasks.Task<Balance> BalanceGetAsync(string addrs)
         {
-            ApiResponse<Object> localVarResponse = await BalanceGetAsyncWithHttpInfo(addrs);
+            ApiResponse<Balance> localVarResponse = await BalanceGetAsyncWithHttpInfo(addrs);
             return localVarResponse.Data;
         }
 
@@ -3272,8 +3272,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalanceGetAsyncWithHttpInfo(string addrs)
+        /// <returns>Task of ApiResponse (Balance)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Balance>> BalanceGetAsyncWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3325,9 +3325,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -3335,10 +3335,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Object</returns>
-        public Object BalancePost(string addrs)
+        /// <returns>Balance</returns>
+        public Balance BalancePost(string addrs)
         {
-            ApiResponse<Object> localVarResponse = BalancePostWithHttpInfo(addrs);
+            ApiResponse<Balance> localVarResponse = BalancePostWithHttpInfo(addrs);
             return localVarResponse.Data;
         }
 
@@ -3347,8 +3347,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> BalancePostWithHttpInfo(string addrs)
+        /// <returns>ApiResponse of Balance</returns>
+        public ApiResponse<Balance> BalancePostWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3404,9 +3404,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -3414,10 +3414,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BalancePostAsync(string addrs)
+        /// <returns>Task of Balance</returns>
+        public async System.Threading.Tasks.Task<Balance> BalancePostAsync(string addrs)
         {
-            ApiResponse<Object> localVarResponse = await BalancePostAsyncWithHttpInfo(addrs);
+            ApiResponse<Balance> localVarResponse = await BalancePostAsyncWithHttpInfo(addrs);
             return localVarResponse.Data;
         }
 
@@ -3426,8 +3426,8 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BalancePostAsyncWithHttpInfo(string addrs)
+        /// <returns>Task of ApiResponse (Balance)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Balance>> BalancePostAsyncWithHttpInfo(string addrs)
         {
             // verify the required parameter 'addrs' is set
             if (addrs == null)
@@ -3484,9 +3484,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -8434,10 +8434,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>Object</returns>
-        public Object WalletBalance(string id)
+        /// <returns>Balance</returns>
+        public Balance WalletBalance(string id)
         {
-            ApiResponse<Object> localVarResponse = WalletBalanceWithHttpInfo(id);
+            ApiResponse<Balance> localVarResponse = WalletBalanceWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -8447,7 +8447,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletBalanceWithHttpInfo(string id)
+        public ApiResponse<Balance> WalletBalanceWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8498,9 +8498,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -8508,10 +8508,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletBalanceAsync(string id)
+        /// <returns>Task of Balance</returns>
+        public async System.Threading.Tasks.Task<Balance> WalletBalanceAsync(string id)
         {
-            ApiResponse<Object> localVarResponse = await WalletBalanceAsyncWithHttpInfo(id);
+            ApiResponse<Balance> localVarResponse = await WalletBalanceAsyncWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -8521,7 +8521,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">tags to filter by</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletBalanceAsyncWithHttpInfo(string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Balance>> WalletBalanceAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8573,9 +8573,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Balance>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Balance) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Balance)));
         }
 
         /// <summary>
@@ -8793,10 +8793,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Object</returns>
-        public Object WalletDecrypt(string id, string password)
+        /// <returns>Wallet</returns>
+        public Wallet WalletDecrypt(string id, string password)
         {
-            ApiResponse<Object> localVarResponse = WalletDecryptWithHttpInfo(id, password);
+            ApiResponse<Wallet> localVarResponse = WalletDecryptWithHttpInfo(id, password);
             return localVarResponse.Data;
         }
 
@@ -8806,8 +8806,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletDecryptWithHttpInfo(string id, string password)
+        /// <returns>ApiResponse of Wallet</returns>
+        public ApiResponse<Wallet> WalletDecryptWithHttpInfo(string id, string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -8827,7 +8827,7 @@ namespace Skyapi.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
-            {
+            { "application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -8843,11 +8843,11 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            localVarQueryParams.AddRange(
+                            Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+                        localVarQueryParams.AddRange(
+                            Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8869,9 +8869,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -8880,10 +8880,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletDecryptAsync(string id, string password)
+        /// <returns>Task of Wallet</returns>
+        public async System.Threading.Tasks.Task<Wallet> WalletDecryptAsync(string id, string password)
         {
-            ApiResponse<Object> localVarResponse = await WalletDecryptAsyncWithHttpInfo(id, password);
+            ApiResponse<Wallet> localVarResponse = await WalletDecryptAsyncWithHttpInfo(id, password);
             return localVarResponse.Data;
         }
 
@@ -8893,8 +8893,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletDecryptAsyncWithHttpInfo(string id,
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletDecryptAsyncWithHttpInfo(string id,
             string password)
         {
             // verify the required parameter 'id' is set
@@ -8915,7 +8915,7 @@ namespace Skyapi.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
-            {
+            {"application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -8931,11 +8931,11 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+         localVarQueryParams.AddRange(
+                         Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+                     localVarQueryParams.AddRange(
+                         Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -8958,9 +8958,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -8969,10 +8969,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Object</returns>
-        public Object WalletEncrypt(string id, string password)
+        /// <returns>Wallet</returns>
+        public Wallet WalletEncrypt(string id, string password)
         {
-            ApiResponse<Object> localVarResponse = WalletEncryptWithHttpInfo(id, password);
+            ApiResponse<Wallet> localVarResponse = WalletEncryptWithHttpInfo(id, password);
             return localVarResponse.Data;
         }
 
@@ -8982,8 +8982,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletEncryptWithHttpInfo(string id, string password)
+        /// <returns>ApiResponse of Wallet</returns>
+        public ApiResponse<Wallet> WalletEncryptWithHttpInfo(string id, string password)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9004,6 +9004,7 @@ namespace Skyapi.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
             {
+                "application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -9019,11 +9020,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9045,9 +9045,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>
@@ -9056,10 +9056,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletEncryptAsync(string id, string password)
+        /// <returns>Task of Wallet</returns>
+        public async System.Threading.Tasks.Task<Wallet> WalletEncryptAsync(string id, string password)
         {
-            ApiResponse<Object> localVarResponse = await WalletEncryptAsyncWithHttpInfo(id, password);
+            ApiResponse<Wallet> localVarResponse = await WalletEncryptAsyncWithHttpInfo(id, password);
             return localVarResponse.Data;
         }
 
@@ -9069,8 +9069,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Wallet id.</param>
         /// <param name="password">Wallet password.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletEncryptAsyncWithHttpInfo(string id,
+        /// <returns>Task of ApiResponse (Wallet)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Wallet>> WalletEncryptAsyncWithHttpInfo(string id,
             string password)
         {
             // verify the required parameter 'id' is set
@@ -9091,7 +9091,7 @@ namespace Skyapi.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
-            {
+            { "application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -9107,11 +9107,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+           localVarQueryParams.AddRange(
+                           Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+                       localVarQueryParams.AddRange(
+                           Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9134,9 +9133,9 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Wallet>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Wallet) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Wallet)));
         }
 
         /// <summary>

@@ -74,10 +74,8 @@ namespace Skyapi.Test.Api
 // Genesis address check, should not have a balance
             var result = new Balance();
             Assert.DoesNotThrow(() =>
-            {
-                result = JsonConvert.DeserializeObject<Balance>(Utils.BalanceWithMethod(method: method,
-                    instance: instance, addrs: "2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6").ToString());
-            });
+                result = Utils.BalanceWithMethod(method: method,
+                    instance: instance, addrs: "2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"));
 
             Assert.AreEqual(JsonConvert.SerializeObject(result), JsonConvert.SerializeObject(new Balance
             {
@@ -85,28 +83,12 @@ namespace Skyapi.Test.Api
                 {
                     ["2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"] = new BalancePair
                     {
-                        Confirmed = new Confirm
-                        {
-                            coins = 0,
-                            hours = 0
-                        },
-                        Predicted = new Predict
-                        {
-                            coins = 0,
-                            hours = 0
-                        }
+                        Confirmed = new BalanceConfirm(),
+                        Predicted = new BalancePredict()
                     }
                 },
-                Confirmed = new Confirm
-                {
-                    coins = 0,
-                    hours = 0
-                },
-                Predicted = new Predict
-                {
-                    coins = 0,
-                    hours = 0
-                }
+                Confirmed = new BalanceConfirm(),
+                Predicted = new BalancePredict()
             }), "Genesis address.");
             // Balance of final distribution address. Should have the same coins balance
             // for the next 15-20 years.
@@ -116,14 +98,14 @@ namespace Skyapi.Test.Api
                 result = JsonConvert.DeserializeObject<Balance>(Utils.BalanceWithMethod(method: method,
                     instance: instance, addrs: "ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
             });
-            Assert.AreEqual(result.Confirmed.coins, result.Predicted.coins);
-            Assert.AreEqual(result.Confirmed.hours, result.Predicted.hours);
-            Assert.AreNotEqual(0, result.Confirmed.hours);
+            Assert.AreEqual(result.Confirmed.Coins, result.Predicted.Coins);
+            Assert.AreEqual(result.Confirmed.Hours, result.Predicted.Hours);
+            Assert.AreNotEqual(0, result.Confirmed.Hours);
 
             // Add 1e4 because someone sent 0.01 coins to it
             var expectedBalance = decimal.Parse("1E6", NumberStyles.Any) * decimal.Parse("1E6", NumberStyles.Any) +
                                   decimal.Parse("1E4", NumberStyles.Any);
-            Assert.AreEqual(expectedBalance, result.Confirmed.coins);
+            Assert.AreEqual(expectedBalance, result.Confirmed.Coins);
             // Check that the balance is queryable for addresses known to be affected
             // by the coinhour overflow problem
             var address = new[]

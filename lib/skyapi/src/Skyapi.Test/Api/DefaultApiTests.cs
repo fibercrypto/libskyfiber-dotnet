@@ -10,6 +10,7 @@
 
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Skyapi.Client;
@@ -738,6 +739,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletTest()
         {
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
             Assert.DoesNotThrow(() =>
             {
                 var randSeed = Utils.GenString();
@@ -753,10 +759,22 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletBalanceTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //var response = instance.WalletBalance(id);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var seed = Utils.GenString();
+            var wallet = _instance.WalletCreate(seed: seed, label: "wallet balance");
+            Assert.DoesNotThrow(() =>
+            {
+                var balanc = _instance.WalletBalance(wallet.Meta.Id);
+                Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address));
+                Assert.AreEqual(0, balanc.Confirmed.Coins);
+                Assert.AreEqual(0, balanc.Confirmed.Hours);
+                Assert.AreEqual(0, balanc.Predicted.Coins);
+                Assert.AreEqual(0, balanc.Predicted.Hours);
+            });
         }
 
         /// <summary>
@@ -765,14 +783,79 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletCreateTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string seed = null;
-            //string label = null;
-            //int? scan = null;
-            //bool? encrypt = null;
-            //string password = null;
-            //var response = instance.WalletCreate(seed, label, scan, encrypt, password);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "missing seed.",
+                    seed = "",
+                    encrypt = false,
+                    pass = "",
+                    errCode = 400,
+                    errMsg = "Error calling WalletCreate: 400 Bad Request - missing seed\n"
+                },
+                new
+                {
+                    name = "encrypt must be true",
+                    seed = Utils.GenString(),
+                    encrypt = false,
+                    pass = "1234",
+                    errCode = 400,
+                    errMsg =
+                        "Error calling WalletCreate: 400 Bad Request - encrypt must be true as password is provided\n"
+                },
+                new
+                {
+                    name = "no password",
+                    seed = Utils.GenString(),
+                    encrypt = true,
+                    pass = "",
+                    errCode = 400,
+                    errMsg = "Error calling WalletCreate: 400 Bad Request - missing password\n"
+                },
+                new
+                {
+                    name = "no encrypt",
+                    seed = Utils.GenString(),
+                    encrypt = false,
+                    pass = "",
+                    errCode = 200,
+                    errMsg = ""
+                },
+                new
+                {
+                    name = "encrypt wallet",
+                    seed = Utils.GenString(),
+                    encrypt = true,
+                    pass = "1234",
+                    errCode = 200,
+                    errMsg = ""
+                }
+            };
+
+            foreach (var tc in testCases)
+            {
+                if (tc.errCode != 200)
+                {
+                    var err = Assert.Throws<ApiException>(() =>
+                        _instance.WalletCreate(seed: tc.seed, label: tc.name, encrypt: tc.encrypt,
+                            password: tc.pass));
+                    Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
+                    Assert.AreEqual(tc.errMsg, err.Message, tc.name);
+                }
+                else
+                {
+                    var newWallet = _instance.WalletCreate(seed: tc.seed, label: tc.name, encrypt: tc.encrypt,
+                        password: tc.pass);
+                    var walletByid = _instance.Wallet(newWallet.Meta.Id);
+                    Assert.AreEqual(newWallet, walletByid, tc.name);
+                }
+            }
         }
 
         /// <summary>
@@ -781,11 +864,19 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletDecryptTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string password = null;
-            //var response = instance.WalletDecrypt(id, password);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var seed = Utils.GenString();
+            var pass = "1234";
+            var walletEncrypt =
+                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: true, password: pass);
+            var walletDecrypt = _instance.WalletDecrypt(id: walletEncrypt.Meta.Id, password: pass);
+            walletEncrypt.Meta.Encrypted = false;
+            walletEncrypt.Meta.CryptoType = "";
+            Assert.AreEqual(walletEncrypt, walletDecrypt);
         }
 
         /// <summary>
@@ -794,11 +885,19 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletEncryptTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string password = null;
-            //var response = instance.WalletEncrypt(id, password);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var seed = Utils.GenString();
+            var pass = "1234";
+            var walletDecrypt =
+                _instance.WalletCreate(seed: seed, label: "decrypt wallet.", encrypt: false);
+            var walletEncrypt = _instance.WalletEncrypt(id: walletDecrypt.Meta.Id, password: pass);
+            walletEncrypt.Meta.Encrypted = false;
+            walletEncrypt.Meta.CryptoType = "";
+            Assert.AreEqual(walletDecrypt, walletEncrypt);
         }
 
         /// <summary>
@@ -807,10 +906,12 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletFolderTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string addr = null;
-            //var response = instance.WalletFolder(addr);
-            //Assert.IsInstanceOf<InlineResponse2007> (response, "response is InlineResponse2007");
+            Assert.DoesNotThrow(() =>
+            {
+                var folderName = _instance.WalletFolder();
+                Assert.NotNull(folderName);
+                Assert.IsNotEmpty(folderName.Address);
+            });
         }
 
         /// <summary>
@@ -845,6 +946,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
             var randSeed = Utils.GenString();
 
             Assert.DoesNotThrow(() =>
@@ -885,7 +991,6 @@ namespace Skyapi.Test.Api
                 _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
             }
 
-            _instance.Configuration.AddDefaultHeader("Content-Type", "application/json");
             //Test with correct seed
             var result =
                 _instance.WalletSeedVerify(

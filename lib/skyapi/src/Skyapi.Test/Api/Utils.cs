@@ -22,7 +22,7 @@ namespace Skyapi.Test.Api
         /// <param name="addrs"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object BalanceWithMethod(Method method, DefaultApi instance, string addrs = null,
+        internal static Balance BalanceWithMethod(Method method, DefaultApi instance, string addrs = null,
             string golden = null)
         {
             if (method == Method.GET)
@@ -356,12 +356,12 @@ namespace Skyapi.Test.Api
 
             var walletBalance =
                 JsonConvert.DeserializeObject<Balance>(instance.WalletBalance(wallet.Meta.Id).ToString());
-            if (walletBalance.Confirmed.coins < minicoins)
+            if (walletBalance.Confirmed.Coins < minicoins)
             {
                 Assert.Fail($"Wallet must have at least {minicoins} coins");
             }
 
-            if (walletBalance.Confirmed.hours < minihours)
+            if (walletBalance.Confirmed.Hours < minihours)
             {
                 Assert.Fail($"Wallet must have at least {minihours} coins hours");
             }
@@ -369,8 +369,8 @@ namespace Skyapi.Test.Api
             return new
             {
                 wallet,
-                walletBalance.Confirmed.coins,
-                walletBalance.Confirmed.hours,
+                walletBalance.Confirmed.Coins,
+                walletBalance.Confirmed.Hours,
                 password = GetWalletPassword()
             };
         }

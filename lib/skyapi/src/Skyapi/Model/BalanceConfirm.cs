@@ -11,32 +11,30 @@ namespace Skyapi.Model
     /// 
     /// </summary>
     [DataContract]
-    public class BalancePair : IEquatable<BalancePair>, IValidatableObject
+    public class BalanceConfirm : IEquatable<BalanceConfirm>, IValidatableObject
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="confirmed"></param>
-        /// <param name="predicted"></param>
-        public BalancePair(BalanceConfirm confirmed = default(BalanceConfirm),
-            BalancePredict predicted = default(BalancePredict))
+        /// <param name="coins"></param>
+        /// <param name="hours"></param>
+        public BalanceConfirm(long coins = default(long), long hours = default(long))
         {
-            Confirmed = confirmed;
-            Predicted = predicted;
+            Coins = coins;
+            Hours = hours;
         }
 
         /// <summary>
-        /// Gets or Sets Confirmed
+        /// Gets or Sets Coins
         /// </summary>
-        [DataMember(Name = "confirmed", EmitDefaultValue = true)]
-        public BalanceConfirm Confirmed { get; set; }
+        [DataMember(Name = "coins", EmitDefaultValue = true)]
+        public long Coins { get; set; }
 
         /// <summary>
-        /// Gets or Sets Predicted
+        /// Gets or Sets Coins
         /// </summary>
-        [DataMember(Name = "predicted", EmitDefaultValue = true)]
-        public BalancePredict Predicted { get; set; }
-
+        [DataMember(Name = "hours", EmitDefaultValue = true)]
+        public long Hours { get; set; }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
@@ -54,12 +52,13 @@ namespace Skyapi.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class BalancePair {\n");
-            sb.Append("  confirmed: ").Append(Confirmed).Append("\n");
-            sb.Append("  predicted: ").Append(Predicted).Append("\n");
+            sb.Append("class BalanceConfirm {\n");
+            sb.Append("  coins: ").Append(Coins).Append("\n");
+            sb.Append("  hours: ").Append(Hours).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
+
 
         /// <summary>
         /// Returns true if objects are equal
@@ -68,23 +67,23 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return Equals(input as BalancePair);
+            return Equals(input as BalanceConfirm);
         }
 
         /// <summary>
-        /// Returns true if BalancePair instances are equal
+        /// Returns true if BalanceConfirm instances are equal
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public bool Equals(BalancePair input)
+        public bool Equals(BalanceConfirm input)
         {
             if (input == null)
             {
                 return false;
             }
 
-            return Confirmed != null && Confirmed.Equals(input.Confirmed) &&
-                   (Predicted.Equals(input.Predicted) || Predicted != null);
+            return Coins.Equals(input.Coins) &&
+                   Hours == input.Hours;
         }
 
         /// <summary>
@@ -96,10 +95,10 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Confirmed != null)
-                    hashCode = hashCode * 59 + Confirmed.GetHashCode();
-                if (Predicted != null)
-                    hashCode = hashCode * 59 + Predicted.GetHashCode();
+                if (Coins != null)
+                    hashCode = hashCode * 59 + Coins.GetHashCode();
+                if (Hours != null)
+                    hashCode = hashCode * 59 + Hours.GetHashCode();
                 return hashCode;
             }
         }
