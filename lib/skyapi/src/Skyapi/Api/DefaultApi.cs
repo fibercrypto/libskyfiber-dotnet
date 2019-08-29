@@ -1020,7 +1020,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        Object WalletNewAddress(string id, string num = null, string password = null);
+        Object WalletNewAddress(string id, int num = 1, string password = null);
 
         /// <summary>
         /// 
@@ -1033,7 +1033,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, string num = null, string password = null);
+        ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, int num = 1, string password = null);
 
         /// <summary>
         /// 
@@ -2278,7 +2278,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, string num = null, string password = null);
+        System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, int num = 1, string password = null);
 
         /// <summary>
         /// 
@@ -2291,7 +2291,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo(string id, string num = null,
+        System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo(string id, int num = 1,
             string password = null);
 
         /// <summary>
@@ -4387,7 +4387,7 @@ namespace Skyapi.Api
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
-            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
@@ -4466,7 +4466,7 @@ namespace Skyapi.Api
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
-            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(
                 localVarPath,
@@ -4779,7 +4779,7 @@ namespace Skyapi.Api
             {
                 localVarHeaderParams["X-CSRF-TOKEN"] = this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
             }
-            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(
                 localVarPath,
@@ -9303,7 +9303,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        public Object WalletNewAddress(string id, string num = null, string password = null)
+        public Object WalletNewAddress(string id, int num = 1, string password = null)
         {
             ApiResponse<Object> localVarResponse = WalletNewAddressWithHttpInfo(id, num, password);
             return localVarResponse.Data;
@@ -9317,7 +9317,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, string num = null, string password = null)
+        public ApiResponse<Object> WalletNewAddressWithHttpInfo(string id, int num = 1, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9335,6 +9335,7 @@ namespace Skyapi.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
             {
+                "application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -9393,7 +9394,7 @@ namespace Skyapi.Api
         /// <param name="num">The number you want to generate (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, string num = null,
+        public async System.Threading.Tasks.Task<Object> WalletNewAddressAsync(string id, int num = 0,
             string password = null)
         {
             ApiResponse<Object> localVarResponse = await WalletNewAddressAsyncWithHttpInfo(id, num, password);
@@ -9409,7 +9410,7 @@ namespace Skyapi.Api
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletNewAddressAsyncWithHttpInfo(string id,
-            string num = null, string password = null)
+            int num = 0, string password = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9841,6 +9842,7 @@ namespace Skyapi.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[]
             {
+                "application/x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -9856,12 +9858,12 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (password != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
+
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "password", password)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))

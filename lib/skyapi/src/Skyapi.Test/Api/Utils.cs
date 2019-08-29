@@ -305,6 +305,13 @@ namespace Skyapi.Test.Api
             return walletname;
         }
 
+        internal static string Getssss()
+        {
+            var walletname = Environment.GetEnvironmentVariable("WALLET_NAME");
+            Assert.NotNull(walletname, "Missing WALLET_NAME environment value");
+            return walletname;
+        }
+
         internal static string GetWalletPassword()
         {
             return Environment.GetEnvironmentVariable("WALLET_PASSWORD");
@@ -312,7 +319,7 @@ namespace Skyapi.Test.Api
 
         internal static string GetTestMode()
         {
-            return Environment.GetEnvironmentVariable("TESTMODE") ?? "stable";
+            return Environment.GetEnvironmentVariable("TEST_MODE") ?? "live";
         }
 
         internal static string GetCoin()
@@ -327,7 +334,7 @@ namespace Skyapi.Test.Api
 
         internal static string GetNodeHost()
         {
-            return Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://178.157.90.129:6420";
+            return Environment.GetEnvironmentVariable("SKYCOIN_NODE_HOST") ?? "http://localhost:6420";
         }
 
         internal static bool DbNoUnconfirmed()
@@ -350,7 +357,7 @@ namespace Skyapi.Test.Api
 
             if (wallet.Entries.Count < 2)
             {
-                instance.WalletNewAddress(wallet.Meta.Id, "2", GetWalletPassword());
+                instance.WalletNewAddress(wallet.Meta.Id, 1, GetWalletPassword());
                 wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
             }
 
