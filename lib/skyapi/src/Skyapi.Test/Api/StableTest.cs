@@ -1149,5 +1149,45 @@ namespace Skyapi.Test.Api
 
             Utils.ScanUxouts(instance);
         }
+
+        internal static void WalletBalance(DefaultApi instance)
+        {
+            if (!instance.Wallets().Exists(w => w.Meta.Label.Equals("my wallet balance")))
+            {
+                var seed = Utils.GenString();
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                instance.WalletCreate(seed, "my wallet balance");
+            }
+
+            var wallet = instance.Wallets().Find(w => w.Meta.Label.Equals("my wallet balance"));
+            Assert.DoesNotThrow(() =>
+            {
+                var balanc = instance.WalletBalance(wallet.Meta.Id);
+                Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address));
+                Utils.CheckGoldenFile("wallet-balance.golden", balanc, balanc.GetType());
+            });
+        }
+
+        internal static void WalletTransactions(DefaultApi instance)
+        {
+            if (!instance.Wallets().Exists(w => w.Meta.Label.Equals("wallet transactions")))
+            {
+                var seed = Utils.GenString();
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                instance.WalletCreate(seed, "wallet transactions");
+            }
+
+            var wallet = instance.Wallets().Find(w => w.Meta.Label.Equals("wallet transactions"));
+            var result = instance.WalletTransactions(wallet.Meta.Id);
+            Utils.CheckGoldenFile("wallet-transactions.golden", result, result.GetType());
+        }
     }
 }

@@ -10682,8 +10682,9 @@ namespace Skyapi.Api
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[]
+            var localVarHttpContentTypes = new[]
             {
+                "x-www-form-urlencoded"
             };
             String localVarHttpContentType =
                 this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -10699,9 +10700,8 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -10863,11 +10863,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (label != null)
-                localVarHeaderParams.Add("label",
-                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); //query parameters
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "label", label)); //query parameters
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -10951,11 +10950,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (label != null)
-                localVarHeaderParams.Add("label",
-                    this.Configuration.ApiClient.ParameterToString(label)); // header parameter
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); //query parameters
+            localVarQueryParams.AddRange(
+                Configuration.ApiClient.ParameterToKeyValuePairs("", "label", label)); //query parameters
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))

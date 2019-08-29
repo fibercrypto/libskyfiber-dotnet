@@ -305,13 +305,6 @@ namespace Skyapi.Test.Api
             return walletname;
         }
 
-        internal static string Getssss()
-        {
-            var walletname = Environment.GetEnvironmentVariable("WALLET_NAME");
-            Assert.NotNull(walletname, "Missing WALLET_NAME environment value");
-            return walletname;
-        }
-
         internal static string GetWalletPassword()
         {
             return Environment.GetEnvironmentVariable("WALLET_PASSWORD");

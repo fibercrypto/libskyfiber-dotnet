@@ -758,9 +758,10 @@ namespace Skyapi.Test.Api
             Assert.DoesNotThrow(() =>
             {
                 var randSeed = Utils.GenString();
-                var cwallet = _instance.WalletCreate(seed: randSeed, label: "the label of my wallet");
-                var wallet = _instance.Wallet(cwallet.Meta.Id);
-                Assert.AreEqual(cwallet, wallet);
+                var newwallet = _instance.WalletCreate(seed: randSeed, label: "the label of my wallet");
+                var wallet = _instance.Wallet(newwallet.Meta.Id);
+               _instance.WalletUnload(newwallet.Meta.Id);
+                Assert.AreEqual(newwallet, wallet);
             });
         }
 
@@ -770,22 +771,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletBalanceTest()
         {
-            if (Utils.UseCsrf())
+            if (Utils.GetTestMode().Equals("stable"))
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                StableTest.WalletBalance(_instance);
             }
-
-            var seed = Utils.GenString();
-            var wallet = _instance.WalletCreate(seed: seed, label: "wallet balance");
-            Assert.DoesNotThrow(() =>
+            else if (Utils.GetTestMode().Equals("live"))
             {
-                var balanc = _instance.WalletBalance(wallet.Meta.Id);
-                Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address));
-                Assert.AreEqual(0, balanc.Confirmed.Coins);
-                Assert.AreEqual(0, balanc.Confirmed.Hours);
-                Assert.AreEqual(0, balanc.Predicted.Coins);
-                Assert.AreEqual(0, balanc.Predicted.Hours);
-            });
+                /////////
+            }
         }
 
         /// <summary>
@@ -794,7 +787,6 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletCreateTest()
         {
-            
             Assert.Ignore();
             if (Utils.UseCsrf())
             {
@@ -995,8 +987,8 @@ namespace Skyapi.Test.Api
                 },
                 new
                 {
-                    name = "wrong entropy",
-                    entropy = "160",
+                    name = "entropy 100",
+                    entropy = "100",
                     cantwords = 12,
                     errCode = 400,
                     errMsg = "Error calling WalletNewSeed: 400 Bad Request - entropy length must be 128 or 256\n"
@@ -1015,6 +1007,8 @@ namespace Skyapi.Test.Api
                 {
                     dynamic newseed = _instance.WalletNewSeed(tc.entropy);
                     Assert.True(newseed.seed.ToString().Split(' ').Length == tc.cantwords, tc.name);
+                    dynamic newseed2 = _instance.WalletNewSeed(tc.entropy);
+                    Assert.AreNotEqual(newseed.seed.ToString(), newseed2.seed.ToString(), tc.name);
                 }
             }
         }
@@ -1137,10 +1131,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletTransactionsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //var response = instance.WalletTransactions(id);
-            //Assert.IsInstanceOf<InlineResponse2006> (response, "response is InlineResponse2006");
+            if (Utils.GetTestMode().Equals("stable"))
+            {
+                StableTest.WalletTransactions(_instance);
+            }
+            else if (Utils.GetTestMode().Equals("live"))
+            {
+                /////////
+            }
         }
 
         /// <summary>
@@ -1160,11 +1158,37 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletUpdateTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string label = null;
-            //var response = instance.WalletUpdate(id, label);
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            if (!_instance.Wallets().Exists(w => w.Meta.Label.Equals("my wallet update")))
+            {
+                if (Utils.UseCsrf())
+                {
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                }
+
+                var seed = Utils.GenString();
+                _instance.WalletCreate(seed, "my wallet update");
+            }
+
+            var wallet = _instance.Wallets().Find(w => w.Meta.Label.Equals("my wallet update"));
+            var newlabel = "My new label for my wallet.";
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var result = _instance.WalletUpdate(wallet.Meta.Id, newlabel);
+
+            var walletWithNewLabel = _instance.Wallet(wallet.Meta.Id);
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            _instance.WalletUpdate(wallet.Meta.Id, "my wallet update");
+
+            Assert.AreEqual("\"success\"", result);
+            Assert.True(walletWithNewLabel.Meta.Label.Equals(newlabel));
         }
 
         /// <summary>
