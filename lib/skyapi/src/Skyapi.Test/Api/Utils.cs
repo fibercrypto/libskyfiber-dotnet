@@ -161,7 +161,7 @@ namespace Skyapi.Test.Api
             int s = (int) double.Parse(x.Length >= 2 ? (x[1] != "" ? x[1] : "0") : "0"),
                 m = (int) double.Parse(x.Length >= 3 ? (x[2] != "" ? x[2] : "0") : "0"),
                 h = (int) double.Parse(x.Length >= 4 ? (x[3] != "" ? x[3] : "0") : "0");
-            Assert.True(new TimeSpan(h, m, s) > TimeSpan.Zero,"CompareTime");
+            Assert.True(h > 0 || m > 0 || s > 0);
         }
 
         /// <summary>

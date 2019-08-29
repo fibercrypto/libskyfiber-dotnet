@@ -601,7 +601,6 @@ namespace Skyapi.Test.Api
         internal static void Health(DefaultApi instance)
         {
             var result = JsonConvert.DeserializeObject<Health>(instance.Health().ToString());
-            Console.WriteLine(JsonConvert.SerializeObject(result,Formatting.Indented));
             Utils.CheckHealthResponse(result);
             Assert.AreEqual(0, result.Open_Connections, "Open Connections");
             Assert.AreEqual(0, result.Incoming_Connections, "Incoming Connections");
