@@ -760,7 +760,7 @@ namespace Skyapi.Test.Api
                 var randSeed = Utils.GenString();
                 var newwallet = _instance.WalletCreate(seed: randSeed, label: "the label of my wallet");
                 var wallet = _instance.Wallet(newwallet.Meta.Id);
-               _instance.WalletUnload(newwallet.Meta.Id);
+                _instance.WalletUnload(newwallet.Meta.Id);
                 Assert.AreEqual(newwallet, wallet);
             });
         }
@@ -777,7 +777,7 @@ namespace Skyapi.Test.Api
             }
             else if (Utils.GetTestMode().Equals("live"))
             {
-                /////////
+                LiveTest.WalletBalance(_instance);
             }
         }
 
@@ -787,6 +787,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletCreateTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }    
+
             Assert.Ignore();
             if (Utils.UseCsrf())
             {
@@ -869,6 +874,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletDecryptTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             Assert.Ignore();
             var seed = Utils.GenString();
             var pass = "1234";
@@ -896,6 +906,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletEncryptTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             Assert.Ignore();
             var seed = Utils.GenString();
             var pass = "1234";
@@ -923,6 +938,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletFolderTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             Assert.DoesNotThrow(() =>
             {
                 var folderName = _instance.WalletFolder();
@@ -967,6 +987,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletNewSeedTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -1019,6 +1044,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             Assert.Ignore();
             var randSeed = Utils.GenString();
 
@@ -1102,30 +1132,6 @@ namespace Skyapi.Test.Api
         }
 
         /// <summary>
-        /// Test WalletTransaction
-        /// </summary>
-        [Test]
-        public void WalletTransactionTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //WalletTransactionRequest walletTransactionRequest = null;
-            //var response = instance.WalletTransaction(walletTransactionRequest);
-            //Assert.IsInstanceOf<Object> (response, "response is Object");
-        }
-
-        /// <summary>
-        /// Test WalletTransactionSign
-        /// </summary>
-        [Test]
-        public void WalletTransactionSignTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //WalletTransactionSignRequest walletTransactionSignRequest = null;
-            //var response = instance.WalletTransactionSign(walletTransactionSignRequest);
-            //Assert.IsInstanceOf<InlineResponse2009> (response, "response is InlineResponse2009");
-        }
-
-        /// <summary>
         /// Test WalletTransactions
         /// </summary>
         [Test]
@@ -1137,19 +1143,8 @@ namespace Skyapi.Test.Api
             }
             else if (Utils.GetTestMode().Equals("live"))
             {
-                /////////
+                LiveTest.WalletTransactions(_instance);
             }
-        }
-
-        /// <summary>
-        /// Test WalletUnload
-        /// </summary>
-        [Test]
-        public void WalletUnloadTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //instance.WalletUnload(id);
         }
 
         /// <summary>
@@ -1158,6 +1153,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletUpdateTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             if (!_instance.Wallets().Exists(w => w.Meta.Label.Equals("my wallet update")))
             {
                 if (Utils.UseCsrf())
@@ -1197,6 +1197,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletsTest()
         {
+            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
             var result = _instance.Wallets();
 
             result.ForEach(wlt =>

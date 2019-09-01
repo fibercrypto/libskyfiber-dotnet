@@ -37,6 +37,9 @@ Contact: contact@skycoin.net
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibskycoinNet, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>bin\Debug\LibskycoinNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

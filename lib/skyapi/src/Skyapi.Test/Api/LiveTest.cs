@@ -64,7 +64,14 @@ namespace Skyapi.Test.Api
                 else
                 {
                     var result = instance.AddressUxouts(tc.address);
-                    Assert.IsEmpty(result, tc.name);
+                    if (tc.name.Equals("unknown address"))
+                    {
+                        Assert.IsEmpty(result, tc.name);
+                    }
+                    else
+                    {
+                        Assert.IsNotEmpty(result, tc.name);
+                    }
                 }
             }
         }
@@ -95,8 +102,8 @@ namespace Skyapi.Test.Api
 
             Assert.DoesNotThrow(() =>
             {
-                result = JsonConvert.DeserializeObject<Balance>(Utils.BalanceWithMethod(method: method,
-                    instance: instance, addrs: "ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm").ToString());
+                result = Utils.BalanceWithMethod(method: method,
+                    instance: instance, addrs: "ejJjiCwp86ykmFr5iTJ8LxQXJ2wJPTYmkm");
             });
             Assert.AreEqual(result.Confirmed.Coins, result.Predicted.Coins);
             Assert.AreEqual(result.Confirmed.Hours, result.Predicted.Hours);
@@ -134,11 +141,11 @@ namespace Skyapi.Test.Api
 
         internal static void BlockChainProgress(DefaultApi instance)
         {
-            var result = JsonConvert.DeserializeObject<Progress>(instance.BlockchainProgress().ToString());
+            var result = instance.BlockchainProgress();
             Assert.AreNotEqual(0, result.Current);
             if (Utils.LiveDisableNetworking())
             {
-                Assert.IsEmpty(result.Peer);
+                Assert.IsNull(result.Peer, "peer");
                 Assert.AreEqual(result.Current, result.Highest);
             }
             else
@@ -232,12 +239,12 @@ namespace Skyapi.Test.Api
                     Utils.TransactionsWithMethod(method: method, instance: instance,
                             addrs: string.Join(",", simpleaddrs), confirmed: "false")
                         .ToString());
-            Assert.True(sresult.Count >= 0, "simpleaddress, confirm=false");
+            Assert.True(sresult.Count >= 0, "simpleaddress, confirmed=false");
             Utils.AssertNoTransactionsDupes(sresult);
             mresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
                     Utils.TransactionsWithMethod(method: method, instance: instance,
-                            addrs: string.Join(",", ""), confirmed: "false")
+                            addrs: string.Join(",", multiaddrs), confirmed: "false")
                         .ToString());
             Assert.True(mresult.Count >= 0, "multiaddress, confirm=false");
             Assert.True(mresult.Count >= sresult.Count, "mresult.Count >= sresult.Count confirmed=false");
@@ -252,8 +259,7 @@ namespace Skyapi.Test.Api
             Utils.AssertNoTransactionsDupes(sresult);
             mresult =
                 JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: instance,
-                            addrs: string.Join(",", ""), confirmed: "true")
+                    Utils.TransactionsWithMethod(method: method, instance: instance, confirmed: "true")
                         .ToString());
             Assert.True(mresult.Count >= 0, "simpleaddress, confirm=true");
             Assert.True(mresult.Count >= sresult.Count, "mresult.Count >= sresult.Count confirmed=true");
@@ -370,8 +376,8 @@ namespace Skyapi.Test.Api
 
         internal static void Outputs(Method method, DefaultApi instance)
         {
-            dynamic outputs = Utils.OutputsWithMethod(method: method, instance: instance);
-            Assert.IsNotEmpty(outputs.head_outputs);
+            var outputs = Utils.OutputsWithMethod(method: method, instance: instance);
+            Assert.IsNotEmpty(outputs.HeaderOutputs);
         }
 
 
@@ -553,15 +559,17 @@ namespace Skyapi.Test.Api
 
         public static void TransactionInjectDisableNetworking(DefaultApi instance)
         {
-            //
             var rawtx = "00000000000000000000000000000000000000000000000000000000000000000000000000000" +
                         "00000000000000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a00" +
                         "0000407a10f35a0000";
+            if (Utils.UseCsrf()) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
             var err = Assert.Throws<ApiException>(() => instance.TransactionInject(rawtx),
                 "valid request, networking disabled");
-            Assert.AreEqual(err.ErrorCode, 400);
-            Assert.AreEqual(err.Message,
-                "Error calling TransactionInject: 400 Bad Request - Transaction violates hard constraint: No inputs");
+            Console.WriteLine(err.Message);
+            Assert.AreEqual(400, err.ErrorCode);
+            Assert.AreEqual(
+                "Error calling TransactionInject: 400 Bad Request - Transaction violates hard " +
+                "constraint: No inputs", err.Message);
         }
 
         public static void TransactionInjectEnableNetworking(DefaultApi instance)
@@ -679,6 +687,34 @@ namespace Skyapi.Test.Api
                     t.Wait();
                     tc.checkt(txn);
                 }, tc.name);
+            }
+        }
+
+        internal static void WalletBalance(DefaultApi instance)
+        {
+            Utils.RequireWalletEnv();
+            var walletname = Utils.GetWalletName();
+            Assert.DoesNotThrow(() =>
+            {
+                var walletbalance = instance.WalletBalance(walletname);
+                Assert.NotNull(walletbalance);
+                Assert.NotNull(walletbalance.Addresses);
+            });
+        }
+
+        internal static void WalletTransactions(DefaultApi instance)
+        {
+            Utils.RequireWalletEnv();
+            var walletid = Utils.GetWalletName();
+            var result = instance.WalletTransactions(walletid);
+            var bw = instance.WalletBalance(walletid);
+            if (bw.Predicted.Coins != bw.Confirmed.Coins)
+            {
+                Assert.NotNull(result.Transactions);
+            }
+            else
+            {
+                Assert.IsNull(result.Transactions);
             }
         }
     }

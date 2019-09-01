@@ -205,8 +205,8 @@ namespace Skyapi.Api
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Object</returns>
-        Object BlockchainProgress();
+        /// <returns>BlockchainProgress</returns>
+        BlockchainProgress BlockchainProgress();
 
         /// <summary>
         /// Returns the blockchain sync progress.
@@ -215,8 +215,8 @@ namespace Skyapi.Api
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> BlockchainProgressWithHttpInfo();
+        /// <returns>ApiResponse of BlockchainProgress</returns>
+        ApiResponse<BlockchainProgress> BlockchainProgressWithHttpInfo();
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -649,7 +649,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>Transaction</returns>
-        Transaction Transaction(string txid);
+        Transaction Transaction(string txid, bool encoded = false);
 
         /// <summary>
         /// 
@@ -660,7 +660,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
         /// <returns>ApiResponse of Transaction</returns>
-        ApiResponse<Transaction> TransactionWithHttpInfo(string txid);
+        ApiResponse<Transaction> TransactionWithHttpInfo(string txid, bool encoded = false);
 
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
@@ -1446,8 +1446,8 @@ namespace Skyapi.Api
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> BlockchainProgressAsync();
+        /// <returns>Task of BlockchainProgress</returns>
+        System.Threading.Tasks.Task<BlockchainProgress> BlockchainProgressAsync();
 
         /// <summary>
         /// Returns the blockchain sync progress.
@@ -1456,8 +1456,8 @@ namespace Skyapi.Api
         /// 
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo();
+        /// <returns>Task of ApiResponse (BlockchainProgress)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BlockchainProgress>> BlockchainProgressAsyncWithHttpInfo();
 
         /// <summary>
         /// Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
@@ -1900,8 +1900,9 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>Task of Transaction</returns>
-        System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid);
+        System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid, bool encoded = false);
 
         /// <summary>
         /// 
@@ -1911,8 +1912,10 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid);
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid,
+            bool encoded = false);
 
         /// <summary>
         /// Broadcast a hex-encoded, serialized transaction to the network.
@@ -3774,10 +3777,10 @@ namespace Skyapi.Api
         /// Returns the blockchain sync progress. 
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Object</returns>
-        public Object BlockchainProgress()
+        /// <returns>BlockchainProgress</returns>
+        public BlockchainProgress BlockchainProgress()
         {
-            ApiResponse<Object> localVarResponse = BlockchainProgressWithHttpInfo();
+            ApiResponse<BlockchainProgress> localVarResponse = BlockchainProgressWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -3785,8 +3788,8 @@ namespace Skyapi.Api
         /// Returns the blockchain sync progress. 
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> BlockchainProgressWithHttpInfo()
+        /// <returns>ApiResponse of BlockchainProgress</returns>
+        public ApiResponse<BlockchainProgress> BlockchainProgressWithHttpInfo()
         {
             var localVarPath = "/api/v1/blockchain/progress";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3829,19 +3832,20 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<BlockchainProgress>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (BlockchainProgress) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(BlockchainProgress)));
         }
 
         /// <summary>
         /// Returns the blockchain sync progress. 
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> BlockchainProgressAsync()
+        /// <returns>Task of BlockchainProgress</returns>
+        public async System.Threading.Tasks.Task<BlockchainProgress> BlockchainProgressAsync()
         {
-            ApiResponse<Object> localVarResponse = await BlockchainProgressAsyncWithHttpInfo();
+            ApiResponse<BlockchainProgress> localVarResponse = await BlockchainProgressAsyncWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -3849,8 +3853,8 @@ namespace Skyapi.Api
         /// Returns the blockchain sync progress. 
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> BlockchainProgressAsyncWithHttpInfo()
+        /// <returns>Task of ApiResponse (BlockchainProgress)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BlockchainProgress>> BlockchainProgressAsyncWithHttpInfo()
         {
             var localVarPath = "/api/v1/blockchain/progress";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3894,9 +3898,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<BlockchainProgress>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (BlockchainProgress) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(BlockchainProgress)));
         }
 
         /// <summary>
@@ -6707,10 +6712,11 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>Transaction</returns>
-        public Transaction Transaction(string txid)
+        public Transaction Transaction(string txid, bool encoded = false)
         {
-            ApiResponse<Transaction> localVarResponse = TransactionWithHttpInfo(txid);
+            ApiResponse<Transaction> localVarResponse = TransactionWithHttpInfo(txid, encoded);
             return localVarResponse.Data;
         }
 
@@ -6719,8 +6725,9 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>ApiResponse of Transaction</returns>
-        public ApiResponse<Transaction> TransactionWithHttpInfo(string txid)
+        public ApiResponse<Transaction> TransactionWithHttpInfo(string txid, bool encoded = false)
         {
             // verify the required parameter 'txid' is set
             if (txid == null)
@@ -6752,9 +6759,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "encoded", encoded)); // query parameter
 
 
             // make the HTTP request
@@ -6781,10 +6789,11 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>Task of Transaction</returns>
-        public async System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid)
+        public async System.Threading.Tasks.Task<Transaction> TransactionAsync(string txid, bool encoded = false)
         {
-            ApiResponse<Transaction> localVarResponse = await TransactionAsyncWithHttpInfo(txid);
+            ApiResponse<Transaction> localVarResponse = await TransactionAsyncWithHttpInfo(txid, encoded);
             return localVarResponse.Data;
         }
 
@@ -6793,8 +6802,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="txid">transaction Id</param>
+        /// <param name="encoded"></param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid)
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> TransactionAsyncWithHttpInfo(string txid,
+            bool encoded = false)
         {
             // verify the required parameter 'txid' is set
             if (txid == null)
@@ -6826,9 +6837,10 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (txid != null)
-                localVarQueryParams.AddRange(
-                    this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "txid", txid)); // query parameter
+            localVarQueryParams.AddRange(
+                this.Configuration.ApiClient.ParameterToKeyValuePairs("", "encoded", encoded)); // query parameter
 
 
             // make the HTTP request

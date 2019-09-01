@@ -114,7 +114,7 @@ namespace Skyapi.Test.Api
         /// <param name="hashes"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object OutputsWithMethod(Method method, DefaultApi instance,
+        internal static Outputs OutputsWithMethod(Method method, DefaultApi instance,
             List<string> addrs = null, List<string> hashes = null, string golden = null)
         {
             if (method == Method.GET)
@@ -305,6 +305,21 @@ namespace Skyapi.Test.Api
             return walletname;
         }
 
+        internal static bool DoLiveWallet()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_WALLET") ?? "false");
+        }
+
+        internal static void RequireWalletEnv()
+        {
+            if (!DoLiveWallet())
+            {
+                return;
+            }
+
+            var walletName = GetWalletName();
+        }
+
         internal static string GetWalletPassword()
         {
             return Environment.GetEnvironmentVariable("WALLET_PASSWORD");
@@ -441,6 +456,11 @@ namespace Skyapi.Test.Api
             var token = Convert.ToBase64String(miGuid.ToByteArray());
             token = token.Replace("=", "").Replace("+", "");
             return token.Substring(0, lon);
+        }
+
+        internal static void MakeLiveCreateTxnTestCases(Wallet w,long totalcoins,long totalhours)
+        {
+            
         }
     }
 }

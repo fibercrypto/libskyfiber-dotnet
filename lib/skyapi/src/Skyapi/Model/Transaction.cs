@@ -28,7 +28,7 @@ namespace Skyapi.Model
     /// Transaction
     /// </summary>
     [DataContract]
-    public partial class Transaction :  IEquatable<Transaction>, IValidatableObject
+    public partial class Transaction : IEquatable<Transaction>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Transaction" /> class.
@@ -36,30 +36,40 @@ namespace Skyapi.Model
         /// <param name="status">status.</param>
         /// <param name="txn">txn.</param>
         /// <param name="time">time.</param>
-        public Transaction(TransactionStatus status = default(TransactionStatus), TransactionTxn txn = default(TransactionTxn), long? time = default(long?))
+        ///     /// <param name="encodedTransaction">encodedTransaction.</param>
+        public Transaction(TransactionStatus status = default(TransactionStatus),
+            TransactionTxn txn = default(TransactionTxn), long? time = default(long?),
+            string encodedTransaction = default(string))
         {
             this.Status = status;
             this.Txn = txn;
             this.Time = time;
+            this.EncodedTransaction = encodedTransaction;
         }
-        
+
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public TransactionStatus Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Txn
         /// </summary>
-        [DataMember(Name="txn", EmitDefaultValue=false)]
+        [DataMember(Name = "txn", EmitDefaultValue = false)]
         public TransactionTxn Txn { get; set; }
 
         /// <summary>
         /// Gets or Sets Time
         /// </summary>
-        [DataMember(Name="time", EmitDefaultValue=false)]
+        [DataMember(Name = "time", EmitDefaultValue = false)]
         public long? Time { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EncodedTransaction
+        /// </summary>
+        [DataMember(Name = "encoded_transaction", EmitDefaultValue = false)]
+        public string EncodedTransaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +82,11 @@ namespace Skyapi.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Txn: ").Append(Txn).Append("\n");
             sb.Append("  Time: ").Append(Time).Append("\n");
+            sb.Append("  EncodedTransaction: ").Append(EncodedTransaction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,22 +116,25 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
+                     this.Status.Equals(input.Status))
+                ) &&
                 (
                     this.Txn == input.Txn ||
                     (this.Txn != null &&
-                    this.Txn.Equals(input.Txn))
-                ) && 
+                     this.Txn.Equals(input.Txn))
+                ) &&
                 (
                     this.Time == input.Time ||
                     (this.Time != null &&
-                    this.Time.Equals(input.Time))
-                );
+                     this.Time.Equals(input.Time))
+                ) && (
+                    this.EncodedTransaction == input.EncodedTransaction ||
+                    (this.EncodedTransaction != null &&
+                     this.EncodedTransaction.Equals(input.EncodedTransaction)));
         }
 
         /// <summary>
@@ -138,6 +152,8 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + this.Txn.GetHashCode();
                 if (this.Time != null)
                     hashCode = hashCode * 59 + this.Time.GetHashCode();
+                if (this.EncodedTransaction != null)
+                    hashCode = hashCode * 59 + this.EncodedTransaction.GetHashCode();
                 return hashCode;
             }
         }
@@ -147,10 +163,10 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(
+            ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }

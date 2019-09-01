@@ -301,8 +301,7 @@ namespace Skyapi.Test.Api
 
         internal static void Blocks(DefaultApi instance)
         {
-            Progress p = JsonConvert.DeserializeObject<Progress>(
-                instance.BlockchainProgress().ToString());
+            BlockchainProgress p = instance.BlockchainProgress();
 
             var testCases = new[]
             {
@@ -844,6 +843,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "invalid TxID",
                     txid = "abcd",
+                    encoded= false,
                     errCode = 400,
                     errMsg = "Error calling Transaction: 400 Bad Request - Invalid hex length\n",
                     golden = ""
@@ -852,6 +852,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "empty txID",
                     txid = "",
+                    encoded= false,
                     errCode = 400,
                     errMsg = "Error calling Transaction: 400 Bad Request - txid is empty\n",
                     golden = ""
@@ -860,6 +861,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "not exist",
                     txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
+                    encoded= false,
                     errCode = 404,
                     errMsg = "Error calling Transaction: 404 Not Found\n",
                     golden = ""
@@ -868,6 +870,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "genesis transaction",
                     txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
+                    encoded= false,
                     errCode = 200,
                     errMsg = "",
                     golden = "genesis-transaction.golden"
@@ -876,9 +879,46 @@ namespace Skyapi.Test.Api
                 {
                     name = "transaction in block 101",
                     txid = "e8fe5290afba3933389fd5860dca2cbcc81821028be9c65d0bb7cf4e8d2c4c18",
+                    encoded= false,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-block-101.golden"
+                },
+                new
+                {
+                    name = "transaction in block 105",
+                    txid = "41ec724bd40c852096379d1ae57d3f27606877fa95ac9c082fbf63900e6c5cb5",
+                    encoded= false,
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "transaction-block-105.golden"
+                },
+                new
+                {
+                    name = "genesis transaction encoded",
+                    txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
+                    encoded= true,
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "genesis-transaction-encoded.golden"
+                },
+                new
+                {
+                    name = "transaction in block 101 encoded",
+                    txid = "e8fe5290afba3933389fd5860dca2cbcc81821028be9c65d0bb7cf4e8d2c4c18",
+                    encoded= true,
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "transaction-block-101-encoded.golden"
+                },
+                new
+                {
+                    name = "transaction in block 105 encoded",
+                    txid = "41ec724bd40c852096379d1ae57d3f27606877fa95ac9c082fbf63900e6c5cb5",
+                    encoded= true,
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "transaction-block-105-encoded.golden"
                 }
             };
             if (!Utils.DbNoUnconfirmed())
@@ -887,6 +927,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "unconfirmed",
                     txid = "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
+                    encoded= false,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-unconfirmed.golden"
@@ -897,13 +938,14 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid));
+                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid,tc.encoded));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                 }
                 else
                 {
-                    var result = (Transaction) instance.Transaction(tc.txid);
+                    var result = (Transaction) instance.Transaction(tc.txid,tc.encoded);
+                    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 }
             });
