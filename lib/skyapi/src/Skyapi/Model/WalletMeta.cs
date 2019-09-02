@@ -24,9 +24,12 @@ namespace Skyapi.Model
         /// <param name="cryptoType"></param>
         /// <param name="timestamp"></param>
         /// <param name="encrypted"></param>
+        /// <param name="bip44Coin"></param>
+        /// <param name="xpub"></param>
         public WalletMeta(string coin = default(string), string id = default(string), string label = default(string),
             string type = default(string), string version = default(string), string cryptoType = default(string),
-            long timestamp = default(long), bool encrypted = default(bool))
+            long timestamp = default(long), bool encrypted = default(bool), int bip44Coin = default(int),
+            string xpub = default(string))
         {
             Coin = coin;
             Id = id;
@@ -36,6 +39,8 @@ namespace Skyapi.Model
             CryptoType = cryptoType;
             Timestamp = timestamp;
             Encrypted = encrypted;
+            Bip44Coin = bip44Coin;
+            Xpub = xpub;
         }
 
         /// <summary>
@@ -87,6 +92,18 @@ namespace Skyapi.Model
         public bool Encrypted { get; set; }
 
         /// <summary>
+        /// Gets or Sets Bip44Coin
+        /// </summary>
+        [DataMember(Name = "bip44_coin", EmitDefaultValue = false)]
+        public int Bip44Coin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Xpub
+        /// </summary>
+        [DataMember(Name = "xpub", EmitDefaultValue = false)]
+        public string Xpub { get; set; }
+
+        /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
@@ -111,6 +128,8 @@ namespace Skyapi.Model
             sb.Append("  crypto_type: ").Append(CryptoType).Append("\n");
             sb.Append("  timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  encrypted: ").Append(Encrypted).Append("\n");
+            sb.Append("  bip44_coin: ").Append(Bip44Coin).Append("\n");
+            sb.Append("  xpub: ").Append(Xpub).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,6 +193,15 @@ namespace Skyapi.Model
                    (
                        Encrypted == input.Encrypted ||
                        Encrypted.Equals(input.Encrypted)
+                   ) &&
+                   (
+                       Bip44Coin == input.Bip44Coin ||
+                       Bip44Coin.Equals(input.Bip44Coin)
+                   ) &&
+                   (
+                       Xpub == input.Xpub ||
+                       Xpub != null &&
+                       Xpub.Equals(input.Xpub)
                    );
         }
 
@@ -202,6 +230,10 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + CryptoType.GetHashCode();
                 if (Encrypted != null)
                     hashCode = hashCode * 59 + Encrypted.GetHashCode();
+                if (Bip44Coin != null)
+                    hashCode = hashCode * 59 + Bip44Coin.GetHashCode();
+                if (Xpub != null)
+                    hashCode = hashCode * 59 + Xpub.GetHashCode();
                 return hashCode;
             }
         }

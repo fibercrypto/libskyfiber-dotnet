@@ -11,10 +11,20 @@ namespace Skyapi.Model
     [DataContract]
     public class WalletEntry : IEquatable<WalletEntry>, IValidatableObject
     {
-        public WalletEntry(string address = default(string), string publicKey = default(string))
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="publicKey"></param>
+        /// <param name="childNumber"></param>
+        /// <param name="change"></param>
+        public WalletEntry(string address = default(string), string publicKey = default(string),
+            int childNumber = default(int), int change = default(int))
         {
             Address = address;
             PublicKey = publicKey;
+            ChildNumber = childNumber;
+            Change = change;
         }
 
         /// <summary>
@@ -28,6 +38,18 @@ namespace Skyapi.Model
         /// </summary>
         [DataMember(Name = "public_key", EmitDefaultValue = false)]
         public string PublicKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ChildNumber
+        /// </summary>
+        [DataMember(Name = "child_number", EmitDefaultValue = false)]
+        public int ChildNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Change
+        /// </summary>
+        [DataMember(Name = "change", EmitDefaultValue = false)]
+        public int Change { get; set; }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
@@ -48,6 +70,8 @@ namespace Skyapi.Model
             sb.Append("class WalletMeta {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  public_key: ").Append(PublicKey).Append("\n");
+            sb.Append("  child_number: ").Append(ChildNumber).Append("\n");
+            sb.Append("  change: ").Append(Change).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,6 +107,14 @@ namespace Skyapi.Model
                        PublicKey == input.PublicKey ||
                        PublicKey != null &&
                        PublicKey.Equals(input.PublicKey)
+                   ) &&
+                   (
+                       ChildNumber == input.ChildNumber ||
+                       ChildNumber.Equals(input.ChildNumber)
+                   ) &&
+                   (
+                       Change == input.Change ||
+                       Change.Equals(input.Change)
                    );
         }
 
@@ -99,6 +131,10 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + Address.GetHashCode();
                 if (PublicKey != null)
                     hashCode = hashCode * 59 + PublicKey.GetHashCode();
+                if (ChildNumber != null)
+                    hashCode = hashCode * 59 + ChildNumber.GetHashCode();
+                if (Change != null)
+                    hashCode = hashCode * 59 + Change.GetHashCode();
                 return hashCode;
             }
         }

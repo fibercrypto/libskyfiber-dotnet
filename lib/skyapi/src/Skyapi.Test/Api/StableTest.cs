@@ -801,10 +801,12 @@ namespace Skyapi.Test.Api
             DateTime txnChecked;
             txns.ForEach(txn =>
             {
-                txnRecive = DateTime.Parse(txn.Received);
-                txnChecked = DateTime.Parse(txn.Received);
+                txnRecive = DateTime.Parse(txn.Received).ToUniversalTime();
+                txnChecked = DateTime.Parse(txn.Received).ToUniversalTime();
                 Assert.AreNotEqual(txnRecive, new DateTime());
                 Assert.AreNotEqual(txnChecked, new DateTime());
+                txn.Received = txnRecive.ToString("yyyy-MM-ddTH:mm:ss.ffffffZ");
+                txn.Checked = txnChecked.ToString("yyyy-MM-ddTH:mm:ss.ffffffZ");
             });
             Utils.CheckGoldenFile("pending-transactions.golden", txns, txns.GetType());
         }
@@ -843,7 +845,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "invalid TxID",
                     txid = "abcd",
-                    encoded= false,
+                    encoded = false,
                     errCode = 400,
                     errMsg = "Error calling Transaction: 400 Bad Request - Invalid hex length\n",
                     golden = ""
@@ -852,7 +854,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "empty txID",
                     txid = "",
-                    encoded= false,
+                    encoded = false,
                     errCode = 400,
                     errMsg = "Error calling Transaction: 400 Bad Request - txid is empty\n",
                     golden = ""
@@ -861,7 +863,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "not exist",
                     txid = "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759",
-                    encoded= false,
+                    encoded = false,
                     errCode = 404,
                     errMsg = "Error calling Transaction: 404 Not Found\n",
                     golden = ""
@@ -870,7 +872,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "genesis transaction",
                     txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
-                    encoded= false,
+                    encoded = false,
                     errCode = 200,
                     errMsg = "",
                     golden = "genesis-transaction.golden"
@@ -879,7 +881,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "transaction in block 101",
                     txid = "e8fe5290afba3933389fd5860dca2cbcc81821028be9c65d0bb7cf4e8d2c4c18",
-                    encoded= false,
+                    encoded = false,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-block-101.golden"
@@ -888,7 +890,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "transaction in block 105",
                     txid = "41ec724bd40c852096379d1ae57d3f27606877fa95ac9c082fbf63900e6c5cb5",
-                    encoded= false,
+                    encoded = false,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-block-105.golden"
@@ -897,7 +899,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "genesis transaction encoded",
                     txid = "d556c1c7abf1e86138316b8c17183665512dc67633c04cf236a8b7f332cb4add",
-                    encoded= true,
+                    encoded = true,
                     errCode = 200,
                     errMsg = "",
                     golden = "genesis-transaction-encoded.golden"
@@ -906,7 +908,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "transaction in block 101 encoded",
                     txid = "e8fe5290afba3933389fd5860dca2cbcc81821028be9c65d0bb7cf4e8d2c4c18",
-                    encoded= true,
+                    encoded = true,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-block-101-encoded.golden"
@@ -915,7 +917,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "transaction in block 105 encoded",
                     txid = "41ec724bd40c852096379d1ae57d3f27606877fa95ac9c082fbf63900e6c5cb5",
-                    encoded= true,
+                    encoded = true,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-block-105-encoded.golden"
@@ -927,7 +929,7 @@ namespace Skyapi.Test.Api
                 {
                     name = "unconfirmed",
                     txid = "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
-                    encoded= false,
+                    encoded = false,
                     errCode = 200,
                     errMsg = "",
                     golden = "transaction-unconfirmed.golden"
@@ -938,14 +940,13 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid,tc.encoded));
+                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid, tc.encoded));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                 }
                 else
                 {
-                    var result = (Transaction) instance.Transaction(tc.txid,tc.encoded);
-                    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                    var result = (Transaction) instance.Transaction(tc.txid, tc.encoded);
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 }
             });
@@ -1194,28 +1195,68 @@ namespace Skyapi.Test.Api
 
         internal static void WalletBalance(DefaultApi instance)
         {
-            if (!instance.Wallets().Exists(w => w.Meta.Label.Equals("my wallet balance")))
+            var seed = "casino away claim road artist where blossom warrior demise royal still palm";
+            var xpub = "xpub6CkxdS1d4vNqqcnf9xPgqR5e2jE2PZKmKSw93QQMjHE1hRk22nU4zns85EDRgmLWYXYtu62XexwqaE" +
+                       "T33XA28c26NbXCAUJh1xmqq6B3S2v";
+            var testCases = new[]
             {
-                var seed = Utils.GenString();
+                new
+                {
+                    name = "bip44",
+                    type = "bip44",
+                    label = "my wallet balance bip44",
+                    golden = "wallet-balance-bip44.golden"
+                },
+                new
+                {
+                    name = "deterministic",
+                    type = "deterministic",
+                    label = "my wallet balance deterministic",
+                    golden = "wallet-balance-deterministic.golden"
+                },
+                new
+                {
+                    name = "xpub",
+                    type = "xpub",
+                    label = "my wallet balance xpub",
+                    golden = "wallet-balance-xpub.golden"
+                }
+            };
+            foreach (var tc in testCases)
+            {
+                Wallet wallet = null;
                 if (Utils.UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
 
-                instance.WalletCreate(seed, "my wallet balance");
-            }
+                switch (tc.type)
+                {
+                    case "xpub":
+                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
+                            ? instance.WalletCreate(type: tc.type, label: tc.label, xpub: xpub)
+                            : instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
+                        break;
+                    default:
+                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
+                            ? instance.WalletCreate(type: tc.type, label: tc.label, seed: seed)
+                            : instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
+                        break;
+                }
 
-            var wallet = instance.Wallets().Find(w => w.Meta.Label.Equals("my wallet balance"));
-            Assert.DoesNotThrow(() =>
-            {
-                var balanc = instance.WalletBalance(wallet.Meta.Id);
-                Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address));
-                Utils.CheckGoldenFile("wallet-balance.golden", balanc, balanc.GetType());
-            });
+                Assert.DoesNotThrow(() =>
+                {
+                    var balanc = instance.WalletBalance(wallet.Meta.Id);
+                    //instance.WalletUnload(wallet.Meta.Id);
+                    Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address), tc.name);
+                    Utils.CheckGoldenFile(tc.golden, balanc, balanc.GetType());
+                });
+            }
         }
 
         internal static void WalletTransactions(DefaultApi instance)
         {
+            Assert.Ignore();
             if (!instance.Wallets().Exists(w => w.Meta.Label.Equals("wallet transactions")))
             {
                 var seed = Utils.GenString();
@@ -1224,7 +1265,7 @@ namespace Skyapi.Test.Api
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
 
-                instance.WalletCreate(seed, "wallet transactions");
+                instance.WalletCreate("deterministic", seed, "wallet transactions");
             }
 
             var wallet = instance.Wallets().Find(w => w.Meta.Label.Equals("wallet transactions"));

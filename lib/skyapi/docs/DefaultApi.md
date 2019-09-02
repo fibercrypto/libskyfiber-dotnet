@@ -72,6 +72,7 @@ Returns the total number of unique address that have coins.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -120,6 +121,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | addressCount response object |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -128,7 +135,7 @@ No authorization required
 
 ## AddressUxouts
 
-> List<Object> AddressUxouts (string address)
+> List&lt;Object&gt; AddressUxouts (string address)
 
 
 
@@ -137,6 +144,7 @@ Returns the historical, spent outputs associated with an address
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -154,7 +162,7 @@ namespace Example
 
             try
             {
-                List&lt;Object&gt; result = apiInstance.AddressUxouts(address);
+                List<Object> result = apiInstance.AddressUxouts(address);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -188,6 +196,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Return address uxouts |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -203,6 +217,7 @@ No authorization required
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -250,6 +265,11 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: text/plain
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response is araw transaction by id |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -265,6 +285,7 @@ No authorization required
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -312,6 +333,11 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: text/plain
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Metrics |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -327,6 +353,7 @@ Returns the balance of one or more addresses, both confirmed and predicted. The 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -379,6 +406,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the balance of one or more addresses |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -394,6 +427,7 @@ Returns the balance of one or more addresses, both confirmed and predicted. The 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -451,6 +485,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the balance of one or more addresses |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -459,13 +499,14 @@ Name | Type | Description  | Notes
 
 ## Block
 
-> List<BlockSchema> Block (string hash = null, int? seq = null)
+> List&lt;BlockSchema&gt; Block (string hash = null, int? seq = null)
 
 Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -485,7 +526,7 @@ namespace Example
             try
             {
                 // Returns the balance of one or more addresses, both confirmed and predicted. The predicted balance is the confirmed balance minus the pending spends.
-                List&lt;BlockSchema&gt; result = apiInstance.Block(hash, seq);
+                List<BlockSchema> result = apiInstance.Block(hash, seq);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -509,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<BlockSchema>**](BlockSchema.md)
+[**List&lt;BlockSchema&gt;**](BlockSchema.md)
 
 ### Authorization
 
@@ -519,6 +560,12 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Return block Array |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -535,6 +582,7 @@ Returns the blockchain metadata.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -583,6 +631,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns the blockchain metadata. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -598,6 +652,7 @@ Returns the blockchain sync progress.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -646,6 +701,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns the blockchain sync progress |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -661,6 +722,7 @@ Returns the balance of one or more addresses, both confirmed and predicted. The 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -717,6 +779,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Get blocks in specific range |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -734,6 +802,7 @@ coinSupplyHandler returns coin distribution supply stats
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -781,6 +850,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | CoinSupply records the coin supply info. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -796,6 +871,7 @@ Creates a new CSRF token. Previous CSRF tokens are invalidated by this call.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -844,6 +920,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Return a csrf Token. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -859,6 +941,7 @@ No authorization required
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -911,6 +994,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns empty json |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -926,6 +1015,7 @@ No authorization required
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -979,6 +1069,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Return multiKey |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -994,6 +1090,7 @@ No authorization required
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1048,6 +1145,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns empty json |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1056,13 +1159,14 @@ No authorization required
 
 ## DefaultConnections
 
-> List<string> DefaultConnections ()
+> List&lt;string&gt; DefaultConnections ()
 
 defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1080,7 +1184,7 @@ namespace Example
             try
             {
                 // defaultConnectionsHandler returns the list of default hardcoded bootstrap addresses.\\n They are not necessarily connected to.
-                List&lt;string&gt; result = apiInstance.DefaultConnections();
+                List<string> result = apiInstance.DefaultConnections();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1111,6 +1215,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return an list of default connections. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1126,6 +1236,7 @@ Returns node health data.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1174,6 +1285,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns node health data. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1191,6 +1308,7 @@ Returns the most recent N blocks on the blockchain
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1242,6 +1360,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the most recent N blocks on the blockchain |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1257,6 +1381,7 @@ This endpoint returns a specific connection.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1309,6 +1434,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return a connection struct |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1324,6 +1455,7 @@ This endpoint returns all outgoings connections.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1383,6 +1515,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return networks connections |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1400,6 +1538,7 @@ This endpoint disconnects a connection by ID or address
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1455,6 +1594,12 @@ void (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1463,7 +1608,7 @@ void (empty response body)
 
 ## NetworkConnectionsExchange
 
-> List<string> NetworkConnectionsExchange ()
+> List&lt;string&gt; NetworkConnectionsExchange ()
 
 
 
@@ -1472,6 +1617,7 @@ This endpoint returns all connections found through peer exchange
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1488,7 +1634,7 @@ namespace Example
 
             try
             {
-                List&lt;string&gt; result = apiInstance.NetworkConnectionsExchange();
+                List<string> result = apiInstance.NetworkConnectionsExchange();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1519,6 +1665,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return a list of all connections found through peer exchange. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1527,13 +1679,14 @@ No authorization required
 
 ## NetworkConnectionsTrust
 
-> List<string> NetworkConnectionsTrust ()
+> List&lt;string&gt; NetworkConnectionsTrust ()
 
 trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1551,7 +1704,7 @@ namespace Example
             try
             {
                 // trustConnectionsHandler returns all trusted connections.\\n They are not necessarily connected to. In the default configuration, these will be a subset of the default hardcoded bootstrap addresses.
-                List&lt;string&gt; result = apiInstance.NetworkConnectionsTrust();
+                List<string> result = apiInstance.NetworkConnectionsTrust();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1582,6 +1735,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return a list of trusted connections. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1597,6 +1756,7 @@ If neither addrs nor hashes are specificed, return all unspent outputs. If only 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1651,6 +1811,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | UnspentOutputsSummary records unspent outputs in different status. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1666,6 +1832,7 @@ If neither addrs nor hashes are specificed, return all unspent outputs. If only 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1725,6 +1892,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | UnspentOutputsSummary records unspent outputs in different status. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1733,13 +1906,14 @@ Name | Type | Description  | Notes
 
 ## PendingTxs
 
-> List<InlineResponse20010> PendingTxs ()
+> List&lt;InlineResponse20010&gt; PendingTxs ()
 
 
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1756,7 +1930,7 @@ namespace Example
 
             try
             {
-                List&lt;InlineResponse20010&gt; result = apiInstance.PendingTxs();
+                List<InlineResponse20010> result = apiInstance.PendingTxs();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1776,7 +1950,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<InlineResponse20010>**](InlineResponse20010.md)
+[**List&lt;InlineResponse20010&gt;**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1786,6 +1960,12 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Transaction inputs include the owner address, coins, hours and calculated hours. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1804,6 +1984,7 @@ Broadcasts all unconfirmed transactions from the unconfirmed transaction pool
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1856,6 +2037,12 @@ This endpoint does not need any parameter.
 - **Content-Type**: Not defined
 - **Accept**: application-json, application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK, Broadcasts all unconfirmed transactions from the unconfirmed transaction pool |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1871,6 +2058,7 @@ Returns the top skycoin holders.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1925,6 +2113,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Represent richlist response |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1942,6 +2136,7 @@ Returns a transaction identified by its txid hash with just id
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1993,6 +2188,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns a transaction identified by its txid hash. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2001,13 +2202,14 @@ No authorization required
 
 ## TransactionInject
 
-> string TransactionInject (string rawtx)
+> string TransactionInject (string rawtx, bool? noBroadcast = null)
 
 Broadcast a hex-encoded, serialized transaction to the network.
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2027,11 +2229,12 @@ namespace Example
 
             var apiInstance = new DefaultApi(Configuration.Default);
             var rawtx = rawtx_example;  // string | hex-encoded serialized transaction string.
+            var noBroadcast = true;  // bool? | Disable the network broadcast (optional) 
 
             try
             {
                 // Broadcast a hex-encoded, serialized transaction to the network.
-                string result = apiInstance.TransactionInject(rawtx);
+                string result = apiInstance.TransactionInject(rawtx, noBroadcast);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2051,6 +2254,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rawtx** | **string**| hex-encoded serialized transaction string. | 
+ **noBroadcast** | **bool?**| Disable the network broadcast | [optional] 
 
 ### Return type
 
@@ -2064,6 +2268,12 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain, application/json, application/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Broadcasts a hex-encoded, serialized transaction to the network |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2080,6 +2290,7 @@ Name | Type | Description  | Notes
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2136,6 +2347,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response is a transaction |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2151,6 +2368,7 @@ Name | Type | Description  | Notes
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2207,6 +2425,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response is a transaction |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2222,6 +2446,7 @@ Returns the hex-encoded byte serialization of a transaction. The transaction may
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2274,6 +2499,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the hex-encoded byte serialization of a transaction |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2291,6 +2522,7 @@ Decode and verify an encoded transaction
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2347,6 +2579,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Responses ok |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2362,6 +2600,7 @@ Returns transactions that match the filters.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2416,6 +2655,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns transactions that match the filters. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2431,6 +2676,7 @@ Returns transactions that match the filters.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2490,6 +2736,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns transactions that match the filters. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2505,6 +2757,7 @@ Returns an unspent output by ID.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2557,6 +2810,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response for endpoint /api/v1/uxout |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2565,13 +2824,14 @@ No authorization required
 
 ## VerifyAddress
 
-> Object VerifyAddress (Object address)
+> Object VerifyAddress (Address address)
 
 Verifies a Skycoin address.
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2590,7 +2850,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi(Configuration.Default);
-            var address = new Object(); // Object | Address id.
+            var address = new Address(); // Address | Address id.
 
             try
             {
@@ -2614,7 +2874,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | [**Object**](Object.md)| Address id. | 
+ **address** | [**Address**](Address.md)| Address id. | 
 
 ### Return type
 
@@ -2628,6 +2888,12 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2646,6 +2912,7 @@ versionHandler returns the application version info
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2693,6 +2960,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | BuildInfo represents the build info |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2708,6 +2981,7 @@ Returns a wallet by id.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2760,6 +3034,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response for endpoint /api/v1/wallet |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2775,6 +3055,7 @@ Returns the wallet's balance, both confirmed and predicted.  The predicted balan
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2827,6 +3108,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the wallets balance |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2835,15 +3122,16 @@ No authorization required
 
 ## WalletCreate
 
-> Object WalletCreate (string seed, string label, int? scan = null, bool? encrypt = null, string password = null)
+> Object WalletCreate (string type, string seed, string label, string seedPassphrase = null, string bip44Coin = null, string xpub = null, int? scan = null, bool? encrypt = null, string password = null)
 
 
 
-Loads wallet from seed, will scan ahead N address and load addresses till the last one that have coins.
+Create a wallet
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2862,15 +3150,19 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("X-CSRF-TOKEN", "Bearer");
 
             var apiInstance = new DefaultApi(Configuration.Default);
+            var type = type_example;  // string | wallet seed passphrase [optional, bip44 type wallet only]
             var seed = seed_example;  // string | Wallet seed.
             var label = label_example;  // string | Wallet label.
+            var seedPassphrase = seedPassphrase_example;  // string | wallet seed passphrase [optional, bip44 type wallet only] (optional) 
+            var bip44Coin = bip44Coin_example;  // string | BIP44 coin type [optional, defaults to 8000 (skycoin's coin type), only valid if type is \"bip44\"] (optional) 
+            var xpub = xpub_example;  // string | xpub key [required for xpub wallets] (optional) 
             var scan = 56;  // int? | The number of addresses to scan ahead for balances. (optional) 
             var encrypt = true;  // bool? | Encrypt wallet. (optional) 
             var password = password_example;  // string | Wallet Password (optional) 
 
             try
             {
-                Object result = apiInstance.WalletCreate(seed, label, scan, encrypt, password);
+                Object result = apiInstance.WalletCreate(type, seed, label, seedPassphrase, bip44Coin, xpub, scan, encrypt, password);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -2889,8 +3181,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **type** | **string**| wallet seed passphrase [optional, bip44 type wallet only] | 
  **seed** | **string**| Wallet seed. | 
  **label** | **string**| Wallet label. | 
+ **seedPassphrase** | **string**| wallet seed passphrase [optional, bip44 type wallet only] | [optional] 
+ **bip44Coin** | **string**| BIP44 coin type [optional, defaults to 8000 (skycoin&#39;s coin type), only valid if type is \&quot;bip44\&quot;] | [optional] 
+ **xpub** | **string**| xpub key [required for xpub wallets] | [optional] 
  **scan** | **int?**| The number of addresses to scan ahead for balances. | [optional] 
  **encrypt** | **bool?**| Encrypt wallet. | [optional] 
  **password** | **string**| Wallet Password | [optional] 
@@ -2908,6 +3204,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response for endpoint /api/v1/wallet |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2923,6 +3225,7 @@ Decrypts wallet.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -2982,6 +3285,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint decrypts wallets. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2997,6 +3306,7 @@ Encrypt wallet.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3056,6 +3366,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint encrypt wallets. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3073,6 +3389,7 @@ Returns the wallet directory path
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3124,6 +3441,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return the wallet directory path |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3141,6 +3464,7 @@ Generates new addresses
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3201,6 +3525,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint generate new addresses |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3218,6 +3548,7 @@ Returns the wallet directory path
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3269,6 +3600,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Generates wallet seed |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3277,13 +3614,16 @@ No authorization required
 
 ## WalletRecover
 
-> Object WalletRecover (string id, string seed, string password = null)
+> Object WalletRecover (string id, string seed, string seedPassphrase = null, string password = null)
 
 Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
+
+Recovers an encrypted wallet by providing the wallet seed and optional seed passphrase
 
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3304,12 +3644,13 @@ namespace Example
             var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Wallet id.
             var seed = seed_example;  // string | Wallet seed.
+            var seedPassphrase = seedPassphrase_example;  // string | Wallet seed-passphrase. (optional) 
             var password = password_example;  // string | Wallet password. (optional) 
 
             try
             {
                 // Recovers an encrypted wallet by providing the seed. The first address will be generated from seed and compared to the first address of the specified wallet. If they match, the wallet will be regenerated with an optional password. If the wallet is not encrypted, an error is returned.
-                Object result = apiInstance.WalletRecover(id, seed, password);
+                Object result = apiInstance.WalletRecover(id, seed, seedPassphrase, password);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -3330,6 +3671,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Wallet id. | 
  **seed** | **string**| Wallet seed. | 
+ **seedPassphrase** | **string**| Wallet seed-passphrase. | [optional] 
  **password** | **string**| Wallet password. | [optional] 
 
 ### Return type
@@ -3344,6 +3686,12 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint recover wallets. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3360,6 +3708,7 @@ This endpoint only works for encrypted wallets. If the wallet is unencrypted, Th
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3419,6 +3768,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint Returns seed of wallet of given id |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3434,6 +3789,7 @@ Verifies a wallet seed.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3491,6 +3847,13 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Verifies a wallet seed. |  -  |
+| **422** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3506,6 +3869,7 @@ Creates a signed transaction
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3563,6 +3927,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns blocks between a start and end point. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3578,6 +3948,7 @@ Creates a signed transaction
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3635,6 +4006,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Signs an unsigned transaction, returning the transaction with updated signatures and the encoded, serialized transaction. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3650,6 +4027,7 @@ Name | Type | Description  | Notes
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3701,6 +4079,12 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns all unconfirmed transactions for all addresses in a given wallet. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3716,6 +4100,7 @@ Unloads wallet from the wallet service.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3772,6 +4157,12 @@ void (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint returns nothing. |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3787,6 +4178,7 @@ Update the wallet.
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3846,6 +4238,12 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: text/plain, application/json, application/xml
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint Returns the label the wallet will be updated to . |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
+
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -3854,7 +4252,7 @@ Name | Type | Description  | Notes
 
 ## Wallets
 
-> List<Object> Wallets ()
+> List&lt;Object&gt; Wallets ()
 
 
 
@@ -3863,6 +4261,7 @@ Returns all loaded wallets
 ### Example
 
 ```csharp
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -3879,7 +4278,7 @@ namespace Example
 
             try
             {
-                List&lt;Object&gt; result = apiInstance.Wallets();
+                List<Object> result = apiInstance.Wallets();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -3909,6 +4308,12 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, application/xml, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | This endpoint return all loaded wallets |  -  |
+| **0** | A GenericError is the default error message that is generated. For certain status codes there are more appropriate error structures. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
