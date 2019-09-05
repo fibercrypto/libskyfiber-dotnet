@@ -751,6 +751,650 @@ static Number_Handle Number_HandlePtr_value(Number_Handle *obj) {
 }
 
 
+static WebRpcClient__Handle *new_WebRpcClient_HandlePtr() { 
+  return (WebRpcClient__Handle *) calloc(1,sizeof(WebRpcClient__Handle)); 
+}
+
+static WebRpcClient__Handle *copy_WebRpcClient_HandlePtr(WebRpcClient__Handle value) { 
+  WebRpcClient__Handle *obj = (WebRpcClient__Handle *) calloc(1,sizeof(WebRpcClient__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_WebRpcClient_HandlePtr(WebRpcClient__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void WebRpcClient_HandlePtr_assign(WebRpcClient__Handle *obj, WebRpcClient__Handle value) {
+  *obj = value;
+}
+
+static WebRpcClient__Handle WebRpcClient_HandlePtr_value(WebRpcClient__Handle *obj) {
+  return *obj;
+}
+
+
+static Wallet__Handle *new_Wallet__HandlePtr() { 
+  return (Wallet__Handle *) calloc(1,sizeof(Wallet__Handle)); 
+}
+
+static Wallet__Handle *copy_Wallet__HandlePtr(Wallet__Handle value) { 
+  Wallet__Handle *obj = (Wallet__Handle *) calloc(1,sizeof(Wallet__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Wallet__HandlePtr(Wallet__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Wallet__HandlePtr_assign(Wallet__Handle *obj, Wallet__Handle value) {
+  *obj = value;
+}
+
+static Wallet__Handle Wallet__HandlePtr_value(Wallet__Handle *obj) {
+  return *obj;
+}
+
+
+static ReadableWallet__Handle *new_ReadableWallet__HandlePtr() { 
+  return (ReadableWallet__Handle *) calloc(1,sizeof(ReadableWallet__Handle)); 
+}
+
+static ReadableWallet__Handle *copy_ReadableWallet__HandlePtr(ReadableWallet__Handle value) { 
+  ReadableWallet__Handle *obj = (ReadableWallet__Handle *) calloc(1,sizeof(ReadableWallet__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_ReadableWallet__HandlePtr(ReadableWallet__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void ReadableWallet__HandlePtr_assign(ReadableWallet__Handle *obj, ReadableWallet__Handle value) {
+  *obj = value;
+}
+
+static ReadableWallet__Handle ReadableWallet__HandlePtr_value(ReadableWallet__Handle *obj) {
+  return *obj;
+}
+
+
+static ReadableEntry__Handle *new_ReadableEntry__HandlePtr() { 
+  return (ReadableEntry__Handle *) calloc(1,sizeof(ReadableEntry__Handle)); 
+}
+
+static ReadableEntry__Handle *copy_ReadableEntry__HandlePtr(ReadableEntry__Handle value) { 
+  ReadableEntry__Handle *obj = (ReadableEntry__Handle *) calloc(1,sizeof(ReadableEntry__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_ReadableEntry__HandlePtr(ReadableEntry__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void ReadableEntry__HandlePtr_assign(ReadableEntry__Handle *obj, ReadableEntry__Handle value) {
+  *obj = value;
+}
+
+static ReadableEntry__Handle ReadableEntry__HandlePtr_value(ReadableEntry__Handle *obj) {
+  return *obj;
+}
+
+
+static Options__Handle *new_Options__HandlePtr() { 
+  return (Options__Handle *) calloc(1,sizeof(Options__Handle)); 
+}
+
+static Options__Handle *copy_Options__HandlePtr(Options__Handle value) { 
+  Options__Handle *obj = (Options__Handle *) calloc(1,sizeof(Options__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Options__HandlePtr(Options__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Options__HandlePtr_assign(Options__Handle *obj, Options__Handle value) {
+  *obj = value;
+}
+
+static Options__Handle Options__HandlePtr_value(Options__Handle *obj) {
+  return *obj;
+}
+
+
+static Config__Handle *new_Config__HandlePtr() { 
+  return (Config__Handle *) calloc(1,sizeof(Config__Handle)); 
+}
+
+static Config__Handle *copy_Config__HandlePtr(Config__Handle value) { 
+  Config__Handle *obj = (Config__Handle *) calloc(1,sizeof(Config__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Config__HandlePtr(Config__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Config__HandlePtr_assign(Config__Handle *obj, Config__Handle value) {
+  *obj = value;
+}
+
+static Config__Handle Config__HandlePtr_value(Config__Handle *obj) {
+  return *obj;
+}
+
+
+static CLI__Handle *new_CLI__HandlePtr() { 
+  return (CLI__Handle *) calloc(1,sizeof(CLI__Handle)); 
+}
+
+static CLI__Handle *copy_CLI__HandlePtr(CLI__Handle value) { 
+  CLI__Handle *obj = (CLI__Handle *) calloc(1,sizeof(CLI__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CLI__HandlePtr(CLI__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CLI__HandlePtr_assign(CLI__Handle *obj, CLI__Handle value) {
+  *obj = value;
+}
+
+static CLI__Handle CLI__HandlePtr_value(CLI__Handle *obj) {
+  return *obj;
+}
+
+
+static Client__Handle *new_Client__HandlePtr() { 
+  return (Client__Handle *) calloc(1,sizeof(Client__Handle)); 
+}
+
+static Client__Handle *copy_Client__HandlePtr(Client__Handle value) { 
+  Client__Handle *obj = (Client__Handle *) calloc(1,sizeof(Client__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Client__HandlePtr(Client__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Client__HandlePtr_assign(Client__Handle *obj, Client__Handle value) {
+  *obj = value;
+}
+
+static Client__Handle Client__HandlePtr_value(Client__Handle *obj) {
+  return *obj;
+}
+
+
+static WalletResponse__Handle *new_WalletResponse__HandlePtr() { 
+  return (WalletResponse__Handle *) calloc(1,sizeof(WalletResponse__Handle)); 
+}
+
+static WalletResponse__Handle *copy_WalletResponse__HandlePtr(WalletResponse__Handle value) { 
+  WalletResponse__Handle *obj = (WalletResponse__Handle *) calloc(1,sizeof(WalletResponse__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_WalletResponse__HandlePtr(WalletResponse__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void WalletResponse__HandlePtr_assign(WalletResponse__Handle *obj, WalletResponse__Handle value) {
+  *obj = value;
+}
+
+static WalletResponse__Handle WalletResponse__HandlePtr_value(WalletResponse__Handle *obj) {
+  return *obj;
+}
+
+
+static CreateTransactionRequest__Handle *new_CreateTransactionRequest__HandlePtr() { 
+  return (CreateTransactionRequest__Handle *) calloc(1,sizeof(CreateTransactionRequest__Handle)); 
+}
+
+static CreateTransactionRequest__Handle *copy_CreateTransactionRequest__HandlePtr(CreateTransactionRequest__Handle value) { 
+  CreateTransactionRequest__Handle *obj = (CreateTransactionRequest__Handle *) calloc(1,sizeof(CreateTransactionRequest__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreateTransactionRequest__HandlePtr(CreateTransactionRequest__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreateTransactionRequest__HandlePtr_assign(CreateTransactionRequest__Handle *obj, CreateTransactionRequest__Handle value) {
+  *obj = value;
+}
+
+static CreateTransactionRequest__Handle CreateTransactionRequest__HandlePtr_value(CreateTransactionRequest__Handle *obj) {
+  return *obj;
+}
+
+
+static Strings__Handle *new_Strings__HandlePtr() { 
+  return (Strings__Handle *) calloc(1,sizeof(Strings__Handle)); 
+}
+
+static Strings__Handle *copy_Strings__HandlePtr(Strings__Handle value) { 
+  Strings__Handle *obj = (Strings__Handle *) calloc(1,sizeof(Strings__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Strings__HandlePtr(Strings__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Strings__HandlePtr_assign(Strings__Handle *obj, Strings__Handle value) {
+  *obj = value;
+}
+
+static Strings__Handle Strings__HandlePtr_value(Strings__Handle *obj) {
+  return *obj;
+}
+
+
+static Wallets__Handle *new_Wallets__HandlePtr() { 
+  return (Wallets__Handle *) calloc(1,sizeof(Wallets__Handle)); 
+}
+
+static Wallets__Handle *copy_Wallets__HandlePtr(Wallets__Handle value) { 
+  Wallets__Handle *obj = (Wallets__Handle *) calloc(1,sizeof(Wallets__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Wallets__HandlePtr(Wallets__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Wallets__HandlePtr_assign(Wallets__Handle *obj, Wallets__Handle value) {
+  *obj = value;
+}
+
+static Wallets__Handle Wallets__HandlePtr_value(Wallets__Handle *obj) {
+  return *obj;
+}
+
+
+static ReadableOutputSet_Handle *new_ReadableOutputSet_HandlePtr() { 
+  return (ReadableOutputSet_Handle *) calloc(1,sizeof(ReadableOutputSet_Handle)); 
+}
+
+static ReadableOutputSet_Handle *copy_ReadableOutputSet_HandlePtr(ReadableOutputSet_Handle value) { 
+  ReadableOutputSet_Handle *obj = (ReadableOutputSet_Handle *) calloc(1,sizeof(ReadableOutputSet_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_ReadableOutputSet_HandlePtr(ReadableOutputSet_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void ReadableOutputSet_HandlePtr_assign(ReadableOutputSet_Handle *obj, ReadableOutputSet_Handle value) {
+  *obj = value;
+}
+
+static ReadableOutputSet_Handle ReadableOutputSet_HandlePtr_value(ReadableOutputSet_Handle *obj) {
+  return *obj;
+}
+
+
+static CreateTransactionParams__Handle *new_CreateTransactionParams__HandlePtr() { 
+  return (CreateTransactionParams__Handle *) calloc(1,sizeof(CreateTransactionParams__Handle)); 
+}
+
+static CreateTransactionParams__Handle *copy_CreateTransactionParams__HandlePtr(CreateTransactionParams__Handle value) { 
+  CreateTransactionParams__Handle *obj = (CreateTransactionParams__Handle *) calloc(1,sizeof(CreateTransactionParams__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreateTransactionParams__HandlePtr(CreateTransactionParams__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreateTransactionParams__HandlePtr_assign(CreateTransactionParams__Handle *obj, CreateTransactionParams__Handle value) {
+  *obj = value;
+}
+
+static CreateTransactionParams__Handle CreateTransactionParams__HandlePtr_value(CreateTransactionParams__Handle *obj) {
+  return *obj;
+}
+
+
+static CreatedTransaction__Handle *new_CreatedTransaction__HandlePtr() { 
+  return (CreatedTransaction__Handle *) calloc(1,sizeof(CreatedTransaction__Handle)); 
+}
+
+static CreatedTransaction__Handle *copy_CreatedTransaction__HandlePtr(CreatedTransaction__Handle value) { 
+  CreatedTransaction__Handle *obj = (CreatedTransaction__Handle *) calloc(1,sizeof(CreatedTransaction__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreatedTransaction__HandlePtr(CreatedTransaction__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreatedTransaction__HandlePtr_assign(CreatedTransaction__Handle *obj, CreatedTransaction__Handle value) {
+  *obj = value;
+}
+
+static CreatedTransaction__Handle CreatedTransaction__HandlePtr_value(CreatedTransaction__Handle *obj) {
+  return *obj;
+}
+
+
+static CreatedTransactionOutput__Handle *new_CreatedTransactionOutput__HandlePtr() { 
+  return (CreatedTransactionOutput__Handle *) calloc(1,sizeof(CreatedTransactionOutput__Handle)); 
+}
+
+static CreatedTransactionOutput__Handle *copy_CreatedTransactionOutput__HandlePtr(CreatedTransactionOutput__Handle value) { 
+  CreatedTransactionOutput__Handle *obj = (CreatedTransactionOutput__Handle *) calloc(1,sizeof(CreatedTransactionOutput__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreatedTransactionOutput__HandlePtr(CreatedTransactionOutput__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreatedTransactionOutput__HandlePtr_assign(CreatedTransactionOutput__Handle *obj, CreatedTransactionOutput__Handle value) {
+  *obj = value;
+}
+
+static CreatedTransactionOutput__Handle CreatedTransactionOutput__HandlePtr_value(CreatedTransactionOutput__Handle *obj) {
+  return *obj;
+}
+
+
+static CreatedTransactionInput__Handle *new_CreatedTransactionInput__HandlePtr() { 
+  return (CreatedTransactionInput__Handle *) calloc(1,sizeof(CreatedTransactionInput__Handle)); 
+}
+
+static CreatedTransactionInput__Handle *copy_CreatedTransactionInput__HandlePtr(CreatedTransactionInput__Handle value) { 
+  CreatedTransactionInput__Handle *obj = (CreatedTransactionInput__Handle *) calloc(1,sizeof(CreatedTransactionInput__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreatedTransactionInput__HandlePtr(CreatedTransactionInput__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreatedTransactionInput__HandlePtr_assign(CreatedTransactionInput__Handle *obj, CreatedTransactionInput__Handle value) {
+  *obj = value;
+}
+
+static CreatedTransactionInput__Handle CreatedTransactionInput__HandlePtr_value(CreatedTransactionInput__Handle *obj) {
+  return *obj;
+}
+
+
+static CreateTransactionResponse__Handle *new_CreateTransactionResponse__HandlePtr() { 
+  return (CreateTransactionResponse__Handle *) calloc(1,sizeof(CreateTransactionResponse__Handle)); 
+}
+
+static CreateTransactionResponse__Handle *copy_CreateTransactionResponse__HandlePtr(CreateTransactionResponse__Handle value) { 
+  CreateTransactionResponse__Handle *obj = (CreateTransactionResponse__Handle *) calloc(1,sizeof(CreateTransactionResponse__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_CreateTransactionResponse__HandlePtr(CreateTransactionResponse__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void CreateTransactionResponse__HandlePtr_assign(CreateTransactionResponse__Handle *obj, CreateTransactionResponse__Handle value) {
+  *obj = value;
+}
+
+static CreateTransactionResponse__Handle CreateTransactionResponse__HandlePtr_value(CreateTransactionResponse__Handle *obj) {
+  return *obj;
+}
+
+
+static SignedBlock__Handle *new_SignedBlock__HandlePtr() { 
+  return (SignedBlock__Handle *) calloc(1,sizeof(SignedBlock__Handle)); 
+}
+
+static SignedBlock__Handle *copy_SignedBlock__HandlePtr(SignedBlock__Handle value) { 
+  SignedBlock__Handle *obj = (SignedBlock__Handle *) calloc(1,sizeof(SignedBlock__Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_SignedBlock__HandlePtr(SignedBlock__Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void SignedBlock__HandlePtr_assign(SignedBlock__Handle *obj, SignedBlock__Handle value) {
+  *obj = value;
+}
+
+static SignedBlock__Handle SignedBlock__HandlePtr_value(SignedBlock__Handle *obj) {
+  return *obj;
+}
+
+
+static SortableTransactionResult_Handle *new_SortableTransactionResult_HandlePtr() { 
+  return (SortableTransactionResult_Handle *) calloc(1,sizeof(SortableTransactionResult_Handle)); 
+}
+
+static SortableTransactionResult_Handle *copy_SortableTransactionResult_HandlePtr(SortableTransactionResult_Handle value) { 
+  SortableTransactionResult_Handle *obj = (SortableTransactionResult_Handle *) calloc(1,sizeof(SortableTransactionResult_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_SortableTransactionResult_HandlePtr(SortableTransactionResult_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void SortableTransactionResult_HandlePtr_assign(SortableTransactionResult_Handle *obj, SortableTransactionResult_Handle value) {
+  *obj = value;
+}
+
+static SortableTransactionResult_Handle SortableTransactionResult_HandlePtr_value(SortableTransactionResult_Handle *obj) {
+  return *obj;
+}
+
+
+static WalletReadableNotes_Handle *new_WalletReadableNotes_HandlePtr() { 
+  return (WalletReadableNotes_Handle *) calloc(1,sizeof(WalletReadableNotes_Handle)); 
+}
+
+static WalletReadableNotes_Handle *copy_WalletReadableNotes_HandlePtr(WalletReadableNotes_Handle value) { 
+  WalletReadableNotes_Handle *obj = (WalletReadableNotes_Handle *) calloc(1,sizeof(WalletReadableNotes_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_WalletReadableNotes_HandlePtr(WalletReadableNotes_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void WalletReadableNotes_HandlePtr_assign(WalletReadableNotes_Handle *obj, WalletReadableNotes_Handle value) {
+  *obj = value;
+}
+
+static WalletReadableNotes_Handle WalletReadableNotes_HandlePtr_value(WalletReadableNotes_Handle *obj) {
+  return *obj;
+}
+
+
+static OutputsResult_Handle *new_OutputsResult_HandlePtr() { 
+  return (OutputsResult_Handle *) calloc(1,sizeof(OutputsResult_Handle)); 
+}
+
+static OutputsResult_Handle *copy_OutputsResult_HandlePtr(OutputsResult_Handle value) { 
+  OutputsResult_Handle *obj = (OutputsResult_Handle *) calloc(1,sizeof(OutputsResult_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_OutputsResult_HandlePtr(OutputsResult_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void OutputsResult_HandlePtr_assign(OutputsResult_Handle *obj, OutputsResult_Handle value) {
+  *obj = value;
+}
+
+static OutputsResult_Handle OutputsResult_HandlePtr_value(OutputsResult_Handle *obj) {
+  return *obj;
+}
+
+
+static StatusResult_Handle *new_StatusResult_HandlePtr() { 
+  return (StatusResult_Handle *) calloc(1,sizeof(StatusResult_Handle)); 
+}
+
+static StatusResult_Handle *copy_StatusResult_HandlePtr(StatusResult_Handle value) { 
+  StatusResult_Handle *obj = (StatusResult_Handle *) calloc(1,sizeof(StatusResult_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_StatusResult_HandlePtr(StatusResult_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void StatusResult_HandlePtr_assign(StatusResult_Handle *obj, StatusResult_Handle value) {
+  *obj = value;
+}
+
+static StatusResult_Handle StatusResult_HandlePtr_value(StatusResult_Handle *obj) {
+  return *obj;
+}
+
+
+static AddressUxOuts_Handle *new_AddressUxOuts_HandlePtr() { 
+  return (AddressUxOuts_Handle *) calloc(1,sizeof(AddressUxOuts_Handle)); 
+}
+
+static AddressUxOuts_Handle *copy_AddressUxOuts_HandlePtr(AddressUxOuts_Handle value) { 
+  AddressUxOuts_Handle *obj = (AddressUxOuts_Handle *) calloc(1,sizeof(AddressUxOuts_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_AddressUxOuts_HandlePtr(AddressUxOuts_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void AddressUxOuts_HandlePtr_assign(AddressUxOuts_Handle *obj, AddressUxOuts_Handle value) {
+  *obj = value;
+}
+
+static AddressUxOuts_Handle AddressUxOuts_HandlePtr_value(AddressUxOuts_Handle *obj) {
+  return *obj;
+}
+
+
+static BuildInfo_Handle *new_BuildInfo_HandlePtr() { 
+  return (BuildInfo_Handle *) calloc(1,sizeof(BuildInfo_Handle)); 
+}
+
+static BuildInfo_Handle *copy_BuildInfo_HandlePtr(BuildInfo_Handle value) { 
+  BuildInfo_Handle *obj = (BuildInfo_Handle *) calloc(1,sizeof(BuildInfo_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_BuildInfo_HandlePtr(BuildInfo_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void BuildInfo_HandlePtr_assign(BuildInfo_Handle *obj, BuildInfo_Handle value) {
+  *obj = value;
+}
+
+static BuildInfo_Handle BuildInfo_HandlePtr_value(BuildInfo_Handle *obj) {
+  return *obj;
+}
+
+
+static ReadableUnspentOutputsSummary_Handle *new_ReadableUnspentOutputsSummary_HandlePtr() { 
+  return (ReadableUnspentOutputsSummary_Handle *) calloc(1,sizeof(ReadableUnspentOutputsSummary_Handle)); 
+}
+
+static ReadableUnspentOutputsSummary_Handle *copy_ReadableUnspentOutputsSummary_HandlePtr(ReadableUnspentOutputsSummary_Handle value) { 
+  ReadableUnspentOutputsSummary_Handle *obj = (ReadableUnspentOutputsSummary_Handle *) calloc(1,sizeof(ReadableUnspentOutputsSummary_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_ReadableUnspentOutputsSummary_HandlePtr(ReadableUnspentOutputsSummary_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void ReadableUnspentOutputsSummary_HandlePtr_assign(ReadableUnspentOutputsSummary_Handle *obj, ReadableUnspentOutputsSummary_Handle value) {
+  *obj = value;
+}
+
+static ReadableUnspentOutputsSummary_Handle ReadableUnspentOutputsSummary_HandlePtr_value(ReadableUnspentOutputsSummary_Handle *obj) {
+  return *obj;
+}
+
+
+static Hash_Handle *new_Hash_HandlePtr() { 
+  return (Hash_Handle *) calloc(1,sizeof(Hash_Handle)); 
+}
+
+static Hash_Handle *copy_Hash_HandlePtr(Hash_Handle value) { 
+  Hash_Handle *obj = (Hash_Handle *) calloc(1,sizeof(Hash_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_Hash_HandlePtr(Hash_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void Hash_HandlePtr_assign(Hash_Handle *obj, Hash_Handle value) {
+  *obj = value;
+}
+
+static Hash_Handle Hash_HandlePtr_value(Hash_Handle *obj) {
+  return *obj;
+}
+
+
+static UnspentOutputsSummary_Handle *new_UnspentOutputsSummary_HandlePtr() { 
+  return (UnspentOutputsSummary_Handle *) calloc(1,sizeof(UnspentOutputsSummary_Handle)); 
+}
+
+static UnspentOutputsSummary_Handle *copy_UnspentOutputsSummary_HandlePtr(UnspentOutputsSummary_Handle value) { 
+  UnspentOutputsSummary_Handle *obj = (UnspentOutputsSummary_Handle *) calloc(1,sizeof(UnspentOutputsSummary_Handle));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_UnspentOutputsSummary_HandlePtr(UnspentOutputsSummary_Handle *obj) { 
+  if (obj) free(obj); 
+}
+
+static void UnspentOutputsSummary_HandlePtr_assign(UnspentOutputsSummary_Handle *obj, UnspentOutputsSummary_Handle value) {
+  *obj = value;
+}
+
+static UnspentOutputsSummary_Handle UnspentOutputsSummary_HandlePtr_value(UnspentOutputsSummary_Handle *obj) {
+  return *obj;
+}
+
+
 static unsigned char *new_CharPtr() { 
   return (unsigned char *) calloc(1,sizeof(unsigned char)); 
 }
@@ -3429,6 +4073,1910 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Number_HandlePtr_value(void * jarg1
   {
     Number_Handle * resultptr = (Number_Handle *) malloc(sizeof(Number_Handle));
     memmove(resultptr, &result, sizeof(Number_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_WebRpcClient_HandlePtr() {
+  void * jresult ;
+  WebRpcClient__Handle *result = 0 ;
+  
+  result = (WebRpcClient__Handle *)new_WebRpcClient_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_WebRpcClient_HandlePtr(void * jarg1) {
+  void * jresult ;
+  WebRpcClient__Handle arg1 ;
+  WebRpcClient__Handle *argp1 ;
+  WebRpcClient__Handle *result = 0 ;
+  
+  argp1 = (WebRpcClient__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (WebRpcClient__Handle *)copy_WebRpcClient_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_WebRpcClient_HandlePtr(void * jarg1) {
+  WebRpcClient__Handle *arg1 = (WebRpcClient__Handle *) 0 ;
+  
+  arg1 = (WebRpcClient__Handle *)jarg1; 
+  delete_WebRpcClient_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_WebRpcClient_HandlePtr_assign(void * jarg1, void * jarg2) {
+  WebRpcClient__Handle *arg1 = (WebRpcClient__Handle *) 0 ;
+  WebRpcClient__Handle arg2 ;
+  WebRpcClient__Handle *argp2 ;
+  
+  arg1 = (WebRpcClient__Handle *)jarg1; 
+  argp2 = (WebRpcClient__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WebRpcClient__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  WebRpcClient_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_WebRpcClient_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  WebRpcClient__Handle *arg1 = (WebRpcClient__Handle *) 0 ;
+  WebRpcClient__Handle result;
+  
+  arg1 = (WebRpcClient__Handle *)jarg1; 
+  result = WebRpcClient_HandlePtr_value(arg1);
+  {
+    WebRpcClient__Handle * resultptr = (WebRpcClient__Handle *) malloc(sizeof(WebRpcClient__Handle));
+    memmove(resultptr, &result, sizeof(WebRpcClient__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Wallet__HandlePtr() {
+  void * jresult ;
+  Wallet__Handle *result = 0 ;
+  
+  result = (Wallet__Handle *)new_Wallet__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Wallet__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Wallet__Handle arg1 ;
+  Wallet__Handle *argp1 ;
+  Wallet__Handle *result = 0 ;
+  
+  argp1 = (Wallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Wallet__Handle *)copy_Wallet__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Wallet__HandlePtr(void * jarg1) {
+  Wallet__Handle *arg1 = (Wallet__Handle *) 0 ;
+  
+  arg1 = (Wallet__Handle *)jarg1; 
+  delete_Wallet__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Wallet__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Wallet__Handle *arg1 = (Wallet__Handle *) 0 ;
+  Wallet__Handle arg2 ;
+  Wallet__Handle *argp2 ;
+  
+  arg1 = (Wallet__Handle *)jarg1; 
+  argp2 = (Wallet__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallet__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Wallet__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Wallet__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Wallet__Handle *arg1 = (Wallet__Handle *) 0 ;
+  Wallet__Handle result;
+  
+  arg1 = (Wallet__Handle *)jarg1; 
+  result = Wallet__HandlePtr_value(arg1);
+  {
+    Wallet__Handle * resultptr = (Wallet__Handle *) malloc(sizeof(Wallet__Handle));
+    memmove(resultptr, &result, sizeof(Wallet__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_ReadableWallet__HandlePtr() {
+  void * jresult ;
+  ReadableWallet__Handle *result = 0 ;
+  
+  result = (ReadableWallet__Handle *)new_ReadableWallet__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_ReadableWallet__HandlePtr(void * jarg1) {
+  void * jresult ;
+  ReadableWallet__Handle arg1 ;
+  ReadableWallet__Handle *argp1 ;
+  ReadableWallet__Handle *result = 0 ;
+  
+  argp1 = (ReadableWallet__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (ReadableWallet__Handle *)copy_ReadableWallet__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_ReadableWallet__HandlePtr(void * jarg1) {
+  ReadableWallet__Handle *arg1 = (ReadableWallet__Handle *) 0 ;
+  
+  arg1 = (ReadableWallet__Handle *)jarg1; 
+  delete_ReadableWallet__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_ReadableWallet__HandlePtr_assign(void * jarg1, void * jarg2) {
+  ReadableWallet__Handle *arg1 = (ReadableWallet__Handle *) 0 ;
+  ReadableWallet__Handle arg2 ;
+  ReadableWallet__Handle *argp2 ;
+  
+  arg1 = (ReadableWallet__Handle *)jarg1; 
+  argp2 = (ReadableWallet__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableWallet__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  ReadableWallet__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_ReadableWallet__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  ReadableWallet__Handle *arg1 = (ReadableWallet__Handle *) 0 ;
+  ReadableWallet__Handle result;
+  
+  arg1 = (ReadableWallet__Handle *)jarg1; 
+  result = ReadableWallet__HandlePtr_value(arg1);
+  {
+    ReadableWallet__Handle * resultptr = (ReadableWallet__Handle *) malloc(sizeof(ReadableWallet__Handle));
+    memmove(resultptr, &result, sizeof(ReadableWallet__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_ReadableEntry__HandlePtr() {
+  void * jresult ;
+  ReadableEntry__Handle *result = 0 ;
+  
+  result = (ReadableEntry__Handle *)new_ReadableEntry__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_ReadableEntry__HandlePtr(void * jarg1) {
+  void * jresult ;
+  ReadableEntry__Handle arg1 ;
+  ReadableEntry__Handle *argp1 ;
+  ReadableEntry__Handle *result = 0 ;
+  
+  argp1 = (ReadableEntry__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableEntry__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (ReadableEntry__Handle *)copy_ReadableEntry__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_ReadableEntry__HandlePtr(void * jarg1) {
+  ReadableEntry__Handle *arg1 = (ReadableEntry__Handle *) 0 ;
+  
+  arg1 = (ReadableEntry__Handle *)jarg1; 
+  delete_ReadableEntry__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_ReadableEntry__HandlePtr_assign(void * jarg1, void * jarg2) {
+  ReadableEntry__Handle *arg1 = (ReadableEntry__Handle *) 0 ;
+  ReadableEntry__Handle arg2 ;
+  ReadableEntry__Handle *argp2 ;
+  
+  arg1 = (ReadableEntry__Handle *)jarg1; 
+  argp2 = (ReadableEntry__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableEntry__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  ReadableEntry__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_ReadableEntry__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  ReadableEntry__Handle *arg1 = (ReadableEntry__Handle *) 0 ;
+  ReadableEntry__Handle result;
+  
+  arg1 = (ReadableEntry__Handle *)jarg1; 
+  result = ReadableEntry__HandlePtr_value(arg1);
+  {
+    ReadableEntry__Handle * resultptr = (ReadableEntry__Handle *) malloc(sizeof(ReadableEntry__Handle));
+    memmove(resultptr, &result, sizeof(ReadableEntry__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Options__HandlePtr() {
+  void * jresult ;
+  Options__Handle *result = 0 ;
+  
+  result = (Options__Handle *)new_Options__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Options__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Options__Handle arg1 ;
+  Options__Handle *argp1 ;
+  Options__Handle *result = 0 ;
+  
+  argp1 = (Options__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Options__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Options__Handle *)copy_Options__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Options__HandlePtr(void * jarg1) {
+  Options__Handle *arg1 = (Options__Handle *) 0 ;
+  
+  arg1 = (Options__Handle *)jarg1; 
+  delete_Options__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Options__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Options__Handle *arg1 = (Options__Handle *) 0 ;
+  Options__Handle arg2 ;
+  Options__Handle *argp2 ;
+  
+  arg1 = (Options__Handle *)jarg1; 
+  argp2 = (Options__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Options__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Options__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Options__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Options__Handle *arg1 = (Options__Handle *) 0 ;
+  Options__Handle result;
+  
+  arg1 = (Options__Handle *)jarg1; 
+  result = Options__HandlePtr_value(arg1);
+  {
+    Options__Handle * resultptr = (Options__Handle *) malloc(sizeof(Options__Handle));
+    memmove(resultptr, &result, sizeof(Options__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Config__HandlePtr() {
+  void * jresult ;
+  Config__Handle *result = 0 ;
+  
+  result = (Config__Handle *)new_Config__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Config__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Config__Handle arg1 ;
+  Config__Handle *argp1 ;
+  Config__Handle *result = 0 ;
+  
+  argp1 = (Config__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Config__Handle *)copy_Config__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Config__HandlePtr(void * jarg1) {
+  Config__Handle *arg1 = (Config__Handle *) 0 ;
+  
+  arg1 = (Config__Handle *)jarg1; 
+  delete_Config__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Config__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Config__Handle *arg1 = (Config__Handle *) 0 ;
+  Config__Handle arg2 ;
+  Config__Handle *argp2 ;
+  
+  arg1 = (Config__Handle *)jarg1; 
+  argp2 = (Config__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Config__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Config__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Config__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Config__Handle *arg1 = (Config__Handle *) 0 ;
+  Config__Handle result;
+  
+  arg1 = (Config__Handle *)jarg1; 
+  result = Config__HandlePtr_value(arg1);
+  {
+    Config__Handle * resultptr = (Config__Handle *) malloc(sizeof(Config__Handle));
+    memmove(resultptr, &result, sizeof(Config__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CLI__HandlePtr() {
+  void * jresult ;
+  CLI__Handle *result = 0 ;
+  
+  result = (CLI__Handle *)new_CLI__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CLI__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CLI__Handle arg1 ;
+  CLI__Handle *argp1 ;
+  CLI__Handle *result = 0 ;
+  
+  argp1 = (CLI__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CLI__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CLI__Handle *)copy_CLI__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CLI__HandlePtr(void * jarg1) {
+  CLI__Handle *arg1 = (CLI__Handle *) 0 ;
+  
+  arg1 = (CLI__Handle *)jarg1; 
+  delete_CLI__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CLI__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CLI__Handle *arg1 = (CLI__Handle *) 0 ;
+  CLI__Handle arg2 ;
+  CLI__Handle *argp2 ;
+  
+  arg1 = (CLI__Handle *)jarg1; 
+  argp2 = (CLI__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CLI__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CLI__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CLI__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CLI__Handle *arg1 = (CLI__Handle *) 0 ;
+  CLI__Handle result;
+  
+  arg1 = (CLI__Handle *)jarg1; 
+  result = CLI__HandlePtr_value(arg1);
+  {
+    CLI__Handle * resultptr = (CLI__Handle *) malloc(sizeof(CLI__Handle));
+    memmove(resultptr, &result, sizeof(CLI__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Client__HandlePtr() {
+  void * jresult ;
+  Client__Handle *result = 0 ;
+  
+  result = (Client__Handle *)new_Client__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Client__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Client__Handle arg1 ;
+  Client__Handle *argp1 ;
+  Client__Handle *result = 0 ;
+  
+  argp1 = (Client__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Client__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Client__Handle *)copy_Client__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Client__HandlePtr(void * jarg1) {
+  Client__Handle *arg1 = (Client__Handle *) 0 ;
+  
+  arg1 = (Client__Handle *)jarg1; 
+  delete_Client__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Client__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Client__Handle *arg1 = (Client__Handle *) 0 ;
+  Client__Handle arg2 ;
+  Client__Handle *argp2 ;
+  
+  arg1 = (Client__Handle *)jarg1; 
+  argp2 = (Client__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Client__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Client__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Client__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Client__Handle *arg1 = (Client__Handle *) 0 ;
+  Client__Handle result;
+  
+  arg1 = (Client__Handle *)jarg1; 
+  result = Client__HandlePtr_value(arg1);
+  {
+    Client__Handle * resultptr = (Client__Handle *) malloc(sizeof(Client__Handle));
+    memmove(resultptr, &result, sizeof(Client__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_WalletResponse__HandlePtr() {
+  void * jresult ;
+  WalletResponse__Handle *result = 0 ;
+  
+  result = (WalletResponse__Handle *)new_WalletResponse__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_WalletResponse__HandlePtr(void * jarg1) {
+  void * jresult ;
+  WalletResponse__Handle arg1 ;
+  WalletResponse__Handle *argp1 ;
+  WalletResponse__Handle *result = 0 ;
+  
+  argp1 = (WalletResponse__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletResponse__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (WalletResponse__Handle *)copy_WalletResponse__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_WalletResponse__HandlePtr(void * jarg1) {
+  WalletResponse__Handle *arg1 = (WalletResponse__Handle *) 0 ;
+  
+  arg1 = (WalletResponse__Handle *)jarg1; 
+  delete_WalletResponse__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_WalletResponse__HandlePtr_assign(void * jarg1, void * jarg2) {
+  WalletResponse__Handle *arg1 = (WalletResponse__Handle *) 0 ;
+  WalletResponse__Handle arg2 ;
+  WalletResponse__Handle *argp2 ;
+  
+  arg1 = (WalletResponse__Handle *)jarg1; 
+  argp2 = (WalletResponse__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletResponse__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  WalletResponse__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_WalletResponse__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  WalletResponse__Handle *arg1 = (WalletResponse__Handle *) 0 ;
+  WalletResponse__Handle result;
+  
+  arg1 = (WalletResponse__Handle *)jarg1; 
+  result = WalletResponse__HandlePtr_value(arg1);
+  {
+    WalletResponse__Handle * resultptr = (WalletResponse__Handle *) malloc(sizeof(WalletResponse__Handle));
+    memmove(resultptr, &result, sizeof(WalletResponse__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreateTransactionRequest__HandlePtr() {
+  void * jresult ;
+  CreateTransactionRequest__Handle *result = 0 ;
+  
+  result = (CreateTransactionRequest__Handle *)new_CreateTransactionRequest__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreateTransactionRequest__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreateTransactionRequest__Handle arg1 ;
+  CreateTransactionRequest__Handle *argp1 ;
+  CreateTransactionRequest__Handle *result = 0 ;
+  
+  argp1 = (CreateTransactionRequest__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionRequest__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreateTransactionRequest__Handle *)copy_CreateTransactionRequest__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreateTransactionRequest__HandlePtr(void * jarg1) {
+  CreateTransactionRequest__Handle *arg1 = (CreateTransactionRequest__Handle *) 0 ;
+  
+  arg1 = (CreateTransactionRequest__Handle *)jarg1; 
+  delete_CreateTransactionRequest__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreateTransactionRequest__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreateTransactionRequest__Handle *arg1 = (CreateTransactionRequest__Handle *) 0 ;
+  CreateTransactionRequest__Handle arg2 ;
+  CreateTransactionRequest__Handle *argp2 ;
+  
+  arg1 = (CreateTransactionRequest__Handle *)jarg1; 
+  argp2 = (CreateTransactionRequest__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionRequest__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreateTransactionRequest__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreateTransactionRequest__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreateTransactionRequest__Handle *arg1 = (CreateTransactionRequest__Handle *) 0 ;
+  CreateTransactionRequest__Handle result;
+  
+  arg1 = (CreateTransactionRequest__Handle *)jarg1; 
+  result = CreateTransactionRequest__HandlePtr_value(arg1);
+  {
+    CreateTransactionRequest__Handle * resultptr = (CreateTransactionRequest__Handle *) malloc(sizeof(CreateTransactionRequest__Handle));
+    memmove(resultptr, &result, sizeof(CreateTransactionRequest__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Strings__HandlePtr() {
+  void * jresult ;
+  Strings__Handle *result = 0 ;
+  
+  result = (Strings__Handle *)new_Strings__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Strings__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Strings__Handle arg1 ;
+  Strings__Handle *argp1 ;
+  Strings__Handle *result = 0 ;
+  
+  argp1 = (Strings__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Strings__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Strings__Handle *)copy_Strings__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Strings__HandlePtr(void * jarg1) {
+  Strings__Handle *arg1 = (Strings__Handle *) 0 ;
+  
+  arg1 = (Strings__Handle *)jarg1; 
+  delete_Strings__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Strings__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Strings__Handle *arg1 = (Strings__Handle *) 0 ;
+  Strings__Handle arg2 ;
+  Strings__Handle *argp2 ;
+  
+  arg1 = (Strings__Handle *)jarg1; 
+  argp2 = (Strings__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Strings__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Strings__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Strings__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Strings__Handle *arg1 = (Strings__Handle *) 0 ;
+  Strings__Handle result;
+  
+  arg1 = (Strings__Handle *)jarg1; 
+  result = Strings__HandlePtr_value(arg1);
+  {
+    Strings__Handle * resultptr = (Strings__Handle *) malloc(sizeof(Strings__Handle));
+    memmove(resultptr, &result, sizeof(Strings__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Wallets__HandlePtr() {
+  void * jresult ;
+  Wallets__Handle *result = 0 ;
+  
+  result = (Wallets__Handle *)new_Wallets__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Wallets__HandlePtr(void * jarg1) {
+  void * jresult ;
+  Wallets__Handle arg1 ;
+  Wallets__Handle *argp1 ;
+  Wallets__Handle *result = 0 ;
+  
+  argp1 = (Wallets__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallets__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Wallets__Handle *)copy_Wallets__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Wallets__HandlePtr(void * jarg1) {
+  Wallets__Handle *arg1 = (Wallets__Handle *) 0 ;
+  
+  arg1 = (Wallets__Handle *)jarg1; 
+  delete_Wallets__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Wallets__HandlePtr_assign(void * jarg1, void * jarg2) {
+  Wallets__Handle *arg1 = (Wallets__Handle *) 0 ;
+  Wallets__Handle arg2 ;
+  Wallets__Handle *argp2 ;
+  
+  arg1 = (Wallets__Handle *)jarg1; 
+  argp2 = (Wallets__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Wallets__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Wallets__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Wallets__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Wallets__Handle *arg1 = (Wallets__Handle *) 0 ;
+  Wallets__Handle result;
+  
+  arg1 = (Wallets__Handle *)jarg1; 
+  result = Wallets__HandlePtr_value(arg1);
+  {
+    Wallets__Handle * resultptr = (Wallets__Handle *) malloc(sizeof(Wallets__Handle));
+    memmove(resultptr, &result, sizeof(Wallets__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_ReadableOutputSet_HandlePtr() {
+  void * jresult ;
+  ReadableOutputSet_Handle *result = 0 ;
+  
+  result = (ReadableOutputSet_Handle *)new_ReadableOutputSet_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_ReadableOutputSet_HandlePtr(void * jarg1) {
+  void * jresult ;
+  ReadableOutputSet_Handle arg1 ;
+  ReadableOutputSet_Handle *argp1 ;
+  ReadableOutputSet_Handle *result = 0 ;
+  
+  argp1 = (ReadableOutputSet_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableOutputSet_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (ReadableOutputSet_Handle *)copy_ReadableOutputSet_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_ReadableOutputSet_HandlePtr(void * jarg1) {
+  ReadableOutputSet_Handle *arg1 = (ReadableOutputSet_Handle *) 0 ;
+  
+  arg1 = (ReadableOutputSet_Handle *)jarg1; 
+  delete_ReadableOutputSet_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_ReadableOutputSet_HandlePtr_assign(void * jarg1, void * jarg2) {
+  ReadableOutputSet_Handle *arg1 = (ReadableOutputSet_Handle *) 0 ;
+  ReadableOutputSet_Handle arg2 ;
+  ReadableOutputSet_Handle *argp2 ;
+  
+  arg1 = (ReadableOutputSet_Handle *)jarg1; 
+  argp2 = (ReadableOutputSet_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableOutputSet_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  ReadableOutputSet_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_ReadableOutputSet_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  ReadableOutputSet_Handle *arg1 = (ReadableOutputSet_Handle *) 0 ;
+  ReadableOutputSet_Handle result;
+  
+  arg1 = (ReadableOutputSet_Handle *)jarg1; 
+  result = ReadableOutputSet_HandlePtr_value(arg1);
+  {
+    ReadableOutputSet_Handle * resultptr = (ReadableOutputSet_Handle *) malloc(sizeof(ReadableOutputSet_Handle));
+    memmove(resultptr, &result, sizeof(ReadableOutputSet_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreateTransactionParams__HandlePtr() {
+  void * jresult ;
+  CreateTransactionParams__Handle *result = 0 ;
+  
+  result = (CreateTransactionParams__Handle *)new_CreateTransactionParams__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreateTransactionParams__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreateTransactionParams__Handle arg1 ;
+  CreateTransactionParams__Handle *argp1 ;
+  CreateTransactionParams__Handle *result = 0 ;
+  
+  argp1 = (CreateTransactionParams__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionParams__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreateTransactionParams__Handle *)copy_CreateTransactionParams__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreateTransactionParams__HandlePtr(void * jarg1) {
+  CreateTransactionParams__Handle *arg1 = (CreateTransactionParams__Handle *) 0 ;
+  
+  arg1 = (CreateTransactionParams__Handle *)jarg1; 
+  delete_CreateTransactionParams__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreateTransactionParams__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreateTransactionParams__Handle *arg1 = (CreateTransactionParams__Handle *) 0 ;
+  CreateTransactionParams__Handle arg2 ;
+  CreateTransactionParams__Handle *argp2 ;
+  
+  arg1 = (CreateTransactionParams__Handle *)jarg1; 
+  argp2 = (CreateTransactionParams__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionParams__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreateTransactionParams__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreateTransactionParams__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreateTransactionParams__Handle *arg1 = (CreateTransactionParams__Handle *) 0 ;
+  CreateTransactionParams__Handle result;
+  
+  arg1 = (CreateTransactionParams__Handle *)jarg1; 
+  result = CreateTransactionParams__HandlePtr_value(arg1);
+  {
+    CreateTransactionParams__Handle * resultptr = (CreateTransactionParams__Handle *) malloc(sizeof(CreateTransactionParams__Handle));
+    memmove(resultptr, &result, sizeof(CreateTransactionParams__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreatedTransaction__HandlePtr() {
+  void * jresult ;
+  CreatedTransaction__Handle *result = 0 ;
+  
+  result = (CreatedTransaction__Handle *)new_CreatedTransaction__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreatedTransaction__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreatedTransaction__Handle arg1 ;
+  CreatedTransaction__Handle *argp1 ;
+  CreatedTransaction__Handle *result = 0 ;
+  
+  argp1 = (CreatedTransaction__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransaction__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreatedTransaction__Handle *)copy_CreatedTransaction__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreatedTransaction__HandlePtr(void * jarg1) {
+  CreatedTransaction__Handle *arg1 = (CreatedTransaction__Handle *) 0 ;
+  
+  arg1 = (CreatedTransaction__Handle *)jarg1; 
+  delete_CreatedTransaction__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreatedTransaction__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreatedTransaction__Handle *arg1 = (CreatedTransaction__Handle *) 0 ;
+  CreatedTransaction__Handle arg2 ;
+  CreatedTransaction__Handle *argp2 ;
+  
+  arg1 = (CreatedTransaction__Handle *)jarg1; 
+  argp2 = (CreatedTransaction__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransaction__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreatedTransaction__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreatedTransaction__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreatedTransaction__Handle *arg1 = (CreatedTransaction__Handle *) 0 ;
+  CreatedTransaction__Handle result;
+  
+  arg1 = (CreatedTransaction__Handle *)jarg1; 
+  result = CreatedTransaction__HandlePtr_value(arg1);
+  {
+    CreatedTransaction__Handle * resultptr = (CreatedTransaction__Handle *) malloc(sizeof(CreatedTransaction__Handle));
+    memmove(resultptr, &result, sizeof(CreatedTransaction__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreatedTransactionOutput__HandlePtr() {
+  void * jresult ;
+  CreatedTransactionOutput__Handle *result = 0 ;
+  
+  result = (CreatedTransactionOutput__Handle *)new_CreatedTransactionOutput__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreatedTransactionOutput__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreatedTransactionOutput__Handle arg1 ;
+  CreatedTransactionOutput__Handle *argp1 ;
+  CreatedTransactionOutput__Handle *result = 0 ;
+  
+  argp1 = (CreatedTransactionOutput__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransactionOutput__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreatedTransactionOutput__Handle *)copy_CreatedTransactionOutput__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreatedTransactionOutput__HandlePtr(void * jarg1) {
+  CreatedTransactionOutput__Handle *arg1 = (CreatedTransactionOutput__Handle *) 0 ;
+  
+  arg1 = (CreatedTransactionOutput__Handle *)jarg1; 
+  delete_CreatedTransactionOutput__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreatedTransactionOutput__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreatedTransactionOutput__Handle *arg1 = (CreatedTransactionOutput__Handle *) 0 ;
+  CreatedTransactionOutput__Handle arg2 ;
+  CreatedTransactionOutput__Handle *argp2 ;
+  
+  arg1 = (CreatedTransactionOutput__Handle *)jarg1; 
+  argp2 = (CreatedTransactionOutput__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransactionOutput__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreatedTransactionOutput__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreatedTransactionOutput__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreatedTransactionOutput__Handle *arg1 = (CreatedTransactionOutput__Handle *) 0 ;
+  CreatedTransactionOutput__Handle result;
+  
+  arg1 = (CreatedTransactionOutput__Handle *)jarg1; 
+  result = CreatedTransactionOutput__HandlePtr_value(arg1);
+  {
+    CreatedTransactionOutput__Handle * resultptr = (CreatedTransactionOutput__Handle *) malloc(sizeof(CreatedTransactionOutput__Handle));
+    memmove(resultptr, &result, sizeof(CreatedTransactionOutput__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreatedTransactionInput__HandlePtr() {
+  void * jresult ;
+  CreatedTransactionInput__Handle *result = 0 ;
+  
+  result = (CreatedTransactionInput__Handle *)new_CreatedTransactionInput__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreatedTransactionInput__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreatedTransactionInput__Handle arg1 ;
+  CreatedTransactionInput__Handle *argp1 ;
+  CreatedTransactionInput__Handle *result = 0 ;
+  
+  argp1 = (CreatedTransactionInput__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransactionInput__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreatedTransactionInput__Handle *)copy_CreatedTransactionInput__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreatedTransactionInput__HandlePtr(void * jarg1) {
+  CreatedTransactionInput__Handle *arg1 = (CreatedTransactionInput__Handle *) 0 ;
+  
+  arg1 = (CreatedTransactionInput__Handle *)jarg1; 
+  delete_CreatedTransactionInput__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreatedTransactionInput__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreatedTransactionInput__Handle *arg1 = (CreatedTransactionInput__Handle *) 0 ;
+  CreatedTransactionInput__Handle arg2 ;
+  CreatedTransactionInput__Handle *argp2 ;
+  
+  arg1 = (CreatedTransactionInput__Handle *)jarg1; 
+  argp2 = (CreatedTransactionInput__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreatedTransactionInput__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreatedTransactionInput__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreatedTransactionInput__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreatedTransactionInput__Handle *arg1 = (CreatedTransactionInput__Handle *) 0 ;
+  CreatedTransactionInput__Handle result;
+  
+  arg1 = (CreatedTransactionInput__Handle *)jarg1; 
+  result = CreatedTransactionInput__HandlePtr_value(arg1);
+  {
+    CreatedTransactionInput__Handle * resultptr = (CreatedTransactionInput__Handle *) malloc(sizeof(CreatedTransactionInput__Handle));
+    memmove(resultptr, &result, sizeof(CreatedTransactionInput__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_CreateTransactionResponse__HandlePtr() {
+  void * jresult ;
+  CreateTransactionResponse__Handle *result = 0 ;
+  
+  result = (CreateTransactionResponse__Handle *)new_CreateTransactionResponse__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_CreateTransactionResponse__HandlePtr(void * jarg1) {
+  void * jresult ;
+  CreateTransactionResponse__Handle arg1 ;
+  CreateTransactionResponse__Handle *argp1 ;
+  CreateTransactionResponse__Handle *result = 0 ;
+  
+  argp1 = (CreateTransactionResponse__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionResponse__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (CreateTransactionResponse__Handle *)copy_CreateTransactionResponse__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_CreateTransactionResponse__HandlePtr(void * jarg1) {
+  CreateTransactionResponse__Handle *arg1 = (CreateTransactionResponse__Handle *) 0 ;
+  
+  arg1 = (CreateTransactionResponse__Handle *)jarg1; 
+  delete_CreateTransactionResponse__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_CreateTransactionResponse__HandlePtr_assign(void * jarg1, void * jarg2) {
+  CreateTransactionResponse__Handle *arg1 = (CreateTransactionResponse__Handle *) 0 ;
+  CreateTransactionResponse__Handle arg2 ;
+  CreateTransactionResponse__Handle *argp2 ;
+  
+  arg1 = (CreateTransactionResponse__Handle *)jarg1; 
+  argp2 = (CreateTransactionResponse__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null CreateTransactionResponse__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  CreateTransactionResponse__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_CreateTransactionResponse__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  CreateTransactionResponse__Handle *arg1 = (CreateTransactionResponse__Handle *) 0 ;
+  CreateTransactionResponse__Handle result;
+  
+  arg1 = (CreateTransactionResponse__Handle *)jarg1; 
+  result = CreateTransactionResponse__HandlePtr_value(arg1);
+  {
+    CreateTransactionResponse__Handle * resultptr = (CreateTransactionResponse__Handle *) malloc(sizeof(CreateTransactionResponse__Handle));
+    memmove(resultptr, &result, sizeof(CreateTransactionResponse__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_SignedBlock__HandlePtr() {
+  void * jresult ;
+  SignedBlock__Handle *result = 0 ;
+  
+  result = (SignedBlock__Handle *)new_SignedBlock__HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_SignedBlock__HandlePtr(void * jarg1) {
+  void * jresult ;
+  SignedBlock__Handle arg1 ;
+  SignedBlock__Handle *argp1 ;
+  SignedBlock__Handle *result = 0 ;
+  
+  argp1 = (SignedBlock__Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null SignedBlock__Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (SignedBlock__Handle *)copy_SignedBlock__HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_SignedBlock__HandlePtr(void * jarg1) {
+  SignedBlock__Handle *arg1 = (SignedBlock__Handle *) 0 ;
+  
+  arg1 = (SignedBlock__Handle *)jarg1; 
+  delete_SignedBlock__HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SignedBlock__HandlePtr_assign(void * jarg1, void * jarg2) {
+  SignedBlock__Handle *arg1 = (SignedBlock__Handle *) 0 ;
+  SignedBlock__Handle arg2 ;
+  SignedBlock__Handle *argp2 ;
+  
+  arg1 = (SignedBlock__Handle *)jarg1; 
+  argp2 = (SignedBlock__Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null SignedBlock__Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  SignedBlock__HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_SignedBlock__HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  SignedBlock__Handle *arg1 = (SignedBlock__Handle *) 0 ;
+  SignedBlock__Handle result;
+  
+  arg1 = (SignedBlock__Handle *)jarg1; 
+  result = SignedBlock__HandlePtr_value(arg1);
+  {
+    SignedBlock__Handle * resultptr = (SignedBlock__Handle *) malloc(sizeof(SignedBlock__Handle));
+    memmove(resultptr, &result, sizeof(SignedBlock__Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_SortableTransactionResult_HandlePtr() {
+  void * jresult ;
+  SortableTransactionResult_Handle *result = 0 ;
+  
+  result = (SortableTransactionResult_Handle *)new_SortableTransactionResult_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_SortableTransactionResult_HandlePtr(void * jarg1) {
+  void * jresult ;
+  SortableTransactionResult_Handle arg1 ;
+  SortableTransactionResult_Handle *argp1 ;
+  SortableTransactionResult_Handle *result = 0 ;
+  
+  argp1 = (SortableTransactionResult_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null SortableTransactionResult_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (SortableTransactionResult_Handle *)copy_SortableTransactionResult_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_SortableTransactionResult_HandlePtr(void * jarg1) {
+  SortableTransactionResult_Handle *arg1 = (SortableTransactionResult_Handle *) 0 ;
+  
+  arg1 = (SortableTransactionResult_Handle *)jarg1; 
+  delete_SortableTransactionResult_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SortableTransactionResult_HandlePtr_assign(void * jarg1, void * jarg2) {
+  SortableTransactionResult_Handle *arg1 = (SortableTransactionResult_Handle *) 0 ;
+  SortableTransactionResult_Handle arg2 ;
+  SortableTransactionResult_Handle *argp2 ;
+  
+  arg1 = (SortableTransactionResult_Handle *)jarg1; 
+  argp2 = (SortableTransactionResult_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null SortableTransactionResult_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  SortableTransactionResult_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_SortableTransactionResult_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  SortableTransactionResult_Handle *arg1 = (SortableTransactionResult_Handle *) 0 ;
+  SortableTransactionResult_Handle result;
+  
+  arg1 = (SortableTransactionResult_Handle *)jarg1; 
+  result = SortableTransactionResult_HandlePtr_value(arg1);
+  {
+    SortableTransactionResult_Handle * resultptr = (SortableTransactionResult_Handle *) malloc(sizeof(SortableTransactionResult_Handle));
+    memmove(resultptr, &result, sizeof(SortableTransactionResult_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_WalletReadableNotes_HandlePtr() {
+  void * jresult ;
+  WalletReadableNotes_Handle *result = 0 ;
+  
+  result = (WalletReadableNotes_Handle *)new_WalletReadableNotes_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_WalletReadableNotes_HandlePtr(void * jarg1) {
+  void * jresult ;
+  WalletReadableNotes_Handle arg1 ;
+  WalletReadableNotes_Handle *argp1 ;
+  WalletReadableNotes_Handle *result = 0 ;
+  
+  argp1 = (WalletReadableNotes_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (WalletReadableNotes_Handle *)copy_WalletReadableNotes_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_WalletReadableNotes_HandlePtr(void * jarg1) {
+  WalletReadableNotes_Handle *arg1 = (WalletReadableNotes_Handle *) 0 ;
+  
+  arg1 = (WalletReadableNotes_Handle *)jarg1; 
+  delete_WalletReadableNotes_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_WalletReadableNotes_HandlePtr_assign(void * jarg1, void * jarg2) {
+  WalletReadableNotes_Handle *arg1 = (WalletReadableNotes_Handle *) 0 ;
+  WalletReadableNotes_Handle arg2 ;
+  WalletReadableNotes_Handle *argp2 ;
+  
+  arg1 = (WalletReadableNotes_Handle *)jarg1; 
+  argp2 = (WalletReadableNotes_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null WalletReadableNotes_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  WalletReadableNotes_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_WalletReadableNotes_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  WalletReadableNotes_Handle *arg1 = (WalletReadableNotes_Handle *) 0 ;
+  WalletReadableNotes_Handle result;
+  
+  arg1 = (WalletReadableNotes_Handle *)jarg1; 
+  result = WalletReadableNotes_HandlePtr_value(arg1);
+  {
+    WalletReadableNotes_Handle * resultptr = (WalletReadableNotes_Handle *) malloc(sizeof(WalletReadableNotes_Handle));
+    memmove(resultptr, &result, sizeof(WalletReadableNotes_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_OutputsResult_HandlePtr() {
+  void * jresult ;
+  OutputsResult_Handle *result = 0 ;
+  
+  result = (OutputsResult_Handle *)new_OutputsResult_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_OutputsResult_HandlePtr(void * jarg1) {
+  void * jresult ;
+  OutputsResult_Handle arg1 ;
+  OutputsResult_Handle *argp1 ;
+  OutputsResult_Handle *result = 0 ;
+  
+  argp1 = (OutputsResult_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null OutputsResult_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (OutputsResult_Handle *)copy_OutputsResult_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_OutputsResult_HandlePtr(void * jarg1) {
+  OutputsResult_Handle *arg1 = (OutputsResult_Handle *) 0 ;
+  
+  arg1 = (OutputsResult_Handle *)jarg1; 
+  delete_OutputsResult_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_OutputsResult_HandlePtr_assign(void * jarg1, void * jarg2) {
+  OutputsResult_Handle *arg1 = (OutputsResult_Handle *) 0 ;
+  OutputsResult_Handle arg2 ;
+  OutputsResult_Handle *argp2 ;
+  
+  arg1 = (OutputsResult_Handle *)jarg1; 
+  argp2 = (OutputsResult_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null OutputsResult_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  OutputsResult_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_OutputsResult_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  OutputsResult_Handle *arg1 = (OutputsResult_Handle *) 0 ;
+  OutputsResult_Handle result;
+  
+  arg1 = (OutputsResult_Handle *)jarg1; 
+  result = OutputsResult_HandlePtr_value(arg1);
+  {
+    OutputsResult_Handle * resultptr = (OutputsResult_Handle *) malloc(sizeof(OutputsResult_Handle));
+    memmove(resultptr, &result, sizeof(OutputsResult_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_StatusResult_HandlePtr() {
+  void * jresult ;
+  StatusResult_Handle *result = 0 ;
+  
+  result = (StatusResult_Handle *)new_StatusResult_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_StatusResult_HandlePtr(void * jarg1) {
+  void * jresult ;
+  StatusResult_Handle arg1 ;
+  StatusResult_Handle *argp1 ;
+  StatusResult_Handle *result = 0 ;
+  
+  argp1 = (StatusResult_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null StatusResult_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (StatusResult_Handle *)copy_StatusResult_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_StatusResult_HandlePtr(void * jarg1) {
+  StatusResult_Handle *arg1 = (StatusResult_Handle *) 0 ;
+  
+  arg1 = (StatusResult_Handle *)jarg1; 
+  delete_StatusResult_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_StatusResult_HandlePtr_assign(void * jarg1, void * jarg2) {
+  StatusResult_Handle *arg1 = (StatusResult_Handle *) 0 ;
+  StatusResult_Handle arg2 ;
+  StatusResult_Handle *argp2 ;
+  
+  arg1 = (StatusResult_Handle *)jarg1; 
+  argp2 = (StatusResult_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null StatusResult_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  StatusResult_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_StatusResult_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  StatusResult_Handle *arg1 = (StatusResult_Handle *) 0 ;
+  StatusResult_Handle result;
+  
+  arg1 = (StatusResult_Handle *)jarg1; 
+  result = StatusResult_HandlePtr_value(arg1);
+  {
+    StatusResult_Handle * resultptr = (StatusResult_Handle *) malloc(sizeof(StatusResult_Handle));
+    memmove(resultptr, &result, sizeof(StatusResult_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_AddressUxOuts_HandlePtr() {
+  void * jresult ;
+  AddressUxOuts_Handle *result = 0 ;
+  
+  result = (AddressUxOuts_Handle *)new_AddressUxOuts_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_AddressUxOuts_HandlePtr(void * jarg1) {
+  void * jresult ;
+  AddressUxOuts_Handle arg1 ;
+  AddressUxOuts_Handle *argp1 ;
+  AddressUxOuts_Handle *result = 0 ;
+  
+  argp1 = (AddressUxOuts_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (AddressUxOuts_Handle *)copy_AddressUxOuts_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_AddressUxOuts_HandlePtr(void * jarg1) {
+  AddressUxOuts_Handle *arg1 = (AddressUxOuts_Handle *) 0 ;
+  
+  arg1 = (AddressUxOuts_Handle *)jarg1; 
+  delete_AddressUxOuts_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_AddressUxOuts_HandlePtr_assign(void * jarg1, void * jarg2) {
+  AddressUxOuts_Handle *arg1 = (AddressUxOuts_Handle *) 0 ;
+  AddressUxOuts_Handle arg2 ;
+  AddressUxOuts_Handle *argp2 ;
+  
+  arg1 = (AddressUxOuts_Handle *)jarg1; 
+  argp2 = (AddressUxOuts_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null AddressUxOuts_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  AddressUxOuts_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_AddressUxOuts_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  AddressUxOuts_Handle *arg1 = (AddressUxOuts_Handle *) 0 ;
+  AddressUxOuts_Handle result;
+  
+  arg1 = (AddressUxOuts_Handle *)jarg1; 
+  result = AddressUxOuts_HandlePtr_value(arg1);
+  {
+    AddressUxOuts_Handle * resultptr = (AddressUxOuts_Handle *) malloc(sizeof(AddressUxOuts_Handle));
+    memmove(resultptr, &result, sizeof(AddressUxOuts_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_BuildInfo_HandlePtr() {
+  void * jresult ;
+  BuildInfo_Handle *result = 0 ;
+  
+  result = (BuildInfo_Handle *)new_BuildInfo_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_BuildInfo_HandlePtr(void * jarg1) {
+  void * jresult ;
+  BuildInfo_Handle arg1 ;
+  BuildInfo_Handle *argp1 ;
+  BuildInfo_Handle *result = 0 ;
+  
+  argp1 = (BuildInfo_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BuildInfo_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (BuildInfo_Handle *)copy_BuildInfo_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_BuildInfo_HandlePtr(void * jarg1) {
+  BuildInfo_Handle *arg1 = (BuildInfo_Handle *) 0 ;
+  
+  arg1 = (BuildInfo_Handle *)jarg1; 
+  delete_BuildInfo_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_BuildInfo_HandlePtr_assign(void * jarg1, void * jarg2) {
+  BuildInfo_Handle *arg1 = (BuildInfo_Handle *) 0 ;
+  BuildInfo_Handle arg2 ;
+  BuildInfo_Handle *argp2 ;
+  
+  arg1 = (BuildInfo_Handle *)jarg1; 
+  argp2 = (BuildInfo_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null BuildInfo_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  BuildInfo_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_BuildInfo_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  BuildInfo_Handle *arg1 = (BuildInfo_Handle *) 0 ;
+  BuildInfo_Handle result;
+  
+  arg1 = (BuildInfo_Handle *)jarg1; 
+  result = BuildInfo_HandlePtr_value(arg1);
+  {
+    BuildInfo_Handle * resultptr = (BuildInfo_Handle *) malloc(sizeof(BuildInfo_Handle));
+    memmove(resultptr, &result, sizeof(BuildInfo_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_ReadableUnspentOutputsSummary_HandlePtr() {
+  void * jresult ;
+  ReadableUnspentOutputsSummary_Handle *result = 0 ;
+  
+  result = (ReadableUnspentOutputsSummary_Handle *)new_ReadableUnspentOutputsSummary_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_ReadableUnspentOutputsSummary_HandlePtr(void * jarg1) {
+  void * jresult ;
+  ReadableUnspentOutputsSummary_Handle arg1 ;
+  ReadableUnspentOutputsSummary_Handle *argp1 ;
+  ReadableUnspentOutputsSummary_Handle *result = 0 ;
+  
+  argp1 = (ReadableUnspentOutputsSummary_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableUnspentOutputsSummary_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (ReadableUnspentOutputsSummary_Handle *)copy_ReadableUnspentOutputsSummary_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_ReadableUnspentOutputsSummary_HandlePtr(void * jarg1) {
+  ReadableUnspentOutputsSummary_Handle *arg1 = (ReadableUnspentOutputsSummary_Handle *) 0 ;
+  
+  arg1 = (ReadableUnspentOutputsSummary_Handle *)jarg1; 
+  delete_ReadableUnspentOutputsSummary_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_ReadableUnspentOutputsSummary_HandlePtr_assign(void * jarg1, void * jarg2) {
+  ReadableUnspentOutputsSummary_Handle *arg1 = (ReadableUnspentOutputsSummary_Handle *) 0 ;
+  ReadableUnspentOutputsSummary_Handle arg2 ;
+  ReadableUnspentOutputsSummary_Handle *argp2 ;
+  
+  arg1 = (ReadableUnspentOutputsSummary_Handle *)jarg1; 
+  argp2 = (ReadableUnspentOutputsSummary_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ReadableUnspentOutputsSummary_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  ReadableUnspentOutputsSummary_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_ReadableUnspentOutputsSummary_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  ReadableUnspentOutputsSummary_Handle *arg1 = (ReadableUnspentOutputsSummary_Handle *) 0 ;
+  ReadableUnspentOutputsSummary_Handle result;
+  
+  arg1 = (ReadableUnspentOutputsSummary_Handle *)jarg1; 
+  result = ReadableUnspentOutputsSummary_HandlePtr_value(arg1);
+  {
+    ReadableUnspentOutputsSummary_Handle * resultptr = (ReadableUnspentOutputsSummary_Handle *) malloc(sizeof(ReadableUnspentOutputsSummary_Handle));
+    memmove(resultptr, &result, sizeof(ReadableUnspentOutputsSummary_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Hash_HandlePtr() {
+  void * jresult ;
+  Hash_Handle *result = 0 ;
+  
+  result = (Hash_Handle *)new_Hash_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Hash_HandlePtr(void * jarg1) {
+  void * jresult ;
+  Hash_Handle arg1 ;
+  Hash_Handle *argp1 ;
+  Hash_Handle *result = 0 ;
+  
+  argp1 = (Hash_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (Hash_Handle *)copy_Hash_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Hash_HandlePtr(void * jarg1) {
+  Hash_Handle *arg1 = (Hash_Handle *) 0 ;
+  
+  arg1 = (Hash_Handle *)jarg1; 
+  delete_Hash_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Hash_HandlePtr_assign(void * jarg1, void * jarg2) {
+  Hash_Handle *arg1 = (Hash_Handle *) 0 ;
+  Hash_Handle arg2 ;
+  Hash_Handle *argp2 ;
+  
+  arg1 = (Hash_Handle *)jarg1; 
+  argp2 = (Hash_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Hash_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  Hash_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Hash_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  Hash_Handle *arg1 = (Hash_Handle *) 0 ;
+  Hash_Handle result;
+  
+  arg1 = (Hash_Handle *)jarg1; 
+  result = Hash_HandlePtr_value(arg1);
+  {
+    Hash_Handle * resultptr = (Hash_Handle *) malloc(sizeof(Hash_Handle));
+    memmove(resultptr, &result, sizeof(Hash_Handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_UnspentOutputsSummary_HandlePtr() {
+  void * jresult ;
+  UnspentOutputsSummary_Handle *result = 0 ;
+  
+  result = (UnspentOutputsSummary_Handle *)new_UnspentOutputsSummary_HandlePtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_UnspentOutputsSummary_HandlePtr(void * jarg1) {
+  void * jresult ;
+  UnspentOutputsSummary_Handle arg1 ;
+  UnspentOutputsSummary_Handle *argp1 ;
+  UnspentOutputsSummary_Handle *result = 0 ;
+  
+  argp1 = (UnspentOutputsSummary_Handle *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null UnspentOutputsSummary_Handle", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (UnspentOutputsSummary_Handle *)copy_UnspentOutputsSummary_HandlePtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_UnspentOutputsSummary_HandlePtr(void * jarg1) {
+  UnspentOutputsSummary_Handle *arg1 = (UnspentOutputsSummary_Handle *) 0 ;
+  
+  arg1 = (UnspentOutputsSummary_Handle *)jarg1; 
+  delete_UnspentOutputsSummary_HandlePtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_UnspentOutputsSummary_HandlePtr_assign(void * jarg1, void * jarg2) {
+  UnspentOutputsSummary_Handle *arg1 = (UnspentOutputsSummary_Handle *) 0 ;
+  UnspentOutputsSummary_Handle arg2 ;
+  UnspentOutputsSummary_Handle *argp2 ;
+  
+  arg1 = (UnspentOutputsSummary_Handle *)jarg1; 
+  argp2 = (UnspentOutputsSummary_Handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null UnspentOutputsSummary_Handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  UnspentOutputsSummary_HandlePtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_UnspentOutputsSummary_HandlePtr_value(void * jarg1) {
+  void * jresult ;
+  UnspentOutputsSummary_Handle *arg1 = (UnspentOutputsSummary_Handle *) 0 ;
+  UnspentOutputsSummary_Handle result;
+  
+  arg1 = (UnspentOutputsSummary_Handle *)jarg1; 
+  result = UnspentOutputsSummary_HandlePtr_value(arg1);
+  {
+    UnspentOutputsSummary_Handle * resultptr = (UnspentOutputsSummary_Handle *) malloc(sizeof(UnspentOutputsSummary_Handle));
+    memmove(resultptr, &result, sizeof(UnspentOutputsSummary_Handle));
     jresult = resultptr;
   }
   return jresult;
