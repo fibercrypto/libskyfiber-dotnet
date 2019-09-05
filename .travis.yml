@@ -34,7 +34,7 @@ before_install:
   - ./.travis/install-travis-gcc.sh
   - eval "CC=gcc && CXX=g++"
   - go get github.com/gz-c/gox
-  - go get github.com/skycoin/skycoin
+  - go get github.com/skycoin/skycoin/cmd/...
 
 install:
   - eval "$(gimme 1.11)"
