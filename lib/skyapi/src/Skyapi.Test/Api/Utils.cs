@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
 using Skyapi.Api;
 using Skyapi.Model;
+using skycoin;
 
 namespace Skyapi.Test.Api
 {
@@ -300,7 +302,7 @@ namespace Skyapi.Test.Api
 
         internal static string GetWalletName()
         {
-            var walletname = Environment.GetEnvironmentVariable("WALLET_NAME");
+            var walletname = Environment.GetEnvironmentVariable("API_WALLET_ID");
             Assert.NotNull(walletname, "Missing WALLET_NAME environment value");
             return walletname;
         }
@@ -310,6 +312,11 @@ namespace Skyapi.Test.Api
             return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_WALLET") ?? "false");
         }
 
+        internal static string GetWalletDir(DefaultApi instance)
+        {
+            return instance.WalletFolder().Address;
+        }
+
         internal static void RequireWalletEnv()
         {
             if (!DoLiveWallet())
@@ -317,12 +324,16 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            var walletName = GetWalletName();
+            var walletName = GetWalletName() ?? "";
+            if (walletName == "")
+            {
+                Assert.Fail("missing API_WALLET_ID environment value");
+            }
         }
 
         internal static string GetWalletPassword()
         {
-            return Environment.GetEnvironmentVariable("WALLET_PASSWORD");
+            return Environment.GetEnvironmentVariable("WALLET_PASSWORD") ?? "";
         }
 
         internal static string GetTestMode()
@@ -333,6 +344,22 @@ namespace Skyapi.Test.Api
         internal static string GetCoin()
         {
             return Environment.GetEnvironmentVariable("COIN") ?? "skycoin";
+        }
+
+        internal static bool Enabled()
+        {
+            return Environment.GetEnvironmentVariable("SKYCOIN_INTEGRATION_TESTS") == "1";
+        }
+
+        internal static bool SkipWalletIfLive()
+        {
+            var skip = Enabled() && GetTestMode() == "live" && !DoLiveWallet();
+            if (skip)
+            {
+                Assert.Ignore("live wallet tests disabled");
+            }
+
+            return false;
         }
 
         internal static bool UseCsrf()
@@ -355,51 +382,72 @@ namespace Skyapi.Test.Api
             return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "true");
         }
 
-        internal static object PrepareAndCheckWallet(DefaultApi instance, long minicoins, long minihours)
+        internal static Tuple<Wallet, long, long, string> PrepareAndCheckWallet(DefaultApi instance, double minCoins,
+            double minHours)
         {
-            var wallet = instance.Wallet(GetWalletName());
-            if (wallet.Meta.Encrypted && GetWalletPassword() == "")
+            var walletName = GetWalletName();
+            var walletDir = GetWalletDir(instance);
+            var walletPass = GetWalletPassword();
+            if (!File.Exists($"{walletDir}/{walletName}"))
+            {
+                Assert.Fail($"Wallet {walletDir}/{walletName} doesn't exist");
+            }
+
+            var walletHandle = skycoin.skycoin.new_Wallet__HandlePtr();
+            var err = skycoin.skycoin.SKY_wallet_Load($"{walletDir}/{walletName}", walletHandle);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var encryptCharPtr = skycoin.skycoin.new_CharPtr();
+            err = skycoin.skycoin.SKY_wallet_Wallet_IsEncrypted(walletHandle, encryptCharPtr);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var encrypt = skycoin.skycoin.CharPtr_value(encryptCharPtr);
+            if (encrypt == 1 && walletPass.Equals(""))
             {
                 Assert.Fail("Wallet is encrypted, must set WALLET_PASSWORD env var");
             }
 
-            if (wallet.Entries.Count < 2)
+            var entryLenGoUint32Ptr = skycoin.skycoin.new_GoUint32Ptr();
+            err = skycoin.skycoin.SKY_api_Handle_GetWalletEntriesCount(walletHandle, entryLenGoUint32Ptr);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var entryLen = skycoin.skycoin.GoUint32Ptr_value(entryLenGoUint32Ptr);
+            if (entryLen < 2)
             {
-                instance.WalletNewAddress(wallet.Meta.Id, 1, GetWalletPassword());
-                wallet = JsonConvert.DeserializeObject<Wallet>(instance.Wallet(GetWalletName()).ToString());
+                Assert.DoesNotThrow(() =>
+                {
+                    if (UseCsrf())
+                    {
+                        instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance));
+                    }
+
+                    instance.WalletNewAddress(walletName, 2, walletPass);
+                    err = skycoin.skycoin.SKY_wallet_Load($"{walletDir}/{walletName}", walletHandle);
+                    Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                });
             }
 
-            var walletBalance =
-                JsonConvert.DeserializeObject<Balance>(instance.WalletBalance(wallet.Meta.Id).ToString());
-            if (walletBalance.Confirmed.Coins < minicoins)
+            var balanceTuple = GetBalanceWallet(instance, walletName);
+            if (balanceTuple.Item1 < minCoins)
             {
-                Assert.Fail($"Wallet must have at least {minicoins} coins");
+                Assert.Fail($"Wallet must have at least {minCoins} coins");
             }
 
-            if (walletBalance.Confirmed.Hours < minihours)
+            if (balanceTuple.Item2 < minHours)
             {
-                Assert.Fail($"Wallet must have at least {minihours} coins hours");
+                Assert.Fail($"Wallet must have at least {minHours} coins");
             }
 
-            return new
-            {
-                wallet,
-                walletBalance.Confirmed.Coins,
-                walletBalance.Confirmed.Hours,
-                password = GetWalletPassword()
-            };
+            skycoin.skycoin.SKY_wallet_Wallet_Save(walletHandle, $"{walletDir}/{walletName}");
+
+            return new Tuple<Wallet, long, long, string>(
+                new Wallet(),
+                balanceTuple.Item1,
+                balanceTuple.Item2,
+                walletPass);
         }
 
-        internal static string ToDropletString(decimal totalcoin)
+        internal static Tuple<long, long> GetBalanceWallet(DefaultApi instance, string walletId)
         {
-            var d = decimal.Parse("1E-6", NumberStyles.Any);
-            var stotalcoin = (totalcoin * d).ToString(CultureInfo.InvariantCulture);
-            return stotalcoin.Replace(",", ".");
-        }
-
-        internal static decimal FromDropletString(string stotalcoin)
-        {
-            return decimal.Parse(stotalcoin.Replace(".", ",")) * 1000000;
+            var balance = instance.WalletBalance(walletId);
+            return new Tuple<long, long>(balance.Confirmed.Coins, balance.Confirmed.Hours);
         }
 
         internal static WalletTransactionRequest CreateTxnReq(DefaultApi instance, Wallet wallet, string sharefactor,
@@ -458,8 +506,71 @@ namespace Skyapi.Test.Api
             return token.Substring(0, lon);
         }
 
-        internal static void MakeLiveCreateTxnTestCases(Wallet w, long totalcoins, long totalhours)
+        internal static Tuple<Wallet, Action> CreateWallet(DefaultApi instance, string type = "deterministic",
+            string label = null, string seed = null, string xpub = null, string seedPassphase = null,
+            string bip44Coins = null, int? scan = null, bool encrypt = false, string pass = null)
         {
+            switch (type)
+            {
+                case "deterministic":
+                    if (seed == null || seed == "")
+                    {
+                        var goString = new _GoString_();
+                        skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(goString);
+                        seed = goString.p;
+                    }
+
+                    break;
+                case "bip44":
+                    if (seed == null || seed == "")
+                    {
+                        var goString = new _GoString_();
+                        skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(goString);
+                        seed = goString.p;
+                    }
+
+                    break;
+                case "xpub":
+                    if (xpub == null || xpub == "")
+                    {
+                        //  var goString = new _GoString_();
+                        //skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(goString);
+                        //seed = goString.p;
+                    }
+
+                    break;
+            }
+
+            if (label == null || label == "")
+            {
+                label = GenString();
+            }
+
+            if (UseCsrf())
+            {
+                instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance));
+            }
+
+            var w = instance.WalletCreate(type, label, seed, seedPassphase,
+                bip44Coins, xpub, scan, encrypt, pass);
+            var walletDir = GetWalletDir(instance);
+            return new Tuple<Wallet, Action>(w, () =>
+            {
+                // Cleaner function to delete the wallet and bak wallet
+                var walletpath = $"{walletDir}/{w.Meta.Id}";
+                if (!File.Exists(walletpath))
+                {
+                    Assert.Fail("Wallet file not found");
+                }
+
+                File.Delete(walletpath);
+                if (File.Exists(walletpath + ".bak"))
+                {
+                    File.Delete(walletpath + ".bak");
+                }
+
+                instance.WalletUnload(w.Meta.Id);
+            });
         }
     }
 }

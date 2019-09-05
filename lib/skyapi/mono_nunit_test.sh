@@ -23,5 +23,3 @@ export COIN='skycoin'
 export USE_CSRF=true
 echo "[INFO] Build the solution and run the unit test"
 msbuild Skyapi.sln
-
-mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/Skyapi.Test/bin/Debug/Skyapi.Test.dll

@@ -1063,7 +1063,7 @@ namespace Skyapi.Test.Api
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(
-                        () => { Console.WriteLine(instance.TransactionPost(tc.req)); });
+                        () =>  instance.TransactionPost(tc.req) );
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.True(err.Message.Contains(tc.errMsg), tc.name);
                 }
@@ -1256,21 +1256,44 @@ namespace Skyapi.Test.Api
 
         internal static void WalletTransactions(DefaultApi instance)
         {
-            Assert.Ignore();
-            if (!instance.Wallets().Exists(w => w.Meta.Label.Equals("wallet transactions")))
+            var testCases = new[]
             {
-                var seed = Utils.GenString();
+                "deterministic",
+                "bip44",
+                "xpub"
+            };
+
+            Wallet wallet = null;
+            foreach (var walletType in testCases)
+            {
                 if (Utils.UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
 
-                instance.WalletCreate("deterministic", seed, "wallet transactions");
-            }
+                switch (walletType)
+                {
+                    case "xpub":
+                        var xpub =
+                            "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqs" +
+                            "efD265TMg7usUDFdp6W1EGMcet8";
+                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
+                            ? instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
+                                xpub: xpub)
+                            : instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
+                        break;
+                    default:
+                        dynamic seed = instance.WalletNewSeed();
+                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
+                            ? instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
+                                seed: seed.seed.ToString())
+                            : instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
+                        break;
+                }
 
-            var wallet = instance.Wallets().Find(w => w.Meta.Label.Equals("wallet transactions"));
-            var result = instance.WalletTransactions(wallet.Meta.Id);
-            Utils.CheckGoldenFile("wallet-transactions.golden", result, result.GetType());
+                var result = instance.WalletTransactions(wallet.Meta.Id);
+                Utils.CheckGoldenFile($"wallet-{walletType}-transactions.golden", result, result.GetType());
+            }
         }
     }
 }

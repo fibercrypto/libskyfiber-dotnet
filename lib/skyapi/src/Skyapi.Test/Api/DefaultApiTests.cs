@@ -9,13 +9,14 @@
  */
 
 using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Skyapi.Client;
 using Skyapi.Api;
 using RestSharp;
 using Skyapi.Model;
+using skycoin;
 
 namespace Skyapi.Test.Api
 {
@@ -47,17 +48,7 @@ namespace Skyapi.Test.Api
         public void Cleanup()
         {
         }
-
-        /// <summary>
-        /// Test an instance of DefaultApi
-        /// </summary>
-        [Test]
-        public void InstanceTest()
-        {
-            Assert.IsInstanceOfType(typeof(DefaultApi), _instance, "instance is a DefaultApi");
-        }
-
-
+        
         /// <summary>
         /// Test AddressCount
         /// </summary>
@@ -86,14 +77,7 @@ namespace Skyapi.Test.Api
             }
             else if (Utils.GetTestMode().Equals("live"))
             {
-                if (Utils.LiveDisableNetworking())
-                {
-                    LiveTest.AddressUxouts(_instance);
-                }
-                else
-                {
-                    Console.WriteLine("Skipping slow ux out tests when networking disabled");
-                }
+                LiveTest.AddressUxouts(_instance);
             }
         }
 
@@ -586,7 +570,7 @@ namespace Skyapi.Test.Api
             }
             else if (Utils.GetTestMode().Equals("live"))
             {
-                ///////
+                LiveTest.TransactionPost(_instance);
             }
         }
 
@@ -668,7 +652,12 @@ namespace Skyapi.Test.Api
             }
             else if (Utils.GetTestMode().Equals("live"))
             {
-                /////////
+                if (Utils.LiveDisableNetworking())
+                {
+                    Assert.Ignore("Skipping slow ux out tests when networking disabled");
+                }
+
+                LiveTest.Uxouts(_instance);
             }
         }
 
@@ -963,30 +952,98 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletNewAddressTest()
         {
-            Assert.Ignore();
-            var wallets = _instance.Wallets();
-            Console.WriteLine(JsonConvert.SerializeObject(wallets, Formatting.Indented));
-            if (!wallets.Exists(wallet => wallet.Meta.Label.Equals("new_address_test")))
+            var seedStr = new _GoString_();
+            skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(seedStr);
+            var mainSeed = seedStr.p;
+            var testCases = new[]
             {
-                if (Utils.UseCsrf())
+                new
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
-                }
-
-                var seed = Utils.GenString();
-                _instance.WalletCreate("deterministic", seed, "new_address_test");
-            }
-
-            var walletforTestNewAddress = wallets.Find(wallet => wallet.Meta.Label.Equals("new_address_test"));
-            if (Utils.UseCsrf())
+                    name = "deterministic",
+                    seed = mainSeed,
+                    seedPassphrase = "",
+                    walletType = "deterministic"
+                },
+                new
+                {
+                    name = "bip44 without seed passphrase",
+                    seed = mainSeed,
+                    seedPassphrase = "",
+                    walletType = "bip44"
+                },
+                new
+                {
+                    name = "bip44 with seed passphrase",
+                    seed = mainSeed,
+                    seedPassphrase = "foobar",
+                    walletType = "bip44"
+                },
+            };
+            foreach (var tc in testCases)
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
-            }
+                for (int i = 1; i < 30; i++)
+                {
+                    var name = $"{tc.name} generate {i} addresses";
+                    Assert.DoesNotThrow(() =>
+                    {
+                        var encrypt = false;
+                        var pass = "";
+                        if (i == 2)
+                        {
+                            encrypt = true;
+                            pass = "pwd";
+                        }
 
-            dynamic address = _instance.WalletNewAddress(walletforTestNewAddress.Meta.Id);
-            walletforTestNewAddress = _instance.Wallet(walletforTestNewAddress.Meta.Id);
-            Assert.True(walletforTestNewAddress.Entries.Exists(entry =>
-                entry.Address.Equals(address.addresses[0].ToString())));
+                        var cw = Utils.CreateWallet(instance: _instance, type: tc.walletType, seed: tc.seed,
+                            seedPassphase: tc.seedPassphrase, pass: pass, encrypt: encrypt);
+                        var w = cw.Item1;
+                        var clean = cw.Item2;
+                        dynamic addrs = _instance.WalletNewAddress(w.Meta.Id, i, pass);
+                        uint err;
+                        switch (tc.walletType)
+                        {
+                            case "deterministic":
+                                var seckeys = new cipher_SecKeys();
+                                var seeds = new GoSlice();
+                                seeds.convertString(seedStr);
+                                err = skycoin.skycoin.SKY_cipher_GenerateDeterministicKeyPairs(seeds, i + 1,
+                                    seckeys);
+                                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                                List<string> As = new List<string>();
+                                for (int j = 0; j < seckeys.count; j++)
+                                {
+                                    var cipherAddress = new cipher__Address();
+                                    err = skycoin.skycoin.SKY_cipher_AddressFromSecKey(seckeys.getAt(j), cipherAddress);
+                                    Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                                    var address = new _GoString_();
+                                    err = skycoin.skycoin.SKY_cipher_Address_String(cipherAddress, address);
+                                    Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                                    As.Add(address.p);
+                                }
+
+                                Assert.AreEqual(addrs.addresses.Count, As.Count - 1);
+                                for (int j = 0; j < addrs.addresses.Count; j++)
+                                {
+                                    Assert.AreEqual(As[j + 1], addrs.addresses[j].ToString());
+                                }
+
+                                break;
+                            case "bip44":
+                                var ss = new GoSlice();
+                                err = skycoin.skycoin.SKY_bip39_NewSeed(tc.seed, tc.seedPassphrase, ss);
+                                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+//Require bip44NewCoin
+                                break;
+                            default:
+                                Assert.Fail($"unhandled wallet type {tc.walletType}");
+                                break;
+                        }
+
+                        clean();
+                    });
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -1162,43 +1219,38 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletUpdateTest()
         {
-            Assert.Ignore();
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode() == "live" || Utils.GetTestMode() == "stable"))
             {
                 return;
             }
 
-            if (!_instance.Wallets().Exists(w => w.Meta.Label.Equals("my wallet update")))
+            if (Utils.SkipWalletIfLive())
             {
-                if (Utils.UseCsrf())
+                return;
+            }
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            }
+
+            var testCases = new[]
+            {
+                "deterministic",
+                "bip44",
+                //            "xpub"
+            };
+            foreach (var walletType in testCases)
+            {
+                var cw = Utils.CreateWallet(instance: _instance, type: walletType);
+                Assert.DoesNotThrow(() =>
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-                }
-
-                var seed = Utils.GenString();
-                _instance.WalletCreate("deterministic", seed, "my wallet update");
+                    _instance.WalletUpdate(cw.Item1.Meta.Id, "new wallet");
+                    var w1 = _instance.Wallet(cw.Item1.Meta.Id);
+                    Assert.AreEqual(w1.Meta.Label, "new wallet");
+                });
+                cw.Item2();
             }
-
-            var wallet = _instance.Wallets().Find(w => w.Meta.Label.Equals("my wallet update"));
-            var newlabel = "My new label for my wallet.";
-            if (Utils.UseCsrf())
-            {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-            }
-
-            var result = _instance.WalletUpdate(wallet.Meta.Id, newlabel);
-
-            var walletWithNewLabel = _instance.Wallet(wallet.Meta.Id);
-
-            if (Utils.UseCsrf())
-            {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-            }
-
-            _instance.WalletUpdate(wallet.Meta.Id, "my wallet update");
-
-            Assert.AreEqual("\"success\"", result);
-            Assert.True(walletWithNewLabel.Meta.Label.Equals(newlabel));
         }
 
         /// <summary>

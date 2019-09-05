@@ -587,7 +587,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[0].Address,
-                            coins = Utils.ToDropletString(walletTxnDat.coins)
+//                            coins = Utils.ToDropletString(walletTxnDat.coins)
                         }
                     }),
                     errCode = 200,
@@ -598,7 +598,7 @@ namespace Skyapi.Test.Api
                         transaction.Txn.Outputs.ForEach(o =>
                         {
                             var output = JsonConvert.DeserializeObject<dynamic>(o.ToString());
-                            coin += Utils.FromDropletString(output.coins);
+//                            coin += Utils.FromDropletString(output.coins);
                         });
                         Assert.AreEqual(walletTxnDat.coins, coin);
                         var coinbalance =
@@ -615,7 +615,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[1].Address,
-                            coins = Utils.ToDropletString(decimal.Parse("3E3", NumberStyles.Any))
+//                            coins = Utils.ToDropletString(decimal.Parse("3E3", NumberStyles.Any))
                         }
                     }),
                     errCode = 200,
@@ -640,14 +640,14 @@ namespace Skyapi.Test.Api
                         // Confirms the second address has 0.003 coin
                         var outp = addrsOutputInTxn(walletTxnDat.wallet.Entries[1].Address);
                         Assert.AreEqual("0.003000", outp.coins);
-                        var coin = Utils.FromDropletString(outp.coins);
+//                        var coin = Utils.FromDropletString(outp.coins);
 
                         // Gets the expected change coins
-                        var expectedExchange = walletTxnDat.coins - coin;
+//                        var expectedExchange = walletTxnDat.coins - coin;
 
                         var changeout = addrsOutputInTxn(walletTxnDat.wallet.Entries[0].Address);
-                        var changecoins = Utils.ToDropletString(changeout.coins);
-                        Assert.AreEqual(expectedExchange, changecoins);
+//                        var changecoins = Utils.ToDropletString(changeout.coins);
+//                        Assert.AreEqual(expectedExchange, changecoins);
                     })
                 },
                 new
@@ -658,7 +658,7 @@ namespace Skyapi.Test.Api
                         new
                         {
                             address = walletTxnDat.wallet.Entries[0].Address,
-                            coins = Utils.ToDropletString(walletTxnDat.coins)
+//                            coins = Utils.ToDropletString(walletTxnDat.coins)
                         }
                     }),
                     errCode = 200,
@@ -716,6 +716,27 @@ namespace Skyapi.Test.Api
             {
                 Assert.IsNull(result.Transactions);
             }
+        }
+
+        internal static void Uxouts(DefaultApi instance)
+        {
+            // A spent uxout should never change
+            Assert.DoesNotThrow(() =>
+            {
+                dynamic ux = instance.Uxout("fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20");
+                Utils.CheckGoldenFile("uxout-spent.golden", ux, ux.GetType());
+                Assert.AreNotEqual(0, ux.spent_block_seq);
+            });
+        }
+
+        internal static void TransactionPost(DefaultApi instance)
+        {
+            Utils.RequireWalletEnv();
+           var prepareAndCheckWallet= Utils.PrepareAndCheckWallet(instance:instance,2e6,20);
+           var wallet = prepareAndCheckWallet.Item1;
+           var totalCoins = prepareAndCheckWallet.Item2;
+           var totalHours = prepareAndCheckWallet.Item3;
+           
         }
     }
 }

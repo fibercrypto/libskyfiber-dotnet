@@ -38,7 +38,7 @@ Contact: contact@skycoin.net
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibskycoinNet, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>bin\Debug\LibskycoinNet.dll</HintPath>
+      <HintPath>..\..\..\swig\LibskycoinNet\bin\Release\LibskycoinNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
