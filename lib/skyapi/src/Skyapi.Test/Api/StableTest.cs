@@ -1063,7 +1063,7 @@ namespace Skyapi.Test.Api
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(
-                        () =>  instance.TransactionPost(tc.req) );
+                        () => instance.TransactionPost(tc.req));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.True(err.Message.Contains(tc.errMsg), tc.name);
                 }

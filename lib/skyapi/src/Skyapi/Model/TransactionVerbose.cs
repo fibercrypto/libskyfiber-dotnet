@@ -36,7 +36,7 @@ namespace Skyapi.Model
         /// <param name="time">time.</param>
         /// <param name="status">status.</param>
         /// <param name="txn">txn.</param>
-        public TransactionVerbose(long? time = default(long?), TransactionStatus status = default(TransactionStatus), TransactionVerboseTxn txn = default(TransactionVerboseTxn))
+        public TransactionVerbose(long? time = default(long?), TransactionStatus status = default(TransactionStatus), CreatedTransaction txn = default(CreatedTransaction))
         {
             this.Time = time;
             this.Status = status;
@@ -59,7 +59,7 @@ namespace Skyapi.Model
         /// Gets or Sets Txn
         /// </summary>
         [DataMember(Name="txn", EmitDefaultValue=false)]
-        public TransactionVerboseTxn Txn { get; set; }
+        public CreatedTransaction Txn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

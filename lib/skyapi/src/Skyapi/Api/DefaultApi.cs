@@ -934,7 +934,7 @@ namespace Skyapi.Api
             string bip44Coin = null, string xpub = null, int? scan = null, bool? encrypt = null,
             string password = null);
 
-        /// <returns>Wallet</return
+        /// <returns>Wallet</return>
         /// <summary>
         /// 
         /// </summary>

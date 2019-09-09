@@ -382,7 +382,8 @@ namespace Skyapi.Test.Api
             return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "true");
         }
 
-        internal static Tuple<Wallet, long, long, string> PrepareAndCheckWallet(DefaultApi instance, double minCoins,
+        internal static Tuple<SWIGTYPE_p_Wallet__Handle, long, long, string> PrepareAndCheckWallet(
+            DefaultApi instance, double minCoins,
             double minHours)
         {
             var walletName = GetWalletName();
@@ -437,11 +438,43 @@ namespace Skyapi.Test.Api
 
             skycoin.skycoin.SKY_wallet_Wallet_Save(walletHandle, $"{walletDir}/{walletName}");
 
-            return new Tuple<Wallet, long, long, string>(
-                new Wallet(),
+            return new Tuple<SWIGTYPE_p_Wallet__Handle, long, long, string>(
+                walletHandle,
                 balanceTuple.Item1,
                 balanceTuple.Item2,
                 walletPass);
+        }
+
+        internal static bool IsNullAddress(string a)
+        {
+            if (a.Equals(""))
+            {
+                return true;
+            }
+
+            var cipherAddress = skycoin.skycoin.new_cipher__Addressp();
+            var err = skycoin.skycoin.SKY_cipher_DecodeBase58Address(a, cipherAddress);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var unsignedChar = skycoin.skycoin.new_CharPtr();
+            err = skycoin.skycoin.SKY_cipher_Address_Null(cipherAddress, unsignedChar);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            return skycoin.skycoin.CharPtr_value(unsignedChar) == 1;
+        }
+
+        internal static string ToDropletString(ulong i)
+        {
+            var goString = new _GoString_();
+            skycoin.skycoin.SKY_droplet_ToString(i, goString);
+
+            return goString.p;
+        }
+
+        internal static ulong FromDropletString(String i)
+        {
+            var goUint64P = skycoin.skycoin.new_GoUint64p();
+            skycoin.skycoin.SKY_droplet_FromString(i, goUint64P);
+
+            return skycoin.skycoin.GoUint64p_value(goUint64P);
         }
 
         internal static Tuple<long, long> GetBalanceWallet(DefaultApi instance, string walletId)
@@ -474,15 +507,14 @@ namespace Skyapi.Test.Api
         {
             var outputs = instance.OutputsGet();
 
-            foreach (dynamic oh in outputs.HeaderOutputs)
+            foreach (var oh in outputs.HeaderOutputs)
             {
-                dynamic foundUx = instance.Uxout(oh.hash.ToString());
-
-                Assert.AreEqual(oh.hash, foundUx.uxid);
-                Assert.AreEqual(oh.time, foundUx.time);
-                Assert.AreEqual(oh.block_seq, foundUx.src_block_seq);
-                Assert.AreEqual(oh.src_tx, foundUx.src_tx);
-                Assert.AreEqual(oh.address, foundUx.owner_address);
+                dynamic foundUx = instance.Uxout(oh.Hash);
+                Assert.AreEqual(oh.Hash, foundUx.uxid.ToString(), "uxid");
+                Assert.AreEqual(oh.Time, (ulong) foundUx.time, "time");
+                Assert.AreEqual(oh.BlockSeq, (ulong) foundUx.src_block_seq, "src_block_seq");
+                Assert.AreEqual(oh.SrcTx, foundUx.src_tx.ToString(), "src_tx");
+                Assert.AreEqual(oh.Address, foundUx.owner_address.ToString(), "owner_address");
 
                 if (foundUx.spent_block_seq == 0)
                 {
@@ -571,6 +603,63 @@ namespace Skyapi.Test.Api
 
                 instance.WalletUnload(w.Meta.Id);
             });
+        }
+
+        internal static cipher_SHA256 RandSha256()
+        {
+            var b = new GoSlice();
+            skycoin.skycoin.SKY_cipher_RandByte(128, b);
+            var cipherSha256 = new cipher_SHA256();
+            skycoin.skycoin.SKY_cipher_SumSHA256(b, cipherSha256);
+            return cipherSha256;
+        }
+
+        internal static string GetAddressOfWalletEntries(int pos, SWIGTYPE_p_Wallet__Handle wallet)
+        {
+            var cipherAddress = new cipher__Address();
+            var err = skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, cipherAddress,
+                new cipher_PubKey());
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var addressGoString = new _GoString_();
+            err = skycoin.skycoin.SKY_cipher_Address_String(cipherAddress, addressGoString);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            return addressGoString.p;
+        }
+
+        internal static cipher__Address GetCipherAddressOfWalletEntries(int pos, SWIGTYPE_p_Wallet__Handle wallet)
+        {
+            var cipherAddress = new cipher__Address();
+            var err = skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, cipherAddress,
+                new cipher_PubKey());
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            return cipherAddress;
+        }
+
+        internal static string Sha256Hex(cipher_SHA256 unknownOutputs)
+        {
+            var goString = new _GoString_();
+            skycoin.skycoin.SKY_cipher_SHA256_Hex(unknownOutputs, goString);
+            return goString.p;
+        }
+
+        internal static WalletEntry GetLastChangeEntry(Wallet w2)
+        {
+            Assert.AreEqual("bip44", w2.Meta.Type);
+            w2.Entries.Sort((e1, e2) =>
+            {
+                if (e1.Change == e2.Change)
+                {
+                    return e1.ChildNumber - e2.ChildNumber;
+                }
+
+                return e1.Change - e2.Change;
+            });
+            var lastChangeEntry = w2.Entries[0];
+//            if (lastChangeEntry.Change!=bip44.ChangeChainIndex)
+//            {
+//                return null;
+//            }
+            return lastChangeEntry;
         }
     }
 }

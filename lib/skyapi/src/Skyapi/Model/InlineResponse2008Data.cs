@@ -9,18 +9,11 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,22 +21,30 @@ namespace Skyapi.Model
     /// InlineResponse2008Data
     /// </summary>
     [DataContract]
-    public partial class InlineResponse2008Data :  IEquatable<InlineResponse2008Data>, IValidatableObject
+    public class InlineResponse2008Data : IEquatable<InlineResponse2008Data>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2008Data" /> class.
         /// </summary>
         /// <param name="transaction">transaction.</param>
-        public InlineResponse2008Data(object transaction = default(object))
+        /// <param name="encodedTransaction"></param>
+        public InlineResponse2008Data(CreatedTransaction transaction = default, string encodedTransaction = default)
         {
-            this.Transaction = transaction;
+            Transaction = transaction;
+            EncodedTransaction = encodedTransaction;
         }
-        
+
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
-        public object Transaction { get; set; }
+        [DataMember(Name = "transaction", EmitDefaultValue = false)]
+        public CreatedTransaction Transaction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EncodedTransaction
+        /// </summary>
+        [DataMember(Name = "encoded_transaction", EmitDefaultValue = false)]
+        public string EncodedTransaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,10 +55,11 @@ namespace Skyapi.Model
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2008Data {\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
+            sb.Append("  EncodedTransaction: ").Append(EncodedTransaction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -74,7 +76,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InlineResponse2008Data);
+            return Equals(input as InlineResponse2008Data);
         }
 
         /// <summary>
@@ -87,12 +89,15 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.Transaction == input.Transaction ||
-                    (this.Transaction != null &&
-                    this.Transaction.Equals(input.Transaction))
-                );
+            return
+            (
+                Transaction.Equals(input.Transaction) ||
+                (Transaction != null &&
+                 Transaction.Equals(input.Transaction)) &&
+                (EncodedTransaction == input.EncodedTransaction ||
+                 EncodedTransaction != null && EncodedTransaction.Equals(input.EncodedTransaction)
+                )
+            );
         }
 
         /// <summary>
@@ -104,8 +109,10 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Transaction != null)
-                    hashCode = hashCode * 59 + this.Transaction.GetHashCode();
+                if (Transaction != null)
+                    hashCode = hashCode * 59 + Transaction.GetHashCode();
+                if (EncodedTransaction != null)
+                    hashCode = hashCode * 59 + EncodedTransaction.GetHashCode();
                 return hashCode;
             }
         }
@@ -115,10 +122,10 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(
+            ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }

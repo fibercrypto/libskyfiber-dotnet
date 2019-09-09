@@ -29,18 +29,22 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="hoursSelection">hoursSelection.</param>
         /// <param name="address">address.</param>
+        /// <param name="uxOuts"></param>
         /// <param name="changeAddress">changeAddress.</param>
-        ///    /// <param name="to">to.</param>
+        /// <param name="to">to.</param>
+        ///    <param name="ignoreUnconfirmed"></param>
         public TransactionV2ParamsAddress(
             TransactionV2ParamsHoursSelection hoursSelection = default(TransactionV2ParamsHoursSelection),
-            List<string> address = default(List<string>),
-            string changeAddress = default(string),
+            List<string> address = default(List<string>), List<string> uxOuts = default(List<string>),
+            string changeAddress = default(string), bool ignoreUnconfirmed = default(bool),
             List<TransactionV2ParamsTo> to = default(List<TransactionV2ParamsTo>))
         {
             HoursSelection = hoursSelection;
             Address = address;
             ChangeAddress = changeAddress;
             To = to;
+            IgnoreUnconfirmed = ignoreUnconfirmed;
+            UxOuts = UxOuts;
         }
 
         /// <summary>
@@ -56,6 +60,12 @@ namespace Skyapi.Model
         public List<string> Address { get; set; }
 
         /// <summary>
+        /// Gets or Sets UxOuts
+        /// </summary>
+        [DataMember(Name = "unspents", EmitDefaultValue = false)]
+        public List<string> UxOuts { get; set; }
+
+        /// <summary>
         /// Gets or Sets ChangeAddress
         /// </summary>
         [DataMember(Name = "change_address", EmitDefaultValue = false)]
@@ -68,6 +78,12 @@ namespace Skyapi.Model
         public List<TransactionV2ParamsTo> To { get; set; }
 
         /// <summary>
+        /// Gets or Sets IgnoreUnconfirmed
+        /// </summary>
+        [DataMember(Name = "ignore_unconfirmed", EmitDefaultValue = false)]
+        public bool IgnoreUnconfirmed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,9 +92,11 @@ namespace Skyapi.Model
             var sb = new StringBuilder();
             sb.Append("class TransactionV2ParamsAddress {\n");
             sb.Append("  HoursSelection: ").Append(HoursSelection).Append("\n");
-            sb.Append("  Unspents: ").Append(Address).Append("\n");
+            sb.Append("  addresses: ").Append(Address).Append("\n");
+            sb.Append("  unspents: ").Append(UxOuts).Append("\n");
             sb.Append("  ChangeAddress: ").Append(ChangeAddress).Append("\n");
             sb.Append("  To: ").Append(To).Append("\n");
+            sb.Append("  ignore_unconfirmed: ").Append(IgnoreUnconfirmed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,7 +152,14 @@ namespace Skyapi.Model
                     To != null &&
                     input.To != null &&
                     To.SequenceEqual(input.To)
-                );
+                ) &&
+                (
+                    UxOuts == input.UxOuts ||
+                    UxOuts != null &&
+                    input.UxOuts != null &&
+                    UxOuts.SequenceEqual(input.UxOuts)
+                ) &&
+                IgnoreUnconfirmed == input.IgnoreUnconfirmed;
         }
 
         /// <summary>
@@ -154,6 +179,10 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + ChangeAddress.GetHashCode();
                 if (To != null)
                     hashCode = hashCode * 59 + To.GetHashCode();
+                if (UxOuts != null)
+                    hashCode = hashCode * 59 + UxOuts.GetHashCode();
+                if (IgnoreUnconfirmed != null)
+                    hashCode = hashCode * 59 + IgnoreUnconfirmed.GetHashCode();
                 return hashCode;
             }
         }

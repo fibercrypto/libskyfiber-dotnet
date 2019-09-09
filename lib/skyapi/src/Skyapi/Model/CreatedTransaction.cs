@@ -22,11 +22,13 @@ namespace Skyapi.Model
     /// TransactionVerbose has readable transaction data. It adds TransactionStatus to a BlockTransactionVerbose
     /// </summary>
     [DataContract]
-    public class TransactionTxn : IEquatable<TransactionTxn>, IValidatableObject
+    public class CreatedTransaction : IEquatable<CreatedTransaction>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionTxn" /> class.
+        /// Initializes a new instance of the <see cref="CreatedTransaction" /> class.
         /// </summary>
+        /// <param name="status">status.</param>
+        /// <param name="fee">fee.</param>
         /// <param name="innerHash">innerHash.</param>
         /// <param name="inputs">inputs.</param>
         /// <param name="length">length.</param>
@@ -35,20 +37,26 @@ namespace Skyapi.Model
         /// <param name="timestamp">timestamp.</param>
         /// <param name="txid">txid.</param>
         /// <param name="type">type.</param>
-        public TransactionTxn(string innerHash = default, List<string> inputs = default,
-            int? length = default, List<TransactionOutput> outputs = default,
-            List<string> sigs = default, long? timestamp = default, string txid = default,
+        public CreatedTransaction(string fee = default,
+            string innerHash = default, List<TransactionInput> inputs = default, int? length = default,
+            List<TransactionOutput> outputs = default, List<string> sigs = default, string txid = default,
             int? type = default)
         {
+            Fee = fee;
             InnerHash = innerHash;
             Inputs = inputs;
             Length = length;
             Outputs = outputs;
             Sigs = sigs;
-            Timestamp = timestamp;
             Txid = txid;
             Type = type;
         }
+
+        /// <summary>
+        /// Gets or Sets Fee
+        /// </summary>
+        [DataMember(Name = "fee", EmitDefaultValue = false)]
+        public string Fee { get; set; }
 
         /// <summary>
         /// Gets or Sets InnerHash
@@ -60,7 +68,7 @@ namespace Skyapi.Model
         /// Gets or Sets Inputs
         /// </summary>
         [DataMember(Name = "inputs", EmitDefaultValue = false)]
-        public List<string> Inputs { get; set; }
+        public List<TransactionInput> Inputs { get; set; }
 
         /// <summary>
         /// Gets or Sets Length
@@ -81,12 +89,6 @@ namespace Skyapi.Model
         public List<string> Sigs { get; set; }
 
         /// <summary>
-        /// Gets or Sets Timestamp
-        /// </summary>
-        [DataMember(Name = "timestamp", EmitDefaultValue = false)]
-        public long? Timestamp { get; set; }
-
-        /// <summary>
         /// Gets or Sets Txid
         /// </summary>
         [DataMember(Name = "txid", EmitDefaultValue = false)]
@@ -105,13 +107,13 @@ namespace Skyapi.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TransactionTxn {\n");
+            sb.Append("class TransactionVerboseTxn {\n");
+            sb.Append("  Fee: ").Append(Fee).Append("\n");
             sb.Append("  InnerHash: ").Append(InnerHash).Append("\n");
             sb.Append("  Inputs: ").Append(Inputs).Append("\n");
             sb.Append("  Length: ").Append(Length).Append("\n");
             sb.Append("  Outputs: ").Append(Outputs).Append("\n");
             sb.Append("  Sigs: ").Append(Sigs).Append("\n");
-            sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  Txid: ").Append(Txid).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -134,20 +136,25 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return Equals(input as TransactionTxn);
+            return Equals(input as CreatedTransaction);
         }
 
         /// <summary>
-        /// Returns true if TransactionTxn instances are equal
+        /// Returns true if TransactionVerboseTxn instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransactionTxn to be compared</param>
+        /// <param name="input">Instance of TransactionVerboseTxn to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransactionTxn input)
+        public bool Equals(CreatedTransaction input)
         {
             if (input == null)
                 return false;
 
             return
+                (
+                    Fee == input.Fee ||
+                    (Fee != null &&
+                     Fee.Equals(input.Fee))
+                ) &&
                 (
                     InnerHash == input.InnerHash ||
                     (InnerHash != null &&
@@ -177,11 +184,6 @@ namespace Skyapi.Model
                     Sigs.SequenceEqual(input.Sigs)
                 ) &&
                 (
-                    Timestamp == input.Timestamp ||
-                    (Timestamp != null &&
-                     Timestamp.Equals(input.Timestamp))
-                ) &&
-                (
                     Txid == input.Txid ||
                     (Txid != null &&
                      Txid.Equals(input.Txid))
@@ -202,6 +204,8 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (Fee != null)
+                    hashCode = hashCode * 59 + Fee.GetHashCode();
                 if (InnerHash != null)
                     hashCode = hashCode * 59 + InnerHash.GetHashCode();
                 if (Inputs != null)
@@ -212,8 +216,6 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + Outputs.GetHashCode();
                 if (Sigs != null)
                     hashCode = hashCode * 59 + Sigs.GetHashCode();
-                if (Timestamp != null)
-                    hashCode = hashCode * 59 + Timestamp.GetHashCode();
                 if (Txid != null)
                     hashCode = hashCode * 59 + Txid.GetHashCode();
                 if (Type != null)
