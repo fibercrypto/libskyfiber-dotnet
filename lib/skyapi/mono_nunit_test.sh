@@ -16,10 +16,4 @@ mono nuget.exe install src/Skyapi.Test/packages.config -o packages
 
 echo "[INFO] Install NUnit Console 3.x runners via NuGet"
 mono nuget.exe install NUnit.Runners -Version 2.6.4 -OutputDirectory packages
-
-echo "[INFO] Export the ENVVARS"
-export TEST_MODE='stable'
-export COIN='skycoin'
-export USE_CSRF=true
-echo "[INFO] Build the solution and run the unit test"
 msbuild Skyapi.sln

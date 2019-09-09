@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL:=help
 .PHONY: configure build-libc build-swig develop build-libc-swig build
 .PHONY: test test-ci help
 
@@ -140,11 +140,17 @@ test-libsky-dotnet: build-dotnet
 build-skyapi: ## Build SkyApi Assembly
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
 
-build-test-skyapi: ## Run SkyApi test suite
+build-test-skyapi: ## Build SkyApi test suite
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh mono_nunit_test.sh)
 
-test-skyapi: build-test-skyapi build-mono ## Run SkyApi test suite
-	 $(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+test-skyapi: build-mono  build-test-skyapi ## Run SkyApi test suite
+	@echo "[INFO] Export the ENVVARS"
+	export TEST_MODE='stable'
+	export COIN='skycoin'
+	export USE_CSRF=true
+	@echo "[INFO] Build the solution and run the unit test"	  
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
+	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
 
 
 lint: 
