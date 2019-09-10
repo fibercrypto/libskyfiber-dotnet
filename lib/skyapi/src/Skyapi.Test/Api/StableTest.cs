@@ -9,16 +9,40 @@ using Skyapi.Model;
 
 namespace Skyapi.Test.Api
 {
-    internal static class StableTest
+    [TestFixture]
+    internal class StableTest
     {
-        internal static void AddressCount(DefaultApi instance)
+        private DefaultApi _instance;
+
+        /// <summary>
+        /// Setup before each unit test
+        /// </summary>
+        [SetUp]
+        public void Init()
         {
-            var result = instance.AddressCount();
+            _instance = new DefaultApi(Utils.GetNodeHost());
+        }
+
+        [Test]
+        public void AddressCount()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var result = _instance.AddressCount();
             Assert.AreEqual(155, result.Count);
         }
 
-        internal static void AddressUxouts(DefaultApi instance)
+        [Test]
+        public void AddressUxouts()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -50,20 +74,26 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200 && tc.errCode != 0)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.AddressUxouts(tc.address));
+                    var err = Assert.Throws<ApiException>(() => _instance.AddressUxouts(tc.address));
                     Assert.AreEqual(err.ErrorCode, tc.errCode);
                     Assert.AreEqual(err.Message, tc.errMsg);
                 }
                 else
                 {
-                    var result = instance.AddressUxouts(tc.address);
+                    var result = _instance.AddressUxouts(tc.address);
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 }
             }
         }
 
-        internal static void ApiRawTxGet(DefaultApi instance)
+        [Test]
+        public void ApiRawTxGet()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testcases = new List<dynamic>
             {
                 new
@@ -122,19 +152,41 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.ApiV1RawtxGet(tc.txid));
+                    var err = Assert.Throws<ApiException>(() => _instance.ApiV1RawtxGet(tc.txid));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                 }
                 else
                 {
-                    var result = instance.ApiV1RawtxGet(tc.txid);
+                    var result = _instance.ApiV1RawtxGet(tc.txid);
                     Assert.AreEqual(tc.rawtxid, result, tc.name);
                 }
             });
         }
 
-        internal static void Balance(DefaultApi instance, Method method)
+        [Test]
+        public void BalanceGet()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            Balance(Method.GET);
+        }
+
+        [Test]
+        public void BalancePost()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            Balance(Method.POST);
+        }
+
+        private void Balance(Method method)
         {
             var testCase = new List<dynamic>
             {
@@ -175,12 +227,18 @@ namespace Skyapi.Test.Api
             }
 
             testCase.ForEach(
-                tc => Utils.BalanceWithMethod(method: method, instance: instance,
+                tc => Utils.BalanceWithMethod(method: method, instance: _instance,
                     addrs: string.Join(",", tc.addrs), golden: tc.file));
         }
 
-        internal static void Block(DefaultApi instance)
+        [Test]
+        public void Block()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -255,11 +313,11 @@ namespace Skyapi.Test.Api
                     {
                         if (tc.seq >= 0)
                         {
-                            instance.Block(seq: tc.seq);
+                            _instance.Block(seq: tc.seq);
                         }
                         else
                         {
-                            instance.Block(hash: tc.hash);
+                            _instance.Block(hash: tc.hash);
                         }
                     });
                     Assert.AreEqual(err.ErrorCode, tc.errCode);
@@ -269,21 +327,27 @@ namespace Skyapi.Test.Api
                 {
                     if (tc.seq >= 0)
                     {
-                        var result = instance.Block(seq: tc.seq);
+                        var result = _instance.Block(seq: tc.seq);
                         Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                     }
                     else
                     {
-                        var result = instance.Block(hash: tc.hash);
+                        var result = _instance.Block(hash: tc.hash);
                         Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                     }
                 }
             }
         }
 
-        internal static void BlockchainMetadata(DefaultApi instance)
+        [Test]
+        public void BlockchainMetadata()
         {
-            var result = instance.BlockchainMetadata();
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var result = _instance.BlockchainMetadata();
             var goldenfile = "blockchain-metadata.golden";
             if (Utils.DbNoUnconfirmed())
             {
@@ -293,15 +357,26 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile(goldenfile, result, result.GetType());
         }
 
-        internal static void BlockChainProgress(DefaultApi instance)
+        public void BlockChainProgress()
         {
-            var result = instance.BlockchainProgress();
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var result = _instance.BlockchainProgress();
             Utils.CheckGoldenFile("blockchain-progress.golden", result, result.GetType());
         }
 
-        internal static void Blocks(DefaultApi instance)
+        [Test]
+        public void Blocks()
         {
-            BlockchainProgress p = instance.BlockchainProgress();
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            BlockchainProgress p = _instance.BlockchainProgress();
 
             var testCases = new[]
             {
@@ -387,7 +462,7 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.Blocks(seqs: tc.seqs));
+                    var err = Assert.Throws<ApiException>(() => _instance.Blocks(seqs: tc.seqs));
                     Assert.AreEqual(err.ErrorCode, tc.errCode);
                     Assert.AreEqual(err.Message, tc.errMsg);
                 }
@@ -395,27 +470,49 @@ namespace Skyapi.Test.Api
                 {
                     if (tc.isRange)
                     {
-                        Utils.BlockInRangeTest(instance: instance, start: tc.start, end: tc.end);
-                        var result = instance.Blocks(start: tc.start, end: tc.end);
+                        Utils.BlockInRangeTest(instance: _instance, start: tc.start, end: tc.end);
+                        var result = _instance.Blocks(start: tc.start, end: tc.end);
                         Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                     }
                     else
                     {
-                        Utils.BlocksTest(instance: instance, seqs: tc.seqs);
-                        var result = instance.Blocks(seqs: tc.seqs);
+                        Utils.BlocksTest(instance: _instance, seqs: tc.seqs);
+                        var result = _instance.Blocks(seqs: tc.seqs);
                         Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                     }
                 }
             }
         }
 
-        internal static void CoinSupply(DefaultApi instance)
+        public void CoinSupply()
         {
-            var result = instance.CoinSupply();
+            var result = _instance.CoinSupply();
             Utils.CheckGoldenFile("coinsupply.golden", result, result.GetType());
         }
 
-        internal static void Transactions(DefaultApi instance, Method method)
+        [Test]
+        public void TransactionsGet()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            Transactions(Method.GET);
+        }
+
+        [Test]
+        public void TransactionsPost()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            Transactions(Method.POST);
+        }
+
+        private void Transactions(Method method)
         {
             var testCases = new List<dynamic>
                 {
@@ -567,7 +664,7 @@ namespace Skyapi.Test.Api
                 if (tc.errorCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(() => Utils.TransactionsWithMethod(
-                        method: method, instance: instance, addrs: string.Join(",", tc.addrs)));
+                        method: method, instance: _instance, addrs: string.Join(",", tc.addrs)));
                     if (method == Method.POST)
                     {
                         Assert.AreEqual(tc.errorCode, err.ErrorCode, tc.name);
@@ -583,13 +680,13 @@ namespace Skyapi.Test.Api
                 {
                     if (!tc.confirmed.Equals(""))
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: instance,
+                        Utils.TransactionsWithMethod(method: method, instance: _instance,
                             addrs: string.Join(",", tc.addrs),
                             confirmed: tc.confirmed, golden: tc.goldenFile);
                     }
                     else
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: instance,
+                        Utils.TransactionsWithMethod(method: method, instance: _instance,
                             addrs: string.Join(",", tc.addrs),
                             confirmed: null, golden: tc.goldenFile);
                     }
@@ -597,9 +694,15 @@ namespace Skyapi.Test.Api
             }
         }
 
-        internal static void Health(DefaultApi instance)
+        [Test]
+        public void Health()
         {
-            var result = JsonConvert.DeserializeObject<Health>(instance.Health().ToString());
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var result = JsonConvert.DeserializeObject<Health>(_instance.Health().ToString());
             Utils.CheckHealthResponse(result);
             Assert.AreEqual(0, result.Open_Connections, "Open Connections");
             Assert.AreEqual(0, result.Incoming_Connections, "Incoming Connections");
@@ -615,12 +718,18 @@ namespace Skyapi.Test.Api
             Assert.False(result.GUI_Enabled, "GUI_Enabled");
         }
 
-        internal static void LastBlocks(DefaultApi instance)
+        [Test]
+        public void LastBlocks()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             //InlineResponse references a list of BlocksSchema.
-            var result1 = JsonConvert.DeserializeObject<InlineResponse2001>(instance.LastBlocks(1).ToString());
+            var result1 = JsonConvert.DeserializeObject<InlineResponse2001>(_instance.LastBlocks(1).ToString());
             Utils.CheckGoldenFile("block-last.golden", result1, result1.GetType());
-            var result2 = JsonConvert.DeserializeObject<InlineResponse2001>(instance.LastBlocks(10).ToString());
+            var result2 = JsonConvert.DeserializeObject<InlineResponse2001>(_instance.LastBlocks(10).ToString());
             Assert.AreEqual(10, result2.Blocks.Count);
             BlockSchema prevBlock = null;
             result2.Blocks.ForEach(block =>
@@ -630,45 +739,100 @@ namespace Skyapi.Test.Api
                     Assert.AreNotEqual(prevBlock.Header.BlockHash, block.Header.BlockHash);
                 }
 
-                var bh = instance.Block(hash: block.Header.BlockHash);
+                var bh = _instance.Block(hash: block.Header.BlockHash);
                 Assert.NotNull(bh);
                 Assert.AreEqual(block.ToJson(), bh.ToJson());
                 prevBlock = block;
             });
         }
 
-        internal static void NetworkConnection(DefaultApi instance)
+        [Test]
+        public void NetworkConnection()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             NetworkConnectionSchema connectionSchema = null;
-            var connections = instance.NetworkConnections();
+            var connections = _instance.NetworkConnections();
             Assert.IsEmpty(connections.Connections);
             var err404 =
-                Assert.Throws<ApiException>(() => connectionSchema = instance.NetworkConnection("127.0.0.1:4444"));
+                Assert.Throws<ApiException>(() => connectionSchema = _instance.NetworkConnection("127.0.0.1:4444"));
             Assert.AreEqual(404, err404.ErrorCode);
             Assert.AreEqual("Error calling NetworkConnection: 404 Not Found\n", err404.Message);
             Assert.Null(connectionSchema);
         }
 
-        internal static void NetworkConnectionDisconnect(DefaultApi instance)
+        [Test]
+        public void NetworkConnectionDisconnect()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             if (Utils.UseCsrf())
             {
-                instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
             }
 
             var err404 =
-                Assert.Throws<ApiException>(() => instance.NetworkConnectionsDisconnect("999"));
+                Assert.Throws<ApiException>(() => _instance.NetworkConnectionsDisconnect("999"));
             Assert.AreEqual(404, err404.ErrorCode);
             Assert.AreEqual("Error calling NetworkConnectionsDisconnect: 404 Not Found\n", err404.Message);
         }
 
-        internal static void NetworkConnectionExchange(DefaultApi instance)
+        [Test]
+        public void NetworkConnectionExchange()
         {
-            var conenctions = instance.NetworkConnectionsExchange();
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var conenctions = _instance.NetworkConnectionsExchange();
             Utils.CheckGoldenFile("network-exchanged-peers.golden", conenctions, conenctions.GetType());
         }
 
-        internal static void NoUnconfirmedOutputs(Method method, DefaultApi instance)
+
+        [Test]
+        public void OutputsGet()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            if (Utils.DbNoUnconfirmed())
+            {
+                NoUnconfirmedOutputs(Method.GET);
+            }
+            else
+            {
+                Outputs(Method.GET);
+            }
+        }
+
+        [Test]
+        public void OutputsPost()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            if (Utils.DbNoUnconfirmed())
+            {
+                NoUnconfirmedOutputs(Method.POST);
+            }
+            else
+            {
+                Outputs(Method.POST);
+            }
+        }
+
+        private void NoUnconfirmedOutputs(Method method)
         {
             var testCases = new[]
             {
@@ -713,22 +877,23 @@ namespace Skyapi.Test.Api
                 Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
                 if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, golden: tc.golden);
+                    Utils.OutputsWithMethod(method: method, instance: _instance, golden: tc.golden);
                 }
                 else if (tc.addrs.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, addrs: tc.addrs,
+                    Utils.OutputsWithMethod(method: method, instance: _instance, addrs: tc.addrs,
                         golden: tc.golden);
                 }
                 else if (tc.hashes.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, hashes: tc.hashes,
+                    Utils.OutputsWithMethod(method: method, instance: _instance, hashes: tc.hashes,
                         golden: tc.golden);
                 }
             }
         }
 
-        internal static void Outputs(Method method, DefaultApi instance)
+
+        private void Outputs(Method method)
         {
             var testCases = new[]
             {
@@ -773,30 +938,42 @@ namespace Skyapi.Test.Api
                 Assert.False(tc.addrs.Count > 0 && tc.hashes.Count > 0);
                 if (tc.addrs.Count == 0 && tc.hashes.Count == 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, golden: tc.golden);
+                    Utils.OutputsWithMethod(method: method, instance: _instance, golden: tc.golden);
                 }
                 else if (tc.addrs.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, addrs: tc.addrs,
+                    Utils.OutputsWithMethod(method: method, instance: _instance, addrs: tc.addrs,
                         golden: tc.golden);
                 }
                 else if (tc.hashes.Count > 0)
                 {
-                    Utils.OutputsWithMethod(method: method, instance: instance, hashes: tc.hashes,
+                    Utils.OutputsWithMethod(method: method, instance: _instance, hashes: tc.hashes,
                         golden: tc.golden);
                 }
             }
         }
 
-        internal static void NoUnconfirmedPendingTxs(DefaultApi instance)
+        [Test]
+        public void NoUnconfirmedPendingTxs()
         {
-            var txns = instance.PendingTxs();
+            if (!Utils.GetTestMode().Equals("stable") || !Utils.DbNoUnconfirmed())
+            {
+                return;
+            }
+
+            var txns = _instance.PendingTxs();
             Assert.IsEmpty(txns);
         }
 
-        internal static void PendingTxs(DefaultApi instance)
+        [Test]
+        public void PendingTxs()
         {
-            var txns = instance.PendingTxs();
+            if (!Utils.GetTestMode().Equals("stable") || Utils.DbNoUnconfirmed())
+            {
+                return;
+            }
+
+            var txns = _instance.PendingTxs();
             DateTime txnRecive;
             DateTime txnChecked;
             txns.ForEach(txn =>
@@ -811,33 +988,36 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("pending-transactions.golden", txns, txns.GetType());
         }
 
-        internal static void ResendUnconfirmedTxns(DefaultApi instance)
+        [Test]
+        public void ResendUnconfirmedTxns()
         {
             var err = Assert.Throws<ApiException>(() =>
             {
-                if (Utils.UseCsrf()) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
-                instance.ResendUnconfirmedTxns();
+                if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                _instance.ResendUnconfirmedTxns();
             });
             Assert.AreEqual(503, err.ErrorCode);
             Assert.AreEqual("Error calling ResendUnconfirmedTxns: 503 Service Unavailable - Networking " +
                             "is disabled\n", err.Message);
         }
 
-        internal static void RichList(DefaultApi instance)
+        [Test]
+        public void RichList()
         {
-            var richlist = instance.Richlist();
+            var richlist = _instance.Richlist();
             Utils.CheckGoldenFile("richlist-default.golden", richlist, richlist.GetType());
-            richlist = instance.Richlist(includeDistribution: false, n: "0");
+            richlist = _instance.Richlist(includeDistribution: false, n: "0");
             Utils.CheckGoldenFile("richlist-all.golden", richlist, richlist.GetType());
-            richlist = instance.Richlist(includeDistribution: true, n: "0");
+            richlist = _instance.Richlist(includeDistribution: true, n: "0");
             Utils.CheckGoldenFile("richlist-all-include-distribution.golden", richlist, richlist.GetType());
-            richlist = instance.Richlist(includeDistribution: false, n: "8");
+            richlist = _instance.Richlist(includeDistribution: false, n: "8");
             Utils.CheckGoldenFile("richlist-8.golden", richlist, richlist.GetType());
-            richlist = instance.Richlist(includeDistribution: true, n: "150");
+            richlist = _instance.Richlist(includeDistribution: true, n: "150");
             Utils.CheckGoldenFile("richlist-150-include-distribution.golden", richlist, richlist.GetType());
         }
 
-        internal static void Transaction(DefaultApi instance)
+        [Test]
+        public void Transaction()
         {
             var testCases = new List<dynamic>
             {
@@ -940,19 +1120,20 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => instance.Transaction(tc.txid, tc.encoded));
+                    var err = Assert.Throws<ApiException>(() => _instance.Transaction(tc.txid, tc.encoded));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                 }
                 else
                 {
-                    var result = (Transaction) instance.Transaction(tc.txid, tc.encoded);
+                    var result = (Transaction) _instance.Transaction(tc.txid, tc.encoded);
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 }
             });
         }
 
-        internal static void TransactionInject(DefaultApi instance)
+        [Test]
+        public void TransactionInject()
         {
             var testCases = new List<dynamic>
             {
@@ -987,16 +1168,17 @@ namespace Skyapi.Test.Api
             {
                 if (Utils.UseCsrf())
                 {
-                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
                 }
 
-                var err = Assert.Throws<ApiException>(() => instance.TransactionInject(tc.txn));
+                var err = Assert.Throws<ApiException>(() => _instance.TransactionInject(tc.txn));
                 Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                 Assert.AreEqual(tc.errMsg, err.Message, tc.name);
             });
         }
 
-        internal static void TransactionPost(DefaultApi instance)
+        [Test]
+        public void TransactionPost()
         {
             var testCases = new[]
             {
@@ -1057,26 +1239,27 @@ namespace Skyapi.Test.Api
             {
                 if (Utils.UseCsrf())
                 {
-                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
                 }
 
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(
-                        () => instance.TransactionPost(tc.req));
+                        () => _instance.TransactionPost(tc.req));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.True(err.Message.Contains(tc.errMsg), tc.name);
                 }
                 else
                 {
-                    var result = instance.TransactionPost(tc.req);
+                    var result = _instance.TransactionPost(tc.req);
                     Utils.CheckGoldenFile("Created-Transaction.golden", result.Data.Transaction,
                         result.Data.Transaction.GetType());
                 }
             }
         }
 
-        internal static void TransactionPostUnspents(DefaultApi instance)
+        [Test]
+        public void TransactionPostUnspents()
         {
             var withunspent = new
             {
@@ -1107,15 +1290,16 @@ namespace Skyapi.Test.Api
             };
             if (Utils.UseCsrf())
             {
-                instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
             }
 
-            var err = Assert.Throws<ApiException>(() => instance.TransactionPostUnspent(withunspent.req));
+            var err = Assert.Throws<ApiException>(() => _instance.TransactionPostUnspent(withunspent.req));
             Assert.AreEqual(withunspent.errCode, err.ErrorCode, withunspent.name);
             Assert.True(err.Message.Contains(withunspent.errMsg), withunspent.name);
         }
 
-        internal static void TransactionVerify(DefaultApi instance)
+        [Test]
+        public void TransactionVerify()
         {
             var testCases = new[]
             {
@@ -1148,13 +1332,13 @@ namespace Skyapi.Test.Api
             {
                 if (Utils.UseCsrf())
                 {
-                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
                 }
 
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(() =>
-                        instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned));
+                        _instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned));
                     var msg = JsonConvert.DeserializeObject<dynamic>(err.Message.Substring(33)).error.message;
                     var data = JsonConvert.DeserializeObject<dynamic>(err.Message.Substring(33)).data;
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
@@ -1163,13 +1347,14 @@ namespace Skyapi.Test.Api
                 }
                 else
                 {
-                    var result = instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned);
+                    var result = _instance.TransactionVerify(encodedtransaction: tc.txn, unsigned: tc.unsigned);
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 }
             }
         }
 
-        internal static void Uxouts(DefaultApi instance)
+        [Test]
+        public void Uxouts()
         {
             var testCases = new[]
             {
@@ -1185,15 +1370,15 @@ namespace Skyapi.Test.Api
             {
                 Assert.DoesNotThrow(() =>
                 {
-                    var result = instance.Uxout(tc.uxID);
+                    var result = _instance.Uxout(tc.uxID);
                     Utils.CheckGoldenFile(tc.golden, result, result.GetType());
                 });
             }
 
-            Utils.ScanUxouts(instance);
+            Utils.ScanUxouts(_instance);
         }
 
-        internal static void WalletBalance(DefaultApi instance)
+        public void WalletBalance()
         {
             var seed = "casino away claim road artist where blossom warrior demise royal still palm";
             var xpub = "xpub6CkxdS1d4vNqqcnf9xPgqR5e2jE2PZKmKSw93QQMjHE1hRk22nU4zns85EDRgmLWYXYtu62XexwqaE" +
@@ -1227,34 +1412,35 @@ namespace Skyapi.Test.Api
                 Wallet wallet = null;
                 if (Utils.UseCsrf())
                 {
-                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
                 }
 
                 switch (tc.type)
                 {
                     case "xpub":
-                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
-                            ? instance.WalletCreate(type: tc.type, label: tc.label, xpub: xpub)
-                            : instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
+                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
+                            ? _instance.WalletCreate(type: tc.type, label: tc.label, xpub: xpub)
+                            : _instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
                         break;
                     default:
-                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
-                            ? instance.WalletCreate(type: tc.type, label: tc.label, seed: seed)
-                            : instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
+                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
+                            ? _instance.WalletCreate(type: tc.type, label: tc.label, seed: seed)
+                            : _instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
                         break;
                 }
 
                 Assert.DoesNotThrow(() =>
                 {
-                    var balanc = instance.WalletBalance(wallet.Meta.Id);
+                    var balance = _instance.WalletBalance(wallet.Meta.Id);
                     //instance.WalletUnload(wallet.Meta.Id);
-                    Assert.True(balanc.Addresses.ContainsKey(wallet.Entries[0].Address), tc.name);
-                    Utils.CheckGoldenFile(tc.golden, balanc, balanc.GetType());
+                    Assert.True(balance.Addresses.ContainsKey(wallet.Entries[0].Address), tc.name);
+                    Utils.CheckGoldenFile(tc.golden, balance, balance.GetType());
                 });
             }
         }
 
-        internal static void WalletTransactions(DefaultApi instance)
+        [Test]
+        public void WalletTransactions()
         {
             var testCases = new[]
             {
@@ -1268,7 +1454,7 @@ namespace Skyapi.Test.Api
             {
                 if (Utils.UseCsrf())
                 {
-                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
                 }
 
                 switch (walletType)
@@ -1277,21 +1463,21 @@ namespace Skyapi.Test.Api
                         var xpub =
                             "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqs" +
                             "efD265TMg7usUDFdp6W1EGMcet8";
-                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
-                            ? instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
+                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
+                            ? _instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
                                 xpub: xpub)
-                            : instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
+                            : _instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
                         break;
                     default:
-                        dynamic seed = instance.WalletNewSeed();
-                        wallet = !instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
-                            ? instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
+                        dynamic seed = _instance.WalletNewSeed();
+                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
+                            ? _instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
                                 seed: seed.seed.ToString())
-                            : instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
+                            : _instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
                         break;
                 }
 
-                var result = instance.WalletTransactions(wallet.Meta.Id);
+                var result = _instance.WalletTransactions(wallet.Meta.Id);
                 Utils.CheckGoldenFile($"wallet-{walletType}-transactions.golden", result, result.GetType());
             }
         }

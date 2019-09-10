@@ -29,7 +29,7 @@ namespace Skyapi.Test.Api
     [TestFixture]
     public class DefaultApiTests
     {
-        private DefaultApi _instance;
+        internal DefaultApi Instance;
 
         /// <summary>
         /// Setup before each unit test
@@ -37,30 +37,18 @@ namespace Skyapi.Test.Api
         [SetUp]
         public void Init()
         {
-            _instance = new DefaultApi(Utils.GetNodeHost());
+            Instance = new DefaultApi(Utils.GetNodeHost());
         }
 
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-        }
-        
         /// <summary>
         /// Test AddressCount
         /// </summary>
         [Test]
         public void AddressCountTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.AddressCount(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.AddressCount(_instance);
+                LiveTest.AddressCount(Instance);
             }
         }
 
@@ -70,13 +58,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void AddressUxoutsTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.AddressUxouts(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.AddressUxouts(_instance);
+                LiveTest.AddressUxouts(Instance);
             }
         }
 
@@ -86,13 +70,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void ApiV1RawtxGetTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.ApiRawTxGet(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.ApiRawTxGet(instance: _instance);
+                LiveTest.ApiRawTxGet(instance: Instance);
             }
         }
 
@@ -105,7 +85,7 @@ namespace Skyapi.Test.Api
             //Only with API-SETS PROMETHEUS is active.
             try
             {
-                var response = _instance.ApiV2MetricsGet();
+                var response = Instance.ApiV2MetricsGet();
                 Assert.IsInstanceOf<string>(response, "response is string");
                 Assert.IsNotNull(response);
                 if (Utils.GetTestMode() == "stable") Assert.True(response.Contains("last_block_seq 180"));
@@ -124,13 +104,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BalanceGetTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.Balance(_instance, Method.GET);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Balance(Method.GET, instance: _instance);
+                LiveTest.Balance(Method.GET, instance: Instance);
             }
         }
 
@@ -140,13 +116,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BalancePostTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.Balance(_instance, Method.POST);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Balance(Method.POST, _instance);
+                LiveTest.Balance(Method.POST, Instance);
             }
         }
 
@@ -156,13 +128,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.Block(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Block(_instance);
+                LiveTest.Block(Instance);
             }
         }
 
@@ -172,13 +140,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockchainMetadataTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.BlockchainMetadata(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.BlockchainMetadata(_instance);
+                LiveTest.BlockchainMetadata(Instance);
             }
         }
 
@@ -188,13 +152,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlockchainProgressTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.BlockChainProgress(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.BlockChainProgress(_instance);
+                LiveTest.BlockChainProgress(Instance);
             }
         }
 
@@ -204,13 +164,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void BlocksTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.Blocks(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Blocks(_instance);
+                LiveTest.Blocks(Instance);
             }
         }
 
@@ -220,13 +176,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void CoinSupplyTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.CoinSupply(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.CoinSupply(_instance);
+                LiveTest.CoinSupply(Instance);
             }
         }
 
@@ -239,7 +191,7 @@ namespace Skyapi.Test.Api
             //Only with _useCsrf==true
             if (Utils.UseCsrf())
             {
-                var response = _instance.Csrf();
+                var response = Instance.Csrf();
                 Assert.IsNotNull(response.CsrfToken);
                 Assert.True(response.CsrfToken.Length >= 235);
             }
@@ -258,14 +210,14 @@ namespace Skyapi.Test.Api
 
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
             }
 
-            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            var result = _instance.DataGET(type: "txid");
-            _instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
-            _instance.DataDELETE(type: "txid", key: "keytodel");
-            Assert.AreEqual(result, _instance.DataGET("txid"));
+            Instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            var result = Instance.DataGET(type: "txid");
+            Instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
+            Instance.DataDELETE(type: "txid", key: "keytodel");
+            Assert.AreEqual(result, Instance.DataGET("txid"));
         }
 
         /// <summary>
@@ -281,15 +233,15 @@ namespace Skyapi.Test.Api
 
             var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
             var singleresult = new {data = "val1"};
-            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            _instance.DataPOST(type: "txid", key: "key2", val: "val2");
+            if (Utils.UseCsrf()) Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
+            Instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            Instance.DataPOST(type: "txid", key: "key2", val: "val2");
             //Varify all results.
             Assert.AreEqual(JsonConvert.SerializeObject(allresult),
-                JsonConvert.SerializeObject(_instance.DataGET(type: "txid")));
+                JsonConvert.SerializeObject(Instance.DataGET(type: "txid")));
             //Verify a single result.
             Assert.AreEqual(JsonConvert.SerializeObject(singleresult),
-                JsonConvert.SerializeObject(_instance.DataGET(type: "txid", key: "key1")));
+                JsonConvert.SerializeObject(Instance.DataGET(type: "txid", key: "key1")));
         }
 
         /// <summary>
@@ -305,10 +257,10 @@ namespace Skyapi.Test.Api
 
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
             }
 
-            _instance.DataPOST(type: "client", key: "key1", val: "val1");
+            Instance.DataPOST(type: "client", key: "key1", val: "val1");
         }
 
         /// <summary>
@@ -317,7 +269,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void DefaultConnectionsTest()
         {
-            var connections = _instance.DefaultConnections();
+            var connections = Instance.DefaultConnections();
             Assert.IsNotEmpty(connections);
             connections.Sort();
             Utils.CheckGoldenFile("network-default-peers.golden", connections, connections.GetType());
@@ -329,14 +281,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void HealthTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.Health(instance: _instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
 
             {
-                LiveTest.Health(_instance);
+                LiveTest.Health(Instance);
             }
         }
 
@@ -346,13 +294,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void LastBlocksTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.LastBlocks(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.LastBlock(_instance);
+                LiveTest.LastBlock(Instance);
             }
         }
 
@@ -362,13 +306,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.NetworkConnection(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnection(instance: _instance);
+                LiveTest.NetworkConnection(instance: Instance);
             }
         }
 
@@ -378,13 +318,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsDisconnectTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.NetworkConnectionDisconnect(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnectionDisconnect(instance: _instance);
+                LiveTest.NetworkConnectionDisconnect(instance: Instance);
             }
         }
 
@@ -394,13 +330,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsExchangeTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.NetworkConnectionExchange(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnectionExchange(_instance);
+                LiveTest.NetworkConnectionExchange(Instance);
             }
         }
 
@@ -410,7 +342,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void NetworkConnectionsTrustTest()
         {
-            var connections = _instance.NetworkConnectionsTrust();
+            var connections = Instance.NetworkConnectionsTrust();
             Assert.IsNotEmpty(connections);
             connections.Sort();
             Utils.CheckGoldenFile("network-trusted-peers.golden", connections, connections.GetType());
@@ -422,20 +354,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void OutputsGetTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                if (Utils.DbNoUnconfirmed())
-                {
-                    StableTest.NoUnconfirmedOutputs(Method.GET, _instance);
-                }
-                else
-                {
-                    StableTest.Outputs(Method.GET, _instance);
-                }
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Outputs(Method.GET, _instance);
+                LiveTest.Outputs(Method.GET, Instance);
             }
         }
 
@@ -445,20 +366,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void OutputsPostTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                if (Utils.DbNoUnconfirmed())
-                {
-                    StableTest.NoUnconfirmedOutputs(Method.POST, _instance);
-                }
-                else
-                {
-                    StableTest.Outputs(Method.POST, _instance);
-                }
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Outputs(Method.POST, _instance);
+                LiveTest.Outputs(Method.POST, Instance);
             }
         }
 
@@ -468,20 +378,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void PendingTxsTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                if (Utils.DbNoUnconfirmed())
-                {
-                    StableTest.NoUnconfirmedPendingTxs(_instance);
-                }
-                else
-                {
-                    StableTest.PendingTxs(_instance);
-                }
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.PendingTxs(_instance);
+                LiveTest.PendingTxs(Instance);
             }
         }
 
@@ -491,14 +390,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void ResendUnconfirmedTxnsTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.ResendUnconfirmedTxns(instance: _instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
 
             {
-                LiveTest.ResendUnconfirmedTxns(_instance);
+                LiveTest.ResendUnconfirmedTxns(Instance);
             }
         }
 
@@ -508,13 +403,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void RichlistTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.RichList(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.RichList(_instance);
+                LiveTest.RichList(Instance);
             }
         }
 
@@ -524,13 +415,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+            if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.Transaction(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Transaction(_instance);
+                LiveTest.Transaction(Instance);
             }
         }
 
@@ -540,19 +427,15 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionInjectTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.TransactionInject(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
             {
                 if (Utils.LiveDisableNetworking())
                 {
-                    LiveTest.TransactionInjectDisableNetworking(_instance);
+                    LiveTest.TransactionInjectDisableNetworking(Instance);
                 }
                 else
                 {
-                    LiveTest.TransactionInjectEnableNetworking(_instance);
+                    LiveTest.TransactionInjectEnableNetworking(Instance);
                 }
             }
         }
@@ -563,13 +446,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPostTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+           if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.TransactionPost(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.TransactionPost(_instance);
+                LiveTest.TransactionPost(Instance);
             }
         }
 
@@ -579,11 +458,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPostUnspentTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.TransactionPostUnspents(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+           if (Utils.GetTestMode().Equals("live"))
             {
                 ///////
             }
@@ -595,11 +470,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionVerifyTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.TransactionVerify(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
             {
                 ///////
             }
@@ -611,14 +482,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionsGetTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.Transactions(method: Method.GET, instance: _instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
             {
                 return;
-                LiveTest.Transactions(Method.GET, _instance);
+                LiveTest.Transactions(Method.GET, Instance);
             }
         }
 
@@ -628,14 +495,10 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionsPostTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.Transactions(method: Method.POST, instance: _instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+            if (Utils.GetTestMode().Equals("live"))
             {
                 return;
-                LiveTest.Transactions(Method.POST, _instance);
+                LiveTest.Transactions(Method.POST, Instance);
             }
         }
 
@@ -645,18 +508,14 @@ namespace Skyapi.Test.Api
         [Test]
         public void UxoutTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
-            {
-                StableTest.Uxouts(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
+         if (Utils.GetTestMode().Equals("live"))
             {
                 if (Utils.LiveDisableNetworking())
                 {
                     Assert.Ignore("Skipping slow ux out tests when networking disabled");
                 }
 
-                LiveTest.Uxouts(_instance);
+                LiveTest.Uxouts(Instance);
             }
         }
 
@@ -699,12 +558,12 @@ namespace Skyapi.Test.Api
                 {
                     if (Utils.UseCsrf())
                     {
-                        _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                        Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
                     }
 
                     if (tc.errCode != 200)
                     {
-                        var errRaw = Assert.Throws<ApiException>(() => _instance.VerifyAddress(tc.adds));
+                        var errRaw = Assert.Throws<ApiException>(() => Instance.VerifyAddress(tc.adds));
                         dynamic err = JsonConvert.DeserializeObject(errRaw.Message.Substring(28));
                         Assert.AreEqual(tc.errCode, errRaw.ErrorCode, tc.name);
                         Assert.AreEqual(tc.errMsg, err.error.message.ToString(), tc.name);
@@ -713,7 +572,7 @@ namespace Skyapi.Test.Api
                     {
                         Assert.DoesNotThrow(() =>
                             {
-                                dynamic result = _instance.VerifyAddress(tc.adds);
+                                dynamic result = Instance.VerifyAddress(tc.adds);
                                 Utils.CheckGoldenFile(tc.golden, result.data, result.GetType());
                             }
                             , tc.name);
@@ -728,7 +587,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void VersionTest()
         {
-            var result = _instance.Version();
+            var result = Instance.Version();
             Assert.IsNotEmpty(result.Branch);
             Assert.IsNotEmpty(result.Commit);
             Assert.IsNotEmpty(result.Version);
@@ -742,16 +601,16 @@ namespace Skyapi.Test.Api
         {
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
             Assert.DoesNotThrow(() =>
             {
                 var randSeed = Utils.GenString();
-                var newwallet = _instance.WalletCreate(type: "deterministic", seed: randSeed,
+                var newwallet = Instance.WalletCreate(type: "deterministic", seed: randSeed,
                     label: "the label of my wallet");
-                var wallet = _instance.Wallet(newwallet.Meta.Id);
-                _instance.WalletUnload(newwallet.Meta.Id);
+                var wallet = Instance.Wallet(newwallet.Meta.Id);
+                Instance.WalletUnload(newwallet.Meta.Id);
                 Assert.AreEqual(newwallet, wallet);
             });
         }
@@ -762,13 +621,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletBalanceTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+          if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.WalletBalance(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.WalletBalance(_instance);
+                LiveTest.WalletBalance(Instance);
             }
         }
 
@@ -786,7 +641,7 @@ namespace Skyapi.Test.Api
             Assert.Ignore();
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
             var testCases = new[]
@@ -844,7 +699,7 @@ namespace Skyapi.Test.Api
                 if (tc.errCode != 200)
                 {
                     var err = Assert.Throws<ApiException>(() =>
-                        _instance.WalletCreate(type: "deterministic", seed: tc.seed, label: tc.name,
+                        Instance.WalletCreate(type: "deterministic", seed: tc.seed, label: tc.name,
                             encrypt: tc.encrypt,
                             password: tc.pass));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
@@ -852,10 +707,10 @@ namespace Skyapi.Test.Api
                 }
                 else
                 {
-                    var newWallet = _instance.WalletCreate(type: "deterministic", seed: tc.seed, label: tc.name,
+                    var newWallet = Instance.WalletCreate(type: "deterministic", seed: tc.seed, label: tc.name,
                         encrypt: tc.encrypt,
                         password: tc.pass);
-                    var walletByid = _instance.Wallet(newWallet.Meta.Id);
+                    var walletByid = Instance.Wallet(newWallet.Meta.Id);
                     Assert.AreEqual(newWallet, walletByid, tc.name);
                 }
             }
@@ -877,18 +732,18 @@ namespace Skyapi.Test.Api
             var pass = "1234";
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
             }
 
             var walletEncrypt =
-                _instance.WalletCreate(type: "deterministic", seed: seed, label: "decrypt wallet.", encrypt: true,
+                Instance.WalletCreate(type: "deterministic", seed: seed, label: "decrypt wallet.", encrypt: true,
                     password: pass);
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
-            var walletDecrypt = _instance.WalletDecrypt(id: walletEncrypt.Meta.Id, password: pass);
+            var walletDecrypt = Instance.WalletDecrypt(id: walletEncrypt.Meta.Id, password: pass);
             walletEncrypt.Meta.Encrypted = false;
             walletEncrypt.Meta.CryptoType = "";
             Assert.AreEqual(walletEncrypt, walletDecrypt);
@@ -910,17 +765,17 @@ namespace Skyapi.Test.Api
             var pass = "1234";
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
             }
 
             var walletDecrypt =
-                _instance.WalletCreate(type: "deterministic", seed: seed, label: "decrypt wallet.", encrypt: false);
+                Instance.WalletCreate(type: "deterministic", seed: seed, label: "decrypt wallet.", encrypt: false);
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
-            var walletEncrypt = _instance.WalletEncrypt(id: walletDecrypt.Meta.Id, password: pass);
+            var walletEncrypt = Instance.WalletEncrypt(id: walletDecrypt.Meta.Id, password: pass);
             walletEncrypt.Meta.Encrypted = false;
             walletEncrypt.Meta.CryptoType = "";
             Assert.AreEqual(walletDecrypt, walletEncrypt);
@@ -939,7 +794,7 @@ namespace Skyapi.Test.Api
 
             Assert.DoesNotThrow(() =>
             {
-                var folderName = _instance.WalletFolder();
+                var folderName = Instance.WalletFolder();
                 Assert.NotNull(folderName);
                 Assert.IsNotEmpty(folderName.Address);
             });
@@ -993,11 +848,11 @@ namespace Skyapi.Test.Api
                             pass = "pwd";
                         }
 
-                        var cw = Utils.CreateWallet(instance: _instance, type: tc.walletType, seed: tc.seed,
+                        var cw = Utils.CreateWallet(instance: Instance, type: tc.walletType, seed: tc.seed,
                             seedPassphase: tc.seedPassphrase, pass: pass, encrypt: encrypt);
                         var w = cw.Item1;
                         var clean = cw.Item2;
-                        dynamic addrs = _instance.WalletNewAddress(w.Meta.Id, i, pass);
+                        dynamic addrs = Instance.WalletNewAddress(w.Meta.Id, i, pass);
                         uint err;
                         switch (tc.walletType)
                         {
@@ -1088,15 +943,15 @@ namespace Skyapi.Test.Api
             {
                 if (tc.errCode != 200)
                 {
-                    var err = Assert.Throws<ApiException>(() => _instance.WalletNewSeed(tc.entropy));
+                    var err = Assert.Throws<ApiException>(() => Instance.WalletNewSeed(tc.entropy));
                     Assert.AreEqual(tc.errCode, err.ErrorCode, tc.name);
                     Assert.AreEqual(tc.errMsg, err.Message, tc.name);
                 }
                 else
                 {
-                    dynamic newseed = _instance.WalletNewSeed(tc.entropy);
+                    dynamic newseed = Instance.WalletNewSeed(tc.entropy);
                     Assert.True(newseed.seed.ToString().Split(' ').Length == tc.cantwords, tc.name);
-                    dynamic newseed2 = _instance.WalletNewSeed(tc.entropy);
+                    dynamic newseed2 = Instance.WalletNewSeed(tc.entropy);
                     Assert.AreNotEqual(newseed.seed.ToString(), newseed2.seed.ToString(), tc.name);
                 }
             }
@@ -1121,19 +976,19 @@ namespace Skyapi.Test.Api
                 var pass = "1234";
                 if (Utils.UseCsrf())
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
                 }
 
                 var wallet
-                    = _instance.WalletCreate(type: "deterministic", label: "recover wallet", seed: randSeed,
+                    = Instance.WalletCreate(type: "deterministic", label: "recover wallet", seed: randSeed,
                         encrypt: true, password: pass);
                 Assert.True(wallet.Meta.Encrypted);
                 if (Utils.UseCsrf())
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
                 }
 
-                dynamic recoverData = _instance.WalletRecover(id: wallet.Meta.Id, seed: randSeed);
+                dynamic recoverData = Instance.WalletRecover(id: wallet.Meta.Id, seed: randSeed);
                 var recoverWallet = JsonConvert.DeserializeObject<Wallet>(recoverData.data.ToString());
                 wallet.Meta.Encrypted = false;
                 wallet.Meta.CryptoType = "";
@@ -1149,24 +1004,24 @@ namespace Skyapi.Test.Api
         {
             Assert.Ignore();
             var pass = "1234";
-            if (!_instance.Wallets().Exists(wallet => wallet.Meta.Label.Equals("seed test.")))
+            if (!Instance.Wallets().Exists(wallet => wallet.Meta.Label.Equals("seed test.")))
             {
                 var seed = Utils.GenString();
                 if (Utils.UseCsrf())
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
                 }
 
-                _instance.WalletCreate("deterministic", seed, "seed test.", encrypt: true, password: pass);
+                Instance.WalletCreate("deterministic", seed, "seed test.", encrypt: true, password: pass);
             }
 
-            var walletseed = _instance.Wallets().Find(wallet => wallet.Meta.Label.Equals("seed test."));
+            var walletseed = Instance.Wallets().Find(wallet => wallet.Meta.Label.Equals("seed test."));
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
-            var err = Assert.Throws<ApiException>(() => _instance.WalletSeed(walletseed.Meta.Id, pass));
+            var err = Assert.Throws<ApiException>(() => Instance.WalletSeed(walletseed.Meta.Id, pass));
             Assert.AreEqual(403, err.ErrorCode);
             Assert.AreEqual("Error calling WalletSeed: 403 Forbidden - Endpoint is disabled\n", err.Message);
         }
@@ -1179,21 +1034,21 @@ namespace Skyapi.Test.Api
         {
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
             //Test with correct seed
             var result =
-                _instance.WalletSeedVerify(
+                Instance.WalletSeedVerify(
                     "nut wife logic sample addict shop before tobacco crisp bleak lawsuit affair");
             Assert.NotNull(result);
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
             //test with incorrect seed
-            Assert.Throws<ApiException>(() => _instance.WalletSeedVerify("nut"));
+            Assert.Throws<ApiException>(() => Instance.WalletSeedVerify("nut"));
         }
 
         /// <summary>
@@ -1202,13 +1057,9 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletTransactionsTest()
         {
-            if (Utils.GetTestMode().Equals("stable"))
+           if (Utils.GetTestMode().Equals("live"))
             {
-                StableTest.WalletTransactions(_instance);
-            }
-            else if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.WalletTransactions(_instance);
+                LiveTest.WalletTransactions(Instance);
             }
         }
 
@@ -1230,7 +1081,7 @@ namespace Skyapi.Test.Api
 
             if (Utils.UseCsrf())
             {
-                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
             }
 
             var testCases = new[]
@@ -1241,11 +1092,11 @@ namespace Skyapi.Test.Api
             };
             foreach (var walletType in testCases)
             {
-                var cw = Utils.CreateWallet(instance: _instance, type: walletType);
+                var cw = Utils.CreateWallet(instance: Instance, type: walletType);
                 Assert.DoesNotThrow(() =>
                 {
-                    _instance.WalletUpdate(cw.Item1.Meta.Id, "new wallet");
-                    var w1 = _instance.Wallet(cw.Item1.Meta.Id);
+                    Instance.WalletUpdate(cw.Item1.Meta.Id, "new wallet");
+                    var w1 = Instance.Wallet(cw.Item1.Meta.Id);
                     Assert.AreEqual(w1.Meta.Label, "new wallet");
                 });
                 cw.Item2();
@@ -1263,13 +1114,13 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            var result = _instance.Wallets();
+            var result = Instance.Wallets();
 
             result.ForEach(wlt =>
             {
                 Assert.DoesNotThrow(() =>
                 {
-                    var walletById = _instance.Wallet(wlt.Meta.Id);
+                    var walletById = Instance.Wallet(wlt.Meta.Id);
                     Assert.AreEqual(wlt, walletById);
                 });
             });

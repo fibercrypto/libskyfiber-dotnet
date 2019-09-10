@@ -125,6 +125,8 @@ build-sln-dotnet: install-deps-dotnet build-libc build-swig
 	$(LDPATHVAR)="$(LDCOPY)" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
 	
 build-sln-mono: install-deps-mono build-libc build-swig
+	rm -r $(CSHARP_SWIG_DIR)/LibskycoinNet/obj
+	rm -r $(CSHARP_SWIG_DIR)/LibskycoinNetTest/obj
 	$(LDPATHVAR)="$(LDCOPY)" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
 
 build-dotnet: build-libskycoin-net build-sln-dotnet ## Build LibSkycoinNet Assembly by DotNet
