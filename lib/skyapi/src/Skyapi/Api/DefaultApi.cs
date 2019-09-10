@@ -1145,7 +1145,7 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="seed">Seed to be verified. (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletSeedVerifyWithHttpInfo(string seed = null);
+        ApiResponse<object> WalletSeedVerifyWithHttpInfo(string seed = null);
 
         /// <summary>
         /// Creates a signed transaction
@@ -1155,8 +1155,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Object</returns>
-        Object WalletTransaction(WalletTransactionRequest walletTransactionRequest);
+        /// <returns>InlineResponse2008Data</returns>
+        InlineResponse2008Data WalletTransaction(WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -1166,8 +1166,9 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> WalletTransactionWithHttpInfo(WalletTransactionRequest walletTransactionRequest);
+        /// <returns>ApiResponse of InlineResponse2008Data</returns>
+        ApiResponse<InlineResponse2008Data> WalletTransactionWithHttpInfo(
+            WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -2434,8 +2435,9 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> WalletTransactionAsync(WalletTransactionRequest walletTransactionRequest);
+        /// <returns>Task of InlineResponse2008Data</returns>
+        System.Threading.Tasks.Task<InlineResponse2008Data> WalletTransactionAsync(
+            WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
         /// Creates a signed transaction
@@ -2445,8 +2447,8 @@ namespace Skyapi.Api
         /// </remarks>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo(
+        /// <returns>Task of ApiResponse (InlineResponse2008Data)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008Data>> WalletTransactionAsyncWithHttpInfo(
             WalletTransactionRequest walletTransactionRequest);
 
         /// <summary>
@@ -10252,10 +10254,11 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Object</returns>
-        public Object WalletTransaction(WalletTransactionRequest walletTransactionRequest)
+        /// <returns>InlineResponse2008Data</returns>
+        public InlineResponse2008Data WalletTransaction(WalletTransactionRequest walletTransactionRequest)
         {
-            ApiResponse<Object> localVarResponse = WalletTransactionWithHttpInfo(walletTransactionRequest);
+            ApiResponse<InlineResponse2008Data> localVarResponse =
+                WalletTransactionWithHttpInfo(walletTransactionRequest);
             return localVarResponse.Data;
         }
 
@@ -10264,8 +10267,9 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> WalletTransactionWithHttpInfo(WalletTransactionRequest walletTransactionRequest)
+        /// <returns>ApiResponse of InlineResponse2008Data</returns>
+        public ApiResponse<InlineResponse2008Data> WalletTransactionWithHttpInfo(
+            WalletTransactionRequest walletTransactionRequest)
         {
             // verify the required parameter 'walletTransactionRequest' is set
             if (walletTransactionRequest == null)
@@ -10299,7 +10303,7 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (walletTransactionRequest != null && walletTransactionRequest.GetType() != typeof(byte[]))
+            if (walletTransactionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody =
                     this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
@@ -10329,9 +10333,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2008Data>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (InlineResponse2008Data) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008Data)));
         }
 
         /// <summary>
@@ -10339,11 +10344,12 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> WalletTransactionAsync(
+        /// <returns>Task of InlineResponse2008Data</returns>
+        public async System.Threading.Tasks.Task<InlineResponse2008Data> WalletTransactionAsync(
             WalletTransactionRequest walletTransactionRequest)
         {
-            ApiResponse<Object> localVarResponse = await WalletTransactionAsyncWithHttpInfo(walletTransactionRequest);
+            ApiResponse<InlineResponse2008Data> localVarResponse =
+                await WalletTransactionAsyncWithHttpInfo(walletTransactionRequest);
             return localVarResponse.Data;
         }
 
@@ -10352,9 +10358,10 @@ namespace Skyapi.Api
         /// </summary>
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletTransactionRequest"></param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> WalletTransactionAsyncWithHttpInfo(
-            WalletTransactionRequest walletTransactionRequest)
+        /// <returns>Task of ApiResponse (InlineResponse2008Data)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008Data>>
+            WalletTransactionAsyncWithHttpInfo(
+                WalletTransactionRequest walletTransactionRequest)
         {
             // verify the required parameter 'walletTransactionRequest' is set
             if (walletTransactionRequest == null)
@@ -10388,7 +10395,7 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (walletTransactionRequest != null && walletTransactionRequest.GetType() != typeof(byte[]))
+            if (walletTransactionRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody =
                     this.Configuration.ApiClient.Serialize(walletTransactionRequest); // http body (model) parameter
@@ -10419,9 +10426,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2008Data>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (InlineResponse2008Data) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(InlineResponse2008Data)));
         }
 
         /// <summary>

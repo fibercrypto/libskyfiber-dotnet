@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace Skyapi.Model
@@ -20,8 +21,9 @@ namespace Skyapi.Model
         /// <param name="incoming"></param>
         /// <param name="outgoing"></param>
         public Outputs(BlockVerboseSchemaHeader header = default(BlockVerboseSchemaHeader),
-            List<object> headerOutputs = default(List<object>), List<object> incoming = default(List<object>),
-            List<object> outgoing = default(List<object>))
+            List<UnspentOutput> headerOutputs = default(List<UnspentOutput>),
+            List<UnspentOutput> incoming = default(List<UnspentOutput>),
+            List<UnspentOutput> outgoing = default(List<UnspentOutput>))
         {
             Header = header;
             HeaderOutputs = headerOutputs;
@@ -39,19 +41,19 @@ namespace Skyapi.Model
         /// Gets or Sets OutputsHeader
         /// </summary>
         [DataMember(Name = "outgoing_outputs", EmitDefaultValue = false)]
-        public List<object> Outgoing { get; set; }
+        public List<UnspentOutput> Outgoing { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputsHeader
         /// </summary>
         [DataMember(Name = "incoming_outputs", EmitDefaultValue = false)]
-        public List<object> Incoming { get; set; }
+        public List<UnspentOutput> Incoming { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputsHeader
         /// </summary>
         [DataMember(Name = "head_outputs", EmitDefaultValue = false)]
-        public List<object> HeaderOutputs { get; set; }
+        public List<UnspentOutput> HeaderOutputs { get; set; }
 
 
         /// <summary>
@@ -62,6 +64,23 @@ namespace Skyapi.Model
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("class Outputs {\n");
+            sb.Append("  head: ").Append(Header).Append("\n");
+            sb.Append("  head_outputs: ").Append(HeaderOutputs).Append("\n");
+            sb.Append("  incoming_outputs: ").Append(Incoming).Append("\n");
+            sb.Append("  outgoing_outputs: ").Append(Outgoing).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
 
         /// <summary>
         /// Returns true if objects are equal

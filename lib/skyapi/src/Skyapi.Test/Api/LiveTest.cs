@@ -561,135 +561,45 @@ namespace Skyapi.Test.Api
 
         public static void TransactionInjectDisableNetworking(DefaultApi instance)
         {
-            var rawtx = "00000000000000000000000000000000000000000000000000000000000000000000000000000" +
-                        "00000000000000100000000f8f9c644772dc5373d85e11094e438df707a42c900407a10f35a00" +
-                        "0000407a10f35a0000";
-            if (Utils.UseCsrf()) instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
-            var err = Assert.Throws<ApiException>(() => instance.TransactionInject(rawtx),
-                "valid request, networking disabled");
-            Console.WriteLine(err.Message);
-            Assert.AreEqual(400, err.ErrorCode);
-            Assert.AreEqual(
-                "Error calling TransactionInject: 400 Bad Request - Transaction violates hard " +
-                "constraint: No inputs", err.Message);
+            Utils.RequireWalletEnv();
+            var prepareAndCheck = Utils.PrepareAndCheckWallet(instance, 2e6, 20);
+            var walletname = Utils.GetWalletName();
+            var wallet = instance.Wallet(walletname);
+            var totalcoins = prepareAndCheck.Item2;
+            var totalhours = prepareAndCheck.Item3;
+            var pass = prepareAndCheck.Item4;
+            var tReq = new WalletTransactionRequest
+            {
+                Id = walletname,
+                Password = pass,
+                HoursSelection = new TransactionV2ParamsHoursSelection
+                {
+                    Type = "manual"
+                },
+                ChangeAddress = wallet.Entries[0].Address,
+                To = new List<TransactionV2ParamsTo>
+                {
+                    new TransactionV2ParamsTo
+                    {
+                        Address = wallet.Entries[1].Address,
+                        Coins = Utils.ToDropletString((ulong) totalcoins),
+                        Hours = (totalhours / 2).ToString()
+                    }
+                }
+            };
+            Assert.DoesNotThrow(() =>
+            {
+                var txResponse = instance.WalletTransaction(tReq);
+                var err = Assert.Throws<ApiException>(() => instance.TransactionInject(txResponse.EncodedTransaction));
+                Assert.AreEqual(503, err.ErrorCode);
+                Assert.True(err.Message.Contains("503 Service Unavailable - Outgoing connections are disabled"));
+            });
         }
+
 
         public static void TransactionInjectEnableNetworking(DefaultApi instance)
         {
-            dynamic walletTxnDat =
-                Utils.PrepareAndCheckWallet(instance, (long) decimal.Parse("2E6", NumberStyles.Any), 2);
-
-            var testcases = new[]
-            {
-                new
-                {
-                    name = "send all coins to the first address",
-                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "1", new List<object>
-                    {
-                        new
-                        {
-                            address = walletTxnDat.wallet.Entries[0].Address,
-//                            coins = Utils.ToDropletString(walletTxnDat.coins)
-                        }
-                    }),
-                    errCode = 200,
-                    errMsg = "",
-                    checkt = new Action<Transaction>(transaction =>
-                    {
-                        decimal coin = 0M;
-                        transaction.Txn.Outputs.ForEach(o =>
-                        {
-                            var output = JsonConvert.DeserializeObject<dynamic>(o.ToString());
-//                            coin += Utils.FromDropletString(output.coins);
-                        });
-                        Assert.AreEqual(walletTxnDat.coins, coin);
-                        var coinbalance =
-                            JsonConvert.DeserializeObject<Balance>(
-                                instance.BalanceGet(walletTxnDat.wallet.Entries[0].Address).ToString()).Confirmed.coins;
-                        Assert.AreEqual(walletTxnDat.coins, coinbalance);
-                    })
-                },
-                new
-                {
-                    name = "send 0.003 coin to second address",
-                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "0.5", new List<object>
-                    {
-                        new
-                        {
-                            address = walletTxnDat.wallet.Entries[1].Address,
-//                            coins = Utils.ToDropletString(decimal.Parse("3E3", NumberStyles.Any))
-                        }
-                    }),
-                    errCode = 200,
-                    errMsg = "",
-                    checkt = new Action<Transaction>(transaction =>
-                    {
-                        Assert.AreEqual(2, transaction.Txn.Outputs.Count);
-                        var addrsOutputInTxn = new Func<string, dynamic>(addrs =>
-                        {
-                            dynamic tOut = null;
-                            transaction.Txn.Outputs.ForEach(o =>
-                            {
-                                var output = JsonConvert.DeserializeObject<dynamic>(o.ToString());
-                                if (output.dst == addrs)
-                                {
-                                    tOut = output;
-                                }
-                            });
-                            return tOut;
-                        });
-
-                        // Confirms the second address has 0.003 coin
-                        var outp = addrsOutputInTxn(walletTxnDat.wallet.Entries[1].Address);
-                        Assert.AreEqual("0.003000", outp.coins);
-//                        var coin = Utils.FromDropletString(outp.coins);
-
-                        // Gets the expected change coins
-//                        var expectedExchange = walletTxnDat.coins - coin;
-
-                        var changeout = addrsOutputInTxn(walletTxnDat.wallet.Entries[0].Address);
-//                        var changecoins = Utils.ToDropletString(changeout.coins);
-//                        Assert.AreEqual(expectedExchange, changecoins);
-                    })
-                },
-                new
-                {
-                    name = "send to null address",
-                    txnReq = Utils.CreateTxnReq(instance, walletTxnDat.wallet, "1", new List<object>
-                    {
-                        new
-                        {
-                            address = walletTxnDat.wallet.Entries[0].Address,
-//                            coins = Utils.ToDropletString(walletTxnDat.coins)
-                        }
-                    }),
-                    errCode = 200,
-                    errMsg = "",
-                    checkt = new Action<Transaction>(transaction => { })
-                }
-            };
-
-            foreach (var tc in testcases)
-            {
-                Transaction txn = null;
-                Assert.DoesNotThrow(() =>
-                {
-                    var transaction = instance.WalletTransaction(tc.txnReq);
-                    var txid = instance.TransactionInject(transaction.encoded_transaction);
-                    Assert.Equals(transaction.transaction.txid, txid);
-                    var t = Task.Run(async delegate
-                    {
-                        await Task.Delay(45000);
-                        txn = instance.Transaction(txid);
-                        if (!(txn.Status.Confirmed ?? true))
-                        {
-                            Assert.Fail("Waiting for transaction to be confirmed timeout");
-                        }
-                    });
-                    t.Wait();
-                    tc.checkt(txn);
-                }, tc.name);
-            }
+         
         }
 
         internal static void WalletBalance(DefaultApi instance)
@@ -894,7 +804,7 @@ namespace Skyapi.Test.Api
                 var toHours = ulong.Parse(reqTo[i].Hours);
                 var outHours = ulong.Parse(transactionOutputs[i].Hours);
 
-                Assert.AreEqual(toHours, transactionOutputs);
+                Assert.AreEqual(toHours, outHours);
             }
         }
 
@@ -1046,7 +956,7 @@ namespace Skyapi.Test.Api
 
             Assert.IsNotEmpty(walletOutputs);
 
-            return new LiveCreateTxnTestCase[]
+            return new[]
             {
                 new LiveCreateTxnTestCase
                 {

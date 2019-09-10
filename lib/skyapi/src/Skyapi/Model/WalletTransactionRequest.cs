@@ -9,18 +9,12 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,7 +22,7 @@ namespace Skyapi.Model
     /// WalletTransactionRequest
     /// </summary>
     [DataContract]
-    public partial class WalletTransactionRequest :  IEquatable<WalletTransactionRequest>, IValidatableObject
+    public class WalletTransactionRequest : IEquatable<WalletTransactionRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WalletTransactionRequest" /> class.
@@ -37,45 +31,74 @@ namespace Skyapi.Model
         /// <param name="hoursSelection">hoursSelection.</param>
         /// <param name="ignoreUnconfirmed">ignoreUnconfirmed.</param>
         /// <param name="to">to.</param>
-        /// <param name="wallet">wallet.</param>
-        public WalletTransactionRequest(string changeAddress = default(string), WalletTransactionRequestHoursSelection hoursSelection = default(WalletTransactionRequestHoursSelection), bool? ignoreUnconfirmed = default(bool?), List<Object> to = default(List<Object>), WalletTransactionRequestWallet wallet = default(WalletTransactionRequestWallet))
+        /// <param name="addresses"></param>
+        /// <param name="id"></param>
+        /// <param name="password"></param>
+        /// <param name="unspents"></param>
+        public WalletTransactionRequest(string changeAddress = default,
+            TransactionV2ParamsHoursSelection hoursSelection = default,
+            bool? ignoreUnconfirmed = false, List<TransactionV2ParamsTo> to = default,
+            List<string> addresses = default, string id = default,
+            string password = default, List<string> unspents = default)
         {
-            this.ChangeAddress = changeAddress;
-            this.HoursSelection = hoursSelection;
-            this.IgnoreUnconfirmed = ignoreUnconfirmed;
-            this.To = to;
-            this.Wallet = wallet;
+            ChangeAddress = changeAddress;
+            HoursSelection = hoursSelection;
+            IgnoreUnconfirmed = ignoreUnconfirmed;
+            To = to;
+            Addresses = addresses;
+            Id = id;
+            Password = password;
+            Unspents = unspents;
         }
-        
+
+        /// <summary>
+        /// Gets or Sets Addresses
+        /// </summary>
+        [DataMember(Name = "addresses", EmitDefaultValue = false)]
+        public List<string> Addresses { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "wallet_id", EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Password
+        /// </summary>
+        [DataMember(Name = "password", EmitDefaultValue = false)]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Unspents
+        /// </summary>
+        [DataMember(Name = "unspents", EmitDefaultValue = false)]
+        public List<string> Unspents { get; set; }
+
         /// <summary>
         /// Gets or Sets ChangeAddress
         /// </summary>
-        [DataMember(Name="change_address", EmitDefaultValue=false)]
+        [DataMember(Name = "change_address", EmitDefaultValue = false)]
         public string ChangeAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets HoursSelection
         /// </summary>
-        [DataMember(Name="hours_selection", EmitDefaultValue=false)]
-        public WalletTransactionRequestHoursSelection HoursSelection { get; set; }
+        [DataMember(Name = "hours_selection", EmitDefaultValue = false)]
+        public TransactionV2ParamsHoursSelection HoursSelection { get; set; }
 
         /// <summary>
         /// Gets or Sets IgnoreUnconfirmed
         /// </summary>
-        [DataMember(Name="ignore_unconfirmed", EmitDefaultValue=false)]
+        [DataMember(Name = "ignore_unconfirmed", EmitDefaultValue = true)]
         public bool? IgnoreUnconfirmed { get; set; }
 
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name="to", EmitDefaultValue=false)]
-        public List<Object> To { get; set; }
+        [DataMember(Name = "to", EmitDefaultValue = false)]
+        public List<TransactionV2ParamsTo> To { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Wallet
-        /// </summary>
-        [DataMember(Name="wallet", EmitDefaultValue=false)]
-        public WalletTransactionRequestWallet Wallet { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,11 +112,14 @@ namespace Skyapi.Model
             sb.Append("  HoursSelection: ").Append(HoursSelection).Append("\n");
             sb.Append("  IgnoreUnconfirmed: ").Append(IgnoreUnconfirmed).Append("\n");
             sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  Wallet: ").Append(Wallet).Append("\n");
+            sb.Append("  Wallet_id: ").Append(Id).Append("\n");
+            sb.Append("  addresses: ").Append(Addresses).Append("\n");
+            sb.Append("  password: ").Append(Password).Append("\n");
+            sb.Append("  unspents: ").Append(Unspents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -110,7 +136,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WalletTransactionRequest);
+            return Equals(input as WalletTransactionRequest);
         }
 
         /// <summary>
@@ -123,32 +149,47 @@ namespace Skyapi.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
-                    this.ChangeAddress == input.ChangeAddress ||
-                    (this.ChangeAddress != null &&
-                    this.ChangeAddress.Equals(input.ChangeAddress))
-                ) && 
+                    ChangeAddress == input.ChangeAddress ||
+                    (ChangeAddress != null &&
+                     ChangeAddress.Equals(input.ChangeAddress))
+                ) &&
                 (
-                    this.HoursSelection == input.HoursSelection ||
-                    (this.HoursSelection != null &&
-                    this.HoursSelection.Equals(input.HoursSelection))
-                ) && 
+                    HoursSelection == input.HoursSelection ||
+                    (HoursSelection != null &&
+                     HoursSelection.Equals(input.HoursSelection))
+                ) &&
                 (
-                    this.IgnoreUnconfirmed == input.IgnoreUnconfirmed ||
-                    (this.IgnoreUnconfirmed != null &&
-                    this.IgnoreUnconfirmed.Equals(input.IgnoreUnconfirmed))
-                ) && 
+                    IgnoreUnconfirmed == input.IgnoreUnconfirmed ||
+                    (IgnoreUnconfirmed != null &&
+                     IgnoreUnconfirmed.Equals(input.IgnoreUnconfirmed))
+                ) &&
                 (
-                    this.To == input.To ||
-                    this.To != null &&
+                    To == input.To ||
+                    To != null &&
                     input.To != null &&
-                    this.To.SequenceEqual(input.To)
-                ) && 
+                    To.SequenceEqual(input.To)
+                ) &&
                 (
-                    this.Wallet == input.Wallet ||
-                    (this.Wallet != null &&
-                    this.Wallet.Equals(input.Wallet))
+                    Id == input.Id ||
+                    (Id != null &&
+                     Id.Equals(input.Id))
+                ) &&
+                (
+                    Addresses == input.Addresses ||
+                    (Addresses != null &&
+                     Addresses.Equals(input.Addresses))
+                ) &&
+                (
+                    Unspents == input.Unspents ||
+                    (Unspents != null &&
+                     Unspents.Equals(input.Unspents))
+                ) &&
+                (
+                    Password == input.Password ||
+                    (Password != null &&
+                     Password.Equals(input.Password))
                 );
         }
 
@@ -161,16 +202,22 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ChangeAddress != null)
-                    hashCode = hashCode * 59 + this.ChangeAddress.GetHashCode();
-                if (this.HoursSelection != null)
-                    hashCode = hashCode * 59 + this.HoursSelection.GetHashCode();
-                if (this.IgnoreUnconfirmed != null)
-                    hashCode = hashCode * 59 + this.IgnoreUnconfirmed.GetHashCode();
-                if (this.To != null)
-                    hashCode = hashCode * 59 + this.To.GetHashCode();
-                if (this.Wallet != null)
-                    hashCode = hashCode * 59 + this.Wallet.GetHashCode();
+                if (ChangeAddress != null)
+                    hashCode = hashCode * 59 + ChangeAddress.GetHashCode();
+                if (HoursSelection != null)
+                    hashCode = hashCode * 59 + HoursSelection.GetHashCode();
+                if (IgnoreUnconfirmed != null)
+                    hashCode = hashCode * 59 + IgnoreUnconfirmed.GetHashCode();
+                if (To != null)
+                    hashCode = hashCode * 59 + To.GetHashCode();
+                if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if (Addresses != null)
+                    hashCode = hashCode * 59 + Addresses.GetHashCode();
+                if (Unspents != null)
+                    hashCode = hashCode * 59 + Unspents.GetHashCode();
+                if (Password != null)
+                    hashCode = hashCode * 59 + Password.GetHashCode();
                 return hashCode;
             }
         }
@@ -180,10 +227,10 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(
+            ValidationContext validationContext)
         {
             yield break;
         }
     }
-
 }

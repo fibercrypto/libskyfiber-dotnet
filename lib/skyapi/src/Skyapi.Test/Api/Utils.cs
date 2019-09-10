@@ -483,26 +483,6 @@ namespace Skyapi.Test.Api
             return new Tuple<long, long>(balance.Confirmed.Coins, balance.Confirmed.Hours);
         }
 
-        internal static WalletTransactionRequest CreateTxnReq(DefaultApi instance, Wallet wallet, string sharefactor,
-            List<object> to)
-        {
-            return new WalletTransactionRequest
-            {
-                HoursSelection = new WalletTransactionRequestHoursSelection
-                {
-                    Type = "auto",
-                    Mode = "share",
-                    ShareFactor = sharefactor
-                },
-                Wallet = new WalletTransactionRequestWallet
-                {
-                    Id = wallet.Meta.Id,
-                    Password = GetWalletPassword()
-                },
-                To = to
-            };
-        }
-
         internal static void ScanUxouts(DefaultApi instance)
         {
             var outputs = instance.OutputsGet();

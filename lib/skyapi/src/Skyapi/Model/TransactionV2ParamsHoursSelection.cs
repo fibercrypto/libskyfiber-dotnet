@@ -9,18 +9,11 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Skyapi.Client.OpenAPIDateConverter;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Skyapi.Model
 {
@@ -28,7 +21,7 @@ namespace Skyapi.Model
     /// TransactionV2ParamsUnspentHoursSelection
     /// </summary>
     [DataContract]
-    public partial class TransactionV2ParamsHoursSelection :  IEquatable<TransactionV2ParamsHoursSelection>, IValidatableObject
+    public class TransactionV2ParamsHoursSelection :  IEquatable<TransactionV2ParamsHoursSelection>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionV2ParamsHoursSelection" /> class.
@@ -36,11 +29,11 @@ namespace Skyapi.Model
         /// <param name="type">type.</param>
         /// <param name="mode">mode.</param>
         /// <param name="shareFactor">shareFactor.</param>
-        public TransactionV2ParamsHoursSelection(string type = default(string), string mode = default(string), string shareFactor = default(string))
+        public TransactionV2ParamsHoursSelection(string type = default, string mode = default, string shareFactor = default)
         {
-            this.Type = type;
-            this.Mode = mode;
-            this.ShareFactor = shareFactor;
+            Type = type;
+            Mode = mode;
+            ShareFactor = shareFactor;
         }
         
         /// <summary>
@@ -92,7 +85,7 @@ namespace Skyapi.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionV2ParamsHoursSelection);
+            return Equals(input as TransactionV2ParamsHoursSelection);
         }
 
         /// <summary>
@@ -107,19 +100,19 @@ namespace Skyapi.Model
 
             return 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    Type == input.Type ||
+                    (Type != null &&
+                    Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Mode == input.Mode ||
-                    (this.Mode != null &&
-                    this.Mode.Equals(input.Mode))
+                    Mode == input.Mode ||
+                    (Mode != null &&
+                    Mode.Equals(input.Mode))
                 ) && 
                 (
-                    this.ShareFactor == input.ShareFactor ||
-                    (this.ShareFactor != null &&
-                    this.ShareFactor.Equals(input.ShareFactor))
+                    ShareFactor == input.ShareFactor ||
+                    (ShareFactor != null &&
+                    ShareFactor.Equals(input.ShareFactor))
                 );
         }
 
@@ -132,12 +125,12 @@ namespace Skyapi.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Mode != null)
-                    hashCode = hashCode * 59 + this.Mode.GetHashCode();
-                if (this.ShareFactor != null)
-                    hashCode = hashCode * 59 + this.ShareFactor.GetHashCode();
+                if (Type != null)
+                    hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Mode != null)
+                    hashCode = hashCode * 59 + Mode.GetHashCode();
+                if (ShareFactor != null)
+                    hashCode = hashCode * 59 + ShareFactor.GetHashCode();
                 return hashCode;
             }
         }
@@ -147,7 +140,7 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }
