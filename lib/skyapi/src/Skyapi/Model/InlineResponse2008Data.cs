@@ -28,7 +28,7 @@ namespace Skyapi.Model
         /// </summary>
         /// <param name="transaction">transaction.</param>
         /// <param name="encodedTransaction"></param>
-        public InlineResponse2008Data(CreatedTransaction transaction = default, string encodedTransaction = default)
+        public InlineResponse2008Data(CreatedTransaction transaction = default(CreatedTransaction), string encodedTransaction = default(string))
         {
             Transaction = transaction;
             EncodedTransaction = encodedTransaction;

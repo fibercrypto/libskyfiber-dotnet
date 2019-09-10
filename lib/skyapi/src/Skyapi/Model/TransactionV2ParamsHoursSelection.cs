@@ -29,7 +29,7 @@ namespace Skyapi.Model
         /// <param name="type">type.</param>
         /// <param name="mode">mode.</param>
         /// <param name="shareFactor">shareFactor.</param>
-        public TransactionV2ParamsHoursSelection(string type = default, string mode = default, string shareFactor = default)
+        public TransactionV2ParamsHoursSelection(string type = default(string), string mode = default(string), string shareFactor = default(string))
         {
             Type = type;
             Mode = mode;

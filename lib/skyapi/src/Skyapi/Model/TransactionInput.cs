@@ -25,9 +25,9 @@ namespace Skyapi.Model
         /// <param name="time"></param>
         /// <param name="block"></param>
         /// <param name="txId"></param>
-        public TransactionInput(string uxId = default, string address = default,
-            string coins = default, string hours = default, string calculatedHours = default,
-            long time = default, long block = default, string txId = default)
+        public TransactionInput(string uxId = default(string), string address = default(string),
+            string coins = default(string), string hours = default(string), string calculatedHours = default(string),
+            long time = default(long), long block = default(long), string txId = default(string))
         {
             UxId = uxId;
             Address = address;

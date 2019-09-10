@@ -35,11 +35,11 @@ namespace Skyapi.Model
         /// <param name="id"></param>
         /// <param name="password"></param>
         /// <param name="unspents"></param>
-        public WalletTransactionRequest(string changeAddress = default,
-            TransactionV2ParamsHoursSelection hoursSelection = default,
-            bool? ignoreUnconfirmed = false, List<TransactionV2ParamsTo> to = default,
-            List<string> addresses = default, string id = default,
-            string password = default, List<string> unspents = default)
+        public WalletTransactionRequest(string changeAddress = default(string),
+            TransactionV2ParamsHoursSelection hoursSelection = default(TransactionV2ParamsHoursSelection),
+            bool? ignoreUnconfirmed = false, List<TransactionV2ParamsTo> to = default(List<TransactionV2ParamsTo>),
+            List<string> addresses = default(List<string>), string id = default(string),
+            string password = default(string), List<string> unspents = default(List<string>))
         {
             ChangeAddress = changeAddress;
             HoursSelection = hoursSelection;

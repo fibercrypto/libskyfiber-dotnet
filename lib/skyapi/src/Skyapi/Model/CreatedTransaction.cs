@@ -34,13 +34,12 @@ namespace Skyapi.Model
         /// <param name="length">length.</param>
         /// <param name="outputs">outputs.</param>
         /// <param name="sigs">sigs.</param>
-        /// <param name="timestamp">timestamp.</param>
         /// <param name="txid">txid.</param>
         /// <param name="type">type.</param>
-        public CreatedTransaction(string fee = default,
-            string innerHash = default, List<TransactionInput> inputs = default, int? length = default,
-            List<TransactionOutput> outputs = default, List<string> sigs = default, string txid = default,
-            int? type = default)
+        public CreatedTransaction(string fee = default(string),
+            string innerHash = default(string), List<TransactionInput> inputs = default(List<TransactionInput>), int? length = default(int?),
+            List<TransactionOutput> outputs = default(List<TransactionOutput>), List<string> sigs = default(List<string>), string txid = default(string),
+            int? type = default(int?))
         {
             Fee = fee;
             InnerHash = innerHash;

@@ -35,10 +35,10 @@ namespace Skyapi.Model
         /// <param name="timestamp">timestamp.</param>
         /// <param name="txid">txid.</param>
         /// <param name="type">type.</param>
-        public TransactionTxn(string innerHash = default, List<string> inputs = default,
-            int? length = default, List<TransactionOutput> outputs = default,
-            List<string> sigs = default, long? timestamp = default, string txid = default,
-            int? type = default)
+        public TransactionTxn(string innerHash = default(string), List<string> inputs = default(List<string>),
+            int? length = default(int?), List<TransactionOutput> outputs = default(List<TransactionOutput>),
+            List<string> sigs = default(List<string>), long? timestamp = default(long?), string txid = default(string),
+            int? type = default(int?))
         {
             InnerHash = innerHash;
             Inputs = inputs;

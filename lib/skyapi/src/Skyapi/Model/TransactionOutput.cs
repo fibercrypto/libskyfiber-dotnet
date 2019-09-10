@@ -21,8 +21,8 @@ namespace Skyapi.Model
         /// <param name="address"></param>
         /// <param name="coins"></param>
         /// <param name="hours"></param>
-        public TransactionOutput(string uxId = default, string address = default, string coins = default,
-            string hours = default)
+        public TransactionOutput(string uxId = default(string), string address = default(string), string coins = default(string),
+            string hours = default(string))
         {
             UxId = uxId;
             Address = address;
