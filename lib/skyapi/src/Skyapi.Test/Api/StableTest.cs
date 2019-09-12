@@ -14,9 +14,6 @@ namespace Skyapi.Test.Api
     {
         private DefaultApi _instance;
 
-        /// <summary>
-        /// Setup before each unit test
-        /// </summary>
         [SetUp]
         public void Init()
         {
@@ -33,6 +30,63 @@ namespace Skyapi.Test.Api
 
             var result = _instance.AddressCount();
             Assert.AreEqual(155, result.Count);
+        }
+
+        [Test]
+        public void DataGetTest()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
+            var singleresult = new {data = "val1"};
+            if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            _instance.DataPOST(type: "txid", key: "key2", val: "val2");
+            //Varify all results.
+            Assert.AreEqual(JsonConvert.SerializeObject(allresult),
+                JsonConvert.SerializeObject(_instance.DataGET(type: "txid")));
+            //Verify a single result.
+            Assert.AreEqual(JsonConvert.SerializeObject(singleresult),
+                JsonConvert.SerializeObject(_instance.DataGET(type: "txid", key: "key1")));
+        }
+
+        [Test]
+        public void DataPostTest()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
+            _instance.DataPOST(type: "client", key: "key1", val: "val1");
+        }
+
+        [Test]
+        public void DataDeleteTest()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
+            _instance.DataPOST(type: "txid", key: "key1", val: "val1");
+            var result = _instance.DataGET(type: "txid");
+            _instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
+            _instance.DataDELETE(type: "txid", key: "keytodel");
+            Assert.AreEqual(result, _instance.DataGET("txid"));
         }
 
         [Test]
@@ -497,7 +551,6 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
-
             Transactions(Method.GET);
         }
 
@@ -508,7 +561,6 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
-
             Transactions(Method.POST);
         }
 
@@ -991,6 +1043,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void ResendUnconfirmedTxns()
         {
+            if (!Utils.GetTestMode().Equals("stable") || Utils.DbNoUnconfirmed())
+            {
+                return;
+            }
+
             var err = Assert.Throws<ApiException>(() =>
             {
                 if (Utils.UseCsrf()) _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
@@ -1004,6 +1061,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void RichList()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var richlist = _instance.Richlist();
             Utils.CheckGoldenFile("richlist-default.golden", richlist, richlist.GetType());
             richlist = _instance.Richlist(includeDistribution: false, n: "0");
@@ -1019,6 +1081,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void Transaction()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new List<dynamic>
             {
                 new
@@ -1135,6 +1202,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionInject()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new List<dynamic>
             {
                 new
@@ -1180,6 +1252,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPost()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -1261,6 +1338,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionPostUnspents()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var withunspent = new
             {
                 name = "invalid uxouts do not exist",
@@ -1301,6 +1383,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void TransactionVerify()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -1356,6 +1443,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void Uxouts()
         {
+            if (!Utils.GetTestMode().Equals("stable") || Utils.DbNoUnconfirmed())
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 new
@@ -1378,8 +1470,14 @@ namespace Skyapi.Test.Api
             Utils.ScanUxouts(_instance);
         }
 
+        [Test]
         public void WalletBalance()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var seed = "casino away claim road artist where blossom warrior demise royal still palm";
             var xpub = "xpub6CkxdS1d4vNqqcnf9xPgqR5e2jE2PZKmKSw93QQMjHE1hRk22nU4zns85EDRgmLWYXYtu62XexwqaE" +
                        "T33XA28c26NbXCAUJh1xmqq6B3S2v";
@@ -1432,7 +1530,6 @@ namespace Skyapi.Test.Api
                 Assert.DoesNotThrow(() =>
                 {
                     var balance = _instance.WalletBalance(wallet.Meta.Id);
-                    //instance.WalletUnload(wallet.Meta.Id);
                     Assert.True(balance.Addresses.ContainsKey(wallet.Entries[0].Address), tc.name);
                     Utils.CheckGoldenFile(tc.golden, balance, balance.GetType());
                 });
@@ -1442,6 +1539,11 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletTransactions()
         {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
             var testCases = new[]
             {
                 "deterministic",

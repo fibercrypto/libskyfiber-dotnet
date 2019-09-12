@@ -13,7 +13,6 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using Skyapi.Client;
 using Skyapi.Api;
-using RestSharp;
 using Skyapi.Model;
 using skycoin;
 
@@ -41,42 +40,6 @@ namespace Skyapi.Test.Api
         }
 
         /// <summary>
-        /// Test AddressCount
-        /// </summary>
-        [Test]
-        public void AddressCountTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.AddressCount(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test AddressUxouts
-        /// </summary>
-        [Test]
-        public void AddressUxoutsTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.AddressUxouts(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test ApiV1RawtxGet
-        /// </summary>
-        [Test]
-        public void ApiV1RawtxGetTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.ApiRawTxGet(instance: Instance);
-            }
-        }
-
-        /// <summary>
         /// Test ApiV2MetricsGet
         /// </summary>
         [Test]
@@ -88,97 +51,13 @@ namespace Skyapi.Test.Api
                 var response = Instance.ApiV2MetricsGet();
                 Assert.IsInstanceOf<string>(response, "response is string");
                 Assert.IsNotNull(response);
-                if (Utils.GetTestMode() == "stable") Assert.True(response.Contains("last_block_seq 180"));
+                if (Utils.GetTestMode().Equals("stable")) Assert.True(response.Contains("last_block_seq 180"));
             }
             catch (ApiException err)
             {
                 Assert.AreEqual(403, err.ErrorCode,
                     "Endpoint Not tested. Endpoint are disable : Api-sets PROMETHEUS could be disabled." +
                     " Try to enable it.");
-            }
-        }
-
-        /// <summary>
-        /// Test BalanceGet
-        /// </summary>
-        [Test]
-        public void BalanceGetTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Balance(Method.GET, instance: Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test BalancePost
-        /// </summary>
-        [Test]
-        public void BalancePostTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Balance(Method.POST, Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test Block
-        /// </summary>
-        [Test]
-        public void BlockTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Block(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test BlockchainMetadata
-        /// </summary>
-        [Test]
-        public void BlockchainMetadataTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.BlockchainMetadata(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test BlockchainProgress
-        /// </summary>
-        [Test]
-        public void BlockchainProgressTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.BlockChainProgress(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test Blocks
-        /// </summary>
-        [Test]
-        public void BlocksTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Blocks(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test CoinSupply
-        /// </summary>
-        [Test]
-        public void CoinSupplyTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.CoinSupply(Instance);
             }
         }
 
@@ -198,72 +77,6 @@ namespace Skyapi.Test.Api
         }
 
         /// <summary>
-        /// Test DataDELETE
-        /// </summary>
-        [Test]
-        public void DataDeleteTest()
-        {
-            if (!Utils.GetTestMode().Equals("stable"))
-            {
-                return;
-            }
-
-            if (Utils.UseCsrf())
-            {
-                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
-            }
-
-            Instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            var result = Instance.DataGET(type: "txid");
-            Instance.DataPOST(type: "txid", key: "keytodel", val: "valtodel");
-            Instance.DataDELETE(type: "txid", key: "keytodel");
-            Assert.AreEqual(result, Instance.DataGET("txid"));
-        }
-
-        /// <summary>
-        /// Test DataGET
-        /// </summary>
-        [Test]
-        public void DataGetTest()
-        {
-            if (!Utils.GetTestMode().Equals("stable"))
-            {
-                return;
-            }
-
-            var allresult = new {data = new {key1 = "val1", key2 = "val2"}};
-            var singleresult = new {data = "val1"};
-            if (Utils.UseCsrf()) Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
-            Instance.DataPOST(type: "txid", key: "key1", val: "val1");
-            Instance.DataPOST(type: "txid", key: "key2", val: "val2");
-            //Varify all results.
-            Assert.AreEqual(JsonConvert.SerializeObject(allresult),
-                JsonConvert.SerializeObject(Instance.DataGET(type: "txid")));
-            //Verify a single result.
-            Assert.AreEqual(JsonConvert.SerializeObject(singleresult),
-                JsonConvert.SerializeObject(Instance.DataGET(type: "txid", key: "key1")));
-        }
-
-        /// <summary>
-        /// Test DataPOST
-        /// </summary>
-        [Test]
-        public void DataPostTest()
-        {
-            if (!Utils.GetTestMode().Equals("stable"))
-            {
-                return;
-            }
-
-            if (Utils.UseCsrf())
-            {
-                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: Instance));
-            }
-
-            Instance.DataPOST(type: "client", key: "key1", val: "val1");
-        }
-
-        /// <summary>
         /// Test DefaultConnections
         /// </summary>
         [Test]
@@ -275,66 +88,6 @@ namespace Skyapi.Test.Api
             Utils.CheckGoldenFile("network-default-peers.golden", connections, connections.GetType());
         }
 
-        /// <summary>
-        /// Test Health
-        /// </summary>
-        [Test]
-        public void HealthTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-
-            {
-                LiveTest.Health(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test LastBlocks
-        /// </summary>
-        [Test]
-        public void LastBlocksTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.LastBlock(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test NetworkConnection and NetworkConnections
-        /// </summary>
-        [Test]
-        public void NetworkConnectionTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnection(instance: Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test NetworkConnectionsDisconnect
-        /// </summary>
-        [Test]
-        public void NetworkConnectionsDisconnectTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnectionDisconnect(instance: Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test NetworkConnectionsExchange
-        /// </summary>
-        [Test]
-        public void NetworkConnectionsExchangeTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.NetworkConnectionExchange(Instance);
-            }
-        }
 
         /// <summary>
         /// Test NetworkConnectionsTrust
@@ -346,177 +99,6 @@ namespace Skyapi.Test.Api
             Assert.IsNotEmpty(connections);
             connections.Sort();
             Utils.CheckGoldenFile("network-trusted-peers.golden", connections, connections.GetType());
-        }
-
-        /// <summary>
-        /// Test OutputsGet
-        /// </summary>
-        [Test]
-        public void OutputsGetTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Outputs(Method.GET, Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test OutputsPost
-        /// </summary>
-        [Test]
-        public void OutputsPostTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Outputs(Method.POST, Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test PendingTxs
-        /// </summary>
-        [Test]
-        public void PendingTxsTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.PendingTxs(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test ResendUnconfirmedTxns
-        /// </summary>
-        [Test]
-        public void ResendUnconfirmedTxnsTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-
-            {
-                LiveTest.ResendUnconfirmedTxns(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test Richlist
-        /// </summary>
-        [Test]
-        public void RichlistTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.RichList(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test Transaction
-        /// </summary>
-        [Test]
-        public void TransactionTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.Transaction(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionInject
-        /// </summary>
-        [Test]
-        public void TransactionInjectTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                if (Utils.LiveDisableNetworking())
-                {
-                    LiveTest.TransactionInjectDisableNetworking(Instance);
-                }
-                else
-                {
-                    LiveTest.TransactionInjectEnableNetworking(Instance);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionPost
-        /// </summary>
-        [Test]
-        public void TransactionPostTest()
-        {
-           if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.TransactionPost(Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionPostUnspent
-        /// </summary>
-        [Test]
-        public void TransactionPostUnspentTest()
-        {
-           if (Utils.GetTestMode().Equals("live"))
-            {
-                ///////
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionVerify
-        /// </summary>
-        [Test]
-        public void TransactionVerifyTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                ///////
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionsGet
-        /// </summary>
-        [Test]
-        public void TransactionsGetTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                return;
-                LiveTest.Transactions(Method.GET, Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test TransactionsPost
-        /// </summary>
-        [Test]
-        public void TransactionsPostTest()
-        {
-            if (Utils.GetTestMode().Equals("live"))
-            {
-                return;
-                LiveTest.Transactions(Method.POST, Instance);
-            }
-        }
-
-        /// <summary>
-        /// Test Uxout
-        /// </summary>
-        [Test]
-        public void UxoutTest()
-        {
-         if (Utils.GetTestMode().Equals("live"))
-            {
-                if (Utils.LiveDisableNetworking())
-                {
-                    Assert.Ignore("Skipping slow ux out tests when networking disabled");
-                }
-
-                LiveTest.Uxouts(Instance);
-            }
         }
 
         /// <summary>
@@ -616,24 +198,12 @@ namespace Skyapi.Test.Api
         }
 
         /// <summary>
-        /// Test WalletBalance
-        /// </summary>
-        [Test]
-        public void WalletBalanceTest()
-        {
-          if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.WalletBalance(Instance);
-            }
-        }
-
-        /// <summary>
         /// Test WalletCreate.Ignore that Test.Error:Error getting response stram (ReadDone2): ReceiveFailure.   
         /// </summary>
         [Test]
         public void WalletCreateTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -722,7 +292,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletDecryptTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -755,7 +325,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletEncryptTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -787,7 +357,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletFolderTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -835,7 +405,7 @@ namespace Skyapi.Test.Api
             };
             foreach (var tc in testCases)
             {
-                for (int i = 1; i < 30; i++)
+                for (var i = 1; i < 30; i++)
                 {
                     var name = $"{tc.name} generate {i} addresses";
                     Assert.DoesNotThrow(() =>
@@ -906,7 +476,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletNewSeedTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -963,7 +533,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
@@ -1052,24 +622,12 @@ namespace Skyapi.Test.Api
         }
 
         /// <summary>
-        /// Test WalletTransactions
-        /// </summary>
-        [Test]
-        public void WalletTransactionsTest()
-        {
-           if (Utils.GetTestMode().Equals("live"))
-            {
-                LiveTest.WalletTransactions(Instance);
-            }
-        }
-
-        /// <summary>
         /// Test WalletUpdate
         /// </summary>
         [Test]
         public void WalletUpdateTest()
         {
-            if (!(Utils.GetTestMode() == "live" || Utils.GetTestMode() == "stable"))
+            if (!(Utils.GetTestMode().Equals("live") || Utils.GetTestMode().Equals("stable")))
             {
                 return;
             }
@@ -1109,7 +667,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletsTest()
         {
-            if (Utils.GetTestMode() == "live" && !Utils.DoLiveWallet())
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
             {
                 return;
             }
