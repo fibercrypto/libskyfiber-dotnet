@@ -39,7 +39,8 @@ namespace Skyapi.Model
             TransactionV2ParamsHoursSelection hoursSelection = default(TransactionV2ParamsHoursSelection),
             bool? ignoreUnconfirmed = false, List<TransactionV2ParamsTo> to = default(List<TransactionV2ParamsTo>),
             List<string> addresses = default(List<string>), string id = default(string),
-            string password = default(string), List<string> unspents = default(List<string>))
+            string password = default(string), bool unsigned = default(bool),
+            List<string> unspents = default(List<string>))
         {
             ChangeAddress = changeAddress;
             HoursSelection = hoursSelection;
@@ -48,6 +49,7 @@ namespace Skyapi.Model
             Addresses = addresses;
             Id = id;
             Password = password;
+            Unsigned = unsigned;
             Unspents = unspents;
         }
 
@@ -62,6 +64,12 @@ namespace Skyapi.Model
         /// </summary>
         [DataMember(Name = "wallet_id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Unsigned
+        /// </summary>
+        [DataMember(Name = "unsigned_id", EmitDefaultValue = false)]
+        public bool Unsigned { get; set; }
 
         /// <summary>
         /// Gets or Sets Password
@@ -115,6 +123,7 @@ namespace Skyapi.Model
             sb.Append("  Wallet_id: ").Append(Id).Append("\n");
             sb.Append("  addresses: ").Append(Addresses).Append("\n");
             sb.Append("  password: ").Append(Password).Append("\n");
+            sb.Append("  unsigned: ").Append(Unsigned).Append("\n");
             sb.Append("  unspents: ").Append(Unspents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -156,7 +165,6 @@ namespace Skyapi.Model
                      ChangeAddress.Equals(input.ChangeAddress))
                 ) &&
                 (
-                    HoursSelection == input.HoursSelection ||
                     (HoursSelection != null &&
                      HoursSelection.Equals(input.HoursSelection))
                 ) &&
@@ -190,6 +198,10 @@ namespace Skyapi.Model
                     Password == input.Password ||
                     (Password != null &&
                      Password.Equals(input.Password))
+                )&&
+                (
+                    Unsigned == input.Unsigned ||
+                    (Unsigned.Equals(input.Unsigned))
                 );
         }
 
@@ -218,6 +230,8 @@ namespace Skyapi.Model
                     hashCode = hashCode * 59 + Unspents.GetHashCode();
                 if (Password != null)
                     hashCode = hashCode * 59 + Password.GetHashCode();
+                if (Unsigned != null)
+                    hashCode = hashCode * 59 + Unsigned.GetHashCode();
                 return hashCode;
             }
         }

@@ -428,7 +428,7 @@ namespace Skyapi.Test.Api
             var balanceTuple = GetBalanceWallet(instance, walletName);
             if (balanceTuple.Item1 < minCoins)
             {
-              //  Assert.Fail($"Wallet must have at least {minCoins} coins");
+                //  Assert.Fail($"Wallet must have at least {minCoins} coins");
             }
 
             if (balanceTuple.Item2 < minHours)
@@ -640,6 +640,29 @@ namespace Skyapi.Test.Api
 //                return null;
 //            }
             return lastChangeEntry;
+        }
+
+        internal static coin_UxOutArray ToUxArray(List<UnspentOutput> outputs)
+        {
+            var uxArr = new coin_UxOutArray();
+            outputs.ForEach(o =>
+            {
+                var uxOut = new coin__UxOut();
+                uxOut.Head.Time = o.Time;
+                uxOut.Head.BkSeq = o.BlockSeq;
+                var cipherAddress = skycoin.skycoin.new_cipher__Addressp();
+                var err = skycoin.skycoin.SKY_cipher_DecodeBase58Address(o.Address, cipherAddress);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                uxOut.Body.Address = cipherAddress;
+                uxOut.Body.Coins = FromDropletString(o.Coins);
+                uxOut.Body.Hours = o.Hours;
+                var cipherSha256 = new cipher_SHA256();
+                err = skycoin.skycoin.SKY_cipher_SHA256FromHex(o.SrcTx, cipherSha256);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                uxOut.Body.SetSrcTransaction(cipherSha256);
+                uxArr.append(uxOut);
+            });
+            return uxArr;
         }
     }
 }

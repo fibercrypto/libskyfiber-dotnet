@@ -12,7 +12,7 @@ using skycoin;
 namespace Skyapi.Test.Api
 {
     [TestFixture]
-    public class LiveTest
+    public class LiveTest : skycoin.skycoin
     {
         private DefaultApi _instance;
 
@@ -775,6 +775,7 @@ namespace Skyapi.Test.Api
                 {
                     _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
                 }
+
                 var txResponse = _instance.WalletTransaction(tReq);
                 var err = Assert.Throws<ApiException>(() => _instance.TransactionInject(txResponse.EncodedTransaction));
                 Assert.AreEqual(503, err.ErrorCode);
@@ -873,6 +874,7 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
+
             if (Utils.LiveDisableNetworking())
             {
                 Assert.Ignore("Skipping slow ux out tests when networking disabled");
@@ -894,6 +896,7 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
+
             Utils.RequireWalletEnv();
             var prepareAndCheckWallet = Utils.PrepareAndCheckWallet(_instance, 2e6, 20);
             var wallet = prepareAndCheckWallet.Item1;
@@ -906,6 +909,7 @@ namespace Skyapi.Test.Api
                 {
                     _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
                 }
+
                 Assert.DoesNotThrow(
                     () =>
                     {
@@ -923,6 +927,89 @@ namespace Skyapi.Test.Api
                         TxnUtils.AssertCreateTransactionResult(_instance, tc, result, true, null);
                     }, tc.Name);
             }
+        }
+
+        [Test]
+        public void WalletSignTransaction()
+        {
+            if (!Utils.GetTestMode().Equals("live"))
+            {
+                return;
+            }
+
+            Utils.RequireWalletEnv();
+
+            var prepareAndCheckWallet = Utils.PrepareAndCheckWallet(_instance, 2e6, 20);
+            var wallet = prepareAndCheckWallet.Item1;
+            var pass = prepareAndCheckWallet.Item4;
+            var entryLenGoUint32Ptr = new_GoUint32Ptr();
+            var err = SKY_api_Handle_GetWalletEntriesCount(wallet, entryLenGoUint32Ptr);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var entryLen = skycoin.skycoin.GoUint32Ptr_value(entryLenGoUint32Ptr);
+            // Fetch outputs held by the wallet
+            var addresses = new List<string>();
+            for (var i = 0; i < entryLen; i++)
+            {
+                addresses.Add(Utils.GetAddressOfWalletEntries(i, wallet));
+            }
+
+            // Abort if the transaction is spending summary
+            var summary = _instance.OutputsGet(addresses);
+
+            // Need at least 2 summary for the created transaction
+            Assert.True(summary.HeaderOutputs.Count > 1);
+
+            // Use the first two outputs for a transaction
+            var headOutputs = summary.HeaderOutputs.GetRange(0, 2);
+            var outputs = Utils.ToUxArray(headOutputs);
+            var uint64P = new_GoUint64p();
+            err = SKY_coin_UxArray_Coins(outputs, uint64P);
+            Assert.AreEqual(SKY_OK, err);
+            var totalcoins = GoUint64p_value(uint64P);
+            var totalcoinString = Utils.ToDropletString(totalcoins);
+            var uxOutHashes = new List<string>();
+            var hashes = new cipher_SHA256s();
+            SKY_coin_UxArray_Hashes(outputs, hashes);
+            for (var i = 0; i < hashes.count; i++)
+            {
+                uxOutHashes.Add(hashes.getAt(i).getStr().p);
+            }
+
+            // Create an unsigned transaction using two inputs
+            // Ensure at least 2 inputs
+            // Specify outputs in the request to create txn
+            // Specify unsigned in the request to create txn
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+            }
+
+            var txnResp = _instance.WalletTransaction(new WalletTransactionRequest
+            {
+                Id = Utils.GetWalletName(),
+                Unsigned = true,
+                Password = pass,
+                Unspents = uxOutHashes,
+                HoursSelection = new TransactionV2ParamsHoursSelection
+                {
+                    Type = "auto",
+                    Mode = "share",
+                    ShareFactor = "0.5"
+                },
+                To = new List<TransactionV2ParamsTo>
+                {
+                    new TransactionV2ParamsTo
+                    {
+                        Address = Utils.GetAddressOfWalletEntries(0, wallet),
+                        Coins = totalcoinString
+                    }
+                }
+            });
+            var invalidTxn = txnResp.EncodedTransaction;
+            new_CreateTransactionResponse__HandlePtr();
+            
+
         }
     }
 }
