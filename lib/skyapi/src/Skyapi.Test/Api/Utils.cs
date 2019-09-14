@@ -469,7 +469,7 @@ namespace Skyapi.Test.Api
             return goString.p;
         }
 
-        internal static ulong FromDropletString(String i)
+        internal static ulong DropletFromString(string i)
         {
             var goUint64P = skycoin.skycoin.new_GoUint64p();
             skycoin.skycoin.SKY_droplet_FromString(i, goUint64P);
@@ -654,7 +654,7 @@ namespace Skyapi.Test.Api
                 var err = skycoin.skycoin.SKY_cipher_DecodeBase58Address(o.Address, cipherAddress);
                 Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
                 uxOut.Body.Address = cipherAddress;
-                uxOut.Body.Coins = FromDropletString(o.Coins);
+                uxOut.Body.Coins = DropletFromString(o.Coins);
                 uxOut.Body.Hours = o.Hours;
                 var cipherSha256 = new cipher_SHA256();
                 err = skycoin.skycoin.SKY_cipher_SHA256FromHex(o.SrcTx, cipherSha256);
@@ -663,6 +663,16 @@ namespace Skyapi.Test.Api
                 uxArr.append(uxOut);
             });
             return uxArr;
+        }
+
+        internal static string MakeAddress()
+        {
+            var cipherAddress = new cipher__Address();
+            skycoin.skycoin.makeAddress(cipherAddress);
+            var addressGoString = new _GoString_();
+            var err = skycoin.skycoin.SKY_cipher_Address_String(cipherAddress, addressGoString);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            return addressGoString.p;
         }
     }
 }

@@ -11,20 +11,20 @@ namespace Skyapi.Test.Api
     internal class TxnUtils
     {
         internal static void AssertCreateTransactionResult(DefaultApi instance, LiveCreateTxnTestCase tc,
-            InlineResponse2008 result, bool unsigned, Wallet w)
+            InlineResponse2008Data result, bool unsigned, Wallet w)
         {
             if (tc.OutputsSubset.Length == 0)
             {
-                Assert.AreEqual(tc.Outputs.Length, result.Data.Transaction.Outputs.Count);
+                Assert.AreEqual(tc.Outputs.Length, result.Transaction.Outputs.Count);
             }
 
             for (var i = 0; i < tc.Outputs.Length; i++)
             {
-                var coins = Utils.FromDropletString(result.Data.Transaction.Outputs[i].Coins);
+                var coins = Utils.DropletFromString(result.Transaction.Outputs[i].Coins);
                 Assert.AreEqual(tc.Outputs[i].Coins, coins);
                 if (!tc.IgnoreHours)
                 {
-                    var hours = uint.Parse(result.Data.Transaction.Outputs[i].Hours);
+                    var hours = uint.Parse(result.Transaction.Outputs[i].Hours);
                     Assert.AreEqual(tc.Outputs[i].Hours, hours);
                 }
 
@@ -36,7 +36,7 @@ namespace Skyapi.Test.Api
 // if the ChangeAddress was not specified in the wallet params.
                     Assert.AreEqual(i, tc.Outputs.Length - 1);
                     Assert.Null(tc.Req.ChangeAddress);
-                    var changeAddress = result.Data.Transaction.Outputs[i].Address;
+                    var changeAddress = result.Transaction.Outputs[i].Address;
                     Assert.False(Utils.IsNullAddress(changeAddress));
                     if (w != null && w.Meta.Type == "bip44")
                     {
@@ -71,7 +71,7 @@ namespace Skyapi.Test.Api
 // Check that the automatically-selected change address was one
 // of the addresses for the UTXOs spent by the transaction
                         var changeAddrFound = false;
-                        foreach (var inp in result.Data.Transaction.Inputs)
+                        foreach (var inp in result.Transaction.Inputs)
                         {
                             Assert.False(Utils.IsNullAddress(inp.Address));
                             if (changeAddress == inp.Address)
@@ -88,7 +88,7 @@ namespace Skyapi.Test.Api
                 {
                     var address = new _GoString_();
                     skycoin.skycoin.SKY_cipher_Address_String(tc.Outputs[i].Address, address);
-                    Assert.AreEqual(address.p, result.Data.Transaction.Outputs[i].Address);
+                    Assert.AreEqual(address.p, result.Transaction.Outputs[i].Address);
                 }
             }
 
@@ -99,16 +99,16 @@ namespace Skyapi.Test.Api
                 Assert.AreEqual(w, w2);
             }
 
-            AssertEncodedTxnMatchesTxn(instance, result.Data);
-            AssertRequestedCoins(tc.Req.To, result.Data.Transaction.Outputs);
-            AssertCreateTransactionValid(result.Data.Transaction, unsigned);
+            AssertEncodedTxnMatchesTxn(instance, result);
+            AssertRequestedCoins(tc.Req.To, result.Transaction.Outputs);
+            AssertCreateTransactionValid(result.Transaction, unsigned);
             if (tc.Req.HoursSelection.Type == "manual")
             {
-                AssertRequestedHours(tc.Req.To, result.Data.Transaction.Outputs);
+                AssertRequestedHours(tc.Req.To, result.Transaction.Outputs);
             }
 
-            tc.AdditionalRespVerify?.Invoke(result.Data.Transaction);
-            AssertVerifyTransaction(instance, result.Data.EncodedTransaction, unsigned);
+            tc.AdditionalRespVerify?.Invoke(result.Transaction);
+            AssertVerifyTransaction(instance, result.EncodedTransaction, unsigned);
         }
 
         internal static void AssertVerifyTransaction(DefaultApi instance, string dataEncodedTransaction, bool unsigned)
@@ -119,11 +119,13 @@ namespace Skyapi.Test.Api
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
+
                 Assert.DoesNotThrow(() => instance.TransactionVerify(dataEncodedTransaction, true));
                 if (Utils.UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
+
                 var err = Assert.Throws<ApiException>(() => instance.TransactionVerify(dataEncodedTransaction));
                 Assert.AreEqual(422, err.ErrorCode);
                 Assert.True(
@@ -135,11 +137,13 @@ namespace Skyapi.Test.Api
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
+
                 Assert.DoesNotThrow(() => instance.TransactionVerify(dataEncodedTransaction));
                 if (Utils.UseCsrf())
                 {
                     instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
                 }
+
                 var err = Assert.Throws<ApiException>(() => instance.TransactionVerify(dataEncodedTransaction,
                     true));
                 Assert.AreEqual(422, err.ErrorCode);
@@ -190,7 +194,7 @@ namespace Skyapi.Test.Api
                 var hours = ulong.Parse(inp.Hours);
                 Assert.True(hours <= calculateHours);
                 Assert.NotNull(inp.Coins);
-                var coins = Utils.FromDropletString(inp.Coins);
+                var coins = Utils.DropletFromString(inp.Coins);
                 err = skycoin.skycoin.SKY_util_AddUint64(inputCoins, coins, unsignedLongLong);
                 Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
                 inputCoins = skycoin.skycoin.GoUint64p_value(unsignedLongLong);
@@ -225,14 +229,14 @@ namespace Skyapi.Test.Api
             ulong requestCoins = 0;
             foreach (var o in reqTo)
             {
-                var c = Utils.FromDropletString(o.Coins);
+                var c = Utils.DropletFromString(o.Coins);
                 requestCoins += c;
             }
 
             ulong sentCoins = 0;
             for (var i = 0; i < reqTo.Count; i++)
             {
-                var c = Utils.FromDropletString(transactionOutputs[i].Coins);
+                var c = Utils.DropletFromString(transactionOutputs[i].Coins);
                 sentCoins += c;
             }
 
@@ -271,8 +275,10 @@ namespace Skyapi.Test.Api
             Assert.True(remainingHours > 1);
             var unknownOutputs = Utils.RandSha256();
             var defaultChangeAddress = Utils.GetAddressOfWalletEntries(0, wallet);
+
 //Get all outputs
             var outputs = instance.OutputsGet();
+
 //Split outputs into those held by the wallet and those not
             var entryLenGoUint32Ptr = skycoin.skycoin.new_GoUint32Ptr();
             err = skycoin.skycoin.SKY_api_Handle_GetWalletEntriesCount(wallet, entryLenGoUint32Ptr);
@@ -291,11 +297,18 @@ namespace Skyapi.Test.Api
             {
                 if (addresses.Exists(addrs => addrs.Equals(o.Address)))
                 {
-                    walletOutputs.Add(o);
-                    walletOutputHashes.Add(o.Hash);
                     if (!walletAuxs.ContainsKey(o.Address))
                     {
-                        walletAuxs.Add(o.Address, new List<string>());
+                        walletOutputs.Add(o);
+                        walletOutputHashes.Add(o.Hash);
+                        if (walletAuxs.ContainsKey(o.Address))
+                        {
+                            walletAuxs[o.Address].Add(o.Hash);
+                        }
+                        else
+                        {
+                            walletAuxs.Add(o.Address, new List<string> {o.Hash});
+                        }
                     }
 
                     walletAuxs[o.Address].Add(o.Hash);
@@ -837,6 +850,325 @@ namespace Skyapi.Test.Api
                     }
                 }
             };
+        }
+
+        internal struct LiveWalletCreateTxnTestCase
+        {
+            public LiveCreateTxnTestCase LiveCreateTxnTestCase;
+            public string WalletId;
+            public string Password;
+        }
+
+        internal static void WalletCreateTransactionSpecific(DefaultApi instance, bool unsigned)
+        {
+            if (!Utils.GetTestMode().Equals("live"))
+            {
+                return;
+            }
+
+            Utils.RequireWalletEnv();
+            var walletName = Utils.GetWalletName();
+            var prepAndCheckTuple = Utils.PrepareAndCheckWallet(instance, 2e6, 20);
+            var wallet = prepAndCheckTuple.Item1;
+            var totalCoins = prepAndCheckTuple.Item2;
+            var totalHours = prepAndCheckTuple.Item3;
+            var pass = prepAndCheckTuple.Item4;
+            var remainingHoursUint64P = skycoin.skycoin.new_GoUint64p();
+            var err = skycoin.skycoin.SKY_fee_RemainingHours((ulong) totalHours, 10, remainingHoursUint64P);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var remainingHours = skycoin.skycoin.GoUint64p_value(remainingHoursUint64P);
+            Assert.True(remainingHours > 1);
+
+            // Split outputs into those held by the wallet and those not
+            var addresses = new List<string>();
+            var entryLenGoUint32Ptr = skycoin.skycoin.new_GoUint32Ptr();
+            err = skycoin.skycoin.SKY_api_Handle_GetWalletEntriesCount(wallet, entryLenGoUint32Ptr);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var entryLen = skycoin.skycoin.GoUint32Ptr_value(entryLenGoUint32Ptr);
+            for (var i = 0; i < entryLen; i++)
+            {
+                addresses.Add(Utils.GetAddressOfWalletEntries(i, wallet));
+            }
+
+            var outputs = instance.OutputsGet();
+            var walletOutputs = new List<UnspentOutput>();
+            var nonWalletOutputs = new List<UnspentOutput>();
+            var walletAuxs = new Dictionary<string, List<string>>();
+            foreach (var o in outputs.HeaderOutputs)
+            {
+                if (addresses.Contains(o.Address))
+                {
+                    walletOutputs.Add(o);
+                    walletAuxs.Add(o.Address, new List<string>());
+                    if (walletAuxs.ContainsKey(o.Address))
+                    {
+                        walletAuxs[o.Address].Add(o.Hash);
+                    }
+                    else
+                    {
+                        walletAuxs.Add(o.Address, new List<string> {o.Hash});
+                    }
+                }
+                else
+                {
+                    nonWalletOutputs.Add(o);
+                }
+            }
+
+            Assert.IsNotEmpty(walletOutputs);
+            Assert.IsNotEmpty(nonWalletOutputs);
+            var defaultChangeAddress = Utils.GetAddressOfWalletEntries(0, wallet);
+            var basesCases = MakeLiveCreateTxnTestCases(instance, wallet, totalCoins, totalHours);
+            var cases = new List<LiveWalletCreateTxnTestCase>();
+            foreach (var bc in basesCases)
+            {
+                cases.Add(new LiveWalletCreateTxnTestCase
+                {
+                    LiveCreateTxnTestCase = bc,
+                    WalletId = walletName,
+                    Password = pass
+                });
+            }
+
+            cases.AddRange(new[]
+            {
+                new LiveWalletCreateTxnTestCase
+                {
+                    WalletId = walletName,
+                    Password = pass,
+                    LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                    {
+                        Name = "uxout not held by the wallet",
+                        Req = new TransactionV2ParamsAddress
+                        {
+                            UxOuts = new List<string> {nonWalletOutputs[0].Hash},
+                            HoursSelection = new TransactionV2ParamsHoursSelection
+                            {
+                                Type = "manual"
+                            },
+                            ChangeAddress = defaultChangeAddress,
+                            To = new List<TransactionV2ParamsTo>
+                            {
+                                new TransactionV2ParamsTo
+                                {
+                                    Address = Utils.GetAddressOfWalletEntries(1, wallet),
+                                    Coins = nonWalletOutputs[0].Coins,
+                                    Hours = "1"
+                                }
+                            }
+                        },
+                        ErrCode = 400,
+                        ErrMsg = "uxout is not owned by any address in the wallet"
+                    }
+                },
+                new LiveWalletCreateTxnTestCase
+                {
+                    WalletId = walletName,
+                    Password = pass,
+                    LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                    {
+                        Name = "specified addresses not in wallet",
+                        Req = new TransactionV2ParamsAddress
+                        {
+                            Address = new List<string> {Utils.MakeAddress()},
+                            HoursSelection = new TransactionV2ParamsHoursSelection
+                            {
+                                Type = "manual"
+                            },
+                            ChangeAddress = defaultChangeAddress,
+                            To = new List<TransactionV2ParamsTo>
+                            {
+                                new TransactionV2ParamsTo
+                                {
+                                    Address = Utils.GetAddressOfWalletEntries(1, wallet),
+                                    Coins = Utils.ToDropletString((ulong) totalCoins),
+                                    Hours = "1"
+                                }
+                            }
+                        },
+                        ErrCode = 400,
+                        ErrMsg = "address not found in wallet"
+                    }
+                },
+                new LiveWalletCreateTxnTestCase
+                {
+                    WalletId = walletName,
+                    Password = pass,
+                    LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                    {
+                        Name = "valid request, addresses and uxouts not specified",
+                        Req = new TransactionV2ParamsAddress
+                        {
+                            UxOuts = new List<string> {nonWalletOutputs[0].Hash},
+                            HoursSelection = new TransactionV2ParamsHoursSelection
+                            {
+                                Type = "manual"
+                            },
+                            ChangeAddress = defaultChangeAddress,
+                            To = new List<TransactionV2ParamsTo>
+                            {
+                                new TransactionV2ParamsTo
+                                {
+                                    Address = Utils.GetAddressOfWalletEntries(1, wallet),
+                                    Coins = nonWalletOutputs[0].Coins,
+                                    Hours = "1"
+                                }
+                            }
+                        },
+                        Outputs = new[]
+                        {
+                            new coin__TransactionOutput
+                            {
+                                Address = Utils.GetCipherAddressOfWalletEntries(1, wallet),
+                                Coins = (ulong) (totalCoins - 1e3),
+                                Hours = 1
+                            },
+                            new coin__TransactionOutput
+                            {
+                                Address = Utils.GetCipherAddressOfWalletEntries(0, wallet),
+                                Coins = (ulong) (1e3),
+                                Hours = remainingHours - 1
+                            }
+                        }
+                    }
+                }
+            });
+            var charPtr = skycoin.skycoin.new_CharPtr();
+            skycoin.skycoin.SKY_wallet_Wallet_IsEncrypted(wallet, charPtr);
+            var encrypted = skycoin.skycoin.CharPtr_value(charPtr);
+            if (encrypted == 1)
+            {
+                cases.AddRange(new[]
+                {
+                    new LiveWalletCreateTxnTestCase
+                    {
+                        WalletId = walletName,
+                        Password = pass + "foo",
+                        LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                        {
+                            Name = "invalid password",
+                            Req = new TransactionV2ParamsAddress
+                            {
+                                HoursSelection = new TransactionV2ParamsHoursSelection
+                                {
+                                    Type = "manual"
+                                },
+                                ChangeAddress = defaultChangeAddress,
+                                To = new List<TransactionV2ParamsTo>
+                                {
+                                    new TransactionV2ParamsTo
+                                    {
+                                        Address = Utils.GetAddressOfWalletEntries(0, wallet),
+                                        Coins = "1000",
+                                        Hours = "1"
+                                    }
+                                }
+                            },
+                            ErrCode = 400,
+                            ErrMsg = "invalid password"
+                        }
+                    },
+                    new LiveWalletCreateTxnTestCase
+                    {
+                        WalletId = walletName,
+                        Password = "",
+                        LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                        {
+                            Name = "password not provided",
+                            Req = new TransactionV2ParamsAddress
+                            {
+                                HoursSelection = new TransactionV2ParamsHoursSelection
+                                {
+                                    Type = "manual"
+                                },
+                                ChangeAddress = defaultChangeAddress,
+                                To = new List<TransactionV2ParamsTo>
+                                {
+                                    new TransactionV2ParamsTo
+                                    {
+                                        Address = Utils.GetAddressOfWalletEntries(0, wallet),
+                                        Coins = "1000",
+                                        Hours = "1"
+                                    }
+                                }
+                            },
+                            ErrCode = 400,
+                            ErrMsg = "missing password"
+                        }
+                    }
+                });
+            }
+            else
+            {
+                var errMsg = "wallet is not encrypted";
+                if (unsigned)
+                {
+                    errMsg = "password must not be used for unsigned transactions";
+                }
+
+                cases.Add(new LiveWalletCreateTxnTestCase
+                {
+                    WalletId = walletName,
+                    Password = pass + "foo",
+                    LiveCreateTxnTestCase = new LiveCreateTxnTestCase
+                    {
+                        Name = "password provided for unencrypted wallet",
+                        Req = new TransactionV2ParamsAddress
+                        {
+                            HoursSelection = new TransactionV2ParamsHoursSelection
+                            {
+                                Type = "manual"
+                            },
+                            ChangeAddress = defaultChangeAddress,
+                            To = new List<TransactionV2ParamsTo>
+                            {
+                                new TransactionV2ParamsTo
+                                {
+                                    Address = Utils.GetAddressOfWalletEntries(0, wallet),
+                                    Coins = "1000",
+                                    Hours = "1"
+                                }
+                            }
+                        },
+                        ErrCode = 400,
+                        ErrMsg = errMsg
+                    }
+                });
+            }
+
+            foreach (var tc in cases)
+            {
+                var name = $"unsigned={unsigned} {tc.LiveCreateTxnTestCase.Name}";
+                Assert.False(tc.LiveCreateTxnTestCase.Outputs.Length != 0 &&
+                             tc.LiveCreateTxnTestCase.OutputsSubset.Length != 0,
+                    "outputs and outputsSubset can't both be set");
+
+                // Fetch a copy of the wallet to look for modifications to the wallet
+                // after the transaction is created
+                var w = instance.Wallet(tc.WalletId);
+                var req = new WalletTransactionRequest
+                {
+                    Id = tc.WalletId,
+                    Password = tc.Password,
+                    Unsigned = unsigned,
+                    Addresses = tc.LiveCreateTxnTestCase.Req.Address,
+                    To = tc.LiveCreateTxnTestCase.Req.To,
+                    Unspents = tc.LiveCreateTxnTestCase.Req.UxOuts,
+                    ChangeAddress = tc.LiveCreateTxnTestCase.Req.ChangeAddress,
+                    HoursSelection = tc.LiveCreateTxnTestCase.Req.HoursSelection,
+                    IgnoreUnconfirmed = tc.LiveCreateTxnTestCase.Req.IgnoreUnconfirmed
+                };
+                if (!tc.LiveCreateTxnTestCase.ErrMsg.Equals(""))
+                {
+                    var errApiException = Assert.Throws<ApiException>(() => instance.WalletTransaction(req), name);
+                    Assert.AreEqual(tc.LiveCreateTxnTestCase.ErrCode, errApiException.ErrorCode, name);
+                    Assert.True(errApiException.Message.Contains(tc.LiveCreateTxnTestCase.ErrMsg), name);
+                    break;
+                }
+
+                AssertCreateTransactionResult(instance, tc.LiveCreateTxnTestCase, instance.WalletTransaction(req),
+                    unsigned, w);
+            }
         }
     }
 }

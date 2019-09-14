@@ -924,7 +924,7 @@ namespace Skyapi.Test.Api
                         }
 
                         var result = _instance.TransactionPost(tc.Req);
-                        TxnUtils.AssertCreateTransactionResult(_instance, tc, result, true, null);
+                        TxnUtils.AssertCreateTransactionResult(_instance, tc, result.Data, true, null);
                     }, tc.Name);
             }
         }
@@ -1086,15 +1086,22 @@ namespace Skyapi.Test.Api
 //                        require.Equal(t, txn.Length, resp.Transaction.Length)
 //                        require.Equal(t, txn.InnerHash.Hex(), resp.Transaction.InnerHash)
 
-                        if (Utils.UseCsrf())
-                        {
-                            _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
-                        }
-
                         if (fullySigned)
                         {
+                            if (Utils.UseCsrf())
+                            {
+                                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN",
+                                    Utils.GetCsrf(instance: _instance));
+                            }
+
                             Assert.DoesNotThrow(() => _instance.TransactionVerify(resp.Data.EncodedTransaction),
                                 name);
+                            if (Utils.UseCsrf())
+                            {
+                                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN",
+                                    Utils.GetCsrf(instance: _instance));
+                            }
+
                             var errApiException = Assert.Throws<ApiException>(() =>
                                 _instance.TransactionVerify(resp.Data.EncodedTransaction, true), name);
                             Assert.True(errApiException.Message.Contains(
@@ -1103,10 +1110,22 @@ namespace Skyapi.Test.Api
                         }
                         else
                         {
+                            if (Utils.UseCsrf())
+                            {
+                                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN",
+                                    Utils.GetCsrf(instance: _instance));
+                            }
+
                             var errApiException = Assert.Throws<ApiException>(() =>
                                 _instance.TransactionVerify(resp.Data.EncodedTransaction), name);
                             Assert.True(errApiException.Message.Contains(
                                 "Transaction violates hard constraint: Unsigned input in transaction"), name);
+                            if (Utils.UseCsrf())
+                            {
+                                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN",
+                                    Utils.GetCsrf(instance: _instance));
+                            }
+
                             Assert.DoesNotThrow(
                                 () => { _instance.TransactionVerify(resp.Data.EncodedTransaction, true); }, name);
                         }
@@ -1114,6 +1133,11 @@ namespace Skyapi.Test.Api
             foreach (var tc in testCases)
             {
                 doTest(tc.name, tc.req, tc.fullySigned, tc.errMg, tc.errCode);
+            }
+
+            if (Utils.UseCsrf())
+            {
+                _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
             }
 
             // Create a partially signed transaction then sign the remainder of it
@@ -1135,6 +1159,18 @@ namespace Skyapi.Test.Api
                 true, //fullySigned
                 "", //errMsg
                 0); //errCode
+        }
+
+        [Test]
+        public void WalletCreateTransactionSpecificUnsigned()
+        {
+            TxnUtils.WalletCreateTransactionSpecific(_instance,true);
+        }
+
+        [Test]
+        public void WalletCreateTransactionSpecificSigned()
+        {
+            TxnUtils.WalletCreateTransactionSpecific(_instance,false);
         }
     }
 }
