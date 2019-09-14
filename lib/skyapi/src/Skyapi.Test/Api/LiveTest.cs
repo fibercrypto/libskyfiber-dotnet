@@ -1164,13 +1164,25 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletCreateTransactionSpecificUnsigned()
         {
-            TxnUtils.WalletCreateTransactionSpecific(_instance,true);
+            TxnUtils.WalletCreateTransactionSpecific(_instance, true);
         }
 
         [Test]
         public void WalletCreateTransactionSpecificSigned()
         {
-            TxnUtils.WalletCreateTransactionSpecific(_instance,false);
+            TxnUtils.WalletCreateTransactionSpecific(_instance, false);
+        }
+
+        [Test]
+        public void TestLiveWalletCreateTransactionRandomUnsigned()
+        {
+            TxnUtils.TestLiveWalletCreateTransactionRandom(_instance, true);
+        }
+
+        [Test]
+        public void TestLiveWalletCreateTransactionRandomSigned()
+        {
+            TxnUtils.TestLiveWalletCreateTransactionRandom(_instance, false);
         }
     }
 }

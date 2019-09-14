@@ -674,5 +674,38 @@ namespace Skyapi.Test.Api
             Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
             return addressGoString.p;
         }
+
+        internal static cipher__Address MakeCipherAddress()
+        {
+            var cipherAddress = new cipher__Address();
+            skycoin.skycoin.makeAddress(cipherAddress);
+            return cipherAddress;
+        }
+
+        internal static double RandomNumberBetween(double minval, double maxval)
+        {
+            var next = new Random().NextDouble();
+            Console.WriteLine("10^-4: " + (1e-4));
+            Console.WriteLine("next: " + next);
+            Console.WriteLine("minval:" + minval);
+            Console.WriteLine("maxval:" + maxval);
+            return Math.Round(minval + (next * (maxval - minval)), 8);
+        }
+
+        internal static List<T> Shuffle<T>(List<T> list)
+        {
+            var rand = new Random();
+            var n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                var k = rand.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+
+            return list;
+        }
     }
 }

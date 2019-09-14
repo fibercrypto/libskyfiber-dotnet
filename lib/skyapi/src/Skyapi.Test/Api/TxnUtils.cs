@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using NUnit.Framework;
 using Skyapi.Api;
 using Skyapi.Client;
@@ -1158,6 +1160,11 @@ namespace Skyapi.Test.Api
                     HoursSelection = tc.LiveCreateTxnTestCase.Req.HoursSelection,
                     IgnoreUnconfirmed = tc.LiveCreateTxnTestCase.Req.IgnoreUnconfirmed
                 };
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
                 if (!tc.LiveCreateTxnTestCase.ErrMsg.Equals(""))
                 {
                     var errApiException = Assert.Throws<ApiException>(() => instance.WalletTransaction(req), name);
@@ -1168,6 +1175,280 @@ namespace Skyapi.Test.Api
 
                 AssertCreateTransactionResult(instance, tc.LiveCreateTxnTestCase, instance.WalletTransaction(req),
                     unsigned, w);
+            }
+        }
+
+        internal static void TestLiveWalletCreateTransactionRandom(DefaultApi instance, bool unsigned)
+        {
+            if (!Utils.GetTestMode().Equals("live"))
+            {
+                return;
+            }
+
+            Utils.RequireWalletEnv();
+            var walletName = Utils.GetWalletName();
+            var prepAndCheckTuple = Utils.PrepareAndCheckWallet(instance, 2e6, 20);
+            var wallet = prepAndCheckTuple.Item1;
+            var totalCoins = prepAndCheckTuple.Item2;
+            var totalHours = prepAndCheckTuple.Item3;
+            var pass = prepAndCheckTuple.Item4;
+
+            var charPtr = skycoin.skycoin.new_CharPtr();
+            skycoin.skycoin.SKY_wallet_Wallet_IsEncrypted(wallet, charPtr);
+            var encrypted = skycoin.skycoin.CharPtr_value(charPtr);
+            if (encrypted == 1)
+            {
+                Assert.Ignore("Skipping TestLiveWalletCreateTransactionRandom tests with encrypted wallet");
+            }
+
+            var remainingHoursUint64P = skycoin.skycoin.new_GoUint64p();
+            var err = skycoin.skycoin.SKY_fee_RemainingHours((ulong) totalHours, 10, remainingHoursUint64P);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var remainingHoursValue = skycoin.skycoin.GoUint64p_value(remainingHoursUint64P);
+            Assert.True(remainingHoursValue > 1);
+            var assertTxnOutputCount =
+                new Action<string, int, InlineResponse2008Data>((changeAddress, nOutputs, result) =>
+                {
+                    var nResultOutputs = result.Transaction.Outputs.Count;
+                    Assert.True(nResultOutputs == nOutputs || nResultOutputs == nOutputs + 1);
+                    var hasChange = nResultOutputs == nOutputs + 1;
+                    var changeOutput = result.Transaction.Outputs[nResultOutputs - 1];
+                    if (hasChange)
+                    {
+                        Assert.AreEqual(changeOutput.Address, changeAddress);
+                    }
+
+                    Console.WriteLine($"hasChange:{hasChange}");
+                    if (hasChange)
+                    {
+                        Console.WriteLine($"changeCoins:{changeOutput.Coins}");
+                        Console.WriteLine($"changeHours:{changeOutput.Hours}");
+                    }
+                });
+            var iterations = 250;
+            var maxOutputs = 10;
+            var destAddress = new List<cipher__Address>();
+            for (var i = 0; i < maxOutputs; i++)
+            {
+                destAddress.Add(Utils.MakeCipherAddress());
+            }
+
+            for (var i = 0; i < iterations; i++)
+            {
+                Console.WriteLine($"iteration:{i}");
+                Console.WriteLine($"totalcoins:{totalCoins}");
+                Console.WriteLine($"totalhours:{totalHours}");
+                var spendableHours = remainingHoursValue;
+                Console.WriteLine($"spendableHours:{spendableHours}");
+                var rand = new Random();
+                var coins = rand.Next((int) totalCoins) + 1;
+                coins -= coins % (int) skycoin.skycoin.SKY_params_DropletPrecisionToDivisor(3);
+                if (coins == 0)
+                {
+                    coins = (int) skycoin.skycoin.SKY_params_DropletPrecisionToDivisor(3);
+                }
+
+                var hours = rand.Next((int) spendableHours + 1);
+                var nOutputs = rand.Next(maxOutputs) + 1;
+
+                Console.WriteLine($"sendCoins :{coins}");
+                Console.WriteLine($"sendHours :{hours}");
+
+                var changeAddress = Utils.GetAddressOfWalletEntries(0, wallet);
+                var shareFactor = Utils.RandomNumberBetween(1e-8, 1).ToString(CultureInfo.InvariantCulture);
+
+                Console.WriteLine($"shareFactor :{shareFactor}");
+
+                var to = new List<TransactionV2ParamsTo>();
+                var remainingHours = hours;
+                var remainingCoins = coins;
+                for (var j = 0; j < nOutputs; j++)
+                {
+                    if (remainingCoins == 0)
+                    {
+                        break;
+                    }
+
+                    var reciver = new TransactionV2ParamsTo();
+                    var addrsGoString = new _GoString_();
+                    skycoin.skycoin.SKY_cipher_Address_String(destAddress[rand.Next(destAddress.Count)], addrsGoString);
+                    reciver.Address = addrsGoString.p;
+                    if (j == nOutputs - 1)
+                    {
+                        reciver.Coins = Utils.ToDropletString((ulong) remainingCoins);
+                        reciver.Hours = remainingHours.ToString();
+                        remainingHoursValue = 0;
+                        remainingCoins = 0;
+                    }
+                    else
+                    {
+                        var reciverCoins = rand.Next(remainingCoins) + 1;
+                        reciverCoins -= reciverCoins % (int) skycoin.skycoin.SKY_params_DropletPrecisionToDivisor(3);
+                        if (reciverCoins == 0)
+                        {
+                            reciverCoins = (int) skycoin.skycoin.SKY_params_DropletPrecisionToDivisor(3);
+                        }
+
+                        reciver.Coins = Utils.ToDropletString((ulong) reciverCoins);
+                        remainingCoins -= reciverCoins;
+                        var reciverHours = rand.Next(remainingHours + 1);
+                        reciver.Hours = reciverHours.ToString();
+                        remainingHours -= reciverHours;
+                    }
+
+                    to.Add(reciver);
+                }
+
+                // Remove duplicate outputs
+                to = to.Distinct().ToList();
+                nOutputs = to.Count;
+                Console.WriteLine($"nOutputs: {nOutputs}");
+                to = Utils.Shuffle(to);
+                var count = 0;
+                foreach (var o in to)
+                {
+                    Console.WriteLine($"to[{count}].Hours: {o.Hours}");
+                    count++;
+                }
+
+                var autoTo = to.Select(o => new TransactionV2ParamsTo
+                    {Address = o.Address, Coins = o.Coins, Hours = ""}).ToList();
+
+                // Remove duplicate outputs
+                autoTo = autoTo.Distinct().ToList();
+
+                var nAutoOutputs = autoTo.Count;
+                Console.WriteLine($"nAutoOutputs: {nAutoOutputs}");
+                count = 0;
+
+                foreach (var o in autoTo)
+                {
+                    Console.WriteLine($"autoTo[{count}].Coins: {o.Coins}");
+                    count++;
+                }
+
+                // Auto, random share factor
+
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                var result = instance.WalletTransaction(new WalletTransactionRequest
+                {
+                    Id = walletName,
+                    Password = pass,
+                    Unsigned = unsigned,
+                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    {
+                        Type = "auto",
+                        Mode = "share",
+                        ShareFactor = shareFactor
+                    },
+                    ChangeAddress = changeAddress,
+                    To = autoTo
+                });
+                AssertEncodedTxnMatchesTxn(instance, result);
+                assertTxnOutputCount(changeAddress, nAutoOutputs, result);
+                AssertRequestedCoins(autoTo, result.Transaction.Outputs);
+                AssertCreateTransactionValid(result.Transaction, unsigned);
+                AssertVerifyTransaction(instance, result.EncodedTransaction, unsigned);
+
+                // Auto, share factor 0
+
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                result = instance.WalletTransaction(new WalletTransactionRequest
+                {
+                    Id = walletName,
+                    Password = pass,
+                    Unsigned = unsigned,
+                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    {
+                        Type = "auto",
+                        Mode = "share",
+                        ShareFactor = "0"
+                    },
+                    ChangeAddress = changeAddress,
+                    To = autoTo
+                });
+
+                AssertEncodedTxnMatchesTxn(instance, result);
+                assertTxnOutputCount(changeAddress, nAutoOutputs, result);
+                AssertRequestedCoins(autoTo, result.Transaction.Outputs);
+                AssertCreateTransactionValid(result.Transaction, unsigned);
+                AssertVerifyTransaction(instance, result.EncodedTransaction, unsigned);
+
+                // Check that the non-change outputs have 0 hours
+
+                foreach (var o in result.Transaction.Outputs.GetRange(0, nAutoOutputs))
+                {
+                    Assert.AreEqual("0", o.Hours);
+                }
+
+                // Auto, share factor 1
+
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                result = instance.WalletTransaction(new WalletTransactionRequest
+                {
+                    Id = walletName,
+                    Password = pass,
+                    Unsigned = unsigned,
+                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    {
+                        Type = "auto",
+                        Mode = "share",
+                        ShareFactor = "1"
+                    },
+                    ChangeAddress = changeAddress,
+                    To = autoTo
+                });
+
+                AssertEncodedTxnMatchesTxn(instance, result);
+                assertTxnOutputCount(changeAddress, nAutoOutputs, result);
+                AssertRequestedCoins(autoTo, result.Transaction.Outputs);
+                AssertCreateTransactionValid(result.Transaction, unsigned);
+                AssertVerifyTransaction(instance, result.EncodedTransaction, unsigned);
+
+                // Check that the change output has 0 hours
+
+                if (result.Transaction.Outputs.Count > nAutoOutputs)
+                {
+                    Assert.AreEqual("0", result.Transaction.Outputs[nAutoOutputs].Hours);
+                }
+
+                //Manual
+
+                if (Utils.UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance));
+                }
+
+                result = instance.WalletTransaction(new WalletTransactionRequest
+                {
+                    Id = walletName,
+                    Password = pass,
+                    Unsigned = unsigned,
+                    HoursSelection = new TransactionV2ParamsHoursSelection
+                    {
+                        Type = "manual",
+                    },
+                    ChangeAddress = changeAddress,
+                    To = to
+                });
+
+                AssertEncodedTxnMatchesTxn(instance, result);
+                assertTxnOutputCount(changeAddress, nAutoOutputs, result);
+                AssertRequestedCoins(autoTo, result.Transaction.Outputs);
+                AssertCreateTransactionValid(result.Transaction, unsigned);
+                AssertVerifyTransaction(instance, result.EncodedTransaction, unsigned);
             }
         }
     }
