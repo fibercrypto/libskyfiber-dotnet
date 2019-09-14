@@ -1006,10 +1006,135 @@ namespace Skyapi.Test.Api
                     }
                 }
             });
-            var invalidTxn = txnResp.EncodedTransaction;
-            new_CreateTransactionResponse__HandlePtr();
-            
+//            // Create an invalid txn with an extra null sig
+//            invalidTxn := coin.MustDeserializeTransactionHex(txnResp.EncodedTransaction)
+//            invalidTxn.Sigs = append(invalidTxn.Sigs, cipher.Sig{})
+//            require.NotEqual(t, len(invalidTxn.In), len(invalidTxn.Sigs))
 
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "sign one input",
+                    req = new WalletTransactionSignRequest
+                    {
+                        WalletId = Utils.GetWalletName(),
+                        Password = pass,
+                        SignIndexes = new List<long?> {1},
+                        EncodedTransaction = txnResp.EncodedTransaction
+                    },
+                    fullySigned = false,
+                    errMg = "",
+                    errCode = 200,
+                },
+                new
+                {
+                    name = "sign all input",
+                    req = new WalletTransactionSignRequest
+                    {
+                        WalletId = Utils.GetWalletName(),
+                        Password = pass,
+                        SignIndexes = null,
+                        EncodedTransaction = txnResp.EncodedTransaction
+                    },
+                    fullySigned = true,
+                    errMg = "",
+                    errCode = 200,
+                },
+                new
+                {
+                    name = "sign invalid input",
+                    req = new WalletTransactionSignRequest
+                    {
+                        WalletId = Utils.GetWalletName(),
+                        Password = pass,
+                        SignIndexes = new List<long?> {1},
+                        //       EncodedTransaction = invalid Txn
+                    },
+                    fullySigned = false,
+                    errMg = "Transaction violates hard constraint: Invalid number of signatures",
+                    errCode = 400,
+                },
+            };
+
+            var doTest =
+                new Action<string, WalletTransactionSignRequest, bool, string, int>(
+                    (name, req, fullySigned, errMsg, errCode) =>
+                    {
+                        if (Utils.UseCsrf())
+                        {
+                            _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                        }
+
+                        if (!errMsg.Equals(""))
+                        {
+                            var errApiException = Assert.Throws<ApiException>(() =>
+                                _instance.WalletTransactionSign(req));
+                            Assert.AreEqual(errCode, errApiException.ErrorCode, name);
+                            Assert.True(errApiException.Message.Contains(errMsg), name);
+                            return;
+                        }
+
+                        var resp = _instance.WalletTransactionSign(req);
+
+//                        txn, err := coin.DeserializeTransactionHex(tc.req.EncodedTransaction)
+//                        require.NoError(t, err)
+//
+//                        // TxID should have changed
+//                        require.NotEqual(t, txn.Hash(), resp.Transaction.TxID)
+//                        // Length, InnerHash should not have changed
+//                        require.Equal(t, txn.Length, resp.Transaction.Length)
+//                        require.Equal(t, txn.InnerHash.Hex(), resp.Transaction.InnerHash)
+
+                        if (Utils.UseCsrf())
+                        {
+                            _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                        }
+
+                        if (fullySigned)
+                        {
+                            Assert.DoesNotThrow(() => _instance.TransactionVerify(resp.Data.EncodedTransaction),
+                                name);
+                            var errApiException = Assert.Throws<ApiException>(() =>
+                                _instance.TransactionVerify(resp.Data.EncodedTransaction, true), name);
+                            Assert.True(errApiException.Message.Contains(
+                                    "Transaction violates hard constraint: Unsigned transaction must contain a null signature"),
+                                name);
+                        }
+                        else
+                        {
+                            var errApiException = Assert.Throws<ApiException>(() =>
+                                _instance.TransactionVerify(resp.Data.EncodedTransaction), name);
+                            Assert.True(errApiException.Message.Contains(
+                                "Transaction violates hard constraint: Unsigned input in transaction"), name);
+                            Assert.DoesNotThrow(
+                                () => { _instance.TransactionVerify(resp.Data.EncodedTransaction, true); }, name);
+                        }
+                    });
+            foreach (var tc in testCases)
+            {
+                doTest(tc.name, tc.req, tc.fullySigned, tc.errMg, tc.errCode);
+            }
+
+            // Create a partially signed transaction then sign the remainder of it
+            var response = _instance.WalletTransactionSign(new WalletTransactionSignRequest
+            {
+                WalletId = Utils.GetWalletName(),
+                Password = pass,
+                SignIndexes = new List<long?> {1},
+                EncodedTransaction = txnResp.EncodedTransaction
+            });
+            doTest(
+                "sign partially signed transaction", //name
+                new WalletTransactionSignRequest //req
+                {
+                    WalletId = Utils.GetWalletName(),
+                    Password = pass,
+                    EncodedTransaction = response.Data.EncodedTransaction
+                },
+                true, //fullySigned
+                "", //errMsg
+                0); //errCode
         }
     }
 }

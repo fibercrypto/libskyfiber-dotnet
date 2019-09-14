@@ -34,7 +34,7 @@ namespace Skyapi.Model
         /// Initializes a new instance of the <see cref="InlineResponse2009" /> class.
         /// </summary>
         /// <param name="data">data.</param>
-        public InlineResponse2009(Object data = default(Object))
+        public InlineResponse2009(InlineResponse2008Data data = default(InlineResponse2008Data))
         {
             this.Data = data;
         }
@@ -43,7 +43,7 @@ namespace Skyapi.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public Object Data { get; set; }
+        public InlineResponse2008Data Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
