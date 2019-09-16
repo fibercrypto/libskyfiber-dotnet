@@ -353,7 +353,7 @@ namespace Skyapi.Test.Api
 
         internal static bool SkipWalletIfLive()
         {
-            var skip = Enabled() && GetTestMode() == "live" && !DoLiveWallet();
+            var skip = Enabled() && GetTestMode().Equals("live") && !DoLiveWallet();
             if (skip)
             {
                 Assert.Ignore("live wallet tests disabled");
@@ -428,12 +428,12 @@ namespace Skyapi.Test.Api
             var balanceTuple = GetBalanceWallet(instance, walletName);
             if (balanceTuple.Item1 < minCoins)
             {
-                //  Assert.Fail($"Wallet must have at least {minCoins} coins");
+                Assert.Fail($"Wallet must have at least {minCoins} coins");
             }
 
             if (balanceTuple.Item2 < minHours)
             {
-                //Assert.Fail($"Wallet must have at least {minHours} coins");
+                Assert.Fail($"Wallet must have at least {minHours} coins");
             }
 
             skycoin.skycoin.SKY_wallet_Wallet_Save(walletHandle, $"{walletDir}/{walletName}");
@@ -597,13 +597,35 @@ namespace Skyapi.Test.Api
         internal static string GetAddressOfWalletEntries(int pos, SWIGTYPE_p_Wallet__Handle wallet)
         {
             var cipherAddress = new cipher__Address();
-            var err = skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, cipherAddress,
-                new cipher_PubKey());
+//            var err = skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, cipherAddress,
+//                new cipher_PubKey());
+//            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+//            var addressGoString = new _GoString_();
+//            err = skycoin.skycoin.SKY_cipher_Address_String(cipherAddress, addressGoString);
+//            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+//            return addressGoString.p;
+            var cipherPubkey = new cipher_PubKey();
+            var err =
+                skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, new cipher__Address(), cipherPubkey);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            err = skycoin.skycoin.SKY_cipher_AddressFromPubKey(cipherPubkey, cipherAddress);
             Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
             var addressGoString = new _GoString_();
             err = skycoin.skycoin.SKY_cipher_Address_String(cipherAddress, addressGoString);
             Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
             return addressGoString.p;
+        }
+
+        internal static string GetPubKeyOfWalletEntries(int pos, SWIGTYPE_p_Wallet__Handle wallet)
+        {
+            var cipherPubkey = new cipher_PubKey();
+            var err = skycoin.skycoin.SKY_api_Handle_WalletGetEntry(wallet, (uint) pos, new cipher__Address(),
+                cipherPubkey);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            var pubKeyGoString = new _GoString_();
+            err = skycoin.skycoin.SKY_cipher_PubKey_Hex(cipherPubkey, pubKeyGoString);
+            Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+            return pubKeyGoString.p;
         }
 
         internal static cipher__Address GetCipherAddressOfWalletEntries(int pos, SWIGTYPE_p_Wallet__Handle wallet)
