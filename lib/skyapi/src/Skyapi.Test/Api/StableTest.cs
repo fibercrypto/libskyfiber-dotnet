@@ -551,6 +551,7 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
+
             Transactions(Method.GET);
         }
 
@@ -561,6 +562,7 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
+
             Transactions(Method.POST);
         }
 
@@ -1487,44 +1489,36 @@ namespace Skyapi.Test.Api
                 {
                     name = "bip44",
                     type = "bip44",
-                    label = "my wallet balance bip44",
                     golden = "wallet-balance-bip44.golden"
                 },
                 new
                 {
                     name = "deterministic",
                     type = "deterministic",
-                    label = "my wallet balance deterministic",
                     golden = "wallet-balance-deterministic.golden"
                 },
                 new
                 {
                     name = "xpub",
                     type = "xpub",
-                    label = "my wallet balance xpub",
                     golden = "wallet-balance-xpub.golden"
                 }
             };
             foreach (var tc in testCases)
             {
-                Wallet wallet = null;
-                if (Utils.UseCsrf())
+                Wallet wallet;
+                Action clean;
+                if (tc.type.Equals("xpub"))
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
+                    var createWalletTuple = Utils.CreateWallet(instance: _instance, type: tc.type, xpub: xpub);
+                    wallet = createWalletTuple.Item1;
+                    clean = createWalletTuple.Item3;
                 }
-
-                switch (tc.type)
+                else
                 {
-                    case "xpub":
-                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
-                            ? _instance.WalletCreate(type: tc.type, label: tc.label, xpub: xpub)
-                            : _instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
-                        break;
-                    default:
-                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals(tc.label))
-                            ? _instance.WalletCreate(type: tc.type, label: tc.label, seed: seed)
-                            : _instance.Wallets().Find(w => w.Meta.Label.Equals(tc.label));
-                        break;
+                    var createWalletTuple = Utils.CreateWallet(instance: _instance, type: tc.type, seed: seed);
+                    wallet = createWalletTuple.Item1;
+                    clean = createWalletTuple.Item3;
                 }
 
                 Assert.DoesNotThrow(() =>
@@ -1533,6 +1527,7 @@ namespace Skyapi.Test.Api
                     Assert.True(balance.Addresses.ContainsKey(wallet.Entries[0].Address), tc.name);
                     Utils.CheckGoldenFile(tc.golden, balance, balance.GetType());
                 });
+                clean();
             }
         }
 
@@ -1546,41 +1541,33 @@ namespace Skyapi.Test.Api
 
             var testCases = new[]
             {
-                "deterministic",
-                "bip44",
-                "xpub"
+                new
+                {
+                    name = "bip44",
+                    golden = "wallet-bip44-transactions.golden"
+                },
+                new
+                {
+                    name = "deterministic",
+                    golden = "wallet-deterministic-transactions.golden"
+                },
+                new
+                {
+                    name = "xpub",
+                    golden = "wallet-xpub-transactions.golden"
+                }
             };
-
-            Wallet wallet = null;
-            foreach (var walletType in testCases)
+            foreach (var tc in testCases)
             {
-                if (Utils.UseCsrf())
+                var createWalletTuple = Utils.CreateWallet(instance: _instance);
+                var wallet = createWalletTuple.Item1;
+                var clean = createWalletTuple.Item3;
+                Assert.DoesNotThrow(() =>
                 {
-                    _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(_instance));
-                }
-
-                switch (walletType)
-                {
-                    case "xpub":
-                        var xpub =
-                            "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqs" +
-                            "efD265TMg7usUDFdp6W1EGMcet8";
-                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
-                            ? _instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
-                                xpub: xpub)
-                            : _instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
-                        break;
-                    default:
-                        dynamic seed = _instance.WalletNewSeed();
-                        wallet = !_instance.Wallets().Exists(w => w.Meta.Label.Equals($"Transaction {walletType}"))
-                            ? _instance.WalletCreate(type: walletType, label: $"Transaction {walletType}",
-                                seed: seed.seed.ToString())
-                            : _instance.Wallets().Find(w => w.Meta.Label.Equals($"Transaction {walletType}"));
-                        break;
-                }
-
-                var result = _instance.WalletTransactions(wallet.Meta.Id);
-                Utils.CheckGoldenFile($"wallet-{walletType}-transactions.golden", result, result.GetType());
+                    var txns = _instance.WalletTransactions(wallet.Meta.Id);
+                    Utils.CheckGoldenFile(tc.golden, txns, txns.GetType());
+                });
+                clean();
             }
         }
     }

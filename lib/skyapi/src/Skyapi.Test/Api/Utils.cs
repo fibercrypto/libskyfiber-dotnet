@@ -518,7 +518,7 @@ namespace Skyapi.Test.Api
             return token.Substring(0, lon);
         }
 
-        internal static Tuple<Wallet, Action> CreateWallet(DefaultApi instance, string type = "deterministic",
+        internal static Tuple<Wallet, string, Action> CreateWallet(DefaultApi instance, string type = "deterministic",
             string label = null, string seed = null, string xpub = null, string seedPassphase = null,
             string bip44Coins = null, int? scan = null, bool encrypt = false, string pass = null)
         {
@@ -566,7 +566,7 @@ namespace Skyapi.Test.Api
             var w = instance.WalletCreate(type, label, seed, seedPassphase,
                 bip44Coins, xpub, scan, encrypt, pass);
             var walletDir = GetWalletDir(instance);
-            return new Tuple<Wallet, Action>(w, () =>
+            return new Tuple<Wallet, string, Action>(w, seed, () =>
             {
                 // Cleaner function to delete the wallet and bak wallet
                 var walletpath = $"{walletDir}/{w.Meta.Id}";
