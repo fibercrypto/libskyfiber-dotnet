@@ -225,16 +225,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletCreateTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
-
 
             if (Utils.SkipWalletIfLive())
             {
                 return;
             }
+
 
             var seedStr = new _GoString_();
             var err = skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(seedStr);
@@ -413,7 +413,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletDecryptTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
@@ -543,7 +543,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletEncryptTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
@@ -624,7 +624,7 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletFolderTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
@@ -633,6 +633,7 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
+
 
             Assert.DoesNotThrow(() =>
             {
@@ -648,6 +649,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletNewAddressTest()
         {
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
+            {
+                return;
+            }
+
+            if (Utils.SkipWalletIfLive())
+            {
+                return;
+            }
+
             var seedStr = new _GoString_();
             var err = skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(seedStr);
             Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
@@ -749,12 +760,15 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletNewSeedTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
 
-            Utils.SkipWalletIfLive();
+            if (Utils.SkipWalletIfLive())
+            {
+                return;
+            }
 
             var testCases = new[]
             {
@@ -810,37 +824,23 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletRecoverTest()
         {
-            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
             }
 
-            Assert.Ignore();
-            var randSeed = Utils.GenString();
-
-            Assert.DoesNotThrow(() =>
+            if (Utils.SkipWalletIfLive())
             {
-                var pass = "1234";
-                if (Utils.UseCsrf())
-                {
-                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
-                }
+                return;
+            }
+            
+            // Create an encrypted wallet with some addresses pregenerated,
+            // to make sure recover recovers the same number of addresses.
+            
+            
+            
 
-                var wallet
-                    = Instance.WalletCreate(type: "deterministic", label: "recover wallet", seed: randSeed,
-                        encrypt: true, password: pass);
-                Assert.True(wallet.Meta.Encrypted);
-                if (Utils.UseCsrf())
-                {
-                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
-                }
-
-                dynamic recoverData = Instance.WalletRecover(id: wallet.Meta.Id, seed: randSeed);
-                var recoverWallet = JsonConvert.DeserializeObject<Wallet>(recoverData.data.ToString());
-                wallet.Meta.Encrypted = false;
-                wallet.Meta.CryptoType = "";
-                Assert.AreEqual(wallet, recoverWallet);
-            });
+           
         }
 
         /// <summary>

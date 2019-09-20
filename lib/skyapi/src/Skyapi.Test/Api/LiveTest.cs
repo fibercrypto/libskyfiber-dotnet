@@ -674,7 +674,16 @@ namespace Skyapi.Test.Api
                 }
 
                 Assert.AreEqual(cc.Id, connection?.Id);
-                Assert.DoesNotThrow(() => _instance.NetworkConnectionsDisconnect(cc.Id.ToString()));
+
+                Assert.DoesNotThrow(() =>
+                {
+                    if (Utils.UseCsrf())
+                    {
+                        _instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: _instance));
+                    }
+
+                    _instance.NetworkConnectionsDisconnect(cc.Id.ToString());
+                });
             });
         }
 

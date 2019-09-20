@@ -146,11 +146,12 @@ build-skyapi: ## Build SkyApi Assembly
 build-test-skyapi: ## Build SkyApi test suite
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh mono_nunit_test.sh)
 
-test-skyapi: build-mono  build-test-skyapi ## Run SkyApi test suite
+test-skyapi: build-mono build-test-skyapi ## Run SkyApi test suite
 	@echo "[INFO] Export the ENVVARS"
 	export TEST_MODE='stable'
 	export COIN='skycoin'
 	export USE_CSRF=true
+	export SKYCOIN_INTEGRATION_TESTS=1
 	@echo "[INFO] Build the solution and run the unit test"	  
 	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
 	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
