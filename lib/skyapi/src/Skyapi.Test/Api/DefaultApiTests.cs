@@ -608,12 +608,12 @@ namespace Skyapi.Test.Api
 //                skycoin.skycoin.SKY_api_Handle_GetWalletMeta(lw, lwLastSeed);
 //                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
 //                Assert.IsEmpty(lwLastSecrets.p);
-                
+
                 // Decrypts the wallet, and confirms that the seed and address
                 // entries are the same as it was before being encrypted.
                 var dw = Instance.WalletDecrypt(wallet.Meta.Id, "pwd");
-                Assert.AreEqual(wallet,dw);
-                
+                Assert.AreEqual(wallet, dw);
+
                 clean();
             }
         }
@@ -833,14 +833,79 @@ namespace Skyapi.Test.Api
             {
                 return;
             }
-            
+
             // Create an encrypted wallet with some addresses pregenerated,
             // to make sure recover recovers the same number of addresses.
-            
-            
-            
 
-           
+            var wf = Instance.WalletFolder();
+
+            // Load the wallet from disk to check that it was saved
+
+            var checkWalletOnDisk = new Action<SWIGTYPE_p_WalletResponse__Handle>((w) =>
+            {
+                var walletFileName = new _GoString_();
+                skycoin.skycoin.SKY_api_Handle_Client_GetWalletFileName(w, walletFileName);
+
+                var walletPath = wf + "/" + walletFileName.p;
+
+                if (!File.Exists(walletPath))
+                {
+                    Assert.Fail($"Wallet {walletPath} doesn't exist");
+                }
+
+                var lw = skycoin.skycoin.new_Wallet__HandlePtr();
+                var err = skycoin.skycoin.SKY_wallet_Load(walletPath, lw);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                var lwr = skycoin.skycoin.new_WalletResponse__HandlePtr();
+                err = skycoin.skycoin.SKY_api_NewWalletResponse(lw, lwr);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                Assert.AreEqual(w, lwr);
+            });
+
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "deterministic",
+                    seed = "fooseed",
+                    seedPassphrase = "",
+                    badSeed = "fooseed2",
+                    walletType = "deterministic"
+                },
+//                new
+//                {
+//                    name = "bip44 with seed passphrase",
+//                    seed = "voyage say extend find sheriff surge priority merit ignore maple cash argue",
+//                    seedPassphrase = "foobar",
+//                    badSeed = "mule seed lady practice desk length roast tongue attract heavy spirit focus",
+//                    walletType = "bip44"
+//                },
+//                new
+//                {
+//                    name = "bip44 without seed passphrase",
+//                    seed = "voyage say extend find sheriff surge priority merit ignore maple cash argue",
+//                    seedPassphrase = "",
+//                    badSeed = "mule seed lady practice desk length roast tongue attract heavy spirit focus",
+//                    walletType = "bip44"
+//                }
+            };
+
+            foreach (var tc in testCases)
+            {
+                var walletCreateTuple = Utils.CreateWallet(instance: Instance, type: tc.walletType, seed: tc.seed,
+                    seedPassphase: tc.seedPassphrase);
+                var wallet = walletCreateTuple.Item1;
+                var clean = walletCreateTuple.Item3;
+
+                Instance.WalletNewAddress(wallet.Meta.Id, 10);
+
+                wallet = Instance.Wallet(wallet.Meta.Id);
+                Console.WriteLine(wallet.ToJson());
+
+                // Recover fails if the wallet is not encrypted
+
+                clean();
+            }
         }
 
         /// <summary>

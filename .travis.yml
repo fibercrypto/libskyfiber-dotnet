@@ -40,12 +40,7 @@ install:
   - eval "$(gimme 1.11)"
   
 script:
-  - (nohup make -C $GOPATH/src/github.com/skycoin/skycoin run-daemon ARGS="-db-read-only=true -disable-csrf=false -disable-networking=true -enable-all-api-sets=true -download-peerlist=false -db-path=$GOPATH/src/github.com/skycoin/skycoin/src/api/integration/testdata/blockchain-180.db" &>/dev/null &)
-  - sleep 1m
-  - curl http://127.0.0.1:6420/api/v1/version
-  - make test-libsky-$TYPE
-  - make test-skyapi  
-
+  -./run-tests.sh
   
   
 notifications:
