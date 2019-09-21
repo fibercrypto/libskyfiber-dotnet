@@ -38,9 +38,8 @@ before_install:
 
 install:
   - eval "$(gimme 1.11)"
-  
-script:
-  -./run-tests.sh
+
+script: ./scripts/run-tests.sh
   
   
 notifications:
