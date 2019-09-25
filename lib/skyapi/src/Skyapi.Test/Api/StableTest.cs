@@ -579,7 +579,6 @@ namespace Skyapi.Test.Api
                         errMsg = "Error calling TransactionsGet: 400 Bad Request - parse parameter: 'addrs'" +
                                  " failed: address \"abcd\" is invalid: Invalid address length\n",
                         goldenFile = "",
-                        confirmed = ""
                     },
                     new
                     {
@@ -590,7 +589,6 @@ namespace Skyapi.Test.Api
                                  " failed: address \"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947\"" +
                                  " is invalid: Invalid base58 character\n",
                         goldenFile = "",
-                        confirmed = ""
                     },
                     new
                     {
@@ -600,7 +598,6 @@ namespace Skyapi.Test.Api
                         errMsg = "Error calling TransactionsGet: 400 Bad Request - parse parameter: 'addrs'" +
                                  " failed: address \"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk\" is invalid: Invalid checksum\n",
                         goldenFile = "",
-                        confirmed = ""
                     },
                     new
                     {
@@ -609,7 +606,6 @@ namespace Skyapi.Test.Api
                         errorCode = 200,
                         errMsg = "",
                         goldenFile = "empty-addrs-transactions.golden",
-                        confirmed = ""
                     },
                     new
                     {
@@ -618,7 +614,6 @@ namespace Skyapi.Test.Api
                         errorCode = 200,
                         errMsg = "",
                         goldenFile = "single-addr-transactions.golden",
-                        confirmed = ""
                     },
                     new
                     {
@@ -627,7 +622,6 @@ namespace Skyapi.Test.Api
                         errorCode = 200,
                         errMsg = "",
                         goldenFile = "genesis-addr-transactions.golden",
-                        confirmed = ""
                     },
                     new
                     {
@@ -636,45 +630,6 @@ namespace Skyapi.Test.Api
                         errorCode = 200,
                         errMsg = "",
                         goldenFile = "multiple-addr-transactions.golden",
-                        confirmed = ""
-                    },
-                    //Confirmed=true
-                    new
-                    {
-                        name = "all confirmed",
-                        addrs = new[] {""},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "all-confirmed-transactions.golden",
-                        confirmed = "true"
-                    },
-                    new
-                    {
-                        name = "unconfirmed should be excluded",
-                        addrs = new[] {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "unconfirmed-excluded-from-transactions.golden",
-                        confirmed = "true"
-                    },
-                    //Confirmed=false
-                    new
-                    {
-                        name = "all unconfirmed",
-                        addrs = new[] {""},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "all-unconfirmed-transactions.golden",
-                        confirmed = "false"
-                    },
-                    new
-                    {
-                        name = "confirmed should be excluded",
-                        addrs = new[] {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
-                        errorCode = 200,
-                        errMsg = "",
-                        goldenFile = "confirmed-excluded-from-transactions.golden",
-                        confirmed = "false"
                     }
                 }
                 ;
@@ -688,28 +643,6 @@ namespace Skyapi.Test.Api
                     errorCode = 200,
                     errMsg = "",
                     goldenFile = "confirmed-and-unconfirmed-transactions.golden",
-                    confirmed = ""
-                });
-                testCases.Add(new
-                {
-                    name = "empty addrs (all unconfirmed txns)",
-                    addrs = new[] {""},
-                    errorCode = 200,
-                    errMsg = "",
-                    goldenFile = "all-unconfirmed-txns.golden",
-                    confirmed = "false"
-                });
-            }
-            else
-            {
-                testCases.Add(new
-                {
-                    name = "empty addrs",
-                    addrs = new[] {""},
-                    errorCode = 200,
-                    errMsg = "",
-                    goldenFile = "no-unconfirmed-txns.golden",
-                    confirmed = "false"
                 });
             }
 
@@ -732,18 +665,189 @@ namespace Skyapi.Test.Api
                 }
                 else
                 {
-                    if (!tc.confirmed.Equals(""))
+                    Utils.TransactionsWithMethod(method: method, instance: _instance,
+                        addrs: string.Join(",", tc.addrs), golden: tc.goldenFile);
+                }
+            }
+        }
+
+        [Test]
+        public void ConfirmedTransactions()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "invalid addr length",
+                    addrs = new List<string> {"abcd"},
+                    errCode = 400,
+                    errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address \"abcd\" " +
+                             "is invalid: Invalid address length",
+                    golden = ""
+                },
+                new
+                {
+                    name = "invalid addr character",
+                    addrs = new List<string> {"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947"},
+                    errCode = 400,
+                    errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address" +
+                             " \"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947\" is invalid:" +
+                             " Invalid base58 character",
+                    golden = ""
+                },
+                new
+                {
+                    name = "invalid checksum",
+                    addrs = new List<string> {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk"},
+                    errCode = 400,
+                    errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address" +
+                             " \"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk\" is invalid: Invalid checksum",
+                    golden = ""
+                },
+                new
+                {
+                    name = "empty addrs",
+                    addrs = new List<string> { },
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "empty-addrs-transactions.golden"
+                },
+                new
+                {
+                    name = "single addr",
+                    addrs = new List<string> {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt"},
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "single-addr-transactions.golden"
+                },
+                new
+                {
+                    name = "genesis",
+                    addrs = new List<string> {"2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"},
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "genesis-addr-transactions.golden"
+                },
+                new
+                {
+                    name = "multiple addrs",
+                    addrs = new List<string>
+                        {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt", "2JJ8pgq8EDAnrzf9xxBJapE2qkYLefW4uF8"},
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "multiple-addr-transactions.golden"
+                },
+                new
+                {
+                    name = "unconfirmed should be excluded",
+                    addrs = new List<string> {"212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"},
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "unconfirmed-excluded-from-transactions.golden"
+                }
+            };
+
+            foreach (var tc in testCases)
+            {
+                if (tc.errCode != 200)
+                {
+                    var errApiException = Assert.Throws<ApiException>(() =>
+                        _instance.TransactionsGet(string.Join(",", tc.addrs), confirmed: "1"));
+                    Assert.AreEqual(tc.errCode, errApiException.ErrorCode);
+                    Assert.True(errApiException.Message.Contains(tc.errMsg));
+                }
+                else
+                {
+                    var txnResult = _instance.TransactionsGet(string.Join(",", tc.addrs), confirmed: "1");
+                    Utils.AssertNoTransactionsDupes(txnResult);
+                    Utils.CheckGoldenFile(tc.golden, txnResult, txnResult.GetType());
+                }
+            }
+        }
+
+        [Test]
+        public void UnconfirmedTransactions()
+        {
+            if (!Utils.GetTestMode().Equals("stable"))
+            {
+                return;
+            }
+
+            var testCases = new List<dynamic>
+                {
+                    new
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: _instance,
-                            addrs: string.Join(",", tc.addrs),
-                            confirmed: tc.confirmed, golden: tc.goldenFile);
-                    }
-                    else
+                        name = "invalid addr length",
+                        addrs = new List<string> {"abcd"},
+                        errCode = 400,
+                        errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address \"abcd\" " +
+                                 "is invalid: Invalid address length",
+                        golden = ""
+                    },
+                    new
                     {
-                        Utils.TransactionsWithMethod(method: method, instance: _instance,
-                            addrs: string.Join(",", tc.addrs),
-                            confirmed: null, golden: tc.goldenFile);
+                        name = "invalid addr character",
+                        addrs = new List<string> {"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947"},
+                        errCode = 400,
+                        errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address" +
+                                 " \"701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947\" is invalid:" +
+                                 " Invalid base58 character",
+                        golden = ""
+                    },
+                    new
+                    {
+                        name = "invalid checksum",
+                        addrs = new List<string> {"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk"},
+                        errCode = 400,
+                        errMsg = "400 Bad Request - parse parameter: 'addrs' failed: address" +
+                                 " \"2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKk\" is invalid: Invalid checksum",
+                        golden = ""
                     }
+                }
+                ;
+
+            if (Utils.DbNoUnconfirmed())
+            {
+                testCases.Add(new
+                {
+                    name = "empty addrs",
+                    addrs = new List<string>(),
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "no-unconfirmed-txns.golden"
+                });
+            }
+            else
+            {
+                testCases.Add(new
+                {
+                    name = "empty addrs (all unconfirmed txns)",
+                    addrs = new List<string>(),
+                    errCode = 200,
+                    errMsg = "",
+                    golden = "all-unconfirmed-txns.golden"
+                });
+            }
+
+            foreach (var tc in testCases)
+            {
+                if (tc.errCode != 200)
+                {
+                    var errApiException = Assert.Throws<ApiException>(() =>
+                        _instance.TransactionsGet(string.Join(",", tc.addrs), confirmed: "1"));
+                    Assert.AreEqual(tc.errCode, errApiException.ErrorCode);
+                    Assert.True(errApiException.Message.Contains(tc.errMsg));
+                }
+                else
+                {
+                    var txnResult = _instance.TransactionsGet(string.Join(",", tc.addrs), confirmed: "0");
+                    Utils.AssertNoTransactionsDupes(txnResult);
+                    Utils.CheckGoldenFile(tc.golden, txnResult, txnResult.GetType());
                 }
             }
         }
@@ -768,7 +872,15 @@ namespace Skyapi.Test.Api
             Assert.AreEqual($"{result.Coin}:{result.Version.Version}", result.User_Agent, "User Agent");
             Assert.AreEqual(Utils.UseCsrf(), result.CSRF_Enabled, "CSRF_Enabled");
             Assert.True(result.Csp_Enabled, "Csp_Enabled");
-            Assert.True(result.Wallet_API_Enabled, "Wallet_API_Enabled");
+            if (Utils.DisableWalletApi())
+            {
+                Assert.False(result.Wallet_API_Enabled, "Wallet_API_Enabled");
+            }
+            else
+            {
+                Assert.True(result.Wallet_API_Enabled, "Wallet_API_Enabled");
+            }
+
             Assert.False(result.GUI_Enabled, "GUI_Enabled");
         }
 
@@ -905,8 +1017,7 @@ namespace Skyapi.Test.Api
                     {
                         "ALJVNKYL7WGxFBSriiZuwZKWD4b7fbV1od",
                         "2THDupTBEo7UqB6dsVizkYUvkKq82Qn4gjf",
-                        "qxmeHkwgAMfwXyaQrwv9jq3qt228xMuoT5",
-                        "212mwY3Dmey6vwnWpiph99zzCmopXTqeVEN"
+                        "qxmeHkwgAMfwXyaQrwv9jq3qt228xMuoT5"
                     },
                     hashes = new List<string>(),
                 },
@@ -920,9 +1031,7 @@ namespace Skyapi.Test.Api
                         "9e53268a18f8d32a44b4fb183033b49bebfe9d0da3bf3ef2ad1d560500aa54c6",
                         "d91e07318227651129b715d2db448ae245b442acd08c8b4525a934f0e87efce9",
                         "01f9c1d6c83dbc1c993357436cdf7f214acd0bfa107ff7f1466d1b18ec03563e",
-                        "fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20",
-                        "701d23fd513bad325938ba56869f9faba19384a8ec3dd41833aff147eac53947",
-                        "540582ee4128b733f810f149e908d984a5f403ad2865108e6c1c5423aeefc759"
+                        "fe6762d753d626115c8dd3a053b5fb75d6d419a8d0fb1478c5fffc1fe41c5f20"
                     }
                 }
             };
@@ -1480,6 +1589,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             var seed = "casino away claim road artist where blossom warrior demise royal still palm";
             var xpub = "xpub6CkxdS1d4vNqqcnf9xPgqR5e2jE2PZKmKSw93QQMjHE1hRk22nU4zns85EDRgmLWYXYtu62XexwqaE" +
                        "T33XA28c26NbXCAUJh1xmqq6B3S2v";
@@ -1537,6 +1651,11 @@ namespace Skyapi.Test.Api
             if (!Utils.GetTestMode().Equals("stable"))
             {
                 return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
             }
 
             var testCases = new[]

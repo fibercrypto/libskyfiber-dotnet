@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using RestSharp;
 using Skyapi.Client;
 using Skyapi.Api;
 using Skyapi.Model;
@@ -190,6 +191,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -228,6 +234,11 @@ namespace Skyapi.Test.Api
             if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
             }
 
             if (Utils.SkipWalletIfLive())
@@ -418,6 +429,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -548,6 +564,12 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -629,6 +651,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -652,6 +679,11 @@ namespace Skyapi.Test.Api
             if (!(Utils.GetTestMode().Equals("stable") || Utils.GetTestMode().Equals("live")))
             {
                 return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
             }
 
             if (Utils.SkipWalletIfLive())
@@ -765,6 +797,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -829,6 +866,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -841,12 +883,9 @@ namespace Skyapi.Test.Api
 
             // Load the wallet from disk to check that it was saved
 
-            var checkWalletOnDisk = new Action<SWIGTYPE_p_WalletResponse__Handle>((w) =>
+            var checkWalletOnDisk = new Action<Wallet>(w =>
             {
-                var walletFileName = new _GoString_();
-                skycoin.skycoin.SKY_api_Handle_Client_GetWalletFileName(w, walletFileName);
-
-                var walletPath = wf + "/" + walletFileName.p;
+                var walletPath = wf.Address + "/" + w.Meta.Id;
 
                 if (!File.Exists(walletPath))
                 {
@@ -859,7 +898,16 @@ namespace Skyapi.Test.Api
                 var lwr = skycoin.skycoin.new_WalletResponse__HandlePtr();
                 err = skycoin.skycoin.SKY_api_NewWalletResponse(lw, lwr);
                 Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
-                Assert.AreEqual(w, lwr);
+
+                var cryptoType = new _GoString_();
+                err = skycoin.skycoin.SKY_api_Handle_WalletResponseGetCryptoType(lwr, cryptoType);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                Assert.AreEqual(w.Meta.CryptoType, cryptoType.p);
+
+                var entryCount = skycoin.skycoin.new_GoUint32Ptr();
+                err = skycoin.skycoin.SKY_api_Handle_Client_GetWalletResponseEntriesCount(lwr, entryCount);
+                Assert.AreEqual(skycoin.skycoin.SKY_OK, err);
+                Assert.AreEqual(w.Entries.Count, skycoin.skycoin.GoUint32Ptr_value(entryCount));
             });
 
             var testCases = new[]
@@ -900,42 +948,214 @@ namespace Skyapi.Test.Api
                 Instance.WalletNewAddress(wallet.Meta.Id, 10);
 
                 wallet = Instance.Wallet(wallet.Meta.Id);
-                Console.WriteLine(wallet.ToJson());
 
                 // Recover fails if the wallet is not encrypted
+                var errApiExeption = Assert.Throws<ApiException>(() =>
+                    Instance.WalletRecover(wallet.Meta.Id, tc.seed));
+                Assert.AreEqual(400, errApiExeption.ErrorCode);
+                Assert.True(errApiExeption.Message.Contains("wallet is not encrypted"));
+
+                Instance.WalletEncrypt(wallet.Meta.Id, "pwd");
+
+                // Recovery fails if the seed doesn't match
+                errApiExeption = Assert.Throws<ApiException>(() =>
+                    Instance.WalletRecover(wallet.Meta.Id, tc.badSeed, tc.seedPassphrase));
+                Assert.AreEqual(400, errApiExeption.ErrorCode);
+                Assert.True(errApiExeption.Message.Contains("wallet recovery seed or seed passphrase is wrong"));
+
+                // Recovery fails if the seed passphrase doesn't match
+                errApiExeption = Assert.Throws<ApiException>(
+                    (() => Instance.WalletRecover(wallet.Meta.Id, tc.seed, tc.seedPassphrase + "2")));
+
+                switch (tc.walletType)
+                {
+                    case "deterministic":
+
+                        Assert.AreEqual(400, errApiExeption.ErrorCode);
+                        Assert.True(
+                            errApiExeption.Message.Contains(
+                                "RecoverWallet failed to create temporary wallet for fingerprint comparison: " +
+                                "seedPassphrase is only used for \\\"bip44\\\" wallets"));
+
+                        break;
+                    case "bip44":
+
+                        Assert.AreEqual(400, errApiExeption.ErrorCode);
+                        Assert.True(
+                            errApiExeption.Message.Contains("wallet recovery seed or seed passphrase is wrong"));
+
+                        break;
+                    default:
+                        Assert.Fail($"unhandle wallet type {tc.walletType}");
+                        break;
+                }
+
+                // Successful recovery with no new password
+                dynamic dw2 = Instance.WalletRecover(wallet.Meta.Id, tc.seed, tc.seedPassphrase);
+                var w2 = JsonConvert.DeserializeObject<Wallet>(dw2.data.ToString());
+                Assert.False(w2.Meta.Encrypted);
+                checkWalletOnDisk(w2);
+                Assert.AreEqual(wallet, w2);
+
+                Instance.WalletEncrypt(wallet.Meta.Id, "pwd2");
+
+                // Successful recovery with a new password
+                dynamic dw3 = Instance.WalletRecover(wallet.Meta.Id, tc.seed, tc.seedPassphrase, password: "pwd3");
+                var w3 = JsonConvert.DeserializeObject<Wallet>(dw3.data.ToString());
+                Assert.True(w3.Meta.Encrypted);
+                Assert.AreEqual("scrypt-chacha20poly1305", w3.Meta.CryptoType);
+                checkWalletOnDisk(w3);
+                w3.Meta.Encrypted = wallet.Meta.Encrypted;
+                w3.Meta.CryptoType = wallet.Meta.CryptoType;
+                Assert.AreEqual(wallet, w3);
+
+                var w4 = Instance.WalletDecrypt(wallet.Meta.Id, "pwd3");
+
+                Assert.False(w4.Meta.Encrypted);
+                Assert.AreEqual(wallet, w4);
 
                 clean();
             }
         }
 
         /// <summary>
-        /// Test WalletSeed.Ignore that Test. Error:Error getting response stram (ReadDone2): ReceiveFailure.
+        /// Test WalletSeed.Ignore that Test. Error:Error getting response stream (ReadDone2): ReceiveFailure.
         /// </summary>
         [Test]
-        public void WalletSeedTest()
+        public void WalletSeedDisabledApiTest()
         {
-            Assert.Ignore();
-            var pass = "1234";
-            if (!Instance.Wallets().Exists(wallet => wallet.Meta.Label.Equals("seed test.")))
+            if (!(Utils.GetTestMode().Equals("live") || Utils.GetTestMode().Equals("stable")))
             {
-                var seed = Utils.GenString();
-                if (Utils.UseCsrf())
+                return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            {
+                Assert.Ignore("Skipping tests because live mode enabled but wallet tests disabled");
+            }
+
+            if (Utils.EnabledSeedApi())
+            {
+                Assert.Ignore("Skipping because enable seed API tests is on");
+            }
+
+            foreach (var wt in new[] {"deterministic", "bip44"})
+            {
+                //Created an encrypted wallet
+                var createWalletTuple = Utils.CreateWallet(instance: Instance, type: wt, pass: "pwd", encrypt: true);
+                var wallet = createWalletTuple.Item1;
+                var clean = createWalletTuple.Item3;
+
+                var errApiException = Assert.Throws<ApiException>(() => Instance.WalletSeed(wallet.Meta.Id, "pwd"));
+
+                Assert.AreEqual(403, errApiException.ErrorCode);
+                Assert.True(errApiException.Message.Contains("403 Forbidden - Endpoint is disabled"));
+                clean();
+            }
+        }
+
+        [Test]
+        public void WalletSeedEnabledApiTest()
+        {
+            if (!(Utils.GetTestMode().Equals("live") || Utils.GetTestMode().Equals("stable")))
+            {
+                return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
+            if (!Utils.EnabledSeedApi())
+            {
+                Assert.Ignore("Skipping because enable seed API tests is off");
+            }
+
+            var testCases = new[]
+            {
+                new
                 {
-                    Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
+                    name = "deterministic",
+                    walletType = "deterministic",
+                    seed1 = Utils.NewSeed(),
+                    seed2 = Utils.NewSeed(),
+                    seedPassphrase = ""
+                },
+                new
+                {
+                    name = "bip44 without seed passphrase",
+                    walletType = "bip44",
+                    seed1 = Utils.NewSeed(),
+                    seed2 = Utils.NewSeed(),
+                    seedPassphrase = ""
+                },
+                new
+                {
+                    name = "bip44 with seed passphrase",
+                    walletType = "bip44",
+                    seed1 = Utils.NewSeed(),
+                    seed2 = Utils.NewSeed(),
+                    seedPassphrase = "foobar"
+                }
+            };
+
+            foreach (var tc in testCases)
+            {
+                Assert.IsNotEmpty(tc.seed1);
+                Assert.IsNotEmpty(tc.seed2);
+
+                //Create an encrypted wallet
+
+                var createWalletTuple = Utils.CreateWallet(instance: Instance, type: tc.walletType, pass: "pwd",
+                    seed: tc.seed1, seedPassphase: tc.seedPassphrase, encrypt: true);
+                var wallet = createWalletTuple.Item1;
+                var clean = createWalletTuple.Item3;
+
+                dynamic resp = Instance.WalletSeed(wallet.Meta.Id, "pwd");
+
+                //Confirms the seed are matched
+                Assert.AreEqual(tc.seed1, resp.seed.ToString());
+                if (resp.seed_passphrase != null)
+                {
+                    Assert.AreEqual(tc.seedPassphrase, resp.seed_passphrase.ToString());
                 }
 
-                Instance.WalletCreate("deterministic", seed, "seed test.", encrypt: true, password: pass);
-            }
+                //Get seed of wrong wallet id
+                var errApiInstance = Assert.Throws<ApiException>(() => Instance.WalletSeed("w.wlt", "pwd"));
+                Assert.AreEqual(404, errApiInstance.ErrorCode);
+                Assert.True(errApiInstance.Message.Contains("404 Not Found"));
 
-            var walletseed = Instance.Wallets().Find(wallet => wallet.Meta.Label.Equals("seed test."));
-            if (Utils.UseCsrf())
-            {
-                Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
-            }
+                //Check with invalid password
+                errApiInstance =
+                    Assert.Throws<ApiException>(() =>
+                        Instance.WalletSeed(wallet.Meta.Id, "wrong password"));
+                Assert.AreEqual(400, errApiInstance.ErrorCode);
+                Assert.True(errApiInstance.Message.Contains("400 Bad Request - invalid password"));
 
-            var err = Assert.Throws<ApiException>(() => Instance.WalletSeed(walletseed.Meta.Id, pass));
-            Assert.AreEqual(403, err.ErrorCode);
-            Assert.AreEqual("Error calling WalletSeed: 403 Forbidden - Endpoint is disabled\n", err.Message);
+                //Check with missing password
+                errApiInstance = Assert.Throws<ApiException>(() => Instance.WalletSeed(wallet.Meta.Id, ""));
+                Assert.AreEqual(400, errApiInstance.ErrorCode);
+                Assert.True(errApiInstance.Message.Contains("400 Bad Request - missing password"));
+
+                clean();
+
+                //Create unencrypted wallet to check against
+                createWalletTuple = Utils.CreateWallet(instance: Instance, type: tc.walletType, seed: tc.seed2,
+                    seedPassphase: tc.seedPassphrase);
+                var nWallet = createWalletTuple.Item1;
+                clean = createWalletTuple.Item3;
+                errApiInstance =
+                    Assert.Throws<ApiException>(() => Instance.WalletSeed(nWallet.Meta.Id, "pwd"));
+                Assert.AreEqual(400, errApiInstance.ErrorCode);
+                Assert.True(errApiInstance.Message.Contains("400 Bad Request - wallet is not encrypted"));
+                clean();
+            }
         }
 
         /// <summary>
@@ -944,6 +1164,16 @@ namespace Skyapi.Test.Api
         [Test]
         public void WalletSeedVerifyTest()
         {
+            if (!(Utils.GetTestMode().Equals("live") || Utils.GetTestMode().Equals("stable")))
+            {
+                return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.UseCsrf())
             {
                 Instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(Instance));
@@ -972,6 +1202,11 @@ namespace Skyapi.Test.Api
             if (!(Utils.GetTestMode().Equals("live") || Utils.GetTestMode().Equals("stable")))
             {
                 return;
+            }
+
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
             }
 
             if (Utils.SkipWalletIfLive())
@@ -1016,6 +1251,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             if (Utils.SkipWalletIfLive())
             {
                 return;
@@ -1048,6 +1288,199 @@ namespace Skyapi.Test.Api
             foreach (var cln in cleanFunc)
             {
                 cln();
+            }
+        }
+
+        [Test]
+        public void DisableWalletApiTest()
+        {
+            if (Utils.GetTestMode().Equals("live") && !Utils.DoLiveWallet())
+            {
+                return;
+            }
+
+            if (!Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are enabled.");
+            }
+
+            var changeAddress = Utils.MakeAddress();
+
+            var testCases = new[]
+            {
+                new
+                {
+                    name = "get wallet",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallet?id=test.wlt",
+                    contentType = "",
+                    body = "",
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "create wallet",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/create",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {seed = "seed", label = "label", scan = 1}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "generate new address",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/newAddress",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "get wallet balance",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallet/balance?id=test.wlt",
+                    contentType = "",
+                    body = "",
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "get wallet unconfirmed transactions",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallet/transactions?id=test.wlt",
+                    contentType = "",
+                    body = "",
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "update wallet label",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/update",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt", label = "label"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "new seed",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallet/newSeed",
+                    contentType = "",
+                    body = "",
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "new seed",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/seed",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "get wallets",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallets",
+                    contentType = "",
+                    body = "",
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "get wallets folder name",
+                    method = Method.GET,
+                    endpoint = "/api/v1/wallets/folderName",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "main index.html 404 Not Found",
+                    method = Method.GET,
+                    endpoint = "/api/v1/",
+                    contentType = "",
+                    body = "",
+                    errCode = 404,
+                    errMsg = "404 Not Found\n",
+                },
+                new
+                {
+                    name = "encrypt wallet",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/encrypt",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt", password = "pwd"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "decrypt wallet",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/decrypt",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt", password = "pwd"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "get wallet seed",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/seed",
+                    contentType = "",
+                    body = JsonConvert.SerializeObject(new {id = "test.wlt", password = "pwd"}),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+                new
+                {
+                    name = "create transaction",
+                    method = Method.POST,
+                    endpoint = "/api/v1/wallet/transaction",
+                    contentType = "application/json",
+                    body = JsonConvert.SerializeObject(new WalletTransactionRequest
+                    {
+                        Id = "test.wlt",
+                        HoursSelection = new TransactionV2ParamsHoursSelection
+                        {
+                            Type = "manual"
+                        },
+                        ChangeAddress = changeAddress,
+                        To = new List<TransactionV2ParamsTo>
+                        {
+                            new TransactionV2ParamsTo
+                            {
+                                Address = changeAddress,
+                                Coins = "0.001",
+                                Hours = "1"
+                            }
+                        }
+                    }),
+                    errCode = 403,
+                    errMsg = "403 Forbidden - Endpoint is disabled\n",
+                },
+            };
+
+            foreach (var tc in testCases)
+            {
+                Utils.CallEndPoint(tc.endpoint, Instance, tc.method, tc.errCode,
+                    tc.errMsg, tc.body, tc.contentType);
             }
         }
     }

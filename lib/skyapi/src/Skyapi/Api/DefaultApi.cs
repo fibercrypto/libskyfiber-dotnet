@@ -765,8 +765,32 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
+        /// <returns>List<Transaction></returns>
+        List<Transaction> TransactionsGet(string addrs = null, string confirmed = null);
+
+        /// <summary>
+        /// Returns transactions that match the filters.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addrs">command separated list of addresses (optional)</param>
+        /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
+        /// <returns>ApiResponse of List<Transaction></returns>
+        ApiResponse<List<Transaction>> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null);
+
+        /// <summary>
+        /// Returns transactions that match the filters.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addrs">command separated list of addresses (optional)</param>
+        /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Object</returns>
-        Object TransactionsGet(string addrs = null, string confirmed = null);
+        List<Transaction> TransactionsPost(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -777,32 +801,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null);
-
-        /// <summary>
-        /// Returns transactions that match the filters.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addrs">command separated list of addresses (optional)</param>
-        /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>Object</returns>
-        Object TransactionsPost(string addrs = null, string confirmed = null);
-
-        /// <summary>
-        /// Returns transactions that match the filters.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="addrs">command separated list of addresses (optional)</param>
-        /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null);
+        /// <returns>ApiResponse of List<Transaction></returns>
+        ApiResponse<List<Transaction>> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null);
 
         /// <summary>
         /// Returns an unspent output by ID.
@@ -929,8 +929,7 @@ namespace Skyapi.Api
         /// <param name="encrypt">Encrypt wallet. (optional)</param>
         /// <param name="password">Wallet Password (optional)</param>
         /// <returns>Object</returns>
-        Wallet WalletCreate(string type, string label, string seed = null,
-            string seedPassphrase = null,
+        Wallet WalletCreate(string type, string label, string seed = null, string seedPassphrase = null,
             string bip44Coin = null, string xpub = null, int? scan = null, bool? encrypt = null,
             string password = null);
 
@@ -2044,7 +2043,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionsGetAsync(string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<List<Transaction>> TransactionsGetAsync(string addrs = null,
+            string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -2056,7 +2056,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo(string addrs = null,
+        System.Threading.Tasks.Task<ApiResponse<List<Transaction>>> TransactionsGetAsyncWithHttpInfo(
+            string addrs = null,
             string confirmed = null);
 
         /// <summary>
@@ -2069,7 +2070,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransactionsPostAsync(string addrs = null, string confirmed = null);
+        System.Threading.Tasks.Task<List<Transaction>> TransactionsPostAsync(string addrs = null,
+            string confirmed = null);
 
         /// <summary>
         /// Returns transactions that match the filters.
@@ -2081,7 +2083,8 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo(string addrs = null,
+        System.Threading.Tasks.Task<ApiResponse<List<Transaction>>> TransactionsPostAsyncWithHttpInfo(
+            string addrs = null,
             string confirmed = null);
 
         /// <summary>
@@ -7606,10 +7609,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>Object</returns>
-        public Object TransactionsGet(string addrs = null, string confirmed = null)
+        /// <returns>List<Transaction></returns>
+        public List<Transaction> TransactionsGet(string addrs = null, string confirmed = null)
         {
-            ApiResponse<Object> localVarResponse = TransactionsGetWithHttpInfo(addrs, confirmed);
+            ApiResponse<List<Transaction>> localVarResponse = TransactionsGetWithHttpInfo(addrs, confirmed);
             return localVarResponse.Data;
         }
 
@@ -7619,8 +7622,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null)
+        /// <returns>ApiResponse of List<Transaction></returns>
+        public ApiResponse<List<Transaction>> TransactionsGetWithHttpInfo(string addrs = null, string confirmed = null)
         {
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7671,9 +7674,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Transaction>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<Transaction>)));
         }
 
         /// <summary>
@@ -7682,11 +7686,11 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionsGetAsync(string addrs = null,
+        /// <returns>Task of List<Transaction></returns>
+        public async System.Threading.Tasks.Task<List<Transaction>> TransactionsGetAsync(string addrs = null,
             string confirmed = null)
         {
-            ApiResponse<Object> localVarResponse = await TransactionsGetAsyncWithHttpInfo(addrs, confirmed);
+            ApiResponse<List<Transaction>> localVarResponse = await TransactionsGetAsyncWithHttpInfo(addrs, confirmed);
             return localVarResponse.Data;
         }
 
@@ -7696,8 +7700,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsGetAsyncWithHttpInfo(
+        /// <returns>Task of ApiResponse (List<Transaction>)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Transaction>>> TransactionsGetAsyncWithHttpInfo(
             string addrs = null, string confirmed = null)
         {
             var localVarPath = "/api/v1/transactions";
@@ -7750,9 +7754,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Transaction>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<Transaction>)));
         }
 
         /// <summary>
@@ -7761,10 +7766,10 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>Object</returns>
-        public Object TransactionsPost(string addrs = null, string confirmed = null)
+        /// <returns>List<Transaction></returns>
+        public List<Transaction> TransactionsPost(string addrs = null, string confirmed = null)
         {
-            ApiResponse<Object> localVarResponse = TransactionsPostWithHttpInfo(addrs, confirmed);
+            ApiResponse<List<Transaction>> localVarResponse = TransactionsPostWithHttpInfo(addrs, confirmed);
             return localVarResponse.Data;
         }
 
@@ -7774,8 +7779,8 @@ namespace Skyapi.Api
         /// <exception cref="Skyapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null)
+        /// <returns>ApiResponse of List<Transaction></returns>
+        public ApiResponse<List<Transaction>> TransactionsPostWithHttpInfo(string addrs = null, string confirmed = null)
         {
             var localVarPath = "/api/v1/transactions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -7833,9 +7838,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Transaction>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<Transaction>)));
         }
 
         /// <summary>
@@ -7845,10 +7851,10 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransactionsPostAsync(string addrs = null,
+        public async System.Threading.Tasks.Task<List<Transaction>> TransactionsPostAsync(string addrs = null,
             string confirmed = null)
         {
-            ApiResponse<Object> localVarResponse = await TransactionsPostAsyncWithHttpInfo(addrs, confirmed);
+            ApiResponse<List<Transaction>> localVarResponse = await TransactionsPostAsyncWithHttpInfo(addrs, confirmed);
             return localVarResponse.Data;
         }
 
@@ -7859,7 +7865,7 @@ namespace Skyapi.Api
         /// <param name="addrs">command separated list of addresses (optional)</param>
         /// <param name="confirmed">Whether the transactions should be confirmed [optional, must be 0 or 1; if not provided, returns all] (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransactionsPostAsyncWithHttpInfo(
+        public async System.Threading.Tasks.Task<ApiResponse<List<Transaction>>> TransactionsPostAsyncWithHttpInfo(
             string addrs = null, string confirmed = null)
         {
             var localVarPath = "/api/v1/transactions";
@@ -7919,9 +7925,10 @@ namespace Skyapi.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Transaction>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse,
+                    typeof(List<Transaction>)));
         }
 
         /// <summary>
@@ -8753,7 +8760,7 @@ namespace Skyapi.Api
                     Configuration.ApiClient.ParameterToKeyValuePairs("", "xpub", xpub)); // query parameter
             if (seedPassphrase != null)
                 localVarQueryParams.AddRange(
-                    Configuration.ApiClient.ParameterToKeyValuePairs("", "seed-passphase",
+                    Configuration.ApiClient.ParameterToKeyValuePairs("", "seed-passphrase",
                         seedPassphrase)); // query parameter
 
             // authentication (csrfAuth) required
@@ -9782,14 +9789,13 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                id = id,
+                seed = seed,
+                seed_passphrase = seedPassphrase,
+                password = password
+            });
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
@@ -9878,14 +9884,13 @@ namespace Skyapi.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null)
-                localVarHeaderParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // header parameter
-            if (seed != null)
-                localVarHeaderParams.Add("seed",
-                    this.Configuration.ApiClient.ParameterToString(seed)); // header parameter
-            if (password != null)
-                localVarHeaderParams.Add("password",
-                    this.Configuration.ApiClient.ParameterToString(password)); // header parameter
+            localVarPostBody = JsonConvert.SerializeObject(new
+            {
+                id = id,
+                seed = seed,
+                seed_passphrase = seedPassphrase,
+                password = password
+            });
 
             // authentication (csrfAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))

@@ -312,6 +312,16 @@ namespace Skyapi.Test.Api
             return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_WALLET") ?? "false");
         }
 
+        internal static bool DisableWalletApi()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("DISABLE_WALLET_API") ?? "false");
+        }
+
+        internal static bool EnabledSeedApi()
+        {
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("ENABLED_SEED_API") ?? "false");
+        }
+
         internal static string GetWalletDir(DefaultApi instance)
         {
             return instance.WalletFolder().Address;
@@ -581,6 +591,11 @@ namespace Skyapi.Test.Api
                     File.Delete(walletpath + ".bak");
                 }
 
+                if (UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", Utils.GetCsrf(instance: instance));
+                }
+
                 instance.WalletUnload(w.Meta.Id);
             });
         }
@@ -704,6 +719,13 @@ namespace Skyapi.Test.Api
             return cipherAddress;
         }
 
+        internal static string NewSeed()
+        {
+            var seed = new _GoString_();
+            skycoin.skycoin.SKY_bip39_NewDefaultMnemomic(seed);
+            return seed.p;
+        }
+
         internal static double RandomNumberBetween(double minval, double maxval)
         {
             var next = new Random().NextDouble();
@@ -728,6 +750,43 @@ namespace Skyapi.Test.Api
             }
 
             return list;
+        }
+
+        internal static void CallEndPoint(string endpoint, DefaultApi instance, Method method, int errCode,
+            string errMsg, string body = null, string contentType = null)
+        {
+            if (method == Method.GET)
+            {
+                var localVarResponse = (IRestResponse)
+                    instance.Configuration.ApiClient.CallApi(endpoint, method, new List<KeyValuePair<string, string>>(),
+                        new object(),
+                        new Dictionary<string, string>(), new Dictionary<string, string>(),
+                        new Dictionary<string, FileParameter>(), new Dictionary<string, string>(), "");
+                Assert.AreEqual(errCode, (int) localVarResponse.StatusCode);
+                Assert.AreEqual(errMsg, localVarResponse.Content);
+            }
+            else if (method == Method.POST)
+            {
+                if (UseCsrf())
+                {
+                    instance.Configuration.AddApiKeyPrefix("X-CSRF-TOKEN", GetCsrf(instance: instance));
+                }
+
+                var localVarHeaderParams = new Dictionary<string, string>();
+                // authentication (csrfAuth) required
+                if (!String.IsNullOrEmpty(instance.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN")))
+                {
+                    localVarHeaderParams["X-CSRF-TOKEN"] = instance.Configuration.GetApiKeyWithPrefix("X-CSRF-TOKEN");
+                }
+
+                var localVarResponse = (IRestResponse)
+                    instance.Configuration.ApiClient.CallApi(endpoint, method, new List<KeyValuePair<string, string>>(),
+                        body,
+                        localVarHeaderParams, new Dictionary<string, string>(),
+                        new Dictionary<string, FileParameter>(), new Dictionary<string, string>(), contentType);
+                Assert.AreEqual(errCode, (int) localVarResponse.StatusCode);
+                Assert.AreEqual(errMsg, localVarResponse.Content);
+            }
         }
     }
 }

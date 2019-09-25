@@ -843,6 +843,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+
             Utils.RequireWalletEnv();
             var walletname = Utils.GetWalletName();
             Assert.DoesNotThrow(() =>
@@ -861,6 +866,11 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.DisableWalletApi())
+            {
+                Assert.Ignore("Wallet API are disabled.");
+            }
+            
             Utils.RequireWalletEnv();
             var walletid = Utils.GetWalletName();
             var result = _instance.WalletTransactions(walletid);
