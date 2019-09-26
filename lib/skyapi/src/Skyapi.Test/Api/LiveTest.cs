@@ -30,9 +30,14 @@ namespace Skyapi.Test.Api
                 return;
             }
 
+            if (Utils.LiveDisableNetworking())
+            {
+                Assert.Ignore("Disable networking is active.");
+            }
+
             var result = _instance.AddressCount();
             // 5296 addresses as of 2018-03-06, the count could decrease but is unlikely to
-            Assert.True(result.Count > 5000, "Please set disable-networking=false");
+            Assert.True(result.Count > 5000);
         }
 
         [Test]
@@ -153,8 +158,17 @@ namespace Skyapi.Test.Api
             Assert.AreNotEqual(0, result.Confirmed.Hours);
 
             // Add 1e4 because someone sent 0.01 coins to it
-            var expectedBalance = decimal.Parse("1E6", NumberStyles.Any) * decimal.Parse("1E6", NumberStyles.Any) +
+            var expectedBalance = 0m;
+            if (Utils.LiveDisableNetworking())
+            {
+                expectedBalance = decimal.Parse("1E6", NumberStyles.Any) * decimal.Parse("1E6", NumberStyles.Any);
+            }
+            else
+            {
+                expectedBalance = decimal.Parse("1E6", NumberStyles.Any) * decimal.Parse("1E6", NumberStyles.Any) +
                                   decimal.Parse("1E4", NumberStyles.Any);
+            }
+
             Assert.AreEqual(expectedBalance, result.Confirmed.Coins);
             // Check that the balance is queryable for addresses known to be affected
             // by the coinhour overflow problem
@@ -292,8 +306,6 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            Assert.Ignore();
-
             Transactions(Method.GET);
         }
 
@@ -305,7 +317,6 @@ namespace Skyapi.Test.Api
                 return;
             }
 
-            Assert.Ignore();
             Transactions(Method.POST);
         }
 
@@ -315,53 +326,61 @@ namespace Skyapi.Test.Api
             {
                 "2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt"
             };
-            var sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(Utils.TransactionsWithMethod(method: method,
-                    instance: _instance, addrs: string.Join(",", simpleaddrs)).ToString());
+            var sresult = Utils.TransactionsWithMethod(method: method,
+                instance: _instance, addrs: string.Join(",", simpleaddrs));
+
             Assert.True(sresult.Count >= 0, "simpleaddress");
             Utils.AssertNoTransactionsDupes(sresult);
+
+            // Two addresses with a mutual transaction between the two, to test deduplication
             var multiaddrs = new[]
             {
                 "7cpQ7t3PZZXvjTst8G7Uvs7XH4LeM8fBPD",
                 "2K6NuLBBapWndAssUtkxKfCtyjDQDHrEhhT"
             };
             var mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: _instance,
-                        addrs: string.Join(",", multiaddrs)).ToString());
+                Utils.TransactionsWithMethod(method: method, instance: _instance,
+                    addrs: string.Join(",", multiaddrs));
+
+            // There were 4 transactions amonst these two addresses at the time this was written
             Assert.True(mresult.Count >= 4, "multiaddress");
             Utils.AssertNoTransactionsDupes(mresult);
-            //Unconfirmedtransactions
-            sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: _instance,
-                            addrs: string.Join(",", simpleaddrs), confirmed: "false")
-                        .ToString());
-            Assert.True(sresult.Count >= 0, "simpleaddress, confirmed=false");
-            Utils.AssertNoTransactionsDupes(sresult);
-            mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: _instance,
-                            addrs: string.Join(",", multiaddrs), confirmed: "false")
-                        .ToString());
-            Assert.True(mresult.Count >= 0, "multiaddress, confirm=false");
-            Assert.True(mresult.Count >= sresult.Count, "mresult.Count >= sresult.Count confirmed=false");
-            Utils.AssertNoTransactionsDupes(mresult);
-            //ConfirmedTransactions
-            sresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: _instance,
-                            addrs: string.Join(",", simpleaddrs), confirmed: "true")
-                        .ToString());
-            Assert.True(sresult.Count >= 0, "simpleaddress, confirm=true");
-            Utils.AssertNoTransactionsDupes(sresult);
-            mresult =
-                JsonConvert.DeserializeObject<List<Transaction>>(
-                    Utils.TransactionsWithMethod(method: method, instance: _instance, confirmed: "true")
-                        .ToString());
-            Assert.True(mresult.Count >= 0, "simpleaddress, confirm=true");
-            Assert.True(mresult.Count >= sresult.Count, "mresult.Count >= sresult.Count confirmed=true");
-            Utils.AssertNoTransactionsDupes(mresult);
+        }
+
+        [Test]
+        public void TransactionsConfirmed()
+        {
+            if (!Utils.GetTestMode().Equals("live"))
+            {
+                return;
+            }
+
+            var cTxsSingle = _instance.TransactionsGet("2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt", confirmed: "1");
+            Assert.True(cTxsSingle.Count > 0);
+            Utils.AssertNoTransactionsDupes(cTxsSingle);
+
+            var cTxsAll = _instance.TransactionsGet(confirmed: "1");
+            Assert.True(cTxsAll.Count > 0);
+            Assert.True(cTxsAll.Count > cTxsSingle.Count);
+            Utils.AssertNoTransactionsDupes(cTxsAll);
+        }
+
+        [Test]
+        public void TransactionsUnconfirmed()
+        {
+            if (!Utils.GetTestMode().Equals("live"))
+            {
+                return;
+            }
+
+            var cTxsSingle = _instance.TransactionsGet("2kvLEyXwAYvHfJuFCkjnYNRTUfHPyWgVwKt", confirmed: "1");
+            Assert.True(cTxsSingle.Count >= 0);
+            Utils.AssertNoTransactionsDupes(cTxsSingle);
+
+            var cTxsAll = _instance.TransactionsGet(confirmed: "1");
+            Assert.True(cTxsAll.Count >= 0);
+            Assert.True(cTxsAll.Count >= cTxsSingle.Count);
+            Utils.AssertNoTransactionsDupes(cTxsAll);
         }
 
         [Test]
@@ -376,9 +395,9 @@ namespace Skyapi.Test.Api
             Utils.CheckHealthResponse(result);
             if (Utils.LiveDisableNetworking())
             {
-                Assert.AreEqual(0, result.Open_Connections);
-                Assert.AreEqual(0, result.Outgoing_Connections);
-                Assert.AreEqual(0, result.Incoming_Connections);
+                Assert.AreEqual(0, result.Open_Connections, "Open_Connections");
+                Assert.AreEqual(0, result.Outgoing_Connections, "Outgoing_Connections");
+                Assert.AreEqual(0, result.Incoming_Connections, "Incoming_Connections");
             }
             else
             {
@@ -634,6 +653,11 @@ namespace Skyapi.Test.Api
                 }
                 else
                 {
+                    if (Utils.LiveDisableNetworking() && ((string) tc.name).Equals("OK"))
+                    {
+                        return;
+                    }
+
                     var result = "";
                     Assert.DoesNotThrow(() => { result = _instance.ApiV1RawtxGet(tc.txid); }, (string) tc.name);
                     Assert.AreEqual(tc.rawtxid, result);
@@ -733,6 +757,11 @@ namespace Skyapi.Test.Api
                 }
                 else
                 {
+                    if (Utils.LiveDisableNetworking())
+                    {
+                        return;
+                    }
+
                     var result = (Transaction) _instance.Transaction(tc.txid);
                     // tx.Status.Height is how many blocks are above this transaction,
                     // make sure it is past some checkpoint height
@@ -870,7 +899,7 @@ namespace Skyapi.Test.Api
             {
                 Assert.Ignore("Wallet API are disabled.");
             }
-            
+
             Utils.RequireWalletEnv();
             var walletid = Utils.GetWalletName();
             var result = _instance.WalletTransactions(walletid);

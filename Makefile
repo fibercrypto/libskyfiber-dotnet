@@ -202,6 +202,52 @@ test-skyapi-standard: build-mono build-test-skyapi ## Run SkyApi test suite stan
 	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
 
 
+test-skyapi-live: build-mono build-test-skyapi ## Run SkyApi test suite standard
+	@echo "[INFO] Export the ENVVARS"
+	export TEST_MODE='live'
+	export COIN='skycoin'
+	export USE_CSRF=true
+	export SKYCOIN_INTEGRATION_TESTS=1
+	@echo "[INFO] Build the solution and run the unit test"	  
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
+	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+
+
+test-skyapi-live-wallet: build-mono build-test-skyapi ## Run SkyApi test suite standard
+	@echo "[INFO] Export the ENVVARS"
+	export TEST_MODE='live'
+	export COIN='skycoin'
+	export USE_CSRF=true
+	export LIVE_WALLET=true
+	export SKYCOIN_INTEGRATION_TESTS=1
+	@echo "[INFO] Build the solution and run the unit test"	  
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
+	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+
+
+test-skyapi-live-disable-csrf-auth: build-mono build-test-skyapi ## Run SkyApi test suite standard
+	@echo "[INFO] Export the ENVVARS"
+	export TEST_MODE='live'
+	export COIN='skycoin'
+	export USE_CSRF=false
+	export SKYCOIN_INTEGRATION_TESTS=1
+	@echo "[INFO] Build the solution and run the unit test"	  
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
+	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+
+
+test-skyapi-live-disable-networking: build-mono build-test-skyapi ## Run SkyApi test suite standard
+	@echo "[INFO] Export the ENVVARS"
+	export TEST_MODE='live'
+	export COIN='skycoin'
+	export USE_CSRF=true
+	export LIVE_DISABLE_NETWORKING=true
+	export SKYCOIN_INTEGRATION_TESTS=1
+	@echo "[INFO] Build the solution and run the unit test"	  
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" \
+	mono $(CSHARP_CLIENT_DIR)/packages/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_CLIENT_DIR)/src/Skyapi.Test/bin/Debug/Skyapi.Test.dll
+
+
 lint: 
 	gendarme --v --config rules.xml --severity critical  lib/skyapi/src/Skyapi/bin/Debug/Skyapi.dll
 	gendarme --v --config rules.xml --severity critical lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll

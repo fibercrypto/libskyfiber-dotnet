@@ -70,7 +70,7 @@ namespace Skyapi.Test.Api
         /// <param name="confirmed"></param>
         /// <param name="golden"></param>
         /// <returns>object</returns>
-        internal static object TransactionsWithMethod(Method method, DefaultApi instance,
+        internal static List<Transaction> TransactionsWithMethod(Method method, DefaultApi instance,
             string addrs = null, string confirmed = null, string golden = null)
         {
             if (method == Method.GET)
@@ -389,7 +389,7 @@ namespace Skyapi.Test.Api
 
         internal static bool LiveDisableNetworking()
         {
-            return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "true");
+            return Convert.ToBoolean(Environment.GetEnvironmentVariable("LIVE_DISABLE_NETWORKING") ?? "false");
         }
 
         internal static Tuple<SWIGTYPE_p_Wallet__Handle, long, long, string> PrepareAndCheckWallet(
