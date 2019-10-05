@@ -141,6 +141,17 @@
     <Compile Include="skycoin\SWIGTYPE_p_Wallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Options__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Config__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WebRpcClient__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreateTransactionRequest__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableOutputSet_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreateTransactionParams__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_SignedBlock__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WalletReadableNotes_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_OutputsResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_StatusResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Hash_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_UnspentOutputsSummary_Handle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
