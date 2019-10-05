@@ -257,13 +257,17 @@ testrunner/
 
 # VSCODE
 .angulardoc.json
+.vscode
 
 #Temporary files
 *.swp
 *.swo
 *.orig
 
+LibskycoinNet/skycoin
+
 .directory
 
 #Code generate SWIG
 lib/swig/LibskycoinNet/skycoin
+lib/swig/swig/include/libskycoin.h
