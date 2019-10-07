@@ -19856,6 +19856,75 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_wallet__ReadableNote(void * ja
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_wallet__CryptoType_p(void * jarg1, char * jarg2) {
+  wallet__CryptoType *arg1 = (wallet__CryptoType *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (wallet__CryptoType *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    if (arg2) {
+      arg1->p = (char const *) malloc(strlen((const char *)arg2)+1);
+      strcpy((char *)arg1->p, (const char *)arg2);
+    } else {
+      arg1->p = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_skycoin_get_wallet__CryptoType_p(void * jarg1) {
+  char * jresult ;
+  wallet__CryptoType *arg1 = (wallet__CryptoType *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (wallet__CryptoType *)jarg1; 
+  result = (char *) ((arg1)->p);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_wallet__CryptoType_n(void * jarg1, long long jarg2) {
+  wallet__CryptoType *arg1 = (wallet__CryptoType *) 0 ;
+  GoInt_ arg2 ;
+  
+  arg1 = (wallet__CryptoType *)jarg1; 
+  arg2 = (GoInt_)jarg2; 
+  if (arg1) (arg1)->n = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_get_wallet__CryptoType_n(void * jarg1) {
+  long long jresult ;
+  wallet__CryptoType *arg1 = (wallet__CryptoType *) 0 ;
+  GoInt_ result;
+  
+  arg1 = (wallet__CryptoType *)jarg1; 
+  result =  ((arg1)->n);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_wallet__CryptoType() {
+  void * jresult ;
+  wallet__CryptoType *result = 0 ;
+  
+  result = (wallet__CryptoType *)calloc(1, sizeof(wallet__CryptoType));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_wallet__CryptoType(void * jarg1) {
+  wallet__CryptoType *arg1 = (wallet__CryptoType *) 0 ;
+  
+  arg1 = (wallet__CryptoType *)jarg1; 
+  free((char *) arg1);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_transaction__UxBalance_Hash(void * jarg1, void * jarg2) {
   transaction__UxBalance *arg1 = (transaction__UxBalance *) 0 ;
   GoUint8_ *arg2 ;
@@ -20094,6 +20163,118 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_api__TransactionInput(void * j
   api__TransactionInput *arg1 = (api__TransactionInput *) 0 ;
   
   arg1 = (api__TransactionInput *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_bip32__Path_Elements(void * jarg1, void * jarg2) {
+  bip32__Path *arg1 = (bip32__Path *) 0 ;
+  GoSlice_ arg2 ;
+  GoSlice_ *argp2 ;
+  
+  arg1 = (bip32__Path *)jarg1; 
+  argp2 = (GoSlice_ *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null GoSlice_", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->Elements = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_get_bip32__Path_Elements(void * jarg1) {
+  void * jresult ;
+  bip32__Path *arg1 = (bip32__Path *) 0 ;
+  GoSlice_ result;
+  
+  arg1 = (bip32__Path *)jarg1; 
+  result =  ((arg1)->Elements);
+  {
+    GoSlice_ * resultptr = (GoSlice_ *) malloc(sizeof(GoSlice_));
+    memmove(resultptr, &result, sizeof(GoSlice_));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_bip32__Path() {
+  void * jresult ;
+  bip32__Path *result = 0 ;
+  
+  result = (bip32__Path *)calloc(1, sizeof(bip32__Path));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_bip32__Path(void * jarg1) {
+  bip32__Path *arg1 = (bip32__Path *) 0 ;
+  
+  arg1 = (bip32__Path *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_bip32__PathNode_Master(void * jarg1, unsigned int jarg2) {
+  bip32__PathNode *arg1 = (bip32__PathNode *) 0 ;
+  BOOL arg2 ;
+  
+  arg1 = (bip32__PathNode *)jarg1; 
+  arg2 = (BOOL)jarg2; 
+  if (arg1) (arg1)->Master = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_bip32__PathNode_Master(void * jarg1) {
+  unsigned int jresult ;
+  bip32__PathNode *arg1 = (bip32__PathNode *) 0 ;
+  BOOL result;
+  
+  arg1 = (bip32__PathNode *)jarg1; 
+  result =  ((arg1)->Master);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_set_bip32__PathNode_ChildNumber(void * jarg1, unsigned int jarg2) {
+  bip32__PathNode *arg1 = (bip32__PathNode *) 0 ;
+  GoUint32_ arg2 ;
+  
+  arg1 = (bip32__PathNode *)jarg1; 
+  arg2 = (GoUint32_)jarg2; 
+  if (arg1) (arg1)->ChildNumber = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_get_bip32__PathNode_ChildNumber(void * jarg1) {
+  unsigned int jresult ;
+  bip32__PathNode *arg1 = (bip32__PathNode *) 0 ;
+  GoUint32_ result;
+  
+  arg1 = (bip32__PathNode *)jarg1; 
+  result =  ((arg1)->ChildNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_bip32__PathNode() {
+  void * jresult ;
+  bip32__PathNode *result = 0 ;
+  
+  result = (bip32__PathNode *)calloc(1, sizeof(bip32__PathNode));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_bip32__PathNode(void * jarg1) {
+  bip32__PathNode *arg1 = (bip32__PathNode *) 0 ;
+  
+  arg1 = (bip32__PathNode *)jarg1; 
   free((char *) arg1);
 }
 

@@ -90,13 +90,13 @@ build-libc: configure ## Build libskycoin C client library
 
 build-swig: ## Generate C# C module from SWIG interfaces
 	#Generate structs.i from skytypes.gen.h
-	rm -f $(CSHARP_SWIG_DIR)/structs.i
-	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/include/structs.i
+	rm -f $(CSHARP_SWIG_DIR)/swig/include/structs.i
+	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/swig/include/structs.i
 	{ \
 		if [[ "$$(uname -s)" == "Darwin" ]]; then \
-			sed -i '.kbk' 's/#/%/g' $(CSHARP_SWIG_DIR)/include/structs.i ;\
+			sed -i '.kbk' 's/#/%/g' $(CSHARP_SWIG_DIR)/swig/include/structs.i ;\
 		else \
-			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/include/structs.i ;\
+			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/swig/include/structs.i ;\
 		fi \
 	}
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
