@@ -30,6 +30,7 @@ matrix:
       dotnet: 2.2.401
 
 before_install:
+  - bash ./.travis/change_submodule.sh
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash .travis/install_linux.sh ; fi
   - ./.travis/install-deps.sh
   - ./.travis/install-travis-gcc.sh
