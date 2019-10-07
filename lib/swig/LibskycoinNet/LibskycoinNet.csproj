@@ -158,14 +158,12 @@
     <Compile Include="skycoin\SWIGTYPE_p_Coin__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CollectionWallet__Handle.cs" />
     <Compile Include="skycoin\cli__PasswordFromBytes.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_wallet__CryptoType.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletRecoverRequest__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreateWalletOptions__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletSeedResponse__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GetOutputser__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_PublicKey__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_bip32__PathNode.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Path__Handle.cs" />
     <Compile Include="skycoin\coin__Transactions.cs" />
   </ItemGroup>
