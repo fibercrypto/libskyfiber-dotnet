@@ -166,6 +166,8 @@
     <Compile Include="skycoin\SWIGTYPE_p_PublicKey__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Path__Handle.cs" />
     <Compile Include="skycoin\coin__Transactions.cs" />
+    <Compile Include="skycoin\bip32__PathNode.cs" />
+    <Compile Include="skycoin\wallet__CryptoType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />
