@@ -540,15 +540,3 @@
 		return result;
 	};
 }
-
-%rename(SKY_cipher_RandByte) CSharp_skycoin_SKY_cipher_RandByte;
-%inline {
-	GoUint32 CSharp_skycoin_SKY_cipher_RandByte(GoInt handle , GoSlice_* _arg0){
-		coin__UxArray dataIn;
-		dataIn.data = _arg0->data;
-		dataIn.len = _arg0->len;
-		dataIn.cap = _arg0->cap;
-		GoUint32 result = SKY_cipher_RandByte(handle,&dataIn);
-		return result;
-	};
-}
