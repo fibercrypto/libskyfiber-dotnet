@@ -162,7 +162,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_WalletRecoverRequest__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_CreateWalletOptions__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletSeedResponse__Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_CollectionWallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GetOutputser__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_PublicKey__Handle.cs" />
