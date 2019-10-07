@@ -17,7 +17,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 /* Start of preamble from import "C" comments.  */
 
 
-#line 10 "util.fee.fee.go"
+#line 5 "util.iputil.iputil.go"
 
 
   #include <string.h>
@@ -27,18 +27,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 3 "libsky_handle_helper.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "util.http.json.go"
+#line 7 "cli.outputs.go"
 
 
   #include <string.h>
@@ -48,246 +37,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 7 "util.mathutil.mathutil.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 7 "cli.add_private_key.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 7 "wallet_option.go"
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "wallet.entry.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "util.logging.logging.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 7 "cli_helper.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "wallet.balance.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "util.cert.cert.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 3 "cipher.bitcoin.go"
-
-#include <string.h>
-#include <stdlib.h>
-
-#include "skytypes.h"
-
-
-#line 1 "cgo-generated-wrapper"
-
-#line 11 "transaction.choose.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-	#include "skyfee.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 7 "cli.generate_wallet.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 9 "testutil.testutil.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cli.cli.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "util.apputil.apputil.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.crypto.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.secp256k1-go.secp256k1.go"
-
-
-#include <string.h>
-#include <stdlib.h>
-#include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "util.file.file.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "api.wallet.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 3 "libsky_map.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 12 "coin.block.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-	#include "skyfee.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "util.droplet.droplet.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 7 "wallet.crypto.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.address.go"
-
-
-#include <string.h>
-#include <stdlib.h>
-#include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "cipher.hash.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 11 "wallet.wallet.go"
+#line 7 "cipher.bip44.bip44.go"
 
 
   #include <string.h>
@@ -317,58 +67,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.encrypt.scrypt_chacha20poly1305.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 11 "cli.generate_addrs.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 3 "libsky_handle.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 5 "util.iputil.iputil.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 13 "cli.create_rawtx.go"
-
-
-  #include <string.h>
-  #include <stdlib.h>
-
-  #include "skytypes.h"
-
-#line 1 "cgo-generated-wrapper"
-
-#line 10 "transaction.hours.go"
+#line 13 "coin.transactions.go"
 
 
   #include <string.h>
@@ -389,6 +88,16 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
+#line 7 "cli_helper.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
 #line 12 "api.client.go"
 
 
@@ -399,7 +108,307 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 13 "coin.transactions.go"
+#line 9 "wallet.wallet.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.bip32.bip32.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.hash.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 13 "cli.create_rawtx.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "libsky_handle.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.address.go"
+
+
+#include <string.h>
+#include <stdlib.h>
+#include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "cipher.bitcoin.go"
+
+#include <string.h>
+#include <stdlib.h>
+
+#include "skytypes.h"
+
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.bip39.bip39.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "cli.generate_wallet.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "cli.check_balance.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "params.droplet.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "libsky_map.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "wallet.entry.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 11 "cli.generate_addrs.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "libsky_handle_helper.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.secp256k1-go.secp256k1.go"
+
+
+#include <string.h>
+#include <stdlib.h>
+#include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "wallet.crypto.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "cipher.crypto.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 3 "wallet.meta.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 5 "util.apputil.apputil.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "cli.cli.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "util.mathutil.mathutil.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "util.cert.cert.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "cipher.bip32.path.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 11 "coin.outputs.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 11 "transaction.choose.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+	#include "skyfee.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 5 "util.file.file.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "wallet_option.go"
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "wallet.balance.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 5 "util.logging.logging.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 12 "coin.block.go"
 
 
   #include <string.h>
@@ -420,7 +429,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 10 "cipher.go-bip39.bip39.go"
+#line 5 "api.wallet.go"
 
 
   #include <string.h>
@@ -430,7 +439,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 11 "coin.outputs.go"
+#line 11 "wallet.collection_wallet.go"
 
 
   #include <string.h>
@@ -440,7 +449,68 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 7 "params.droplet.go"
+#line 10 "cipher.encrypt.scrypt_chacha20poly1305.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "transaction.hours.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+	#include "skyfee.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 5 "util.droplet.droplet.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 11 "testutil.testutil.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 7 "cli.add_private_key.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 9 "util.http.json.go"
+
+
+  #include <string.h>
+  #include <stdlib.h>
+
+  #include "skytypes.h"
+
+#line 1 "cgo-generated-wrapper"
+
+#line 10 "util.fee.fee.go"
 
 
   #include <string.h>
@@ -495,135 +565,383 @@ extern "C" {
 #endif
 
 
-extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1, GoUint32 p2);
+extern GoUint32 SKY_iputil_LocalhostIP(GoString* p0);
 
-extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1, GoUint32 p2);
+extern GoUint32 SKY_iputil_IsLocalhost(GoString p0, GoUint8* p1);
 
-extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint32 p1, GoUint64* p2);
+extern GoUint32 SKY_iputil_SplitAddr(GoString p0, GoString* p1, GoUint16* p2);
 
-extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint32 p1, GoUint64* p2);
+extern GoUint32 SKY_cli_GetWalletOutputsFromFile(GetOutputser__Handle p0, GoString p1, ReadableUnspentOutputsSummary_Handle* p2);
 
-extern GoUint32 SKY_fee_TransactionFee(Transaction__Handle p0, GoUint64 p1, coin__UxArray* p2, GoUint64* p3);
+extern GoUint32 SKY_cli_GetWalletOutputs(GetOutputser__Handle p0, Wallet__Handle* p1, ReadableUnspentOutputsSummary_Handle* p2);
 
-extern GoUint32 SKY_JsonEncode_Handle(Handle p0, GoString_* p1);
+extern GoUint32 SKY_bip44_NewCoin(GoSlice p0, GoUint32 p1, Coin__Handle* p2);
 
-extern GoUint32 SKY_Handle_Progress_GetCurrent(Handle p0, GoUint64* p1);
+extern GoUint32 SKY_bip44_Coin_Account(Coin__Handle p0, GoUint32 p1, Account__Handle* p2);
 
-extern GoUint32 SKY_Handle_Block_GetHeadSeq(Handle p0, GoUint64* p1);
+extern GoUint32 SKY_bip44_Account_External(Account__Handle p0, PrivateKey__Handle* p1);
 
-extern GoUint32 SKY_Handle_Block_GetHeadHash(Handle p0, GoString_* p1);
+extern GoUint32 SKY_bip44_Account_Change(Account__Handle p0, PrivateKey__Handle* p1);
 
-extern GoUint32 SKY_Handle_Block_GetPreviousBlockHash(Handle p0, GoString_* p1);
+extern GoUint32 SKY_bip44_Account_String(Account__Handle p0, GoString_* p1);
 
-extern GoUint32 SKY_Handle_Blocks_GetAt(Handle p0, GoUint64 p1, Handle* p2);
+extern GoUint32 SKY_bip44_Account_GetPrivateKey(Account__Handle p0, PrivateKey__Handle* p1);
 
-extern GoUint32 SKY_Handle_Blocks_GetCount(Handle p0, GoUint64* p1);
+extern GoUint32 SKY_api_NewCreateTransactionResponse(Transaction__Handle p0, GoSlice p1, CreateTransactionResponse__Handle* p2);
 
-extern GoUint32 SKY_Handle_Connections_GetCount(Handle p0, GoUint64* p1);
+extern GoUint32 SKY_api_NewCreatedTransaction(Transaction__Handle p0, GoSlice p1, CreatedTransaction__Handle* p2);
 
-extern GoUint32 SKY_Handle_Strings_GetCount(Strings__Handle p0, GoUint32* p1);
+extern GoUint32 SKY_api_CreatedTransaction_ToTransaction(CreatedTransaction__Handle p0, Transaction__Handle* p1);
 
-extern GoUint32 SKY_Handle_Strings_Sort(Strings__Handle p0);
+extern GoUint32 SKY_api_NewCreatedTransactionOutput(coin__TransactionOutput* p0, cipher__SHA256* p1, CreatedTransactionOutput__Handle* p2);
 
-extern GoUint32 SKY_Handle_Strings_GetAt(Strings__Handle p0, GoInt p1, GoString_* p2);
+extern GoUint32 SKY_api_NewCreatedTransactionInput(api__TransactionInput* p0, CreatedTransactionInput__Handle* p1);
 
-extern GoUint32 SKY_api_Handle_Client_GetWalletDir(Client__Handle p0, GoString_* p1);
+extern GoUint32 SKY_wallet_NewReadableEntry(GoString p0, GoString p1, wallet__Entry* p2, ReadableEntry__Handle* p3);
 
-extern GoUint32 SKY_api_Handle_Client_GetWalletFileName(WalletResponse__Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Create_Transaction(Transaction__Handle* p0);
 
-extern GoUint32 SKY_api_Handle_Client_GetWalletLabel(WalletResponse__Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Transaction_Copy(Transaction__Handle p0, Transaction__Handle* p1);
 
-extern GoUint32 SKY_api_Handle_Client_GetWalletFullPath(Client__Handle p0, WalletResponse__Handle p1, GoString_* p2);
+extern GoUint32 SKY_coin_Transaction_ResetInputs(Transaction__Handle p0, GoInt p1);
 
-extern GoUint32 SKY_api_Handle_GetWalletMeta(Wallet__Handle p0, GoStringMap_* p1);
+extern GoUint32 SKY_coin_Transaction_GetInputsCount(Transaction__Handle p0, GoInt* p1);
 
-extern GoUint32 SKY_api_Handle_GetWalletEntriesCount(Wallet__Handle p0, GoUint32* p1);
+extern GoUint32 SKY_coin_Transaction_GetInputAt(Transaction__Handle p0, GoInt p1, cipher__SHA256* p2);
 
-extern GoUint32 SKY_api_Handle_Client_GetWalletResponseEntriesCount(WalletResponse__Handle p0, GoUint32* p1);
+extern GoUint32 SKY_coin_Transaction_SetInputAt(Transaction__Handle p0, GoInt p1, cipher__SHA256* p2);
 
-extern GoUint32 SKY_api_Handle_WalletGetEntry(Wallet__Handle p0, GoUint32 p1, cipher__Address* p2, cipher__PubKey* p3);
+extern GoUint32 SKY_coin_Transaction_GetOutputsCount(Transaction__Handle p0, GoInt* p1);
 
-extern GoUint32 SKY_api_Handle_WalletResponseGetEntry(WalletResponse__Handle p0, GoUint32 p1, GoString_* p2, GoString_* p3);
+extern GoUint32 SKY_coin_Transaction_GetOutputAt(Transaction__Handle p0, GoInt p1, coin__TransactionOutput* p2);
 
-extern GoUint32 SKY_api_Handle_WalletResponseIsEncrypted(WalletResponse__Handle p0, GoUint8* p1);
+extern GoUint32 SKY_coin_Transaction_SetOutputAt(Transaction__Handle p0, GoInt p1, coin__TransactionOutput* p2);
 
-extern GoUint32 SKY_api_Handle_WalletResponseGetCryptoType(WalletResponse__Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Transaction_GetSignaturesCount(Transaction__Handle p0, GoInt* p1);
 
-extern GoUint32 SKY_api_Handle_WalletsResponseGetCount(Wallets__Handle p0, GoUint32* p1);
+extern GoUint32 SKY_coin_Transaction_GetSignatureAt(Transaction__Handle p0, GoInt p1, cipher__Sig* p2);
 
-extern GoUint32 SKY_api_Handle_WalletsResponseGetAt(Wallets__Handle p0, GoUint32 p1, WalletResponse__Handle* p2);
+extern GoUint32 SKY_coin_Transaction_SetSignatureAt(Transaction__Handle p0, GoInt p1, cipher__Sig* p2);
 
-extern GoUint32 SKY_api_Handle_GetWalletFolderAddress(Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Transaction_PushSignature(Transaction__Handle p0, cipher__Sig* p1);
 
-extern GoUint32 SKY_api_Handle_GetWalletSeed(Wallet__Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Transaction_ResetOutputs(Transaction__Handle p0, GoInt p1);
 
-extern GoUint32 SKY_api_Handle_GetWalletLastSeed(Wallet__Handle p0, GoString_* p1);
+extern GoUint32 SKY_coin_Transaction_ResetSignatures(Transaction__Handle p0, GoInt p1);
 
-extern GoUint32 SKY_api_Handle_GetBuildInfoData(BuildInfo_Handle p0, GoString_* p1, GoString_* p2, GoString_* p3);
+extern GoUint32 SKY_coin_Transaction_Verify(Transaction__Handle p0);
 
-extern GoUint32 SKY_httphelper_Address_UnmarshalJSON(httphelper__Address* p0, GoSlice p1);
+extern GoUint32 SKY_coin_Transaction_PushInput(Transaction__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_httphelper_Address_MarshalJSON(httphelper__Address* p0, coin__UxArray* p1);
+extern GoUint32 SKY_coin_TransactionOutput_UxID(coin__TransactionOutput* p0, cipher__SHA256* p1, cipher__SHA256* p2);
 
-extern GoUint32 SKY_httphelper_Coins_UnmarshalJSON(httphelper__Coins* p0, GoSlice p1);
+extern GoUint32 SKY_coin_Transaction_PushOutput(Transaction__Handle p0, cipher__Address* p1, GoUint64 p2, GoUint64 p3);
 
-extern GoUint32 SKY_httphelper_Coins_MarshalJSON(httphelper__Coins* p0, coin__UxArray* p1);
+extern GoUint32 SKY_coin_Transaction_SignInputs(Transaction__Handle p0, GoSlice p1);
 
-extern GoUint32 SKY_httphelper_Coins_Value(httphelper__Coins* p0, GoUint64* p1);
+extern GoUint32 SKY_coin_Transaction_Size(Transaction__Handle p0, GoUint32* p1);
 
-extern GoUint32 SKY_httphelper_Hours_UnmarshalJSON(httphelper__Hours* p0, GoSlice p1);
+extern GoUint32 SKY_coin_Transaction_Hash(Transaction__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_httphelper_Hours_MarshalJSON(httphelper__Hours* p0, coin__UxArray* p1);
+extern GoUint32 SKY_coin_Transaction_SizeHash(Transaction__Handle p0, GoUint32* p1, cipher__SHA256* p2);
 
-extern GoUint32 SKY_httphelper_Hours_Value(httphelper__Hours* p0, GoUint64* p1);
+extern GoUint32 SKY_coin_Transaction_UpdateHeader(Transaction__Handle p0);
 
-extern GoUint32 SKY_util_AddUint64(GoUint64 p0, GoUint64 p1, GoUint64* p2);
+extern GoUint32 SKY_coin_Transaction_HashInner(Transaction__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_util_Uint64ToInt64(GoUint64 p0, GoInt64* p1);
+extern GoUint32 SKY_coin_Transaction_Serialize(Transaction__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_util_Int64ToUint64(GoInt64 p0, GoUint64* p1);
+extern GoUint32 SKY_coin_TransactionDeserialize(GoSlice p0, Transaction__Handle* p1);
 
-extern GoUint32 SKY_util_IntToUint32(GoInt p0, GoUint32* p1);
+extern GoUint32 SKY_coin_Transaction_OutputHours(Transaction__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_cli_AddPrivateKey(Wallet__Handle p0, GoString p1);
+extern GoUint32 SKY_coin_Create_Transactions(Transactions__Handle* p0);
 
-extern GoUint32 SKY_cli_AddPrivateKeyToFile(GoString p0, GoString p1, PasswordReader__Handle p2);
+extern GoUint32 SKY_coin_Transactions_Length(Transactions__Handle p0, GoInt* p1);
 
-extern GoUint32 SKY_wallet_CreateOptionsHandle(GoString p0, GoString p1, GoString p2, GoUint8 p3, GoString p4, GoString p5, GoUint64 p6, Options__Handle* p7);
+extern GoUint32 SKY_coin_Transactions_Add(Transactions__Handle p0, Transaction__Handle p1);
 
-extern GoUint32 SKY_wallet_Entry_Verify(wallet__Entry* p0);
+extern GoUint32 SKY_coin_Transactions_Fees(Transactions__Handle p0, FeeCalculator* p1, GoUint64* p2);
 
-extern GoUint32 SKY_wallet_Entry_VerifyPublic(wallet__Entry* p0);
+extern GoUint32 SKY_coin_Transactions_GetAt(Transactions__Handle p0, GoInt p1, Transaction__Handle* p2);
 
-extern GoUint32 SKY_logging_EnableColors();
+extern GoUint32 SKY_coin_Transactions_Hashes(Transactions__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_logging_DisableColors();
+extern GoUint32 SKY_coin_Transactions_Size(Transactions__Handle p0, GoUint32* p1);
 
-extern GoUint32 SKY_logging_Disable();
+extern GoUint32 SKY_coin_Transactions_TruncateBytesTo(Transactions__Handle p0, GoUint32 p1, Transactions__Handle* p2);
+
+extern GoUint32 SKY_coin_SortTransactions(Transactions__Handle p0, FeeCalculator* p1, Transactions__Handle* p2);
+
+extern GoUint32 SKY_coin_NewSortableTransactions(Transactions__Handle p0, FeeCalculator* p1, SortableTransactions_Handle* p2);
+
+extern GoUint32 SKY_coin_SortableTransactions_Sort(SortableTransactions_Handle p0);
+
+extern GoUint32 SKY_coin_SortableTransactions_Len(SortableTransactions_Handle p0, GoInt* p1);
+
+extern GoUint32 SKY_coin_SortableTransactions_Less(SortableTransactions_Handle p0, GoInt p1, GoInt p2, GoUint8* p3);
+
+extern GoUint32 SKY_coin_SortableTransactions_Swap(SortableTransactions_Handle p0, GoInt p1, GoInt p2);
+
+extern GoUint32 SKY_coin_VerifyTransactionCoinsSpending(coin__UxArray* p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_VerifyTransactionHoursSpending(GoUint64 p0, coin__UxArray* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_coin_VerifyInputSignatures(Transaction__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetLength(Transaction__Handle p0, GoUint32* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetType(Transaction__Handle p0, GoUint8* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetInnerHash(Transaction__Handle p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetSigs(Transaction__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetIn(Transaction__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_Transaction_GetOut(Transaction__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_Transaction_SetInnerHash(Transaction__Handle* p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_coin_DeserializeTransactionHex(GoString p0, Transaction__Handle* p1);
+
+extern GoUint32 SKY_coin_GetTransactionObject(Transaction__Handle p0, coin__Transaction** p1);
+
+extern GoUint32 SKY_base58_Hex2Base58(GoSlice p0, GoString_* p1);
+
+extern GoUint32 SKY_base58_Encode(GoSlice p0, GoString_* p1);
+
+extern GoUint32 SKY_base58_Decode(GoString p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_base58_String2Hex(GoString p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_base58_Hex2String(GoSlice p0, GoString_* p1);
 
 extern GoUint32 SKY_cli_CLI_Run(CLI__Handle p0);
 
-extern GoUint32 SKY_cli_Config_GetCoin(Config__Handle p0, GoString_* p1);
+extern GoUint32 SKY_cli_Config_GetCoin(Config__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_cli_Config_GetRPCAddress(Config__Handle p0, GoString_* p1);
+extern GoUint32 SKY_cli_Config_GetRPCAddress(Config__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_cli_Getenv(GoString p0, GoString_* p1);
+extern GoUint32 SKY_cli_Getenv(GoString p0, GoString* p1);
 
 extern GoUint32 SKY_cli_Setenv(GoString p0, GoString p1);
 
-extern GoUint32 SKY_wallet_NewBalance(GoUint64 p0, GoUint64 p1, wallet__Balance* p2);
+extern GoUint32 SKY_api_NewClient(GoString p0, Client__Handle* p1);
 
-extern GoUint32 SKY_wallet_NewBalanceFromUxOut(GoUint64 p0, coin__UxOut* p1, wallet__Balance* p2);
+extern GoUint32 SKY_api_Client_CSRF(Client__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_wallet_Balance_Add(wallet__Balance* p0, wallet__Balance* p1, wallet__Balance* p2);
+extern GoUint32 SKY_api_Client_Version(Client__Handle p0, Handle* p1);
 
-extern GoUint32 SKY_wallet_Balance_Sub(wallet__Balance* p0, wallet__Balance* p1, wallet__Balance* p2);
+extern GoUint32 SKY_api_Client_Outputs(Client__Handle p0, Handle* p1);
 
-extern GoUint32 SKY_wallet_Balance_Equals(wallet__Balance* p0, wallet__Balance* p1, GoUint8* p2);
+extern GoUint32 SKY_api_Client_OutputsForAddresses(Client__Handle p0, GoSlice p1, Handle* p2);
 
-extern GoUint32 SKY_wallet_Balance_IsZero(wallet__Balance* p0, GoUint8* p1);
+extern GoUint32 SKY_api_Client_OutputsForHashes(Client__Handle p0, GoSlice p1, Handle* p2);
 
-extern GoUint32 SKY_certutil_NewTLSCertPair(GoString p0, GoString p1, GoSlice p2, coin__UxArray* p3, coin__UxArray* p4);
+extern GoUint32 SKY_api_Client_CoinSupply(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_BlockByHash(Client__Handle p0, GoString p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_BlockBySeq(Client__Handle p0, GoUint64 p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_Blocks(Client__Handle p0, GoSlice p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_LastBlocks(Client__Handle p0, GoUint64 p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_BlockchainMetadata(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_BlockchainProgress(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_Balance(Client__Handle p0, GoSlice p1, wallet__BalancePair* p2);
+
+extern GoUint32 SKY_api_Client_UxOut(Client__Handle p0, GoString p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_AddressUxOuts(Client__Handle p0, GoString p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_Wallet(Client__Handle p0, GoString p1, WalletResponse__Handle* p2);
+
+extern GoUint32 SKY_api_Client_Wallets(Client__Handle p0, Wallets__Handle* p1);
+
+extern GoUint32 SKY_api_Client_NewWalletAddress(Client__Handle p0, GoString p1, GoInt p2, GoString p3, GoSlice* p4);
+
+extern GoUint32 SKY_api_Client_WalletBalance(Client__Handle p0, GoString p1, wallet__BalancePair* p2);
+
+extern GoUint32 SKY_api_Client_CreateTransaction(Client__Handle p0, Handle* p1, CreateTransactionResponse__Handle* p2);
+
+extern GoUint32 SKY_api_Client_UpdateWallet(Client__Handle p0, GoString p1, GoString p2);
+
+extern GoUint32 SKY_api_Client_WalletFolderName(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_NewSeed(Client__Handle p0, GoInt p1, GoString* p2);
+
+extern GoUint32 SKY_api_Client_WalletSeed(Client__Handle p0, GoString p1, GoString p2, WalletSeedResponse__Handle* p3);
+
+extern GoUint32 SKY_api_Client_NetworkConnection(Client__Handle p0, GoString p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_NetworkConnections(Client__Handle p0, api__NetworkConnectionsFilter* p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_NetworkDefaultPeers(Client__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_api_Client_NetworkTrustedPeers(Client__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_api_Client_NetworkExchangedPeers(Client__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_api_Client_PendingTransactions(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_Transaction(Client__Handle p0, GoString p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_Transactions(Client__Handle p0, GoSlice p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_ConfirmedTransactions(Client__Handle p0, GoSlice p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_UnconfirmedTransactions(Client__Handle p0, GoSlice p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_InjectTransaction(Client__Handle p0, Transaction__Handle p1, GoString* p2);
+
+extern GoUint32 SKY_api_Client_ResendUnconfirmedTransactions(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_RawTransaction(Client__Handle p0, GoString p1, GoString* p2);
+
+extern GoUint32 SKY_api_Client_Richlist(Client__Handle p0, api__RichlistParams* p1, Handle* p2);
+
+extern GoUint32 SKY_api_Client_AddressCount(Client__Handle p0, GoUint64* p1);
+
+extern GoUint32 SKY_api_Client_UnloadWallet(Client__Handle p0, GoString p1);
+
+extern GoUint32 SKY_api_Client_Health(Client__Handle p0, Handle* p1);
+
+extern GoUint32 SKY_api_Client_EncryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
+
+extern GoUint32 SKY_api_Client_DecryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
+
+extern GoUint32 SKY_api_Client_CreateWallet(Client__Handle p0, CreateWalletOptions__Handle p1, WalletResponse__Handle* p2);
+
+extern GoUint32 SKY_api_Client_InjectTransactionNoBroadcast(Client__Handle p0, Transaction__Handle p1, GoString* p2);
+
+extern GoUint32 SKY_api_Client_InjectEncodedTransactionNoBroadcast(Client__Handle p0, GoString p1, GoString* p2);
+
+extern GoUint32 SKY_api_Client_RecoverWallet(Client__Handle p0, WalletRecoverRequest__Handle p1, WalletResponse__Handle* p2);
+
+extern GoUint32 SKY_wallet_NewError(GoInterface p0);
+
+extern GoUint32 SKY_wallet_NewWallet(GoString p0, Options__Handle p1, Wallet__Handle* p2);
+
+extern GoUint32 SKY_wallet_Lock(Wallet__Handle p0, GoSlice p1, GoString p2);
+
+extern GoUint32 SKY_wallet_Unlock(Wallet__Handle p0, GoSlice p1, Wallet__Handle* p2);
+
+extern GoUint32 SKY_wallet_Load(GoString p0, Wallet__Handle* p1);
+
+extern GoUint32 SKY_wallet_Wallet_Save(Wallet__Handle p0, GoString p1);
+
+extern GoUint32 SKY_bip32_NewMasterKey(GoSlice p0, PrivateKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_NewPrivateKeyFromPath(GoSlice p0, GoString p1, PrivateKey__Handle* p2);
+
+extern GoUint32 SKY_bip32_PrivateKey_DeriveSubpath(PrivateKey__Handle p0, coin__UxArray* p1, PrivateKey__Handle* p2);
+
+extern GoUint32 SKY_bip32_PrivateKey_Publickey(PrivateKey__Handle p0, PublicKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_Fingerprint(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_Identifier(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_Fingerprint(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_Identifier(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_NewPrivateChildKey(PrivateKey__Handle p0, GoUint32 p1, PrivateKey__Handle* p2);
+
+extern GoUint32 SKY_bip32_PrivateKey_NewPublicChildKey(PrivateKey__Handle p0, GoUint32 p1, PublicKey__Handle* p2);
+
+extern GoUint32 SKY_bip32_PublicKey_NewPublicChildKey(PublicKey__Handle p0, GoUint32 p1, PublicKey__Handle* p2);
+
+extern GoUint32 SKY_bip32_PrivateKey_Serialize(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_Serialize(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_String(PrivateKey__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_String(PublicKey__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_bip32_DeserializeEncodedPrivateKey(GoString p0, PrivateKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_DeserializePrivateKey(GoSlice p0, PrivateKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_DeserializeEncodedPublicKey(GoString p0, PublicKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_DeserializePublicKey(GoSlice p0, PublicKey__Handle* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_GetKey(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_GetKey(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_GetDepth(PrivateKey__Handle p0, GoUint8* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_GetDepth(PublicKey__Handle p0, GoUint8* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_ChildNumber(PrivateKey__Handle p0, GoUint32* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_ChildNumber(PublicKey__Handle p0, GoUint32* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_GetChainCode(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_GetChainCode(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_GetVersion(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_GetVersion(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PrivateKey_GetParentFingerprint(PrivateKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_bip32_PublicKey_GetParentFingerprint(PublicKey__Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_cipher_Ripemd160_Set(cipher__Ripemd160* p0, GoSlice p1);
+
+extern GoUint32 SKY_cipher_HashRipemd160(GoSlice p0, cipher__Ripemd160* p1);
+
+extern GoUint32 SKY_cipher_SHA256_Set(cipher__SHA256* p0, GoSlice p1);
+
+extern GoUint32 SKY_cipher_SHA256_Hex(cipher__SHA256* p0, GoString_* p1);
+
+extern GoUint32 SKY_cipher_SHA256_Xor(cipher__SHA256* p0, cipher__SHA256* p1, cipher__SHA256* p2);
+
+extern GoUint32 SKY_cipher_SumSHA256(GoSlice p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_cipher_SHA256FromHex(GoString p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_cipher_DoubleSHA256(GoSlice p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_cipher_AddSHA256(cipher__SHA256* p0, cipher__SHA256* p1, cipher__SHA256* p2);
+
+extern GoUint32 SKY_cipher_Merkle(GoSlice* p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_cipher_SHA256_Null(cipher__SHA256* p0, GoUint8* p1);
+
+extern GoUint32 SKY_cli_NewTransaction(GoSlice p0, GoSlice p1, GoSlice p2, Transaction__Handle* p3);
+
+extern void SKY_handle_close(Handle p0);
+
+extern GoUint32 SKY_handle_copy(Handle p0, Handle* p1);
+
+extern GoUint32 SKY_cipher_DecodeBase58Address(GoString p0, cipher__Address* p1);
+
+extern GoUint32 SKY_cipher_AddressFromBytes(GoSlice p0, cipher__Address* p1);
+
+extern GoUint32 SKY_cipher_AddressFromPubKey(cipher__PubKey* p0, cipher__Address* p1);
+
+extern GoUint32 SKY_cipher_AddressFromSecKey(cipher__SecKey* p0, cipher__Address* p1);
+
+extern GoUint32 SKY_cipher_Address_Null(cipher__Address* p0, GoUint8* p1);
+
+extern GoUint32 SKY_cipher_Address_Bytes(cipher__Address* p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_cipher_Address_Verify(cipher__Address* p0, cipher__PubKey* p1);
+
+extern GoUint32 SKY_cipher_Address_String(cipher__Address* p0, GoString_* p1);
+
+extern GoUint32 SKY_cipher_Address_Checksum(cipher__Address* p0, cipher__Checksum* p1);
 
 extern GoUint32 SKY_cipher_DecodeBase58BitcoinAddress(GoString p0, cipher__BitcoinAddress* p1);
 
@@ -647,39 +965,93 @@ extern void SKY_cipher_BitcoinAddress_String(cipher__BitcoinAddress* p0, GoStrin
 
 extern void SKY_cipher_BitcoinAddress_Checksum(cipher__BitcoinAddress* p0, cipher__Checksum* p1);
 
-extern GoUint32 SKY_transaction_ChooseSpendsMaximizeUxOuts(GoSlice p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
+extern GoUint32 SKY_bip39_NewDefaultMnemomic(GoString* p0);
 
-extern GoUint32 SKY_transaction_ChooseSpendsMinimizeUxOuts(GoSlice p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
+extern GoUint32 SKY_bip39_NewEntropy(GoInt p0, GoSlice* p1);
 
-extern GoUint32 SKY_transaction_NewUxBalance(GoUint64 p0, coin__UxOut* p1, transaction__UxBalance* p2);
+extern GoUint32 SKY_bip39_NewMnemonic(GoSlice p0, GoString* p1);
 
-extern GoUint32 SKY_transaction_NewUxBalances(GoUint64 p0, coin__UxArray* p1, coin__UxArray* p2);
+extern GoUint32 SKY_bip39_ValidateMnemonic(GoString p0);
 
-extern GoUint32 SKY_cli_GenerateWallet(GoString p0, Options__Handle* p1, GoUint64 p2, Wallet__Handle* p3);
+extern GoUint32 SKY_bip39_NewSeed(GoString p0, GoString p1, coin__UxArray* p2);
 
-extern GoUint32 SKY_cli_MakeAlphanumericSeed(GoString_* p0);
+extern GoUint32 SKY_cli_MakeAlphanumericSeed(GoString* p0);
 
-extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
+extern GoUint32 SKY_cli_GetBalanceOfAddresses(GetOutputser__Handle p0, GoSlice p1, BalanceResult_Handle* p2);
 
-extern GoUint32 SKY_cli_LoadConfig(Config__Handle* p0);
+extern GoUint64 SKY_params_DropletPrecisionToDivisor(GoUint8 p0);
 
-extern GoUint32 SKY_cli_Config_FullWalletPath(Config__Handle p0, GoString_* p1);
+extern GoUint32 SKY_params_DropletPrecisionCheck(GoUint8 p0, GoUint64 p1);
 
-extern GoUint32 SKY_cli_Config_FullDBPath(Config__Handle p0, GoString_* p1);
+extern GoUint32 SKY_map_Get(GoStringMap_* p0, GoString p1, GoString_* p2);
 
-extern GoUint32 SKY_cli_NewCLI(Config__Handle p0, CLI__Handle* p1);
+extern GoUint8 SKY_map_HasKey(GoStringMap_* p0, GoString p1);
 
-extern void SKY_cli_NewPasswordReader(GoSlice p0, PasswordReader__Handle* p1);
+extern GoUint32 SKY_map_Close(GoStringMap_* p0);
 
-extern GoUint32 SKY_cli_PasswordFromBytes_Password(coin__UxArray* p0, coin__UxArray* p1);
+extern GoUint32 SKY_wallet_Entry_Verify(wallet__Entry* p0);
 
-extern GoUint32 SKY_cli_PasswordFromTerm_Password(coin__UxArray* p0);
+extern GoUint32 SKY_wallet_Entry_VerifyPublic(wallet__Entry* p0);
 
-extern GoUint32 SKY_apputil_CatchInterruptPanic();
+extern GoUint32 SKY_cli_GenerateAddressesInFile(GoString p0, GoUint64 p1, PasswordReader__Handle p2, coin__UxArray* p3);
 
-extern GoUint32 SKY_apputil_CatchDebug();
+extern GoUint32 SKY_cli_FormatAddressesAsJSON(GoSlice p0, GoString* p1);
 
-extern GoUint32 SKY_apputil_PrintProgramStatus();
+extern GoUint32 SKY_cli_FormatAddressesAsJoinedArray(GoSlice p0, GoString* p1);
+
+extern GoUint32 SKY_cli_AddressesToStrings(GoSlice p0, GoSlice* p1);
+
+extern GoUint32 SKY_JsonEncode_Handle(Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_Handle_Progress_GetCurrent(Handle p0, GoUint64* p1);
+
+extern GoUint32 SKY_Handle_Block_GetHeadSeq(Handle p0, GoUint64* p1);
+
+extern GoUint32 SKY_Handle_Block_GetHeadHash(Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_Handle_Block_GetPreviousBlockHash(Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_Handle_Blocks_GetAt(Handle p0, GoUint64 p1, Handle* p2);
+
+extern GoUint32 SKY_Handle_Blocks_GetCount(Handle p0, GoUint64* p1);
+
+extern GoUint32 SKY_Handle_Connections_GetCount(Handle p0, GoUint64* p1);
+
+extern GoUint32 SKY_api_Handle_Client_GetWalletDir(Client__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_Client_GetWalletFileName(WalletResponse__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_Client_GetWalletLabel(WalletResponse__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_Client_GetWalletFullPath(Client__Handle p0, WalletResponse__Handle p1, GoString_* p2);
+
+extern GoUint32 SKY_api_Handle_Client_GetWalletResponseEntriesCount(WalletResponse__Handle p0, GoUint32* p1);
+
+extern GoUint32 SKY_api_Handle_WalletResponseGetEntry(WalletResponse__Handle p0, GoUint32 p1, GoString_* p2, GoString_* p3);
+
+extern GoUint32 SKY_api_Handle_WalletResponseIsEncrypted(WalletResponse__Handle p0, GoUint8* p1);
+
+extern GoUint32 SKY_api_Handle_WalletsResponseGetCount(Wallets__Handle p0, GoUint32* p1);
+
+extern GoUint32 SKY_api_Handle_WalletsResponseGetAt(Wallets__Handle p0, GoUint32 p1, WalletResponse__Handle* p2);
+
+extern GoUint32 SKY_api_Handle_GetWalletFolderAddress(Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_GetWalletSeed(MetaWallet__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_GetWalletLastSeed(MetaWallet__Handle p0, GoString_* p1);
+
+extern GoUint32 SKY_api_Handle_GetBuildInfoData(BuildInfo_Handle p0, GoString_* p1, GoString_* p2, GoString_* p3);
+
+extern GoUint32 SKY_secp256k1_PubkeyFromSeckey(GoSlice p0, coin__UxArray* p1);
+
+extern GoInt SKY_secp256k1_VerifyPubkey(GoSlice p0);
+
+extern GoInt SKY_secp256k1_VerifySecKey(GoSlice p0);
+
+extern GoUint32 SKY_secp256k1_ECDH(GoSlice p0, GoSlice p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_wallet_CryptoTypeFromString(GoString p0, wallet__CryptoType* p1);
 
 extern GoUint32 SKY_cipher_RandByte(GoInt p0, coin__UxArray* p1);
 
@@ -733,29 +1105,141 @@ extern GoUint32 SKY_cipher_CheckSecKey(cipher__SecKey* p0);
 
 extern GoUint32 SKY_cipher_CheckSecKeyHash(cipher__SecKey* p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_secp256k1_PubkeyFromSeckey(GoSlice p0, coin__UxArray* p1);
+extern GoUint32 SKY_cipher_Sig_String(cipher__Sig* p0, GoString_* p1);
 
-extern GoInt SKY_secp256k1_VerifyPubkey(GoSlice p0);
+extern GoUint32 SKY_cipher_VerifySignatureRecoverPubKey(cipher__Sig* p0, cipher__SHA256* p1);
 
-extern GoInt SKY_secp256k1_VerifySecKey(GoSlice p0);
+extern GoUint32 SKY_cipher_Sig_Null(cipher__Sig* p0, GoUint8* p1);
 
-extern GoUint32 SKY_secp256k1_ECDH(GoSlice p0, GoSlice p1, coin__UxArray* p2);
+extern GoUint32 SKY_wallet_MetaWallet_IsEncrypted(MetaWallet__Handle p0, GoUint8* p1);
 
-extern GoUint32 SKY_file_InitDataDir(GoString p0, GoString_* p1);
+extern GoUint32 SKY_wallet_MetaWallet_Label(MetaWallet__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_file_UserHome(GoString_* p0);
+extern GoUint32 SKY_wallet_MetaWallet_Filename(MetaWallet__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_file_ResolveResourceDirectory(GoString p0, GoString_* p1);
+extern GoUint32 SKY_wallet_MetaWallet_Version(MetaWallet__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_file_DetermineResourcePath(GoString p0, GoString p1, GoString p2, GoString_* p3);
+extern GoUint32 SKY_wallet_MetaWallet_Type(MetaWallet__Handle p0, GoString* p1);
 
-extern GoUint32 SKY_api_NewWalletResponse(Wallet__Handle p0, WalletResponse__Handle* p1);
+extern GoUint32 SKY_apputil_CatchInterruptPanic();
 
-extern GoUint32 SKY_map_Get(GoStringMap_* p0, GoString p1, GoString_* p2);
+extern GoUint32 SKY_apputil_CatchDebug();
 
-extern GoUint8 SKY_map_HasKey(GoStringMap_* p0, GoString p1);
+extern GoUint32 SKY_apputil_PrintProgramStatus();
 
-extern GoUint32 SKY_map_Close(GoStringMap_* p0);
+extern GoUint32 SKY_cli_LoadConfig(Config__Handle* p0);
+
+extern GoUint32 SKY_cli_Config_FullDBPath(Config__Handle p0, GoString* p1);
+
+extern GoUint32 SKY_cli_NewCLI(Config__Handle p0, CLI__Handle* p1);
+
+extern void SKY_cli_NewPasswordReader(GoSlice p0, PasswordReader__Handle* p1);
+
+extern GoUint32 SKY_cli_PasswordFromBytes_Password(cli__PasswordFromBytes* p0, GoSlice* p1);
+
+extern GoUint32 SKY_cli_PasswordFromTerm_Password(GoSlice* p0);
+
+extern GoUint32 SKY_util_AddUint64(GoUint64 p0, GoUint64 p1, GoUint64* p2);
+
+extern GoUint32 SKY_util_Uint64ToInt64(GoUint64 p0, GoInt64* p1);
+
+extern GoUint32 SKY_util_Int64ToUint64(GoInt64 p0, GoUint64* p1);
+
+extern GoUint32 SKY_util_IntToUint32(GoInt p0, GoUint32* p1);
+
+extern GoUint32 SKY_certutil_NewTLSCertPair(GoString p0, GoString p1, GoSlice p2, GoSlice* p3, GoSlice* p4);
+
+extern GoUint32 SKY_bip32_PathNode_Hardened(bip32__PathNode* p0);
+
+extern GoUint32 SKY_bip32_ParsePath(GoString p0, Path__Handle* p1);
+
+extern GoUint32 SKY_bip32_Path_Count(Path__Handle p0, GoInt* p1);
+
+extern GoUint32 SKY_bip32_Path_GetElements(Path__Handle p0, GoInt p1, bip32__PathNode* p2);
+
+extern GoUint32 SKY_coin_UxOut_Hash(coin__UxOut* p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_coin_UxOut_SnapshotHash(coin__UxOut* p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_coin_UxBody_Hash(coin__UxBody* p0, cipher__SHA256* p1);
+
+extern GoUint32 SKY_coin_UxOut_CoinHours(coin__UxOut* p0, GoUint64 p1, GoUint64* p2);
+
+extern GoUint32 SKY_coin_UxArray_Hashes(coin__UxArray* p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_UxArray_HasDupes(coin__UxArray* p0, GoUint8* p1);
+
+extern GoUint32 SKY_coin_UxArray_Sort(coin__UxArray* p0);
+
+extern GoUint32 SKY_coin_UxArray_Len(coin__UxArray* p0, GoInt* p1);
+
+extern GoUint32 SKY_coin_UxArray_Less(coin__UxArray* p0, GoInt p1, GoInt p2, GoUint8* p3);
+
+extern GoUint32 SKY_coin_UxArray_Swap(coin__UxArray* p0, GoInt p1, GoInt p2);
+
+extern GoUint32 SKY_coin_UxArray_Coins(coin__UxArray* p0, GoUint64* p1);
+
+extern GoUint32 SKY_coin_UxArray_CoinHours(coin__UxArray* p0, GoUint64 p1, GoUint64* p2);
+
+extern GoUint32 SKY_coin_UxArray_Sub(coin__UxArray* p0, coin__UxArray* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_coin_UxArray_Add(coin__UxArray* p0, coin__UxArray* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_coin_NewAddressUxOuts(coin__UxArray* p0, AddressUxOuts_Handle* p1);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Keys(AddressUxOuts_Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Flatten(AddressUxOuts_Handle p0, coin__UxArray* p1);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Sub(AddressUxOuts_Handle p0, AddressUxOuts_Handle p1, AddressUxOuts_Handle* p2);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Add(AddressUxOuts_Handle p0, AddressUxOuts_Handle p1, AddressUxOuts_Handle* p2);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Get(AddressUxOuts_Handle p0, cipher__Address* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_coin_AddressUxOuts_HasKey(AddressUxOuts_Handle p0, cipher__Address* p1, GoUint8* p2);
+
+extern GoUint32 SKY_coin_AddressUxOuts_GetOutputLength(AddressUxOuts_Handle p0, cipher__Address* p1, GoInt* p2);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Length(AddressUxOuts_Handle p0, GoInt* p1);
+
+extern GoUint32 SKY_coin_AddressUxOuts_Set(AddressUxOuts_Handle p0, cipher__Address* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_transaction_ChooseSpendsMaximizeUxOuts(GoSlice p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
+
+extern GoUint32 SKY_transaction_ChooseSpendsMinimizeUxOuts(GoSlice p0, GoUint64 p1, GoUint64 p2, coin__UxArray* p3);
+
+extern GoUint32 SKY_transaction_NewUxBalance(GoUint64 p0, coin__UxOut* p1, transaction__UxBalance* p2);
+
+extern GoUint32 SKY_transaction_NewUxBalances(GoUint64 p0, coin__UxArray* p1, coin__UxArray* p2);
+
+extern GoUint32 SKY_file_InitDataDir(GoString p0, GoString* p1);
+
+extern GoUint32 SKY_file_UserHome(GoString* p0);
+
+extern GoUint32 SKY_file_ResolveResourceDirectory(GoString p0, GoString* p1);
+
+extern GoUint32 SKY_file_DetermineResourcePath(GoString p0, GoString p1, GoString p2, GoString* p3);
+
+extern GoUint32 SKY_wallet_CreateOptionsHandle(GoString p0, GoString p1, GoString p2, GoUint8 p3, GoString p4, GoString p5, GoUint64 p6, Options__Handle* p7);
+
+extern GoUint32 SKY_wallet_NewBalance(GoUint64 p0, GoUint64 p1, wallet__Balance* p2);
+
+extern GoUint32 SKY_wallet_NewBalanceFromUxOut(GoUint64 p0, coin__UxOut* p1, wallet__Balance* p2);
+
+extern GoUint32 SKY_wallet_Balance_Add(wallet__Balance* p0, wallet__Balance* p1, wallet__Balance* p2);
+
+extern GoUint32 SKY_wallet_Balance_Sub(wallet__Balance* p0, wallet__Balance* p1, wallet__Balance* p2);
+
+extern GoUint32 SKY_wallet_Balance_Equals(wallet__Balance* p0, wallet__Balance* p1, GoUint8* p2);
+
+extern GoUint32 SKY_wallet_Balance_IsZero(wallet__Balance* p0, GoUint8* p1);
+
+extern GoUint32 SKY_logging_EnableColors();
+
+extern GoUint32 SKY_logging_DisableColors();
+
+extern GoUint32 SKY_logging_Disable();
 
 // nolint nakedret
 
@@ -831,393 +1315,113 @@ extern GoUint32 SKY_coin_BlockHeader_Version(BlockHeader__Handle p0, GoUint32* p
 
 extern GoUint32 SKY_coin_BlockHeader_PrevHash(BlockHeader__Handle p0, cipher__SHA256* p1);
 
-extern GoUint32 SKY_droplet_FromString(GoString p0, GoUint64* p1);
+extern GoUint32 SKY_params_Distribution_GetMaxCoinSupply(Distribution__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_droplet_ToString(GoUint64 p0, GoString_* p1);
+// nolint megacheck
 
-extern GoUint32 SKY_wallet_CryptoTypeFromString(GoString p0, GoString_* p1);
+extern GoUint32 SKY_params_Distribution_SetMaxCoinSupply(Distribution__Handle p0, GoUint64 p1);
 
-extern GoUint32 SKY_cipher_DecodeBase58Address(GoString p0, cipher__Address* p1);
+extern GoUint32 SKY_params_Distribution_GetInitialUnlockedCount(Distribution__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_cipher_AddressFromBytes(GoSlice p0, cipher__Address* p1);
+// nolint megacheck
 
-extern GoUint32 SKY_cipher_AddressFromPubKey(cipher__PubKey* p0, cipher__Address* p1);
+extern GoUint32 SKY_params_Distribution_SetInitialUnlockedCount(Distribution__Handle p0, GoUint64 p1);
 
-extern GoUint32 SKY_cipher_AddressFromSecKey(cipher__SecKey* p0, cipher__Address* p1);
+extern GoUint32 SKY_params_Distribution_GetUnlockAddressRate(Distribution__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_cipher_Address_Null(cipher__Address* p0, GoUint8* p1);
+// nolint megacheck
 
-extern GoUint32 SKY_cipher_Address_Bytes(cipher__Address* p0, coin__UxArray* p1);
+extern GoUint32 SKY_params_Distribution_SetUnlockAddressRate(Distribution__Handle p0, GoUint64 p1);
 
-extern GoUint32 SKY_cipher_Address_Verify(cipher__Address* p0, cipher__PubKey* p1);
+extern GoUint32 SKY_params_Distribution_GetUnlockTimeInterval(Distribution__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_cipher_Address_String(cipher__Address* p0, GoString_* p1);
+// nolint megacheck
 
-extern GoUint32 SKY_cipher_Address_Checksum(cipher__Address* p0, cipher__Checksum* p1);
+extern GoUint32 SKY_params_Distribution_SetUnlockTimeInterval(Distribution__Handle p0, GoUint64 p1);
 
-extern GoUint32 SKY_cipher_Ripemd160_Set(cipher__Ripemd160* p0, GoSlice p1);
+extern GoUint32 SKY_params_Distribution_GetAddresses(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_HashRipemd160(GoSlice p0, cipher__Ripemd160* p1);
+// nolint megacheck
 
-extern GoUint32 SKY_cipher_SHA256_Set(cipher__SHA256* p0, GoSlice p1);
+extern GoUint32 SKY_params_Distribution_SetAddresses(Distribution__Handle p0, GoSlice p1);
 
-extern GoUint32 SKY_cipher_SHA256_Hex(cipher__SHA256* p0, GoString_* p1);
+extern GoUint32 SKY_params_Distribution_Validate(Distribution__Handle p0);
 
-extern GoUint32 SKY_cipher_SHA256_Xor(cipher__SHA256* p0, cipher__SHA256* p1, cipher__SHA256* p2);
+extern GoUint32 SKY_params_Distribution_AddressInitialBalance(Distribution__Handle p0, GoUint64* p1);
 
-extern GoUint32 SKY_cipher_SumSHA256(GoSlice p0, cipher__SHA256* p1);
+extern GoUint32 SKY_params_Distribution_UnlockedAddresses(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_SHA256FromHex(GoString p0, cipher__SHA256* p1);
+extern GoUint32 SKY_params_Distribution_LockedAddresses(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_DoubleSHA256(GoSlice p0, cipher__SHA256* p1);
+extern GoUint32 SKY_params_Distribution_AddressesDecoded(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_AddSHA256(cipher__SHA256* p0, cipher__SHA256* p1, cipher__SHA256* p2);
+extern GoUint32 SKY_params_Distribution_UnlockedAddressesDecoded(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_Merkle(GoSlice* p0, cipher__SHA256* p1);
+extern GoUint32 SKY_params_Distribution_LockedAddressesDecoded(Distribution__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_cipher_SHA256_Null(cipher__SHA256* p0, GoUint8* p1);
+extern GoUint32 SKY_params_Distribution_GetMainNetDistribution(Distribution__Handle* p0);
 
-extern GoUint32 SKY_wallet_NewError(GoInterface p0);
+extern GoUint32 SKY_params_NewDistribution(Distribution__Handle* p0);
 
-extern GoUint32 SKY_wallet_NewWallet(GoString p0, Options__Handle p1, Wallet__Handle* p2);
+extern GoUint32 SKY_api_NewWalletResponse(Wallet__Handle p0, WalletResponse__Handle* p1);
 
-extern GoUint32 SKY_wallet_Wallet_Lock(Wallet__Handle p0, GoSlice p1, GoString p2);
+extern GoUint32 SKY_wallet_CollectionWallet_AddEntry(CollectionWallet__Handle p0, wallet__Entry* p1);
 
-extern GoUint32 SKY_wallet_Wallet_Unlock(Wallet__Handle p0, GoSlice p1, Wallet__Handle* p2);
+extern GoUint32 SKY_wallet_CollectionWallet_GetEntry(CollectionWallet__Handle p0, cipher__Address* p1, wallet__Entry* p2, GoUint8* p3);
 
-extern GoUint32 SKY_wallet_Load(GoString p0, Wallet__Handle* p1);
+extern GoUint32 SKY_wallet_CollectionWallet_GetAddresses(CollectionWallet__Handle p0, coin__UxArray* p1);
 
-extern GoUint32 SKY_wallet_Wallet_Save(Wallet__Handle p0, GoString p1);
+extern GoUint32 SKY_wallet_CollectionWallet_GenerateAddresses(CollectionWallet__Handle p0, GoUint64 p1, coin__UxArray* p2);
 
-extern GoUint32 SKY_wallet_Wallet_Validate(Wallet__Handle p0);
-
-extern GoUint32 SKY_wallet_Wallet_Type(Wallet__Handle p0, GoString_* p1);
-
-extern GoUint32 SKY_wallet_Wallet_Version(Wallet__Handle p0, GoString_* p1);
-
-extern GoUint32 SKY_wallet_Wallet_Filename(Wallet__Handle p0, GoString_* p1);
-
-extern GoUint32 SKY_wallet_Wallet_Label(Wallet__Handle p0, GoString_* p1);
-
-extern GoUint32 SKY_wallet_Wallet_IsEncrypted(Wallet__Handle p0, GoUint8* p1);
-
-extern GoUint32 SKY_wallet_Wallet_GenerateAddresses(Wallet__Handle p0, GoUint64 p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_wallet_Wallet_GetAddresses(Wallet__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_wallet_Wallet_GetEntry(Wallet__Handle p0, cipher__Address* p1, wallet__Entry* p2, GoUint8* p3);
-
-extern GoUint32 SKY_wallet_Wallet_AddEntry(Wallet__Handle p0, wallet__Entry* p1);
-
-extern GoUint32 SKY_api_NewCreateTransactionResponse(Transaction__Handle p0, GoSlice p1, CreateTransactionResponse__Handle* p2);
-
-extern GoUint32 SKY_api_NewCreatedTransaction(Transaction__Handle p0, GoSlice p1, CreatedTransaction__Handle* p2);
-
-extern GoUint32 SKY_api_CreatedTransaction_ToTransaction(CreatedTransaction__Handle p0, Transaction__Handle* p1);
-
-extern GoUint32 SKY_api_NewCreatedTransactionOutput(coin__TransactionOutput* p0, cipher__SHA256* p1, CreatedTransactionOutput__Handle* p2);
-
-extern GoUint32 SKY_api_NewCreatedTransactionInput(api__TransactionInput* p0, CreatedTransactionInput__Handle* p1);
-
-extern GoUint32 SKY_wallet_NewReadableEntry(GoString p0, wallet__Entry* p1, ReadableEntry__Handle* p2);
-
-extern GoUint32 SKY_wallet_LoadReadableWallet(GoString p0, ReadableWallet__Handle* p1);
-
-extern GoUint32 SKY_wallet_ReadableWallet_Save(ReadableWallet__Handle p0, GoString p1);
-
-extern GoUint32 SKY_wallet_ReadableWallet_Load(ReadableWallet__Handle p0, GoString p1);
-
-extern GoUint32 SKY_wallet_ReadableWallet_Erase(ReadableWallet__Handle p0);
+extern GoUint32 SKY_wallet_CollectionWallet_Validate(CollectionWallet__Handle p0);
 
 extern GoUint32 SKY_encrypt_ScryptChacha20poly1305_Encrypt(encrypt__ScryptChacha20poly1305* p0, GoSlice p1, GoSlice p2, coin__UxArray* p3);
 
 extern GoUint32 SKY_encrypt_ScryptChacha20poly1305_Decrypt(encrypt__ScryptChacha20poly1305* p0, GoSlice p1, GoSlice p2, coin__UxArray* p3);
 
-extern GoUint32 SKY_cli_GenerateAddressesInFile(GoString p0, GoUint64 p1, PasswordReader__Handle p2, coin__UxArray* p3);
+extern GoUint32 SKY_transaction_DistributeCoinHoursProportional(GoSlice p0, GoUint64 p1, GoSlice* p2);
 
-extern GoUint32 SKY_cli_FormatAddressesAsJSON(GoSlice p0, GoString_* p1);
+extern GoUint32 SKY_transaction_DistributeSpendHours(GoUint64 p0, GoUint64 p1, GoUint8 p2, GoUint64* p3, GoSlice* p4, GoUint64* p5);
 
-extern GoUint32 SKY_cli_FormatAddressesAsJoinedArray(GoSlice p0, GoString_* p1);
+extern GoUint32 SKY_droplet_FromString(GoString p0, GoUint64* p1);
 
-extern GoUint32 SKY_cli_AddressesToStrings(GoSlice p0, coin__UxArray* p1);
+extern GoUint32 SKY_droplet_ToString(GoUint64 p0, GoString_* p1);
 
-extern void SKY_handle_close(Handle p0);
+extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
 
-extern GoUint32 SKY_handle_copy(Handle p0, Handle* p1);
+extern GoUint32 SKY_testutil_MakePubKey(cipher__PubKey* p0);
 
-extern GoUint32 SKY_iputil_LocalhostIP(GoString_* p0);
+extern GoUint32 SKY_testutil_RandXPub(PublicKey__Handle* p0);
 
-extern GoUint32 SKY_iputil_IsLocalhost(GoString p0, GoUint8* p1);
+extern GoUint32 SKY_cli_AddPrivateKey(CollectionWallet__Handle p0, GoString p1);
 
-extern GoUint32 SKY_iputil_SplitAddr(GoString p0, GoString_* p1, GoUint16* p2);
+extern GoUint32 SKY_cli_AddPrivateKeyToFile(GoString p0, GoString p1, PasswordReader__Handle p2);
 
-extern GoUint32 SKY_cli_NewTransaction(GoSlice p0, GoSlice p1, GoSlice p2, Transaction__Handle* p3);
+extern GoUint32 SKY_httphelper_Address_UnmarshalJSON(httphelper__Address* p0, GoSlice p1);
 
-extern GoUint32 SKY_transaction_DistributeCoinHoursProportional(GoSlice p0, GoUint64 p1, coin__UxArray* p2);
+extern GoUint32 SKY_httphelper_Address_MarshalJSON(httphelper__Address* p0, GoSlice* p1);
 
-extern GoUint32 SKY_transaction_DistributeSpendHours(GoUint64 p0, GoUint64 p1, GoUint8 p2, GoUint64* p3, coin__UxArray* p4, GoUint64* p5);
+extern GoUint32 SKY_httphelper_Coins_UnmarshalJSON(httphelper__Coins* p0, GoSlice p1);
 
-extern GoUint32 SKY_base58_Hex2Base58(GoSlice p0, GoString_* p1);
+extern GoUint32 SKY_httphelper_Coins_MarshalJSON(httphelper__Coins* p0, GoSlice* p1);
 
-extern GoUint32 SKY_base58_Encode(GoSlice p0, GoString_* p1);
+extern GoUint32 SKY_httphelper_Coins_Value(httphelper__Coins* p0, GoUint64* p1);
 
-extern GoUint32 SKY_base58_Decode(GoString p0, coin__UxArray* p1);
+extern GoUint32 SKY_httphelper_Hours_UnmarshalJSON(httphelper__Hours* p0, GoSlice p1);
 
-extern GoUint32 SKY_base58_String2Hex(GoString p0, coin__UxArray* p1);
+extern GoUint32 SKY_httphelper_Hours_MarshalJSON(httphelper__Hours* p0, GoSlice* p1);
 
-extern GoUint32 SKY_api_NewClient(GoString p0, Client__Handle* p1);
+extern GoUint32 SKY_httphelper_Hours_Value(httphelper__Hours* p0, GoUint64* p1);
 
-extern GoUint32 SKY_api_Client_CSRF(Client__Handle p0, GoString_* p1);
+extern GoUint32 SKY_fee_VerifyTransactionFee(Transaction__Handle p0, GoUint64 p1, GoUint32 p2);
 
-extern GoUint32 SKY_api_Client_Version(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_fee_VerifyTransactionFeeForHours(GoUint64 p0, GoUint64 p1, GoUint32 p2);
 
-extern GoUint32 SKY_api_Client_Outputs(Client__Handle p0, Handle* p1);
+extern GoUint32 SKY_fee_RequiredFee(GoUint64 p0, GoUint32 p1, GoUint64* p2);
 
-extern GoUint32 SKY_api_Client_OutputsForAddresses(Client__Handle p0, GoSlice p1, Handle* p2);
+extern GoUint32 SKY_fee_RemainingHours(GoUint64 p0, GoUint32 p1, GoUint64* p2);
 
-extern GoUint32 SKY_api_Client_OutputsForHashes(Client__Handle p0, GoSlice p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_CoinSupply(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_BlockByHash(Client__Handle p0, GoString p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_BlockBySeq(Client__Handle p0, GoUint64 p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_Blocks(Client__Handle p0, GoSlice p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_LastBlocks(Client__Handle p0, GoUint64 p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_BlockchainMetadata(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_BlockchainProgress(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_Balance(Client__Handle p0, GoSlice p1, wallet__BalancePair* p2);
-
-extern GoUint32 SKY_api_Client_UxOut(Client__Handle p0, GoString p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_AddressUxOuts(Client__Handle p0, GoString p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_Wallet(Client__Handle p0, GoString p1, WalletResponse__Handle* p2);
-
-extern GoUint32 SKY_api_Client_Wallets(Client__Handle p0, Wallets__Handle* p1);
-
-extern GoUint32 SKY_api_Client_CreateUnencryptedWallet(Client__Handle p0, GoString p1, GoString p2, GoInt p3, WalletResponse__Handle* p4);
-
-extern GoUint32 SKY_api_Client_CreateEncryptedWallet(Client__Handle p0, GoString p1, GoString p2, GoString p3, GoInt p4, WalletResponse__Handle* p5);
-
-extern GoUint32 SKY_api_Client_NewWalletAddress(Client__Handle p0, GoString p1, GoInt p2, GoString p3, Strings__Handle* p4);
-
-extern GoUint32 SKY_api_Client_WalletBalance(Client__Handle p0, GoString p1, wallet__BalancePair* p2);
-
-extern GoUint32 SKY_api_Client_CreateTransaction(Client__Handle p0, Handle* p1, CreateTransactionResponse__Handle* p2);
-
-extern GoUint32 SKY_api_Client_UpdateWallet(Client__Handle p0, GoString p1, GoString p2);
-
-extern GoUint32 SKY_api_Client_WalletFolderName(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_NewSeed(Client__Handle p0, GoInt p1, GoString_* p2);
-
-extern GoUint32 SKY_api_Client_WalletSeed(Client__Handle p0, GoString p1, GoString p2, GoString_* p3);
-
-extern GoUint32 SKY_api_Client_NetworkConnection(Client__Handle p0, GoString p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_NetworkConnections(Client__Handle p0, api__NetworkConnectionsFilter* p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_NetworkDefaultPeers(Client__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_api_Client_NetworkTrustedPeers(Client__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_api_Client_NetworkExchangedPeers(Client__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_api_Client_PendingTransactions(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_Transaction(Client__Handle p0, GoString p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_Transactions(Client__Handle p0, GoSlice p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_ConfirmedTransactions(Client__Handle p0, GoSlice p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_UnconfirmedTransactions(Client__Handle p0, GoSlice p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_InjectTransaction(Client__Handle p0, Transaction__Handle p1, GoString_* p2);
-
-extern GoUint32 SKY_api_Client_ResendUnconfirmedTransactions(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_RawTransaction(Client__Handle p0, GoString p1, GoString_* p2);
-
-extern GoUint32 SKY_api_Client_Richlist(Client__Handle p0, api__RichlistParams* p1, Handle* p2);
-
-extern GoUint32 SKY_api_Client_AddressCount(Client__Handle p0, GoUint64* p1);
-
-extern GoUint32 SKY_api_Client_UnloadWallet(Client__Handle p0, GoString p1);
-
-extern GoUint32 SKY_api_Client_Health(Client__Handle p0, Handle* p1);
-
-extern GoUint32 SKY_api_Client_EncryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
-
-extern GoUint32 SKY_api_Client_DecryptWallet(Client__Handle p0, GoString p1, GoString p2, WalletResponse__Handle* p3);
-
-extern GoUint32 SKY_coin_Create_Transaction(Transaction__Handle* p0);
-
-extern GoUint32 SKY_coin_Transaction_Copy(Transaction__Handle p0, Transaction__Handle* p1);
-
-extern GoUint32 SKY_coin_GetTransactionObject(Transaction__Handle p0, coin__Transaction** p1);
-
-extern GoUint32 SKY_coin_Transaction_ResetInputs(Transaction__Handle p0, GoInt p1);
-
-extern GoUint32 SKY_coin_Transaction_GetInputsCount(Transaction__Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_Transaction_GetInputAt(Transaction__Handle p0, GoInt p1, cipher__SHA256* p2);
-
-extern GoUint32 SKY_coin_Transaction_SetInputAt(Transaction__Handle p0, GoInt p1, cipher__SHA256* p2);
-
-extern GoUint32 SKY_coin_Transaction_GetOutputsCount(Transaction__Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_Transaction_GetOutputAt(Transaction__Handle p0, GoInt p1, coin__TransactionOutput* p2);
-
-extern GoUint32 SKY_coin_Transaction_SetOutputAt(Transaction__Handle p0, GoInt p1, coin__TransactionOutput* p2);
-
-extern GoUint32 SKY_coin_Transaction_GetSignaturesCount(Transaction__Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_Transaction_GetSignatureAt(Transaction__Handle p0, GoInt p1, cipher__Sig* p2);
-
-extern GoUint32 SKY_coin_Transaction_SetSignatureAt(Transaction__Handle p0, GoInt p1, cipher__Sig* p2);
-
-extern GoUint32 SKY_coin_Transaction_PushSignature(Transaction__Handle p0, cipher__Sig* p1);
-
-extern GoUint32 SKY_coin_Transaction_ResetOutputs(Transaction__Handle p0, GoInt p1);
-
-extern GoUint32 SKY_coin_Transaction_ResetSignatures(Transaction__Handle p0, GoInt p1);
-
-extern GoUint32 SKY_coin_Transaction_Verify(Transaction__Handle p0);
-
-extern GoUint32 SKY_coin_Transaction_PushInput(Transaction__Handle p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_TransactionOutput_UxID(coin__TransactionOutput* p0, cipher__SHA256* p1, cipher__SHA256* p2);
-
-extern GoUint32 SKY_coin_Transaction_PushOutput(Transaction__Handle p0, cipher__Address* p1, GoUint64 p2, GoUint64 p3);
-
-extern GoUint32 SKY_coin_Transaction_SignInputs(Transaction__Handle p0, GoSlice p1);
-
-extern GoUint32 SKY_coin_Transaction_Size(Transaction__Handle p0, GoUint32* p1);
-
-extern GoUint32 SKY_coin_Transaction_Hash(Transaction__Handle p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_Transaction_SizeHash(Transaction__Handle p0, GoUint32* p1, cipher__SHA256* p2);
-
-extern GoUint32 SKY_coin_Transaction_UpdateHeader(Transaction__Handle p0);
-
-extern GoUint32 SKY_coin_Transaction_HashInner(Transaction__Handle p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_Transaction_Serialize(Transaction__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_TransactionDeserialize(GoSlice p0, Transaction__Handle* p1);
-
-extern GoUint32 SKY_coin_Transaction_OutputHours(Transaction__Handle p0, GoUint64* p1);
-
-extern GoUint32 SKY_coin_Create_Transactions(Transactions__Handle* p0);
-
-extern GoUint32 SKY_coin_GetTransactionsObject(Transactions__Handle p0, coin__UxArray** p1);
-
-extern GoUint32 SKY_coin_Transactions_Length(Transactions__Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_Transactions_Add(Transactions__Handle p0, Transaction__Handle p1);
-
-extern GoUint32 SKY_coin_Transactions_Fees(Transactions__Handle p0, FeeCalculator* p1, GoUint64* p2);
-
-extern GoUint32 SKY_coin_Transactions_GetAt(Transactions__Handle p0, GoInt p1, Transaction__Handle* p2);
-
-extern GoUint32 SKY_coin_Transactions_Hashes(Transactions__Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_Transactions_Size(Transactions__Handle p0, GoUint32* p1);
-
-extern GoUint32 SKY_coin_Transactions_TruncateBytesTo(Transactions__Handle p0, GoUint32 p1, Transactions__Handle* p2);
-
-extern GoUint32 SKY_coin_SortTransactions(Transactions__Handle p0, FeeCalculator* p1, Transactions__Handle* p2);
-
-extern GoUint32 SKY_coin_NewSortableTransactions(Transactions__Handle p0, FeeCalculator* p1, SortableTransactionResult_Handle* p2);
-
-extern GoUint32 SKY_coin_SortableTransactions_Sort(SortableTransactionResult_Handle p0);
-
-extern GoUint32 SKY_coin_SortableTransactions_Len(SortableTransactionResult_Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_SortableTransactions_Less(SortableTransactionResult_Handle p0, GoInt p1, GoInt p2, GoUint8* p3);
-
-extern GoUint32 SKY_coin_SortableTransactions_Swap(SortableTransactionResult_Handle p0, GoInt p1, GoInt p2);
-
-extern GoUint32 SKY_coin_VerifyTransactionCoinsSpending(coin__UxArray* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_VerifyTransactionHoursSpending(GoUint64 p0, coin__UxArray* p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_coin_VerifyInputSignatures(Transaction__Handle p0, coin__UxArray* p1);
-
-extern void SKY_params_GetDistributionAddresses(coin__UxArray* p0);
-
-extern void SKY_params_GetUnlockedDistributionAddresses(coin__UxArray* p0);
-
-extern void SKY_params_GetLockedDistributionAddresses(coin__UxArray* p0);
-
-extern GoUint32 SKY_bip39_NewDefaultMnemomic(GoString_* p0);
-
-extern GoUint32 SKY_bip39_NewEntropy(GoInt p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_bip39_NewMnemonic(GoSlice p0, GoString_* p1);
-
-extern GoUint32 SKY_bip39_ValidateMnemonic(GoString p0);
-
-extern GoUint32 SKY_bip39_NewSeed(GoString p0, GoString p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_coin_UxOut_Hash(coin__UxOut* p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_UxOut_SnapshotHash(coin__UxOut* p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_UxBody_Hash(coin__UxBody* p0, cipher__SHA256* p1);
-
-extern GoUint32 SKY_coin_UxOut_CoinHours(coin__UxOut* p0, GoUint64 p1, GoUint64* p2);
-
-extern GoUint32 SKY_coin_UxArray_Hashes(coin__UxArray* p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_UxArray_HasDupes(coin__UxArray* p0, GoUint8* p1);
-
-extern GoUint32 SKY_coin_UxArray_Sort(coin__UxArray* p0);
-
-extern GoUint32 SKY_coin_UxArray_Len(coin__UxArray* p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_UxArray_Less(coin__UxArray* p0, GoInt p1, GoInt p2, GoUint8* p3);
-
-extern GoUint32 SKY_coin_UxArray_Swap(coin__UxArray* p0, GoInt p1, GoInt p2);
-
-extern GoUint32 SKY_coin_UxArray_Coins(coin__UxArray* p0, GoUint64* p1);
-
-extern GoUint32 SKY_coin_UxArray_CoinHours(coin__UxArray* p0, GoUint64 p1, GoUint64* p2);
-
-extern GoUint32 SKY_coin_UxArray_Sub(coin__UxArray* p0, coin__UxArray* p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_coin_UxArray_Add(coin__UxArray* p0, coin__UxArray* p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_coin_NewAddressUxOuts(coin__UxArray* p0, AddressUxOuts_Handle* p1);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Keys(AddressUxOuts_Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Flatten(AddressUxOuts_Handle p0, coin__UxArray* p1);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Sub(AddressUxOuts_Handle p0, AddressUxOuts_Handle p1, AddressUxOuts_Handle* p2);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Add(AddressUxOuts_Handle p0, AddressUxOuts_Handle p1, AddressUxOuts_Handle* p2);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Get(AddressUxOuts_Handle p0, cipher__Address* p1, coin__UxArray* p2);
-
-extern GoUint32 SKY_coin_AddressUxOuts_HasKey(AddressUxOuts_Handle p0, cipher__Address* p1, GoUint8* p2);
-
-extern GoUint32 SKY_coin_AddressUxOuts_GetOutputLength(AddressUxOuts_Handle p0, cipher__Address* p1, GoInt* p2);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Length(AddressUxOuts_Handle p0, GoInt* p1);
-
-extern GoUint32 SKY_coin_AddressUxOuts_Set(AddressUxOuts_Handle p0, cipher__Address* p1, coin__UxArray* p2);
-
-extern GoUint64 SKY_params_DropletPrecisionToDivisor(GoUint8 p0);
-
-extern GoUint32 SKY_params_DropletPrecisionCheck(GoUint8 p0, GoUint64 p1);
+extern GoUint32 SKY_fee_TransactionFee(Transaction__Handle p0, GoUint64 p1, coin__UxArray* p2, GoUint64* p3);
 
 #ifdef __cplusplus
 }

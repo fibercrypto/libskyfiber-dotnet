@@ -416,10 +416,9 @@ FeeCalculator overflow(){
 		}
 
 		GoSlice slice;
-		memset(&slice, 0, sizeof(GoSlice));
 		cipher__SHA256 hash;
 
-		result = SKY_cipher_RandByte(128, (coin__UxArray *)&slice);
+		result = SKY_cipher_RandByte(128, (GoSlice *)&slice);
 		registerMemCleanup(slice.data);
 		if (result != 0)
 		{

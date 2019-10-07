@@ -28,7 +28,6 @@
 %pointer_functions(Client__Handle,Client__HandlePtr);
 %pointer_functions(WalletResponse__Handle,WalletResponse__HandlePtr);
 %pointer_functions(CreateTransactionRequest__Handle,CreateTransactionRequest__HandlePtr);
-%pointer_functions(Strings__Handle,Strings__HandlePtr);
 %pointer_functions(Wallets__Handle,Wallets__HandlePtr);
 %pointer_functions(ReadableOutputSet_Handle,ReadableOutputSet_HandlePtr);
 %pointer_functions(CreateTransactionParams__Handle,CreateTransactionParams__HandlePtr);
@@ -37,7 +36,6 @@
 %pointer_functions(CreatedTransactionInput__Handle,CreatedTransactionInput__HandlePtr);
 %pointer_functions(CreateTransactionResponse__Handle,CreateTransactionResponse__HandlePtr);
 %pointer_functions(SignedBlock__Handle,SignedBlock__HandlePtr);
-%pointer_functions(SortableTransactionResult_Handle,SortableTransactionResult_HandlePtr);
 %pointer_functions(WalletReadableNotes_Handle,WalletReadableNotes_HandlePtr);
 %pointer_functions(OutputsResult_Handle,OutputsResult_HandlePtr);
 %pointer_functions(StatusResult_Handle,StatusResult_HandlePtr);
