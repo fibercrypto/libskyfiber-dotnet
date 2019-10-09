@@ -1,13 +1,13 @@
 %include "arrays_csharp.i"
 %include cpointer.i
 %pointer_functions(GoSlice, GoSlicep);
-%pointer_functions(GoUint8_, GoUint8Ptr);
+%pointer_functions(GoUint8, GoUint8Ptr);
 %pointer_functions(_GoString_, GoStringp);
 %pointer_functions(int, intp);
 %pointer_functions( unsigned int, GoUint32Ptr);
 %pointer_functions(coin__Transaction, coin__Transactionp);
 %pointer_functions(AddressUxOuts_Handle, AddressUxOuts__HandlePtr);
-%pointer_functions(unsigned long long, GoUint64p);
+%pointer_functions(GoUint64, GoUint64p);
 %pointer_functions(long long, Gointp);
 %pointer_functions(unsigned short, GoUint16p);
 %pointer_functions(cipher__Address, cipher__Addressp);

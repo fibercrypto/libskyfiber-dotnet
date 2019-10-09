@@ -139,7 +139,7 @@ namespace utils
         public coin_UxOutArray makeUxOutArray(int n)
         {
             var result = new coin_UxOutArray();
-
+            result.allocate(0);
             for (int i = 0; i < n; i++)
             {
                 result.append(makeUxOut());
