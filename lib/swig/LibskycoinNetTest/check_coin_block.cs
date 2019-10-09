@@ -203,8 +203,7 @@ namespace LibskycoinNetTest
             err = SKY_cipher_AddressFromPubKey(p, a);
             Assert.AreEqual(err, SKY_OK);
             var h = new cipher_SHA256();
-            var handle = new_Transaction__Handlep();
-            makeEmptyTransaction(handle);
+            var handle = transutils.makeEmptyTransaction();
             err = SKY_coin_Transaction_PushOutput(handle, a, 11000000, 255);
             Assert.AreEqual(err, SKY_OK);
             var bh = new coin__BlockHeader();
@@ -245,8 +244,7 @@ namespace LibskycoinNetTest
             err = SKY_cipher_AddressFromPubKey(p, a);
             Assert.AreEqual(err, SKY_OK);
             var h = new cipher_SHA256();
-            var txn = new_Transaction__Handlep();
-            makeEmptyTransaction(txn);
+            var txn = transutils.makeEmptyTransaction();
             err = SKY_coin_Transaction_PushOutput(txn, a, (ulong)11e6, 255);
             Assert.AreEqual(err, SKY_OK);
             var bh = new coin__BlockHeader();
