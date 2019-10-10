@@ -41,10 +41,7 @@ install:
 
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" && "$TRAVIS_PULL_REQUEST" == false ]]; then export GOPATH=$HOME/go ; fi
-  - echo $GOPATH
-  - echo $TRAVIS_PULL_REQUEST
   - if [[ ! -d $GOPATH/src/github.com/skycoin/skycoin ]]; then go get github.com/skycoin/skycoin; fi
-  - #if [[ "$TRAVIS_OS_NAME" == "osx" && "$TRAVIS_PULL_REQUEST" == false ]]; then $GOPATH/src/github.com/skycoin/skycoin/ci-scripts/add-key.sh; fi
 
 script: 
   - (make -C $GOPATH/src/github.com/skycoin/skycoin run-daemon ARGS="-db-read-only=true -disable-csrf=false -disable-networking=true -enable-all-api-sets=true -download-peerlist=false -db-path=$GOPATH/src/github.com/skycoin/skycoin/src/api/integration/testdata/blockchain-180.db" &) 

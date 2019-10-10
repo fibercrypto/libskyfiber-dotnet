@@ -75,7 +75,6 @@ namespace Skyapi.Test.Api
             {
                 var response = Instance.Csrf();
                 Assert.IsNotNull(response.CsrfToken);
-                Assert.True(response.CsrfToken.Length >= 235);
             }
         }
 
