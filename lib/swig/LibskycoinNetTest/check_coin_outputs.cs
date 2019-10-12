@@ -462,191 +462,185 @@ namespace LibskycoinNetTest
             Assert.AreEqual(uxa.getAt(1).isEqual(uxy), 0);
         }
 
-        // [Test]
-        // public void TestAddressUxOutsKeys()
-        // {
-        //     var uxa = new coin_UxOutArray();
-        //     makeUxArray(uxa, 3);
-        //     var uxH = new_AddressUxOuts__HandlePtr();
-        //     var err = SKY_coin_NewAddressUxOuts(uxa, uxH);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var keys = new cipher_Addresses();
-        //     err = SKY_coin_AddressUxOuts_Keys(uxH, keys);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(keys.count, 3);
-        //     for (int i = 0; i < keys.count; i++)
-        //     {
-        //         var k = keys.getAt(i);
-        //         var res = uxa.getAt(0).Body.Address.isEqual(k) + uxa.getAt(1).Body.Address.isEqual(k) + uxa.getAt(2).Body.Address.isEqual(k);
-        //         Assert.IsTrue(res > 0);
-        //     }
-        // }
+        [Test]
+        public void TestAddressUxOutsKeys()
+        {
+            var uxa = transutils.makeUxOutArray(3);
+            var uxH = new_AddressUxOuts__HandlePtr();
+            var err = SKY_coin_NewAddressUxOuts(uxa, uxH);
+            Assert.AreEqual(err, SKY_OK);
+            var keys = new cipher_Addresses();
+            err = SKY_coin_AddressUxOuts_Keys(uxH, keys);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(keys.count, 3);
+            for (int i = 0; i < keys.count; i++)
+            {
+                var k = keys.getAt(i);
+                var res = uxa.getAt(0).Body.Address.isEqual(k) + uxa.getAt(1).Body.Address.isEqual(k) + uxa.getAt(2).Body.Address.isEqual(k);
+                Assert.IsTrue(res > 0);
+            }
+        }
 
-        // [Test]
-        // public void TestAddressUxOutsSub()
-        // {
-        //     var uxs = new coin_UxOutArray();
-        //     var empty = new coin_UxOutArray();
-        //     makeUxArray(uxs, 4);
-        //     makeUxArray(empty, 0);
+        [Test]
+        public void TestAddressUxOutsSub()
+        {
+            var uxs = transutils.makeUxOutArray(4);
+            var empty = transutils.makeUxOutArray(0);
 
-        //     var up = new_AddressUxOuts__HandlePtr();
-        //     var err = SKY_coin_NewAddressUxOuts(empty, up);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var up2 = new_AddressUxOuts__HandlePtr();
-        //     err = SKY_coin_NewAddressUxOuts(empty, up2);
-        //     Assert.AreEqual(err, SKY_OK);
+            var up = new_AddressUxOuts__HandlePtr();
+            var err = SKY_coin_NewAddressUxOuts(empty, up);
+            Assert.AreEqual(err, SKY_OK);
+            var up2 = new_AddressUxOuts__HandlePtr();
+            err = SKY_coin_NewAddressUxOuts(empty, up2);
+            Assert.AreEqual(err, SKY_OK);
 
-        //     var uxo = uxs.getAt(1);
-        //     uxo.Body.Address = uxs.getAt(0).Body.Address;
-        //     uxs.setAt(1, uxo);
+            var uxo = uxs.getAt(1);
+            uxo.Body.Address = uxs.getAt(0).Body.Address;
+            uxs.setAt(1, uxo);
 
-        //     var arg = new coin_UxOutArray();
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(0));
-        //     err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(0).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(2));
-        //     err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(2).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(3));
-        //     err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(3).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
+            var arg = new coin_UxOutArray();
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(0));
+            err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(0).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(2));
+            err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(2).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(3));
+            err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(3).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
 
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(1));
-        //     err = SKY_coin_AddressUxOuts_Set(up2, uxs.getAt(1).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(2));
-        //     err = SKY_coin_AddressUxOuts_Set(up2, uxs.getAt(2).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(1));
+            err = SKY_coin_AddressUxOuts_Set(up2, uxs.getAt(1).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(2));
+            err = SKY_coin_AddressUxOuts_Set(up2, uxs.getAt(2).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
 
-        //     var up3 = new_AddressUxOuts__HandlePtr();
-        //     err = SKY_coin_AddressUxOuts_Add(up, up2, up3);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var len = new_Gointp();
-        //     err = SKY_coin_AddressUxOuts_Length(up3, len);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(len), 3);
-        //     err = SKY_coin_AddressUxOuts_Length(up2, len);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(len), 2);
-        // }
+            var up3 = new_AddressUxOuts__HandlePtr();
+            err = SKY_coin_AddressUxOuts_Add(up, up2, up3);
+            Assert.AreEqual(err, SKY_OK);
+            var len = new_GoIntPtr();
+            err = SKY_coin_AddressUxOuts_Length(up3, len);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(GoIntPtr_value(len), 3);
+            err = SKY_coin_AddressUxOuts_Length(up2, len);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(GoIntPtr_value(len), 2);
+        }
 
-        // [Test]
-        // public void TestAddressUxOutsFlatten()
-        // {
-        //     var empty = new coin_UxOutArray();
-        //     makeUxArray(empty, 0);
-        //     var up = new_AddressUxOuts__HandlePtr();
-        //     var err = SKY_coin_NewAddressUxOuts(empty, up);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var uxs = new coin_UxOutArray();
-        //     makeUxArray(uxs, 3);
-        //     var uxo = uxs.getAt(2);
-        //     uxo.Body.Address = uxs.getAt(1).Body.Address;
-        //     uxs.setAt(0, uxo);
-        //     var emptyAddr = new cipher__Address();
-        //     makeAddress(emptyAddr);
+        [Test]
+        public void TestAddressUxOutsFlatten()
+        {
+            var empty = transutils.makeUxOutArray(0);
+            var up = new_AddressUxOuts__HandlePtr();
+            var err = SKY_coin_NewAddressUxOuts(empty, up);
+            Assert.AreEqual(err, SKY_OK);
+            var uxs = transutils.makeUxOutArray(3);
+            var uxo = uxs.getAt(2);
+            uxo.Body.Address = uxs.getAt(1).Body.Address;
+            uxs.setAt(0, uxo);
+            var emptyAddr = transutils.makeAddress();
 
-        //     // An empty array
-        //     err = SKY_coin_AddressUxOuts_Set(up, emptyAddr, empty);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     // 1 element array
-        //     var arg = new coin_UxOutArray();
-        //     arg.release();
-        //     arg.allocate(1);
-        //     arg.setAt(0, uxs.getAt(0));
-        //     err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(0).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     arg.release();
-        //     arg.allocate(2);
-        //     arg.setAt(0, uxs.getAt(1));
-        //     arg.setAt(1, uxs.getAt(2));
-        //     err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(1).Body.Address, arg);
-        //     Assert.AreEqual(err, SKY_OK);
+            // An empty array
+            err = SKY_coin_AddressUxOuts_Set(up, emptyAddr, empty);
+            Assert.AreEqual(err, SKY_OK);
+            // 1 element array
+            var arg = new coin_UxOutArray();
+            arg.release();
+            arg.allocate(1);
+            arg.setAt(0, uxs.getAt(0));
+            err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(0).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
+            arg.release();
+            arg.allocate(2);
+            arg.setAt(0, uxs.getAt(1));
+            arg.setAt(1, uxs.getAt(2));
+            err = SKY_coin_AddressUxOuts_Set(up, uxs.getAt(1).Body.Address, arg);
+            Assert.AreEqual(err, SKY_OK);
 
-        //     var flat = new coin_UxOutArray();
-        //     err = SKY_coin_AddressUxOuts_Flatten(up, flat);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(flat.count, 2);
+            var flat = new coin_UxOutArray();
+            err = SKY_coin_AddressUxOuts_Flatten(up, flat);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(flat.count, 2);
 
-        //     for (int i = 0; i < flat.count; i++)
-        //     {
-        //         var ux = flat.getAt(i);
-        //         Assert.AreNotEqual(ux.Body.Address.isEqual(emptyAddr), 1, "Is equal " + i.ToString());
-        //     }
-        //     if (flat.getAt(0).Body.Address.isEqual(uxs.getAt(0).Body.Address) == 1)
-        //     {
-        //         Assert.AreEqual(flat.getAt(0).isEqual(uxs.getAt(0)), 0);
-        //         Assert.AreEqual(flat.getAt(0).Body.Address.isEqual(uxs.getAt(0).Body.Address), 1);
-        //         Assert.AreEqual(flat.getAt(0 + 1).Body.Address.isEqual(uxs.getAt(0 + 1).Body.Address), 1);
-        //         Assert.AreEqual(flat.getAt(0 + 1).isEqual(uxs.getAt(1)), 0);
-        //     }
+            for (int i = 0; i < flat.count; i++)
+            {
+                var ux = flat.getAt(i);
+                Assert.AreNotEqual(ux.Body.Address.isEqual(emptyAddr), 1, "Is equal " + i.ToString());
+            }
+            if (flat.getAt(0).Body.Address.isEqual(uxs.getAt(0).Body.Address) == 1)
+            {
+                Assert.AreEqual(flat.getAt(0).isEqual(uxs.getAt(0)), 0);
+                Assert.AreEqual(flat.getAt(0).Body.Address.isEqual(uxs.getAt(0).Body.Address), 1);
+                Assert.AreEqual(flat.getAt(0 + 1).Body.Address.isEqual(uxs.getAt(0 + 1).Body.Address), 1);
+                Assert.AreEqual(flat.getAt(0 + 1).isEqual(uxs.getAt(1)), 0);
+            }
 
-        // }
+        }
 
-        // [Test]
-        // public void TestNewAddressUxOuts()
-        // {
-        //     var uxs = new coin_UxOutArray();
-        //     makeUxArray(uxs, 6);
-        //     var ux = uxs.getAt(1);
-        //     ux.Body.Address = uxs.getAt(0).Body.Address;
-        //     uxs.setAt(1, ux);
-        //     ux = uxs.getAt(3);
-        //     ux.Body.Address = uxs.getAt(2).Body.Address;
-        //     uxs.setAt(3, ux);
-        //     ux = uxs.getAt(4);
-        //     ux.Body.Address = uxs.getAt(2).Body.Address;
-        //     uxs.setAt(4, ux);
+        [Test]
+        public void TestNewAddressUxOuts()
+        {
+            var uxs = transutils.makeUxOutArray(6);
 
-        //     var uxo = new_AddressUxOuts__HandlePtr();
-        //     var err = SKY_coin_NewAddressUxOuts(uxs, uxo);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var len = new_Gointp();
-        //     err = SKY_coin_AddressUxOuts_Length(uxo, len);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(len), 3);
-        //     var uxa1 = new coin_UxOutArray();
-        //     var uxa2 = new coin_UxOutArray();
+            var ux = uxs.getAt(1);
+            ux.Body.Address = uxs.getAt(0).Body.Address;
+            uxs.setAt(1, ux);
+            ux = uxs.getAt(3);
+            ux.Body.Address = uxs.getAt(2).Body.Address;
+            uxs.setAt(3, ux);
+            ux = uxs.getAt(4);
+            ux.Body.Address = uxs.getAt(2).Body.Address;
+            uxs.setAt(4, ux);
 
-        //     SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(0).Body.Address, uxa1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     uxa2.allocate(2);
-        //     uxa2.setAt(1, uxs.getAt(4));
-        //     uxa2.setAt(0, uxs.getAt(0));
-        //     uxa2.setAt(1, uxs.getAt(4));
-        //     uxa2.setAt(1, uxs.getAt(1));
-        //     uxa2.setAt(1, uxs.getAt(4));
-        //     Assert.AreEqual(uxa1.isEqual(uxa2), 0);
+            var uxo = new_AddressUxOuts__HandlePtr();
+            var err = SKY_coin_NewAddressUxOuts(uxs, uxo);
+            Assert.AreEqual(err, SKY_OK);
+            var len = new_GoIntPtr();
+            err = SKY_coin_AddressUxOuts_Length(uxo, len);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(GoIntPtr_value(len), 3);
+            var uxa1 = new coin_UxOutArray();
+            var uxa2 = new coin_UxOutArray();
 
-        //     uxa2.setAt(1, uxs.getAt(4));
-        //     uxa1.release();
-        //     SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(3).Body.Address, uxa1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     uxa2.release();
-        //     uxa2.allocate(3);
-        //     uxa2.setAt(0, uxs.getAt(2));
-        //     uxa2.setAt(1, uxs.getAt(3));
-        //     uxa2.setAt(1, uxs.getAt(4));
-        //     Assert.AreEqual(uxa1.isEqual(uxa2), 0);
+            SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(0).Body.Address, uxa1);
+            Assert.AreEqual(err, SKY_OK);
+            uxa2.allocate(2);
+            uxa2.setAt(1, uxs.getAt(4));
+            uxa2.setAt(0, uxs.getAt(0));
+            uxa2.setAt(1, uxs.getAt(4));
+            uxa2.setAt(1, uxs.getAt(1));
+            uxa2.setAt(1, uxs.getAt(4));
+            Assert.AreEqual(uxa1.isEqual(uxa2), 0);
 
-        //     uxa1.release();
-        //     SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(5).Body.Address, uxa1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     uxa2.release();
-        //     uxa2.allocate(1);
-        //     uxa2.setAt(0, uxs.getAt(5));
-        //     Assert.AreEqual(uxa1.isEqual(uxa2), 1);
-        // }
+            uxa2.setAt(1, uxs.getAt(4));
+            uxa1.release();
+            SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(3).Body.Address, uxa1);
+            Assert.AreEqual(err, SKY_OK);
+            uxa2.release();
+            uxa2.allocate(3);
+            uxa2.setAt(0, uxs.getAt(2));
+            uxa2.setAt(1, uxs.getAt(3));
+            uxa2.setAt(1, uxs.getAt(4));
+            Assert.AreEqual(uxa1.isEqual(uxa2), 0);
+
+            uxa1.release();
+            SKY_coin_AddressUxOuts_Get(uxo, uxs.getAt(5).Body.Address, uxa1);
+            Assert.AreEqual(err, SKY_OK);
+            uxa2.release();
+            uxa2.allocate(1);
+            uxa2.setAt(0, uxs.getAt(5));
+            Assert.AreEqual(uxa1.isEqual(uxa2), 1);
+        }
     }
 }
