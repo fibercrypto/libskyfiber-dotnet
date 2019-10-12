@@ -396,75 +396,71 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             Assert.AreEqual(uxd.isEqual(uxb), 1);
         }
-        // public bool manualUxArrayIsSorted(coin_UxOutArray uxa)
-        // {
-        //     var sha_1 = new cipher_SHA256();
-        //     var sha_2 = new cipher_SHA256();
-        //     var isSort = true;
-        //     for (int i = 0; i < uxa.count - 1; i++)
-        //     {
-        //         var err = SKY_coin_UxOut_Hash(uxa.getAt(i), sha_1);
-        //         Assert.AreEqual(err, SKY_OK);
-        //         err = SKY_coin_UxOut_Hash(uxa.getAt(i + 1), sha_2);
-        //         Assert.AreEqual(err, SKY_OK);
-        //         if (sha_1.isEqual(sha_2) == 0)
-        //         {
-        //             isSort = false;
-        //         }
-        //     }
-        //     return isSort;
-        // }
+        public bool manualUxArrayIsSorted(coin_UxOutArray uxa)
+        {
+            var sha_1 = new cipher_SHA256();
+            var sha_2 = new cipher_SHA256();
+            var isSort = true;
+            for (int i = 0; i < uxa.count - 1; i++)
+            {
+                var err = SKY_coin_UxOut_Hash(uxa.getAt(i), sha_1);
+                Assert.AreEqual(err, SKY_OK);
+                err = SKY_coin_UxOut_Hash(uxa.getAt(i + 1), sha_2);
+                Assert.AreEqual(err, SKY_OK);
+                if (sha_1.isEqual(sha_2) == 0)
+                {
+                    isSort = false;
+                }
+            }
+            return isSort;
+        }
 
-        // [Test]
-        // public void TestUxArrayLen()
-        // {
-        //     var uxa = new coin_UxOutArray();
-        //     makeUxArray(uxa, 4);
-        //     Assert.AreEqual(uxa.count, 4);
-        // }
+        [Test]
+        public void TestUxArrayLen()
+        {
+            var uxa = transutils.makeUxOutArray(4);
+            Assert.AreEqual(uxa.count, 4);
+        }
 
-        // [Test]
-        // public void TestUxArrayLess()
-        // {
-        //     var uxa = new coin_UxOutArray();
-        //     makeUxArray(uxa, 2);
-        //     var hashes = new cipher_SHA256s();
-        //     var err = SKY_coin_UxArray_Hashes(uxa, hashes);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(hashes.count, uxa.count);
-        //     var less = new_CharPtr();
-        //     var less2 = new_CharPtr();
-        //     err = SKY_coin_UxArray_Less(uxa, 0, 1, less);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_coin_UxArray_Less(uxa, 1, 0, less2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreNotEqual(CharPtr_value(less), CharPtr_value(less2));
-        // }
+        [Test]
+        public void TestUxArrayLess()
+        {
+            var uxa = transutils.makeUxOutArray(2);
+            var hashes = new cipher_SHA256s();
+            var err = SKY_coin_UxArray_Hashes(uxa, hashes);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(hashes.count, uxa.count);
+            var less = new_CharPtr();
+            var less2 = new_CharPtr();
+            err = SKY_coin_UxArray_Less(uxa, 0, 1, less);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_UxArray_Less(uxa, 1, 0, less2);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreNotEqual(CharPtr_value(less), CharPtr_value(less2));
+        }
 
-        // [Test]
-        // public void TestUxArraySwap()
-        // {
-        //     var uxa = new coin_UxOutArray();
-        //     uxa.allocate(2);
-        //     var uxx = new coin__UxOut();
-        //     var uxy = new coin__UxOut();
-        //     makeUxOut(uxx);
-        //     makeUxOut(uxy);
-        //     uxa.setAt(0, uxx);
-        //     uxa.setAt(1, uxy);
-        //     var err = SKY_coin_UxArray_Swap(uxa, 0, 1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(uxa.getAt(0).isEqual(uxy), 0);
-        //     Assert.AreEqual(uxa.getAt(1).isEqual(uxx), 0);
-        //     err = SKY_coin_UxArray_Swap(uxa, 0, 1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(uxa.getAt(0).isEqual(uxx), 0);
-        //     Assert.AreEqual(uxa.getAt(1).isEqual(uxy), 0);
-        //     err = SKY_coin_UxArray_Swap(uxa, 1, 0);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(uxa.getAt(0).isEqual(uxx), 0);
-        //     Assert.AreEqual(uxa.getAt(1).isEqual(uxy), 0);
-        // }
+        [Test]
+        public void TestUxArraySwap()
+        {
+            var uxa = new coin_UxOutArray();
+            uxa.allocate(2);
+            var uxx = transutils.makeUxOut();
+            var uxy = transutils.makeUxOut();
+            uxa.setAt(0, uxx);
+            uxa.setAt(1, uxy);
+            var err = SKY_coin_UxArray_Swap(uxa, 0, 1);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(uxa.getAt(0).isEqual(uxy), 0);
+            Assert.AreEqual(uxa.getAt(1).isEqual(uxx), 0);
+            err = SKY_coin_UxArray_Swap(uxa, 0, 1);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(uxa.getAt(0).isEqual(uxx), 0);
+            Assert.AreEqual(uxa.getAt(1).isEqual(uxy), 0);
+            err = SKY_coin_UxArray_Swap(uxa, 1, 0);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(uxa.getAt(0).isEqual(uxx), 0);
+            Assert.AreEqual(uxa.getAt(1).isEqual(uxy), 0);
+        }
 
         // [Test]
         // public void TestAddressUxOutsKeys()
