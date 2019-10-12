@@ -20,7 +20,7 @@ namespace utils
 
         public SWIGTYPE_p_Transaction__Handle makeEmptyTransaction()
         {
-            var txn = new_Transaction__Handlep();
+            var txn = new_Transaction__HandlePtr();
             var result = SKY_coin_Create_Transaction(txn);
             Assert.AreEqual(result, SKY_OK);
             return txn;
@@ -28,7 +28,7 @@ namespace utils
 
         public SWIGTYPE_p_Transaction__Handle copyTransaction(SWIGTYPE_p_Transaction__Handle handle)
         {
-            var handle2 = new_Transaction__Handlep();
+            var handle2 = new_Transaction__HandlePtr();
             var err = SKY_coin_Transaction_Verify(handle);
             Assert.AreEqual(err, SKY_OK, "SKY_coin_Transaction_Verify failed");
             err = SKY_coin_Transaction_Copy(handle, handle2);
@@ -41,7 +41,8 @@ namespace utils
             handle = makeEmptyTransaction();
             var h = new cipher_SHA256();
             Assert.AreEqual(SKY_cipher_SecKey_Verify(s), SKY_OK);
-            var err = SKY_coin_UxOut_Hash(ux, h);
+            var ux_tmp = coin__UxOutPtr_value(ux);
+            var err = SKY_coin_UxOut_Hash(ux_tmp, h);
             Assert.AreEqual(err, SKY_OK);
             var r = SKY_coin_Transaction_PushInput(handle, h);
             Assert.AreEqual(err, SKY_OK);
@@ -63,42 +64,44 @@ namespace utils
 
         }
 
-        public void makeUxBodyWithSecret(coin__UxBody uxBody, cipher_SecKey secKey)
+        public void makeUxBodyWithSecret(coin__UxBody uxBody_tmp, cipher_SecKey secKey)
         {
             var p = new cipher_PubKey();
-            var err = SKY_cipher_GenerateKeyPair(p, secKey);
+            var s = new cipher_SecKey();
+            var err = SKY_cipher_GenerateKeyPair(p, s);
             Assert.AreEqual(err, SKY_OK);
-            var b = new GoSlice();
-            err = SKY_cipher_RandByte(128, b);
+            var uxBody = new coin__UxBody();
+            var SrcTransaction = new cipher_SHA256();
+            SKY_testutil_RandSHA256(SrcTransaction);
+            uxBody.SetSrcTransaction(SrcTransaction);
+            var Address = new cipher__Address();
+            err = SKY_cipher_AddressFromPubKey(p, Address);
             Assert.AreEqual(err, SKY_OK);
-            var h = new cipher_SHA256();
-            err = SKY_cipher_SumSHA256(b, h);
-            Assert.AreEqual(err, SKY_OK);
-            uxBody.SetSrcTransaction(h);
-            var a = new cipher__Address();
-            err = SKY_cipher_AddressFromPubKey(p, a);
-            Assert.AreEqual(err, SKY_OK);
-            uxBody.Address = a;
+            uxBody.Address = Address;
             uxBody.Coins = (ulong)(1e6);
             uxBody.Hours = 100;
+            coin__UxBodyPtr_assign(uxBody_tmp, uxBody);
+
         }
 
         public void makeUxOutWithSecret(coin__UxOut uxOut, cipher_SecKey secKey)
         {
-            var uxBody = new coin__UxBody();
-            makeUxBodyWithSecret(uxBody, secKey);
-            uxOut = new coin__UxOut();
-            var uxHead = new coin__UxHead();
-            uxHead.Time = 100;
-            uxHead.BkSeq = 2;
-            uxOut.Body = uxBody;
-            uxOut.Head = uxHead;
+            var body = new_coin__UxBodyPtr();
+            var sec = new cipher_SecKey();
+            makeUxBodyWithSecret(body, sec);
+            var head = new coin__UxHead();
+            head.Time = 100;
+            head.BkSeq = 2;
+            var uxOut_tmp = new coin__UxOut();
+            uxOut_tmp.Head = head;
+            uxOut_tmp.Body = coin__UxBodyPtr_value(body);
+            coin__UxOutPtr_assign(uxOut, uxOut_tmp);
         }
 
         public void makeTransaction(SWIGTYPE_p_Transaction__Handle handle, coin__Transaction ptx)
         {
             var s = new cipher_SecKey();
-            var ux = new coin__UxOut();
+            var ux = new_coin__UxOutPtr();
             makeUxOutWithSecret(ux, s);
             makeTransactionFromUxOut(ux, s, handle, ptx);
         }
@@ -106,7 +109,8 @@ namespace utils
         public SWIGTYPE_p_Transactions__Handle makeTransactions(int n)
         {
             var handle = new_Transactions__HandlePtr();
-            SKY_coin_Create_Transactions(handle);
+            var err = SKY_coin_Create_Transactions(handle);
+            Assert.AreEqual(err, SKY_OK);
             for (int i = 0; i < n; i++)
             {
                 var thandle = makeEmptyTransaction();
@@ -114,35 +118,38 @@ namespace utils
                 makeTransaction(thandle, ptx);
                 SKY_coin_Transactions_Add(handle, thandle);
             }
-            var count = new_Gointp();
-            SKY_coin_Transactions_Length(handle, count);
-            Assert.AreEqual(n, Gointp_value(count));
+            var count = new_GoIntPtr();
+            err = SKY_coin_Transactions_Length(handle, count);
+            Assert.AreEqual(n, GoIntPtr_value(count));
+            Assert.AreEqual(err, SKY_OK);
             return handle;
         }
 
         public coin__UxBody makeUxBody()
         {
-            var uxb = new coin__UxBody();
+            var uxb = new_coin__UxBodyPtr();
             var s = new cipher_SecKey();
             makeUxBodyWithSecret(uxb, s);
-            return uxb;
+            return coin__UxBodyPtr_value(uxb);
         }
 
         public coin__UxOut makeUxOut()
         {
-            var uxb = new coin__UxOut();
+            var uxb = new_coin__UxOutPtr();
             var s = new cipher_SecKey();
             makeUxOutWithSecret(uxb, s);
-            return uxb;
+
+            return coin__UxOutPtr_value(uxb);
         }
 
         public coin_UxOutArray makeUxOutArray(int n)
         {
             var result = new coin_UxOutArray();
-            result.allocate(0);
+            result.allocate(n);
             for (int i = 0; i < n; i++)
             {
-                result.append(makeUxOut());
+                var uxOut = makeUxOut();
+                result.setAt(i, uxOut);
             }
             Assert.AreEqual(result.count, n, "Not equal len");
             return result;

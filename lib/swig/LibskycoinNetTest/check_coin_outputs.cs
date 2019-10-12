@@ -166,31 +166,31 @@ namespace LibskycoinNetTest
 
             // Less than an hour passed
             var now = uxh.Time + 100;
-            var hours = new_GoUint64p();
+            var hours = new_GoUint64Ptr();
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(uxh.Time, GoUint64p_value(hours), "Less than an hour passed");
+            Assert.AreEqual(uxh.Time, GoUint64Ptr_value(hours), "Less than an hour passed");
             // 1 hours passed
             now = uxh.Time + 3600;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxh.Time + (uxb.Coins / 1000000), "1 hours passed");
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxh.Time + (uxb.Coins / 1000000), "1 hours passed");
             // 6 hours passed
             now = uxh.Time + 3600 * 6;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxh.Time + (uxb.Coins / 1000000) * 6, "1 hours passed");
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxh.Time + (uxb.Coins / 1000000) * 6, "1 hours passed");
             // Time is backwards (treated as no hours passed)
             now = uxh.Time / 2;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxh.Time);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxh.Time);
             // 1 hour has passed, output has 1.5 coins, should gain 1 coinhour
             uxb.Coins = 1500000;
             now = uxh.Time + 3600;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours + 1);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours + 1);
             // 2 hours have passed, output has 1.5 coins, should gain 3 coin hours
             uxb.Coins = 1500000;
             uxo.Body = uxb;
@@ -203,21 +203,21 @@ namespace LibskycoinNetTest
             now = uxh.Time + 1;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours + 1);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours + 1);
             // 1000000 hours minus 1 second have passed, output has 1 droplet, should gain 0 coin hour
             uxb.Coins = 1;
             uxo.Body = uxb;
             now = (ulong)(uxh.Time + (ulong)Convert.ToInt64(1e6 * 3600) - 1);
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours);
             // 1000000 hours have passed, output has 1 droplet, should gain 1 coin hour
             uxb.Coins = 1;
             uxo.Body = uxb;
             now = uxh.Time + Convert.ToUInt64(10e5 * 3600);
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours + 1);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours + 1);
             // No hours passed, using initial coin hours
             uxb.Coins = (ulong)10e8;
             uxb.Hours = 1000 * 1000;
@@ -225,19 +225,19 @@ namespace LibskycoinNetTest
             now = uxh.Time;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours);
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours);
             // One hour passed, using initial coin hours
             now = uxh.Time + 3600;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), uxb.Hours + (10e8 / 10e5));
+            Assert.AreEqual(GoUint64Ptr_value(hours), uxb.Hours + (10e8 / 10e5));
             // No hours passed and no hours to begin with 0
             uxb.Hours = 0;
             uxo.Body = uxb;
             now = uxh.Time;
             err = SKY_coin_UxOut_CoinHours(uxo, now, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), 0);
+            Assert.AreEqual(GoUint64Ptr_value(hours), 0);
             // Centuries have passed, time-based calculation overflows uint64 when calculating the whole coin seconds
             uxb.Coins = (ulong)20e5;
             uxo.Body = uxb;
@@ -267,9 +267,9 @@ namespace LibskycoinNetTest
                 var x = uxa.getAt(i);
                 x.Body.Coins = (ulong)1e6;
             }
-            var coins = new_GoUint64p();
+            var coins = new_GoUint64Ptr();
             var err = SKY_coin_UxArray_Coins(uxa, coins);
-            Assert.AreEqual(GoUint64p_value(coins), (ulong)4e6);
+            Assert.AreEqual(GoUint64Ptr_value(coins), (ulong)4e6);
             Assert.AreEqual(err, SKY_OK);
             var uxo = uxa.getAt(2);
             uxo.Body.Coins = (ulong)(ulong.MaxValue - 1e6);
@@ -283,9 +283,9 @@ namespace LibskycoinNetTest
         //             for (var i = slic; i < (ulong)uxa.count; i++)
         //             {
         //                 var x = uxa.getAt((int)i);
-        //                 var time = new_GoUint64p();
+        //                 var time = new_GoUint64Ptr();
         //                 var err = SKY_coin_UxOut_CoinHours(x, now, time);
-        //                 result += GoUint64p_value(time);
+        //                 result += GoUint64Ptr_value(time);
         //                 Assert.AreEqual(err, SKY_OK);
         //             }
         //             return result;
@@ -295,23 +295,23 @@ namespace LibskycoinNetTest
         //         public void TestUxArrayCoinHours()
         //         {
         //             var uxa = transutils.makeUxOutArray(4);
-        //             var count = new_GoUint64p();
+        //             var count = new_GoUint64Ptr();
         //             var uxo = uxa.getAt(0);
         //             var err = SKY_coin_UxArray_CoinHours(uxa, uxo.Head.Time, count);
         //             Assert.AreEqual(err, SKY_OK);
-        //             Assert.AreEqual(GoUint64p_value(count), 400);
+        //             Assert.AreEqual(GoUint64Ptr_value(count), 400);
         //             // 1 hour later
         //             err = SKY_coin_UxArray_CoinHours(uxa, uxo.Head.Time + 3600, count);
         //             Assert.AreEqual(err, SKY_OK);
-        //             Assert.AreEqual(GoUint64p_value(count), 404);
+        //             Assert.AreEqual(GoUint64Ptr_value(count), 404);
         //             // 1.5 hours later
         //             err = SKY_coin_UxArray_CoinHours(uxa, uxo.Head.Time + 3600 + 1800, count);
         //             Assert.AreEqual(err, SKY_OK);
-        //             Assert.AreEqual(GoUint64p_value(count), 404);
+        //             Assert.AreEqual(GoUint64Ptr_value(count), 404);
         //             // 2 hours later
         //             err = SKY_coin_UxArray_CoinHours(uxa, uxo.Head.Time + 3600 + 4600, count);
         //             Assert.AreEqual(err, SKY_OK);
-        //             Assert.AreEqual(GoUint64p_value(count), 408);
+        //             Assert.AreEqual(GoUint64Ptr_value(count), 408);
 
         //             uxo = uxa.getAt(2);
         //             uxo.Body.Hours = ulong.MaxValue - 100;
