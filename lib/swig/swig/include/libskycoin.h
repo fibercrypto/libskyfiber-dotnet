@@ -158,7 +158,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 1 "cgo-generated-wrapper"
 
-#line 11 "testutil.testutil.go"
+#line 14 "testutil.testutil.go"
 
 
   #include <string.h>
@@ -716,6 +716,8 @@ extern GoUint32 SKY_cli_MakeAlphanumericSeed(GoString* p0);
 extern GoUint32 SKY_testutil_MakeAddress(cipher__Address* p0);
 
 extern GoUint32 SKY_testutil_MakePubKey(cipher__PubKey* p0);
+
+extern GoUint32 SKY_testutil_RandSHA256(cipher__SHA256* p0);
 
 extern GoUint32 SKY_testutil_RandXPub(PublicKey__Handle* p0);
 

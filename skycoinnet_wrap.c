@@ -337,25 +337,25 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_skycoin(SWIG_CSharpString
 	}
 
 
-static GoSlice *new_GoSlicep() { 
+static GoSlice *new_GoSlicePtr() { 
   return (GoSlice *) calloc(1,sizeof(GoSlice)); 
 }
 
-static GoSlice *copy_GoSlicep(GoSlice value) { 
+static GoSlice *copy_GoSlicePtr(GoSlice value) { 
   GoSlice *obj = (GoSlice *) calloc(1,sizeof(GoSlice));
   *obj = value;
   return obj; 
 }
 
-static void delete_GoSlicep(GoSlice *obj) { 
+static void delete_GoSlicePtr(GoSlice *obj) { 
   if (obj) free(obj); 
 }
 
-static void GoSlicep_assign(GoSlice *obj, GoSlice value) {
+static void GoSlicePtr_assign(GoSlice *obj, GoSlice value) {
   *obj = value;
 }
 
-static GoSlice GoSlicep_value(GoSlice *obj) {
+static GoSlice GoSlicePtr_value(GoSlice *obj) {
   return *obj;
 }
 
@@ -383,94 +383,94 @@ static GoUint8 GoUint8Ptr_value(GoUint8 *obj) {
 }
 
 
-static _GoString_ *new_GoStringp() { 
+static _GoString_ *new_GoStringPtr() { 
   return (_GoString_ *) calloc(1,sizeof(_GoString_)); 
 }
 
-static _GoString_ *copy_GoStringp(_GoString_ value) { 
+static _GoString_ *copy_GoStringPtr(_GoString_ value) { 
   _GoString_ *obj = (_GoString_ *) calloc(1,sizeof(_GoString_));
   *obj = value;
   return obj; 
 }
 
-static void delete_GoStringp(_GoString_ *obj) { 
+static void delete_GoStringPtr(_GoString_ *obj) { 
   if (obj) free(obj); 
 }
 
-static void GoStringp_assign(_GoString_ *obj, _GoString_ value) {
+static void GoStringPtr_assign(_GoString_ *obj, _GoString_ value) {
   *obj = value;
 }
 
-static _GoString_ GoStringp_value(_GoString_ *obj) {
+static _GoString_ GoStringPtr_value(_GoString_ *obj) {
   return *obj;
 }
 
 
-static int *new_intp() { 
-  return (int *) calloc(1,sizeof(int)); 
+static GoInt *new_GoIntPtr() { 
+  return (GoInt *) calloc(1,sizeof(GoInt)); 
 }
 
-static int *copy_intp(int value) { 
-  int *obj = (int *) calloc(1,sizeof(int));
+static GoInt *copy_GoIntPtr(GoInt value) { 
+  GoInt *obj = (GoInt *) calloc(1,sizeof(GoInt));
   *obj = value;
   return obj; 
 }
 
-static void delete_intp(int *obj) { 
+static void delete_GoIntPtr(GoInt *obj) { 
   if (obj) free(obj); 
 }
 
-static void intp_assign(int *obj, int value) {
+static void GoIntPtr_assign(GoInt *obj, GoInt value) {
   *obj = value;
 }
 
-static int intp_value(int *obj) {
+static GoInt GoIntPtr_value(GoInt *obj) {
   return *obj;
 }
 
 
-static unsigned int *new_GoUint32Ptr() { 
-  return (unsigned int *) calloc(1,sizeof(unsigned int)); 
+static GoUint32 *new_GoUint32Ptr() { 
+  return (GoUint32 *) calloc(1,sizeof(GoUint32)); 
 }
 
-static unsigned int *copy_GoUint32Ptr(unsigned int value) { 
-  unsigned int *obj = (unsigned int *) calloc(1,sizeof(unsigned int));
+static GoUint32 *copy_GoUint32Ptr(GoUint32 value) { 
+  GoUint32 *obj = (GoUint32 *) calloc(1,sizeof(GoUint32));
   *obj = value;
   return obj; 
 }
 
-static void delete_GoUint32Ptr(unsigned int *obj) { 
+static void delete_GoUint32Ptr(GoUint32 *obj) { 
   if (obj) free(obj); 
 }
 
-static void GoUint32Ptr_assign(unsigned int *obj, unsigned int value) {
+static void GoUint32Ptr_assign(GoUint32 *obj, GoUint32 value) {
   *obj = value;
 }
 
-static unsigned int GoUint32Ptr_value(unsigned int *obj) {
+static GoUint32 GoUint32Ptr_value(GoUint32 *obj) {
   return *obj;
 }
 
 
-static coin__Transaction *new_coin__Transactionp() { 
+static coin__Transaction *new_coin__TransactionPtr() { 
   return (coin__Transaction *) calloc(1,sizeof(coin__Transaction)); 
 }
 
-static coin__Transaction *copy_coin__Transactionp(coin__Transaction value) { 
+static coin__Transaction *copy_coin__TransactionPtr(coin__Transaction value) { 
   coin__Transaction *obj = (coin__Transaction *) calloc(1,sizeof(coin__Transaction));
   *obj = value;
   return obj; 
 }
 
-static void delete_coin__Transactionp(coin__Transaction *obj) { 
+static void delete_coin__TransactionPtr(coin__Transaction *obj) { 
   if (obj) free(obj); 
 }
 
-static void coin__Transactionp_assign(coin__Transaction *obj, coin__Transaction value) {
+static void coin__TransactionPtr_assign(coin__Transaction *obj, coin__Transaction value) {
   *obj = value;
 }
 
-static coin__Transaction coin__Transactionp_value(coin__Transaction *obj) {
+static coin__Transaction coin__TransactionPtr_value(coin__Transaction *obj) {
   return *obj;
 }
 
@@ -498,94 +498,71 @@ static AddressUxOuts_Handle AddressUxOuts__HandlePtr_value(AddressUxOuts_Handle 
 }
 
 
-static GoUint64 *new_GoUint64p() { 
+static GoUint64 *new_GoUint64Ptr() { 
   return (GoUint64 *) calloc(1,sizeof(GoUint64)); 
 }
 
-static GoUint64 *copy_GoUint64p(GoUint64 value) { 
+static GoUint64 *copy_GoUint64Ptr(GoUint64 value) { 
   GoUint64 *obj = (GoUint64 *) calloc(1,sizeof(GoUint64));
   *obj = value;
   return obj; 
 }
 
-static void delete_GoUint64p(GoUint64 *obj) { 
+static void delete_GoUint64Ptr(GoUint64 *obj) { 
   if (obj) free(obj); 
 }
 
-static void GoUint64p_assign(GoUint64 *obj, GoUint64 value) {
+static void GoUint64Ptr_assign(GoUint64 *obj, GoUint64 value) {
   *obj = value;
 }
 
-static GoUint64 GoUint64p_value(GoUint64 *obj) {
+static GoUint64 GoUint64Ptr_value(GoUint64 *obj) {
   return *obj;
 }
 
 
-static long long *new_Gointp() { 
-  return (long long *) calloc(1,sizeof(long long)); 
+static GoUint16 *new_GoUint16Ptr() { 
+  return (GoUint16 *) calloc(1,sizeof(GoUint16)); 
 }
 
-static long long *copy_Gointp(long long value) { 
-  long long *obj = (long long *) calloc(1,sizeof(long long));
+static GoUint16 *copy_GoUint16Ptr(GoUint16 value) { 
+  GoUint16 *obj = (GoUint16 *) calloc(1,sizeof(GoUint16));
   *obj = value;
   return obj; 
 }
 
-static void delete_Gointp(long long *obj) { 
+static void delete_GoUint16Ptr(GoUint16 *obj) { 
   if (obj) free(obj); 
 }
 
-static void Gointp_assign(long long *obj, long long value) {
+static void GoUint16Ptr_assign(GoUint16 *obj, GoUint16 value) {
   *obj = value;
 }
 
-static long long Gointp_value(long long *obj) {
+static GoUint16 GoUint16Ptr_value(GoUint16 *obj) {
   return *obj;
 }
 
 
-static unsigned short *new_GoUint16p() { 
-  return (unsigned short *) calloc(1,sizeof(unsigned short)); 
-}
-
-static unsigned short *copy_GoUint16p(unsigned short value) { 
-  unsigned short *obj = (unsigned short *) calloc(1,sizeof(unsigned short));
-  *obj = value;
-  return obj; 
-}
-
-static void delete_GoUint16p(unsigned short *obj) { 
-  if (obj) free(obj); 
-}
-
-static void GoUint16p_assign(unsigned short *obj, unsigned short value) {
-  *obj = value;
-}
-
-static unsigned short GoUint16p_value(unsigned short *obj) {
-  return *obj;
-}
-
-
-static cipher__Address *new_cipher__Addressp() { 
+static cipher__Address *new_cipher__AddressPtr() { 
   return (cipher__Address *) calloc(1,sizeof(cipher__Address)); 
 }
 
-static cipher__Address *copy_cipher__Addressp(cipher__Address value) { 
+static cipher__Address *copy_cipher__AddressPtr(cipher__Address value) { 
   cipher__Address *obj = (cipher__Address *) calloc(1,sizeof(cipher__Address));
   *obj = value;
   return obj; 
 }
 
-static void delete_cipher__Addressp(cipher__Address *obj) { 
+static void delete_cipher__AddressPtr(cipher__Address *obj) { 
   if (obj) free(obj); 
 }
 
-static void cipher__Addressp_assign(cipher__Address *obj, cipher__Address value) {
+static void cipher__AddressPtr_assign(cipher__Address *obj, cipher__Address value) {
   *obj = value;
 }
 
-static cipher__Address cipher__Addressp_value(cipher__Address *obj) {
+static cipher__Address cipher__AddressPtr_value(cipher__Address *obj) {
   return *obj;
 }
 
@@ -613,25 +590,25 @@ static Transactions__Handle Transactions__HandlePtr_value(Transactions__Handle *
 }
 
 
-static Transaction__Handle *new_Transaction__Handlep() { 
+static Transaction__Handle *new_Transaction__HandlePtr() { 
   return (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle)); 
 }
 
-static Transaction__Handle *copy_Transaction__Handlep(Transaction__Handle value) { 
+static Transaction__Handle *copy_Transaction__HandlePtr(Transaction__Handle value) { 
   Transaction__Handle *obj = (Transaction__Handle *) calloc(1,sizeof(Transaction__Handle));
   *obj = value;
   return obj; 
 }
 
-static void delete_Transaction__Handlep(Transaction__Handle *obj) { 
+static void delete_Transaction__HandlePtr(Transaction__Handle *obj) { 
   if (obj) free(obj); 
 }
 
-static void Transaction__Handlep_assign(Transaction__Handle *obj, Transaction__Handle value) {
+static void Transaction__HandlePtr_assign(Transaction__Handle *obj, Transaction__Handle value) {
   *obj = value;
 }
 
-static Transaction__Handle Transaction__Handlep_value(Transaction__Handle *obj) {
+static Transaction__Handle Transaction__HandlePtr_value(Transaction__Handle *obj) {
   return *obj;
 }
 
@@ -1437,6 +1414,52 @@ static void coin__BlockPtr_assign(coin__Block* *obj, coin__Block* value) {
 }
 
 static coin__Block* coin__BlockPtr_value(coin__Block* *obj) {
+  return *obj;
+}
+
+
+static coin__UxOut *new_coin__UxOutPtr() { 
+  return (coin__UxOut *) calloc(1,sizeof(coin__UxOut)); 
+}
+
+static coin__UxOut *copy_coin__UxOutPtr(coin__UxOut value) { 
+  coin__UxOut *obj = (coin__UxOut *) calloc(1,sizeof(coin__UxOut));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_coin__UxOutPtr(coin__UxOut *obj) { 
+  if (obj) free(obj); 
+}
+
+static void coin__UxOutPtr_assign(coin__UxOut *obj, coin__UxOut value) {
+  *obj = value;
+}
+
+static coin__UxOut coin__UxOutPtr_value(coin__UxOut *obj) {
+  return *obj;
+}
+
+
+static coin__UxBody *new_coin__UxBodyPtr() { 
+  return (coin__UxBody *) calloc(1,sizeof(coin__UxBody)); 
+}
+
+static coin__UxBody *copy_coin__UxBodyPtr(coin__UxBody value) { 
+  coin__UxBody *obj = (coin__UxBody *) calloc(1,sizeof(coin__UxBody));
+  *obj = value;
+  return obj; 
+}
+
+static void delete_coin__UxBodyPtr(coin__UxBody *obj) { 
+  if (obj) free(obj); 
+}
+
+static void coin__UxBodyPtr_assign(coin__UxBody *obj, coin__UxBody value) {
+  *obj = value;
+}
+
+static coin__UxBody coin__UxBodyPtr_value(coin__UxBody *obj) {
   return *obj;
 }
 
@@ -2525,6 +2548,12 @@ memcpy(__out->data, __in, 32);
 	};
 
 
+	GoUint32 CSharp_skycoin_SKY_testutil_RandSHA256(cipher_SHA256* p1){
+		GoUint32 result = SKY_testutil_RandSHA256(p1);
+		return result;
+	}
+
+
 
 GoUint32_ _WrapperFeeCalculator(Transaction__Handle handle, GoUint64_* pFee, void* context){
 	FeeCalcFunc* feeCalc = (FeeCalcFunc*)context;
@@ -2903,17 +2932,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_destroy_cipher_SecKeys(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoSlicep() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoSlicePtr() {
   void * jresult ;
   GoSlice *result = 0 ;
   
-  result = (GoSlice *)new_GoSlicep();
+  result = (GoSlice *)new_GoSlicePtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoSlicep(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoSlicePtr(void * jarg1) {
   void * jresult ;
   GoSlice arg1 ;
   GoSlice *argp1 ;
@@ -2925,21 +2954,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoSlicep(void * jarg1) {
     return 0;
   }
   arg1 = *argp1; 
-  result = (GoSlice *)copy_GoSlicep(arg1);
+  result = (GoSlice *)copy_GoSlicePtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlicep(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoSlicePtr(void * jarg1) {
   GoSlice *arg1 = (GoSlice *) 0 ;
   
   arg1 = (GoSlice *)jarg1; 
-  delete_GoSlicep(arg1);
+  delete_GoSlicePtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlicep_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlicePtr_assign(void * jarg1, void * jarg2) {
   GoSlice *arg1 = (GoSlice *) 0 ;
   GoSlice arg2 ;
   GoSlice *argp2 ;
@@ -2951,17 +2980,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoSlicep_assign(void * jarg1, void * 
     return ;
   }
   arg2 = *argp2; 
-  GoSlicep_assign(arg1,arg2);
+  GoSlicePtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlicep_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoSlicePtr_value(void * jarg1) {
   void * jresult ;
   GoSlice *arg1 = (GoSlice *) 0 ;
   GoSlice result;
   
   arg1 = (GoSlice *)jarg1; 
-  result = GoSlicep_value(arg1);
+  result = GoSlicePtr_value(arg1);
   {
     GoSlice * resultptr = (GoSlice *) malloc(sizeof(GoSlice));
     memmove(resultptr, &result, sizeof(GoSlice));
@@ -3023,17 +3052,17 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_skycoin_GoUint8Ptr_value(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoStringp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoStringPtr() {
   void * jresult ;
   _GoString_ *result = 0 ;
   
-  result = (_GoString_ *)new_GoStringp();
+  result = (_GoString_ *)new_GoStringPtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringp(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringPtr(void * jarg1) {
   void * jresult ;
   _GoString_ arg1 ;
   _GoString_ *argp1 ;
@@ -3045,21 +3074,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoStringp(void * jarg1) {
     return 0;
   }
   arg1 = *argp1; 
-  result = (_GoString_ *)copy_GoStringp(arg1);
+  result = (_GoString_ *)copy_GoStringPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoStringp(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoStringPtr(void * jarg1) {
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   
   arg1 = (_GoString_ *)jarg1; 
-  delete_GoStringp(arg1);
+  delete_GoStringPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringp_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringPtr_assign(void * jarg1, void * jarg2) {
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   _GoString_ arg2 ;
   _GoString_ *argp2 ;
@@ -3071,17 +3100,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoStringp_assign(void * jarg1, void *
     return ;
   }
   arg2 = *argp2; 
-  GoStringp_assign(arg1,arg2);
+  GoStringPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringp_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringPtr_value(void * jarg1) {
   void * jresult ;
   _GoString_ *arg1 = (_GoString_ *) 0 ;
   _GoString_ result;
   
   arg1 = (_GoString_ *)jarg1; 
-  result = GoStringp_value(arg1);
+  result = GoStringPtr_value(arg1);
   {
     _GoString_ * resultptr = (_GoString_ *) malloc(sizeof(_GoString_));
     memmove(resultptr, &result, sizeof(_GoString_));
@@ -3091,53 +3120,53 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_GoStringp_value(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_intp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoIntPtr() {
   void * jresult ;
-  int *result = 0 ;
+  GoInt *result = 0 ;
   
-  result = (int *)new_intp();
+  result = (GoInt *)new_GoIntPtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_intp(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoIntPtr(long long jarg1) {
   void * jresult ;
-  int arg1 ;
-  int *result = 0 ;
+  GoInt arg1 ;
+  GoInt *result = 0 ;
   
-  arg1 = (int)jarg1; 
-  result = (int *)copy_intp(arg1);
+  arg1 = (GoInt)jarg1; 
+  result = (GoInt *)copy_GoIntPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_intp(void * jarg1) {
-  int *arg1 = (int *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoIntPtr(void * jarg1) {
+  GoInt *arg1 = (GoInt *) 0 ;
   
-  arg1 = (int *)jarg1; 
-  delete_intp(arg1);
+  arg1 = (GoInt *)jarg1; 
+  delete_GoIntPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_intp_assign(void * jarg1, int jarg2) {
-  int *arg1 = (int *) 0 ;
-  int arg2 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoIntPtr_assign(void * jarg1, long long jarg2) {
+  GoInt *arg1 = (GoInt *) 0 ;
+  GoInt arg2 ;
   
-  arg1 = (int *)jarg1; 
-  arg2 = (int)jarg2; 
-  intp_assign(arg1,arg2);
+  arg1 = (GoInt *)jarg1; 
+  arg2 = (GoInt)jarg2; 
+  GoIntPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_intp_value(void * jarg1) {
-  int jresult ;
-  int *arg1 = (int *) 0 ;
-  int result;
+SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_GoIntPtr_value(void * jarg1) {
+  long long jresult ;
+  GoInt *arg1 = (GoInt *) 0 ;
+  GoInt result;
   
-  arg1 = (int *)jarg1; 
-  result = (int)intp_value(arg1);
+  arg1 = (GoInt *)jarg1; 
+  result = (GoInt)GoIntPtr_value(arg1);
   jresult = result; 
   return jresult;
 }
@@ -3145,9 +3174,9 @@ SWIGEXPORT int SWIGSTDCALL CSharp_skycoin_intp_value(void * jarg1) {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint32Ptr() {
   void * jresult ;
-  unsigned int *result = 0 ;
+  GoUint32 *result = 0 ;
   
-  result = (unsigned int *)new_GoUint32Ptr();
+  result = (GoUint32 *)new_GoUint32Ptr();
   jresult = (void *)result; 
   return jresult;
 }
@@ -3155,57 +3184,57 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint32Ptr() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoUint32Ptr(unsigned int jarg1) {
   void * jresult ;
-  unsigned int arg1 ;
-  unsigned int *result = 0 ;
+  GoUint32 arg1 ;
+  GoUint32 *result = 0 ;
   
-  arg1 = (unsigned int)jarg1; 
-  result = (unsigned int *)copy_GoUint32Ptr(arg1);
+  arg1 = (GoUint32)jarg1; 
+  result = (GoUint32 *)copy_GoUint32Ptr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoUint32Ptr(void * jarg1) {
-  unsigned int *arg1 = (unsigned int *) 0 ;
+  GoUint32 *arg1 = (GoUint32 *) 0 ;
   
-  arg1 = (unsigned int *)jarg1; 
+  arg1 = (GoUint32 *)jarg1; 
   delete_GoUint32Ptr(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoUint32Ptr_assign(void * jarg1, unsigned int jarg2) {
-  unsigned int *arg1 = (unsigned int *) 0 ;
-  unsigned int arg2 ;
+  GoUint32 *arg1 = (GoUint32 *) 0 ;
+  GoUint32 arg2 ;
   
-  arg1 = (unsigned int *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
+  arg1 = (GoUint32 *)jarg1; 
+  arg2 = (GoUint32)jarg2; 
   GoUint32Ptr_assign(arg1,arg2);
 }
 
 
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_GoUint32Ptr_value(void * jarg1) {
   unsigned int jresult ;
-  unsigned int *arg1 = (unsigned int *) 0 ;
-  unsigned int result;
+  GoUint32 *arg1 = (GoUint32 *) 0 ;
+  GoUint32 result;
   
-  arg1 = (unsigned int *)jarg1; 
-  result = (unsigned int)GoUint32Ptr_value(arg1);
+  arg1 = (GoUint32 *)jarg1; 
+  result = (GoUint32)GoUint32Ptr_value(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__Transactionp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__TransactionPtr() {
   void * jresult ;
   coin__Transaction *result = 0 ;
   
-  result = (coin__Transaction *)new_coin__Transactionp();
+  result = (coin__Transaction *)new_coin__TransactionPtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__Transactionp(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__TransactionPtr(void * jarg1) {
   void * jresult ;
   coin__Transaction arg1 ;
   coin__Transaction *argp1 ;
@@ -3217,21 +3246,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__Transactionp(void * jarg
     return 0;
   }
   arg1 = *argp1; 
-  result = (coin__Transaction *)copy_coin__Transactionp(arg1);
+  result = (coin__Transaction *)copy_coin__TransactionPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__Transactionp(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__TransactionPtr(void * jarg1) {
   coin__Transaction *arg1 = (coin__Transaction *) 0 ;
   
   arg1 = (coin__Transaction *)jarg1; 
-  delete_coin__Transactionp(arg1);
+  delete_coin__TransactionPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__Transactionp_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__TransactionPtr_assign(void * jarg1, void * jarg2) {
   coin__Transaction *arg1 = (coin__Transaction *) 0 ;
   coin__Transaction arg2 ;
   coin__Transaction *argp2 ;
@@ -3243,17 +3272,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__Transactionp_assign(void * jarg
     return ;
   }
   arg2 = *argp2; 
-  coin__Transactionp_assign(arg1,arg2);
+  coin__TransactionPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__Transactionp_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__TransactionPtr_value(void * jarg1) {
   void * jresult ;
   coin__Transaction *arg1 = (coin__Transaction *) 0 ;
   coin__Transaction result;
   
   arg1 = (coin__Transaction *)jarg1; 
-  result = coin__Transactionp_value(arg1);
+  result = coin__TransactionPtr_value(arg1);
   {
     coin__Transaction * resultptr = (coin__Transaction *) malloc(sizeof(coin__Transaction));
     memmove(resultptr, &result, sizeof(coin__Transaction));
@@ -3331,173 +3360,121 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_AddressUxOuts__HandlePtr_value(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint64p() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint64Ptr() {
   void * jresult ;
   GoUint64 *result = 0 ;
   
-  result = (GoUint64 *)new_GoUint64p();
+  result = (GoUint64 *)new_GoUint64Ptr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoUint64p(unsigned long long jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoUint64Ptr(unsigned long long jarg1) {
   void * jresult ;
   GoUint64 arg1 ;
   GoUint64 *result = 0 ;
   
   arg1 = (GoUint64)jarg1; 
-  result = (GoUint64 *)copy_GoUint64p(arg1);
+  result = (GoUint64 *)copy_GoUint64Ptr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoUint64p(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoUint64Ptr(void * jarg1) {
   GoUint64 *arg1 = (GoUint64 *) 0 ;
   
   arg1 = (GoUint64 *)jarg1; 
-  delete_GoUint64p(arg1);
+  delete_GoUint64Ptr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoUint64p_assign(void * jarg1, unsigned long long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoUint64Ptr_assign(void * jarg1, unsigned long long jarg2) {
   GoUint64 *arg1 = (GoUint64 *) 0 ;
   GoUint64 arg2 ;
   
   arg1 = (GoUint64 *)jarg1; 
   arg2 = (GoUint64)jarg2; 
-  GoUint64p_assign(arg1,arg2);
+  GoUint64Ptr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_skycoin_GoUint64p_value(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_skycoin_GoUint64Ptr_value(void * jarg1) {
   unsigned long long jresult ;
   GoUint64 *arg1 = (GoUint64 *) 0 ;
   GoUint64 result;
   
   arg1 = (GoUint64 *)jarg1; 
-  result = (GoUint64)GoUint64p_value(arg1);
+  result = (GoUint64)GoUint64Ptr_value(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Gointp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint16Ptr() {
   void * jresult ;
-  long long *result = 0 ;
+  GoUint16 *result = 0 ;
   
-  result = (long long *)new_Gointp();
+  result = (GoUint16 *)new_GoUint16Ptr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Gointp(long long jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoUint16Ptr(unsigned short jarg1) {
   void * jresult ;
-  long long arg1 ;
-  long long *result = 0 ;
+  GoUint16 arg1 ;
+  GoUint16 *result = 0 ;
   
-  arg1 = (long long)jarg1; 
-  result = (long long *)copy_Gointp(arg1);
+  arg1 = (GoUint16)jarg1; 
+  result = (GoUint16 *)copy_GoUint16Ptr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Gointp(void * jarg1) {
-  long long *arg1 = (long long *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoUint16Ptr(void * jarg1) {
+  GoUint16 *arg1 = (GoUint16 *) 0 ;
   
-  arg1 = (long long *)jarg1; 
-  delete_Gointp(arg1);
+  arg1 = (GoUint16 *)jarg1; 
+  delete_GoUint16Ptr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Gointp_assign(void * jarg1, long long jarg2) {
-  long long *arg1 = (long long *) 0 ;
-  long long arg2 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoUint16Ptr_assign(void * jarg1, unsigned short jarg2) {
+  GoUint16 *arg1 = (GoUint16 *) 0 ;
+  GoUint16 arg2 ;
   
-  arg1 = (long long *)jarg1; 
-  arg2 = (long long)jarg2; 
-  Gointp_assign(arg1,arg2);
+  arg1 = (GoUint16 *)jarg1; 
+  arg2 = (GoUint16)jarg2; 
+  GoUint16Ptr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_skycoin_Gointp_value(void * jarg1) {
-  long long jresult ;
-  long long *arg1 = (long long *) 0 ;
-  long long result;
-  
-  arg1 = (long long *)jarg1; 
-  result = (long long)Gointp_value(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_GoUint16p() {
-  void * jresult ;
-  unsigned short *result = 0 ;
-  
-  result = (unsigned short *)new_GoUint16p();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_GoUint16p(unsigned short jarg1) {
-  void * jresult ;
-  unsigned short arg1 ;
-  unsigned short *result = 0 ;
-  
-  arg1 = (unsigned short)jarg1; 
-  result = (unsigned short *)copy_GoUint16p(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_GoUint16p(void * jarg1) {
-  unsigned short *arg1 = (unsigned short *) 0 ;
-  
-  arg1 = (unsigned short *)jarg1; 
-  delete_GoUint16p(arg1);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_GoUint16p_assign(void * jarg1, unsigned short jarg2) {
-  unsigned short *arg1 = (unsigned short *) 0 ;
-  unsigned short arg2 ;
-  
-  arg1 = (unsigned short *)jarg1; 
-  arg2 = (unsigned short)jarg2; 
-  GoUint16p_assign(arg1,arg2);
-}
-
-
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_skycoin_GoUint16p_value(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_skycoin_GoUint16Ptr_value(void * jarg1) {
   unsigned short jresult ;
-  unsigned short *arg1 = (unsigned short *) 0 ;
-  unsigned short result;
+  GoUint16 *arg1 = (GoUint16 *) 0 ;
+  GoUint16 result;
   
-  arg1 = (unsigned short *)jarg1; 
-  result = (unsigned short)GoUint16p_value(arg1);
+  arg1 = (GoUint16 *)jarg1; 
+  result = (GoUint16)GoUint16Ptr_value(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_cipher__Addressp() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_cipher__AddressPtr() {
   void * jresult ;
   cipher__Address *result = 0 ;
   
-  result = (cipher__Address *)new_cipher__Addressp();
+  result = (cipher__Address *)new_cipher__AddressPtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_cipher__Addressp(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_cipher__AddressPtr(void * jarg1) {
   void * jresult ;
   cipher__Address arg1 ;
   cipher__Address *argp1 ;
@@ -3509,21 +3486,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_cipher__Addressp(void * jarg1)
     return 0;
   }
   arg1 = *argp1; 
-  result = (cipher__Address *)copy_cipher__Addressp(arg1);
+  result = (cipher__Address *)copy_cipher__AddressPtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher__Addressp(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_cipher__AddressPtr(void * jarg1) {
   cipher__Address *arg1 = (cipher__Address *) 0 ;
   
   arg1 = (cipher__Address *)jarg1; 
-  delete_cipher__Addressp(arg1);
+  delete_cipher__AddressPtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher__Addressp_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher__AddressPtr_assign(void * jarg1, void * jarg2) {
   cipher__Address *arg1 = (cipher__Address *) 0 ;
   cipher__Address arg2 ;
   cipher__Address *argp2 ;
@@ -3535,17 +3512,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_cipher__Addressp_assign(void * jarg1,
     return ;
   }
   arg2 = *argp2; 
-  cipher__Addressp_assign(arg1,arg2);
+  cipher__AddressPtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher__Addressp_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_cipher__AddressPtr_value(void * jarg1) {
   void * jresult ;
   cipher__Address *arg1 = (cipher__Address *) 0 ;
   cipher__Address result;
   
   arg1 = (cipher__Address *)jarg1; 
-  result = cipher__Addressp_value(arg1);
+  result = cipher__AddressPtr_value(arg1);
   {
     cipher__Address * resultptr = (cipher__Address *) malloc(sizeof(cipher__Address));
     memmove(resultptr, &result, sizeof(cipher__Address));
@@ -3623,17 +3600,17 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transactions__HandlePtr_value(void 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__Handlep() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_Transaction__HandlePtr() {
   void * jresult ;
   Transaction__Handle *result = 0 ;
   
-  result = (Transaction__Handle *)new_Transaction__Handlep();
+  result = (Transaction__Handle *)new_Transaction__HandlePtr();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__HandlePtr(void * jarg1) {
   void * jresult ;
   Transaction__Handle arg1 ;
   Transaction__Handle *argp1 ;
@@ -3645,21 +3622,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_Transaction__Handlep(void * ja
     return 0;
   }
   arg1 = *argp1; 
-  result = (Transaction__Handle *)copy_Transaction__Handlep(arg1);
+  result = (Transaction__Handle *)copy_Transaction__HandlePtr(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__Handlep(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_Transaction__HandlePtr(void * jarg1) {
   Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
   
   arg1 = (Transaction__Handle *)jarg1; 
-  delete_Transaction__Handlep(arg1);
+  delete_Transaction__HandlePtr(arg1);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__HandlePtr_assign(void * jarg1, void * jarg2) {
   Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
   Transaction__Handle arg2 ;
   Transaction__Handle *argp2 ;
@@ -3671,17 +3648,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_assign(void * ja
     return ;
   }
   arg2 = *argp2; 
-  Transaction__Handlep_assign(arg1,arg2);
+  Transaction__HandlePtr_assign(arg1,arg2);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__Handlep_value(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_Transaction__HandlePtr_value(void * jarg1) {
   void * jresult ;
   Transaction__Handle *arg1 = (Transaction__Handle *) 0 ;
   Transaction__Handle result;
   
   arg1 = (Transaction__Handle *)jarg1; 
-  result = Transaction__Handlep_value(arg1);
+  result = Transaction__HandlePtr_value(arg1);
   {
     Transaction__Handle * resultptr = (Transaction__Handle *) malloc(sizeof(Transaction__Handle));
     memmove(resultptr, &result, sizeof(Transaction__Handle));
@@ -6023,6 +6000,142 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__BlockPtr_value(void * jarg1) 
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__UxOutPtr() {
+  void * jresult ;
+  coin__UxOut *result = 0 ;
+  
+  result = (coin__UxOut *)new_coin__UxOutPtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__UxOutPtr(void * jarg1) {
+  void * jresult ;
+  coin__UxOut arg1 ;
+  coin__UxOut *argp1 ;
+  coin__UxOut *result = 0 ;
+  
+  argp1 = (coin__UxOut *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null coin__UxOut", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (coin__UxOut *)copy_coin__UxOutPtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__UxOutPtr(void * jarg1) {
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  delete_coin__UxOutPtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__UxOutPtr_assign(void * jarg1, void * jarg2) {
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  coin__UxOut arg2 ;
+  coin__UxOut *argp2 ;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  argp2 = (coin__UxOut *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null coin__UxOut", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  coin__UxOutPtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__UxOutPtr_value(void * jarg1) {
+  void * jresult ;
+  coin__UxOut *arg1 = (coin__UxOut *) 0 ;
+  coin__UxOut result;
+  
+  arg1 = (coin__UxOut *)jarg1; 
+  result = coin__UxOutPtr_value(arg1);
+  {
+    coin__UxOut * resultptr = (coin__UxOut *) malloc(sizeof(coin__UxOut));
+    memmove(resultptr, &result, sizeof(coin__UxOut));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_new_coin__UxBodyPtr() {
+  void * jresult ;
+  coin__UxBody *result = 0 ;
+  
+  result = (coin__UxBody *)new_coin__UxBodyPtr();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_copy_coin__UxBodyPtr(void * jarg1) {
+  void * jresult ;
+  coin__UxBody arg1 ;
+  coin__UxBody *argp1 ;
+  coin__UxBody *result = 0 ;
+  
+  argp1 = (coin__UxBody *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null coin__UxBody", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  result = (coin__UxBody *)copy_coin__UxBodyPtr(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_delete_coin__UxBodyPtr(void * jarg1) {
+  coin__UxBody *arg1 = (coin__UxBody *) 0 ;
+  
+  arg1 = (coin__UxBody *)jarg1; 
+  delete_coin__UxBodyPtr(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_coin__UxBodyPtr_assign(void * jarg1, void * jarg2) {
+  coin__UxBody *arg1 = (coin__UxBody *) 0 ;
+  coin__UxBody arg2 ;
+  coin__UxBody *argp2 ;
+  
+  arg1 = (coin__UxBody *)jarg1; 
+  argp2 = (coin__UxBody *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null coin__UxBody", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  coin__UxBodyPtr_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_skycoin_coin__UxBodyPtr_value(void * jarg1) {
+  void * jresult ;
+  coin__UxBody *arg1 = (coin__UxBody *) 0 ;
+  coin__UxBody result;
+  
+  arg1 = (coin__UxBody *)jarg1; 
+  result = coin__UxBodyPtr_value(arg1);
+  {
+    coin__UxBody * resultptr = (coin__UxBody *) malloc(sizeof(coin__UxBody));
+    memmove(resultptr, &result, sizeof(coin__UxBody));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_skycoin_SKY_handle_close(void * jarg1) {
   Handle arg1 ;
   Handle *argp1 ;
@@ -7684,6 +7797,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_coin_VerifyInputSignature
   arg1 = *argp1; 
   arg2 = (coin_UxOutArray *)jarg2; 
   result = (GoUint32)CSharp_skycoin_SKY_coin_VerifyInputSignatures(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_testutil_RandSHA256__SWIG_0(void * jarg1) {
+  unsigned int jresult ;
+  cipher_SHA256 *arg1 = (cipher_SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher_SHA256 *)jarg1; 
+  result = (GoUint32)CSharp_skycoin_SKY_testutil_RandSHA256(arg1);
   jresult = result; 
   return jresult;
 }
@@ -10539,6 +10664,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_testutil_MakePubKey(ciphe
   
   arg1 = (cipher__PubKey *)jarg1; 
   result = (GoUint32)SKY_testutil_MakePubKey((GoUint8_ (*)[33])arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_skycoin_SKY_testutil_RandSHA256__SWIG_1(cipher_SecKey* jarg1) {
+  unsigned int jresult ;
+  cipher__SHA256 *arg1 = (cipher__SHA256 *) 0 ;
+  GoUint32 result;
+  
+  arg1 = (cipher__SHA256 *)jarg1; 
+  result = (GoUint32)SKY_testutil_RandSHA256((GoUint8_ (*)[32])arg1);
   jresult = result; 
   return jresult;
 }

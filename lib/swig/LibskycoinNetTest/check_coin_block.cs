@@ -89,21 +89,21 @@ namespace LibskycoinNetTest
 
             var pnewBlockHeader = new_BlockHeader__HandlePtr();
             err = SKY_coin_Block_GetBlockHeader(newBlock, pnewBlockHeader);
-            var pHeadFee = new_GoUint64p();
-            var pHeadTime = new_GoUint64p();
-            var pHeadBkSeq = new_GoUint64p();
+            var pHeadFee = new_GoUint64Ptr();
+            var pHeadTime = new_GoUint64Ptr();
+            var pHeadBkSeq = new_GoUint64Ptr();
             SKY_coin_BlockHeader_Fee(pnewBlockHeader, pHeadFee);
             SKY_coin_BlockHeader_Time(pnewBlockHeader, pHeadTime);
             SKY_coin_BlockHeader_BkSeq(pnewBlockHeader, pHeadBkSeq);
-            var pTransLength = new_Gointp();
+            var pTransLength = new_GoIntPtr();
             err = SKY_coin_Transactions_Length(txns, pTransLength);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(pHeadFee), (fee * (ulong)Gointp_value(pTransLength)));
-            Assert.AreEqual(GoUint64p_value(pHeadTime), currentTime);
+            Assert.AreEqual(GoUint64Ptr_value(pHeadFee), (fee * (ulong)GoIntPtr_value(pTransLength)));
+            Assert.AreEqual(GoUint64Ptr_value(pHeadTime), currentTime);
             pPrevBlockHeader = new_BlockHeader__HandlePtr();
             err = SKY_coin_Block_GetBlockHeader(prevBlock, pPrevBlockHeader);
             Assert.AreEqual(err, SKY_OK);
-            var pPrevBkSeq = new_GoUint64p();
+            var pPrevBkSeq = new_GoUint64Ptr();
             SKY_coin_BlockHeader_BkSeq(pPrevBlockHeader, pPrevBkSeq);
             var pnewuxHash = new cipher_SHA256();
             SKY_coin_BlockHeader_UxHash(pnewBlockHeader, pnewuxHash);

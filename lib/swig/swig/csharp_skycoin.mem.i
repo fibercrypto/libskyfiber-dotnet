@@ -517,3 +517,12 @@
 		return result;
 	};
 }
+
+
+%rename(SKY_testutil_RandSHA256) CSharp_skycoin_SKY_testutil_RandSHA256;
+%inline {
+	GoUint32 CSharp_skycoin_SKY_testutil_RandSHA256(cipher_SHA256* p1){
+		GoUint32 result = SKY_testutil_RandSHA256(p1);
+		return result;
+	}
+}

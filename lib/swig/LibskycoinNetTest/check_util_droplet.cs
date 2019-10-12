@@ -174,9 +174,9 @@ namespace LibskycoinNetTest {
             FullTestStr ();
             for (int i = 0; i < cases.Length; i++) {
                 var tc = cases[i];
-                var n = new_GoUint64p ();
+                var n = new_GoUint64Ptr ();
                 var err = SKY_droplet_FromString (tc.s, n);
-                var n_v = GoUint64p_value (n);
+                var n_v = GoUint64Ptr_value (n);
                 if (tc.e == SKY_OK) {
                     Assert.AreEqual (err, SKY_OK);
 
