@@ -36,31 +36,32 @@ namespace utils
             return handle2;
         }
 
+        public SWIGTYPE_p_Transaction__Handle makeTransactionFromUxOuts(coin_UxOutArray uxs, cipher_SecKeys secs)
+        {
+            Assert.AreEqual(uxs.count, secs.count);
+
+            var txn = makeEmptyTransaction();
+
+            var err = SKY_coin_Transaction_PushOutput(txn, makeAddress(), (ulong)(1e6), 50);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_PushOutput(txn, makeAddress(), (ulong)(5e6), 50);
+            Assert.AreEqual(err, SKY_OK);
+
+            for (int i = 0; i < uxs.count; i++)
+            {
+                var ux = uxs.getAt(i);
+                var has_ux = new cipher_SHA256();
+                err = SKY_coin_UxOut_Hash(ux, has_ux);
+                Assert.AreEqual(err, SKY_OK);
+                err = SKY_coin_Transaction_PushInput(txn, has_ux);
+                Assert.AreEqual(err, SKY_OK);
+            }
+            
+            return txn;
+        }
         public void makeTransactionFromUxOut(coin__UxOut ux, cipher_SecKey s, SWIGTYPE_p_Transaction__Handle handle, coin__Transaction ptx)
         {
-            handle = makeEmptyTransaction();
-            var h = new cipher_SHA256();
-            Assert.AreEqual(SKY_cipher_SecKey_Verify(s), SKY_OK);
-            var ux_tmp = coin__UxOutPtr_value(ux);
-            var err = SKY_coin_UxOut_Hash(ux_tmp, h);
-            Assert.AreEqual(err, SKY_OK);
-            var r = SKY_coin_Transaction_PushInput(handle, h);
-            Assert.AreEqual(err, SKY_OK);
-            err = SKY_coin_Transaction_PushOutput(handle, makeAddress(), (ulong)1e6, 50);
-            Assert.AreEqual(err, SKY_OK);
-            err = SKY_coin_Transaction_PushOutput(handle, makeAddress(), (ulong)5e6, 50);
-            Assert.AreEqual(err, SKY_OK);
-            var seckeys = new cipher_SecKeys();
-            seckeys.allocate(1);
-            seckeys.setAt(0, s);
-            err = SKY_coin_Transaction_SignInputs(handle, seckeys);
-            Assert.AreEqual(err, SKY_OK);
-            err = SKY_coin_Transaction_UpdateHeader(handle);
-            Assert.AreEqual(err, SKY_OK);
-            err = SKY_coin_GetTransactionObject(handle, ptx);
-            Assert.AreEqual(err, SKY_OK);
-            err = SKY_coin_Transaction_Verify(handle);
-            Assert.AreEqual(err, SKY_OK);
+
 
         }
 
