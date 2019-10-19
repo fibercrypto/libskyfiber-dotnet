@@ -534,3 +534,11 @@
 		return result;
 	}
 }
+
+%rename(SKY_coin_Transaction_GetInnerHash) CSharp_skycoin_SKY_coin_Transaction_GetInnerHash;
+%inline {
+	GoUint32 CSharp_skycoin_SKY_coin_Transaction_GetInnerHash( Transaction__Handle handle,cipher_SHA256* p1){
+		GoUint32 result = SKY_coin_Transaction_GetInnerHash(handle,p1);
+		return result;
+	}
+}

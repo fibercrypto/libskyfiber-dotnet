@@ -207,29 +207,26 @@ namespace LibskycoinNetTest
             Assert.AreEqual(h.isEqual(h2), 0);
         }
 
-        // [Test]
-        // public void TestTransactionUpdateHeader()
-        // {
-        //     var handle = new_Transaction__Handlep();
-        //     var tx = makeTransaction(handle);
-        //     var h = new cipher_SHA256();
-        //     var h1 = new cipher_SHA256();
-        //     var h2 = new cipher_SHA256();
-        //     var err = SKY_coin_Transaction_HashInner(handle, h);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     tx.setInnerHash(new cipher_SHA256());
-        //     err = SKY_coin_Transaction_UpdateHeader(handle);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var arg = new cipher_SHA256();
-        //     arg = tx.GetInnerHash();
-        //     h1.assignFrom(arg);
-        //     err = SKY_coin_Transaction_HashInner(handle, h2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(h1.isEqual(new cipher_SHA256()), 0);
-        //     Assert.AreEqual(h1.isEqual(h), 1);
-        //     Assert.AreEqual(h1.isEqual(h2), 1);
-        // }
-
+        [Test]
+        public void TestTransactionUpdateHeader()
+        {
+            var handle = transutils.makeTransaction();
+            var hash = new cipher_SHA256();
+            var nullHash = new cipher_SHA256();
+            var hashInner = new cipher_SHA256();
+            var err = SKY_coin_Transaction_HashInner(handle, hash);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetInnerHash(handle, hash);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_SetInnerHash(handle, nullHash);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_UpdateHeader(handle);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(hash.isEqual(nullHash), 1);
+            err = SKY_coin_Transaction_HashInner(handle, hashInner);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(hashInner.isEqual(hash), 0);
+        }
         // [Test]
         // public void TestTransactionHashInner()
         // {
