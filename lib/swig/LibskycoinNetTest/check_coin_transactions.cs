@@ -193,102 +193,19 @@ namespace LibskycoinNetTest
             }
         }
 
-        // [Test]
-        // public void TestTransactionSignInputs()
-        // {
-        //     var handle = transutils.makeEmptyTransaction();
-        //     //  Panics if txns already signed
-        //     var sig = new cipher_Sig();
-        //     var err = SKY_coin_Transaction_PushSignature(handle, sig);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var seckeys = new cipher_SecKeys();
-        //     seckeys.allocate(1);
-        //     seckeys.setAt(0, new cipher_SecKey());
-        //     // Panics if not enough keys
-        //     handle = transutils.makeEmptyTransaction();
-        //     var s = new cipher_SecKey();
-        //     var s2 = new cipher_SecKey();
-        //     var ux = new coin__UxOut();
-        //     var ux2 = new coin__UxOut();
-        //     makeUxOutWithSecret(ux, s);
-        //     var h = new cipher_SHA256();
-        //     err = SKY_coin_UxOut_Hash(ux, h);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var r = new uint();
-        //     r = SKY_coin_Transaction_PushInput(handle, h);
-        //     Assert.AreEqual(r, SKY_OK);
-        //     makeUxOutWithSecret(ux2, s2);
-        //     err = SKY_coin_UxOut_Hash(ux2, h);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     r = SKY_coin_Transaction_PushInput(handle, h);
-        //     Assert.AreEqual(r, SKY_OK);
-        //     err = SKY_coin_Transaction_PushOutput(handle, transutils.makeAddress(), 40, 80);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var count = new_Gointp();
-        //     err = SKY_coin_Transaction_GetSignaturesCount(handle, count);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(count), 0);
-        //     // Valid signing
-        //     h = new cipher_SHA256();
-        //     SKY_coin_Transaction_HashInner(handle, h);
-        //     seckeys = new cipher_SecKeys();
-        //     seckeys.allocate(2);
-        //     seckeys.setAt(0, s);
-        //     seckeys.setAt(1, s2);
-        //     err = SKY_coin_Transaction_SignInputs(handle, seckeys);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_coin_Transaction_GetSignaturesCount(handle, count);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(count), 2);
-        //     var h2 = new cipher_SHA256();
-        //     err = SKY_coin_Transaction_HashInner(handle, h2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(h.isEqual(h2), 1);
-        //     var p = new cipher_PubKey();
-        //     err = SKY_cipher_PubKeyFromSecKey(s, p);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var a = new cipher__Address();
-        //     var a2 = new cipher__Address();
-        //     err = SKY_cipher_AddressFromPubKey(p, a);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_cipher_PubKeyFromSecKey(s2, p);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_cipher_AddressFromPubKey(p, a2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var sha1 = new cipher_SHA256();
-        //     var sha2 = new cipher_SHA256();
-        //     var txin0 = new cipher_SHA256();
-        //     var txin1 = new cipher_SHA256();
-        //     err = SKY_coin_Transaction_GetInputAt(handle, 0, txin0);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_coin_Transaction_GetInputAt(handle, 1, txin1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_cipher_AddSHA256(h, txin0, sha1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_cipher_AddSHA256(h, txin1, sha2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var txsig0 = new cipher_Sig();
-        //     var txsig1 = new cipher_Sig();
-        //     err = SKY_coin_Transaction_GetSignatureAt(handle, 0, txsig0);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     err = SKY_coin_Transaction_GetSignatureAt(handle, 1, txsig1);
-        //     Assert.AreEqual(err, SKY_OK);
-        // }
-
-        // [Test]
-        // public void TestTransactionHash()
-        // {
-        //     var handle = new_Transaction__Handlep();
-        //     makeTransaction(handle);
-        //     var h = new cipher_SHA256();
-        //     var h2 = new cipher_SHA256();
-        //     var err = SKY_coin_Transaction_Hash(handle, h);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(h.isEqual(h2), 0);
-        //     err = SKY_coin_Transaction_HashInner(handle, h2);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(h.isEqual(h2), 0);
-        // }
+        [Test]
+        public void TestTransactionHash()
+        {
+            var handle = transutils.makeTransaction();
+            var h = new cipher_SHA256();
+            var h2 = new cipher_SHA256();
+            var err = SKY_coin_Transaction_Hash(handle, h);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(h.isEqual(h2), 0);
+            err = SKY_coin_Transaction_HashInner(handle, h2);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(h.isEqual(h2), 0);
+        }
 
         // [Test]
         // public void TestTransactionUpdateHeader()
