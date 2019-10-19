@@ -155,91 +155,43 @@ namespace LibskycoinNetTest
         // }
 
         [Test]
-        public void TestTransactionVerifyInput()
+        public void TestTransactionPushOutput()
         {
-            // Valid
-            var seckey = new cipher_SecKey();
-            var uxOut = transutils.makeUxOutWithSecret(seckey);
-            var handle = transutils.makeTransactionFromUxOut(uxOut, seckey);
-            // var ux = new coin_UxOutArray();
-            // ux.allocate(0);
-            // ux.append(uxOut);
-            // var result = SKY_coin_VerifyInputSignatures(handle, ux);
-            // Assert.AreEqual(result, SKY_OK);
+            var tx = transutils.makeEmptyTransaction();
+            var a = transutils.makeAddress();
+            var err = SKY_coin_Transaction_PushOutput(tx, a, 100, 150);
+            Assert.AreEqual(err, SKY_OK);
+            var count = new_GoIntPtr();
+            err = SKY_coin_Transaction_GetOutputsCount(tx, count);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(GoIntPtr_value(count), 1);
+            var pOut1 = new coin__TransactionOutput();
+            var pOut = new coin__TransactionOutput();
+            pOut1.Address = a;
+            pOut1.Coins = 100;
+            pOut1.Hours = 150;
+            err = SKY_coin_Transaction_GetOutputAt(tx, 0, pOut);
+            Assert.AreEqual(err, SKY_OK);
+            Assert.AreEqual(pOut.isEqual(pOut1), 1);
+            for (int i = 1; i < 20; i++)
+            {
+                a = transutils.makeAddress();
+                err = SKY_coin_Transaction_PushOutput(tx, a, (ulong)(i * 100), (ulong)(i * 50));
+                Assert.AreEqual(err, SKY_OK);
+                count = new_GoIntPtr();
+                err = SKY_coin_Transaction_GetOutputsCount(tx, count);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(GoIntPtr_value(count), (i + 1));
+                pOut1 = new coin__TransactionOutput();
+                pOut = new coin__TransactionOutput();
+                pOut1.Address = a;
+                pOut1.Coins = (ulong)(i * 100);
+                pOut1.Hours = (ulong)(i * 50);
+                err = SKY_coin_Transaction_GetOutputAt(tx, i, pOut);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(pOut.isEqual(pOut1), 1);
+            }
         }
-
-        // [Test]
-        // public void TestTransactionPushInput()
-        // {
-        //     var tx = new_Transaction__Handlep();
-        //     makeEmptyTransaction(tx);
-        //     var ux = new coin__UxOut();
-        //     makeUxOut(ux);
-        //     var sha = new cipher_SHA256();
-        //     var err = SKY_coin_UxOut_Hash(ux, sha);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var r = new uint();
-        //     r = SKY_coin_Transaction_PushInput(tx, sha);
-        //     Assert.AreEqual(r, 0);
-        //     var count = new_Gointp();
-        //     err = SKY_coin_Transaction_GetInputsCount(tx, count);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(count), 1);
-        //     var sha1 = new cipher_SHA256();
-        //     err = SKY_coin_Transaction_GetInputAt(tx, 0, sha1);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(sha.isEqual(sha1), 1);
-        //     err = SKY_coin_Transaction_ResetInputs(tx, 0);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     for (int i = 0; i < short.MaxValue; i++)
-        //     {
-        //         r = new uint();
-        //         r = SKY_coin_Transaction_PushInput(tx, new cipher_SHA256());
-        //         Assert.AreEqual(r, SKY_OK);
-        //     }
-        //     makeUxOut(ux);
-        //     err = SKY_coin_UxOut_Hash(ux, sha);
-        //     Assert.AreEqual(err, SKY_OK);
-        // }
-
-        // [Test]
-        // public void TestTransactionPushOutput()
-        // {
-        //     var tx = transutils.makeEmptyTransaction();
-        //     var a = transutils.makeAddress();
-        //     var err = SKY_coin_Transaction_PushOutput(tx, a, 100, 150);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     var count = new_Gointp();
-        //     err = SKY_coin_Transaction_GetOutputsCount(tx, count);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(Gointp_value(count), 1);
-        //     var pOut1 = new coin__TransactionOutput();
-        //     var pOut = new coin__TransactionOutput();
-        //     pOut1.Address = a;
-        //     pOut1.Coins = 100;
-        //     pOut1.Hours = 150;
-        //     err = SKY_coin_Transaction_GetOutputAt(tx, 0, pOut);
-        //     Assert.AreEqual(err, SKY_OK);
-        //     Assert.AreEqual(pOut.isEqual(pOut1), 1);
-        //     for (int i = 1; i < 20; i++)
-        //     {
-        //         a = transutils.makeAddress();
-        //         err = SKY_coin_Transaction_PushOutput(tx, a, (ulong)(i * 100), (ulong)(i * 50));
-        //         Assert.AreEqual(err, SKY_OK);
-        //         count = new_Gointp();
-        //         err = SKY_coin_Transaction_GetOutputsCount(tx, count);
-        //         Assert.AreEqual(err, SKY_OK);
-        //         Assert.AreEqual(Gointp_value(count), (i + 1));
-        //         pOut1 = new coin__TransactionOutput();
-        //         pOut = new coin__TransactionOutput();
-        //         pOut1.Address = a;
-        //         pOut1.Coins = (ulong)(i * 100);
-        //         pOut1.Hours = (ulong)(i * 50);
-        //         err = SKY_coin_Transaction_GetOutputAt(tx, i, pOut);
-        //         Assert.AreEqual(err, SKY_OK);
-        //         Assert.AreEqual(pOut.isEqual(pOut1), 1);
-        //     }
-        // }
 
         // [Test]
         // public void TestTransactionSignInputs()
