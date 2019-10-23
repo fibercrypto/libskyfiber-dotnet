@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 .PHONY: configure build-libc build-swig develop build-libc-swig build
-.PHONY: test test-ci help
+.PHONY: test test-ci help clean
 
 # Compilation output
 .ONESHELL:
@@ -148,6 +148,8 @@ lint:
 	gendarme --v --config rules.xml --severity critical lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll
 	gendarme --v --config rules.xml --severity critical  lib/swig/LibskycoinNet/bin/Release/LibskycoinNet.dll
 
+clean:  ## Clean all trash
+	GOPATH="$(REPO_ROOT)/$(GOPATH_DIR)" make -C $(SKYLIBC_DIR) clean-libc
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

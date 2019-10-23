@@ -390,164 +390,166 @@ FeeCalculator overflow(){
 		return 0;
 	}
 
-	// coin__Transaction *makeEmptyTransaction(Transaction__Handle * handle)
-	// {
-	// 	int result;
-	// 	coin__Transaction *ptransaction = NULL;
-	// 	result = SKY_coin_Create_Transaction(handle);
-	// 	registerHandleClose(*handle);
-	// 	result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
-	// 	return ptransaction;
-	// }
-	// int makeUxBodyWithSecret(coin__UxBody * puxBody, cipher__SecKey * pseckey)
-	// {
-	// 	cipher__PubKey pubkey;
-	// 	cipher__Address address;
-	// 	int result;
+	coin__Transaction *makeEmptyTransaction(Transaction__Handle * handle)
+	{
+		int result;
+		coin__Transaction *ptransaction = NULL;
+		result = SKY_coin_Create_Transaction(handle);
+		registerHandleClose(*handle);
+		result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
+		return ptransaction;
+	}
+	int makeUxBodyWithSecret(coin__UxBody * puxBody, cipher__SecKey * pseckey)
+	{
+		cipher__PubKey pubkey;
+		cipher__Address address;
+		int result;
 
-	// 	memset(puxBody, 0, sizeof(coin__UxBody));
-	// 	puxBody->Coins = 1000000;
-	// 	puxBody->Hours = 100;
+		memset(puxBody, 0, sizeof(coin__UxBody));
+		puxBody->Coins = 1000000;
+		puxBody->Hours = 100;
 
-	// 	result = SKY_cipher_GenerateKeyPair(&pubkey, pseckey);
-	// 	if (result != 0)
-	// 	{
-	// 		return 1;
-	// 	}
+		result = SKY_cipher_GenerateKeyPair(&pubkey, pseckey);
+		if (result != 0)
+		{
+			return 1;
+		}
 
-	// 	GoSlice slice;
-	// 	cipher__SHA256 hash;
+		GoSlice slice;
+		memset(&slice, 0, sizeof(GoSlice));
+		cipher__SHA256 hash;
 
-	// 	result = SKY_cipher_RandByte(128, (GoSlice *)&slice);
-	// 	registerMemCleanup(slice.data);
-	// 	if (result != 0)
-	// 	{
-	// 		return 1;
-	// 	}
-	// 	result = SKY_cipher_SumSHA256(slice, &puxBody->SrcTransaction);
-	// 	if (result != 0)
-	// 	{
-	// 		return 1;
-	// 	}
+		result = SKY_cipher_RandByte(128, (coin__UxArray *)&slice);
+		registerMemCleanup(slice.data);
+		if (result != 0)
+		{
+			return 1;
+		}
+		result = SKY_cipher_SumSHA256(slice, &puxBody->SrcTransaction);
+		if (result != 0)
+		{
+			return 1;
+		}
 
-	// 	result = SKY_cipher_AddressFromPubKey(&pubkey, &puxBody->Address);
-	// 	if (result != 0)
-	// 	{
-	// 		return 1;
-	// 	}
-	// 	return result;
-	// }
-	// int makeUxOutWithSecret(coin__UxOut * puxOut, cipher__SecKey * pseckey)
-	// {
-	// 	int result;
-	// 	memset(puxOut, 0, sizeof(coin__UxOut));
-	// 	result = makeUxBodyWithSecret(&puxOut->Body, pseckey);
-	// 	puxOut->Head.Time = 100;
-	// 	puxOut->Head.BkSeq = 2;
-	// 	return result;
-	// }
-	// int makeUxOut(coin__UxOut * puxOut)
-	// {
-	// 	cipher__SecKey seckey;
-	// 	return makeUxOutWithSecret(puxOut, &seckey);
-	// }
-	// unsigned int makeUxArray(coin_UxOutArray * parray, unsigned int n)
-	// {
-	//     parray->data = malloc(sizeof(coin__UxOut) * n);
-	//     if (!parray->data)
-	//         return SKY_ERROR;
-	//     registerMemCleanup(parray->data);
-	//     parray->count = parray->count = n;
-	//     coin__UxOut* p = (coin__UxOut*)parray->data;
-	//     unsigned int result = SKY_OK;
-	//     unsigned int i;
-	//     for (i = 0; i < n; i++) {
-	//         result = makeUxOut(p);
-	//         if (result != SKY_OK)
-	//             break;
-	//         p++;
-	//     }
-	//     return result;
-	// }
-	// int makeAddress(cipher__Address * paddress)
-	// {
-	// 	cipher__PubKey pubkey;
-	// 	cipher__SecKey seckey;
-	// 	cipher__Address address;
-	// 	int result;
+		result = SKY_cipher_AddressFromPubKey(&pubkey, &puxBody->Address);
+		if (result != 0)
+		{
+			return 1;
+		}
+		return result;
+	}
+	int makeUxOutWithSecret(coin__UxOut * puxOut, cipher__SecKey * pseckey)
+	{
+		int result;
+		memset(puxOut, 0, sizeof(coin__UxOut));
+		result = makeUxBodyWithSecret(&puxOut->Body, pseckey);
+		puxOut->Head.Time = 100;
+		puxOut->Head.BkSeq = 2;
+		return result;
+	}
+	int makeUxOut(coin__UxOut * puxOut)
+	{
+		cipher__SecKey seckey;
+		return makeUxOutWithSecret(puxOut, &seckey);
+	}
+	int makeUxArray(coin_UxOutArray * parray, int n)
+	{
+		parray->data = malloc(sizeof(coin__UxOut) * n);
+		if (!parray->data)
+			return 1;
+		registerMemCleanup(parray->data);
+		parray->count = parray->count = n;
+		coin__UxOut *p = (coin__UxOut *)parray->data;
+		int result = 0;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			result = makeUxOut(p);
+			if (result != 0)
+				break;
+			p++;
+		}
+		return result;
+	}
+	int makeAddress(cipher__Address * paddress)
+	{
+		cipher__PubKey pubkey;
+		cipher__SecKey seckey;
+		cipher__Address address;
+		int result;
 
-	// 	result = SKY_cipher_GenerateKeyPair(&pubkey, &seckey);
-	// 	if (result != 0)
-	// 		return 1;
+		result = SKY_cipher_GenerateKeyPair(&pubkey, &seckey);
+		if (result != 0)
+			return 1;
 
-	// 	result = SKY_cipher_AddressFromPubKey(&pubkey, paddress);
-	// 	if (result != 0)
-	// 		return 1;
-	// 	return result;
-	// }
-	// coin__Transaction *makeTransactionFromUxOut(coin__UxOut * puxOut, cipher__SecKey * pseckey, Transaction__Handle * handle)
-	// {
-	// 	int result;
-	// 	coin__Transaction *ptransaction = NULL;
-	// 	result = SKY_coin_Create_Transaction(handle);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_Create_Transaction failed");
-	// 	registerHandleClose(*handle);
-	// 	result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_GetTransactionObject failed");
-	// 	cipher__SHA256 sha256;
-	// 	result = SKY_coin_UxOut_Hash(puxOut, &sha256);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_UxOut_Hash failed");
-	// 	GoUint16 r;
-	// 	r = SKY_coin_Transaction_PushInput(*handle, &sha256);
+		result = SKY_cipher_AddressFromPubKey(&pubkey, paddress);
+		if (result != 0)
+			return 1;
+		return result;
+	}
+	coin__Transaction *makeTransactionFromUxOut(coin__UxOut * puxOut, cipher__SecKey * pseckey, Transaction__Handle * handle)
+	{
+		int result;
+		coin__Transaction *ptransaction = NULL;
+		result = SKY_coin_Create_Transaction(handle);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Create_Transaction failed");
+		registerHandleClose(*handle);
+		result = SKY_coin_GetTransactionObject(*handle, &ptransaction);
+		//   cr_assert(result == SKY_OK, "SKY_coin_GetTransactionObject failed");
+		cipher__SHA256 sha256;
+		result = SKY_coin_UxOut_Hash(puxOut, &sha256);
+		//   cr_assert(result == SKY_OK, "SKY_coin_UxOut_Hash failed");
+		GoUint16 r;
+		r = SKY_coin_Transaction_PushInput(*handle, &sha256);
 
-	// 	cipher__Address address1, address2;
-	// 	result = makeAddress(&address1);
-	// 	//   cr_assert(result == SKY_OK, "makeAddress failed");
-	// 	result = makeAddress(&address2);
-	// 	//   cr_assert(result == SKY_OK, "makeAddress failed");
+		cipher__Address address1, address2;
+		result = makeAddress(&address1);
+		//   cr_assert(result == SKY_OK, "makeAddress failed");
+		result = makeAddress(&address2);
+		//   cr_assert(result == SKY_OK, "makeAddress failed");
 
-	// 	result = SKY_coin_Transaction_PushOutput(*handle, &address1, 1000000, 50);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
-	// 	result = SKY_coin_Transaction_PushOutput(*handle, &address2, 5000000, 50);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
+		result = SKY_coin_Transaction_PushOutput(*handle, &address1, 1000000, 50);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
+		result = SKY_coin_Transaction_PushOutput(*handle, &address2, 5000000, 50);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_PushOutput failed");
 
-	// 	GoSlice secKeys = {pseckey, 1, 1};
-	// 	result = SKY_coin_Transaction_SignInputs(*handle, secKeys);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_SignInputs failed");
-	// 	result = SKY_coin_Transaction_UpdateHeader(*handle);
-	// 	//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_UpdateHeader failed");
-	// 	return ptransaction;
-	// }
+		GoSlice secKeys = {pseckey, 1, 1};
+		result = SKY_coin_Transaction_SignInputs(*handle, secKeys);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_SignInputs failed");
+		result = SKY_coin_Transaction_UpdateHeader(*handle);
+		//   cr_assert(result == SKY_OK, "SKY_coin_Transaction_UpdateHeader failed");
+		return ptransaction;
+	}
 
-	// coin__Transaction *makeTransaction(Transaction__Handle * handle)
-	// {
-	// 	int result;
-	// 	coin__UxOut uxOut;
-	// 	cipher__SecKey seckey;
-	// 	coin__Transaction *ptransaction = NULL;
-	// 	result = makeUxOutWithSecret(&uxOut, &seckey);
-	// 	ptransaction = makeTransactionFromUxOut(&uxOut, &seckey, handle);
-	// 	return ptransaction;
-	// }
+	coin__Transaction *makeTransaction(Transaction__Handle * handle)
+	{
+		int result;
+		coin__UxOut uxOut;
+		cipher__SecKey seckey;
+		coin__Transaction *ptransaction = NULL;
+		result = makeUxOutWithSecret(&uxOut, &seckey);
+		ptransaction = makeTransactionFromUxOut(&uxOut, &seckey, handle);
+		return ptransaction;
+	}
 
-	// int makeTransactions(int n, Transactions__Handle *handle)
-	// {
-	// 	int result = SKY_coin_Create_Transactions(handle);
-	// 	if (result != 0)
-	// 		return 1;
-	// 	registerHandleClose(*handle);
-	// 	int i;
-	// 	for (i = 0; i < n; i++)
-	// 	{
-	// 		Transaction__Handle thandle;
-	// 		makeTransaction(&thandle);
-	// 		registerHandleClose(thandle);
-	// 		result = SKY_coin_Transactions_Add(*handle, thandle);
-	// 		if (result != 0)
-	// 			return 1;
-	// 	}
-	// 	return result;
-	// }
+	int makeTransactions(int n, Transactions__Handle *handle)
+	{
+		int result = SKY_coin_Create_Transactions(handle);
+		if (result != 0)
+			return 1;
+		registerHandleClose(*handle);
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			Transaction__Handle thandle;
+			makeTransaction(&thandle);
+			registerHandleClose(thandle);
+			result = SKY_coin_Transactions_Add(*handle, thandle);
+			if (result != 0)
+				return 1;
+		}
+		return result;
+	}
 
 	// Base 64
 

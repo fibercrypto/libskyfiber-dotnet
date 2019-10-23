@@ -542,3 +542,11 @@
 		return result;
 	}
 }
+
+%rename(SKY_coin_Transaction_SizeHash) CSharp_skycoin_SKY_coin_Transaction_SizeHash;
+%inline {
+	GoUint32 CSharp_skycoin_SKY_coin_Transaction_SizeHash(Transaction__Handle p0, GoUint32* p1, cipher_SHA256* p2){
+		GoUint32 result = SKY_coin_Transaction_SizeHash(p0,p1,p2);
+		return result;
+	}
+}

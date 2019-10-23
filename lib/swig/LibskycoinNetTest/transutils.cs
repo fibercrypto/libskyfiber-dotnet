@@ -71,12 +71,11 @@ namespace utils
             return txn;
         }
 
-        public void makeUxBodyWithSecret(coin__UxBody uxBody_tmp, cipher_SecKey secKey)
+        public void makeUxBodyWithSecret(coin__UxBody uxBody, cipher_SecKey secKey)
         {
             var p = new cipher_PubKey();
             var err = SKY_cipher_GenerateKeyPair(p, secKey);
             Assert.AreEqual(err, SKY_OK);
-            var uxBody = new coin__UxBody();
             var SrcTransaction = new cipher_SHA256();
             SKY_testutil_RandSHA256(SrcTransaction);
             uxBody.SetSrcTransaction(SrcTransaction);
@@ -86,21 +85,19 @@ namespace utils
             uxBody.Address = Address;
             uxBody.Coins = (ulong)(1e6);
             uxBody.Hours = 100;
-            coin__UxBodyPtr_assign(uxBody_tmp, uxBody);
-
         }
 
         public coin__UxOut makeUxOutWithSecret(cipher_SecKey secKey)
         {
-            var body = new_coin__UxBodyPtr();
+            var body = new coin__UxBody();
             makeUxBodyWithSecret(body, secKey);
             var head = new coin__UxHead();
             head.Time = 100;
             head.BkSeq = 2;
-            var uxOut_tmp = new coin__UxOut();
-            uxOut_tmp.Head = head;
-            uxOut_tmp.Body = coin__UxBodyPtr_value(body);
-            return uxOut_tmp;
+            var uxOut = new coin__UxOut();
+            uxOut.Head = head;
+            uxOut.Body = body;
+            return uxOut;
         }
 
         public SWIGTYPE_p_Transaction__Handle makeTransaction()
