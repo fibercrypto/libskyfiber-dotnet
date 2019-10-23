@@ -51,6 +51,7 @@
 %pointer_functions(coin__UxBody, coin__UxBodyPtr);
 %pointer_functions(cipher_SecKey, cipher_SecKeyPtr);
 %pointer_functions(coin__TransactionOutput, coin__TransactionOutputPtr);
+%pointer_functions(Distribution__Handle, Distribution__HandlePtr);
 
 /*GoString* parameter as reference */
 %typemap(in, numinputs=0) GoString* (GoString temp) {
