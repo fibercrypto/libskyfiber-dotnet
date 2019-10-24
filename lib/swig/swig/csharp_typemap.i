@@ -52,6 +52,10 @@
 %pointer_functions(cipher_SecKey, cipher_SecKeyPtr);
 %pointer_functions(coin__TransactionOutput, coin__TransactionOutputPtr);
 %pointer_functions(Distribution__Handle, Distribution__HandlePtr);
+%pointer_functions(Coin__Handle, Coin__HandlePtr);
+%pointer_functions(Account__Handle, Account__HandlePtr);
+%pointer_functions(PrivateKey__Handle, PrivateKey__HandlePtr);
+%pointer_functions(PublicKey__Handle, PublicKey__HandlePtr);
 
 /*GoString* parameter as reference */
 %typemap(in, numinputs=0) GoString* (GoString temp) {
