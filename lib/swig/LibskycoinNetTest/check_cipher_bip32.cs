@@ -689,5 +689,65 @@ namespace LibskycoinNetTest
             }
             Assert.AreEqual(reached, 1);
         }
+
+        struct tests_Struct
+        {
+            public int err;
+            public string base58;
+        }
+
+        [Test]
+        public void TestDeserializePrivateInvalidStrings()
+        {
+            var tests = new tests_Struct[12];
+            // 0
+            tests[0].err = SKY_ErrSerializedKeyWrongSize;
+            tests[0].base58 = "xprv9s21ZrQH143K4YUcKrp6cVxQaX59ZFkN6MFdeZjt8CHVYNs55xxQSvZpHWfojWMv6zgjmzopCyWPSFAnV4RU33J4pwCcnhsB4R4mPEnTsM";
+            // 1
+            tests[1].err = SKY_bip32_ErrInvalidChecksum;
+            tests[1].base58 = "xprv9s21ZrQH143K3YSbAXLMPCzJso5QAarQksAGc5rQCyZCBfw4Rj2PqVLFNgezSBhktYkiL3Ta2stLPDF9yZtLMaxk6Spiqh3DNFG8p8MVeEc";
+            // 2
+            tests[2].err = SKY_ErrInvalidPrivateKeyVersion;
+            tests[2].base58 = "xpub6DxSCdWu6jKqr4isjo7bsPeDD6s3J4YVQV1JSHZg12Eagdqnf7XX4fxqyW2sLhUoFWutL7tAELU2LiGZrEXtjVbvYptvTX5Eoa4Mamdjm9u";
+            // 3
+            tests[3].err = SKY_ErrInvalidKeyVersion;
+            tests[3].base58 = "8FH81Rao5EgGmdScoN66TJAHsQP7phEMeyMTku9NBJd7hXgaj3HTvSNjqJjoqBpxdbuushwPEM5otvxXt2p9dcw33AqNKzZEPMqGHmz7Dpayi6Vb";
+            // 4
+            tests[4].err = SKY_bip32_ErrInvalidChecksum;
+            tests[4].base58 = "xprvQQQQQQQQQQQQQQQQCviVfJSKyQ1mDYahRjijr5idH2WwLsEd4Hsb2Tyh8RfQMuPh7f7RtyzTtdrbdqqsunu5Mm3wDvUAKRHSC34sJ7in334";
+            // 5
+            tests[5].err = SKY_ErrSerializedKeyWrongSize;
+            tests[5].base58 = "HAsbc6CgKmTYEQg2CTz7m5STEPAB";
+            // 6
+            tests[6].err = SKY_ErrInvalidFingerprint;
+            tests[6].base58 = "xprv9tnJFvAXAXPfPnMTKfwpwnkty7MzJwELVgp4NTBquaKXy4RndyfJJCJJf7zNaVpBpzrwVRutZNLRCVLEcZHcvuCNG3zGbGBcZn57FbNnmSP";
+            // 7
+            tests[7].err = SKY_ErrInvalidPrivateKey;
+            tests[7].base58 = "xprv9s21ZrQH143K3yLysFvsu3n1dMwhNusmNHr7xArzAeCc7MQYqDBBStmqnZq6WLi668siBBNs3SjiyaexduHu9sXT9ixTsqptL67ADqcaBdm";
+            // 8
+            tests[8].err = SKY_ErrInvalidChildNumber;
+            tests[8].base58 = "xprv9s21ZrQYdgnodnKW4Drm1Qg7poU6Gf2WUDsjPxvYiK7iLBMrsjbnF1wsZZQgmXNeMSG3s7jmHk1b3JrzhG5w8mwXGxqFxfrweico7k8DtxR";
+            // 9
+            tests[9].err = SKY_ErrInvalidKeyVersion;
+            tests[9].base58 = "1111111111111adADjFaSNPxwXqLjHLj4mBfYxuewDPbw9hEj1uaXCzMxRPXDFF3cUoezTFYom4sEmEVSQmENPPR315cFk9YUFVek73wE9";
+            // 10
+            tests[10].err = SKY_ErrSerializedKeyWrongSize;
+            tests[10].base58 = "9XpNiB4DberdMn4jZiMhNGtuZUd7xUrCEGw4MG967zsVNvUKBEC9XLrmVmFasanWGp15zXfTNw4vW4KdvUAynEwyKjdho9QdLMPA2H5uyt";
+            // 11
+            tests[11].err = SKY_ErrSerializedKeyWrongSize;
+            tests[11].base58 = "7JJikZQ2NUXjSAnAF2SjFYE3KXbnnVxzRBNddFE1DjbDEHVGEJzYC7zqSgPoauBJS3cWmZwsER94oYSFrW9vZ4Ch5FtGeifdzmtS3FGYDB1vxFZsYKgMc";
+
+            for (var i = 0; i < 12; i++)
+            {
+                var test = tests[i];
+                var b = new GoSlice();
+                var err = SKY_base58_Decode(test.base58, b);
+                Assert.AreEqual(err, SKY_OK);
+
+                var rest_priv = new_PrivateKey__HandlePtr();
+                err = SKY_bip32_DeserializePrivateKey(b, rest_priv);
+                Assert.AreEqual(err, test.err);
+            }
+        }
     }
 }
