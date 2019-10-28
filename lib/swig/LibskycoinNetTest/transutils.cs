@@ -216,5 +216,213 @@ namespace utils
                 throw new Exception("Error in base64Decode " + e.Message);
             }
         }
+
+        public int isTransactionHandleEq(SWIGTYPE_p_Transaction__Handle handle1, SWIGTYPE_p_Transaction__Handle handle2)
+        {
+
+            var len1 = new_GoUint32Ptr();
+            var len2 = new_GoUint32Ptr();
+            var type1 = new_GoUint8Ptr();
+            var type2 = new_GoUint8Ptr();
+            var sha1 = new cipher_SHA256();
+            var sha2 = new cipher_SHA256();
+            var p1 = new GoSlice();
+            var p2 = new GoSlice();
+
+            var err = SKY_coin_Transaction_GetLength(handle1, len1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetLength(handle2, len2);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetType(handle1, type1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetType(handle2, type2);
+            Assert.AreEqual(err, SKY_OK);
+
+            if (GoUint32Ptr_value(len1) != GoUint32Ptr_value(len2) || GoUint8Ptr_value(type1) != GoUint8Ptr_value(type2))
+            {
+                return 0;
+            }
+            err = SKY_coin_Transaction_GetInnerHash(handle1, sha1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetInnerHash(handle2, sha2);
+            Assert.AreEqual(err, SKY_OK);
+            if (sha1.isEqual(sha2) != 1)
+                return 0;
+
+            err = SKY_coin_Transaction_GetSigs(handle1, p1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetSigs(handle2, p2);
+            Assert.AreEqual(err, SKY_OK);
+            if (p1.isEqual(p2) != 1)
+                return 0;
+            err = SKY_coin_Transaction_GetIn(handle1, p1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetIn(handle2, p2);
+            Assert.AreEqual(err, SKY_OK);
+            if (p1.isEqual(p2) != 1)
+                return 0;
+            err = SKY_coin_Transaction_GetOut(handle1, p1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_coin_Transaction_GetOut(handle2, p2);
+            Assert.AreEqual(err, SKY_OK);
+            if (p1.isEqual(p2) != 1)
+                return 0;
+            return 1;
+        }
+
+        public uint isPrivateKeyEq(SWIGTYPE_p_PrivateKey__Handle handle1, SWIGTYPE_p_PrivateKey__Handle handle2)
+        {
+            var Version1 = new GoSlice();
+            var Version2 = new GoSlice();
+            var ParentFingerprint1 = new GoSlice();
+            var ParentFingerprint2 = new GoSlice();
+            var childNumber1 = new_GoUint32Ptr();
+            var childNumber2 = new_GoUint32Ptr();
+            var ChainCode1 = new GoSlice();
+            var ChainCode2 = new GoSlice();
+            var Key1 = new GoSlice();
+            var Key2 = new GoSlice();
+            var Depth1 = new_GoUint8Ptr();
+            var Depth2 = new_GoUint8Ptr();
+
+            var err = SKY_bip32_PrivateKey_GetVersion(handle1, Version1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_GetVersion(handle2, Version2);
+            Assert.AreEqual(err, SKY_OK);
+            if (Version1.isEqual(Version2) != 1)
+            {
+                Console.WriteLine("Version not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PrivateKey_GetDepth(handle1, Depth1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_GetDepth(handle2, Depth2);
+            Assert.AreEqual(err, SKY_OK);
+            if (GoUint8Ptr_value(Depth1) != GoUint8Ptr_value(Depth2))
+            {
+                Console.WriteLine("Depth not equal\n");
+                return 0;
+            }
+
+            // err = SKY_bip32_PrivateKey_GetParentFingerprint(handle1, ParentFingerprint1);
+            // Assert.AreEqual(err, SKY_OK);
+            // err = SKY_bip32_PrivateKey_GetParentFingerprint(handle2, ParentFingerprint2);
+            // Assert.AreEqual(err, SKY_OK);
+            // if (ParentFingerprint1.isEqual(ParentFingerprint2) == 0)
+            // {
+            //     Console.WriteLine("ParentFingerprint not equal\n");
+            //     return 0;
+            // }
+
+            err = SKY_bip32_PrivateKey_ChildNumber(handle1, childNumber1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_ChildNumber(handle2, childNumber2);
+            Assert.AreEqual(err, SKY_OK);
+            if (GoUint32Ptr_value(childNumber1) != GoUint32Ptr_value(childNumber2))
+            {
+                Console.WriteLine("childNumber not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PrivateKey_GetChainCode(handle1, ChainCode1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_GetChainCode(handle2, ChainCode2);
+            Assert.AreEqual(err, SKY_OK);
+            if (ChainCode1.isEqual(ChainCode2) != 1)
+            {
+                Console.WriteLine("ChainCode not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PrivateKey_GetKey(handle1, Key1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_GetKey(handle2, Key2);
+            Assert.AreEqual(err, SKY_OK);
+            if (Key1.isEqual(Key2) != 1)
+            {
+                Console.WriteLine("Key not equal\n");
+                return 0;
+            }
+
+            return 1;
+        }
+
+        public int isPublicKeyEq(SWIGTYPE_p_PublicKey__Handle handle1, SWIGTYPE_p_PublicKey__Handle handle2)
+        {
+            var Version1 = new GoSlice();
+            var Version2 = new GoSlice();
+            var ParentFingerprint1 = new GoSlice();
+            var ParentFingerprint2 = new GoSlice();
+            var childNumber1 = new_GoUint32Ptr();
+            var childNumber2 = new_GoUint32Ptr();
+            var ChainCode1 = new GoSlice();
+            var ChainCode2 = new GoSlice();
+            var Key1 = new GoSlice();
+            var Key2 = new GoSlice();
+            var Depth1 = new_GoUint8Ptr();
+            var Depth2 = new_GoUint8Ptr();
+
+            var err = SKY_bip32_PublicKey_GetVersion(handle1, Version1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_GetVersion(handle2, Version2);
+            Assert.AreEqual(err, SKY_OK);
+            if (Version1.isEqual(Version2) != 1)
+            {
+                Console.WriteLine("Version not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PublicKey_GetDepth(handle1, Depth1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_GetDepth(handle2, Depth2);
+            Assert.AreEqual(err, SKY_OK);
+            if (GoUint8Ptr_value(Depth1) != GoUint8Ptr_value(Depth2))
+            {
+                Console.WriteLine("Depth not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PublicKey_GetParentFingerprint(handle1, ParentFingerprint1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_GetParentFingerprint(handle2, ParentFingerprint2);
+            Assert.AreEqual(err, SKY_OK);
+            if (ParentFingerprint1.isEqual(ParentFingerprint2) != 1)
+            {
+                Console.WriteLine("ParentFingerprint not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PublicKey_ChildNumber(handle1, childNumber1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_ChildNumber(handle2, childNumber2);
+            Assert.AreEqual(err, SKY_OK);
+            if (GoUint32Ptr_value(childNumber1) != GoUint32Ptr_value(childNumber2))
+            {
+                return 0;
+            }
+
+            err = SKY_bip32_PublicKey_GetChainCode(handle1, ChainCode1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_GetChainCode(handle2, ChainCode2);
+            Assert.AreEqual(err, SKY_OK);
+            if (ChainCode1.isEqual(ChainCode2) != 1)
+            {
+                Console.WriteLine("ChainCode not equal\n");
+                return 0;
+            }
+
+            err = SKY_bip32_PublicKey_GetKey(handle1, Key1);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_GetKey(handle2, Key2);
+            Assert.AreEqual(err, SKY_OK);
+            if (Key1.isEqual(Key2) != 1)
+            {
+                Console.WriteLine("Key not equal\n");
+                return 0;
+            }
+
+            return 1;
+        }
     }
 }
