@@ -511,5 +511,155 @@ namespace LibskycoinNetTest
             testVectorKeyPairs(vector3);
             testVectorKeyPairs(vector4);
         }
+
+        [Test()]
+        public void TestParentPublicChildDerivation()
+        {
+            var extendedMasterPublicBytes = new GoSlice();
+            var tmp_str = "xpub6DxSCdWu6jKqr4isjo7bsPeDD6s3J4YVQV1JSHZg12Eagdqnf7XX4fxqyW2sLhUoFWutL7tAELU2LiGZrEXtjVbvYptvTX5Eoa4Mamdjm9u";
+            var err = SKY_base58_Decode(tmp_str, extendedMasterPublicBytes);
+            Assert.AreEqual(err, SKY_OK);
+
+            var extendedMasterPublic = new_PublicKey__HandlePtr();
+            err = SKY_bip32_DeserializePublicKey(extendedMasterPublicBytes, extendedMasterPublic);
+            Assert.AreEqual(err, SKY_OK);
+
+            var extendedMasterPrivateBytes = new GoSlice();
+            tmp_str = "xprv9zy5o7z1GMmYdaeQdmabWFhUf52Ytbpe3G5hduA4SghboqWe7aDGWseN8BJy1GU72wPjkCbBE1hvbXYqpCecAYdaivxjNnBoSNxwYD4wHpW";
+            err = SKY_base58_Decode(tmp_str, extendedMasterPrivateBytes);
+            Assert.AreEqual(err, SKY_OK);
+
+            var extendedMasterPrivate = new_PrivateKey__HandlePtr();
+            err = SKY_bip32_DeserializePrivateKey(extendedMasterPrivateBytes, extendedMasterPrivate);
+            Assert.AreEqual(err, SKY_OK);
+
+            var expectedChildren = new testChildKey[20];
+
+            // 0
+            expectedChildren[0].path = "m/0";
+            expectedChildren[0].hexPubKey = "0243187e1a2ba9ba824f5f81090650c8f4faa82b7baf93060d10b81f4b705afd46";
+            expectedChildren[0].wifPrivKey = "KyNPkzzaQ9xa7d2iFacTBgjP4rM3SydTzUZW7uwDh6raePWRJkeM";
+            // 1
+            expectedChildren[1].path = "m/1";
+            expectedChildren[1].hexPubKey = "023790d11eb715c4320d8e31fba3a09b700051dc2cdbcce03f44b11c274d1e220b";
+            expectedChildren[1].wifPrivKey = "KwVyk5XXaamsPPiGLHciv6AjhUV88CM7xTto7sRMCEy12GfwZzZQ";
+            // 2
+            expectedChildren[2].path = "m/2";
+            expectedChildren[2].hexPubKey = "0302c5749c3c75cea234878ae3f4d8f65b75d584bcd7ed0943b016d6f6b59a2bad";
+            expectedChildren[2].wifPrivKey = "L1o7CpgTjkcBYmbeuNigVpypgJ9GKq87WNqz8QDjWMqdKVKFf826";
+            // 3
+            expectedChildren[3].path = "m/3";
+            expectedChildren[3].hexPubKey = "03f0440c94e5b14ea5b15875934597afff541bec287c6e65dc1102cafc07f69699";
+            expectedChildren[3].wifPrivKey = "KzmYqf8WSUNzf2LhAWJjxv7pYX34XhFeLLxSoaSD8y9weJ4j6Z7q";
+            // 4
+            expectedChildren[4].path = "m/4";
+            expectedChildren[4].hexPubKey = "026419d0d8996707605508ac44c5871edc7fe206a79ef615b74f2eea09c5852e2b";
+            expectedChildren[4].wifPrivKey = "KzezMKd7Yc4jwJd6ASji2DwXX8jB8XwNTggLoAJU78zPAfXhzRLD";
+            // 5
+            expectedChildren[5].path = "m/5";
+            expectedChildren[5].hexPubKey = "02f63c6f195eea98bdb163c4a094260dea71d264b21234bed4df3899236e6c2298";
+            expectedChildren[5].wifPrivKey = "Kwxik5cHiQCZYy5g9gdfQmr7c3ivLDhFjpSF7McHKHeox6iu6MjL";
+            // 6
+            expectedChildren[6].path = "m/6";
+            expectedChildren[6].hexPubKey = "02d74709cd522081064858f393d009ead5a0ecd43ede3a1f57befcc942025cb5f9";
+            expectedChildren[6].wifPrivKey = "KwGhZYHovZoczyfupFRgZcr2xz1nHTSKx79uZuWhuzDSU7L7LrxE";
+            // 7
+            expectedChildren[7].path = "m/7";
+            expectedChildren[7].hexPubKey = "03e54bb92630c943d38bbd8a4a2e65fca7605e672d30a0e545a7198cbb60729ceb";
+            expectedChildren[7].wifPrivKey = "L4iGJ3JCfnMU1ia2bMQeF88hs6tkkS9QrmLbWPsj1ULHrUJid4KT";
+            // 8
+            expectedChildren[8].path = "m/8";
+            expectedChildren[8].hexPubKey = "027e9d5acd14d39c4938697fba388cd2e8f31fc1c5dc02fafb93a10a280de85199";
+            expectedChildren[8].wifPrivKey = "L3xfynMTDMR8vs6G5VxxjoKLBQyihvtcBHF4KHY5wvFMwevLjZKU";
+            // 9
+            expectedChildren[9].path = "m/9";
+            expectedChildren[9].hexPubKey = "02a167a9f0d57468fb6abf2f3f7967e2cadf574314753a06a9ef29bc76c54638d2";
+            expectedChildren[9].wifPrivKey = "KxiUV7CcdCuF3bLajqaP6qMFERQFvzsRj9aeCCf3TNWXioLwwJAm";
+            // 10
+            expectedChildren[10].path = "m/100";
+            expectedChildren[10].hexPubKey = "020db9ba00ddf68428e3f5bfe54252bbcd75b21e42f51bf3bfc4172bf0e5fa7905";
+            expectedChildren[10].wifPrivKey = "L5ipKgExgKZYaxsQPEmyjrhoSepoxuSAxSWgK1GX5kaTUN3zGCU7";
+            // 11
+            expectedChildren[11].path = "m/101";
+            expectedChildren[11].hexPubKey = "0299e3790956570737d6164e6fcda5a3daa304065ca95ba46bc73d436b84f34d46";
+            expectedChildren[11].wifPrivKey = "L1iUjHWpYSead5vYZycMdMzCZDFQzveG3S6NviAi5BvvGdnuQbi6";
+            // 12
+            expectedChildren[12].path = "m/102";
+            expectedChildren[12].hexPubKey = "0202e0732c4c5d2b1036af173640e01957998cfd4f9cdaefab6ffe76eb869e2c59";
+            expectedChildren[12].wifPrivKey = "KybjnK4e985dgzxL5pgXTfq8YFagG8gB9HWAjLimagR4pdodCSNo";
+            // 13
+            expectedChildren[13].path = "m/103";
+            expectedChildren[13].hexPubKey = "03d050adbd996c0c5d737ff638402dfbb8c08e451fef10e6d62fb57887c1ac6cb2";
+            expectedChildren[13].wifPrivKey = "Kx9bf5cyf29fp7uuMVnqn47692xRwXStVmnL75w9i1sLQDjbFHP5";
+            // 14
+            expectedChildren[14].path = "m/104";
+            expectedChildren[14].hexPubKey = "038d466399e2d68b4b16043ad4d88893b3b2f84fc443368729a973df1e66f4f530";
+            expectedChildren[14].wifPrivKey = "L5myg7MNjKHcgVMS9ytmHgBftiWAi1awGpeC6p9dygsEQV9ZRvpz";
+            // 15
+            expectedChildren[15].path = "m/105";
+            expectedChildren[15].hexPubKey = "034811e2f0c8c50440c08c2c9799b99c911c036e877e8325386ff61723ae3ffdce";
+            expectedChildren[15].wifPrivKey = "L1KHrLBPhaJnvysjKUYk5QwkyWDb6uHgDM8EmE4eKtfqyJ13a7HC";
+            // 16
+            expectedChildren[16].path = "m/106";
+            expectedChildren[16].hexPubKey = "026339fd5842921888e711a6ba9104a5f0c94cc0569855273cf5faefdfbcd3cc29";
+            expectedChildren[16].wifPrivKey = "Kz4WPV43po7LRkatwHf9YGknGZRYfvo7TkvojinzxoFRXRYXyfDn";
+            // 17
+            expectedChildren[17].path = "m/107";
+            expectedChildren[17].hexPubKey = "02833705c1069fab2aa92c6b0dac27807290d72e9f52378d493ac44849ca003b22";
+            expectedChildren[17].wifPrivKey = "L3PxeN4w336kTk1becdFsAnR8ihh8SeMYXRHEzSmRNQTjtmcUjr9";
+            // 18
+            expectedChildren[18].path = "m/108";
+            expectedChildren[18].hexPubKey = "032d2639bde1eb7bdf8444bd4f6cc26a9d1bdecd8ea15fac3b992c3da68d9d1df5";
+            expectedChildren[18].wifPrivKey = "L2wf8FYiA888qrhDzHkFkZ3ZRBntysjtJa1QfcxE1eFiyDUZBRSi";
+            // 19
+            expectedChildren[19].path = "m/109";
+            expectedChildren[19].hexPubKey = "02479c6d4a64b93a2f4343aa862c938fbc658c99219dd7bebb4830307cbd76c9e9";
+            expectedChildren[19].wifPrivKey = "L5A5hcupWnYTNJTLTWDDfWyb3hnrJgdDgyN7c4PuF17bsY1tNjxS";
+
+            for (var i = 0; i < 20; i++)
+            {
+                var child = expectedChildren[i];
+                var path = new_Path__HandlePtr();
+                err = SKY_bip32_ParsePath(child.path, path);
+                Assert.AreEqual(err, SKY_OK);
+                var len = new_GoIntPtr();
+                err = SKY_bip32_Path_Count(path, len);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(GoIntPtr_value(len), 2);
+
+                var pubKey = new_PublicKey__HandlePtr();
+                var element_tmp = new bip32__PathNode();
+                err = SKY_bip32_Path_GetElements(path, 1, element_tmp);
+                Assert.AreEqual(err, SKY_OK);
+                err = SKY_bip32_PublicKey_NewPublicChildKey(extendedMasterPublic, element_tmp.ChildNumber, pubKey);
+                Assert.AreEqual(err, SKY_OK);
+                var pubkey_key = new GoSlice();
+                err = SKY_bip32_PublicKey_GetKey(pubKey, pubkey_key);
+                Assert.AreEqual(err, SKY_OK);
+
+                var pubkey_hexpubkey = new _GoString_();
+                err = SKY_base58_Hex2String(pubkey_key, pubkey_hexpubkey);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(pubkey_hexpubkey.p, child.hexPubKey);
+
+                var pubKey2 = new_PublicKey__HandlePtr();
+                err = SKY_bip32_PrivateKey_NewPublicChildKey(extendedMasterPrivate, element_tmp.ChildNumber, pubKey2);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(isPublicKeyEq(pubKey, pubKey2), 1);
+
+                var privKey = new_PrivateKey__HandlePtr();
+                err = SKY_bip32_PrivateKey_NewPrivateChildKey(extendedMasterPrivate, element_tmp.ChildNumber, privKey);
+                Assert.AreEqual(err, SKY_OK);
+
+                var expectedPrivKey = new cipher_SecKey();
+                err = SKY_cipher_SecKeyFromBitcoinWalletImportFormat(child.wifPrivKey, expectedPrivKey);
+                Assert.AreEqual(err, SKY_OK);
+
+                var pubKey3 = new_PublicKey__HandlePtr();
+                err = SKY_bip32_PrivateKey_Publickey(privKey, pubKey3);
+                Assert.AreEqual(err, SKY_OK);
+                Assert.AreEqual(isPublicKeyEq(pubKey, pubKey3), 1);
+            }
+        }
     }
 }
