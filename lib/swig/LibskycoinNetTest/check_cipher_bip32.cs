@@ -661,5 +661,33 @@ namespace LibskycoinNetTest
                 Assert.AreEqual(isPublicKeyEq(pubKey, pubKey3), 1);
             }
         }
+
+        [Test]
+        public void TestMaxChildDepthError()
+        {
+            var tmp = new GoSlice();
+            var err = SKY_cipher_RandByte(32, tmp);
+            Assert.AreEqual(err, SKY_OK);
+            var key = new_PrivateKey__HandlePtr();
+            err = SKY_bip32_NewMasterKey(tmp, key);
+            Assert.AreEqual(err, SKY_OK);
+            byte reached = 0;
+            for (var i = 0; i < 256; i++)
+            {
+                err = SKY_bip32_PrivateKey_NewPrivateChildKey(key, 0, key);
+                switch (i)
+                {
+                    case 255:
+                        Assert.AreEqual(err, SKY_ErrMaxDepthReached);
+                        reached = 1;
+                        break;
+
+                    default:
+                        Assert.AreEqual(err, SKY_OK);
+                        break;
+                }
+            }
+            Assert.AreEqual(reached, 1);
+        }
     }
 }
