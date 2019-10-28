@@ -749,5 +749,81 @@ namespace LibskycoinNetTest
                 Assert.AreEqual(err, test.err);
             }
         }
+
+        [Test]
+        public void TestDeserializePublicInvalidStrings()
+        {
+            var tests = new tests_Struct[9];
+            // 0
+            tests[0].err = SKY_ErrSerializedKeyWrongSize;
+            tests[0].base58 = "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet888";
+            // 1
+            tests[1].err = SKY_bip32_ErrInvalidChecksum;
+            tests[1].base58 = "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W11GMcet8";
+            // 2
+            tests[2].err = SKY_ErrInvalidPublicKeyVersion;
+            tests[2].base58 = "xprv9uHRZZhk6KAJC1avXpDAp4MDc3sQKNxDiPvvkX8Br5ngLNv1TxvUxt4cV1rGL5hj6KCesnDYUhd7oWgT11eZG7XnxHrnYeSvkzY7d2bhkJ7";
+            // 3
+            tests[3].err = SKY_ErrInvalidFingerprint;
+            tests[3].base58 = "xpub67tVq9SuNQCfm2PXBqjGRAtNZ935kx2uHJaURePth4JBpMfEy6jum7Euj7FTpbs7fnjhfZcNEktCucWHcJf74dbKLKNSTZCQozdDVwvkJhs";
+            // 4
+            tests[4].err = SKY_ErrInvalidChildNumber;
+            tests[4].base58 = "xpub661MyMwTWkfYZq6BEh3ywGVXFvNj5hhzmWMhFBHSqmub31B1LZ9wbJ3DEYXZ8bHXGqnHKfepTud5a2XxGdnnePzZa2m2DyzTnFGBUXtaf9M";
+            // 5
+            tests[5].err = SKY_ErrInvalidPublicKey;
+            tests[5].base58 = "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gYymDsxxRe3WWeZQ7TadaLSdKUffezzczTCpB8j3JP96UwE2n6w1";
+            // 6
+            tests[6].err = SKY_ErrInvalidKeyVersion;
+            tests[6].base58 = "8FH81Rao5EgGmdScoN66TJAHsQP7phEMeyMTku9NBJd7hXgaj3HTvSNjqJjoqBpxdbuushwPEM5otvxXt2p9dcw33AqNKzZEPMqGHmz7Dpayi6Vb";
+            // 7
+            tests[7].err = SKY_ErrInvalidKeyVersion;
+            tests[7].base58 = "1111111111111adADjFaSNPxwXqLjHLj4mBfYxuewDPbw9hEj1uaXCzMxRPXDFF3cUoezTFYom4sEmEVSQmENPPR315cFk9YUFVek73wE9";
+            // 8
+            tests[8].err = SKY_ErrSerializedKeyWrongSize;
+            tests[8].base58 = "7JJikZQ2NUXjSAnAF2SjFYE3KXbnnVxzRBNddFE1DjbDEHVGEJzYC7zqSgPoauBJS3cWmZwsER94oYSFrW9vZ4Ch5FtGeifdzmtS3FGYDB1vxFZsYKgMc";
+
+            for (var i = 0; i < 9; i++)
+            {
+                tests_Struct test = tests[i];
+                var b = new GoSlice();
+                var err = SKY_base58_Decode(test.base58, b);
+                Assert.AreEqual(err, SKY_OK, " Iter %d", i);
+
+                var rest_pub = new_PublicKey__HandlePtr();
+                err = SKY_bip32_DeserializePublicKey(b, rest_pub);
+                Assert.AreEqual(err, test.err, "Iter %d", i);
+            }
+        }
+        [Test]
+        public void TestCantCreateHardenedPublicChild()
+        {
+            var b = new GoSlice();
+            var err = SKY_cipher_RandByte(32, b);
+            var key = new_PrivateKey__HandlePtr();
+            err = SKY_bip32_NewMasterKey(b, key);
+            Assert.AreEqual(err, SKY_OK);
+
+            // Test that it works for private keys
+            var priv_temp = new_PrivateKey__HandlePtr();
+            err = SKY_bip32_PrivateKey_NewPrivateChildKey(key, FirstHardenedChild - 1, priv_temp);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_NewPrivateChildKey(key, FirstHardenedChild, priv_temp);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PrivateKey_NewPrivateChildKey(key, FirstHardenedChild + 1, priv_temp);
+            Assert.AreEqual(err, SKY_OK);
+
+            // Test that it throws an error for public keys if hardened
+            var pubkey = new_PublicKey__HandlePtr();
+            err = SKY_bip32_PrivateKey_Publickey(key, pubkey);
+            Assert.AreEqual(err, SKY_OK);
+
+            var pub_temp = new_PublicKey__HandlePtr();
+            err = SKY_bip32_PublicKey_NewPublicChildKey(pubkey, FirstHardenedChild - 1, pub_temp);
+            Assert.AreEqual(err, SKY_OK);
+            err = SKY_bip32_PublicKey_NewPublicChildKey(pubkey, FirstHardenedChild, pub_temp);
+            Assert.AreEqual(err, SKY_ErrHardenedChildPublicKey);
+            err = SKY_bip32_PublicKey_NewPublicChildKey(pubkey, FirstHardenedChild + 1, pub_temp);
+            Assert.AreEqual(err, SKY_ErrHardenedChildPublicKey);
+        }
     }
 }
