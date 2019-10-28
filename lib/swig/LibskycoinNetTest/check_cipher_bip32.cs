@@ -825,5 +825,58 @@ namespace LibskycoinNetTest
             err = SKY_bip32_PublicKey_NewPublicChildKey(pubkey, FirstHardenedChild + 1, pub_temp);
             Assert.AreEqual(err, SKY_ErrHardenedChildPublicKey);
         }
+
+        struct cases_Str
+        {
+            public string seed;
+            public string path;
+            public string key;
+            public int err;
+        }
+
+        [Test]
+        public void TestNewPrivateKeyFromPath()
+        {
+            var cases = new cases_Str[4];
+            // 0
+            cases[0].seed = "6162636465666768696A6B6C6D6E6F707172737475767778797A";
+            cases[0].path = "m";
+            cases[0].key = "xprv9s21ZrQH143K3GfuLFf1UxUB4GzmFav1hrzTG1bPorBTejryu4YfYVxZn6LNmwfvsi6uj1Wyv9vLDPsfKDuuqwEqYier1ZsbgWVd9NCieNv";
+            cases[0].err = SKY_OK;
+            // 1
+            cases[1].seed = "6162636465666768696A6B6C6D6E6F707172737475767778797A";
+            cases[1].path = "m/1'";
+            cases[1].key = "xprv9uWf8oyvCHcAUg3kSjSroz67s7M3qJRWmNcdVwYGf91GFsaAatsVVp1bjH7z3WiWevqB7WK92B415oBwcahjoMvvb4mopPyqZUDeVW4168c";
+            cases[1].err = SKY_OK;
+            // 2
+            cases[2].seed = "6162636465666768696A6B6C6D6E6F707172737475767778797A";
+            cases[2].path = "m/1'/foo";
+            cases[2].key = "";
+            cases[2].err = SKY_ErrPathNodeNotNumber;
+            // 3
+            cases[3].seed = "6162";
+            cases[3].path = "m/1";
+            cases[3].key = "";
+            cases[3].err = SKY_ErrInvalidSeedLength;
+
+            for (int i = 0; i < 4; i++)
+            {
+                cases_Str tc = cases[i];
+                var seed = new GoSlice();
+                var err = SKY_base58_String2Hex(tc.seed, seed);
+                Assert.AreEqual(err, SKY_OK);
+
+                var k = new_PrivateKey__HandlePtr();
+                err = SKY_bip32_NewPrivateKeyFromPath(seed, tc.path, k);
+                Assert.AreEqual(err, tc.err);
+                if (err == SKY_OK)
+                {
+                    var k_string = new _GoString_();
+                    err = SKY_bip32_PrivateKey_String(k, k_string);
+                    Assert.AreEqual(err, SKY_OK);
+                    Assert.AreEqual(k_string.p, tc.key);
+                }
+            }
+        }
     }
 }
