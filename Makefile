@@ -9,7 +9,7 @@ SHELL := /bin/bash
 MKFILE_PATH   = $(abspath $(lastword $(MAKEFILE_LIST)))
 REPO_ROOT     = $(dir $(MKFILE_PATH))
 GOPATH_DIR    = gopath
-SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/skycoin/libskycoin
+SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/fibercrypto/libskycoin
 SKYCOIN_DIR  ?= $(SKYLIBC_DIR)/vendor/github.com/skycoin/skycoin
 SKYBUILD_DIR  = $(SKYLIBC_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
@@ -63,7 +63,7 @@ else
 endif
 
 # Added by Swagger
-LIB_SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
+LIB_SKYCOIN_DIR = gopath/src/github.com/fibercrypto/libskycoin
 SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.v0.26.0.openapi.v2.yml
 CSHARP_CLIENT_DIR = lib/skyapi
 CSHARP_SWIG_DIR = lib/swig

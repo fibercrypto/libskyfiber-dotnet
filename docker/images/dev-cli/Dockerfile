@@ -12,9 +12,9 @@ LABEL "org.label-schema.name"="libskycoin-dotnet" \
       "org.label-schema.version"="0.1.0" \
       "org.label-schema.schema-version"="1.0" \
       "org.label-schema.build-date"=$BDATE \
-      "org.label-schema.vcs-url"="https://github.com/skycoin/libskycoin-dotnet.git" \
+      "org.label-schema.vcs-url"="https://github.com/fibercrypto/libskycoin-dotnet.git" \
       "org.label-schema.vcs-ref"=$SCOMMIT \
-      "org.label-schema.usage"="https://github.com/skycoin/libskycoin-dotnet/blob/"$SCOMMIT"/docker/images/dev-cli/README.md" \
+      "org.label-schema.usage"="https://github.com/fibercrypto/libskycoin-dotnet/blob/"$SCOMMIT"/docker/images/dev-cli/README.md" \
       "org.label-schema.docker.cmd"="mkdir src; docker run --rm -v ${PWD}/src:/usr/local/src skycoin/skycoindev-dotnet:develop git clone https://github.com/simelo/libskycoin-dotnet.git; sudo chown -R `whoami` src"
 
 ENV MONO_VERSION 4.8.0.524
