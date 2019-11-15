@@ -9,10 +9,10 @@ namespace LibskycoinNetTest {
         utils.transutils transutils = new utils.transutils ();
         [Test]
         public void TestAddUint64 () {
-            var r = new_GoUint64p ();
+            var r = new_GoUint64Ptr ();
             var err = SKY_util_AddUint64(10,11,r);
             Assert.AreEqual (err, SKY_OK);
-            Assert.AreEqual (GoUint64p_value (r), 21);
+            Assert.AreEqual (GoUint64Ptr_value (r), 21);
             err = SKY_util_AddUint64 (ulong.MaxValue, 1, r);
             Assert.AreEqual (err, SKY_ErrUint64AddOverflow);
         }
@@ -53,10 +53,10 @@ namespace LibskycoinNetTest {
         [Test]
         public void TestUint64ToInt64 () {
             for (int i = 0; i < cases.Length; i++) {
-                var r = new_Gointp ();
+                var r = new_GoIntPtr ();
                 var err = SKY_util_Uint64ToInt64 (cases[i].a, r);
                 Assert.AreEqual (err, cases[i].failure);
-                Assert.AreEqual (cases[i].b, Gointp_value (r));
+                Assert.AreEqual (cases[i].b, GoIntPtr_value (r));
             }
         }
     }

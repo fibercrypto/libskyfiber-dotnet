@@ -23,7 +23,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_ERROR);
 
             // No inputs
-            tx = new_Transaction__Handlep();
+            tx = new_Transaction__HandlePtr();
             makeTransaction(tx);
             err = SKY_coin_Transaction_ResetInputs(tx, 0);
             Assert.AreEqual(err, SKY_OK);
@@ -181,7 +181,7 @@ namespace LibskycoinNetTest
             var seckey = new cipher_SecKey();
             var result = (uint)makeUxOutWithSecret(uxOut, seckey);
             Assert.AreEqual(result, SKY_OK);
-            var handle = new_Transaction__Handlep();
+            var handle = new_Transaction__HandlePtr();
             makeEmptyTransaction(handle);
             var ptx = makeTransactionFromUxOut(uxOut, seckey, handle);
             Assert.AreEqual(result, SKY_OK);
@@ -195,7 +195,7 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionPushInput()
         {
-            var tx = new_Transaction__Handlep();
+            var tx = new_Transaction__HandlePtr();
             makeEmptyTransaction(tx);
             var ux = new coin__UxOut();
             makeUxOut(ux);
@@ -205,10 +205,10 @@ namespace LibskycoinNetTest
             var r = new uint();
             r = SKY_coin_Transaction_PushInput(tx, sha);
             Assert.AreEqual(r, 0);
-            var count = new_Gointp();
+            var count = new_GoIntPtr();
             err = SKY_coin_Transaction_GetInputsCount(tx, count);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(count), 1);
+            Assert.AreEqual(GoIntPtr_value(count), 1);
             var sha1 = new cipher_SHA256();
             err = SKY_coin_Transaction_GetInputAt(tx, 0, sha1);
             Assert.AreEqual(err, SKY_OK);
@@ -233,10 +233,10 @@ namespace LibskycoinNetTest
             var a = transutils.makeAddress();
             var err = SKY_coin_Transaction_PushOutput(tx, a, 100, 150);
             Assert.AreEqual(err, SKY_OK);
-            var count = new_Gointp();
+            var count = new_GoIntPtr();
             err = SKY_coin_Transaction_GetOutputsCount(tx, count);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(count), 1);
+            Assert.AreEqual(GoIntPtr_value(count), 1);
             var pOut1 = new coin__TransactionOutput();
             var pOut = new coin__TransactionOutput();
             pOut1.Address = a;
@@ -250,10 +250,10 @@ namespace LibskycoinNetTest
                 a = transutils.makeAddress();
                 err = SKY_coin_Transaction_PushOutput(tx, a, (ulong)(i * 100), (ulong)(i * 50));
                 Assert.AreEqual(err, SKY_OK);
-                count = new_Gointp();
+                count = new_GoIntPtr();
                 err = SKY_coin_Transaction_GetOutputsCount(tx, count);
                 Assert.AreEqual(err, SKY_OK);
-                Assert.AreEqual(Gointp_value(count), (i + 1));
+                Assert.AreEqual(GoIntPtr_value(count), (i + 1));
                 pOut1 = new coin__TransactionOutput();
                 pOut = new coin__TransactionOutput();
                 pOut1.Address = a;
@@ -296,10 +296,10 @@ namespace LibskycoinNetTest
             Assert.AreEqual(r, SKY_OK);
             err = SKY_coin_Transaction_PushOutput(handle, transutils.makeAddress(), 40, 80);
             Assert.AreEqual(err, SKY_OK);
-            var count = new_Gointp();
+            var count = new_GoIntPtr();
             err = SKY_coin_Transaction_GetSignaturesCount(handle, count);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(count), 0);
+            Assert.AreEqual(GoIntPtr_value(count), 0);
             // Valid signing
             h = new cipher_SHA256();
             SKY_coin_Transaction_HashInner(handle, h);
@@ -311,7 +311,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transaction_GetSignaturesCount(handle, count);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(count), 2);
+            Assert.AreEqual(GoIntPtr_value(count), 2);
             var h2 = new cipher_SHA256();
             err = SKY_coin_Transaction_HashInner(handle, h2);
             Assert.AreEqual(err, SKY_OK);
@@ -350,7 +350,7 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionHash()
         {
-            var handle = new_Transaction__Handlep();
+            var handle = new_Transaction__HandlePtr();
             makeTransaction(handle);
             var h = new cipher_SHA256();
             var h2 = new cipher_SHA256();
@@ -365,7 +365,7 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionUpdateHeader()
         {
-            var handle = new_Transaction__Handlep();
+            var handle = new_Transaction__HandlePtr();
             var tx = makeTransaction(handle);
             var h = new cipher_SHA256();
             var h1 = new cipher_SHA256();
@@ -388,7 +388,7 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionHashInner()
         {
-            var handle = new_Transaction__Handlep();
+            var handle = new_Transaction__HandlePtr();
             makeTransaction(handle);
             var h = new cipher_SHA256();
             var err = SKY_coin_Transaction_HashInner(handle, h);
@@ -449,12 +449,12 @@ namespace LibskycoinNetTest
         [Test]
         public void TestTransactionSerialization()
         {
-            var handle = new_Transaction__Handlep();
+            var handle = new_Transaction__HandlePtr();
             var tx = makeTransaction(handle);
             var b = new GoSlice();
             var err = SKY_coin_Transaction_Serialize(handle, b);
             Assert.AreEqual(err, SKY_OK);
-            var handle2 = new_Transaction__Handlep();
+            var handle2 = new_Transaction__HandlePtr();
             err = SKY_coin_TransactionDeserialize(b, handle2);
             Assert.AreEqual(err, SKY_OK);
             var tx2 = new coin__Transaction();
@@ -475,10 +475,10 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transaction_PushOutput(handle, transutils.makeAddress(), (ulong)1e6, 0);
             Assert.AreEqual(err, SKY_OK);
-            var hours = new_GoUint64p();
+            var hours = new_GoUint64Ptr();
             err = SKY_coin_Transaction_OutputHours(handle, hours);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(hours), 800);
+            Assert.AreEqual(GoUint64Ptr_value(hours), 800);
             err = SKY_coin_Transaction_PushOutput(handle, transutils.makeAddress(), (ulong)1e6, ulong.MaxValue - 700);
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transaction_OutputHours(handle, hours);
@@ -520,7 +520,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(len_hashes, 4);
             for (int i = 0; i < len_hashes; i++)
             {
-                var tx = new_Transaction__Handlep();
+                var tx = new_Transaction__HandlePtr();
                 err = SKY_coin_Transactions_GetAt(handle, i, tx);
                 Assert.AreEqual(err, SKY_OK);
                 var h = new cipher_SHA256();
@@ -537,13 +537,13 @@ namespace LibskycoinNetTest
             var err = (uint)makeTransactions(10, handles);
             var trunc = (uint)0;
             var count = new_GoUint32Ptr();
-            var len_tnxs = new_Gointp();
+            var len_tnxs = new_GoIntPtr();
             err = SKY_coin_Transactions_Length(handles, len_tnxs);
-            long len_tnxs_value = Gointp_value(len_tnxs);
+            long len_tnxs_value = GoIntPtr_value(len_tnxs);
             for (long i = 0; i < (len_tnxs_value / 2); i++)
             {
                 count = new_GoUint32Ptr();
-                var handle = new_Transaction__Handlep();
+                var handle = new_Transaction__HandlePtr();
                 err = SKY_coin_Transactions_GetAt(handles, (long)i, handle);
                 Assert.AreEqual(err, SKY_OK);
                 err = SKY_coin_Transaction_Size(handle, count);
@@ -554,12 +554,12 @@ namespace LibskycoinNetTest
             var tnxs2 = new_Transactions__HandlePtr();
             err = SKY_coin_Transactions_TruncateBytesTo(handles, trunc, tnxs2);
             Assert.AreEqual(err, SKY_OK);
-            var len_tnxs2 = new_Gointp();
+            var len_tnxs2 = new_GoIntPtr();
 
             err = SKY_coin_Transactions_Length(tnxs2, len_tnxs2);
             Assert.AreEqual(err, SKY_OK);
 
-            Assert.AreEqual(Gointp_value(len_tnxs2), len_tnxs_value / 2);
+            Assert.AreEqual(GoIntPtr_value(len_tnxs2), len_tnxs_value / 2);
             count = new_GoUint32Ptr();
             err = SKY_coin_Transactions_Size(tnxs2, count);
             Assert.AreEqual(err, SKY_OK);
@@ -569,10 +569,10 @@ namespace LibskycoinNetTest
             trunc += 1;
             err = SKY_coin_Transactions_TruncateBytesTo(handles, trunc, tnxs2);
             Assert.AreEqual(err, SKY_OK);
-            var len = new_Gointp();
+            var len = new_GoIntPtr();
             err = SKY_coin_Transactions_Length(tnxs2, len);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(len), len_tnxs_value / 2);
+            Assert.AreEqual(GoIntPtr_value(len), len_tnxs_value / 2);
             err = SKY_coin_Transactions_Size(tnxs2, count);
             Assert.AreEqual(err, SKY_OK);
             Assert.AreEqual(GoUint32Ptr_value(count), trunc - 1);
@@ -589,7 +589,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transactions_Length(tnxs2, len);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(len), 5);
+            Assert.AreEqual(GoIntPtr_value(len), 5);
             err = SKY_coin_Transactions_Size(tnxs2, count);
             Assert.AreEqual(err, SKY_OK);
             var count_tnxs5 = new_GoUint32Ptr();
@@ -603,7 +603,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transactions_Length(tnxs2, len);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(len), 6);
+            Assert.AreEqual(GoIntPtr_value(len), 6);
             err = SKY_coin_Transactions_Size(tnxs2, count);
             Assert.AreEqual(err, SKY_OK);
             Assert.AreEqual(GoUint32Ptr_value(count), trunc);
@@ -624,7 +624,7 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
             err = SKY_coin_Transactions_Length(tnxs2, len);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(Gointp_value(len), 0);
+            Assert.AreEqual(GoIntPtr_value(len), 0);
             err = SKY_coin_Transactions_Size(tnxs2, count);
             Assert.AreEqual(err, SKY_OK);
             Assert.AreEqual(GoUint32Ptr_value(count), trunc);
@@ -909,12 +909,12 @@ namespace LibskycoinNetTest
             SKY_coin_Create_Transactions(txns);
 
             // Nil txns
-            var fee = new_GoUint64p();
+            var fee = new_GoUint64Ptr();
             var err = SKY_coin_Transactions_Fees(txns, transutils.calc, fee);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(fee), 0);
+            Assert.AreEqual(GoUint64Ptr_value(fee), 0);
 
-            var txn = new_Transaction__Handlep();
+            var txn = new_Transaction__HandlePtr();
             SKY_coin_Create_Transaction(txn);
             err = SKY_coin_Transactions_Add(txns, txn);
             Assert.AreEqual(err, SKY_OK);
@@ -922,18 +922,18 @@ namespace LibskycoinNetTest
             Assert.AreEqual(err, SKY_OK);
 
             // 2 transactions, calc() always returns 1
-            fee = new_GoUint64p();
+            fee = new_GoUint64Ptr();
             err = SKY_coin_Transactions_Fees(txns, transutils.calc, fee);
             Assert.AreEqual(err, SKY_OK);
-            Assert.AreEqual(GoUint64p_value(fee), 2);
+            Assert.AreEqual(GoUint64Ptr_value(fee), 2);
 
             // calc error
-            fee = new_GoUint64p();
+            fee = new_GoUint64Ptr();
             err = SKY_coin_Transactions_Fees(txns, transutils.badCalc, fee);
             Assert.AreEqual(err, SKY_ERROR);
 
             // summing of calculated fees overflows
-            fee = new_GoUint64p();
+            fee = new_GoUint64Ptr();
             err = SKY_coin_Transactions_Fees(txns, transutils.overflow, fee);
             Assert.AreEqual(err, SKY_ERROR);
         }

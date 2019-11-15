@@ -72,8 +72,6 @@
     <Compile Include="skycoin\SWIGTYPE_p_ReadableEntry__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_ReadableWallet__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Signature_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_SortableTransactionResult_Handle.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_Strings__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Transaction__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Transactions__Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_WalletResponse__Handle.cs" />
@@ -126,7 +124,6 @@
     <Compile Include="skycoin\cipher_Addresses.cs" />
     <Compile Include="skycoin\cipher__BitcoinAddress.cs" />
     <Compile Include="skycoin\api__NetworkConnectionsFilter.cs" />
-    <Compile Include="skycoin\SWIGTYPE_p_p_GoSlice_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint32_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint64_.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_GoUint8_.cs" />
@@ -152,6 +149,25 @@
     <Compile Include="skycoin\SWIGTYPE_p_ReadableUnspentOutputsSummary_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_Hash_Handle.cs" />
     <Compile Include="skycoin\SWIGTYPE_p_UnspentOutputsSummary_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Distribution__Handle.cs" />
+    <Compile Include="skycoin\coin__UxArray.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_SortableTransactions_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_MetaWallet__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_PrivateKey__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Account__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Coin__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CollectionWallet__Handle.cs" />
+    <Compile Include="skycoin\cli__PasswordFromBytes.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WalletRecoverRequest__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_CreateWalletOptions__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_WalletSeedResponse__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_BalanceResult_Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_GetOutputser__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_PublicKey__Handle.cs" />
+    <Compile Include="skycoin\SWIGTYPE_p_Path__Handle.cs" />
+    <Compile Include="skycoin\coin__Transactions.cs" />
+    <Compile Include="skycoin\bip32__PathNode.cs" />
+    <Compile Include="skycoin\wallet__CryptoType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="skycoin\skycoinnet_wrap.c" />

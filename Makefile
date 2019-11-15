@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 .PHONY: configure build-libc build-swig develop build-libc-swig build
-.PHONY: test test-ci help
+.PHONY: test test-ci help clean
 
 # Compilation output
 .ONESHELL:
@@ -9,7 +9,7 @@ SHELL := /bin/bash
 MKFILE_PATH   = $(abspath $(lastword $(MAKEFILE_LIST)))
 REPO_ROOT     = $(dir $(MKFILE_PATH))
 GOPATH_DIR    = gopath
-SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/skycoin/libskycoin
+SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/fibercrypto/libskycoin
 SKYCOIN_DIR  ?= $(SKYLIBC_DIR)/vendor/github.com/skycoin/skycoin
 SKYBUILD_DIR  = $(SKYLIBC_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
@@ -63,7 +63,7 @@ else
 endif
 
 # Added by Swagger
-LIB_SKYCOIN_DIR = gopath/src/github.com/skycoin/libskycoin
+LIB_SKYCOIN_DIR = gopath/src/github.com/fibercrypto/libskycoin
 SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.v0.26.0.openapi.v2.yml
 CSHARP_CLIENT_DIR = lib/skyapi
 CSHARP_SWIG_DIR = lib/swig
@@ -90,13 +90,13 @@ build-libc: configure ## Build libskycoin C client library
 
 build-swig: ## Generate C# C module from SWIG interfaces
 	#Generate structs.i from skytypes.gen.h
-	rm -f $(CSHARP_SWIG_DIR)/structs.i
-	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/structs.i
+	rm -f $(CSHARP_SWIG_DIR)/swig/include/structs.i
+	cp $(INCLUDE_DIR)/skytypes.gen.h $(CSHARP_SWIG_DIR)/swig/include/structs.i
 	{ \
 		if [[ "$$(uname -s)" == "Darwin" ]]; then \
-			sed -i '.kbk' 's/#/%/g' $(CSHARP_SWIG_DIR)/structs.i ;\
+			sed -i '.kbk' 's/#/%/g' $(CSHARP_SWIG_DIR)/swig/include/structs.i ;\
 		else \
-			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/structs.i ;\
+			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/swig/include/structs.i ;\
 		fi \
 	}
 	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
@@ -135,7 +135,7 @@ test-libsky-mono: build-mono ## Run LibSkycoinNet test suite mono
 	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
 
 test-libsky-dotnet: build-dotnet
-	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test -v n $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
 
 build-skyapi: ## Build SkyApi Assembly
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
@@ -148,6 +148,8 @@ lint:
 	gendarme --v --config rules.xml --severity critical lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll
 	gendarme --v --config rules.xml --severity critical  lib/swig/LibskycoinNet/bin/Release/LibskycoinNet.dll
 
+clean:  ## Clean all trash
+	GOPATH="$(REPO_ROOT)/$(GOPATH_DIR)" make -C $(SKYLIBC_DIR) clean-libc
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

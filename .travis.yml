@@ -3,6 +3,7 @@ sudo: required
 env:
   global:
     - CGO_ENABLED: 1
+    - PATH_SUBMODULE: "gopath/src/github.com/fibercrypto/libskycoin"
 
 matrix:
   include:

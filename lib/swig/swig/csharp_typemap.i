@@ -1,18 +1,17 @@
 %include "arrays_csharp.i"
 %include cpointer.i
-%pointer_functions(GoSlice, GoSlicep);
-%pointer_functions(GoUint8_, GoUint8Ptr);
-%pointer_functions(_GoString_, GoStringp);
-%pointer_functions(int, intp);
-%pointer_functions( unsigned int, GoUint32Ptr);
-%pointer_functions(coin__Transaction, coin__Transactionp);
+%pointer_functions(GoSlice, GoSlicePtr);
+%pointer_functions(GoUint8, GoUint8Ptr);
+%pointer_functions(_GoString_, GoStringPtr);
+%pointer_functions(GoInt, GoIntPtr);
+%pointer_functions(GoUint32, GoUint32Ptr);
+%pointer_functions(coin__Transaction, coin__TransactionPtr);
 %pointer_functions(AddressUxOuts_Handle, AddressUxOuts__HandlePtr);
-%pointer_functions(unsigned long long, GoUint64p);
-%pointer_functions(long long, Gointp);
-%pointer_functions(unsigned short, GoUint16p);
-%pointer_functions(cipher__Address, cipher__Addressp);
+%pointer_functions(GoUint64, GoUint64Ptr);
+%pointer_functions(GoUint16, GoUint16Ptr);
+%pointer_functions(cipher__Address, cipher__AddressPtr);
 %pointer_functions(Transactions__Handle, Transactions__HandlePtr);
-%pointer_functions(Transaction__Handle, Transaction__Handlep);
+%pointer_functions(Transaction__Handle, Transaction__HandlePtr);
 %pointer_functions(Block__Handle,Block__HandlePtr);
 %pointer_functions(BlockBody__Handle,BlockBody__HandlePtr);
 %pointer_functions(BlockHeader__Handle,BlockHeader__HandlePtr);
@@ -28,7 +27,6 @@
 %pointer_functions(Client__Handle,Client__HandlePtr);
 %pointer_functions(WalletResponse__Handle,WalletResponse__HandlePtr);
 %pointer_functions(CreateTransactionRequest__Handle,CreateTransactionRequest__HandlePtr);
-%pointer_functions(Strings__Handle,Strings__HandlePtr);
 %pointer_functions(Wallets__Handle,Wallets__HandlePtr);
 %pointer_functions(ReadableOutputSet_Handle,ReadableOutputSet_HandlePtr);
 %pointer_functions(CreateTransactionParams__Handle,CreateTransactionParams__HandlePtr);
@@ -37,7 +35,6 @@
 %pointer_functions(CreatedTransactionInput__Handle,CreatedTransactionInput__HandlePtr);
 %pointer_functions(CreateTransactionResponse__Handle,CreateTransactionResponse__HandlePtr);
 %pointer_functions(SignedBlock__Handle,SignedBlock__HandlePtr);
-%pointer_functions(SortableTransactionResult_Handle,SortableTransactionResult_HandlePtr);
 %pointer_functions(WalletReadableNotes_Handle,WalletReadableNotes_HandlePtr);
 %pointer_functions(OutputsResult_Handle,OutputsResult_HandlePtr);
 %pointer_functions(StatusResult_Handle,StatusResult_HandlePtr);
@@ -50,6 +47,16 @@
 %pointer_functions(FeeCalculator, FeeCalculatorPtr);
 %pointer_functions(FeeCalcFunc, FeeCalcFuncPtr);
 %pointer_functions(coin__Block*, coin__BlockPtr);
+%pointer_functions(coin__UxOut, coin__UxOutPtr);
+%pointer_functions(coin__UxBody, coin__UxBodyPtr);
+%pointer_functions(cipher_SecKey, cipher_SecKeyPtr);
+%pointer_functions(coin__TransactionOutput, coin__TransactionOutputPtr);
+%pointer_functions(Distribution__Handle, Distribution__HandlePtr);
+%pointer_functions(Coin__Handle, Coin__HandlePtr);
+%pointer_functions(Account__Handle, Account__HandlePtr);
+%pointer_functions(PrivateKey__Handle, PrivateKey__HandlePtr);
+%pointer_functions(PublicKey__Handle, PublicKey__HandlePtr);
+%pointer_functions(Path__Handle, Path__HandlePtr);
 
 /*GoString* parameter as reference */
 %typemap(in, numinputs=0) GoString* (GoString temp) {
@@ -63,13 +70,13 @@
 **/
 %include "typemaps.i"
 // Pubkey
-%typemap(ctype,pre="cipher_PubKey tmp$csinput = new_cipher_PubKeyp();") (GoUint8_ (*) [33])  "cipher__PubKey*"
+%typemap(ctype,pre="cipher_PubKey tmp$csinput = new_cipher_PubKeyPtr();") (GoUint8_ (*) [33])  "cipher__PubKey*"
 %typemap(cstype,pre="var tmp$csinput = cipher_PubKey.getCPtr ($csinput);") (GoUint8_ (*) [33])  "cipher_PubKey"
 %typemap(csin,pre="var tmp$csinput = cipher_PubKey.getCPtr ($csinput);") (GoUint8_ (*) [33])  "tmp$csinput"
 
 
 // Seckey
-%typemap(ctype,pre="cipher_SecKey tmp$csinput = new_cipher_SecKeyp();") (GoUint8_ (*) [32])  "cipher_SecKey*"
+%typemap(ctype,pre="cipher_SecKey tmp$csinput = new_cipher_SecKeyPtr();") (GoUint8_ (*) [32])  "cipher_SecKey*"
 %typemap(cstype,pre=" var tmp$csinput = cipher_SecKey.getCPtr ($csinput);") (GoUint8_ (*) [32])  "cipher_SecKey"
 %typemap(csin,pre="var tmp$csinput = cipher_SecKey.getCPtr ($csinput);") (GoUint8_ (*) [32])  "tmp$csinput"
 
@@ -79,7 +86,7 @@
 %typemap(csin,pre="var tmp$csinput = cipher_Sig.getCPtr ($csinput);") (GoUint8_ (*) [65])  "tmp$csinput"
 
 // cipher__Ripemd160
-%typemap(ctype,pre="cipher__Ripemd160 tmp$csinput = new_cipher_Ripemd160p();") (GoUint8_ (*) [20])  "cipher_Ripemd160*"
+%typemap(ctype,pre="cipher__Ripemd160 tmp$csinput = new_cipher_Ripemd160Ptr();") (GoUint8_ (*) [20])  "cipher_Ripemd160*"
 %typemap(cstype,pre=" var tmp$csinput = cipher_Ripemd160.getCPtr ($csinput);") (GoUint8_ (*) [20])  "cipher_Ripemd160"
 %typemap(csin,pre="var tmp$csinput = cipher_Ripemd160.getCPtr ($csinput);") (GoUint8_ (*) [20])  "tmp$csinput"
 
@@ -91,7 +98,7 @@
 %typemap(ctype) GoString  "char*"
 %typemap(in) GoString  "$1.p=$input;$1.n=strlen($input);"
 
-%typemap(ctype,pre="GoString_ tmp$csinput = new_GoStringp_();") GoString_*  "GoString*"
+%typemap(ctype,pre="GoString_ tmp$csinput = new_GoStringPtr_();") GoString_*  "GoString*"
 %typemap(cstype,pre=" var tmp$csinput = _GoString_.getCPtr ($csinput);") GoString_*  "_GoString_"
 %typemap(csin,pre="var tmp$csinput = _GoString_.getCPtr ($csinput);") GoString_*  "tmp$csinput"
 

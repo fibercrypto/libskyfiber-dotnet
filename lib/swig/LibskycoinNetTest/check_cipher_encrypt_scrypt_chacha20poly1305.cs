@@ -49,16 +49,16 @@ namespace LibskycoinNetTest
                 if (str.n <= 188)
                 {
                     var meta = utils.base64Decode(str.p);
-                    var n = new_Gointp();
-                    var r = new_Gointp();
-                    var p = new_Gointp();
-                    var keyLen = new_Gointp();
+                    var n = new_GoIntPtr();
+                    var r = new_GoIntPtr();
+                    var p = new_GoIntPtr();
+                    var keyLen = new_GoIntPtr();
                     meta = cutString(meta, "{", "}");
                     parseJsonMetaData(meta, n, r, p, keyLen);
-                    Assert.AreEqual(1 << i, Gointp_value(n), name);
-                    Assert.AreEqual(8, Gointp_value(r), name);
-                    Assert.AreEqual(1, Gointp_value(p), name);
-                    Assert.AreEqual(32, Gointp_value(keyLen), name);
+                    Assert.AreEqual(1 << i, GoIntPtr_value(n), name);
+                    Assert.AreEqual(8, GoIntPtr_value(r), name);
+                    Assert.AreEqual(1, GoIntPtr_value(p), name);
+                    Assert.AreEqual(32, GoIntPtr_value(keyLen), name);
                 }
             }
         }
