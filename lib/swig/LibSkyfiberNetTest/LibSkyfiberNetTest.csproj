@@ -57,7 +57,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibskyfiberNet\LibskyfiberNet.csproj">
+    <ProjectReference Include="..\LibSkyfiberNet\LibSkyfiberNet.csproj">
       <Project>{C5320CD3-B673-461B-8899-19BB52862364}</Project>
       <Name>LibskyfiberNet</Name>
     </ProjectReference>
