@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C5320CD3-B673-461B-8899-19BB52862364}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>LibskyfiberNet</RootNamespace>
-    <AssemblyName>LibskyfiberNet</AssemblyName>
+    <RootNamespace>LibSkyfiberNet</RootNamespace>
+    <AssemblyName>LibSkyfiberNet</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <PackOnBuild>true</PackOnBuild>
-    <PackageId>LibskyfiberNet</PackageId>
+    <PackageId>LibSkyfiberNet</PackageId>
     <Version Condition=" '$(PackageVersion)' == '' ">0.26.0</Version>
     <Version Condition=" '$(PackageVersion)' != '' ">$(PackageVersion)</Version>
     <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.26.0</PackageVersion>
