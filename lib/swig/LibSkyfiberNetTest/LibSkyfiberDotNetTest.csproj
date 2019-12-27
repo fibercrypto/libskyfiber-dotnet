@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibskycoinNet\LibSkycoinDotNet.csproj">
+    <ProjectReference Include="..\LibskyfiberNet\LibSkyfiberDotNet.csproj">
       <Project>{9A1DE0D2-E9C3-415D-A551-640C279EC8E1}</Project>
-      <Name>LibSkycoinDotNet</Name>
+      <Name>LibSkyfiberDotNet</Name>
     </ProjectReference>
   </ItemGroup>
 

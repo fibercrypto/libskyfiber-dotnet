@@ -9,7 +9,7 @@ SHELL := /bin/bash
 MKFILE_PATH   = $(abspath $(lastword $(MAKEFILE_LIST)))
 REPO_ROOT     = $(dir $(MKFILE_PATH))
 GOPATH_DIR    = gopath
-SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/fibercrypto/libskycoin
+SKYLIBC_DIR  ?= $(GOPATH_DIR)/src/github.com/fibercrypto/libskyfiber
 SKYCOIN_DIR  ?= $(SKYLIBC_DIR)/vendor/github.com/skycoin/skycoin
 SKYBUILD_DIR  = $(SKYLIBC_DIR)/build
 BUILDLIBC_DIR = $(SKYBUILD_DIR)/libskycoin
@@ -63,7 +63,7 @@ else
 endif
 
 # Added by Swagger
-LIB_SKYCOIN_DIR = gopath/src/github.com/fibercrypto/libskycoin
+LIB_SKYCOIN_DIR = gopath/src/github.com/fibercrypto/libskyfiber
 SWAGGER_SPEC_DIR = $(LIB_SKYCOIN_DIR)/lib/swagger/skycoin.v0.26.0.openapi.v2.yml
 CSHARP_CLIENT_DIR = lib/skyapi
 CSHARP_SWIG_DIR = lib/swig
@@ -99,43 +99,43 @@ build-swig: ## Generate C# C module from SWIG interfaces
 			sed -i 's/#/%/g' $(CSHARP_SWIG_DIR)/swig/include/structs.i ;\
 		fi \
 	}
-	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin
+	mkdir -p $(CSHARP_SWIG_DIR)/LibSkyfiberNet/skycoin
 	rm -f $(CSHARP_SWIG_DIR)/swig/include/swig.h
 	rm -f skycoinnet_wrap.o
 	rm -f skycoinnet_wrap.c
-	swig -csharp -oldvarnames -namespace  skycoin -I$(LIBSWIG_DIR)/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibskycoinNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
+	swig -csharp -oldvarnames -namespace  skycoin -I$(LIBSWIG_DIR)/include -I$(INCLUDE_DIR) -outdir $(CSHARP_SWIG_DIR)/LibSkyfiberNet/skycoin -o skycoinnet_wrap.c $(LIBSWIG_DIR)/libdotnet.i
 	
 build-libskycoin-net: build-libc build-swig ## Build shared library including SWIG wrappers
 	$(CC) -c -fpic -I$(CSHARP_SWIG_DIR)/swig/include -I$(INCLUDE_DIR) -libskycoin skycoinnet_wrap.c
 	rm -rf build/usr/lib/$(LDNAME)
 	$(CC) -shared skycoinnet_wrap.o $(BUILDLIBC_DIR)/libskycoin.a -o $(LDCOPY)/$(LDNAME) $(LDFLAGS)
-	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin
-	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release
-	mkdir -p $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/netcoreapp2.2
-	rm -rf  $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/$(LDNAME)
+	mkdir -p $(CSHARP_SWIG_DIR)/LibSkyfiberNetTest/bin
+	mkdir -p $(CSHARP_SWIG_DIR)/LibSkyfiberNetTest/bin/Release
+	mkdir -p $(CSHARP_SWIG_DIR)/LibSkyfiberNetTest/bin/Release/netcoreapp2.2
+	rm -rf  $(CSHARP_SWIG_DIR)/LibSkyfiberNetTest/bin/Release/$(LDNAME)
 
 install-deps-mono: ## Install development dependencies by mono
-	nuget restore $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
+	nuget restore $(CSHARP_SWIG_DIR)/LibSkyfiberNet.sln
 	nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 install-deps-dotnet: ## Install development dependencies by dotnet
-	dotnet restore $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
+	dotnet restore $(CSHARP_SWIG_DIR)/LibSkyfiberDotNet.sln
 
 build-sln-dotnet: install-deps-dotnet build-libc build-swig
-	$(LDPATHVAR)="$(LDCOPY)" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY)" dotnet msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibSkyfiberDotNet.sln
 	
 build-sln-mono: install-deps-mono build-libc build-swig
-	$(LDPATHVAR)="$(LDCOPY)" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibskycoinNet.sln
+	$(LDPATHVAR)="$(LDCOPY)" msbuild /p:VisualStudioVersion=15.0 /p:Configuration=Release $(CSHARP_SWIG_DIR)/LibSkyfiberNet.sln
 
 build-dotnet: build-libskycoin-net build-sln-dotnet ## Build LibSkycoinNet Assembly by DotNet
 
 build-mono: build-libskycoin-net build-sln-mono ## Build LibSkycoinNet Assembly by Mono
 
 test-libsky-mono: build-mono ## Run LibSkycoinNet test suite mono
-	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibskycoinNetTest/bin/Release/LibskycoinNetTest.dll -labels
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe $(CSHARP_SWIG_DIR)/LibSkyfiberNetTest/bin/Release/LibSkyfiberNetTest.dll -labels
 
 test-libsky-dotnet: build-dotnet
-	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test -v n $(CSHARP_SWIG_DIR)/LibSkycoinDotNet.sln
+	$(LDPATHVAR)="$(LDCOPY):$(LDPATHVAR)" dotnet test -v n $(CSHARP_SWIG_DIR)/LibSkyfiberDotNet.sln
 
 build-skyapi: ## Build SkyApi Assembly
 	(cd $(CSHARP_CLIENT_DIR) && /bin/sh build.sh)
@@ -145,8 +145,8 @@ test-skyapi: ## Run SkyApi test suite
 
 lint: 
 	gendarme --v --config rules.xml --severity critical  lib/skyapi/src/Skyapi/bin/Debug/Skyapi.dll
-	gendarme --v --config rules.xml --severity critical lib/swig/LibskycoinNet/bin/Release/netstandard2.0/LibSkycoinDotNet.dll
-	gendarme --v --config rules.xml --severity critical  lib/swig/LibskycoinNet/bin/Release/LibskycoinNet.dll
+	gendarme --v --config rules.xml --severity critical lib/swig/LibSkyfiberNet/bin/Release/netstandard2.0/LibSkyfiberDotNet.dll
+	gendarme --v --config rules.xml --severity critical  lib/swig/LibSkyfiberNet/bin/Release/LibskyfiberNet.dll
 
 clean:  ## Clean all trash
 	GOPATH="$(REPO_ROOT)/$(GOPATH_DIR)" make -C $(SKYLIBC_DIR) clean-libc

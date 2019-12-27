@@ -7,8 +7,8 @@
 	#include "swig.h"
 	#include "skyerrors.h"
 %}
-%include "/gopath/src/github.com/fibercrypto/libskycoin/lib/swig/common/common.i"
-%include "/gopath/src/github.com/fibercrypto/libskycoin/lib/swig//static/static.i"
+%include "/gopath/src/github.com/fibercrypto/libskyfiber/lib/swig/common/common.i"
+%include "/gopath/src/github.com/fibercrypto/libskyfiber/lib/swig//static/static.i"
 %include "csharp_typemap.i"
 %include "csharp_structs_typemaps.i"
 %include "csharp_basic.i"

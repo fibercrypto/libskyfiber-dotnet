@@ -4,7 +4,7 @@ using skycoin;
 using utils;
 using System.Threading;
 
-namespace LibskycoinNetTest
+namespace LibskyfiberNetTest
 {
     [TestFixture()]
     public class check_coin_transactions : skycoin.skycoin

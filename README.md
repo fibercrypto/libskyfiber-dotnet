@@ -1,4 +1,4 @@
-# Libskycoin for .Net
+# LibSkyfiber for .Net
 
 [![Build Status](https://travis-ci.org/libskycoin-dotnet.svg?branch=develop)](https://travis-ci.org/simelo/libskycoin-dotnet)
 
@@ -61,13 +61,13 @@ For getting similar results using a graphical IDE interface consider package nam
 ### Install from sources
 
 Download the repository from http://github.com/simelo/libskycoin-dotnet.git.
-Execute (`nuget restore LibskycoinNet.sln`) to install the library. Although executing (`nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner`) is a better choice for making changes to the library. However, when using tox these commands are not required at all because calling tox will make any necessary installation and execute the tests.
+Execute (`nuget restore LibskyfiberNet.sln`) to install the library. Although executing (`nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner`) is a better choice for making changes to the library. However, when using tox these commands are not required at all because calling tox will make any necessary installation and execute the tests.
 
 ### Usage
 
 #### Naming
 
-The exported function in Libskycoin .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
+The exported function in LibSkyfiber .NET have the following naming format: `SKY_package_func_name` where package is replace by the package where the original Skycoin function is and func_name is the name of the function. For example, `LoadConfig` function from `cli` package is called in .Net `SKY_cli_LoadConfig`
 
 #### Parameters
 
@@ -84,12 +84,12 @@ Some of Skycoin types are too complex to be exported to a scripting language. So
   func (c Config) FullWalletPath() string
 ```
 
-Config is a struct type that is treated as a handle in Libskycoin .Net . The usage in .Net will be:
+Config is a struct type that is treated as a handle in LibSkyfiber .Net . The usage in .Net will be:
 
 ```csharp
 
 using skycoin;
-namespace LibskycoinNet
+namespace LibskyfiberNet
 {
     public class Skycoin : skycoin.skycoin
     {
@@ -306,7 +306,7 @@ $ make test
 0. If the `master` branch has commits that are not in `develop` (e.g. due to a hotfix applied to `master`), merge `master` into `develop` (and fix any build or test failures)
 0. Switch to a new release branch named `release-X.Y.Z` for preparing the release.
 0. Ensure that the submodule at `gopath/src/github.com/skycoin/skycoin` is in sync with respect to the corresponding tag in https://github.com/skycoin/skycoin repository.
-0. Update package version (`LibskycoinNet/LibskycoinNet.csproj`)
+0. Update package version (`LibskyfiberNet/LibskyfiberNet.csproj`)
 0. Run `make build` to make sure that the code base is up to date
 0. Update `CHANGELOG.md`: move the "unreleased" changes to the version and add the date.
 0. Follow the steps in [pre-release testing](#pre-release-testing)
@@ -334,8 +334,8 @@ https://www.mono-project.com/download/stable/
 
 ##### Building
 
-    msbuild /p:Configuration=Release LibskycoinNet.sln
+    msbuild /p:Configuration=Release LibskyfiberNet.sln
 
-Final results are placed in the LibskycoinNet/bin/Release/ folder.
+Final results are placed in the LibskyfiberNet/bin/Release/ folder.
 
 

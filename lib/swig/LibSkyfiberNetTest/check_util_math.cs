@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using skycoin;
 using utils;
-namespace LibskycoinNetTest {
+namespace LibskyfiberNetTest {
     [TestFixture ()]
     public class check_util_math : skycoin.skycoin {
 
