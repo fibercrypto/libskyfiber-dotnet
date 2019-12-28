@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DD16DD48-1CCF-478F-BD19-65A81780E7AB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>LibskyfiberNetTest</RootNamespace>
-    <AssemblyName>LibskyfiberNetTest</AssemblyName>
+    <RootNamespace>LibSkyfiberNetTest</RootNamespace>
+    <AssemblyName>LibSkyfiberNetTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
