@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibskycoinNet", "LibskycoinNet\LibskycoinNet.csproj", "{C5320CD3-B673-461B-8899-19BB52862364}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSkyfiberNet", "LibSkyfiberNet\LibSkyfiberNet.csproj", "{C5320CD3-B673-461B-8899-19BB52862364}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibskycoinNetTest", "LibskycoinNetTest\LibskycoinNetTest.csproj", "{DD16DD48-1CCF-478F-BD19-65A81780E7AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSkyfiberNetTest", "LibSkyfiberNetTest\LibSkyfiberNetTest.csproj", "{DD16DD48-1CCF-478F-BD19-65A81780E7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,7 +16,7 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     brew update;
     echo 'Creating swig@3.0.12 formula';
     cd "$(brew --repository)/Library/Taps/homebrew/homebrew-core";
-    git show 42d31bba7772fb01f9ba442d9ee98b33a6e7a055:Formula/swig.rb | grep -v 'fails_with' > Formula/swig.rb;
+    (cd Formula && curl -sL -o "swig.rb" https://raw.githubusercontent.com/Homebrew/homebrew-core/42d31bba7772fb01f9ba442d9ee98b33a6e7a055/Formula/swig.rb)
     echo 'Installing swig@3.0.12 (3.0.12)';
     brew install swig || brew link --overwrite swig;
     brew install gimme

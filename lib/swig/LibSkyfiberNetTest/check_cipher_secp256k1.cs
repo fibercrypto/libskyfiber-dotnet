@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using skycoin;
-namespace LibskycoinNetTest
+namespace LibskyfiberNetTest
 {
 
     [TestFixture()]
